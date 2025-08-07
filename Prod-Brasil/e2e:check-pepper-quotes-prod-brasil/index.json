@@ -5,9 +5,9 @@
     "passes": 10,
     "pending": 0,
     "failures": 1,
-    "start": "2025-08-05T11:37:15.128Z",
-    "end": "2025-08-05T11:37:31.461Z",
-    "duration": 16333,
+    "start": "2025-08-07T11:36:39.462Z",
+    "end": "2025-08-07T11:36:59.000Z",
+    "duration": 19538,
     "testsRegistered": 30,
     "passPercent": 33.33333333333333,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "21152a2a-c062-44b5-8a09-ef339fef47fb",
+      "uuid": "d2e67f0a-b17a-47f9-a2b3-0db580fa4c5c",
       "title": "",
       "fullFile": "cypress/e2e/check-closing-quotes-pepper-prod-brasil.cy.js",
       "file": "cypress/e2e/check-closing-quotes-pepper-prod-brasil.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "51c0133b-4002-4db4-b6c6-420ae089411c",
+          "uuid": "9f36228b-db8d-478f-8e5a-f0fae7c4e24f",
           "title": "Validación de cotizaciones B3 Admin Prod Brasil",
           "fullFile": "",
           "file": "",
@@ -36,7 +36,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "aa172ee1-87f9-422e-ab83-2232263dce2a",
+              "uuid": "a562456b-be9a-4449-9b67-678ab02ef5b7",
               "title": "Login Pepper",
               "fullFile": "",
               "file": "",
@@ -47,7 +47,7 @@
                   "title": "Ingresar y hacer login en el admin de Pepper",
                   "fullTitle": "Validación de cotizaciones B3 Admin Prod Brasil Login Pepper Ingresar y hacer login en el admin de Pepper",
                   "timedOut": null,
-                  "duration": 2464,
+                  "duration": 2527,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -56,26 +56,26 @@
                   "context": null,
                   "code": "cy.LoginPepper();",
                   "err": {},
-                  "uuid": "9bae6733-38f3-4807-b661-8c53fcb9eac5",
-                  "parentUUID": "aa172ee1-87f9-422e-ab83-2232263dce2a",
+                  "uuid": "e567dd97-c4f5-4288-8ad9-436dde45b41a",
+                  "parentUUID": "a562456b-be9a-4449-9b67-678ab02ef5b7",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "9bae6733-38f3-4807-b661-8c53fcb9eac5"
+                "e567dd97-c4f5-4288-8ad9-436dde45b41a"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 2464,
+              "duration": 2527,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
             },
             {
-              "uuid": "2f0d9c82-cdb6-4c35-b865-22125acbd802",
+              "uuid": "785a92a8-9610-4c80-94b0-ff0ff3ac89eb",
               "title": "Home",
               "fullFile": "",
               "file": "",
@@ -86,7 +86,7 @@
                   "title": "Validar que se muestren los cuadros: Bonos en 0 o más de 1 Curva y Instrumentos sin especies ",
                   "fullTitle": "Validación de cotizaciones B3 Admin Prod Brasil Home Validar que se muestren los cuadros: Bonos en 0 o más de 1 Curva y Instrumentos sin especies ",
                   "timedOut": null,
-                  "duration": 3813,
+                  "duration": 3596,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -95,8 +95,8 @@
                   "context": null,
                   "code": "// Workaround error del logo de Mercap\ncy.get('.application-footer-logo-symbol').then($logos => {\n  cy.get('.collapse.navbar-collapse, .application-footer-container.hidden-xs.hidden-sm').then($containers => {\n    const containersArray = $containers.toArray();\n    const isLogoInsideContainer = [...$logos].some(logo => containersArray.some(container => container.contains(logo)));\n    if (!isLogoInsideContainer) {\n      cy.visit(_constants.default.PEPPER_LOCATION);\n    } else {\n      cy.log('El logo está en la ubicación correcta');\n    }\n  });\n});\n// Guardar en una variable la versión de Pepper\ncy.get('.pull-right .application-footer-link').invoke('text').then(text => {\n  const PEPPER_VERSION = text.trim();\n  cy.writeFile('pepper-version.txt', PEPPER_VERSION);\n});\n// Validaciones del Home\ncy.get('div.panel.cardPanel.panel-danger').should('be.visible');\ncy.get('div.panel-heading').contains('Bonos en 0 o más de 1 Curva').should('be.visible');\ncy.get('div.panel-heading').contains('Instrumentos sin especies').should('be.visible');",
                   "err": {},
-                  "uuid": "501133ad-574a-46be-b75a-c7dd289aa6d3",
-                  "parentUUID": "2f0d9c82-cdb6-4c35-b865-22125acbd802",
+                  "uuid": "91c07ce9-44d4-42e1-88aa-7b1f94f223fc",
+                  "parentUUID": "785a92a8-9610-4c80-94b0-ff0ff3ac89eb",
                   "isHook": false,
                   "skipped": false
                 },
@@ -113,8 +113,8 @@
                   "context": null,
                   "code": "cy.get('div.panel.cardPanel.panel-primary').should('be.visible');\ncy.get('div.panel-heading').contains('Acciones').should('be.visible');\ncy.get('div.panel-heading').contains('Bonos Vigentes').should('be.visible');",
                   "err": {},
-                  "uuid": "32691339-4d58-4c77-aa3c-16809f9949cb",
-                  "parentUUID": "2f0d9c82-cdb6-4c35-b865-22125acbd802",
+                  "uuid": "9d354740-4e6f-45ff-981c-fca26ecf893f",
+                  "parentUUID": "785a92a8-9610-4c80-94b0-ff0ff3ac89eb",
                   "isHook": false,
                   "skipped": false
                 },
@@ -131,8 +131,8 @@
                   "context": null,
                   "code": "cy.get('div.cardPanelValue').should('be.visible');",
                   "err": {},
-                  "uuid": "4e57abe7-21c0-4305-97d3-5f72b4e7b4de",
-                  "parentUUID": "2f0d9c82-cdb6-4c35-b865-22125acbd802",
+                  "uuid": "a59ae097-76fa-4fc6-9a72-573dd5e8d532",
+                  "parentUUID": "785a92a8-9610-4c80-94b0-ff0ff3ac89eb",
                   "isHook": false,
                   "skipped": false
                 },
@@ -140,7 +140,7 @@
                   "title": "Validar que se muestren los cuadros: Instrumentos sin cotización y Tasas e Indices",
                   "fullTitle": "Validación de cotizaciones B3 Admin Prod Brasil Home Validar que se muestren los cuadros: Instrumentos sin cotización y Tasas e Indices",
                   "timedOut": null,
-                  "duration": 61,
+                  "duration": 56,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -149,8 +149,8 @@
                   "context": null,
                   "code": "cy.get('div.panel.panel-primary').should('be.visible');\ncy.get('div.panel-heading').contains('Instrumentos sin cotización').should('be.visible');\ncy.get('div.horizontalScrollbar').should('be.visible');\ncy.get('th.sorting').should('be.visible');\ncy.get('div.panel-heading').contains('Tasas e Indices').should('be.visible');\ncy.get('div.panel-footer').should('be.visible');",
                   "err": {},
-                  "uuid": "038e4091-1504-41b0-8bb3-49a2265f3e7e",
-                  "parentUUID": "2f0d9c82-cdb6-4c35-b865-22125acbd802",
+                  "uuid": "980d97bc-89bf-4f6e-948b-717040136a50",
+                  "parentUUID": "785a92a8-9610-4c80-94b0-ff0ff3ac89eb",
                   "isHook": false,
                   "skipped": false
                 },
@@ -158,7 +158,7 @@
                   "title": "Validar que se muestren los cuadros: Screener - Métricas Indefinidas y Reuters - Instrumentos sin Ric",
                   "fullTitle": "Validación de cotizaciones B3 Admin Prod Brasil Home Validar que se muestren los cuadros: Screener - Métricas Indefinidas y Reuters - Instrumentos sin Ric",
                   "timedOut": null,
-                  "duration": 68,
+                  "duration": 57,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -167,8 +167,8 @@
                   "context": null,
                   "code": "cy.get('div.panel.panel-primary').should('be.visible');\ncy.get('div.panel-heading').contains('Screener - Métricas Indefinidas').should('be.visible');\ncy.get('button.btn.btn-xs.btn-warning.pull-right').should('be.visible');\ncy.get('button.btn.btn-xs.pull-right.btn-primary').should('be.visible');\ncy.get('div.panel-heading').contains('Reuters - Instrumentos sin Ric').should('be.visible');\ncy.get('table.table.small').should('be.visible');",
                   "err": {},
-                  "uuid": "305dc82a-c28f-4dbf-b858-209e7379cf8c",
-                  "parentUUID": "2f0d9c82-cdb6-4c35-b865-22125acbd802",
+                  "uuid": "a138ee23-7bfc-4b15-ae84-f2eb095b2a70",
+                  "parentUUID": "785a92a8-9610-4c80-94b0-ff0ff3ac89eb",
                   "isHook": false,
                   "skipped": false
                 },
@@ -176,7 +176,7 @@
                   "title": "Validar que se muestren los cuadros: Curvas Excluidas y Curvas con bonos excluidos",
                   "fullTitle": "Validación de cotizaciones B3 Admin Prod Brasil Home Validar que se muestren los cuadros: Curvas Excluidas y Curvas con bonos excluidos",
                   "timedOut": null,
-                  "duration": 47,
+                  "duration": 54,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -185,8 +185,8 @@
                   "context": null,
                   "code": "cy.get('div.panel.panel-primary').should('be.visible');\ncy.get('div.panel-heading').contains('Curvas Excluidas').should('be.visible');\ncy.get('div.dataTables_wrapper.form-inline.dt-bootstrap.no-footer').should('be.visible');\ncy.get('div.panel-heading').contains('Curvas con bonos excluidos').should('be.visible');\ncy.get('div.panel-body').should('be.visible');",
                   "err": {},
-                  "uuid": "5fe9c10e-f188-45a4-811a-d191159fa646",
-                  "parentUUID": "2f0d9c82-cdb6-4c35-b865-22125acbd802",
+                  "uuid": "97e11a68-2503-42ec-8bd3-43134ac995b4",
+                  "parentUUID": "785a92a8-9610-4c80-94b0-ff0ff3ac89eb",
                   "isHook": false,
                   "skipped": false
                 },
@@ -194,7 +194,7 @@
                   "title": "Validar que se muestre el cuadro: Métricas del día",
                   "fullTitle": "Validación de cotizaciones B3 Admin Prod Brasil Home Validar que se muestre el cuadro: Métricas del día",
                   "timedOut": null,
-                  "duration": 46,
+                  "duration": 45,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -203,32 +203,32 @@
                   "context": null,
                   "code": "cy.get('div.panel.panel-primary').should('be.visible');\ncy.get('div.panel-heading').contains('Métricas del día').should('be.visible');\ncy.get('input.form-control.btn-danger').should('be.visible');\ncy.get('button.btn.btn-xs.btn-info.pull-right').should('be.visible');",
                   "err": {},
-                  "uuid": "7515a3ac-dfef-41a2-b78a-e75829208fa9",
-                  "parentUUID": "2f0d9c82-cdb6-4c35-b865-22125acbd802",
+                  "uuid": "84a6d283-7a45-4892-b245-431c0261d7a8",
+                  "parentUUID": "785a92a8-9610-4c80-94b0-ff0ff3ac89eb",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "501133ad-574a-46be-b75a-c7dd289aa6d3",
-                "32691339-4d58-4c77-aa3c-16809f9949cb",
-                "4e57abe7-21c0-4305-97d3-5f72b4e7b4de",
-                "038e4091-1504-41b0-8bb3-49a2265f3e7e",
-                "305dc82a-c28f-4dbf-b858-209e7379cf8c",
-                "5fe9c10e-f188-45a4-811a-d191159fa646",
-                "7515a3ac-dfef-41a2-b78a-e75829208fa9"
+                "91c07ce9-44d4-42e1-88aa-7b1f94f223fc",
+                "9d354740-4e6f-45ff-981c-fca26ecf893f",
+                "a59ae097-76fa-4fc6-9a72-573dd5e8d532",
+                "980d97bc-89bf-4f6e-948b-717040136a50",
+                "a138ee23-7bfc-4b15-ae84-f2eb095b2a70",
+                "97e11a68-2503-42ec-8bd3-43134ac995b4",
+                "84a6d283-7a45-4892-b245-431c0261d7a8"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 4110,
+              "duration": 3883,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
             },
             {
-              "uuid": "65c6c563-d3fd-4746-9ff8-61a70547b888",
+              "uuid": "d8ea3653-a107-4480-8780-05e4a791a7b7",
               "title": "Cotizaciones de Securities",
               "fullFile": "",
               "file": "",
@@ -239,7 +239,7 @@
                   "title": "Ingresar en Cotizaciones de Securities",
                   "fullTitle": "Validación de cotizaciones B3 Admin Prod Brasil Cotizaciones de Securities Ingresar en Cotizaciones de Securities",
                   "timedOut": null,
-                  "duration": 184,
+                  "duration": 3548,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -248,8 +248,8 @@
                   "context": null,
                   "code": "cy.IngresarAlMenuCotizacionesDeSecurities();\ncy.CheckLogoAndReloadSecurities();",
                   "err": {},
-                  "uuid": "240eed05-d1e8-47c8-95fb-acaa2febc5b1",
-                  "parentUUID": "65c6c563-d3fd-4746-9ff8-61a70547b888",
+                  "uuid": "c96aa0f6-4d9e-4fd5-8ae5-9c4ad58a296a",
+                  "parentUUID": "d8ea3653-a107-4480-8780-05e4a791a7b7",
                   "isHook": false,
                   "skipped": false
                 },
@@ -257,7 +257,7 @@
                   "title": "Validar que se muestren todos los elementos del menú",
                   "fullTitle": "Validación de cotizaciones B3 Admin Prod Brasil Cotizaciones de Securities Validar que se muestren todos los elementos del menú",
                   "timedOut": null,
-                  "duration": 277,
+                  "duration": 187,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -266,8 +266,8 @@
                   "context": null,
                   "code": "cy.ValidacionesMenuCotizacionesDeSecurities();",
                   "err": {},
-                  "uuid": "361114de-f98c-4b5e-9425-7a5fe158d696",
-                  "parentUUID": "65c6c563-d3fd-4746-9ff8-61a70547b888",
+                  "uuid": "5f492af6-6376-429f-96dd-5e54efd4e066",
+                  "parentUUID": "d8ea3653-a107-4480-8780-05e4a791a7b7",
                   "isHook": false,
                   "skipped": false
                 },
@@ -275,7 +275,7 @@
                   "title": "Validar que el bono NTEN11 tenga la cotización esperada",
                   "fullTitle": "Validación de cotizaciones B3 Admin Prod Brasil Cotizaciones de Securities Validar que el bono NTEN11 tenga la cotización esperada",
                   "timedOut": null,
-                  "duration": 5818,
+                  "duration": 5825,
                   "state": "failed",
                   "speed": null,
                   "pass": false,
@@ -284,12 +284,12 @@
                   "context": null,
                   "code": "cy.IngresarPlazoDesde();\ncy.BuscarBonoConReintentos(`${_constants.default.TICKER_1}`);",
                   "err": {
-                    "message": "Error: Se esperaba tener cotización con fecha 04/08/2025",
-                    "estack": "Error: Se esperaba tener cotización con fecha 04/08/2025\n    at Context.eval (webpack://cypress/./cypress/support/commands.js:142:14)",
+                    "message": "Error: Se esperaba tener cotización con fecha 06/08/2025",
+                    "estack": "Error: Se esperaba tener cotización con fecha 06/08/2025\n    at Context.eval (webpack://cypress/./cypress/support/commands.js:142:14)",
                     "diff": null
                   },
-                  "uuid": "9b00d3db-7944-4b98-81ef-549a78fa6d20",
-                  "parentUUID": "65c6c563-d3fd-4746-9ff8-61a70547b888",
+                  "uuid": "671f6e73-b8b6-4320-9621-926f5919d6c9",
+                  "parentUUID": "d8ea3653-a107-4480-8780-05e4a791a7b7",
                   "isHook": false,
                   "skipped": false
                 },
@@ -306,8 +306,8 @@
                   "context": null,
                   "code": "cy.BuscarBonoConReintentos('ELET42');",
                   "err": {},
-                  "uuid": "5c651410-d6cb-4709-9bde-1660838355ea",
-                  "parentUUID": "65c6c563-d3fd-4746-9ff8-61a70547b888",
+                  "uuid": "72b05033-f1b7-4df1-bc02-4923504b1478",
+                  "parentUUID": "d8ea3653-a107-4480-8780-05e4a791a7b7",
                   "isHook": false,
                   "skipped": true
                 },
@@ -324,8 +324,8 @@
                   "context": null,
                   "code": "cy.BuscarBonoConReintentos(_constants.default.TICKER_3);",
                   "err": {},
-                  "uuid": "7a9543ce-eb56-4631-b653-701d7c98f898",
-                  "parentUUID": "65c6c563-d3fd-4746-9ff8-61a70547b888",
+                  "uuid": "fb3c1d48-40ae-4ee8-ab92-fb3dad3e1aa3",
+                  "parentUUID": "d8ea3653-a107-4480-8780-05e4a791a7b7",
                   "isHook": false,
                   "skipped": true
                 },
@@ -342,8 +342,8 @@
                   "context": null,
                   "code": "cy.BuscarBonoConReintentos(_constants.default.TICKER_4);",
                   "err": {},
-                  "uuid": "17884aac-2d95-41a5-8a01-e2e590af98ce",
-                  "parentUUID": "65c6c563-d3fd-4746-9ff8-61a70547b888",
+                  "uuid": "1a9be1a7-5f7d-4d70-bd5d-4d34338325fc",
+                  "parentUUID": "d8ea3653-a107-4480-8780-05e4a791a7b7",
                   "isHook": false,
                   "skipped": true
                 },
@@ -360,34 +360,34 @@
                   "context": null,
                   "code": "cy.BuscarBonoConReintentos(_constants.default.TICKER_5);",
                   "err": {},
-                  "uuid": "b0f74fda-7a6a-43ad-8ad4-047efe51d516",
-                  "parentUUID": "65c6c563-d3fd-4746-9ff8-61a70547b888",
+                  "uuid": "c2b3ef40-640a-4563-aa9a-0270a4753261",
+                  "parentUUID": "d8ea3653-a107-4480-8780-05e4a791a7b7",
                   "isHook": false,
                   "skipped": true
                 }
               ],
               "suites": [],
               "passes": [
-                "240eed05-d1e8-47c8-95fb-acaa2febc5b1",
-                "361114de-f98c-4b5e-9425-7a5fe158d696"
+                "c96aa0f6-4d9e-4fd5-8ae5-9c4ad58a296a",
+                "5f492af6-6376-429f-96dd-5e54efd4e066"
               ],
               "failures": [
-                "9b00d3db-7944-4b98-81ef-549a78fa6d20"
+                "671f6e73-b8b6-4320-9621-926f5919d6c9"
               ],
               "pending": [],
               "skipped": [
-                "5c651410-d6cb-4709-9bde-1660838355ea",
-                "7a9543ce-eb56-4631-b653-701d7c98f898",
-                "17884aac-2d95-41a5-8a01-e2e590af98ce",
-                "b0f74fda-7a6a-43ad-8ad4-047efe51d516"
+                "72b05033-f1b7-4df1-bc02-4923504b1478",
+                "fb3c1d48-40ae-4ee8-ab92-fb3dad3e1aa3",
+                "1a9be1a7-5f7d-4d70-bd5d-4d34338325fc",
+                "c2b3ef40-640a-4563-aa9a-0270a4753261"
               ],
-              "duration": 6279,
+              "duration": 9560,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
             },
             {
-              "uuid": "7dac88e2-46bb-426a-854b-dda1d1767c15",
+              "uuid": "91c9c674-3e4a-4f6d-930c-f85a74ca1c32",
               "title": "Validar las cotizaciones de B3 en Appraiser Brasil",
               "fullFile": "",
               "file": "",
@@ -407,7 +407,7 @@
                   "context": null,
                   "code": "cy.ValidarCotizacionAppraiser(_constants.default.TICKER_1);",
                   "err": {},
-                  "uuid": "44daf5a1-4dc5-4f63-a0b9-07d904967318",
+                  "uuid": "69f46152-0e4c-4963-a3a4-13860e6503a8",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -425,7 +425,7 @@
                   "context": null,
                   "code": "cy.ValidarCotizacionAppraiser(_constants.default.TICKER_2);",
                   "err": {},
-                  "uuid": "6e18aa22-59e5-4ac0-8cf7-6a60778dc7aa",
+                  "uuid": "1346e762-5538-4385-9e43-dfe60a18175c",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -443,7 +443,7 @@
                   "context": null,
                   "code": "cy.ValidarCotizacionAppraiser(_constants.default.TICKER_3);",
                   "err": {},
-                  "uuid": "49dc36bb-a598-4f10-943c-877968bb106a",
+                  "uuid": "67a208fa-3732-4e3c-8869-d503d66c5fbc",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -461,7 +461,7 @@
                   "context": null,
                   "code": "cy.ValidarCotizacionAppraiser(_constants.default.TICKER_4);",
                   "err": {},
-                  "uuid": "f1dbf7d5-5e3e-47cc-aefa-ab6cbc9cfd69",
+                  "uuid": "aab99a2b-52c8-438c-a483-2fb39d74c7d4",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -479,7 +479,7 @@
                   "context": null,
                   "code": "cy.ValidarCotizacionAppraiser(_constants.default.TICKER_5);",
                   "err": {},
-                  "uuid": "0abdca73-eb93-4748-953f-fdb62c4859a7",
+                  "uuid": "8f71b356-b4ea-45f1-9820-65d78c379919",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -490,11 +490,11 @@
               "failures": [],
               "pending": [],
               "skipped": [
-                "44daf5a1-4dc5-4f63-a0b9-07d904967318",
-                "6e18aa22-59e5-4ac0-8cf7-6a60778dc7aa",
-                "49dc36bb-a598-4f10-943c-877968bb106a",
-                "f1dbf7d5-5e3e-47cc-aefa-ab6cbc9cfd69",
-                "0abdca73-eb93-4748-953f-fdb62c4859a7"
+                "69f46152-0e4c-4963-a3a4-13860e6503a8",
+                "1346e762-5538-4385-9e43-dfe60a18175c",
+                "67a208fa-3732-4e3c-8869-d503d66c5fbc",
+                "aab99a2b-52c8-438c-a483-2fb39d74c7d4",
+                "8f71b356-b4ea-45f1-9820-65d78c379919"
               ],
               "duration": 0,
               "root": false,
@@ -502,7 +502,7 @@
               "_timeout": 2000
             },
             {
-              "uuid": "48bdedc8-07b4-42fd-b7b6-7e2880f6794b",
+              "uuid": "eaf1633b-03f9-4a8b-9537-8bb85b21026e",
               "title": "Validar las cotizaciones de B3 en Investments Brasil",
               "fullFile": "",
               "file": "",
@@ -522,7 +522,7 @@
                   "context": null,
                   "code": "cy.ValidarCotizacionInvestments(_constants.default.TICKER_1);",
                   "err": {},
-                  "uuid": "821df30d-1064-43d8-a8d5-4b6ec295dba2",
+                  "uuid": "3ef02bd0-8405-492c-b88c-c06e51cb81f3",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -540,7 +540,7 @@
                   "context": null,
                   "code": "cy.ValidarCotizacionInvestments(_constants.default.TICKER_2);",
                   "err": {},
-                  "uuid": "8d736797-d731-4b1f-82e8-aae75fdf2755",
+                  "uuid": "960127b0-0115-46b4-b9ab-ac17ded40f7e",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -558,7 +558,7 @@
                   "context": null,
                   "code": "cy.ValidarCotizacionInvestments(_constants.default.TICKER_3);",
                   "err": {},
-                  "uuid": "77e35481-aec5-42ea-a42a-2dcc7558f36d",
+                  "uuid": "60f8bf23-11e7-4eee-9c7c-68c2dcc0d43b",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -576,7 +576,7 @@
                   "context": null,
                   "code": "cy.ValidarCotizacionInvestments(_constants.default.TICKER_4);",
                   "err": {},
-                  "uuid": "09517145-9a63-4c33-aa88-7f6563538bb3",
+                  "uuid": "f75c5a87-e589-484a-aad4-1d893c14b51b",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -594,7 +594,7 @@
                   "context": null,
                   "code": "cy.ValidarCotizacionInvestments(_constants.default.TICKER_5);",
                   "err": {},
-                  "uuid": "7ef01e7f-8ef7-45d9-af97-36e844f6410b",
+                  "uuid": "ceb73945-40ca-4cff-8eec-397ea71b6273",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -605,11 +605,11 @@
               "failures": [],
               "pending": [],
               "skipped": [
-                "821df30d-1064-43d8-a8d5-4b6ec295dba2",
-                "8d736797-d731-4b1f-82e8-aae75fdf2755",
-                "77e35481-aec5-42ea-a42a-2dcc7558f36d",
-                "09517145-9a63-4c33-aa88-7f6563538bb3",
-                "7ef01e7f-8ef7-45d9-af97-36e844f6410b"
+                "3ef02bd0-8405-492c-b88c-c06e51cb81f3",
+                "960127b0-0115-46b4-b9ab-ac17ded40f7e",
+                "60f8bf23-11e7-4eee-9c7c-68c2dcc0d43b",
+                "f75c5a87-e589-484a-aad4-1d893c14b51b",
+                "ceb73945-40ca-4cff-8eec-397ea71b6273"
               ],
               "duration": 0,
               "root": false,
@@ -617,7 +617,7 @@
               "_timeout": 2000
             },
             {
-              "uuid": "1421b1b8-781e-4a38-a934-67ef7d299d38",
+              "uuid": "7a8152e2-09c4-467e-953f-88b745d80808",
               "title": "Validar las cotizaciones de B3 en Tradable Securities Brasil",
               "fullFile": "",
               "file": "",
@@ -637,7 +637,7 @@
                   "context": null,
                   "code": "cy.ValidarCotizacionTradableSecurities(_constants.default.TICKER_1);",
                   "err": {},
-                  "uuid": "e1ebd99f-5cb0-47a9-a45b-00b3d3209f70",
+                  "uuid": "91be5de1-57d7-4ea2-9016-6ff8c1ee6a2f",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -655,7 +655,7 @@
                   "context": null,
                   "code": "cy.ValidarCotizacionTradableSecurities(_constants.default.TICKER_2);",
                   "err": {},
-                  "uuid": "6344d075-cf3f-4f15-8c3a-1fa3d9b0aedd",
+                  "uuid": "27940766-3449-44bf-ad9c-fd53731ebcff",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -673,7 +673,7 @@
                   "context": null,
                   "code": "cy.ValidarCotizacionTradableSecurities(_constants.default.TICKER_3);",
                   "err": {},
-                  "uuid": "5b967d34-8cc2-440d-8de2-7af2fd4aa7e8",
+                  "uuid": "1b802334-e765-41db-8fab-bd602987fee7",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -691,7 +691,7 @@
                   "context": null,
                   "code": "cy.ValidarCotizacionTradableSecurities(_constants.default.TICKER_4);",
                   "err": {},
-                  "uuid": "f0cdac2e-7bd2-4eed-b977-ec52388e3599",
+                  "uuid": "ef8f5f66-20bd-4dba-aae3-29f4d8299ce7",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -709,7 +709,7 @@
                   "context": null,
                   "code": "cy.ValidarCotizacionTradableSecurities(_constants.default.TICKER_5);",
                   "err": {},
-                  "uuid": "b29e768a-ecf8-48b2-827f-4da8b248f355",
+                  "uuid": "095654c8-c40c-49af-8215-2b5e962dbfac",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -720,11 +720,11 @@
               "failures": [],
               "pending": [],
               "skipped": [
-                "e1ebd99f-5cb0-47a9-a45b-00b3d3209f70",
-                "6344d075-cf3f-4f15-8c3a-1fa3d9b0aedd",
-                "5b967d34-8cc2-440d-8de2-7af2fd4aa7e8",
-                "f0cdac2e-7bd2-4eed-b977-ec52388e3599",
-                "b29e768a-ecf8-48b2-827f-4da8b248f355"
+                "91be5de1-57d7-4ea2-9016-6ff8c1ee6a2f",
+                "27940766-3449-44bf-ad9c-fd53731ebcff",
+                "1b802334-e765-41db-8fab-bd602987fee7",
+                "ef8f5f66-20bd-4dba-aae3-29f4d8299ce7",
+                "095654c8-c40c-49af-8215-2b5e962dbfac"
               ],
               "duration": 0,
               "root": false,
