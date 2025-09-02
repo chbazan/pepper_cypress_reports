@@ -2,14 +2,14 @@
   "stats": {
     "suites": 1,
     "tests": 1,
-    "passes": 1,
+    "passes": 0,
     "pending": 0,
-    "failures": 0,
-    "start": "2025-09-02T12:46:49.883Z",
-    "end": "2025-09-02T12:46:52.598Z",
-    "duration": 2715,
+    "failures": 1,
+    "start": "2025-09-02T13:02:26.694Z",
+    "end": "2025-09-02T13:03:29.350Z",
+    "duration": 62656,
     "testsRegistered": 1,
-    "passPercent": 100,
+    "passPercent": 0,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "4f222924-9108-40cd-9e3c-ccd0609af9d0",
+      "uuid": "c8563c4b-bfdb-4e18-912c-ec188a44fa4a",
       "title": "",
       "fullFile": "cypress/e2e/gs64/staging/brasil/regresion/home.cy.js",
       "file": "cypress/e2e/gs64/staging/brasil/regresion/home.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "f3ab7e26-6f10-4765-b869-55ef217893c6",
+          "uuid": "d360e4ff-9365-4cde-b7cd-892c2c36ab1d",
           "title": "Home",
           "fullFile": "",
           "file": "",
@@ -38,29 +38,33 @@
               "title": "Validar que se muestren los elementos del Home correctamente",
               "fullTitle": "Home Validar que se muestren los elementos del Home correctamente",
               "timedOut": null,
-              "duration": 694,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
-              "fail": false,
+              "duration": 60580,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
               "pending": false,
               "context": null,
-              "code": "cy.visit(_constants.default.PEPPER_LOCATION);\ncy.validacionesHome();",
-              "err": {},
-              "uuid": "f5165c20-54b0-4dcc-a071-ba5916c54466",
-              "parentUUID": "f3ab7e26-6f10-4765-b869-55ef217893c6",
+              "code": "cy.visit(_constants.default.PEPPER_LOCATION);\n//cy.validacionesHome()\ncy.get('test').should('be.visible');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 60000ms: Expected to find element: `test`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 60000ms: Expected to find element: `test`, but never found it.\n    at Context.eval (webpack://cypress/./cypress/e2e/gs64/staging/brasil/regresion/home.cy.js:15:19)",
+                "diff": null
+              },
+              "uuid": "10c72407-c996-48a2-93a5-aacfb6ca0223",
+              "parentUUID": "d360e4ff-9365-4cde-b7cd-892c2c36ab1d",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [
-            "f5165c20-54b0-4dcc-a071-ba5916c54466"
+          "passes": [],
+          "failures": [
+            "10c72407-c996-48a2-93a5-aacfb6ca0223"
           ],
-          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 694,
+          "duration": 60580,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
