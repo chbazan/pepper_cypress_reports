@@ -1,33 +1,33 @@
 {
   "stats": {
-    "suites": 3,
+    "suites": 2,
     "tests": 1,
     "passes": 0,
     "pending": 0,
     "failures": 1,
-    "start": "2025-09-01T11:35:50.057Z",
-    "end": "2025-09-01T11:35:54.840Z",
-    "duration": 4783,
-    "testsRegistered": 158,
+    "start": "2025-09-03T11:36:15.415Z",
+    "end": "2025-09-03T11:36:19.815Z",
+    "duration": 4400,
+    "testsRegistered": 157,
     "passPercent": 0,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
-    "skipped": 157,
+    "skipped": 156,
     "hasSkipped": true
   },
   "results": [
     {
-      "uuid": "6332c2b3-9664-45af-805f-44f5cd7ad7de",
+      "uuid": "9f6c63fa-935d-4e27-a529-110a67430dee",
       "title": "",
-      "fullFile": "cypress/e2e/smoke-staging-brasil.cy.js",
-      "file": "cypress/e2e/smoke-staging-brasil.cy.js",
+      "fullFile": "cypress/e2e/gs32/staging/brasil/regresion/smoke-staging-brasil.cy.js",
+      "file": "cypress/e2e/gs32/staging/brasil/regresion/smoke-staging-brasil.cy.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "ba23b4ef-d6e0-4586-8a2f-85c03d67815c",
+          "uuid": "325525e5-e6c5-48a8-9689-d64d3a225d76",
           "title": "E2E Admin Pepper Testing",
           "fullFile": "",
           "file": "",
@@ -36,50 +36,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "fd198eca-4b33-4e93-8d82-e56fe13c380f",
-              "title": "Login",
-              "fullFile": "",
-              "file": "",
-              "beforeHooks": [],
-              "afterHooks": [],
-              "tests": [
-                {
-                  "title": "Ingresar y hacer login",
-                  "fullTitle": "E2E Admin Pepper Testing Login Ingresar y hacer login",
-                  "timedOut": null,
-                  "duration": 1057,
-                  "state": "failed",
-                  "speed": null,
-                  "pass": false,
-                  "fail": true,
-                  "pending": false,
-                  "context": null,
-                  "code": "cy.clearAllCookies();\ncy.clearAllLocalStorage();\ncy.clearAllSessionStorage();\ncy.LoginPepper();",
-                  "err": {
-                    "message": "CypressError: `cy.origin()` requires the first argument to be a different domain than top. You passed `https://mercap-brasil.us.auth0.com` to the origin command, while top is at `https://mercap-admin-test.us.auth0.com`.\n\nEither the intended page was not visited prior to running the cy.origin block or the cy.origin block may not be needed at all.\n\nhttps://on.cypress.io/origin",
-                    "estack": "CypressError: `cy.origin()` requires the first argument to be a different domain than top. You passed `https://mercap-brasil.us.auth0.com` to the origin command, while top is at `https://mercap-admin-test.us.auth0.com`.\n\nEither the intended page was not visited prior to running the cy.origin block or the cy.origin block may not be needed at all.\n\nhttps://on.cypress.io/origin\n    at Validator.validateLocation (https://mercap-admin-test.us.auth0.com/__cypress/runner/cypress_runner.js:121851:68)\n    at Context.origin (https://mercap-admin-test.us.auth0.com/__cypress/runner/cypress_runner.js:121554:17)\n    at wrapped (https://mercap-admin-test.us.auth0.com/__cypress/runner/cypress_runner.js:138084:43)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypress/./cypress/support/commands.js:37:5)",
-                    "diff": null
-                  },
-                  "uuid": "73423c02-c61b-41af-b5d0-134a7c8a4abc",
-                  "parentUUID": "fd198eca-4b33-4e93-8d82-e56fe13c380f",
-                  "isHook": false,
-                  "skipped": false
-                }
-              ],
-              "suites": [],
-              "passes": [],
-              "failures": [
-                "73423c02-c61b-41af-b5d0-134a7c8a4abc"
-              ],
-              "pending": [],
-              "skipped": [],
-              "duration": 1057,
-              "root": false,
-              "rootEmpty": false,
-              "_timeout": 2000
-            },
-            {
-              "uuid": "3d0219f1-1dc7-4f2f-9349-568b0791e281",
+              "uuid": "db0c6bda-edd6-4354-914a-066a907cec1c",
               "title": "Home",
               "fullFile": "",
               "file": "",
@@ -90,19 +47,23 @@
                   "title": "Validar que se muestren los cuadros: Bonos en 0 o más de 1 Curva y Instrumentos sin especies ",
                   "fullTitle": "E2E Admin Pepper Testing Home Validar que se muestren los cuadros: Bonos en 0 o más de 1 Curva y Instrumentos sin especies ",
                   "timedOut": null,
-                  "duration": 0,
-                  "state": "skipped",
+                  "duration": 1067,
+                  "state": "failed",
                   "speed": null,
                   "pass": false,
-                  "fail": false,
+                  "fail": true,
                   "pending": false,
                   "context": null,
-                  "code": "// Workaround error del logo de Mercap\ncy.get('.application-footer-logo-symbol').then($logos => {\n  cy.get('.collapse.navbar-collapse, .application-footer-container.hidden-xs.hidden-sm').then($containers => {\n    const containersArray = $containers.toArray();\n    const isLogoInsideContainer = [...$logos].some(logo => containersArray.some(container => container.contains(logo)));\n    if (!isLogoInsideContainer) {\n      cy.visit(_constants.default.PEPPER_LOCATION);\n    } else {\n      cy.log('El logo está en la ubicación correcta');\n    }\n  });\n});\ncy.CheckLogoAndReload();\n// Guardar en una variable la versión de Pepper\ncy.get('.pull-right .application-footer-link').invoke('text').then(text => {\n  const PEPPER_VERSION = text.trim();\n  cy.writeFile('pepper-version.txt', PEPPER_VERSION);\n});\n// Validaciones del Home\ncy.get('div.panel.cardPanel.panel-danger').should('be.visible');\ncy.get('div.panel-heading').contains('Bonos en 0 o más de 1 Curva').should('be.visible');\ncy.get('div.panel-heading').contains('Instrumentos sin especies').should('be.visible');",
-                  "err": {},
-                  "uuid": "929255a7-404e-4029-956c-4337eb798a05",
-                  "parentUUID": "3d0219f1-1dc7-4f2f-9349-568b0791e281",
+                  "code": "// cy.visit(Constants.PEPPER_LOCATION)\ncy.origin('https://admin.brasil-staging.mercap.com.ar', () => {\n  //cy.CheckLogoAndReload()\n  // Guardar en una variable la versión de Pepper\n  cy.get('.pull-right .application-footer-link').invoke('text').then(text => {\n    const PEPPER_VERSION = text.trim();\n    cy.writeFile('pepper-version.txt', PEPPER_VERSION);\n  });\n});\n// Guardar en una variable la versión de Pepper\ncy.get('.pull-right .application-footer-link').invoke('text').then(text => {\n  const PEPPER_VERSION = text.trim();\n  cy.writeFile('pepper-version.txt', PEPPER_VERSION);\n});\n// Validaciones del Home\ncy.get('div.panel.cardPanel.panel-danger').should('be.visible');\ncy.get('div.panel-heading').contains('Bonos en 0 o más de 1 Curva').should('be.visible');\ncy.get('div.panel-heading').contains('Instrumentos sin especies').should('be.visible');",
+                  "err": {
+                    "message": "CypressError: `cy.origin()` requires the first argument to be a different domain than top. You passed `https://mercap-admin-test.us.auth0.com` to the origin command, while top is at `https://mercap-admin-test.us.auth0.com`.\n\nEither the intended page was not visited prior to running the cy.origin block or the cy.origin block may not be needed at all.\n\nhttps://on.cypress.io/origin\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `E2E Admin Pepper Testing`",
+                    "estack": "CypressError: `cy.origin()` requires the first argument to be a different domain than top. You passed `https://mercap-admin-test.us.auth0.com` to the origin command, while top is at `https://mercap-admin-test.us.auth0.com`.\n\nEither the intended page was not visited prior to running the cy.origin block or the cy.origin block may not be needed at all.\n\nhttps://on.cypress.io/origin\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `E2E Admin Pepper Testing`\n    at Validator.validateLocation (https://mercap-admin-test.us.auth0.com/__cypress/runner/cypress_runner.js:121851:68)\n    at Context.origin (https://mercap-admin-test.us.auth0.com/__cypress/runner/cypress_runner.js:121554:17)\n    at wrapped (https://mercap-admin-test.us.auth0.com/__cypress/runner/cypress_runner.js:138084:43)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypress/./cypress/support/commands.js:38:5)",
+                    "diff": null
+                  },
+                  "uuid": "21a3d697-09d5-4c98-9dec-04f8ca4b6600",
+                  "parentUUID": "db0c6bda-edd6-4354-914a-066a907cec1c",
                   "isHook": false,
-                  "skipped": true
+                  "skipped": false
                 },
                 {
                   "title": "Validar que se muestren los cuadros: Acciones y Bonos vigentes",
@@ -117,8 +78,8 @@
                   "context": null,
                   "code": "cy.get('div.panel.cardPanel.panel-primary').should('be.visible');\ncy.get('div.panel-heading').contains('Acciones').should('be.visible');\ncy.get('div.panel-heading').contains('Bonos Vigentes').should('be.visible');",
                   "err": {},
-                  "uuid": "7919a49d-47fc-4936-a0ad-3d92d952e22b",
-                  "parentUUID": "3d0219f1-1dc7-4f2f-9349-568b0791e281",
+                  "uuid": "4535ffc2-0fad-41a8-bdc6-5b70b6dd91af",
+                  "parentUUID": "db0c6bda-edd6-4354-914a-066a907cec1c",
                   "isHook": false,
                   "skipped": true
                 },
@@ -135,8 +96,8 @@
                   "context": null,
                   "code": "cy.get('div.cardPanelValue').should('be.visible');",
                   "err": {},
-                  "uuid": "6a1e613f-8064-4091-8f55-78193140393a",
-                  "parentUUID": "3d0219f1-1dc7-4f2f-9349-568b0791e281",
+                  "uuid": "d96a72ef-aa96-475a-b731-74d594feccd1",
+                  "parentUUID": "db0c6bda-edd6-4354-914a-066a907cec1c",
                   "isHook": false,
                   "skipped": true
                 },
@@ -153,8 +114,8 @@
                   "context": null,
                   "code": "cy.get('div.panel.panel-primary').should('be.visible');\ncy.get('div.panel-heading').contains('Instrumentos sin cotización').should('be.visible');\ncy.get('div.horizontalScrollbar').should('be.visible');\ncy.get('th.sorting').should('be.visible');\ncy.get('div.panel-heading').contains('Tasas e Indices').should('be.visible');\ncy.get('div.panel-footer').should('be.visible');",
                   "err": {},
-                  "uuid": "57bd26c7-0e7e-486a-975d-9d9d2637a056",
-                  "parentUUID": "3d0219f1-1dc7-4f2f-9349-568b0791e281",
+                  "uuid": "44274c05-f0f7-4fda-81b0-a534ac774d5a",
+                  "parentUUID": "db0c6bda-edd6-4354-914a-066a907cec1c",
                   "isHook": false,
                   "skipped": true
                 },
@@ -171,8 +132,8 @@
                   "context": null,
                   "code": "cy.get('div.panel.panel-primary').should('be.visible');\ncy.get('div.panel-heading').contains('Screener - Métricas Indefinidas').should('be.visible');\ncy.get('button.btn.btn-xs.btn-warning.pull-right').should('be.visible');\ncy.get('button.btn.btn-xs.pull-right.btn-primary').should('be.visible');\ncy.get('div.panel-heading').contains('Reuters - Instrumentos sin Ric').should('be.visible');\ncy.get('table.table.small').should('be.visible');",
                   "err": {},
-                  "uuid": "f963b858-377a-41bf-84ee-be6fd097555a",
-                  "parentUUID": "3d0219f1-1dc7-4f2f-9349-568b0791e281",
+                  "uuid": "b3b417f5-7f3a-4bca-800b-d418da7264d1",
+                  "parentUUID": "db0c6bda-edd6-4354-914a-066a907cec1c",
                   "isHook": false,
                   "skipped": true
                 },
@@ -189,8 +150,8 @@
                   "context": null,
                   "code": "cy.get('div.panel.panel-primary').should('be.visible');\ncy.get('div.panel-heading').contains('Curvas Excluidas').should('be.visible');\ncy.get('div.dataTables_wrapper.form-inline.dt-bootstrap.no-footer').should('be.visible');\ncy.get('div.panel-heading').contains('Curvas con bonos excluidos').should('be.visible');\ncy.get('div.panel-body').should('be.visible');",
                   "err": {},
-                  "uuid": "142c4563-8276-4529-b36b-ec7b6cf3ff82",
-                  "parentUUID": "3d0219f1-1dc7-4f2f-9349-568b0791e281",
+                  "uuid": "9b61b262-d54a-49d2-8722-5a04b5952ecd",
+                  "parentUUID": "db0c6bda-edd6-4354-914a-066a907cec1c",
                   "isHook": false,
                   "skipped": true
                 },
@@ -207,32 +168,33 @@
                   "context": null,
                   "code": "cy.get('div.panel.panel-primary').should('be.visible');\ncy.get('div.panel-heading').contains('Métricas del día').should('be.visible');\ncy.get('input.form-control.btn-danger').should('be.visible');\ncy.get('button.btn.btn-xs.btn-info.pull-right').should('be.visible');",
                   "err": {},
-                  "uuid": "67bbd1e1-ed87-4a75-a39f-6dd4de313c64",
-                  "parentUUID": "3d0219f1-1dc7-4f2f-9349-568b0791e281",
+                  "uuid": "348a16fc-523d-49d5-b213-60c8c908dba7",
+                  "parentUUID": "db0c6bda-edd6-4354-914a-066a907cec1c",
                   "isHook": false,
                   "skipped": true
                 }
               ],
               "suites": [],
               "passes": [],
-              "failures": [],
+              "failures": [
+                "21a3d697-09d5-4c98-9dec-04f8ca4b6600"
+              ],
               "pending": [],
               "skipped": [
-                "929255a7-404e-4029-956c-4337eb798a05",
-                "7919a49d-47fc-4936-a0ad-3d92d952e22b",
-                "6a1e613f-8064-4091-8f55-78193140393a",
-                "57bd26c7-0e7e-486a-975d-9d9d2637a056",
-                "f963b858-377a-41bf-84ee-be6fd097555a",
-                "142c4563-8276-4529-b36b-ec7b6cf3ff82",
-                "67bbd1e1-ed87-4a75-a39f-6dd4de313c64"
+                "4535ffc2-0fad-41a8-bdc6-5b70b6dd91af",
+                "d96a72ef-aa96-475a-b731-74d594feccd1",
+                "44274c05-f0f7-4fda-81b0-a534ac774d5a",
+                "b3b417f5-7f3a-4bca-800b-d418da7264d1",
+                "9b61b262-d54a-49d2-8722-5a04b5952ecd",
+                "348a16fc-523d-49d5-b213-60c8c908dba7"
               ],
-              "duration": 0,
+              "duration": 1067,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
             },
             {
-              "uuid": "ee7629ff-e912-451a-8c34-ba8b0ad3478e",
+              "uuid": "3bcdc53d-53d6-4ddb-86be-bab35ec18279",
               "title": "Parametrizaciones",
               "fullFile": "",
               "file": "",
@@ -252,7 +214,7 @@
                   "context": null,
                   "code": "cy.contains('a', 'Parametrizaciones').should('be.visible').click();",
                   "err": {},
-                  "uuid": "9ed3ce3f-7e0b-4509-a653-4df354fb9b99",
+                  "uuid": "aa5b6e27-6b9b-4278-90d2-efb6536ec70e",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -260,7 +222,7 @@
               ],
               "suites": [
                 {
-                  "uuid": "bb7e5eb2-52db-447c-9c3c-e5acd810ae80",
+                  "uuid": "1fdc061e-8405-4855-aeb2-b157635b8237",
                   "title": "Entidades",
                   "fullFile": "",
                   "file": "",
@@ -280,7 +242,7 @@
                       "context": null,
                       "code": "cy.contains('Entidades').should('be.visible').click();",
                       "err": {},
-                      "uuid": "3871e488-def1-46b3-8cfc-961a7c1ea1a5",
+                      "uuid": "4d99b2dc-30fe-4e21-b67f-83b4683f15bd",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -298,7 +260,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar entidades').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Nombre').should('be.visible');\ncy.contains('th.sorting', 'Calendario').should('be.visible');",
                       "err": {},
-                      "uuid": "e448a2e6-b5bc-45d0-b3d1-b4c0be140688",
+                      "uuid": "d0ad519d-4fb5-42fc-83bd-6496835d1ed8",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -316,7 +278,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de entidad');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "9157dea5-036b-4c51-bad6-7af4a3285694",
+                      "uuid": "2d8970c8-b1b8-43d7-af5a-b014da6ae99d",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -327,9 +289,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "3871e488-def1-46b3-8cfc-961a7c1ea1a5",
-                    "e448a2e6-b5bc-45d0-b3d1-b4c0be140688",
-                    "9157dea5-036b-4c51-bad6-7af4a3285694"
+                    "4d99b2dc-30fe-4e21-b67f-83b4683f15bd",
+                    "d0ad519d-4fb5-42fc-83bd-6496835d1ed8",
+                    "2d8970c8-b1b8-43d7-af5a-b014da6ae99d"
                   ],
                   "duration": 0,
                   "root": false,
@@ -337,7 +299,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "91c16822-caa9-4b05-aa35-ff444af2dd20",
+                  "uuid": "ccb619e5-a967-4016-8ffd-1cf3c739f1c0",
                   "title": "Entidades del grupo económico",
                   "fullFile": "",
                   "file": "",
@@ -357,7 +319,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Parametrizaciones').should('be.visible').click();\ncy.contains('Entidades del grupo económico').should('be.visible').click();",
                       "err": {},
-                      "uuid": "55975937-f7af-4b1a-acd9-2b33d8be81d9",
+                      "uuid": "d7a6893e-ecd4-4e2f-8502-4e20f1de7657",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -375,7 +337,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar entidades del grupo económico').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Nombre').should('be.visible');",
                       "err": {},
-                      "uuid": "5827d8de-15cc-4436-b20d-725f6ed777e6",
+                      "uuid": "82f5540c-87b9-4c5e-8e08-8528d3be0c3b",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -393,7 +355,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de entidad del grupo económico');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "26596d95-bd64-4b6a-abc0-81812f383500",
+                      "uuid": "9ddc6ece-290b-4579-aaac-1b141dd48a68",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -404,9 +366,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "55975937-f7af-4b1a-acd9-2b33d8be81d9",
-                    "5827d8de-15cc-4436-b20d-725f6ed777e6",
-                    "26596d95-bd64-4b6a-abc0-81812f383500"
+                    "d7a6893e-ecd4-4e2f-8502-4e20f1de7657",
+                    "82f5540c-87b9-4c5e-8e08-8528d3be0c3b",
+                    "9ddc6ece-290b-4579-aaac-1b141dd48a68"
                   ],
                   "duration": 0,
                   "root": false,
@@ -414,7 +376,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "ca549f31-6917-46cd-9568-2ea31916c252",
+                  "uuid": "0e11b5fb-b56d-4560-af76-7af1ed17a2be",
                   "title": "Emisores",
                   "fullFile": "",
                   "file": "",
@@ -434,7 +396,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Parametrizaciones').should('be.visible').click();\ncy.contains('Emisores').should('be.visible').click();",
                       "err": {},
-                      "uuid": "2a688a52-603d-4022-a154-75fa7ffa5899",
+                      "uuid": "6791b6ae-f354-4b90-85da-ff533548c9d3",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -452,7 +414,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar emisores').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Nombre').should('be.visible');\ncy.get('div.dataTables_scrollBody').should('be.visible');",
                       "err": {},
-                      "uuid": "7e316240-0d60-475d-96a3-7501ef07643c",
+                      "uuid": "000b0bd3-7489-4d8d-8af2-13cb7ab8ebb2",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -470,7 +432,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de emisor');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "cba43f81-6bda-46d0-98e0-6deb31c40e94",
+                      "uuid": "d7f29080-242b-4971-a843-6401a0e81822",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -481,9 +443,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "2a688a52-603d-4022-a154-75fa7ffa5899",
-                    "7e316240-0d60-475d-96a3-7501ef07643c",
-                    "cba43f81-6bda-46d0-98e0-6deb31c40e94"
+                    "6791b6ae-f354-4b90-85da-ff533548c9d3",
+                    "000b0bd3-7489-4d8d-8af2-13cb7ab8ebb2",
+                    "d7f29080-242b-4971-a843-6401a0e81822"
                   ],
                   "duration": 0,
                   "root": false,
@@ -491,7 +453,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "76a9ccd2-cdc3-493a-b162-b48673aac165",
+                  "uuid": "93639471-7a74-4293-9741-792ce9ddaa5d",
                   "title": "Mercados",
                   "fullFile": "",
                   "file": "",
@@ -511,7 +473,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Parametrizaciones').should('be.visible').click();\ncy.contains('Mercados').should('be.visible').click();",
                       "err": {},
-                      "uuid": "f11eac8f-4ed3-4ce3-ae4d-9c2fef842459",
+                      "uuid": "af52cc3d-e347-4db7-8a73-9dbc7586a74b",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -529,7 +491,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar mercados').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Nombre').should('be.visible');\ncy.get('div.dataTables_scrollBody').should('be.visible');",
                       "err": {},
-                      "uuid": "05043817-d3c0-4af8-b22c-bcf03610ab70",
+                      "uuid": "95031741-9278-4ef7-b171-b60aaef889a2",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -547,7 +509,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de mercado');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "fb1837c1-38a1-41af-a5ee-bc75c8e28a7d",
+                      "uuid": "88ffef3e-f217-4df1-939d-c03965a9f46f",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -558,9 +520,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "f11eac8f-4ed3-4ce3-ae4d-9c2fef842459",
-                    "05043817-d3c0-4af8-b22c-bcf03610ab70",
-                    "fb1837c1-38a1-41af-a5ee-bc75c8e28a7d"
+                    "af52cc3d-e347-4db7-8a73-9dbc7586a74b",
+                    "95031741-9278-4ef7-b171-b60aaef889a2",
+                    "88ffef3e-f217-4df1-939d-c03965a9f46f"
                   ],
                   "duration": 0,
                   "root": false,
@@ -568,7 +530,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "38cbb319-f1f1-451d-8b00-ea360a43d4ba",
+                  "uuid": "57cd9ebd-0c1f-42f9-a9e3-95d7f70ea773",
                   "title": "Calendarios",
                   "fullFile": "",
                   "file": "",
@@ -588,7 +550,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Parametrizaciones').should('be.visible').click();\ncy.contains('Calendarios').should('be.visible').click();",
                       "err": {},
-                      "uuid": "30b6b942-617b-4a12-a16a-4f65b97a0240",
+                      "uuid": "e263d7a4-1c26-41cd-b1c8-31009ff3d26d",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -606,7 +568,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar calendarios').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Nombre').should('be.visible');\ncy.get('div.dataTables_scrollBody').should('be.visible');",
                       "err": {},
-                      "uuid": "a161edce-1633-4c1e-a6c5-8237edfd56d6",
+                      "uuid": "61dc4a1c-3b88-4171-9267-d8136ef3d0da",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -624,7 +586,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de calendario');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "1840dbc5-155a-487e-a31a-37a205702239",
+                      "uuid": "3ca45b33-07f0-4c09-81cb-4619aa6e390d",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -635,9 +597,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "30b6b942-617b-4a12-a16a-4f65b97a0240",
-                    "a161edce-1633-4c1e-a6c5-8237edfd56d6",
-                    "1840dbc5-155a-487e-a31a-37a205702239"
+                    "e263d7a4-1c26-41cd-b1c8-31009ff3d26d",
+                    "61dc4a1c-3b88-4171-9267-d8136ef3d0da",
+                    "3ca45b33-07f0-4c09-81cb-4619aa6e390d"
                   ],
                   "duration": 0,
                   "root": false,
@@ -645,7 +607,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "27cc1446-cf90-4078-aea6-a644bd7f3e8c",
+                  "uuid": "91ff72b1-f6a5-46f1-8b60-cac0e6d793d8",
                   "title": "Sociedades gerente",
                   "fullFile": "",
                   "file": "",
@@ -665,7 +627,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Parametrizaciones').should('be.visible').click();\ncy.contains('Sociedades gerente').should('be.visible').click();",
                       "err": {},
-                      "uuid": "487c47de-dabe-48f0-a4e8-3545268111c6",
+                      "uuid": "ac469c0b-c76c-4b4c-96f3-e0a9db5ae7e0",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -683,7 +645,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar sociedades gerente').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Nombre').should('be.visible');\ncy.get('div.dataTables_scrollBody').should('be.visible');",
                       "err": {},
-                      "uuid": "fdee510b-deb6-4d7c-a909-0f8006a28fdb",
+                      "uuid": "05d096da-d785-46e1-a5ec-9c9b90c6f551",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -701,7 +663,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de sociedad gerente');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "6d59972a-253a-4c2e-9e8e-9cb5b887daa6",
+                      "uuid": "0503274e-0409-4f78-99b6-34a0ff1fc188",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -712,9 +674,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "487c47de-dabe-48f0-a4e8-3545268111c6",
-                    "fdee510b-deb6-4d7c-a909-0f8006a28fdb",
-                    "6d59972a-253a-4c2e-9e8e-9cb5b887daa6"
+                    "ac469c0b-c76c-4b4c-96f3-e0a9db5ae7e0",
+                    "05d096da-d785-46e1-a5ec-9c9b90c6f551",
+                    "0503274e-0409-4f78-99b6-34a0ff1fc188"
                   ],
                   "duration": 0,
                   "root": false,
@@ -722,7 +684,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "de358a95-f56c-4ed0-b779-4ae40e8cfab5",
+                  "uuid": "35569269-7fd6-4f90-be71-0c06f7aa444c",
                   "title": "Sociedades depositarias",
                   "fullFile": "",
                   "file": "",
@@ -742,7 +704,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Parametrizaciones').should('be.visible').click();\ncy.contains('Sociedades depositarias').should('be.visible').click();",
                       "err": {},
-                      "uuid": "d9330198-e304-4f82-8d17-948d5d2feb84",
+                      "uuid": "e1d4b7c7-c80f-4e94-a90f-7f712c1e8377",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -760,7 +722,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar sociedades depositarias').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Nombre').should('be.visible');\ncy.contains('th.sorting', 'Calendario').should('be.visible');",
                       "err": {},
-                      "uuid": "e69b94d4-3092-4bb9-9716-e04e028296cb",
+                      "uuid": "365b22c5-dd37-4e0d-8249-91ae6fa30ae4",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -778,7 +740,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de sociedad depositaria');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "32b8208c-6bc0-4922-a11f-5d992ca0825b",
+                      "uuid": "f2790b93-3b24-4c42-bec5-9003acc2eedd",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -789,9 +751,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "d9330198-e304-4f82-8d17-948d5d2feb84",
-                    "e69b94d4-3092-4bb9-9716-e04e028296cb",
-                    "32b8208c-6bc0-4922-a11f-5d992ca0825b"
+                    "e1d4b7c7-c80f-4e94-a90f-7f712c1e8377",
+                    "365b22c5-dd37-4e0d-8249-91ae6fa30ae4",
+                    "f2790b93-3b24-4c42-bec5-9003acc2eedd"
                   ],
                   "duration": 0,
                   "root": false,
@@ -799,7 +761,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "6ee4d20e-f208-4c60-aa9d-a4958cc92ef6",
+                  "uuid": "31939649-a796-48c7-895e-fcb711bf74a1",
                   "title": "Tipos de comisión",
                   "fullFile": "",
                   "file": "",
@@ -819,7 +781,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Parametrizaciones').should('be.visible').click();\ncy.contains('Tipos de comisión').should('be.visible').click();",
                       "err": {},
-                      "uuid": "347931e1-ef2e-4b1d-b521-a1fb0a85e000",
+                      "uuid": "e03e3af7-075d-4979-8b8f-8e0debd3f0e9",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -837,7 +799,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar tipos de comisiones').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Descripción').should('be.visible');",
                       "err": {},
-                      "uuid": "97e00a4c-fe6b-4246-b708-eb7fabfbffc3",
+                      "uuid": "438b5874-5356-42e7-a6bb-6e386093f697",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -855,7 +817,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de tipo de comisión');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "33e9bdff-e006-4f62-8d8c-b7f9ce38f85d",
+                      "uuid": "1a7af5c9-b041-476d-8175-85cb755531e6",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -866,9 +828,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "347931e1-ef2e-4b1d-b521-a1fb0a85e000",
-                    "97e00a4c-fe6b-4246-b708-eb7fabfbffc3",
-                    "33e9bdff-e006-4f62-8d8c-b7f9ce38f85d"
+                    "e03e3af7-075d-4979-8b8f-8e0debd3f0e9",
+                    "438b5874-5356-42e7-a6bb-6e386093f697",
+                    "1a7af5c9-b041-476d-8175-85cb755531e6"
                   ],
                   "duration": 0,
                   "root": false,
@@ -876,7 +838,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "1d5efb36-0b95-4f9f-8b13-446c3e50b783",
+                  "uuid": "63d90660-564a-4c43-896d-3badcd2a616f",
                   "title": "Tipos de impuestos",
                   "fullFile": "",
                   "file": "",
@@ -896,7 +858,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Parametrizaciones').should('be.visible').click();\ncy.contains('Tipos de impuestos').should('be.visible').click();",
                       "err": {},
-                      "uuid": "3eaca6d5-5867-45b8-9bf1-1e420156fcd0",
+                      "uuid": "3a237e38-9f1d-4fa6-9ff1-fad6406e062a",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -914,7 +876,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar tipos de impuestos').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Especie').should('be.visible');\ncy.contains('th.sorting', 'Descripción').should('be.visible');\ncy.contains('th.sorting', 'País').should('be.visible');",
                       "err": {},
-                      "uuid": "84bbc002-8a7e-494f-b34f-c6dc34a30ba3",
+                      "uuid": "09ed24e8-71c8-468a-91c3-0946f4c1405e",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -932,7 +894,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de tipo de impuesto');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "4ffac53a-5ab0-4f59-91ac-b7edc2918fcf",
+                      "uuid": "0ebb7305-8272-42f4-82fd-fc4482aeeda8",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -943,9 +905,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "3eaca6d5-5867-45b8-9bf1-1e420156fcd0",
-                    "84bbc002-8a7e-494f-b34f-c6dc34a30ba3",
-                    "4ffac53a-5ab0-4f59-91ac-b7edc2918fcf"
+                    "3a237e38-9f1d-4fa6-9ff1-fad6406e062a",
+                    "09ed24e8-71c8-468a-91c3-0946f4c1405e",
+                    "0ebb7305-8272-42f4-82fd-fc4482aeeda8"
                   ],
                   "duration": 0,
                   "root": false,
@@ -957,7 +919,7 @@
               "failures": [],
               "pending": [],
               "skipped": [
-                "9ed3ce3f-7e0b-4509-a653-4df354fb9b99"
+                "aa5b6e27-6b9b-4278-90d2-efb6536ec70e"
               ],
               "duration": 0,
               "root": false,
@@ -965,7 +927,7 @@
               "_timeout": 2000
             },
             {
-              "uuid": "40a2bc8a-1319-4dc6-a4da-63bb94931b9d",
+              "uuid": "8ab99489-ad93-4d96-9334-cd3246cf9aaa",
               "title": "Instrumentos",
               "fullFile": "",
               "file": "",
@@ -985,7 +947,7 @@
                   "context": null,
                   "code": "cy.contains('a', 'Instrumentos').should('be.visible').click();",
                   "err": {},
-                  "uuid": "ab9965fb-f6f5-4bd7-ae13-8c9484799210",
+                  "uuid": "2a1f031c-4755-446f-a11b-d81400f1e73a",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -993,7 +955,7 @@
               ],
               "suites": [
                 {
-                  "uuid": "87c4591d-c5a3-4139-a682-3c7890782d8d",
+                  "uuid": "54ba36ac-0c92-4fda-931f-e8571b2c9244",
                   "title": "Monedas",
                   "fullFile": "",
                   "file": "",
@@ -1013,7 +975,7 @@
                       "context": null,
                       "code": "cy.contains('Monedas').should('be.visible').click();",
                       "err": {},
-                      "uuid": "9cb48303-ee3e-4e0b-9c24-dc47198ffedc",
+                      "uuid": "c39a62e3-0c55-4ba8-9e6e-e8f48dba7b4a",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1031,7 +993,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar monedas').should('be.visible');\ncy.get('th.sorting_asc').contains('Nombre').should('be.visible');\ncy.contains('th.sorting', 'Signo').should('be.visible');\ncy.contains('th.sorting', 'País de emisión').should('be.visible');\ncy.contains('th.sorting', 'Emisor').should('be.visible');",
                       "err": {},
-                      "uuid": "d70f0202-2bff-4736-b691-23b5dc29d896",
+                      "uuid": "f85d658b-7a8e-4551-a983-40d7de90a4e5",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1049,7 +1011,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de moneda');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "371acaed-71fe-41a0-a94a-cd4a98769ca3",
+                      "uuid": "02872165-c7f2-4cf6-9724-de0ad12d1ba4",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1067,7 +1029,7 @@
                       "context": null,
                       "code": "cy.contains('Modificar moneda local').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Configurar Moneda Local');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "b4e4db2b-599e-4b3c-92ab-f279221c67b4",
+                      "uuid": "63f72c6a-2a3c-4e31-b04b-0a2a345feaaa",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1078,10 +1040,10 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "9cb48303-ee3e-4e0b-9c24-dc47198ffedc",
-                    "d70f0202-2bff-4736-b691-23b5dc29d896",
-                    "371acaed-71fe-41a0-a94a-cd4a98769ca3",
-                    "b4e4db2b-599e-4b3c-92ab-f279221c67b4"
+                    "c39a62e3-0c55-4ba8-9e6e-e8f48dba7b4a",
+                    "f85d658b-7a8e-4551-a983-40d7de90a4e5",
+                    "02872165-c7f2-4cf6-9724-de0ad12d1ba4",
+                    "63f72c6a-2a3c-4e31-b04b-0a2a345feaaa"
                   ],
                   "duration": 0,
                   "root": false,
@@ -1089,7 +1051,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "256aa015-fb65-45d3-94f9-a9dadf78ebe6",
+                  "uuid": "219e0f29-8116-4816-9ff5-7600d0cb631e",
                   "title": "Bonos",
                   "fullFile": "",
                   "file": "",
@@ -1109,7 +1071,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Instrumentos').should('be.visible').click();\ncy.contains('Bonos').should('be.visible').click();\ncy.get('div.loading-overlay').should('not.exist');",
                       "err": {},
-                      "uuid": "43f708d7-4246-48de-8fb2-df9a606a602f",
+                      "uuid": "4babcdab-2b00-4436-bea6-3830f7258925",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1127,7 +1089,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar bonos').should('be.visible');\n// Campo para Filtrar\ncy.get('input.form-control.input-sm').should('be.visible');\n// Tabla\ncy.contains('Código').should('be.visible');\ncy.contains('th.sorting', 'Nombre').should('be.visible');\ncy.contains('th.sorting', 'Emisión').should('be.visible');\ncy.contains('th.sorting', 'Vencimiento').should('be.visible');\ncy.contains('th.sorting', 'Tipo de deuda').should('be.visible');\ncy.contains('th.sorting', 'Plazo').should('be.visible');\ncy.contains('th.sorting', 'Cupones').should('be.visible');\ncy.contains('th.sorting', 'Unidad de emisión').should('be.visible');\ncy.contains('th.sorting', 'País de emisión').should('be.visible');\ncy.contains('th.sorting', 'Ley').should('be.visible');\n// Botones\ncy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible');\ncy.get('button.btn.btn-sm.btn-primary').contains('Buscar').should('be.visible');\ncy.get('a.btn.btn-default').should('be.visible');\ncy.get('div.filter-option-inner-inner').contains('Vigentes').should('be.visible');\ncy.get('button.btn.dropdown-toggle.btn-default.btn-sm').should('be.visible');",
                       "err": {},
-                      "uuid": "e20f137e-54ce-4b5c-b0d2-44a820eb769e",
+                      "uuid": "dbd383d5-3cdc-41b9-aec9-b06d16b9e215",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1145,7 +1107,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.contains('Cero Cupón').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de bono cero cupón');\ncy.contains('button.btn.btn-link', 'Cerrar').scrollIntoView().should('be.visible').click();",
                       "err": {},
-                      "uuid": "c2da893f-3758-4541-8254-6d2e4ec4fb8b",
+                      "uuid": "b5ad3119-9c3e-4521-b1e7-cc426da87235",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1163,7 +1125,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.contains('Tasa Fija').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de bono de tasa fija');\ncy.contains('button.btn.btn-link', 'Cerrar').scrollIntoView().should('be.visible').click();",
                       "err": {},
-                      "uuid": "3d2b7fe3-e31b-467c-9108-ddff4ee1e729",
+                      "uuid": "202819e4-8b09-487a-9f06-54843c2ef7dd",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1181,7 +1143,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.contains('Tasa Flotante').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de bono de tasa flotante');\ncy.contains('button.btn.btn-link', 'Cerrar').scrollIntoView().should('be.visible').click();",
                       "err": {},
-                      "uuid": "b3ba9958-f8b7-4bdf-bb1e-617f7ee0c952",
+                      "uuid": "632ecc30-2a4a-46bc-b057-4391c0d379a2",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1192,11 +1154,11 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "43f708d7-4246-48de-8fb2-df9a606a602f",
-                    "e20f137e-54ce-4b5c-b0d2-44a820eb769e",
-                    "c2da893f-3758-4541-8254-6d2e4ec4fb8b",
-                    "3d2b7fe3-e31b-467c-9108-ddff4ee1e729",
-                    "b3ba9958-f8b7-4bdf-bb1e-617f7ee0c952"
+                    "4babcdab-2b00-4436-bea6-3830f7258925",
+                    "dbd383d5-3cdc-41b9-aec9-b06d16b9e215",
+                    "b5ad3119-9c3e-4521-b1e7-cc426da87235",
+                    "202819e4-8b09-487a-9f06-54843c2ef7dd",
+                    "632ecc30-2a4a-46bc-b057-4391c0d379a2"
                   ],
                   "duration": 0,
                   "root": false,
@@ -1204,7 +1166,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "f0082308-fc05-4931-8cb9-ce3aebfd454c",
+                  "uuid": "fb267272-a447-4eb1-9ce0-df200ae98c15",
                   "title": "Acciones",
                   "fullFile": "",
                   "file": "",
@@ -1224,7 +1186,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Instrumentos').should('be.visible').click();\ncy.contains('Acciones').should('be.visible').click();",
                       "err": {},
-                      "uuid": "404430a1-9431-4458-a802-c903f8e85e8e",
+                      "uuid": "a74f226d-05b9-4a11-888e-a48216a15942",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1242,7 +1204,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar acciones').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.contains('Nombre').should('be.visible');\ncy.contains('th.sorting', 'Alias').should('be.visible');\ncy.contains('th.sorting', 'Moneda de emisión').should('be.visible');\ncy.contains('th.sorting', 'País de emisión').should('be.visible');\ncy.get('div.dataTables_scrollBody').should('be.visible');\ncy.get('select.form-control.input-sm').should('be.visible');\ncy.get('button.btn.btn-sm.btn-primary').contains('Buscar').should('be.visible');\ncy.get('button.btn.dropdown-toggle.btn-default.btn-sm').should('be.visible');\ncy.get('button.btn.dropdown-toggle.btn-sm.btn-default').should('be.visible');",
                       "err": {},
-                      "uuid": "32518abc-a360-449e-b996-09c6a167cde2",
+                      "uuid": "54c74eac-2505-4359-9585-72d5eecb6168",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1260,7 +1222,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de acción');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "149f9b40-3638-406c-8daa-35552b2d6e65",
+                      "uuid": "f480b498-391b-4953-810f-08949c52cb08",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1271,9 +1233,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "404430a1-9431-4458-a802-c903f8e85e8e",
-                    "32518abc-a360-449e-b996-09c6a167cde2",
-                    "149f9b40-3638-406c-8daa-35552b2d6e65"
+                    "a74f226d-05b9-4a11-888e-a48216a15942",
+                    "54c74eac-2505-4359-9585-72d5eecb6168",
+                    "f480b498-391b-4953-810f-08949c52cb08"
                   ],
                   "duration": 0,
                   "root": false,
@@ -1281,7 +1243,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "73b7d51c-8e32-4b82-85a2-5a58185f5cf1",
+                  "uuid": "a8ee9eef-1449-41fb-903a-5f3f023db423",
                   "title": "Cuotapartes (FCI)",
                   "fullFile": "",
                   "file": "",
@@ -1301,7 +1263,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Instrumentos').should('be.visible').click();\ncy.contains('Cuotapartes (FCI)').should('be.visible').click();",
                       "err": {},
-                      "uuid": "edf47abb-18c2-493e-ac93-b62fbb408d41",
+                      "uuid": "69faebca-db2f-4fd8-9648-8f5497cf3056",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1319,7 +1281,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar fondos de inversión').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.contains('Nombre').should('be.visible');\ncy.contains('th.sorting', 'Sociedad Depositaria').should('be.visible');\ncy.contains('th.sorting', 'Sociedad Gerente').should('be.visible');\ncy.contains('th.sorting', 'Moneda').should('be.visible');\ncy.contains('th.sorting', 'País').should('be.visible');\ncy.contains('th.sorting', 'Tipo').should('be.visible');\ncy.get('div.dataTables_scrollBody').should('be.visible');\ncy.get('button.btn.btn-sm.btn-primary').contains('Buscar').should('be.visible');\ncy.get('button.btn.dropdown-toggle.btn-default.btn-sm').should('be.visible');\ncy.get('button.btn.dropdown-toggle.btn-sm.btn-default').should('be.visible');",
                       "err": {},
-                      "uuid": "c6b9ab95-bf1f-4ef7-a87c-e57a26aaf502",
+                      "uuid": "4fd3eb46-861e-4731-ab5a-a7b4ec0f150f",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1337,7 +1299,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de fondo de inversión');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "864cb10c-96ff-4efa-8a02-cf3781c8e23e",
+                      "uuid": "09593aef-882e-493a-b528-9224a484d36a",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1348,9 +1310,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "edf47abb-18c2-493e-ac93-b62fbb408d41",
-                    "c6b9ab95-bf1f-4ef7-a87c-e57a26aaf502",
-                    "864cb10c-96ff-4efa-8a02-cf3781c8e23e"
+                    "69faebca-db2f-4fd8-9648-8f5497cf3056",
+                    "4fd3eb46-861e-4731-ab5a-a7b4ec0f150f",
+                    "09593aef-882e-493a-b528-9224a484d36a"
                   ],
                   "duration": 0,
                   "root": false,
@@ -1358,7 +1320,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "8f459bdb-6125-491b-82ff-e3a55b1fc52b",
+                  "uuid": "86fac7b6-bb5f-4866-8294-16cf132f4cd9",
                   "title": "Definición de tasas",
                   "fullFile": "",
                   "file": "",
@@ -1378,7 +1340,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Instrumentos').should('be.visible').click();\ncy.contains('Definición de tasas').should('be.visible').click();",
                       "err": {},
-                      "uuid": "ebdbfb93-0e16-46b5-94c5-0b658d6d7a8d",
+                      "uuid": "84013461-f7c7-4c65-851f-065f2af089db",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1396,7 +1358,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar definición de tasas').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.contains('Nombre').should('be.visible');\ncy.contains('th.sorting', 'Calendario').should('be.visible');\ncy.get('div.dataTables_scrollBody').should('be.visible');\ncy.get('a.btn.btn-default').should('be.visible');",
                       "err": {},
-                      "uuid": "268d2a61-c44c-4d9f-9e12-599884316cf8",
+                      "uuid": "7e4722a2-7442-4818-ad62-48a57f964b01",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1414,7 +1376,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de definición de tasa');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "dc8cca0a-3c51-4966-b711-871cacb752d6",
+                      "uuid": "89cf6ced-877a-4e13-92ea-4823f2645389",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1425,9 +1387,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "ebdbfb93-0e16-46b5-94c5-0b658d6d7a8d",
-                    "268d2a61-c44c-4d9f-9e12-599884316cf8",
-                    "dc8cca0a-3c51-4966-b711-871cacb752d6"
+                    "84013461-f7c7-4c65-851f-065f2af089db",
+                    "7e4722a2-7442-4818-ad62-48a57f964b01",
+                    "89cf6ced-877a-4e13-92ea-4823f2645389"
                   ],
                   "duration": 0,
                   "root": false,
@@ -1435,7 +1397,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "038fa1c1-3274-45c4-b6dc-8b0c57c583f3",
+                  "uuid": "26d08f2b-3d50-4760-a3d8-2b814695bfbf",
                   "title": "Tasas",
                   "fullFile": "",
                   "file": "",
@@ -1455,7 +1417,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Instrumentos').should('be.visible').click();\ncy.contains('Tasas').should('be.visible').click();",
                       "err": {},
-                      "uuid": "d211d380-2f9d-47a5-a41a-cd21d4d79471",
+                      "uuid": "2d0e38a9-a2e7-4291-a9df-ef7a2da80dd2",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1473,7 +1435,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar tasas').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.contains('Nombre').should('be.visible');\ncy.get('div.dataTables_scrollBody').should('be.visible');\ncy.get('a.btn.btn-default').should('be.visible');",
                       "err": {},
-                      "uuid": "5c78114e-c8ab-4b40-b59a-d7a5805092e5",
+                      "uuid": "4a988c9b-488c-4a24-bd0a-13b0af7fe26f",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1491,7 +1453,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de tasa');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "8dafb697-afbb-47ac-9770-21faabd1670f",
+                      "uuid": "1ce1e1ea-8f8d-47bd-8416-d85de3931ff3",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1502,9 +1464,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "d211d380-2f9d-47a5-a41a-cd21d4d79471",
-                    "5c78114e-c8ab-4b40-b59a-d7a5805092e5",
-                    "8dafb697-afbb-47ac-9770-21faabd1670f"
+                    "2d0e38a9-a2e7-4291-a9df-ef7a2da80dd2",
+                    "4a988c9b-488c-4a24-bd0a-13b0af7fe26f",
+                    "1ce1e1ea-8f8d-47bd-8416-d85de3931ff3"
                   ],
                   "duration": 0,
                   "root": false,
@@ -1512,7 +1474,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "5a116378-4ab7-4ccd-a2f2-d0a43fbe3f43",
+                  "uuid": "f4b54543-0d95-44b9-91f9-3e6a8a26787a",
                   "title": "Conjuntos",
                   "fullFile": "",
                   "file": "",
@@ -1532,7 +1494,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Instrumentos').should('be.visible').click();\ncy.contains('Conjuntos').should('be.visible').click();",
                       "err": {},
-                      "uuid": "5c0b42b0-1a5b-4f3b-9980-1bbcf26f27f8",
+                      "uuid": "065d5843-1c76-4a27-aac1-2762d89cef63",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1550,7 +1512,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar conjuntos de instrumentos').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Administrado por').should('be.visible');\ncy.contains('th.sorting', 'Nombre').should('be.visible');\ncy.get('button.btn.btn-sm.btn-primary').contains('Buscar').should('be.visible');\ncy.get('div.dataTables_scrollBody').should('be.visible');\ncy.get('a.btn.btn-default').should('be.visible');",
                       "err": {},
-                      "uuid": "ab4da62b-0495-4937-857f-92024e891db2",
+                      "uuid": "edb8cde2-ab0d-4ff8-8205-d0b2bd6ecd42",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1568,7 +1530,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.contains('Diferencia').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de Conjunto de Instrumentos por Diferencia');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "d99a53de-d231-49b9-ba03-14b08f016acc",
+                      "uuid": "13057e7a-e4c5-4eb8-9d11-2eb23ecc504d",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1586,7 +1548,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.contains('Enumeración').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de Conjunto de Instrumentos por Enumeración');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "0d038e26-7b50-4540-bbc3-f94869513bf2",
+                      "uuid": "b622075f-bfb8-43d6-853f-483f812ac1db",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1604,7 +1566,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.contains('Intersección').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de Conjunto de Instrumentos por Intersección');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "ead0d197-fc9e-47f3-adf6-d0555ff2d55f",
+                      "uuid": "8bbce0a3-2dc4-4f23-8357-6e87e4a61c66",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1622,7 +1584,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.contains('Unión').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de Conjunto de Instrumentos por Unión');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "6c967423-dce4-4eb0-b427-19f385658098",
+                      "uuid": "00e6aa4c-c060-4c0d-9cd6-ee34089af42d",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1633,12 +1595,12 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "5c0b42b0-1a5b-4f3b-9980-1bbcf26f27f8",
-                    "ab4da62b-0495-4937-857f-92024e891db2",
-                    "d99a53de-d231-49b9-ba03-14b08f016acc",
-                    "0d038e26-7b50-4540-bbc3-f94869513bf2",
-                    "ead0d197-fc9e-47f3-adf6-d0555ff2d55f",
-                    "6c967423-dce4-4eb0-b427-19f385658098"
+                    "065d5843-1c76-4a27-aac1-2762d89cef63",
+                    "edb8cde2-ab0d-4ff8-8205-d0b2bd6ecd42",
+                    "13057e7a-e4c5-4eb8-9d11-2eb23ecc504d",
+                    "b622075f-bfb8-43d6-853f-483f812ac1db",
+                    "8bbce0a3-2dc4-4f23-8357-6e87e4a61c66",
+                    "00e6aa4c-c060-4c0d-9cd6-ee34089af42d"
                   ],
                   "duration": 0,
                   "root": false,
@@ -1646,7 +1608,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "a7cd1a55-cc79-43ed-a50f-7a2a3a8a727f",
+                  "uuid": "c93389ba-8477-4110-93d9-f30bf4bf2b16",
                   "title": "Conjuntos según instrumento",
                   "fullFile": "",
                   "file": "",
@@ -1666,7 +1628,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Instrumentos').should('be.visible').click();\ncy.contains('Conjuntos según instrumento').should('be.visible').click();",
                       "err": {},
-                      "uuid": "23780e97-eb98-418e-90bc-a4c0107a5c3a",
+                      "uuid": "aaf830bb-b5db-459c-aa8f-e91f22089aa3",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1684,7 +1646,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Conjuntos según instrumento').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.contains('Administrado por').should('be.visible');\ncy.get('th.sorting').contains('Nombre').should('be.visible');\ncy.get('th.sorting').contains('Tipo').should('be.visible');\ncy.get('th.sorting').contains('Pertenece').should('be.visible');\ncy.get('button.btn.btn-primary.pull-right.btn-sm').contains('Filtrar').should('be.visible');\ncy.get('a.btn.btn-default').should('be.visible');\ncy.get('input.form-control').should('be.visible');",
                       "err": {},
-                      "uuid": "44355d12-249c-404d-812a-513244f9184f",
+                      "uuid": "3be415f3-679a-4550-9543-0dd718457791",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1695,8 +1657,8 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "23780e97-eb98-418e-90bc-a4c0107a5c3a",
-                    "44355d12-249c-404d-812a-513244f9184f"
+                    "aaf830bb-b5db-459c-aa8f-e91f22089aa3",
+                    "3be415f3-679a-4550-9543-0dd718457791"
                   ],
                   "duration": 0,
                   "root": false,
@@ -1704,7 +1666,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "c967f373-bf6d-483b-bd0a-c8372c2976ee",
+                  "uuid": "2d63daff-c8cd-46bf-8356-45e5490cdb9a",
                   "title": "Clasificaciones",
                   "fullFile": "",
                   "file": "",
@@ -1724,7 +1686,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Instrumentos').should('be.visible').click();\ncy.contains('Clasificaciones').should('be.visible').click();",
                       "err": {},
-                      "uuid": "21e5af6b-f381-4d32-ab61-65955df41a29",
+                      "uuid": "de3ec12c-3a3b-4c09-a2a3-4a46b146c414",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1742,7 +1704,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar clasificaciones').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.contains('Nombre').should('be.visible');\ncy.get('div.dataTables_scrollBody').should('be.visible');\ncy.get('a.btn.btn-default').should('be.visible');",
                       "err": {},
-                      "uuid": "1fe46bea-0371-49de-ba68-a0f1f4475b64",
+                      "uuid": "a6c86c79-d037-43ad-ba24-8e03f69b566a",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1760,7 +1722,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de clasificación');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "81f65346-8e02-4fa0-bef2-64c65e6d854a",
+                      "uuid": "eed13f8f-df5c-4f7f-801a-28f7f45ff392",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1771,9 +1733,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "21e5af6b-f381-4d32-ab61-65955df41a29",
-                    "1fe46bea-0371-49de-ba68-a0f1f4475b64",
-                    "81f65346-8e02-4fa0-bef2-64c65e6d854a"
+                    "de3ec12c-3a3b-4c09-a2a3-4a46b146c414",
+                    "a6c86c79-d037-43ad-ba24-8e03f69b566a",
+                    "eed13f8f-df5c-4f7f-801a-28f7f45ff392"
                   ],
                   "duration": 0,
                   "root": false,
@@ -1781,7 +1743,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "d7a2dcb1-868a-40a2-a929-e2e894a37882",
+                  "uuid": "9191626e-4ecd-45e8-9f90-94a3e1cf3e99",
                   "title": "Screener de Bonos",
                   "fullFile": "",
                   "file": "",
@@ -1801,7 +1763,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Instrumentos').should('be.visible').click();\ncy.contains('Screener de Bonos').should('be.visible').click();",
                       "err": {},
-                      "uuid": "0162c1f1-8c52-4ae3-9bc9-8550f383905c",
+                      "uuid": "9f503b57-ee7c-4a0f-be0f-31a432270b45",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1819,7 +1781,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Screener de Bonos').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting').contains('Nombre').should('be.visible');\ncy.get('th.sorting').contains('Emisión').should('be.visible');\ncy.get('th.sorting').contains('Vencimiento').should('be.visible');\ncy.get('th.sorting').contains('Tipo de Deuda').should('be.visible');\ncy.get('th.sorting').contains('Moneda de Emisión').should('be.visible');\ncy.get('th.sorting').contains('Moneda de Pago').should('be.visible');\ncy.get('th.sorting').contains('Emisor').should('be.visible');\ncy.get('th.sorting').contains('Ley').should('be.visible');\ncy.get('th.text-right.number-cell.sorting').contains('TIR (%)').should('be.visible');\ncy.get('th.text-right.number-cell.sorting').contains('Modified Duration (años)').should('be.visible');\ncy.get('th.text-right.number-cell.sorting').contains('Tasa del Cupón (%)').should('be.visible');\ncy.get('button.btn.btn-sm.btn-primary').contains('Buscar').should('be.visible');\ncy.get('a.btn.btn-default').should('be.visible');",
                       "err": {},
-                      "uuid": "44d5c8ef-81ce-4f20-afbd-75b8c05fd559",
+                      "uuid": "b2fdecc8-5a62-4bde-b826-4d2e16e769ed",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1830,8 +1792,8 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "0162c1f1-8c52-4ae3-9bc9-8550f383905c",
-                    "44d5c8ef-81ce-4f20-afbd-75b8c05fd559"
+                    "9f503b57-ee7c-4a0f-be0f-31a432270b45",
+                    "b2fdecc8-5a62-4bde-b826-4d2e16e769ed"
                   ],
                   "duration": 0,
                   "root": false,
@@ -1843,7 +1805,7 @@
               "failures": [],
               "pending": [],
               "skipped": [
-                "ab9965fb-f6f5-4bd7-ae13-8c9484799210"
+                "2a1f031c-4755-446f-a11b-d81400f1e73a"
               ],
               "duration": 0,
               "root": false,
@@ -1851,7 +1813,7 @@
               "_timeout": 2000
             },
             {
-              "uuid": "3e123f66-6197-4562-9c44-5fee82d4f27a",
+              "uuid": "dd3b8f8d-9bea-4e6d-bad5-cd96e7386799",
               "title": "Valuación",
               "fullFile": "",
               "file": "",
@@ -1871,7 +1833,7 @@
                   "context": null,
                   "code": "cy.contains('a', 'Valuación').should('be.visible').click();",
                   "err": {},
-                  "uuid": "87775109-4790-4c34-b4a9-b54590566606",
+                  "uuid": "0005e14c-5ba9-45e2-9b79-f5e7ca12abe8",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -1879,7 +1841,7 @@
               ],
               "suites": [
                 {
-                  "uuid": "cefe47aa-667a-4b86-bb94-a2c35407ba8a",
+                  "uuid": "d57fc433-bceb-4b6c-afb1-6543f8254bd2",
                   "title": "Especies",
                   "fullFile": "",
                   "file": "",
@@ -1899,7 +1861,7 @@
                       "context": null,
                       "code": "cy.contains('Especies').should('be.visible').click();",
                       "err": {},
-                      "uuid": "6aa8156b-0695-42d2-9808-fcb2aaad48a9",
+                      "uuid": "90c6a48c-826d-4382-b3f8-5d0c41488d70",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1917,7 +1879,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar especies').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Ticker').should('be.visible');\ncy.contains('th.sorting', 'Instrumento').should('be.visible');\ncy.contains('th.sorting', 'Mercado').should('be.visible');\ncy.contains('th.sorting', 'Moneda').should('be.visible');\ncy.contains('th.sorting', 'Cada').should('be.visible');\ncy.contains('th.sorting', 'Tipo Liq').should('be.visible');\ncy.get('button.btn.dropdown-toggle.btn-default.bs-placeholder').should('be.visible');\ncy.get('button.btn.btn-sm.btn-primary').contains('Buscar').should('be.visible');",
                       "err": {},
-                      "uuid": "4c43cffc-202c-4860-b270-7d1989364d30",
+                      "uuid": "c775607f-a367-41d1-b48d-fa69f340ceac",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1935,7 +1897,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de especie');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "d9228a38-d746-4fe1-b677-a801891b3d8f",
+                      "uuid": "ba4e6734-f8cc-4ffb-933f-50210b6dfe76",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1946,9 +1908,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "6aa8156b-0695-42d2-9808-fcb2aaad48a9",
-                    "4c43cffc-202c-4860-b270-7d1989364d30",
-                    "d9228a38-d746-4fe1-b677-a801891b3d8f"
+                    "90c6a48c-826d-4382-b3f8-5d0c41488d70",
+                    "c775607f-a367-41d1-b48d-fa69f340ceac",
+                    "ba4e6734-f8cc-4ffb-933f-50210b6dfe76"
                   ],
                   "duration": 0,
                   "root": false,
@@ -1956,7 +1918,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "70927303-80b4-456c-805a-beebf3e807c2",
+                  "uuid": "c2aed015-abcb-451d-bba6-798474e35f7e",
                   "title": "Cotizaciones de Monedas",
                   "fullFile": "",
                   "file": "",
@@ -1976,7 +1938,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Valuación').should('be.visible').click();\ncy.contains('Cotizaciones de Monedas').should('be.visible').click();",
                       "err": {},
-                      "uuid": "91377047-7b3d-4216-8f81-6b4cd5fd2067",
+                      "uuid": "c10c6683-15db-4fc3-8516-15649d67c32c",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -1994,7 +1956,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar cotizaciones de monedas').should('be.visible');\ncy.contains('th.sorting', 'Fecha').should('be.visible');\ncy.contains('th.sorting', 'Plazo').should('be.visible');\ncy.contains('th.sorting', 'Instrumento').should('be.visible');\ncy.contains('th.sorting', 'Moneda').should('be.visible');\ncy.contains('th.sorting', 'Tipo de precio').should('be.visible');\ncy.contains('th.sorting', 'Mercado').should('be.visible');\ncy.contains('th.sorting', 'Fuente').should('be.visible');\ncy.contains('th.text-right.number-cell.sorting', 'Cierre').should('be.visible');\ncy.contains('th.text-right.number-cell.sorting', 'Apertura').should('be.visible');\ncy.contains('th.text-right.number-cell.sorting', 'Máximo').should('be.visible');\ncy.contains('th.text-right.number-cell.sorting', 'Mínimo').should('be.visible');\ncy.get('button.btn.btn-sm.btn-primary').contains('Buscar').should('be.visible');",
                       "err": {},
-                      "uuid": "80cfd977-17e6-4af2-bb95-2f4f48d4b46f",
+                      "uuid": "64eb9cdc-2427-4e7a-8939-3c9710ed1678",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2012,7 +1974,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de Cotización de Monedas');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "ab93b708-cd37-43c9-a700-6f80d376d03c",
+                      "uuid": "84d22a82-1329-4c53-93c4-d0f32348ae0d",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2030,7 +1992,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-danger').contains('Borrar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Borrar elementos');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "44fc0aca-1ae2-4133-8313-dcc1b79752d0",
+                      "uuid": "eb6b86a7-143c-43b1-8005-855c34d5e26e",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2041,10 +2003,10 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "91377047-7b3d-4216-8f81-6b4cd5fd2067",
-                    "80cfd977-17e6-4af2-bb95-2f4f48d4b46f",
-                    "ab93b708-cd37-43c9-a700-6f80d376d03c",
-                    "44fc0aca-1ae2-4133-8313-dcc1b79752d0"
+                    "c10c6683-15db-4fc3-8516-15649d67c32c",
+                    "64eb9cdc-2427-4e7a-8939-3c9710ed1678",
+                    "84d22a82-1329-4c53-93c4-d0f32348ae0d",
+                    "eb6b86a7-143c-43b1-8005-855c34d5e26e"
                   ],
                   "duration": 0,
                   "root": false,
@@ -2052,7 +2014,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "bd20448e-d582-4ff6-8599-ca15ef05d81d",
+                  "uuid": "17d1d936-7c2d-4b24-bb12-3bf02ae9baad",
                   "title": "Cotizaciones de Securities",
                   "fullFile": "",
                   "file": "",
@@ -2072,7 +2034,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Valuación').should('be.visible').click();\ncy.contains('Cotizaciones de Securities').should('be.visible').click();",
                       "err": {},
-                      "uuid": "639bc792-6b1f-4cfe-89d3-66821c19f01a",
+                      "uuid": "6a049a31-617d-41a6-b6bc-9624fccad4e8",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2090,7 +2052,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar cotizaciones de securities').should('be.visible');\ncy.contains('th.sorting', 'Fecha').should('be.visible');\ncy.contains('th.sorting', 'Plazo').should('be.visible');\ncy.contains('th.sorting', 'Instrumento').should('be.visible');\ncy.contains('th.sorting', 'Moneda').should('be.visible');\ncy.contains('th.sorting', 'Tipo de precio').should('be.visible');\ncy.contains('th.sorting', 'Cada').should('be.visible');\ncy.contains('th.sorting', 'Mercado').should('be.visible');\ncy.contains('th.sorting', 'Fuente').should('be.visible');\ncy.contains('th.text-right.number-cell.sorting', 'Cierre').should('be.visible');\ncy.contains('th.text-right.number-cell.sorting', 'Apertura').should('be.visible');\ncy.contains('th.text-right.number-cell.sorting', 'Máximo').should('be.visible');\ncy.contains('th.text-right.number-cell.sorting', 'Mínimo').should('be.visible');\ncy.get('button.btn.btn-sm.btn-primary').contains('Buscar').should('be.visible');",
                       "err": {},
-                      "uuid": "29125589-b4d9-41fb-bdc9-632384dc26f1",
+                      "uuid": "86923f6f-8e42-44ea-87c8-1f432a03953c",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2108,7 +2070,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.contains('.btn.dropdown-toggle', 'Agregar').parent('.btn-group').within(() => {\n  cy.contains('a', 'Acciones').click();\n});\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de Cotización de Acciones');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "e7c2e400-face-4780-a487-084f57acab24",
+                      "uuid": "7abbfc02-0185-49ff-a2e7-315167955735",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2126,7 +2088,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.contains('.btn.dropdown-toggle', 'Agregar').parent('.btn-group').within(() => {\n  cy.contains('a', 'Bonos').click();\n});\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de Cotización de Bonos');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "cb4cfa16-3021-47be-95f8-a1c8be21c2cf",
+                      "uuid": "d484b7d2-e6f1-4965-a846-a6d5688c51ae",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2144,7 +2106,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.contains('.btn.dropdown-toggle', 'Agregar').parent('.btn-group').within(() => {\n  cy.contains('a', 'Cuotapartes').click();\n});\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de Cotización de Cuotapartes');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "50e56333-1901-4e3a-b0bd-8171f7b5c485",
+                      "uuid": "050a5b7e-da74-4df8-bc43-4f8e66bf286b",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2162,7 +2124,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-danger').contains('Borrar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Borrar elementos');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "302a95c4-fb10-423e-a6e2-5e3bbb5b7470",
+                      "uuid": "baa966a5-d551-4457-906c-1efef75674d2",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2173,12 +2135,12 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "639bc792-6b1f-4cfe-89d3-66821c19f01a",
-                    "29125589-b4d9-41fb-bdc9-632384dc26f1",
-                    "e7c2e400-face-4780-a487-084f57acab24",
-                    "cb4cfa16-3021-47be-95f8-a1c8be21c2cf",
-                    "50e56333-1901-4e3a-b0bd-8171f7b5c485",
-                    "302a95c4-fb10-423e-a6e2-5e3bbb5b7470"
+                    "6a049a31-617d-41a6-b6bc-9624fccad4e8",
+                    "86923f6f-8e42-44ea-87c8-1f432a03953c",
+                    "7abbfc02-0185-49ff-a2e7-315167955735",
+                    "d484b7d2-e6f1-4965-a846-a6d5688c51ae",
+                    "050a5b7e-da74-4df8-bc43-4f8e66bf286b",
+                    "baa966a5-d551-4457-906c-1efef75674d2"
                   ],
                   "duration": 0,
                   "root": false,
@@ -2186,7 +2148,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "75bd08be-6e46-46e0-b066-99f83fffbfa0",
+                  "uuid": "1289f476-93bd-4972-8d92-3c57ce38469d",
                   "title": "Cotizaciones de Tasas",
                   "fullFile": "",
                   "file": "",
@@ -2206,7 +2168,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Valuación').should('be.visible').click();\ncy.contains('Cotizaciones de Tasas').should('be.visible').click();",
                       "err": {},
-                      "uuid": "09ffbf1c-5e94-4b67-80f8-5d9c8e79e4b2",
+                      "uuid": "d5228916-1ab2-493b-ac9b-de87cb6e5503",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2224,7 +2186,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar cotizaciones de tasas').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Fecha').should('be.visible');\ncy.contains('th.sorting', 'Tasa').should('be.visible');\ncy.contains('th.sorting', 'Valor').should('be.visible');\ncy.get('button.btn.btn-sm.btn-primary').contains('Buscar').should('be.visible');",
                       "err": {},
-                      "uuid": "863d619f-68c9-4a49-bd08-92fcb5979869",
+                      "uuid": "19a9c5ff-05ae-4176-a0be-3be987cabafa",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2242,7 +2204,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de cotización de tasas');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "bcbce37c-f706-4c8b-98f6-e4b42f642d37",
+                      "uuid": "6186b0ff-b465-4f30-8640-2ff10fd8e513",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2253,9 +2215,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "09ffbf1c-5e94-4b67-80f8-5d9c8e79e4b2",
-                    "863d619f-68c9-4a49-bd08-92fcb5979869",
-                    "bcbce37c-f706-4c8b-98f6-e4b42f642d37"
+                    "d5228916-1ab2-493b-ac9b-de87cb6e5503",
+                    "19a9c5ff-05ae-4176-a0be-3be987cabafa",
+                    "6186b0ff-b465-4f30-8640-2ff10fd8e513"
                   ],
                   "duration": 0,
                   "root": false,
@@ -2263,7 +2225,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "6fd8db53-0646-4176-a470-3c3b7357c4d8",
+                  "uuid": "68d29952-d345-4148-93af-d60e381e0810",
                   "title": "Cotizaciones de Índices",
                   "fullFile": "",
                   "file": "",
@@ -2283,7 +2245,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Valuación').should('be.visible').click();\ncy.contains('Cotizaciones de Índices').should('be.visible').click();",
                       "err": {},
-                      "uuid": "96197449-8b5e-47b5-a38d-f115420e81d5",
+                      "uuid": "6447acc9-a538-4af2-9e0a-674c79d08bb3",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2301,7 +2263,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar cotizaciones de Índices').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Fecha').should('be.visible');\ncy.contains('th.sorting', 'Índice').should('be.visible');\ncy.contains('th.sorting', 'Valor').should('be.visible');\ncy.get('button.btn.btn-sm.btn-primary').contains('Buscar').should('be.visible');",
                       "err": {},
-                      "uuid": "88770465-6de2-40cf-9278-edf087be402c",
+                      "uuid": "9fdc174d-0356-44a0-80a3-b1037526ece0",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2319,7 +2281,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de cotización de Índices');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "de39ee2d-766f-4e6d-846e-7f3e47a189a4",
+                      "uuid": "de1f71e1-c013-45fd-ada6-da1a4a3a71e2",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2330,9 +2292,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "96197449-8b5e-47b5-a38d-f115420e81d5",
-                    "88770465-6de2-40cf-9278-edf087be402c",
-                    "de39ee2d-766f-4e6d-846e-7f3e47a189a4"
+                    "6447acc9-a538-4af2-9e0a-674c79d08bb3",
+                    "9fdc174d-0356-44a0-80a3-b1037526ece0",
+                    "de1f71e1-c013-45fd-ada6-da1a4a3a71e2"
                   ],
                   "duration": 0,
                   "root": false,
@@ -2340,7 +2302,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "67bbf4fe-0774-44d4-b21e-2fc0620f1774",
+                  "uuid": "40406ba2-6a57-44fb-a12b-83073b56bc82",
                   "title": "Cotizaciones de Unidades Indexadas de Cuenta",
                   "fullFile": "",
                   "file": "",
@@ -2360,7 +2322,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Valuación').should('be.visible').click();\ncy.contains('Cotizaciones de Unidades Indexadas de Cuenta').should('be.visible').click();",
                       "err": {},
-                      "uuid": "feb340ce-ff5f-4ae1-a83d-6cd266db7858",
+                      "uuid": "e2eaaa49-15df-4c9b-8fcf-c1d06b19f8b7",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2378,7 +2340,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar cotizaciones de unidades indexadas de cuenta').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Fecha').should('be.visible');\ncy.contains('th.sorting', 'Unidad Indexada de Cuenta').should('be.visible');\ncy.contains('th.sorting', 'Valor').should('be.visible');\ncy.get('button.btn.btn-sm.btn-primary').contains('Buscar').should('be.visible');",
                       "err": {},
-                      "uuid": "787d19c0-a676-49c2-b844-42f747839abd",
+                      "uuid": "bd873b12-8383-4066-b266-df4571a2820a",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2396,7 +2358,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de cotización de unidad indexada de cuenta');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "2fd49688-4183-4fa0-9b5d-ead4475e79c8",
+                      "uuid": "1deb6b78-f562-4dce-9fa5-684993512ac9",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2407,9 +2369,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "feb340ce-ff5f-4ae1-a83d-6cd266db7858",
-                    "787d19c0-a676-49c2-b844-42f747839abd",
-                    "2fd49688-4183-4fa0-9b5d-ead4475e79c8"
+                    "e2eaaa49-15df-4c9b-8fcf-c1d06b19f8b7",
+                    "bd873b12-8383-4066-b266-df4571a2820a",
+                    "1deb6b78-f562-4dce-9fa5-684993512ac9"
                   ],
                   "duration": 0,
                   "root": false,
@@ -2417,7 +2379,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "2fe74b2c-ab37-4f31-9276-7076fe1107d4",
+                  "uuid": "2f210a22-64f8-40b1-95d3-4725962f6e7e",
                   "title": "Importación de Cotizaciones de Instrumentos",
                   "fullFile": "",
                   "file": "",
@@ -2437,7 +2399,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Valuación').should('be.visible').click();\ncy.contains('Importación de Cotizaciones de Instrumentos').should('be.visible').click();",
                       "err": {},
-                      "uuid": "c8aa4e2e-1927-4ca9-90b1-f79e02cbc2c1",
+                      "uuid": "9a17a591-2d5d-4789-b4eb-2039a01421da",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2455,7 +2417,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar importaciones de cotizaciones').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Fecha y Hora de Ejecución').should('be.visible');\ncy.contains('th.sorting', 'Importación').should('be.visible');\ncy.contains('th.text-right.number-cell.sorting', 'Correctos').should('be.visible');\ncy.contains('th.text-right.number-cell.sorting', 'Errores').should('be.visible');\ncy.get('button.btn.btn-sm.btn-primary').contains('Buscar').should('be.visible');",
                       "err": {},
-                      "uuid": "c9e3ce74-0681-4a86-898c-0c0399d00f90",
+                      "uuid": "2f0e7102-ce1a-4cc7-982d-728757ea692e",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2473,7 +2435,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.dropdown-toggle.btn-primary.pull-right').contains('Importar de Archivo').should('be.visible').click();\ncy.contains('.btn.dropdown-toggle', 'Importar de Archivo').parent('.btn-group').within(() => {\n  cy.contains('a', 'Cotizaciones de Bonos').click();\n});\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Importación de Cotizaciones de Bonos');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "a7cc670b-aeea-4369-b450-bd6b6f2e0262",
+                      "uuid": "88c44d5c-b38b-4e72-ab6c-948029f2adba",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2491,7 +2453,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.dropdown-toggle.btn-primary.pull-right').contains('Importar de Archivo').should('be.visible').click();\ncy.contains('.btn.dropdown-toggle', 'Importar de Archivo').parent('.btn-group').within(() => {\n  cy.contains('a', 'Cotizaciones de Acciones/Cuotapartes').click();\n});\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Importación de Cotizaciones de Acciones/Cuotapartes');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "59805364-0787-448b-85b9-c97e0dd1fdf8",
+                      "uuid": "5f47dd2c-04a1-48f3-a47f-985e273e3219",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2509,7 +2471,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.dropdown-toggle.btn-primary.pull-right').contains('Importar de Archivo').should('be.visible').click();\ncy.contains('.btn.dropdown-toggle', 'Importar de Archivo').parent('.btn-group').within(() => {\n  cy.contains('a', 'Cotizaciones de Monedas').click();\n});\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Importación de Cotizaciones de Monedas');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "66df1b23-ee97-4d8c-9859-171a9e162205",
+                      "uuid": "83cfcd3d-3210-4ac1-82ae-c91a22508923",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2527,7 +2489,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.dropdown-toggle.btn-primary.pull-right').contains('Importar de Archivo').should('be.visible').click();\ncy.contains('.btn.dropdown-toggle', 'Importar de Archivo').parent('.btn-group').within(() => {\n  cy.contains('a', 'Cotizaciones de Tasas').click();\n});\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Importación de Cotizaciones de Tasas');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "1496eee9-0da8-4504-a559-e79d69e56111",
+                      "uuid": "26163774-43c8-4e11-a3bb-ae30775efd1b",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2545,7 +2507,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.dropdown-toggle.btn-primary.pull-right').contains('Importar de Archivo').should('be.visible').click();\ncy.contains('.btn.dropdown-toggle', 'Importar de Archivo').parent('.btn-group').within(() => {\n  cy.contains('a', 'Cotizaciones de Índices').click();\n});\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Importación de Cotizaciones de Índices');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "c856df67-c6da-4d22-ae51-71afad3e4677",
+                      "uuid": "6d27b93a-ca5a-45eb-bc3d-dd11fb581e39",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2563,7 +2525,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.dropdown-toggle.btn-primary.pull-right').contains('Importar de Archivo').should('be.visible').click();\ncy.contains('.btn.dropdown-toggle', 'Importar de Archivo').parent('.btn-group').within(() => {\n  cy.contains('a', 'Cotizaciones de Unidades Indexadas de Cuenta').click();\n});\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Importación de Cotizaciones de Unidades Indexadas de Cuenta');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "7f62e4ac-2df4-45cd-aa2e-7e9208a8dba2",
+                      "uuid": "a43ebc01-26e6-4991-b643-dcc2b405c030",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2581,7 +2543,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.dropdown-toggle.btn-primary.pull-right').contains('Importar de Reuters').should('be.visible').click();\ncy.contains('.btn.dropdown-toggle', 'Importar de Reuters').parent('.btn-group').within(() => {\n  cy.contains('a', 'Cotizaciones de Especies').click();\n});\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Importar Cotizaciones de Reuters');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "04fab6c9-0c22-4776-ad66-5d03b305628e",
+                      "uuid": "caef5a39-1535-40eb-a2a0-685e70ccbe17",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2599,7 +2561,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.dropdown-toggle.btn-primary.pull-right').contains('Importar de Reuters').should('be.visible').click();\ncy.contains('.btn.dropdown-toggle', 'Importar de Reuters').parent('.btn-group').within(() => {\n  cy.contains('a', 'Cotizaciones de Monedas').click();\n});\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Importar Cotizaciones de Reuters');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "54dfe813-d573-4c93-ae8d-e3c1ae0220b1",
+                      "uuid": "f181f8fc-aa65-42ed-b17e-f414b4be7cd5",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2617,7 +2579,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.dropdown-toggle.btn-primary.pull-right').contains('Importar de Reuters').should('be.visible').click();\ncy.contains('.btn.dropdown-toggle', 'Importar de Reuters').parent('.btn-group').within(() => {\n  cy.contains('a', 'Cotizaciones de Tasas').click();\n});\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Importar Cotizaciones de Reuters');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "29c96e78-3e81-4152-88bb-0f30a512d635",
+                      "uuid": "dea31506-434b-422e-b14a-e31dfcee1509",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2635,7 +2597,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.dropdown-toggle.btn-primary.pull-right').contains('Importar de Reuters').should('be.visible').click();\ncy.contains('.btn.dropdown-toggle', 'Importar de Reuters').parent('.btn-group').within(() => {\n  cy.contains('a', 'Cotizaciones de Índices').click();\n});\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Importar Cotizaciones de Reuters');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "901de55d-4606-4995-8afa-1e2011a58635",
+                      "uuid": "4a7989e3-7809-47c6-b732-42d51dbf56a6",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2646,18 +2608,18 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "c8aa4e2e-1927-4ca9-90b1-f79e02cbc2c1",
-                    "c9e3ce74-0681-4a86-898c-0c0399d00f90",
-                    "a7cc670b-aeea-4369-b450-bd6b6f2e0262",
-                    "59805364-0787-448b-85b9-c97e0dd1fdf8",
-                    "66df1b23-ee97-4d8c-9859-171a9e162205",
-                    "1496eee9-0da8-4504-a559-e79d69e56111",
-                    "c856df67-c6da-4d22-ae51-71afad3e4677",
-                    "7f62e4ac-2df4-45cd-aa2e-7e9208a8dba2",
-                    "04fab6c9-0c22-4776-ad66-5d03b305628e",
-                    "54dfe813-d573-4c93-ae8d-e3c1ae0220b1",
-                    "29c96e78-3e81-4152-88bb-0f30a512d635",
-                    "901de55d-4606-4995-8afa-1e2011a58635"
+                    "9a17a591-2d5d-4789-b4eb-2039a01421da",
+                    "2f0e7102-ce1a-4cc7-982d-728757ea692e",
+                    "88c44d5c-b38b-4e72-ab6c-948029f2adba",
+                    "5f47dd2c-04a1-48f3-a47f-985e273e3219",
+                    "83cfcd3d-3210-4ac1-82ae-c91a22508923",
+                    "26163774-43c8-4e11-a3bb-ae30775efd1b",
+                    "6d27b93a-ca5a-45eb-bc3d-dd11fb581e39",
+                    "a43ebc01-26e6-4991-b643-dcc2b405c030",
+                    "caef5a39-1535-40eb-a2a0-685e70ccbe17",
+                    "f181f8fc-aa65-42ed-b17e-f414b4be7cd5",
+                    "dea31506-434b-422e-b14a-e31dfcee1509",
+                    "4a7989e3-7809-47c6-b732-42d51dbf56a6"
                   ],
                   "duration": 0,
                   "root": false,
@@ -2665,7 +2627,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "ccbbcc0c-53b0-4a73-a6cd-66547f8fa4a8",
+                  "uuid": "0662741e-2f94-48b1-b781-3c9791bf6b95",
                   "title": "Cotizaciones intradiarias",
                   "fullFile": "",
                   "file": "",
@@ -2685,7 +2647,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Valuación').should('be.visible').click();\ncy.contains('Cotizaciones intradiarias').should('be.visible').click();",
                       "err": {},
-                      "uuid": "27bf9ae0-e604-4b75-bfb7-038ab06bf3fa",
+                      "uuid": "1d6b0a8c-cc7b-4296-8b9b-fbcb94537eed",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2703,7 +2665,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar cotizaciones intradiarias').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Día').should('be.visible');\ncy.contains('th.sorting', 'Hora').should('be.visible');\ncy.contains('th.sorting', 'Especie').should('be.visible');\ncy.contains('th.sorting', 'Mercado').should('be.visible');\ncy.contains('th.sorting', 'Moneda').should('be.visible');\ncy.contains('th.text-right.number-cell.sorting', 'Precio').should('be.visible');\ncy.contains('th.text-right.number-cell.sorting', 'Cada').should('be.visible');",
                       "err": {},
-                      "uuid": "56c9689e-1709-47a0-8544-f06c79919fe4",
+                      "uuid": "8eb96e27-588c-4b27-94b5-d2839ca0027b",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2714,8 +2676,8 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "27bf9ae0-e604-4b75-bfb7-038ab06bf3fa",
-                    "56c9689e-1709-47a0-8544-f06c79919fe4"
+                    "1d6b0a8c-cc7b-4296-8b9b-fbcb94537eed",
+                    "8eb96e27-588c-4b27-94b5-d2839ca0027b"
                   ],
                   "duration": 0,
                   "root": false,
@@ -2723,7 +2685,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "fcdc3aaf-36b1-498c-a93a-13d3aa6d5204",
+                  "uuid": "9c7909a9-171f-41c1-8b48-8082b05b45a3",
                   "title": "Volumenes",
                   "fullFile": "",
                   "file": "",
@@ -2743,7 +2705,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Valuación').should('be.visible').click();\ncy.contains('Volumenes').should('be.visible').click();",
                       "err": {},
-                      "uuid": "94774097-f5ca-41f7-a216-b19bfa90679d",
+                      "uuid": "ee4bdf50-17fd-4eff-845d-9547440d8918",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2761,7 +2723,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar volumenes').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Día').should('be.visible');\ncy.contains('th.sorting', 'Plazo').should('be.visible');\ncy.contains('th.sorting', 'Especie').should('be.visible');\ncy.contains('th.sorting', 'Mercado').should('be.visible');\ncy.contains('th.text-right.number-cell.sorting', 'Volumen').should('be.visible');\ncy.get('button.btn.btn-sm.btn-primary').contains('Buscar').should('be.visible');",
                       "err": {},
-                      "uuid": "9bd638bb-ace1-43e5-9857-2d7fde7fc175",
+                      "uuid": "0df5c33d-0217-463a-beda-270e21d61bd6",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2779,7 +2741,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de volúmen');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "88a4b50d-d1ff-4645-b0c8-239e017646c4",
+                      "uuid": "73df2790-93ac-4627-b121-3a59fcd53dce",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2790,9 +2752,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "94774097-f5ca-41f7-a216-b19bfa90679d",
-                    "9bd638bb-ace1-43e5-9857-2d7fde7fc175",
-                    "88a4b50d-d1ff-4645-b0c8-239e017646c4"
+                    "ee4bdf50-17fd-4eff-845d-9547440d8918",
+                    "0df5c33d-0217-463a-beda-270e21d61bd6",
+                    "73df2790-93ac-4627-b121-3a59fcd53dce"
                   ],
                   "duration": 0,
                   "root": false,
@@ -2800,7 +2762,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "35429f52-69c7-446b-9963-47a70c2af35f",
+                  "uuid": "1bf0744b-5270-43d1-9088-79dd92b8d4a2",
                   "title": "Importacion de volumenes",
                   "fullFile": "",
                   "file": "",
@@ -2820,7 +2782,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Valuación').should('be.visible').click();\ncy.contains('Importacion de volumenes').should('be.visible').click();",
                       "err": {},
-                      "uuid": "c1c30741-82a3-4d81-a31d-28138db6a678",
+                      "uuid": "3b55c06c-9d02-4561-bf5f-78205b2af4ba",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2838,7 +2800,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar importaciones de volumenes').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Fecha y Hora de Ejecución').should('be.visible');\ncy.contains('th.text-right.number-cell.sorting', 'Correctos').should('be.visible');\ncy.contains('th.text-right.number-cell.sorting', 'Errores').should('be.visible');\ncy.get('button.btn.btn-sm.btn-primary').contains('Buscar').should('be.visible');",
                       "err": {},
-                      "uuid": "403063e2-7c9d-402f-8f5b-7328efcfbbbe",
+                      "uuid": "08d85092-28fe-4840-a1bf-6f3af86154fc",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2856,7 +2818,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Importar de Archivo').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Importación de volumen');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "2ada8d65-c410-4309-a0f4-809faaccdf81",
+                      "uuid": "2f8c007e-472c-47a6-a352-2a70f1e9c37b",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2867,9 +2829,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "c1c30741-82a3-4d81-a31d-28138db6a678",
-                    "403063e2-7c9d-402f-8f5b-7328efcfbbbe",
-                    "2ada8d65-c410-4309-a0f4-809faaccdf81"
+                    "3b55c06c-9d02-4561-bf5f-78205b2af4ba",
+                    "08d85092-28fe-4840-a1bf-6f3af86154fc",
+                    "2f8c007e-472c-47a6-a352-2a70f1e9c37b"
                   ],
                   "duration": 0,
                   "root": false,
@@ -2877,7 +2839,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "2e2045a1-efab-405c-8a6d-6de470f5aa22",
+                  "uuid": "68a58b2e-55e7-478b-96c2-58405738abb8",
                   "title": "RICs de Especies",
                   "fullFile": "",
                   "file": "",
@@ -2897,7 +2859,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Valuación').should('be.visible').click();\ncy.contains('RICs de Especies').should('be.visible').click();",
                       "err": {},
-                      "uuid": "c1a2a114-43a6-40d9-9001-856893d5e98d",
+                      "uuid": "7a46c41d-e5b5-4f73-ab03-bdc97430adf3",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2915,7 +2877,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar identificadores de especies').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Especie').should('be.visible');\ncy.contains('th.sorting', 'Plazo de Liquidación').should('be.visible');\ncy.contains('th.sorting', 'Identificador').should('be.visible');\ncy.get('div.dataTables_scroll').should('be.visible');",
                       "err": {},
-                      "uuid": "b877c929-d26c-4066-9ab1-bbeac5268d69",
+                      "uuid": "b1247b0d-0dd5-4f7a-9a7c-e5ebf57b42ec",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2933,7 +2895,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de identificador de especie');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "d17080d3-3732-44c8-a966-7f0c9ecc66ba",
+                      "uuid": "00205559-5e62-4c59-9bbc-e2ba10aef92a",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2944,9 +2906,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "c1a2a114-43a6-40d9-9001-856893d5e98d",
-                    "b877c929-d26c-4066-9ab1-bbeac5268d69",
-                    "d17080d3-3732-44c8-a966-7f0c9ecc66ba"
+                    "7a46c41d-e5b5-4f73-ab03-bdc97430adf3",
+                    "b1247b0d-0dd5-4f7a-9a7c-e5ebf57b42ec",
+                    "00205559-5e62-4c59-9bbc-e2ba10aef92a"
                   ],
                   "duration": 0,
                   "root": false,
@@ -2954,7 +2916,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "1735e07a-205b-40fa-897b-4132b9bedb80",
+                  "uuid": "3b954e21-33c9-4171-9c16-ad3a90d1da88",
                   "title": "RICs de Monedas",
                   "fullFile": "",
                   "file": "",
@@ -2974,7 +2936,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Valuación').should('be.visible').click();\ncy.contains('RICs de Monedas').should('be.visible').click();",
                       "err": {},
-                      "uuid": "d787c69c-e9fe-4b54-82fd-a2751d49a461",
+                      "uuid": "c6ffd592-7633-42d4-9e94-ea517ae8d611",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -2992,7 +2954,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar identificadores de monedas').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Moneda base').should('be.visible');\ncy.contains('th.sorting', 'Moneda cotización').should('be.visible');\ncy.contains('th.sorting', 'Mercado').should('be.visible');\ncy.contains('th.sorting', 'Identificador').should('be.visible');\ncy.get('div.dataTables_scroll').should('be.visible');",
                       "err": {},
-                      "uuid": "04d106fa-2ff5-48c7-9e8e-f00f2e2afe97",
+                      "uuid": "85d7bf23-ffcb-464e-9626-388e4b8d0d5c",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3010,7 +2972,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de identificador de moneda');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "4a64780b-ad70-417b-81e8-ed3db19d7ab0",
+                      "uuid": "1e4ae091-9463-493f-b075-46816b683edb",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3021,9 +2983,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "d787c69c-e9fe-4b54-82fd-a2751d49a461",
-                    "04d106fa-2ff5-48c7-9e8e-f00f2e2afe97",
-                    "4a64780b-ad70-417b-81e8-ed3db19d7ab0"
+                    "c6ffd592-7633-42d4-9e94-ea517ae8d611",
+                    "85d7bf23-ffcb-464e-9626-388e4b8d0d5c",
+                    "1e4ae091-9463-493f-b075-46816b683edb"
                   ],
                   "duration": 0,
                   "root": false,
@@ -3031,7 +2993,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "e2ffcd55-8b1b-4a77-9628-a473eb68080f",
+                  "uuid": "0b29063a-f974-4333-852a-d5c6ee198935",
                   "title": "RICs de Tasas",
                   "fullFile": "",
                   "file": "",
@@ -3051,7 +3013,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Valuación').should('be.visible').click();\ncy.contains('RICs de Tasas').should('be.visible').click();",
                       "err": {},
-                      "uuid": "7a6b699d-b4f6-472c-b54e-adb8a18a42e9",
+                      "uuid": "7d31be45-45be-4b8d-9d71-bf411ba3d2d2",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3069,7 +3031,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar identificadores de tasas').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Tasa').should('be.visible');\ncy.contains('th.sorting', 'RIC').should('be.visible');\ncy.get('div.dataTables_scroll').should('be.visible');",
                       "err": {},
-                      "uuid": "5f139630-ee77-4844-8639-859c2517742b",
+                      "uuid": "2ea35ab7-e753-4646-9d1f-5f3cb9573e6e",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3087,7 +3049,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de identificador de tasas');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "0e440c31-7b84-44d0-b4ba-d589a326d6c1",
+                      "uuid": "5dea6501-d11e-44ad-bec5-4436d702a985",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3098,9 +3060,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "7a6b699d-b4f6-472c-b54e-adb8a18a42e9",
-                    "5f139630-ee77-4844-8639-859c2517742b",
-                    "0e440c31-7b84-44d0-b4ba-d589a326d6c1"
+                    "7d31be45-45be-4b8d-9d71-bf411ba3d2d2",
+                    "2ea35ab7-e753-4646-9d1f-5f3cb9573e6e",
+                    "5dea6501-d11e-44ad-bec5-4436d702a985"
                   ],
                   "duration": 0,
                   "root": false,
@@ -3108,7 +3070,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "b78403f4-b6ab-4c39-9f75-83033da4e316",
+                  "uuid": "8d91db3e-bc48-4e3d-b401-17f195ab3f33",
                   "title": "RICs de Índices",
                   "fullFile": "",
                   "file": "",
@@ -3128,7 +3090,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Valuación').should('be.visible').click();\ncy.contains('RICs de Índices').should('be.visible').click();",
                       "err": {},
-                      "uuid": "5e2db3fb-2c4f-40a3-a81b-4eed6233f0df",
+                      "uuid": "178c0499-b08d-4ea8-9cf1-2faf0925666e",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3146,7 +3108,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar identificadores de Índices').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Índice').should('be.visible');\ncy.contains('th.sorting', 'RIC').should('be.visible');\ncy.get('div.dataTables_scroll').should('be.visible');",
                       "err": {},
-                      "uuid": "700e92d7-5622-48fb-9132-975448b7ea71",
+                      "uuid": "8c967412-1119-4765-b69b-1f81da8fbb73",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3164,7 +3126,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de identificador de Índices');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "12d63f7d-71a6-48c5-a9e7-9dc1c6fc10d2",
+                      "uuid": "af5df346-3c0c-4d69-9bbf-e6c78a8237cb",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3175,9 +3137,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "5e2db3fb-2c4f-40a3-a81b-4eed6233f0df",
-                    "700e92d7-5622-48fb-9132-975448b7ea71",
-                    "12d63f7d-71a6-48c5-a9e7-9dc1c6fc10d2"
+                    "178c0499-b08d-4ea8-9cf1-2faf0925666e",
+                    "8c967412-1119-4765-b69b-1f81da8fbb73",
+                    "af5df346-3c0c-4d69-9bbf-e6c78a8237cb"
                   ],
                   "duration": 0,
                   "root": false,
@@ -3185,7 +3147,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "b1d13460-25ab-44b4-b85c-e6e4b43cae06",
+                  "uuid": "8c3ea993-b5f0-4d5d-8c58-2751c54f9e4b",
                   "title": "Esquemas de Tipo de Cambio",
                   "fullFile": "",
                   "file": "",
@@ -3205,7 +3167,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Valuación').should('be.visible').click();\ncy.contains('Esquemas de Tipo de Cambio').should('be.visible').click();",
                       "err": {},
-                      "uuid": "4be4e248-5943-4255-80c0-1ebdc848f131",
+                      "uuid": "fa683eb5-50ad-4f83-bd6b-6bdb7aa973b9",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3223,7 +3185,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar esquemas de tipo de cambio').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Nombre').should('be.visible');\ncy.contains('th.sorting', 'Moneda').should('be.visible');\ncy.get('div.dataTables_scroll').should('be.visible');",
                       "err": {},
-                      "uuid": "eced57a7-d6da-44f3-b342-2e8f5969a833",
+                      "uuid": "50c07b24-8115-4285-9cb0-0f06b97d74b0",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3241,7 +3203,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de esquema de tipo de cambio');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "c8bcacef-2373-4eb9-a303-ad7809904020",
+                      "uuid": "e1c4f79c-4858-4230-848b-497642567cfb",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3252,9 +3214,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "4be4e248-5943-4255-80c0-1ebdc848f131",
-                    "eced57a7-d6da-44f3-b342-2e8f5969a833",
-                    "c8bcacef-2373-4eb9-a303-ad7809904020"
+                    "fa683eb5-50ad-4f83-bd6b-6bdb7aa973b9",
+                    "50c07b24-8115-4285-9cb0-0f06b97d74b0",
+                    "e1c4f79c-4858-4230-848b-497642567cfb"
                   ],
                   "duration": 0,
                   "root": false,
@@ -3262,7 +3224,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "b69a9acc-71c8-4cfb-8bfe-60106ca48b53",
+                  "uuid": "f8ea0e52-ab96-49e7-888f-1d0800ba81b6",
                   "title": "Esquemas de Valuación",
                   "fullFile": "",
                   "file": "",
@@ -3282,7 +3244,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Valuación').should('be.visible').click();\ncy.contains('Esquemas de Valuación').should('be.visible').click();",
                       "err": {},
-                      "uuid": "bd5d2b46-fbf4-43b3-9096-708ca947cbb8",
+                      "uuid": "c1f63c32-5035-41ca-ac6a-ec2ccbda6796",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3300,7 +3262,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar esquemas de valuación').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Nombre').should('be.visible');\ncy.contains('th.sorting', 'Cantidad de reglas').should('be.visible');\ncy.get('div.dataTables_scroll').should('be.visible');",
                       "err": {},
-                      "uuid": "874b0229-839c-4a8a-b774-d23c0692da44",
+                      "uuid": "729b5240-db52-4748-84da-98a8676f4fc2",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3318,7 +3280,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de esquema de valuación');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "aa35e146-7c78-4799-943a-93326dfb3a41",
+                      "uuid": "f98727fa-c27c-4ef6-bba0-9a844b04d9d8",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3336,7 +3298,7 @@
                       "context": null,
                       "code": "cy.contains('Modificar Esquema Default').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Configurar Esquema Default');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "b0ededd9-fb3b-444a-a36d-1f43e18a7f02",
+                      "uuid": "fcb37929-4150-4aa3-acd1-85695a894c1a",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3347,10 +3309,10 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "bd5d2b46-fbf4-43b3-9096-708ca947cbb8",
-                    "874b0229-839c-4a8a-b774-d23c0692da44",
-                    "aa35e146-7c78-4799-943a-93326dfb3a41",
-                    "b0ededd9-fb3b-444a-a36d-1f43e18a7f02"
+                    "c1f63c32-5035-41ca-ac6a-ec2ccbda6796",
+                    "729b5240-db52-4748-84da-98a8676f4fc2",
+                    "f98727fa-c27c-4ef6-bba0-9a844b04d9d8",
+                    "fcb37929-4150-4aa3-acd1-85695a894c1a"
                   ],
                   "duration": 0,
                   "root": false,
@@ -3358,7 +3320,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "e6e8dca0-e1a1-4448-b8db-e48d4644341a",
+                  "uuid": "0dd9e248-04e8-43a9-9a22-2e7483ad41cd",
                   "title": "Esquema de Estimación de Tasas e Índices",
                   "fullFile": "",
                   "file": "",
@@ -3378,7 +3340,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Valuación').should('be.visible').click();\ncy.contains('Esquema de Estimación de Tasas e Índices').should('be.visible').click();",
                       "err": {},
-                      "uuid": "8e1903e5-9865-4ef5-ac21-068398c845da",
+                      "uuid": "db00d886-826d-455e-a8fb-c6372881f3d9",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3396,7 +3358,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar esquemas de estimación de tasas e Índices').should('be.visible');\ncy.get('select.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Nombre').should('be.visible');\ncy.get('div.dataTables_scroll').should('be.visible');",
                       "err": {},
-                      "uuid": "bd95307f-134b-430b-a59d-193e9058d1a2",
+                      "uuid": "3d8a1ad5-d6d8-4c45-95ba-3eca1de94173",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3414,7 +3376,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de esquema de estimación de tasa e Índice');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "0810a453-6d08-4c7a-8451-30ab07f13b63",
+                      "uuid": "4006db67-0e82-4e01-9db7-2011601bd657",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3425,9 +3387,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "8e1903e5-9865-4ef5-ac21-068398c845da",
-                    "bd95307f-134b-430b-a59d-193e9058d1a2",
-                    "0810a453-6d08-4c7a-8451-30ab07f13b63"
+                    "db00d886-826d-455e-a8fb-c6372881f3d9",
+                    "3d8a1ad5-d6d8-4c45-95ba-3eca1de94173",
+                    "4006db67-0e82-4e01-9db7-2011601bd657"
                   ],
                   "duration": 0,
                   "root": false,
@@ -3435,7 +3397,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "8861b689-ead0-47bf-8ced-f7ebcaf123bb",
+                  "uuid": "dc1b5cc8-2973-455c-8d0e-be73d95dd3da",
                   "title": "Valuación de Instrumentos",
                   "fullFile": "",
                   "file": "",
@@ -3455,7 +3417,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Valuación').should('be.visible').click();\ncy.contains('Valuación de Instrumentos').should('be.visible').click();",
                       "err": {},
-                      "uuid": "13a017b6-b956-40f1-838f-fde1785cb93c",
+                      "uuid": "a437c674-6c30-4a46-a8ad-b7ba99f88115",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3473,7 +3435,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Valuación de Instrumentos').should('be.visible');\ncy.get('th.sorting').contains('Instrumento').should('be.visible');\ncy.contains('th.text-right.number-cell.sorting', 'Precio').should('be.visible');\ncy.contains('th.text-right.number-cell.sorting', 'Cada').should('be.visible');\ncy.get('button.btn.btn-primary.pull-right.btn-sm').contains('Valuar').should('be.visible');\ncy.get('div.filter-option-inner-inner').should('be.visible');\ncy.get('input.form-control.text-center').should('be.visible');",
                       "err": {},
-                      "uuid": "384473b7-60c0-44e9-b28f-aefbaf9056e9",
+                      "uuid": "7016e9a5-2dce-40b7-b042-8a60f86e11fc",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3484,8 +3446,8 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "13a017b6-b956-40f1-838f-fde1785cb93c",
-                    "384473b7-60c0-44e9-b28f-aefbaf9056e9"
+                    "a437c674-6c30-4a46-a8ad-b7ba99f88115",
+                    "7016e9a5-2dce-40b7-b042-8a60f86e11fc"
                   ],
                   "duration": 0,
                   "root": false,
@@ -3493,7 +3455,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "f85b7ddf-15b9-4e72-ba38-fdf5e5958069",
+                  "uuid": "556b9b16-36c3-4f79-9a0a-f6f61d6f605a",
                   "title": "Monitor de Liquidez",
                   "fullFile": "",
                   "file": "",
@@ -3513,7 +3475,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Valuación').should('be.visible').click();\ncy.contains('Monitor de Liquidez').should('be.visible').click();",
                       "err": {},
-                      "uuid": "636e3206-7f13-475c-bf37-6a541a741f55",
+                      "uuid": "92a16661-510d-44f7-be15-6564aaf8c0c8",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3531,7 +3493,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Monitor de Liquidez').should('be.visible');\ncy.get('th.sorting_asc').contains('Instrumento').should('be.visible');\ncy.contains('th.sorting', 'Precio de Mercado').should('be.visible');\ncy.get('th.text-center.number-cell.sorting').contains('Fecha').should('be.visible');\ncy.contains('th.sorting', 'Plazo').should('be.visible');\ncy.contains('th.sorting', 'Días Retrocedidos').should('be.visible');\ncy.contains('th.sorting', 'Regularidad').should('be.visible');\ncy.get('button.btn.btn-primary.pull-right.btn-sm').contains('Buscar').should('be.visible');\ncy.get('div.filter-option-inner-inner').should('be.visible');\ncy.get('input.form-control.text-center').should('be.visible');\ncy.get('input.form-control.text-right').should('be.visible');",
                       "err": {},
-                      "uuid": "9c6e417e-433a-4702-a6e0-1d7f61028606",
+                      "uuid": "c64fddd6-360b-45ea-99c5-abf002962427",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3542,8 +3504,8 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "636e3206-7f13-475c-bf37-6a541a741f55",
-                    "9c6e417e-433a-4702-a6e0-1d7f61028606"
+                    "92a16661-510d-44f7-be15-6564aaf8c0c8",
+                    "c64fddd6-360b-45ea-99c5-abf002962427"
                   ],
                   "duration": 0,
                   "root": false,
@@ -3551,7 +3513,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "a0091b56-a326-48a9-a34e-a2655d3e38c9",
+                  "uuid": "6a27334f-8040-4433-ae32-4eca5c13f220",
                   "title": "Métricas Diarias de Bonos",
                   "fullFile": "",
                   "file": "",
@@ -3571,7 +3533,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Valuación').should('be.visible').click();\ncy.contains('Métricas Diarias de Bonos').should('be.visible').click();",
                       "err": {},
-                      "uuid": "bfa56c96-8624-401c-ab02-680f8c2a046a",
+                      "uuid": "b1932e65-979b-4daa-a23c-699262bf5ef3",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3589,7 +3551,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar métricas de bonos').should('be.visible');\ncy.get('th.sorting_asc').contains('Esquema').should('be.visible');\ncy.contains('th.sorting', 'Bono').should('be.visible');\ncy.contains('th.sorting', 'Especie').should('be.visible');\ncy.contains('th.sorting', 'MD').should('be.visible');\ncy.contains('th.sorting', 'TIR').should('be.visible');\ncy.contains('th.sorting', 'Tasa').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');",
                       "err": {},
-                      "uuid": "07e4c8da-d2a5-4e5e-ac38-9230b5877563",
+                      "uuid": "7ead4dad-a0ae-4a3d-8975-7eddacabd169",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3607,7 +3569,7 @@
                       "context": null,
                       "code": "cy.contains('Asignación de Esquema').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Configurar Asignación de Esquema de Tipo de Cambio para metricas');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "30283dd7-197b-4d64-aea0-59148e67142e",
+                      "uuid": "bdaf9c57-0ae3-4b46-b190-22b4d9095261",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3618,9 +3580,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "bfa56c96-8624-401c-ab02-680f8c2a046a",
-                    "07e4c8da-d2a5-4e5e-ac38-9230b5877563",
-                    "30283dd7-197b-4d64-aea0-59148e67142e"
+                    "b1932e65-979b-4daa-a23c-699262bf5ef3",
+                    "7ead4dad-a0ae-4a3d-8975-7eddacabd169",
+                    "bdaf9c57-0ae3-4b46-b190-22b4d9095261"
                   ],
                   "duration": 0,
                   "root": false,
@@ -3628,7 +3590,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "b2227cbd-4331-431e-ab22-daff962a6501",
+                  "uuid": "956e65c8-ec44-47df-96b9-b9ec37ced552",
                   "title": "Configuracion Cotizaciones Inferidas",
                   "fullFile": "",
                   "file": "",
@@ -3648,7 +3610,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Valuación').should('be.visible').click();\ncy.contains('Configuracion Cotizaciones Inferidas').should('be.visible').click();",
                       "err": {},
-                      "uuid": "e9ac5297-07cd-4ed4-ac34-a7e3f42c8ad9",
+                      "uuid": "df8a6b19-8a75-4c15-88fd-aac410e61843",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3666,7 +3628,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar configuraciones de cotizaciones inferidas').should('be.visible');\ncy.get('th.sorting_asc').contains('Moneda').should('be.visible');\ncy.contains('th.sorting', 'Especie Base').should('be.visible');\ncy.contains('th.sorting', 'Especie Destino').should('be.visible');\ncy.contains('th.sorting', 'Mercado').should('be.visible');\ncy.contains('th.sorting', 'Fuente').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');",
                       "err": {},
-                      "uuid": "39fdb1e4-628c-4aed-aa21-e78aa5c67d14",
+                      "uuid": "6978cce2-5a0a-4e49-b3ce-7a074e0d3fe5",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3684,7 +3646,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de configuracion de cotizacion inferida');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "0e452e10-10c5-4af3-91aa-afb05f199d64",
+                      "uuid": "684f7ba0-db93-47bb-8997-d6f148ffee58",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3702,7 +3664,7 @@
                       "context": null,
                       "code": "cy.contains('Crear cotizaciones').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Generar Cotizaciones a una Fecha');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "d4c6f4c2-39d6-41cb-9f5b-87e93c45b8f0",
+                      "uuid": "5754aca4-6ca0-4859-a99e-de1650324a44",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3713,10 +3675,10 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "e9ac5297-07cd-4ed4-ac34-a7e3f42c8ad9",
-                    "39fdb1e4-628c-4aed-aa21-e78aa5c67d14",
-                    "0e452e10-10c5-4af3-91aa-afb05f199d64",
-                    "d4c6f4c2-39d6-41cb-9f5b-87e93c45b8f0"
+                    "df8a6b19-8a75-4c15-88fd-aac410e61843",
+                    "6978cce2-5a0a-4e49-b3ce-7a074e0d3fe5",
+                    "684f7ba0-db93-47bb-8997-d6f148ffee58",
+                    "5754aca4-6ca0-4859-a99e-de1650324a44"
                   ],
                   "duration": 0,
                   "root": false,
@@ -3728,7 +3690,7 @@
               "failures": [],
               "pending": [],
               "skipped": [
-                "87775109-4790-4c34-b4a9-b54590566606"
+                "0005e14c-5ba9-45e2-9b79-f5e7ca12abe8"
               ],
               "duration": 0,
               "root": false,
@@ -3736,7 +3698,7 @@
               "_timeout": 2000
             },
             {
-              "uuid": "5b037fb4-e4dc-4fd4-9d8b-b38e7008cef6",
+              "uuid": "49c7bbec-879b-486d-af1c-094af83a74a5",
               "title": "Análisis",
               "fullFile": "",
               "file": "",
@@ -3756,7 +3718,7 @@
                   "context": null,
                   "code": "cy.contains('a', 'Análisis').should('be.visible').click();",
                   "err": {},
-                  "uuid": "eedb0514-ab4f-4762-a41c-917e19c66176",
+                  "uuid": "1b4329f6-8c05-4a39-92e7-67f6d104e272",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -3764,7 +3726,7 @@
               ],
               "suites": [
                 {
-                  "uuid": "5cac2f62-58c5-496a-aa42-4de9453b11d5",
+                  "uuid": "a67e23d0-1286-415b-8788-6dc08d3307e1",
                   "title": "Esquema de análisis de rendimiento",
                   "fullFile": "",
                   "file": "",
@@ -3784,7 +3746,7 @@
                       "context": null,
                       "code": "cy.contains('Esquema de análisis de rendimiento').should('be.visible').click();",
                       "err": {},
-                      "uuid": "ec6539a5-9b88-490b-87f6-73567240bc06",
+                      "uuid": "65aafebf-4bd8-4e48-8f23-88f413c90623",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3802,7 +3764,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar esquemas de análisis de rendimiento').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Nombre').should('be.visible');\ncy.contains('th.sorting', 'Esquema').should('be.visible');\ncy.get('a.btn.btn-default').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');",
                       "err": {},
-                      "uuid": "e85b468c-7320-497c-81e1-dd6f4d0be3bd",
+                      "uuid": "ff93a533-7764-4314-9fb7-7a4d704edf02",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3820,7 +3782,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de esquema de análisis de rendimiento');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "e5a130fd-66dc-4909-9a6a-607f82d10662",
+                      "uuid": "10c8f25d-ecda-4d3f-8cd2-31f360a7f3fd",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3831,9 +3793,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "ec6539a5-9b88-490b-87f6-73567240bc06",
-                    "e85b468c-7320-497c-81e1-dd6f4d0be3bd",
-                    "e5a130fd-66dc-4909-9a6a-607f82d10662"
+                    "65aafebf-4bd8-4e48-8f23-88f413c90623",
+                    "ff93a533-7764-4314-9fb7-7a4d704edf02",
+                    "10c8f25d-ecda-4d3f-8cd2-31f360a7f3fd"
                   ],
                   "duration": 0,
                   "root": false,
@@ -3841,7 +3803,7 @@
                   "_timeout": 2000
                 },
                 {
-                  "uuid": "cc829e56-0992-4b70-9f9a-e805c453cf48",
+                  "uuid": "0229bbdb-8311-42b3-b781-88e5b2c0cd21",
                   "title": "Asignación de curvas de rendimiento",
                   "fullFile": "",
                   "file": "",
@@ -3861,7 +3823,7 @@
                       "context": null,
                       "code": "cy.contains('a', 'Análisis').should('be.visible').click();\ncy.contains('Asignación de curvas de rendimiento').should('be.visible').click();",
                       "err": {},
-                      "uuid": "c8c23e96-1b6e-42c2-be2d-48b2a828c0ba",
+                      "uuid": "28afc014-c4ca-429d-bd61-fb74694b9f74",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3879,7 +3841,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar asignación de curvas de rendimiento').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');\ncy.get('th.sorting_asc').contains('Conjunto').should('be.visible');\ncy.contains('th.sorting', 'Esquema de Análisis de Rendimiento').should('be.visible');\ncy.get('a.btn.btn-default').should('be.visible');\ncy.get('input.form-control.input-sm').should('be.visible');",
                       "err": {},
-                      "uuid": "f009b042-55c9-41f9-82b9-880dc823f335",
+                      "uuid": "117fcd8a-8b04-4df3-ae6e-9efdced30093",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3897,7 +3859,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de asignación de curva de rendimiento');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "8f722a43-bb5e-49be-b880-205649b074e5",
+                      "uuid": "d3f1436a-a012-42c8-ae46-9498ee75ea71",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3908,9 +3870,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "c8c23e96-1b6e-42c2-be2d-48b2a828c0ba",
-                    "f009b042-55c9-41f9-82b9-880dc823f335",
-                    "8f722a43-bb5e-49be-b880-205649b074e5"
+                    "28afc014-c4ca-429d-bd61-fb74694b9f74",
+                    "117fcd8a-8b04-4df3-ae6e-9efdced30093",
+                    "d3f1436a-a012-42c8-ae46-9498ee75ea71"
                   ],
                   "duration": 0,
                   "root": false,
@@ -3922,7 +3884,7 @@
               "failures": [],
               "pending": [],
               "skipped": [
-                "eedb0514-ab4f-4762-a41c-917e19c66176"
+                "1b4329f6-8c05-4a39-92e7-67f6d104e272"
               ],
               "duration": 0,
               "root": false,
@@ -3930,7 +3892,7 @@
               "_timeout": 2000
             },
             {
-              "uuid": "0f2aec11-cbb4-49fc-8c45-a868ce1849f0",
+              "uuid": "130a2e26-948c-4e35-bce8-5da5d775fe34",
               "title": "Riesgo",
               "fullFile": "",
               "file": "",
@@ -3950,7 +3912,7 @@
                   "context": null,
                   "code": "cy.contains('a', 'Riesgo').should('be.visible').click();",
                   "err": {},
-                  "uuid": "bc6adb1a-3f8a-4a90-b55f-894b06244000",
+                  "uuid": "190f365e-acc0-4be1-b6a8-35566b5316fa",
                   "parentUUID": null,
                   "isHook": false,
                   "skipped": true
@@ -3958,7 +3920,7 @@
               ],
               "suites": [
                 {
-                  "uuid": "7102e539-598e-41ce-8db8-72bffb9d5fe7",
+                  "uuid": "18222f18-3ebd-47d0-93cd-96d71c32520c",
                   "title": "Calificación de instrumentos",
                   "fullFile": "",
                   "file": "",
@@ -3978,7 +3940,7 @@
                       "context": null,
                       "code": "cy.contains('Calificación de instrumentos').should('be.visible').click();",
                       "err": {},
-                      "uuid": "76977632-cb83-4920-88a9-d0c7cbc3f305",
+                      "uuid": "7bb4ce7e-f26a-43f9-92cd-e863cfa86529",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -3996,7 +3958,7 @@
                       "context": null,
                       "code": "cy.get('section.crud-header').contains('Administrar calificaciones de instrumentos').should('be.visible');\ncy.get('th.sorting_asc').contains('Instrumento').should('be.visible');\ncy.contains('th.sorting', 'Calificación de Riesgo').should('be.visible');\ncy.contains('th.sorting', 'Fecha').should('be.visible');\ncy.contains('th.sorting', 'Calificadora').should('be.visible');\ncy.contains('th.sorting', 'Tipo de inversión').should('be.visible');\ncy.get('button.btn.btn-sm.btn-primary').contains('Buscar').should('be.visible');\ncy.get('a.btn.btn-default').should('be.visible');\ncy.get('button.btn.dropdown-toggle.btn-default.bs-placeholder').should('be.visible');",
                       "err": {},
-                      "uuid": "7e91f4b1-0de2-497c-b49d-7deefa390788",
+                      "uuid": "8143569c-2e85-486f-a03e-09358b7ef789",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -4014,7 +3976,7 @@
                       "context": null,
                       "code": "cy.get('button.btn.btn-primary.pull-right').contains('Agregar').should('be.visible').click();\ncy.get('div.modal-body').should('be.visible');\ncy.get('h4.modal-title').should('be.visible').and('have.text', 'Alta de calificación de instrumento');\ncy.contains('button.btn.btn-link', 'Cerrar').should('be.visible').click();",
                       "err": {},
-                      "uuid": "92f55ca1-5ce2-4b1f-b28e-93f1a7181baa",
+                      "uuid": "dd1a63c9-8e97-4a0a-b002-455e28554535",
                       "parentUUID": null,
                       "isHook": false,
                       "skipped": true
@@ -4025,9 +3987,9 @@
                   "failures": [],
                   "pending": [],
                   "skipped": [
-                    "76977632-cb83-4920-88a9-d0c7cbc3f305",
-                    "7e91f4b1-0de2-497c-b49d-7deefa390788",
-                    "92f55ca1-5ce2-4b1f-b28e-93f1a7181baa"
+                    "7bb4ce7e-f26a-43f9-92cd-e863cfa86529",
+                    "8143569c-2e85-486f-a03e-09358b7ef789",
+                    "dd1a63c9-8e97-4a0a-b002-455e28554535"
                   ],
                   "duration": 0,
                   "root": false,
@@ -4039,7 +4001,7 @@
               "failures": [],
               "pending": [],
               "skipped": [
-                "bc6adb1a-3f8a-4a90-b55f-894b06244000"
+                "190f365e-acc0-4be1-b6a8-35566b5316fa"
               ],
               "duration": 0,
               "root": false,
