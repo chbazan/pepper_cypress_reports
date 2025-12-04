@@ -1,24 +1,24 @@
 {
   "stats": {
-    "suites": 11,
-    "tests": 42,
-    "passes": 26,
+    "suites": 12,
+    "tests": 49,
+    "passes": 11,
     "pending": 0,
     "failures": 1,
-    "testsRegistered": 42,
-    "passPercent": 61.904761904761905,
+    "testsRegistered": 49,
+    "passPercent": 22.448979591836736,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
-    "skipped": 15,
+    "skipped": 37,
     "hasSkipped": true,
-    "start": "2025-12-03T11:36:01.510Z",
-    "end": "2025-12-03T11:37:05.687Z",
-    "duration": 64177
+    "start": "2025-12-04T11:36:15.839Z",
+    "end": "2025-12-04T11:36:37.009Z",
+    "duration": 21170
   },
   "results": [
     {
-      "uuid": "b579de0e-0be1-4e3a-82cc-63219f7c4b58",
+      "uuid": "ab0db595-399e-43c9-8761-11cf6ad94557",
       "title": "",
       "fullFile": "cypress/e2e/gs64/staging/brasil/regresion/01_login.cy.js",
       "file": "cypress/e2e/gs64/staging/brasil/regresion/01_login.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "8abd23e3-b3f5-4336-ab30-d37674e1f9bd",
+          "uuid": "61238e5b-9eb5-4466-8037-8d029c6d2d22",
           "title": "Login",
           "fullFile": "",
           "file": "",
@@ -38,29 +38,33 @@
               "title": "Ingresar al admin y hacer login",
               "fullTitle": "Login Ingresar al admin y hacer login",
               "timedOut": null,
-              "duration": 6151,
-              "state": "passed",
-              "speed": "medium",
-              "pass": true,
-              "fail": false,
+              "duration": 239,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
               "pending": false,
               "context": null,
               "code": "cy.clearAllCookies();\ncy.clearAllLocalStorage();\ncy.clearAllSessionStorage();\ncy.pepperSessionGS64();",
-              "err": {},
-              "uuid": "f6e474ac-3202-4332-987d-fe34594b83a0",
-              "parentUUID": "8abd23e3-b3f5-4336-ab30-d37674e1f9bd",
+              "err": {
+                "message": "TypeError: cy.pepperSessionGS64 is not a function",
+                "estack": "TypeError: cy.pepperSessionGS64 is not a function\n    at Context.eval (webpack://cypress/./cypress/e2e/gs64/staging/brasil/regresion/01_login.cy.js:10:7)\n    at runnable.fn (http://localhost:33879/__cypress/runner/cypress_runner.js:145954:19)\n    at callFn (http://localhost:33879/__cypress/runner/cypress_runner.js:165048:21)\n    at Runnable.run (http://localhost:33879/__cypress/runner/cypress_runner.js:165035:7)\n    at <unknown> (http://localhost:33879/__cypress/runner/cypress_runner.js:171130:30)\n    at PassThroughHandlerContext.finallyHandler (http://localhost:33879/__cypress/runner/cypress_runner.js:4042:23)\n    at PassThroughHandlerContext.tryCatcher (http://localhost:33879/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (http://localhost:33879/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (http://localhost:33879/__cypress/runner/cypress_runner.js:1546:18)",
+                "diff": null
+              },
+              "uuid": "299e51e6-b06d-4357-8e15-305d6a86a8cf",
+              "parentUUID": "61238e5b-9eb5-4466-8037-8d029c6d2d22",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [
-            "f6e474ac-3202-4332-987d-fe34594b83a0"
+          "passes": [],
+          "failures": [
+            "299e51e6-b06d-4357-8e15-305d6a86a8cf"
           ],
-          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 6151,
+          "duration": 239,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -76,7 +80,180 @@
       "_timeout": 2000
     },
     {
-      "uuid": "fc9b2c9f-60f1-433d-bb06-0c155ca28575",
+      "uuid": "8b0e9e49-b2a0-4783-bcd6-595f48ffcdf5",
+      "title": "",
+      "fullFile": "cypress/e2e/gs64/staging/brasil/regresion/bonos.cy.js",
+      "file": "cypress/e2e/gs64/staging/brasil/regresion/bonos.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "59b591ab-b791-4c4e-a5e3-02a609a74a0b",
+          "title": "Bonos",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Mostrar todos los elementos de Bonos correctamente",
+              "fullTitle": "Bonos Mostrar todos los elementos de Bonos correctamente",
+              "timedOut": null,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(_constants.default.PEPPER_LOCATION + /bonds/);\ncy.validacionesHome();",
+              "err": {},
+              "uuid": "ab5b57dc-1bc9-46bf-9660-5a36c5fc8358",
+              "parentUUID": "59b591ab-b791-4c4e-a5e3-02a609a74a0b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "recorrer todos los bonos haciendo click en eliminar",
+              "fullTitle": "Bonos recorrer todos los bonos haciendo click en eliminar",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//\ncy.recorrerElementosEliminables(); //",
+              "err": {},
+              "uuid": "fd10a82d-849f-485a-b110-8de03f662cf6",
+              "parentUUID": "59b591ab-b791-4c4e-a5e3-02a609a74a0b",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Crear Bono CeroCupon",
+              "fullTitle": "Bonos Crear Bono CeroCupon",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.crearBono_CeroCupon(\"Cypress\");",
+              "err": {},
+              "uuid": "a1c66b69-1602-4ebf-bd94-dc2d14b9cdaf",
+              "parentUUID": "59b591ab-b791-4c4e-a5e3-02a609a74a0b",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Crear Bono Definido Por Cupones",
+              "fullTitle": "Bonos Crear Bono Definido Por Cupones",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.crearBono_DefinidoPorCupones(\"Cypress\");",
+              "err": {},
+              "uuid": "c5e28c0f-102f-4dee-b092-fc87c7a00c21",
+              "parentUUID": "59b591ab-b791-4c4e-a5e3-02a609a74a0b",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Crear Bono Definido Por Cupones Basado En Indice",
+              "fullTitle": "Bonos Crear Bono Definido Por Cupones Basado En Indice",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.crearBono_DefinidoPorCupones_basadoIndice(\"Cypress\");",
+              "err": {},
+              "uuid": "332b38e9-592b-463c-8b91-679ea456feb5",
+              "parentUUID": "59b591ab-b791-4c4e-a5e3-02a609a74a0b",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Crear Bono Definido Por Amortizacion Bullet",
+              "fullTitle": "Bonos Crear Bono Definido Por Amortizacion Bullet",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.crearBono_DefinidoPorAmortizacion_Bullet(\"Cypress\");",
+              "err": {},
+              "uuid": "356aa0ed-f894-43d3-bfea-cbf0ddb81555",
+              "parentUUID": "59b591ab-b791-4c4e-a5e3-02a609a74a0b",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Crear Bono Definido Por Amortizacion Homogeneo",
+              "fullTitle": "Bonos Crear Bono Definido Por Amortizacion Homogeneo",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.crearBono_DefinidoPorAmortizacion_Homogeneo(\"Cypress\");",
+              "err": {},
+              "uuid": "8925a1cc-e8af-42ae-bada-1886256193dc",
+              "parentUUID": "59b591ab-b791-4c4e-a5e3-02a609a74a0b",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ab5b57dc-1bc9-46bf-9660-5a36c5fc8358"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [
+            "fd10a82d-849f-485a-b110-8de03f662cf6",
+            "a1c66b69-1602-4ebf-bd94-dc2d14b9cdaf",
+            "c5e28c0f-102f-4dee-b092-fc87c7a00c21",
+            "332b38e9-592b-463c-8b91-679ea456feb5",
+            "356aa0ed-f894-43d3-bfea-cbf0ddb81555",
+            "8925a1cc-e8af-42ae-bada-1886256193dc"
+          ],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "40e2f289-82d0-42fd-9035-2f11acccc3d9",
       "title": "",
       "fullFile": "cypress/e2e/gs64/staging/brasil/regresion/calendarios.cy.js",
       "file": "cypress/e2e/gs64/staging/brasil/regresion/calendarios.cy.js",
@@ -85,7 +262,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "92cc8369-0ba1-4c35-9392-b9b27619f715",
+          "uuid": "6e3a6ee9-89e7-48c2-b6c8-fba674ebcc48",
           "title": "Calendarios",
           "fullFile": "",
           "file": "",
@@ -96,7 +273,7 @@
               "title": "Ingresar en Calendarios",
               "fullTitle": "Calendarios Ingresar en Calendarios",
               "timedOut": null,
-              "duration": 1157,
+              "duration": 0,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -105,8 +282,8 @@
               "context": null,
               "code": "cy.visit(_constants.default.PEPPER_LOCATION + /calendars/);\ncy.validacionesGralesMenu();",
               "err": {},
-              "uuid": "df180113-853e-47d1-8dbe-634a39859f00",
-              "parentUUID": "92cc8369-0ba1-4c35-9392-b9b27619f715",
+              "uuid": "a6617830-e616-4078-bab8-54b57687214f",
+              "parentUUID": "6e3a6ee9-89e7-48c2-b6c8-fba674ebcc48",
               "isHook": false,
               "skipped": false
             },
@@ -114,87 +291,88 @@
               "title": "Recorrer todos los calendarios haciendo click en Editar",
               "fullTitle": "Calendarios Recorrer todos los calendarios haciendo click en Editar",
               "timedOut": null,
-              "duration": 514,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.recorrerElementosEditables();",
               "err": {},
-              "uuid": "cf47b9b4-8e0b-47f5-965d-4e897a03b483",
-              "parentUUID": "92cc8369-0ba1-4c35-9392-b9b27619f715",
+              "uuid": "ef8665eb-3474-480f-8e16-b2290f1c96d3",
+              "parentUUID": "6e3a6ee9-89e7-48c2-b6c8-fba674ebcc48",
               "isHook": false,
-              "skipped": false
+              "skipped": true
             },
             {
               "title": "Recorrer todos los calendarios haciendo click en Eliminar",
               "fullTitle": "Calendarios Recorrer todos los calendarios haciendo click en Eliminar",
               "timedOut": null,
-              "duration": 470,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.recorrerElementosEliminables();",
               "err": {},
-              "uuid": "ec0afd93-64f8-4922-941f-8f215e5c5770",
-              "parentUUID": "92cc8369-0ba1-4c35-9392-b9b27619f715",
+              "uuid": "5b51f8db-1b4e-486a-ae75-164a14dc8af6",
+              "parentUUID": "6e3a6ee9-89e7-48c2-b6c8-fba674ebcc48",
               "isHook": false,
-              "skipped": false
+              "skipped": true
             },
             {
               "title": "Validar la creación de una regla de Calendario",
               "fullTitle": "Calendarios Validar la creación de una regla de Calendario",
               "timedOut": null,
-              "duration": 389,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.validarReglaCalendario();",
               "err": {},
-              "uuid": "5c5e1fc1-eeaf-41f4-8ab0-a07a55c14051",
-              "parentUUID": "92cc8369-0ba1-4c35-9392-b9b27619f715",
+              "uuid": "cff6d847-550c-49d0-99e8-e19071f2b246",
+              "parentUUID": "6e3a6ee9-89e7-48c2-b6c8-fba674ebcc48",
               "isHook": false,
-              "skipped": false
+              "skipped": true
             },
             {
               "title": "ABM de Calendarios",
               "fullTitle": "Calendarios ABM de Calendarios",
               "timedOut": null,
-              "duration": 1962,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.abmParametrizaciones(\"Cypress\");",
               "err": {},
-              "uuid": "a4b3c889-a9ec-473f-ad8a-9679da3dd80e",
-              "parentUUID": "92cc8369-0ba1-4c35-9392-b9b27619f715",
+              "uuid": "e574227e-cbd7-439d-8dbc-d44ec35187de",
+              "parentUUID": "6e3a6ee9-89e7-48c2-b6c8-fba674ebcc48",
               "isHook": false,
-              "skipped": false
+              "skipped": true
             }
           ],
           "suites": [],
           "passes": [
-            "df180113-853e-47d1-8dbe-634a39859f00",
-            "cf47b9b4-8e0b-47f5-965d-4e897a03b483",
-            "ec0afd93-64f8-4922-941f-8f215e5c5770",
-            "5c5e1fc1-eeaf-41f4-8ab0-a07a55c14051",
-            "a4b3c889-a9ec-473f-ad8a-9679da3dd80e"
+            "a6617830-e616-4078-bab8-54b57687214f"
           ],
           "failures": [],
           "pending": [],
-          "skipped": [],
-          "duration": 4492,
+          "skipped": [
+            "ef8665eb-3474-480f-8e16-b2290f1c96d3",
+            "5b51f8db-1b4e-486a-ae75-164a14dc8af6",
+            "cff6d847-550c-49d0-99e8-e19071f2b246",
+            "e574227e-cbd7-439d-8dbc-d44ec35187de"
+          ],
+          "duration": 0,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -210,7 +388,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "5579bf4a-4465-4b45-8e19-bd1a9883ffc0",
+      "uuid": "7670264d-8e7c-4b27-81ab-b8cc0b359284",
       "title": "",
       "fullFile": "cypress/e2e/gs64/staging/brasil/regresion/emisores.cy.js",
       "file": "cypress/e2e/gs64/staging/brasil/regresion/emisores.cy.js",
@@ -219,7 +397,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "551c416e-ea00-4b13-99fe-3ee0eb6aea80",
+          "uuid": "4069a9b5-7a0c-4c55-998f-8355535a3e0d",
           "title": "Emisores",
           "fullFile": "",
           "file": "",
@@ -230,7 +408,7 @@
               "title": "Ingresar en Emisores",
               "fullTitle": "Emisores Ingresar en Emisores",
               "timedOut": null,
-              "duration": 1104,
+              "duration": 0,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -239,8 +417,8 @@
               "context": null,
               "code": "cy.visit(_constants.default.PEPPER_LOCATION + /instrument-issuers/);\ncy.validacionesGralesMenu();",
               "err": {},
-              "uuid": "41633002-fe4d-4b23-96b0-747992870f87",
-              "parentUUID": "551c416e-ea00-4b13-99fe-3ee0eb6aea80",
+              "uuid": "cc6d6f57-e969-4935-8547-f897ecc2a174",
+              "parentUUID": "4069a9b5-7a0c-4c55-998f-8355535a3e0d",
               "isHook": false,
               "skipped": false
             },
@@ -248,68 +426,69 @@
               "title": "Recorrer todos los emisores haciendo click en Editar",
               "fullTitle": "Emisores Recorrer todos los emisores haciendo click en Editar",
               "timedOut": null,
-              "duration": 2636,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.recorrerElementosEditables();",
               "err": {},
-              "uuid": "cc492489-32a8-4294-b087-6553efeb9f2f",
-              "parentUUID": "551c416e-ea00-4b13-99fe-3ee0eb6aea80",
+              "uuid": "3933de7f-a03d-47d2-af16-7f42e72804c0",
+              "parentUUID": "4069a9b5-7a0c-4c55-998f-8355535a3e0d",
               "isHook": false,
-              "skipped": false
+              "skipped": true
             },
             {
               "title": "Recorrer todos los emisores haciendo click en Eliminar",
               "fullTitle": "Emisores Recorrer todos los emisores haciendo click en Eliminar",
               "timedOut": null,
-              "duration": 2605,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.recorrerElementosEliminables();",
               "err": {},
-              "uuid": "e35a903e-3c88-4dc1-a561-04706b16a11c",
-              "parentUUID": "551c416e-ea00-4b13-99fe-3ee0eb6aea80",
+              "uuid": "9a9a6698-e6d9-42a1-9cb2-9d99d898b6b0",
+              "parentUUID": "4069a9b5-7a0c-4c55-998f-8355535a3e0d",
               "isHook": false,
-              "skipped": false
+              "skipped": true
             },
             {
               "title": "ABM de de Emisores",
               "fullTitle": "Emisores ABM de de Emisores",
               "timedOut": null,
-              "duration": 1956,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.abmParametrizaciones(\"Cypress\");",
               "err": {},
-              "uuid": "1d592821-11f1-4bb2-9eb8-1d87fd083f61",
-              "parentUUID": "551c416e-ea00-4b13-99fe-3ee0eb6aea80",
+              "uuid": "dabf77ad-95d4-4e53-b591-8861d14d8f09",
+              "parentUUID": "4069a9b5-7a0c-4c55-998f-8355535a3e0d",
               "isHook": false,
-              "skipped": false
+              "skipped": true
             }
           ],
           "suites": [],
           "passes": [
-            "41633002-fe4d-4b23-96b0-747992870f87",
-            "cc492489-32a8-4294-b087-6553efeb9f2f",
-            "e35a903e-3c88-4dc1-a561-04706b16a11c",
-            "1d592821-11f1-4bb2-9eb8-1d87fd083f61"
+            "cc6d6f57-e969-4935-8547-f897ecc2a174"
           ],
           "failures": [],
           "pending": [],
-          "skipped": [],
-          "duration": 8301,
+          "skipped": [
+            "3933de7f-a03d-47d2-af16-7f42e72804c0",
+            "9a9a6698-e6d9-42a1-9cb2-9d99d898b6b0",
+            "dabf77ad-95d4-4e53-b591-8861d14d8f09"
+          ],
+          "duration": 0,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -325,7 +504,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "9ac66857-96f4-40d3-a0ce-6dc6515c0f87",
+      "uuid": "7be6a55e-1a9f-4bc5-baa0-f2d9641afaf8",
       "title": "",
       "fullFile": "cypress/e2e/gs64/staging/brasil/regresion/home.cy.js",
       "file": "cypress/e2e/gs64/staging/brasil/regresion/home.cy.js",
@@ -334,7 +513,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "3eb62e8f-a30d-4ada-ab14-99c5c8ad0071",
+          "uuid": "32de20e5-28fc-4515-93c0-21ee06274022",
           "title": "Home",
           "fullFile": "",
           "file": "",
@@ -345,7 +524,7 @@
               "title": "Los elementos del Home deben mostrarse correctamente",
               "fullTitle": "Home Los elementos del Home deben mostrarse correctamente",
               "timedOut": null,
-              "duration": 915,
+              "duration": 0,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -354,20 +533,20 @@
               "context": null,
               "code": "cy.visit(_constants.default.PEPPER_LOCATION);\ncy.validacionesHome();",
               "err": {},
-              "uuid": "24796f65-ef01-4be1-8ebd-f4a322b4d6e9",
-              "parentUUID": "3eb62e8f-a30d-4ada-ab14-99c5c8ad0071",
+              "uuid": "c465e809-d4aa-4f54-a999-88d291c1b8aa",
+              "parentUUID": "32de20e5-28fc-4515-93c0-21ee06274022",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "24796f65-ef01-4be1-8ebd-f4a322b4d6e9"
+            "c465e809-d4aa-4f54-a999-88d291c1b8aa"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 915,
+          "duration": 0,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -383,7 +562,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "32ee0fa9-e19c-4dd1-89f2-fe15b89ed6b2",
+      "uuid": "a6738b66-79a5-4c0e-af3a-0b25e8497bae",
       "title": "",
       "fullFile": "cypress/e2e/gs64/staging/brasil/regresion/indices.cy.js",
       "file": "cypress/e2e/gs64/staging/brasil/regresion/indices.cy.js",
@@ -392,7 +571,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "4f271620-61b2-4e91-a561-aabaa04aa05e",
+          "uuid": "207dcb97-89b2-4b3b-b9c7-1fcce8117121",
           "title": "Indices",
           "fullFile": "",
           "file": "",
@@ -403,7 +582,7 @@
               "title": "Ingresar en Indices",
               "fullTitle": "Indices Ingresar en Indices",
               "timedOut": null,
-              "duration": 696,
+              "duration": 0,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -412,8 +591,8 @@
               "context": null,
               "code": "cy.visit(_constants.default.PEPPER_LOCATION + /financial-indexes/);\ncy.validacionesGralesMenu();",
               "err": {},
-              "uuid": "c3592ae7-c67d-4486-acb8-165968552250",
-              "parentUUID": "4f271620-61b2-4e91-a561-aabaa04aa05e",
+              "uuid": "3cb39636-b2da-453b-a605-b37e018dc0b9",
+              "parentUUID": "207dcb97-89b2-4b3b-b9c7-1fcce8117121",
               "isHook": false,
               "skipped": false
             },
@@ -421,68 +600,69 @@
               "title": "Recorrer todos los índices haciendo click en Editar",
               "fullTitle": "Indices Recorrer todos los índices haciendo click en Editar",
               "timedOut": null,
-              "duration": 263,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.recorrerElementosEditables();",
               "err": {},
-              "uuid": "717e17c5-4dcd-4bb4-b5d8-251919d9249f",
-              "parentUUID": "4f271620-61b2-4e91-a561-aabaa04aa05e",
+              "uuid": "9e4acfa2-8798-4238-8121-9aa15c2f1030",
+              "parentUUID": "207dcb97-89b2-4b3b-b9c7-1fcce8117121",
               "isHook": false,
-              "skipped": false
+              "skipped": true
             },
             {
               "title": "Recorrer todos los índices haciendo click en Eliminar",
               "fullTitle": "Indices Recorrer todos los índices haciendo click en Eliminar",
               "timedOut": null,
-              "duration": 242,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.recorrerElementosEliminables();",
               "err": {},
-              "uuid": "7ab182b9-fa52-43ae-b76f-6402a42f3b96",
-              "parentUUID": "4f271620-61b2-4e91-a561-aabaa04aa05e",
+              "uuid": "692247ea-17c9-44a7-8c8d-dadfb6cba9f0",
+              "parentUUID": "207dcb97-89b2-4b3b-b9c7-1fcce8117121",
               "isHook": false,
-              "skipped": false
+              "skipped": true
             },
             {
               "title": "ABM de de Indices",
               "fullTitle": "Indices ABM de de Indices",
               "timedOut": null,
-              "duration": 1829,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.abmParametrizaciones(\"Cypress\");",
               "err": {},
-              "uuid": "fcc1caa8-bda8-48d5-bad3-387e2ded91a9",
-              "parentUUID": "4f271620-61b2-4e91-a561-aabaa04aa05e",
+              "uuid": "650f8de1-8132-4bbc-bb3e-4b497482dc31",
+              "parentUUID": "207dcb97-89b2-4b3b-b9c7-1fcce8117121",
               "isHook": false,
-              "skipped": false
+              "skipped": true
             }
           ],
           "suites": [],
           "passes": [
-            "c3592ae7-c67d-4486-acb8-165968552250",
-            "717e17c5-4dcd-4bb4-b5d8-251919d9249f",
-            "7ab182b9-fa52-43ae-b76f-6402a42f3b96",
-            "fcc1caa8-bda8-48d5-bad3-387e2ded91a9"
+            "3cb39636-b2da-453b-a605-b37e018dc0b9"
           ],
           "failures": [],
           "pending": [],
-          "skipped": [],
-          "duration": 3030,
+          "skipped": [
+            "9e4acfa2-8798-4238-8121-9aa15c2f1030",
+            "692247ea-17c9-44a7-8c8d-dadfb6cba9f0",
+            "650f8de1-8132-4bbc-bb3e-4b497482dc31"
+          ],
+          "duration": 0,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -498,7 +678,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "b29821a0-48ac-4aa2-b197-d4799e4acb91",
+      "uuid": "77446d2e-40d5-45fd-84df-bf6529260cdc",
       "title": "",
       "fullFile": "cypress/e2e/gs64/staging/brasil/regresion/leyes_de_bonos.cy.js",
       "file": "cypress/e2e/gs64/staging/brasil/regresion/leyes_de_bonos.cy.js",
@@ -507,7 +687,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "0552f0c5-f1a4-48fb-a7c8-aee7ed1e68b1",
+          "uuid": "42719190-0325-4613-a4f3-71433f8c0655",
           "title": "Leyes de bonos",
           "fullFile": "",
           "file": "",
@@ -518,7 +698,7 @@
               "title": "Ingresar en Leyes de bonos",
               "fullTitle": "Leyes de bonos Ingresar en Leyes de bonos",
               "timedOut": null,
-              "duration": 687,
+              "duration": 0,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -527,8 +707,8 @@
               "context": null,
               "code": "cy.visit(_constants.default.PEPPER_LOCATION + /bond-laws/);\ncy.validacionesGralesMenu();",
               "err": {},
-              "uuid": "ff16fa28-5739-456e-a783-fe69befb0c4f",
-              "parentUUID": "0552f0c5-f1a4-48fb-a7c8-aee7ed1e68b1",
+              "uuid": "f28e5867-3d92-4764-b098-14e4e4a67ed1",
+              "parentUUID": "42719190-0325-4613-a4f3-71433f8c0655",
               "isHook": false,
               "skipped": false
             },
@@ -536,68 +716,69 @@
               "title": "Recorrer todas las leyes haciendo click en Editar",
               "fullTitle": "Leyes de bonos Recorrer todas las leyes haciendo click en Editar",
               "timedOut": null,
-              "duration": 514,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.recorrerElementosEditables();",
               "err": {},
-              "uuid": "7f7b9147-962d-4fcc-b3e7-3ba93a180376",
-              "parentUUID": "0552f0c5-f1a4-48fb-a7c8-aee7ed1e68b1",
+              "uuid": "1a26eef7-67a5-4ee2-a9a3-c77f63c9336a",
+              "parentUUID": "42719190-0325-4613-a4f3-71433f8c0655",
               "isHook": false,
-              "skipped": false
+              "skipped": true
             },
             {
               "title": "Recorrer todos las leyes haciendo click en Eliminar",
               "fullTitle": "Leyes de bonos Recorrer todos las leyes haciendo click en Eliminar",
               "timedOut": null,
-              "duration": 459,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.recorrerElementosEliminables();",
               "err": {},
-              "uuid": "13147baa-fd6e-458b-956d-ea0441efe468",
-              "parentUUID": "0552f0c5-f1a4-48fb-a7c8-aee7ed1e68b1",
+              "uuid": "5aa657c8-ce67-46c2-8c34-2364e18d1666",
+              "parentUUID": "42719190-0325-4613-a4f3-71433f8c0655",
               "isHook": false,
-              "skipped": false
+              "skipped": true
             },
             {
               "title": "ABM de de Leyes de bonos",
               "fullTitle": "Leyes de bonos ABM de de Leyes de bonos",
               "timedOut": null,
-              "duration": 1798,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.abmParametrizaciones(\"Cypress\");",
               "err": {},
-              "uuid": "b90c823d-4905-4bdb-ac26-b4972f0ea5db",
-              "parentUUID": "0552f0c5-f1a4-48fb-a7c8-aee7ed1e68b1",
+              "uuid": "3db4509e-7169-4905-a707-58a8a36acf7e",
+              "parentUUID": "42719190-0325-4613-a4f3-71433f8c0655",
               "isHook": false,
-              "skipped": false
+              "skipped": true
             }
           ],
           "suites": [],
           "passes": [
-            "ff16fa28-5739-456e-a783-fe69befb0c4f",
-            "7f7b9147-962d-4fcc-b3e7-3ba93a180376",
-            "13147baa-fd6e-458b-956d-ea0441efe468",
-            "b90c823d-4905-4bdb-ac26-b4972f0ea5db"
+            "f28e5867-3d92-4764-b098-14e4e4a67ed1"
           ],
           "failures": [],
           "pending": [],
-          "skipped": [],
-          "duration": 3458,
+          "skipped": [
+            "1a26eef7-67a5-4ee2-a9a3-c77f63c9336a",
+            "5aa657c8-ce67-46c2-8c34-2364e18d1666",
+            "3db4509e-7169-4905-a707-58a8a36acf7e"
+          ],
+          "duration": 0,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -613,7 +794,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "2968ba63-16d5-4f9a-aa7a-f8f4894b7a57",
+      "uuid": "87d403b2-1211-422e-8abe-2eccc10c9c9c",
       "title": "",
       "fullFile": "cypress/e2e/gs64/staging/brasil/regresion/monedas.cy.js",
       "file": "cypress/e2e/gs64/staging/brasil/regresion/monedas.cy.js",
@@ -622,7 +803,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "ff08b032-ff7c-49fa-96cd-163d581a1478",
+          "uuid": "399856a4-ec0c-4764-88cf-cae14e61ae60",
           "title": "Monedas",
           "fullFile": "",
           "file": "",
@@ -633,7 +814,7 @@
               "title": "Ingresar en Monedas",
               "fullTitle": "Monedas Ingresar en Monedas",
               "timedOut": null,
-              "duration": 701,
+              "duration": 0,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -642,8 +823,8 @@
               "context": null,
               "code": "cy.visit(_constants.default.PEPPER_LOCATION + /currencies/);\ncy.validacionesGralesMenu();",
               "err": {},
-              "uuid": "f6641e13-c893-4a27-bb50-b7664e526f22",
-              "parentUUID": "ff08b032-ff7c-49fa-96cd-163d581a1478",
+              "uuid": "38f244d6-32a1-4c65-be09-72a06f48cbe5",
+              "parentUUID": "399856a4-ec0c-4764-88cf-cae14e61ae60",
               "isHook": false,
               "skipped": false
             },
@@ -651,73 +832,69 @@
               "title": "Recorrer todas las monedas haciendo click en Editar",
               "fullTitle": "Monedas Recorrer todas las monedas haciendo click en Editar",
               "timedOut": null,
-              "duration": 507,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.recorrerElementosEditables();",
               "err": {},
-              "uuid": "869287f9-0a98-43ce-8149-92453b76917c",
-              "parentUUID": "ff08b032-ff7c-49fa-96cd-163d581a1478",
+              "uuid": "063f83b9-8bcf-4b34-a354-d2b0ef0f68b1",
+              "parentUUID": "399856a4-ec0c-4764-88cf-cae14e61ae60",
               "isHook": false,
-              "skipped": false
+              "skipped": true
             },
             {
               "title": "Recorrer todas las monedas haciendo click en Eliminar",
               "fullTitle": "Monedas Recorrer todas las monedas haciendo click en Eliminar",
               "timedOut": null,
-              "duration": 436,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.recorrerElementosEliminables();",
               "err": {},
-              "uuid": "6dd9bbb7-ed47-4d14-8854-be9ca1405d1d",
-              "parentUUID": "ff08b032-ff7c-49fa-96cd-163d581a1478",
+              "uuid": "35532e4e-535b-4d4f-b089-04a0d40ab7ec",
+              "parentUUID": "399856a4-ec0c-4764-88cf-cae14e61ae60",
               "isHook": false,
-              "skipped": false
+              "skipped": true
             },
             {
               "title": "ABM de Monedas",
               "fullTitle": "Monedas ABM de Monedas",
               "timedOut": null,
-              "duration": 1004,
-              "state": "failed",
+              "duration": 0,
+              "state": "skipped",
               "speed": null,
               "pass": false,
-              "fail": true,
+              "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.abmMonedas(\"Cypress\");",
-              "err": {
-                "message": "AxiosError: The following error originated from your application code, not from Cypress. It was caused by an unhandled promise rejection.\n\n  > Request failed with status code 409\n\nWhen Cypress detects uncaught errors originating from your application it will automatically fail the current test.\n\nThis behavior is configurable, and you can choose to turn this off by listening to the `uncaught:exception` event.\n\nhttps://on.cypress.io/uncaught-exception-from-application",
-                "estack": "AxiosError: The following error originated from your application code, not from Cypress. It was caused by an unhandled promise rejection.\n\n  > Request failed with status code 409\n\nWhen Cypress detects uncaught errors originating from your application it will automatically fail the current test.\n\nThis behavior is configurable, and you can choose to turn this off by listening to the `uncaught:exception` event.\n\nhttps://on.cypress.io/uncaught-exception-from-application\n    at so (https://admin-64.brasil-staging.mercap.com.ar/assets/Table-ecfccea1.js:6:1042)\n    at XMLHttpRequest.S (https://admin-64.brasil-staging.mercap.com.ar/assets/Table-ecfccea1.js:6:6061)\n    at Vr.request (https://admin-64.brasil-staging.mercap.com.ar/assets/Table-ecfccea1.js:8:1952)",
-                "diff": null
-              },
-              "uuid": "1897149e-4c4c-4fb3-80c7-231d442ea51d",
-              "parentUUID": "ff08b032-ff7c-49fa-96cd-163d581a1478",
+              "err": {},
+              "uuid": "4ad67b1b-c632-40cb-a18b-1809cf0b9bb7",
+              "parentUUID": "399856a4-ec0c-4764-88cf-cae14e61ae60",
               "isHook": false,
-              "skipped": false
+              "skipped": true
             }
           ],
           "suites": [],
           "passes": [
-            "f6641e13-c893-4a27-bb50-b7664e526f22",
-            "869287f9-0a98-43ce-8149-92453b76917c",
-            "6dd9bbb7-ed47-4d14-8854-be9ca1405d1d"
+            "38f244d6-32a1-4c65-be09-72a06f48cbe5"
           ],
-          "failures": [
-            "1897149e-4c4c-4fb3-80c7-231d442ea51d"
-          ],
+          "failures": [],
           "pending": [],
-          "skipped": [],
-          "duration": 2648,
+          "skipped": [
+            "063f83b9-8bcf-4b34-a354-d2b0ef0f68b1",
+            "35532e4e-535b-4d4f-b089-04a0d40ab7ec",
+            "4ad67b1b-c632-40cb-a18b-1809cf0b9bb7"
+          ],
+          "duration": 0,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -733,7 +910,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "cdd9ddcf-e46f-45cb-85c3-d72fe233279d",
+      "uuid": "ee9969a6-fbcb-4ef1-8a95-a9cc5fc6b68d",
       "title": "",
       "fullFile": "cypress/e2e/gs64/staging/brasil/regresion/paises.cy.js",
       "file": "cypress/e2e/gs64/staging/brasil/regresion/paises.cy.js",
@@ -742,7 +919,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "aebc29d2-5cea-4752-9f68-a620c4c40281",
+          "uuid": "08435a4f-4750-49e6-a046-1937162c7591",
           "title": "Países",
           "fullFile": "",
           "file": "",
@@ -762,8 +939,8 @@
               "context": null,
               "code": "cy.visit(_constants.default.PEPPER_LOCATION + /countries/);\ncy.validacionesGralesMenu();",
               "err": {},
-              "uuid": "8b3e342b-c6e7-495c-9b0a-d9a45115eb9c",
-              "parentUUID": "aebc29d2-5cea-4752-9f68-a620c4c40281",
+              "uuid": "445a6101-0ca4-4e9a-8e53-f691671267a8",
+              "parentUUID": "08435a4f-4750-49e6-a046-1937162c7591",
               "isHook": false,
               "skipped": false
             },
@@ -780,8 +957,8 @@
               "context": null,
               "code": "cy.recorrerElementosEditables();",
               "err": {},
-              "uuid": "0d04309b-f15f-4041-96ae-441709ca634a",
-              "parentUUID": "aebc29d2-5cea-4752-9f68-a620c4c40281",
+              "uuid": "d980c9fb-d8c4-4a47-a28c-effbe0b7bca1",
+              "parentUUID": "08435a4f-4750-49e6-a046-1937162c7591",
               "isHook": false,
               "skipped": true
             },
@@ -798,8 +975,8 @@
               "context": null,
               "code": "cy.recorrerElementosEliminables();",
               "err": {},
-              "uuid": "2745459a-3397-41ff-8818-6380c561aee0",
-              "parentUUID": "aebc29d2-5cea-4752-9f68-a620c4c40281",
+              "uuid": "8347e93c-3b19-4fd2-a47b-bedecf16d606",
+              "parentUUID": "08435a4f-4750-49e6-a046-1937162c7591",
               "isHook": false,
               "skipped": true
             },
@@ -816,22 +993,22 @@
               "context": null,
               "code": "cy.abmParametrizaciones(\"Cypress\");",
               "err": {},
-              "uuid": "1dd012d2-f8fb-4361-81f8-347a5fb4119c",
-              "parentUUID": "aebc29d2-5cea-4752-9f68-a620c4c40281",
+              "uuid": "f90cdadf-35cc-4ed8-be12-ebfc58f59eb1",
+              "parentUUID": "08435a4f-4750-49e6-a046-1937162c7591",
               "isHook": false,
               "skipped": true
             }
           ],
           "suites": [],
           "passes": [
-            "8b3e342b-c6e7-495c-9b0a-d9a45115eb9c"
+            "445a6101-0ca4-4e9a-8e53-f691671267a8"
           ],
           "failures": [],
           "pending": [],
           "skipped": [
-            "0d04309b-f15f-4041-96ae-441709ca634a",
-            "2745459a-3397-41ff-8818-6380c561aee0",
-            "1dd012d2-f8fb-4361-81f8-347a5fb4119c"
+            "d980c9fb-d8c4-4a47-a28c-effbe0b7bca1",
+            "8347e93c-3b19-4fd2-a47b-bedecf16d606",
+            "f90cdadf-35cc-4ed8-be12-ebfc58f59eb1"
           ],
           "duration": 0,
           "root": false,
@@ -849,7 +1026,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "cb3da64a-1bb6-43c4-a27d-fc79fe9ae889",
+      "uuid": "c08153da-d2e9-4b1e-baaf-75b866955009",
       "title": "",
       "fullFile": "cypress/e2e/gs64/staging/brasil/regresion/tasas.cy.js",
       "file": "cypress/e2e/gs64/staging/brasil/regresion/tasas.cy.js",
@@ -858,7 +1035,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "48343910-b417-480e-ad54-7edc1d674a81",
+          "uuid": "133f331f-b461-493d-a06d-985c00ccaeef",
           "title": "Tasas",
           "fullFile": "",
           "file": "",
@@ -878,8 +1055,8 @@
               "context": null,
               "code": "cy.visit(_constants.default.PEPPER_LOCATION + /financial-rates/);\ncy.validacionesGralesMenu();",
               "err": {},
-              "uuid": "ee666c5a-4122-4ae7-b2e0-fbca5ab78203",
-              "parentUUID": "48343910-b417-480e-ad54-7edc1d674a81",
+              "uuid": "b27d76f8-e97e-4081-bc68-1e3358589248",
+              "parentUUID": "133f331f-b461-493d-a06d-985c00ccaeef",
               "isHook": false,
               "skipped": false
             },
@@ -896,8 +1073,8 @@
               "context": null,
               "code": "cy.recorrerElementosEditables();",
               "err": {},
-              "uuid": "2ae02a2a-a4a8-49d6-aa59-b2d8e505bb09",
-              "parentUUID": "48343910-b417-480e-ad54-7edc1d674a81",
+              "uuid": "125fbee3-ecb7-4f3b-96e8-3808acbe3462",
+              "parentUUID": "133f331f-b461-493d-a06d-985c00ccaeef",
               "isHook": false,
               "skipped": true
             },
@@ -914,8 +1091,8 @@
               "context": null,
               "code": "cy.recorrerElementosEliminables();",
               "err": {},
-              "uuid": "fde510e7-71bd-4144-bb19-514c61275037",
-              "parentUUID": "48343910-b417-480e-ad54-7edc1d674a81",
+              "uuid": "b169513a-d128-491e-921e-32053e4d8212",
+              "parentUUID": "133f331f-b461-493d-a06d-985c00ccaeef",
               "isHook": false,
               "skipped": true
             },
@@ -930,10 +1107,10 @@
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "cy.crearTasaOtroPlazo(2, \"Tasa Cypress Plazo Otros\", \"Local\");\ncy.modificarTasaOtroPlazo(\"Tasa Cypress Plazo Otros\", 2, \"Default\");\ncy.eliminarTasa(\"Tasa Cypress Plazo Otros\");",
+              "code": "cy.crearTasaOtroPlazo(2, \"Tasa Cypress Plazo Otros\", \"Local\");\ncy.modificarTasaOtroPlazo(\"Tasa Cypress Plazo Otros\", 2, \"Default\");\ncy.eliminarInstrumento(\"Tasa Cypress Plazo Otros\");",
               "err": {},
-              "uuid": "98ab1550-f0bb-4cb1-af78-56b47edc56e8",
-              "parentUUID": "48343910-b417-480e-ad54-7edc1d674a81",
+              "uuid": "0a8bc4ef-4e99-48ba-b6bf-54d13ab22e4f",
+              "parentUUID": "133f331f-b461-493d-a06d-985c00ccaeef",
               "isHook": false,
               "skipped": true
             },
@@ -948,10 +1125,10 @@
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "cy.visit(_constants.default.PEPPER_LOCATION + /financial-rates/);\ncy.crearTasa(plazo).then(nombreTasa => {\n  cy.modificarTasa(nombreTasa, plazo).then(nombreModificado => {\n    cy.eliminarTasa(nombreModificado);\n  });\n});",
+              "code": "cy.visit(_constants.default.PEPPER_LOCATION + /financial-rates/);\ncy.crearTasa(plazo).then(nombreTasa => {\n  cy.modificarTasa(nombreTasa, plazo).then(nombreModificado => {\n    cy.eliminarInstrumento(nombreModificado);\n  });\n});",
               "err": {},
-              "uuid": "3fcbc4fc-febb-46c9-94ba-2bc29a08bbb3",
-              "parentUUID": "48343910-b417-480e-ad54-7edc1d674a81",
+              "uuid": "24fed82c-340d-4187-b1e5-f424f29018e2",
+              "parentUUID": "133f331f-b461-493d-a06d-985c00ccaeef",
               "isHook": false,
               "skipped": true
             },
@@ -966,10 +1143,10 @@
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "cy.visit(_constants.default.PEPPER_LOCATION + /financial-rates/);\ncy.crearTasa(plazo).then(nombreTasa => {\n  cy.modificarTasa(nombreTasa, plazo).then(nombreModificado => {\n    cy.eliminarTasa(nombreModificado);\n  });\n});",
+              "code": "cy.visit(_constants.default.PEPPER_LOCATION + /financial-rates/);\ncy.crearTasa(plazo).then(nombreTasa => {\n  cy.modificarTasa(nombreTasa, plazo).then(nombreModificado => {\n    cy.eliminarInstrumento(nombreModificado);\n  });\n});",
               "err": {},
-              "uuid": "e33f84f6-f776-4412-9be5-d6cffca1d347",
-              "parentUUID": "48343910-b417-480e-ad54-7edc1d674a81",
+              "uuid": "3dfe692a-ef3c-4ed8-827e-6381673f20bf",
+              "parentUUID": "133f331f-b461-493d-a06d-985c00ccaeef",
               "isHook": false,
               "skipped": true
             },
@@ -984,10 +1161,10 @@
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "cy.visit(_constants.default.PEPPER_LOCATION + /financial-rates/);\ncy.crearTasa(plazo).then(nombreTasa => {\n  cy.modificarTasa(nombreTasa, plazo).then(nombreModificado => {\n    cy.eliminarTasa(nombreModificado);\n  });\n});",
+              "code": "cy.visit(_constants.default.PEPPER_LOCATION + /financial-rates/);\ncy.crearTasa(plazo).then(nombreTasa => {\n  cy.modificarTasa(nombreTasa, plazo).then(nombreModificado => {\n    cy.eliminarInstrumento(nombreModificado);\n  });\n});",
               "err": {},
-              "uuid": "afe1a5ba-982e-44fc-ba79-2d8d3afa5a06",
-              "parentUUID": "48343910-b417-480e-ad54-7edc1d674a81",
+              "uuid": "65cfac43-c8f9-482e-80e8-1a4f53cccba9",
+              "parentUUID": "133f331f-b461-493d-a06d-985c00ccaeef",
               "isHook": false,
               "skipped": true
             },
@@ -1002,10 +1179,10 @@
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "cy.visit(_constants.default.PEPPER_LOCATION + /financial-rates/);\ncy.crearTasa(plazo).then(nombreTasa => {\n  cy.modificarTasa(nombreTasa, plazo).then(nombreModificado => {\n    cy.eliminarTasa(nombreModificado);\n  });\n});",
+              "code": "cy.visit(_constants.default.PEPPER_LOCATION + /financial-rates/);\ncy.crearTasa(plazo).then(nombreTasa => {\n  cy.modificarTasa(nombreTasa, plazo).then(nombreModificado => {\n    cy.eliminarInstrumento(nombreModificado);\n  });\n});",
               "err": {},
-              "uuid": "d2583ca0-ff17-4613-8b37-32313b723092",
-              "parentUUID": "48343910-b417-480e-ad54-7edc1d674a81",
+              "uuid": "08ae5f0f-1213-41d3-ab8f-d84dc459821f",
+              "parentUUID": "133f331f-b461-493d-a06d-985c00ccaeef",
               "isHook": false,
               "skipped": true
             },
@@ -1020,29 +1197,29 @@
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "cy.visit(_constants.default.PEPPER_LOCATION + /financial-rates/);\ncy.crearTasa(plazo).then(nombreTasa => {\n  cy.modificarTasa(nombreTasa, plazo).then(nombreModificado => {\n    cy.eliminarTasa(nombreModificado);\n  });\n});",
+              "code": "cy.visit(_constants.default.PEPPER_LOCATION + /financial-rates/);\ncy.crearTasa(plazo).then(nombreTasa => {\n  cy.modificarTasa(nombreTasa, plazo).then(nombreModificado => {\n    cy.eliminarInstrumento(nombreModificado);\n  });\n});",
               "err": {},
-              "uuid": "3baaae97-a21e-4bd3-8fe4-a8f909cee1ec",
-              "parentUUID": "48343910-b417-480e-ad54-7edc1d674a81",
+              "uuid": "b18d88bb-587c-4966-943d-d2ce04f37b5a",
+              "parentUUID": "133f331f-b461-493d-a06d-985c00ccaeef",
               "isHook": false,
               "skipped": true
             }
           ],
           "suites": [],
           "passes": [
-            "ee666c5a-4122-4ae7-b2e0-fbca5ab78203"
+            "b27d76f8-e97e-4081-bc68-1e3358589248"
           ],
           "failures": [],
           "pending": [],
           "skipped": [
-            "2ae02a2a-a4a8-49d6-aa59-b2d8e505bb09",
-            "fde510e7-71bd-4144-bb19-514c61275037",
-            "98ab1550-f0bb-4cb1-af78-56b47edc56e8",
-            "3fcbc4fc-febb-46c9-94ba-2bc29a08bbb3",
-            "e33f84f6-f776-4412-9be5-d6cffca1d347",
-            "afe1a5ba-982e-44fc-ba79-2d8d3afa5a06",
-            "d2583ca0-ff17-4613-8b37-32313b723092",
-            "3baaae97-a21e-4bd3-8fe4-a8f909cee1ec"
+            "125fbee3-ecb7-4f3b-96e8-3808acbe3462",
+            "b169513a-d128-491e-921e-32053e4d8212",
+            "0a8bc4ef-4e99-48ba-b6bf-54d13ab22e4f",
+            "24fed82c-340d-4187-b1e5-f424f29018e2",
+            "3dfe692a-ef3c-4ed8-827e-6381673f20bf",
+            "65cfac43-c8f9-482e-80e8-1a4f53cccba9",
+            "08ae5f0f-1213-41d3-ab8f-d84dc459821f",
+            "b18d88bb-587c-4966-943d-d2ce04f37b5a"
           ],
           "duration": 0,
           "root": false,
@@ -1060,7 +1237,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "16c9497c-3265-4030-833e-3568386fef80",
+      "uuid": "d9048715-bd1b-4f70-9d01-a058eab82e8b",
       "title": "",
       "fullFile": "cypress/e2e/gs64/staging/brasil/regresion/tipos_deuda.cy.js",
       "file": "cypress/e2e/gs64/staging/brasil/regresion/tipos_deuda.cy.js",
@@ -1069,7 +1246,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "4c4c11f3-39d1-43ba-bf84-a67869420c87",
+          "uuid": "2f3f16d9-b2d5-4512-96bd-03140bc9e516",
           "title": "Tipos de deuda",
           "fullFile": "",
           "file": "",
@@ -1089,8 +1266,8 @@
               "context": null,
               "code": "cy.visit(_constants.default.PEPPER_LOCATION + /debt-types/);\ncy.validacionesGralesMenu();",
               "err": {},
-              "uuid": "5c1d969a-285a-4f6b-b5e4-0f7092aad413",
-              "parentUUID": "4c4c11f3-39d1-43ba-bf84-a67869420c87",
+              "uuid": "3f1342f8-45f8-4f6f-9961-2cbd417f45ea",
+              "parentUUID": "2f3f16d9-b2d5-4512-96bd-03140bc9e516",
               "isHook": false,
               "skipped": false
             },
@@ -1107,8 +1284,8 @@
               "context": null,
               "code": "cy.recorrerElementosEditables();",
               "err": {},
-              "uuid": "ac5371c4-84f3-4e27-b5af-21aa78f2511b",
-              "parentUUID": "4c4c11f3-39d1-43ba-bf84-a67869420c87",
+              "uuid": "6d897b6c-822c-4a7c-8f2c-44554623a0b1",
+              "parentUUID": "2f3f16d9-b2d5-4512-96bd-03140bc9e516",
               "isHook": false,
               "skipped": true
             },
@@ -1125,8 +1302,8 @@
               "context": null,
               "code": "cy.recorrerElementosEliminables();",
               "err": {},
-              "uuid": "94a44e61-e7f0-4e44-8a26-a9d79a348fab",
-              "parentUUID": "4c4c11f3-39d1-43ba-bf84-a67869420c87",
+              "uuid": "9d46ddbb-1417-4bc7-b4da-77136984eb7c",
+              "parentUUID": "2f3f16d9-b2d5-4512-96bd-03140bc9e516",
               "isHook": false,
               "skipped": true
             },
@@ -1143,22 +1320,22 @@
               "context": null,
               "code": "cy.abmParametrizaciones(\"Cypress\");",
               "err": {},
-              "uuid": "d2e535cc-416f-4abe-9e9e-e43d813cf41c",
-              "parentUUID": "4c4c11f3-39d1-43ba-bf84-a67869420c87",
+              "uuid": "e76ee1cb-d4eb-4519-9139-ee944a88a430",
+              "parentUUID": "2f3f16d9-b2d5-4512-96bd-03140bc9e516",
               "isHook": false,
               "skipped": true
             }
           ],
           "suites": [],
           "passes": [
-            "5c1d969a-285a-4f6b-b5e4-0f7092aad413"
+            "3f1342f8-45f8-4f6f-9961-2cbd417f45ea"
           ],
           "failures": [],
           "pending": [],
           "skipped": [
-            "ac5371c4-84f3-4e27-b5af-21aa78f2511b",
-            "94a44e61-e7f0-4e44-8a26-a9d79a348fab",
-            "d2e535cc-416f-4abe-9e9e-e43d813cf41c"
+            "6d897b6c-822c-4a7c-8f2c-44554623a0b1",
+            "9d46ddbb-1417-4bc7-b4da-77136984eb7c",
+            "e76ee1cb-d4eb-4519-9139-ee944a88a430"
           ],
           "duration": 0,
           "root": false,
@@ -1176,7 +1353,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "ef7fe7ca-1d94-4d56-9540-db86d6012d66",
+      "uuid": "4df9290b-7a0a-420e-9eae-36a3cca0a2a4",
       "title": "",
       "fullFile": "cypress/e2e/gs64/staging/brasil/regresion/unidades_indexadas.cy.js",
       "file": "cypress/e2e/gs64/staging/brasil/regresion/unidades_indexadas.cy.js",
@@ -1185,7 +1362,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "d5fbce64-1e00-45a4-a76c-70bc051412cb",
+          "uuid": "3379da9e-8881-4e5d-bcf4-112b591c5292",
           "title": "Unidades indexadas de cuenta",
           "fullFile": "",
           "file": "",
@@ -1205,8 +1382,8 @@
               "context": null,
               "code": "cy.visit(_constants.default.PEPPER_LOCATION + /indexed-units-of-account/);\ncy.get('div.ball-loader').should('not.exist');\ncy.get('#page-header').contains('Administrar Unidades Indexadas').should('be.visible');\ncy.get('input#issuerSearch').should('be.visible');\ncy.get('#IndexedUnitsOfAccount-Table').should('be.visible');",
               "err": {},
-              "uuid": "cb4bef8a-adb2-4d72-a169-250dbacec01a",
-              "parentUUID": "d5fbce64-1e00-45a4-a76c-70bc051412cb",
+              "uuid": "2eb41ed1-fe8f-4e18-b16f-f35ecb30f51b",
+              "parentUUID": "3379da9e-8881-4e5d-bcf4-112b591c5292",
               "isHook": false,
               "skipped": false
             },
@@ -1223,20 +1400,20 @@
               "context": null,
               "code": "cy.abmUnidadesIndexadas(\"Cypress\");",
               "err": {},
-              "uuid": "9648cb9c-bd63-44ba-8800-55ce4f621764",
-              "parentUUID": "d5fbce64-1e00-45a4-a76c-70bc051412cb",
+              "uuid": "c195ea9b-ac68-42b8-a323-99c38a245650",
+              "parentUUID": "3379da9e-8881-4e5d-bcf4-112b591c5292",
               "isHook": false,
               "skipped": true
             }
           ],
           "suites": [],
           "passes": [
-            "cb4bef8a-adb2-4d72-a169-250dbacec01a"
+            "2eb41ed1-fe8f-4e18-b16f-f35ecb30f51b"
           ],
           "failures": [],
           "pending": [],
           "skipped": [
-            "9648cb9c-bd63-44ba-8800-55ce4f621764"
+            "c195ea9b-ac68-42b8-a323-99c38a245650"
           ],
           "duration": 0,
           "root": false,
