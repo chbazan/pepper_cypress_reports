@@ -8,9 +8,9 @@ Marvel APIs
   │ `Using "btoa" is deprecated. Use "require('btoa')" ins
   │ tead.`
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
+  │ '▶ [undefined] Ejecutando con ticker: NTEN11'
   └
-  GET https://api.brasil.mercap.com.ar/bonds [200 OK, 7.38kB, 1240ms]
+  GET https://api.brasil.mercap.com.ar/bonds [200 OK, 7.38kB, 668ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -426,9 +426,9 @@ Marvel APIs
   │ `Using "btoa" is deprecated. Use "require('btoa')" ins
   │ tead.`
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
+  │ '▶ [undefined] Ejecutando con ticker: NTEN11'
   └
-  GET https://api.brasil.mercap.com.ar/bonds?limit=5&start=2 [200 OK, 4.34kB, 668ms]
+  GET https://api.brasil.mercap.com.ar/bonds?limit=5&start=2 [200 OK, 4.34kB, 122ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -671,11 +671,14 @@ Marvel APIs
   │ `Using "btoa" is deprecated. Use "require('btoa')" ins
   │ tead.`
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
-  │ '▶ Ejecutando lookup para: AL30'
+  │ '▶ [undefined] Ejecutando con ticker: NTEN11'
+  │ '▶ Ejecutando lookup para: NTEN11'
   └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-01-07 [200 OK, 843B, 633ms]
-  GET https://api.brasil.mercap.com.ar/bonds?shortName=AL30 [200 OK, 740B, 211ms]
+  GET https://api.brasil.mercap.com.ar/tradable-securities?query=NTEN11&tradeDate=2026-01-07 [200 OK, 1.44kB, 469ms]
+  ┌
+  │ '🔎 SHORT_NAME encontrado: NTEN11'
+  └
+  GET https://api.brasil.mercap.com.ar/bonds?shortName=NTEN11 [200 OK, 1.36kB, 141ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -688,166 +691,235 @@ Marvel APIs
   │ 'Content-Type header is correct.'
   └
   ✓  Media-Type is correct
-  1. Response contains 'items' array with elements
-  2. Each bond has required properties
-  3. Each bond property has the correct format
-  4. Links are valid URLs
+  ┌
+  │ "'items' array is present and not empty."
+  └
+  ✓  Response contains 'items' array with elements
+  ┌
+  │ 'Bond 0 validated successfully.'
+  └
+  ✓  Each bond has required properties
+  ✓  Each bond property has the correct format
+  ✓  Links are valid URLs
   ✓  Global links are valid URLs
   ✓  Results match the query parameter
   ✓  Results respect the limit parameter
   ✓  Start parameter skips the correct number of bonds
   ✓  Error 406 response structure
   ✓  Limit parameter is 0, response should be 400
-  5⠄ TypeError in test-script
+  ┌
+  │ '✔ Variables seteadas:'
+  │ 'COUPONS:', 'https://api.brasil.mercap.com.ar/bonds/36
+  │ ba59c0-193f-422e-ac0f-6c107e3f2350/coupons'
+  │ 'IDENTIFIERS:', 'https://api.brasil.mercap.com.ar/bond
+  │ s/36ba59c0-193f-422e-ac0f-6c107e3f2350/identifiers'
+  │ 'SELF:', 'https://api.brasil.mercap.com.ar/bonds/36ba5
+  │ 9c0-193f-422e-ac0f-6c107e3f2350'
+  │ 'ISSUE_CONDITIONS:', 'https://api.brasil.mercap.com.ar
+  │ /bonds/36ba59c0-193f-422e-ac0f-6c107e3f2350/issue-cond
+  │ itions'
+  │ 'PAYMENT_SUMMARY:', 'https://api.brasil.mercap.com.ar/
+  │ bonds/36ba59c0-193f-422e-ac0f-6c107e3f2350/payment-sum
+  │ mary'
+  └
 
 ↳ Bond by UUID
   ┌
   │ `Using "btoa" is deprecated. Use "require('btoa')" ins
   │ tead.`
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
+  │ '▶ [undefined] Ejecutando con ticker: NTEN11'
   └
-  GET  [errored]
-     runtime:extensions~request: request url is empty
-  7⠄ JSONError in test-script
+  GET https://api.brasil.mercap.com.ar/bonds/36ba59c0-193f-422e-ac0f-6c107e3f2350 [200 OK, 1.34kB, 159ms]
+  ┌
+  │ 'Response received successfully.'
+  └
+  ✓  Response is received
+  ┌
+  │ 'Status code is 200.'
+  └
+  ✓  Status code is 200
+  ┌
+  │ 'Content-Type header is correct.'
+  └
+  ✓  Media-Type is correct
+  ┌
+  │ 'All required properties are present.'
+  └
+  ✓  Response has required properties
+  ┌
+  │ 'All properties have correct data types.'
+  └
+  ✓  Response properties have correct data types
+  ┌
+  │ 'All required link properties are present.'
+  └
+  ✓  Links object has required properties
+  ┌
+  │ 'All links are valid URLs.'
+  └
+  ✓  Links are valid URLs
+  ┌
+  │ 'shortName is the expected:', 'NTEN11'
+  └
+  ✓  ShortName and name are as expected
 
 ↳ Bond payment summary by UUID
   ┌
   │ `Using "btoa" is deprecated. Use "require('btoa')" ins
   │ tead.`
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
+  │ '▶ [undefined] Ejecutando con ticker: NTEN11'
   └
-  GET  [errored]
-     runtime:extensions~request: request url is empty
-  9⠄ JSONError in test-script
+  GET https://api.brasil.mercap.com.ar/bonds/36ba59c0-193f-422e-ac0f-6c107e3f2350/payment-summary [200 OK, 1.15kB, 125ms]
+  ┌
+  │ 'Response received successfully.'
+  └
+  ✓  Response is received
+  ┌
+  │ 'Status code is 200.'
+  └
+  ✓  Status code is 200
+  ┌
+  │ 'Content-Type header is correct.'
+  └
+  ✓  Media-Type is correct
+  ✓  All main properties have the correct type
+  ✓  Amortization has correct properties and should be bullet
+  ✓  Links URLs are valid
+  ✓  Interest has correct properties
+  ✓  Accruement has correct properties
 
 ↳ Bond coupons by UUID
   ┌
   │ `Using "btoa" is deprecated. Use "require('btoa')" ins
   │ tead.`
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
+  │ '▶ [undefined] Ejecutando con ticker: NTEN11'
   └
-  GET  [errored]
-     runtime:extensions~request: request url is empty
- 11⠄ JSONError in test-script
+  GET https://api.brasil.mercap.com.ar/bonds/36ba59c0-193f-422e-ac0f-6c107e3f2350/coupons [200 OK, 8.72kB, 2.1s]
+  ┌
+  │ 'Response received successfully.'
+  └
+  ✓  Response is received
+  ┌
+  │ 'Status code is 200.'
+  └
+  ✓  Status code is 200
+  ┌
+  │ 'Content-Type header is correct.'
+  └
+  ✓  Media-Type is correct
+  ┌
+  │ "'items' array is present."
+  └
+  ✓  Response has 'items' array
+  ┌
+  │ 'All items have required properties.'
+  └
+  ✓  Each item has required properties
+  ┌
+  │ "All 'interestRate' objects have required properties."
+  └
+  ✓  Verify that 'interestRate' has required properties
+  ┌
+  │ "All 'links' objects have required properties."
+  └
+  ✓  All 'links' objects have required properties
+  ┌
+  │ 'All dates have correct format.'
+  └
+  ✓  Dates have correct format
+  ┌
+  │ 'All links are valid URLs.'
+  └
+  ✓  Links are valid URLs
+  ┌
+  │ "The 'self' link is correct."
+  └
+  ✓  Verify that 'self' has the correct link
+  ┌
+  │ 'Coupon numbers are consecutive.'
+  └
+  ✓  Coupon numbers are consecutive
+  ┌
+  │ "All 'type' values in 'interestRate' are 'fixed'."
+  └
+  ✓  Verify that 'type' in 'interestRate' is 'fixed' for each item
 
 ↳ Bond issue conditions by UUID
   ┌
   │ `Using "btoa" is deprecated. Use "require('btoa')" ins
   │ tead.`
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
+  │ '▶ [undefined] Ejecutando con ticker: NTEN11'
   └
-  GET  [errored]
-     runtime:extensions~request: request url is empty
- 13⠄ JSONError in test-script
+  GET https://api.brasil.mercap.com.ar/bonds/36ba59c0-193f-422e-ac0f-6c107e3f2350/issue-conditions [200 OK, 1.32kB, 117ms]
+  ┌
+  │ 'Response received successfully.'
+  └
+  ✓  Response is received
+  ┌
+  │ 'Status code is 200.'
+  └
+  ✓  Status code is 200
+  ┌
+  │ 'Content-Type header is correct.'
+  └
+  ✓  Media-Type is correct
+  ✓  All main properties have the correct type
+  ✓  Dates have correct format
+  ✓  SmallestDenomination has base and increment
+  ✓  FaceValue is greater than zero
+  ✓  Term has correct format
+  ✓  IssueUnit and PaymentCurrency are valid URLs
+  ✓  IssueCountry and Issuer are not empty
 
 ↳ Bond identifiers by UUID
   ┌
   │ `Using "btoa" is deprecated. Use "require('btoa')" ins
   │ tead.`
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
+  │ '▶ [undefined] Ejecutando con ticker: NTEN11'
   └
-  GET  [errored]
-     runtime:extensions~request: request url is empty
- 15⠄ JSONError in test-script
+  GET https://api.brasil.mercap.com.ar/bonds/36ba59c0-193f-422e-ac0f-6c107e3f2350/identifiers [200 OK, 659B, 164ms]
+  ✓  Status code is 200
+  ✓  Response is an array
+  ┌
+  │ 'Content-Type header is correct.'
+  └
+  ✓  Media-Type is correct
+  ✓  Each item has type and value
+  ✓  Type is a non-empty string
+  ✓  Value is a non-empty string
+  ✓  Identifiers contain expected types
+  ✓  ISIN value format is correct
+  ✓  BYMA value is a valid code
+  1. Response contains ISIN and BYMA
 
-┌─────────────────────────┬─────────────────────┬─────────────────────┐
-│                         │            executed │              failed │
-├─────────────────────────┼─────────────────────┼─────────────────────┤
-│              iterations │                   1 │                   0 │
-├─────────────────────────┼─────────────────────┼─────────────────────┤
-│                requests │                   9 │                   5 │
-├─────────────────────────┼─────────────────────┼─────────────────────┤
-│            test-scripts │                  32 │                   6 │
-├─────────────────────────┼─────────────────────┼─────────────────────┤
-│      prerequest-scripts │                  25 │                   0 │
-├─────────────────────────┼─────────────────────┼─────────────────────┤
-│              assertions │                  41 │                   4 │
-├─────────────────────────┴─────────────────────┴─────────────────────┤
-│ total run duration: 3.3s                                            │
-├─────────────────────────────────────────────────────────────────────┤
-│ total data received: 10.24kB (approx)                               │
-├─────────────────────────────────────────────────────────────────────┤
-│ average response time: 688ms [min: 211ms, max: 1240ms, s.d.: 365ms] │
-└─────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────┬────────────────────┬────────────────────┐
+│                         │           executed │             failed │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│              iterations │                  1 │                  0 │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│                requests │                  9 │                  0 │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│            test-scripts │                 32 │                  0 │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│      prerequest-scripts │                 25 │                  0 │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│              assertions │                 89 │                  1 │
+├─────────────────────────┴────────────────────┴────────────────────┤
+│ total run duration: 4.7s                                          │
+├───────────────────────────────────────────────────────────────────┤
+│ total data received: 21.13kB (approx)                             │
+├───────────────────────────────────────────────────────────────────┤
+│ average response time: 457ms [min: 117ms, max: 2.1s, s.d.: 626ms] │
+└───────────────────────────────────────────────────────────────────┘
 
-   #  failure         detail                                                                         
-                                                                                                     
- 01.  AssertionError  Response contains 'items' array with elements                                  
-                      expected [] not to be empty                                                    
-                      at assertion:3 in test-script                                                  
-                      inside "Pepper-GS32 / Regression-Test / Bonds / Only shortName parameter"      
-                                                                                                     
- 02.  AssertionError  Each bond has required properties                                              
-                      expected [] not to be empty                                                    
-                      at assertion:4 in test-script                                                  
-                      inside "Pepper-GS32 / Regression-Test / Bonds / Only shortName parameter"      
-                                                                                                     
- 03.  AssertionError  Each bond property has the correct format                                      
-                      expected [] not to be empty                                                    
-                      at assertion:5 in test-script                                                  
-                      inside "Pepper-GS32 / Regression-Test / Bonds / Only shortName parameter"      
-                                                                                                     
- 04.  AssertionError  Links are valid URLs                                                           
-                      expected [] not to be empty                                                    
-                      at assertion:6 in test-script                                                  
-                      inside "Pepper-GS32 / Regression-Test / Bonds / Only shortName parameter"      
-                                                                                                     
- 05.  TypeError                                                                                      
-                      Cannot read properties of undefined (reading 'links')                          
-                      at test-script                                                                 
-                      inside "Pepper-GS32 / Regression-Test / Bonds / Only shortName parameter"      
-                                                                                                     
- 06.  Error                                                                                          
-                      runtime:extensions~request: request url is empty                               
-                      at request                                                                     
-                      inside ""                                                                      
-                                                                                                     
- 07.  JSONError                                                                                      
-                      "undefined" is not valid JSON                                                  
-                      at test-script                                                                 
-                      inside "Pepper-GS32 / Regression-Test / Bonds / Bond by UUID"                  
-                                                                                                     
- 08.  Error                                                                                          
-                      runtime:extensions~request: request url is empty                               
-                      at request                                                                     
-                      inside ""                                                                      
-                                                                                                     
- 09.  JSONError                                                                                      
-                      "undefined" is not valid JSON                                                  
-                      at test-script                                                                 
-                      inside "Pepper-GS32 / Regression-Test / Bonds / Bond payment summary by UUID"  
-                                                                                                     
- 10.  Error                                                                                          
-                      runtime:extensions~request: request url is empty                               
-                      at request                                                                     
-                      inside ""                                                                      
-                                                                                                     
- 11.  JSONError                                                                                      
-                      "undefined" is not valid JSON                                                  
-                      at test-script                                                                 
-                      inside "Pepper-GS32 / Regression-Test / Bonds / Bond coupons by UUID"          
-                                                                                                     
- 12.  Error                                                                                          
-                      runtime:extensions~request: request url is empty                               
-                      at request                                                                     
-                      inside ""                                                                      
-                                                                                                     
- 13.  JSONError                                                                                      
-                      "undefined" is not valid JSON                                                  
-                      at test-script                                                                 
-                      inside "Pepper-GS32 / Regression-Test / Bonds / Bond issue conditions by UUID" 
-                                                                                                     
- 14.  Error                                                                                          
-                      runtime:extensions~request: request url is empty                               
-                      at request                                                                     
-                      inside ""                                                                      
-                                                                                                     
- 15.  JSONError                                                                                      
-                      "undefined" is not valid JSON                                                  
-                      at test-script                                                                 
-                      inside "Pepper-GS32 / Regression-Test / Bonds / Bond identifiers by UUID"      
+  #  failure         detail                                                                                                  
+                                                                                                                             
+ 1.  AssertionError  Response contains ISIN and BYMA                                                                         
+                     Expected at least one ISIN and one BYMA but got: []: expected [] to be a superset of [ 'ISIN', 'BYMA' ] 
+                     at assertion:9 in test-script                                                                           
+                     inside "Pepper-GS32 / Regression-Test / Bonds / Bond identifiers by UUID"                               
