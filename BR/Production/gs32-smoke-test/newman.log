@@ -8,7 +8,7 @@ Marvel APIs
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: RESA15'
   └
-  GET https://api.brasil.mercap.com.ar/bonds [200 OK, 7.38kB, 814ms]
+  GET https://api.brasil.mercap.com.ar/bonds [200 OK, 7.38kB, 605ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -424,7 +424,7 @@ Marvel APIs
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: RESA15'
   └
-  GET https://api.brasil.mercap.com.ar/bonds?limit=5&start=2 [200 OK, 4.34kB, 327ms]
+  GET https://api.brasil.mercap.com.ar/bonds?limit=5&start=2 [200 OK, 4.34kB, 120ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -668,11 +668,11 @@ Marvel APIs
   │ '▶ [undefined] Ejecutando con ticker: RESA15'
   │ '▶ Ejecutando lookup para: RESA15'
   └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-01-09 [200 OK, 1.44kB, 639ms]
+  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-01-09 [200 OK, 1.43kB, 467ms]
   ┌
   │ '🔎 SHORT_NAME encontrado: RESA15'
   └
-  GET https://api.brasil.mercap.com.ar/bonds?shortName=RESA15 [200 OK, 1.36kB, 147ms]
+  GET https://api.brasil.mercap.com.ar/bonds?shortName=RESA15 [200 OK, 1.36kB, 156ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -722,7 +722,7 @@ Marvel APIs
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: RESA15'
   └
-  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30 [200 OK, 1.35kB, 276ms]
+  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30 [200 OK, 1.35kB, 164ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -761,7 +761,7 @@ Marvel APIs
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: RESA15'
   └
-  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30/payment-summary [200 OK, 1.14kB, 202ms]
+  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30/payment-summary [200 OK, 1.15kB, 113ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -785,7 +785,7 @@ Marvel APIs
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: RESA15'
   └
-  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30/coupons [200 OK, 8.73kB, 2.1s]
+  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30/coupons [200 OK, 8.73kB, 94ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -840,7 +840,7 @@ Marvel APIs
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: RESA15'
   └
-  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30/issue-conditions [200 OK, 1.32kB, 193ms]
+  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30/issue-conditions [200 OK, 1.32kB, 154ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -866,7 +866,7 @@ Marvel APIs
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: RESA15'
   └
-  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30/identifiers [200 OK, 659B, 176ms]
+  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30/identifiers [200 OK, 671B, 80ms]
   ✓  Status code is 200
   ✓  Response is an array
   ┌
@@ -878,8 +878,6 @@ Marvel APIs
   ✓  Value is a non-empty string
   ✓  Identifiers contain expected types
   ✓  ISIN value format is correct
-  ✓  BYMA value is a valid code
-  1. Response contains ISIN and BYMA
 
 ┌─────────────────────────┬────────────────────┬────────────────────┐
 │                         │           executed │             failed │
@@ -892,18 +890,11 @@ Marvel APIs
 ├─────────────────────────┼────────────────────┼────────────────────┤
 │      prerequest-scripts │                 25 │                  0 │
 ├─────────────────────────┼────────────────────┼────────────────────┤
-│              assertions │                 89 │                  1 │
+│              assertions │                 87 │                  0 │
 ├─────────────────────────┴────────────────────┴────────────────────┤
-│ total run duration: 5.5s                                          │
+│ total run duration: 2.5s                                          │
 ├───────────────────────────────────────────────────────────────────┤
 │ total data received: 21.13kB (approx)                             │
 ├───────────────────────────────────────────────────────────────────┤
-│ average response time: 550ms [min: 147ms, max: 2.1s, s.d.: 614ms] │
+│ average response time: 217ms [min: 80ms, max: 605ms, s.d.: 175ms] │
 └───────────────────────────────────────────────────────────────────┘
-
-  #  failure         detail                                                                                                  
-                                                                                                                             
- 1.  AssertionError  Response contains ISIN and BYMA                                                                         
-                     Expected at least one ISIN and one BYMA but got: []: expected [] to be a superset of [ 'ISIN', 'BYMA' ] 
-                     at assertion:9 in test-script                                                                           
-                     inside "Pepper-GS32 / Regression-Test / Bonds / Bond identifiers by UUID"                               
