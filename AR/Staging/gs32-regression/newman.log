@@ -1,0 +1,238 @@
+newman
+
+Marvel APIs
+
+❏ Pepper-GS32 / Regression-Test / Debt types
+↳ Get all debt types - validate each self link
+  ┌
+  │ '🔐 AUTH_BASIC_HEADER generado en environment'
+  └
+  GET https://api.staging.mercap.com.ar/debt-types [200 OK, 1.15kB, 364ms]
+  ✓  Response is received
+  ✓  Status code is 200
+  ✓  Response contains 'items' array with at least one element
+  ✓  Response contains 'links.self'
+  ✓  No duplicate debt type names
+  ┌
+  │ '🔎 Testing Item 1 (Título Público)'
+  └
+  ✓  Item 1 (Título Público) contains expected properties
+  ✓  Item 1 (Título Público) 'singularName' is a non-empty string
+  ✓  Item 1 (Título Público) self link is a valid URL
+  GET https://api.staging.mercap.com.ar/debt-types/e3da5be4-2107-4ca2-97d9-77b5cf8e8725 [200 OK, 849B, 148ms]
+  ✓  Item 1 (Título Público) self link returns status 200
+  ┌
+  │ '🔎 Testing Item 2 (Obligación Negociable)'
+  └
+  ✓  Item 2 (Obligación Negociable) contains expected properties
+  ✓  Item 2 (Obligación Negociable) 'singularName' is a non-empty string
+  ✓  Item 2 (Obligación Negociable) self link is a valid URL
+  GET https://api.staging.mercap.com.ar/debt-types/a6af5129-7f88-46ce-879b-bfb0a4ee8a7b [200 OK, 861B, 91ms]
+  ✓  Item 2 (Obligación Negociable) self link returns status 200
+  ┌
+  │ '🔎 Testing Item 3 (Fideicomiso)'
+  └
+  ✓  Item 3 (Fideicomiso) contains expected properties
+  ✓  Item 3 (Fideicomiso) 'singularName' is a non-empty string
+  ✓  Item 3 (Fideicomiso) self link is a valid URL
+  GET https://api.staging.mercap.com.ar/debt-types/c2b8670a-dec7-4bfd-b5ba-5ce86c0d5eab [200 OK, 842B, 196ms]
+  ✓  Item 3 (Fideicomiso) self link returns status 200
+
+❏ Pepper-GS32 / Regression-Test / Stocks
+↳ Get all stocks
+  ┌
+  │ '🔐 AUTH_BASIC_HEADER generado en environment'
+  └
+  GET https://api.staging.mercap.com.ar/stocks [200 OK, 4.35kB, 169ms]
+  ┌
+  │ 'Response received successfully.'
+  └
+  ✓  Response is received
+  ┌
+  │ 'Status code is 200.'
+  └
+  ✓  Status code is 200
+  ┌
+  │ 'Content-Type header is correct.'
+  └
+  ✓  Media-Type is correct
+  ┌
+  │ 'Items array is present and not empty.'
+  └
+  ✓  Items array is present and not empty
+  ✓  No fields are null
+  ✓  No duplicate names in items
+  ✓  Links are unique for each stock
+  ✓  Self link matches expected URL
+  ┌
+  │ '\n▶ Testing Item 1 (AAL.BA)'
+  └
+  ✓  Item 1 (AAL.BA) contains expected properties
+  ✓  Item 1 (AAL.BA) 'name' is a non-empty string
+  ✓  Item 1 (AAL.BA) 'issuer' is a non-empty string
+  ✓  Item 1 (AAL.BA) 'issueCurrency' is a valid URL
+  ✓  Item 1 (AAL.BA) 'self' link is a valid URL
+  ┌
+  │ '✔ STOCKS_UUID seteado:', 'https://api.staging.mercap.
+  │ com.ar/stocks/7480a764-16d4-48fb-965f-ff92f84ed477'
+  └
+  GET https://api.staging.mercap.com.ar/stocks/7480a764-16d4-48fb-965f-ff92f84ed477 [200 OK, 1.06kB, 158ms]
+  ✓  Item 1 (AAL.BA) self link returns status 200
+  ┌
+  │ '\n▶ Testing Item 2 (AAPL.BA)'
+  └
+  ✓  Item 2 (AAPL.BA) contains expected properties
+  ✓  Item 2 (AAPL.BA) 'name' is a non-empty string
+  ✓  Item 2 (AAPL.BA) 'issuer' is a non-empty string
+  ✓  Item 2 (AAPL.BA) 'issueCurrency' is a valid URL
+  ✓  Item 2 (AAPL.BA) 'self' link is a valid URL
+  GET https://api.staging.mercap.com.ar/stocks/2d21bb48-4e8c-498d-b0a2-f30db68511ea [200 OK, 1.06kB, 193ms]
+  ✓  Item 2 (AAPL.BA) self link returns status 200
+  ┌
+  │ '\n▶ Testing Item 3 (ABBV.BA)'
+  └
+  ✓  Item 3 (ABBV.BA) contains expected properties
+  ✓  Item 3 (ABBV.BA) 'name' is a non-empty string
+  ✓  Item 3 (ABBV.BA) 'issuer' is a non-empty string
+  ✓  Item 3 (ABBV.BA) 'issueCurrency' is a valid URL
+  ✓  Item 3 (ABBV.BA) 'self' link is a valid URL
+  GET https://api.staging.mercap.com.ar/stocks/14dafd91-1407-4e04-a0a6-c91c04faf5fe [200 OK, 1.05kB, 204ms]
+  ✓  Item 3 (ABBV.BA) self link returns status 200
+  ┌
+  │ '\n▶ Testing Item 4 (ABEV.BA)'
+  └
+  ✓  Item 4 (ABEV.BA) contains expected properties
+  ✓  Item 4 (ABEV.BA) 'name' is a non-empty string
+  ✓  Item 4 (ABEV.BA) 'issuer' is a non-empty string
+  ✓  Item 4 (ABEV.BA) 'issueCurrency' is a valid URL
+  ✓  Item 4 (ABEV.BA) 'self' link is a valid URL
+  GET https://api.staging.mercap.com.ar/stocks/41590ed6-55a6-4c2f-a318-7d21c131216e [200 OK, 1.05kB, 192ms]
+  ✓  Item 4 (ABEV.BA) self link returns status 200
+  ┌
+  │ '\n▶ Testing Item 5 (ABNB.BA)'
+  └
+  ✓  Item 5 (ABNB.BA) contains expected properties
+  ✓  Item 5 (ABNB.BA) 'name' is a non-empty string
+  ✓  Item 5 (ABNB.BA) 'issuer' is a non-empty string
+  ✓  Item 5 (ABNB.BA) 'issueCurrency' is a valid URL
+  ✓  Item 5 (ABNB.BA) 'self' link is a valid URL
+  GET https://api.staging.mercap.com.ar/stocks/e3684bf6-56f5-4c13-97e7-16a34173a060 [200 OK, 1.05kB, 195ms]
+  ✓  Item 5 (ABNB.BA) self link returns status 200
+  ┌
+  │ '\n▶ Testing Item 6 (ABT.BA)'
+  └
+  ✓  Item 6 (ABT.BA) contains expected properties
+  ✓  Item 6 (ABT.BA) 'name' is a non-empty string
+  ✓  Item 6 (ABT.BA) 'issuer' is a non-empty string
+  ✓  Item 6 (ABT.BA) 'issueCurrency' is a valid URL
+  ✓  Item 6 (ABT.BA) 'self' link is a valid URL
+  GET https://api.staging.mercap.com.ar/stocks/e901db1d-386b-4c80-b6ee-252367b8fe07 [200 OK, 1.06kB, 193ms]
+  ✓  Item 6 (ABT.BA) self link returns status 200
+  ┌
+  │ '\n▶ Testing Item 7 (ADBE.BA)'
+  └
+  ✓  Item 7 (ADBE.BA) contains expected properties
+  ✓  Item 7 (ADBE.BA) 'name' is a non-empty string
+  ✓  Item 7 (ADBE.BA) 'issuer' is a non-empty string
+  ✓  Item 7 (ADBE.BA) 'issueCurrency' is a valid URL
+  ✓  Item 7 (ADBE.BA) 'self' link is a valid URL
+  GET https://api.staging.mercap.com.ar/stocks/e9c1e5d2-a723-4e1f-888e-f9363e1ccb81 [200 OK, 1.07kB, 203ms]
+  ✓  Item 7 (ADBE.BA) self link returns status 200
+  ┌
+  │ '\n▶ Testing Item 8 (ADGO.BA)'
+  └
+  ✓  Item 8 (ADGO.BA) contains expected properties
+  ✓  Item 8 (ADGO.BA) 'name' is a non-empty string
+  ✓  Item 8 (ADGO.BA) 'issuer' is a non-empty string
+  ✓  Item 8 (ADGO.BA) 'issueCurrency' is a valid URL
+  ✓  Item 8 (ADGO.BA) 'self' link is a valid URL
+  GET https://api.staging.mercap.com.ar/stocks/604ac5e4-d596-4823-a309-9a5d77dcb432 [200 OK, 1.06kB, 198ms]
+  ✓  Item 8 (ADGO.BA) self link returns status 200
+  ┌
+  │ '\n▶ Testing Item 9 (ADI.BA)'
+  └
+  ✓  Item 9 (ADI.BA) contains expected properties
+  ✓  Item 9 (ADI.BA) 'name' is a non-empty string
+  ✓  Item 9 (ADI.BA) 'issuer' is a non-empty string
+  ✓  Item 9 (ADI.BA) 'issueCurrency' is a valid URL
+  ✓  Item 9 (ADI.BA) 'self' link is a valid URL
+  GET https://api.staging.mercap.com.ar/stocks/1b624053-b576-4509-aecf-67ef69f3b6af [200 OK, 1.06kB, 198ms]
+  ✓  Item 9 (ADI.BA) self link returns status 200
+  ┌
+  │ '\n▶ Testing Item 10 (ADP.BA)'
+  └
+  ✓  Item 10 (ADP.BA) contains expected properties
+  ✓  Item 10 (ADP.BA) 'name' is a non-empty string
+  ✓  Item 10 (ADP.BA) 'issuer' is a non-empty string
+  ✓  Item 10 (ADP.BA) 'issueCurrency' is a valid URL
+  ✓  Item 10 (ADP.BA) 'self' link is a valid URL
+  GET https://api.staging.mercap.com.ar/stocks/da074fa7-7db4-444c-8e0a-9b82ea719c27 [200 OK, 1.08kB, 204ms]
+  ✓  Item 10 (ADP.BA) self link returns status 200
+  ┌
+  │ '✔ Finished testing stocks'
+  └
+
+↳ Get stocks by UUID
+  ┌
+  │ '🔐 AUTH_BASIC_HEADER generado en environment'
+  └
+  GET https://api.staging.mercap.com.ar/stocks/7480a764-16d4-48fb-965f-ff92f84ed477 [200 OK, 1.07kB, 13ms]
+  ┌
+  │ 'Response received successfully.'
+  └
+  ✓  Response is received
+  ┌
+  │ 'Status code is 200.'
+  └
+  ✓  Status code is 200
+  ┌
+  │ 'Content-Type header is correct.'
+  └
+  ✓  Media-Type is correct
+  ┌
+  │ 'Response has correct properties.'
+  └
+  ✓  Response has correct properties
+  ┌
+  │ 'Self link is correct:', 'https://api.staging.mercap.c
+  │ om.ar/stocks/7480a764-16d4-48fb-965f-ff92f84ed477'
+  └
+  ✓  Self link is correct
+  ┌
+  │ "smallestDenomination base is '1'."
+  └
+  ✓  smallestDenomination base is '1'
+  ┌
+  │ "smallestDenomination increment is '1'."
+  └
+  ✓  smallestDenomination increment is '1'
+
+❏ Pepper-GS64 / Bond Laws
+↳ All
+  GET https://api.staging.mercap.com.ar/bond-laws [200 OK, 1.86kB, 128ms]
+  ✓  Status code is 200
+  ✓  Not empty
+
+↳ By UUID
+  GET https://api.staging.mercap.com.ar/bond-laws/18bb25d4-8ab8-4837-b574-1754811dd222 [200 OK, 844B, 176ms]
+  ✓  Status code is 200
+
+┌─────────────────────────┬────────────────────┬───────────────────┐
+│                         │           executed │            failed │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              iterations │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│                requests │                 18 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│            test-scripts │                 13 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│      prerequest-scripts │                 10 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              assertions │                 95 │                 0 │
+├─────────────────────────┴────────────────────┴───────────────────┤
+│ total run duration: 13.5s                                        │
+├──────────────────────────────────────────────────────────────────┤
+│ total data received: 9.24kB (approx)                             │
+├──────────────────────────────────────────────────────────────────┤
+│ average response time: 179ms [min: 13ms, max: 364ms, s.d.: 65ms] │
+└──────────────────────────────────────────────────────────────────┘
