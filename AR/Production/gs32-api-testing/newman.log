@@ -1,0 +1,184 @@
+newman
+
+Marvel APIs
+
+❏ Pepper-GS32 / Regression-Test / Bonds
+↳ All bonds - deault parameters
+  ┌
+  │ '🔐 AUTH_BASIC_HEADER generado en environment'
+  │ '▶ [undefined] Ejecutando con ticker: AL30'
+  └
+  GET https://api.mercapabbaco.com/bonds [401 Unauthorized, 547B, 405ms]
+  1⠄ JSONError in test-script
+
+↳ All bonds - for issuer
+  ┌
+  │ '🔐 AUTH_BASIC_HEADER generado en environment'
+  │ '▶ [undefined] Ejecutando con ticker: AL30'
+  └
+  GET https://api.mercapabbaco.com/instrument-issuers [401 Unauthorized, 549B, 37ms]
+  GET https://api.mercapabbaco.com/bonds?issuer={{issuer}} [401 Unauthorized, 543B, 35ms]
+  2⠄ JSONError in test-script
+
+↳ All bonds - start & limit parameters
+  ┌
+  │ '🔐 AUTH_BASIC_HEADER generado en environment'
+  │ '▶ [undefined] Ejecutando con ticker: AL30'
+  └
+  GET https://api.mercapabbaco.com/bonds?limit=5&start=2 [401 Unauthorized, 545B, 35ms]
+  3⠄ JSONError in test-script
+
+↳ Only shortName parameter
+  ┌
+  │ '🔐 AUTH_BASIC_HEADER generado en environment'
+  │ '▶ [undefined] Ejecutando con ticker: AL30'
+  │ '▶ Ejecutando lookup para: AL30'
+  └
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-03-20 [401 Unauthorized, 545B, 44ms]
+  GET https://api.mercapabbaco.com/bonds?shortName=AL30 [401 Unauthorized, 547B, 38ms]
+  4⠄ JSONError in test-script
+
+↳ Bond by UUID
+  ┌
+  │ '🔐 AUTH_BASIC_HEADER generado en environment'
+  │ '▶ [undefined] Ejecutando con ticker: AL30'
+  └
+  GET  [errored]
+     runtime:extensions~request: request url is empty
+  6⠄ JSONError in test-script
+
+↳ Bond payment summary by UUID
+  ┌
+  │ '🔐 AUTH_BASIC_HEADER generado en environment'
+  │ '▶ [undefined] Ejecutando con ticker: AL30'
+  └
+  GET  [errored]
+     runtime:extensions~request: request url is empty
+  8⠄ JSONError in test-script
+
+↳ Bond coupons by UUID
+  ┌
+  │ '🔐 AUTH_BASIC_HEADER generado en environment'
+  │ '▶ [undefined] Ejecutando con ticker: AL30'
+  └
+  GET  [errored]
+     runtime:extensions~request: request url is empty
+ 10⠄ JSONError in test-script
+
+↳ Bond issue conditions by UUID
+  ┌
+  │ '🔐 AUTH_BASIC_HEADER generado en environment'
+  │ '▶ [undefined] Ejecutando con ticker: AL30'
+  └
+  GET  [errored]
+     runtime:extensions~request: request url is empty
+ 12⠄ JSONError in test-script
+
+↳ Bond identifiers by UUID
+  ┌
+  │ '🔐 AUTH_BASIC_HEADER generado en environment'
+  │ '▶ [undefined] Ejecutando con ticker: AL30'
+  └
+  GET  [errored]
+     runtime:extensions~request: request url is empty
+ 14⠄ JSONError in test-script
+
+┌─────────────────────────┬────────────────────┬───────────────────┐
+│                         │           executed │            failed │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              iterations │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│                requests │                 11 │                 5 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│            test-scripts │                 36 │                 9 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│      prerequest-scripts │                 29 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              assertions │                  0 │                 0 │
+├─────────────────────────┴────────────────────┴───────────────────┤
+│ total run duration: 1096ms                                       │
+├──────────────────────────────────────────────────────────────────┤
+│ total data received: 114B (approx)                               │
+├──────────────────────────────────────────────────────────────────┤
+│ average response time: 99ms [min: 35ms, max: 405ms, s.d.: 136ms] │
+└──────────────────────────────────────────────────────────────────┘
+
+   #  failure    detail                                                                                
+                                                                                                       
+ 01.  JSONError                                                                                        
+                 Unexpected token 'I' at 1:1                                                           
+                 Invalid credentials                                                                   
+                 ^                                                                                     
+                 at test-script                                                                        
+                 inside "Pepper-GS32 / Regression-Test / Bonds / All bonds - deault parameters"        
+                                                                                                       
+ 02.  JSONError                                                                                        
+                 Unexpected token 'I' at 1:1                                                           
+                 Invalid credentials                                                                   
+                 ^                                                                                     
+                 at test-script                                                                        
+                 inside "Pepper-GS32 / Regression-Test / Bonds / All bonds - for issuer"               
+                                                                                                       
+ 03.  JSONError                                                                                        
+                 Unexpected token 'I' at 1:1                                                           
+                 Invalid credentials                                                                   
+                 ^                                                                                     
+                 at test-script                                                                        
+                 inside "Pepper-GS32 / Regression-Test / Bonds / All bonds - start & limit parameters" 
+                                                                                                       
+ 04.  JSONError                                                                                        
+                 Unexpected token 'I' at 1:1                                                           
+                 Invalid credentials                                                                   
+                 ^                                                                                     
+                 at test-script                                                                        
+                 inside "Pepper-GS32 / Regression-Test / Bonds / Only shortName parameter"             
+                                                                                                       
+ 05.  Error                                                                                            
+                 runtime:extensions~request: request url is empty                                      
+                 at request                                                                            
+                 inside ""                                                                             
+                                                                                                       
+ 06.  JSONError                                                                                        
+                 "undefined" is not valid JSON                                                         
+                 at test-script                                                                        
+                 inside "Pepper-GS32 / Regression-Test / Bonds / Bond by UUID"                         
+                                                                                                       
+ 07.  Error                                                                                            
+                 runtime:extensions~request: request url is empty                                      
+                 at request                                                                            
+                 inside ""                                                                             
+                                                                                                       
+ 08.  JSONError                                                                                        
+                 "undefined" is not valid JSON                                                         
+                 at test-script                                                                        
+                 inside "Pepper-GS32 / Regression-Test / Bonds / Bond payment summary by UUID"         
+                                                                                                       
+ 09.  Error                                                                                            
+                 runtime:extensions~request: request url is empty                                      
+                 at request                                                                            
+                 inside ""                                                                             
+                                                                                                       
+ 10.  JSONError                                                                                        
+                 "undefined" is not valid JSON                                                         
+                 at test-script                                                                        
+                 inside "Pepper-GS32 / Regression-Test / Bonds / Bond coupons by UUID"                 
+                                                                                                       
+ 11.  Error                                                                                            
+                 runtime:extensions~request: request url is empty                                      
+                 at request                                                                            
+                 inside ""                                                                             
+                                                                                                       
+ 12.  JSONError                                                                                        
+                 "undefined" is not valid JSON                                                         
+                 at test-script                                                                        
+                 inside "Pepper-GS32 / Regression-Test / Bonds / Bond issue conditions by UUID"        
+                                                                                                       
+ 13.  Error                                                                                            
+                 runtime:extensions~request: request url is empty                                      
+                 at request                                                                            
+                 inside ""                                                                             
+                                                                                                       
+ 14.  JSONError                                                                                        
+                 "undefined" is not valid JSON                                                         
+                 at test-script                                                                        
+                 inside "Pepper-GS32 / Regression-Test / Bonds / Bond identifiers by UUID"             
