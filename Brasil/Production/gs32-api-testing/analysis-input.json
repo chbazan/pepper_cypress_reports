@@ -3,16 +3,10 @@
     "environment": "Production",
     "country": "Brasil",
     "version": "V10.3.65",
-    "run_id": "202604071938",
-    "run_time": "2026-04-07T19:38:26.221Z"
+    "run_id": "202604072013",
+    "run_time": "2026-04-07T20:13:04.976Z"
   },
   "recent_runs": [
-    {
-      "date": "2026-04-07",
-      "avg_p95": 395,
-      "baseline": 504,
-      "slowest": "Get investment metrics by ID"
-    },
     {
       "date": "2026-04-07",
       "avg_p95": 378,
@@ -36,102 +30,178 @@
       "avg_p95": 371,
       "baseline": 498,
       "slowest": "Get investment metrics by ID"
+    },
+    {
+      "date": "2026-04-07",
+      "avg_p95": 470,
+      "baseline": 494,
+      "slowest": "Get investment metrics by ID"
     }
   ],
   "traffic_lights": [
     {
+      "endpoint": "Get exchange scheme by UUID",
+      "status_level": 2,
+      "p95": 351,
+      "baseline_global": 44,
+      "baseline_global_delta_pct": 700.66,
+      "baseline_version_delta_pct": 668.05,
+      "regression_pct": 663.04
+    },
+    {
       "endpoint": "Get markets by UUID",
       "status_level": 1,
-      "p95": 72,
+      "p95": 151,
       "baseline_global": 47,
-      "baseline_global_delta_pct": 54.46,
-      "baseline_version_delta_pct": 55.68,
-      "regression_pct": -42.4
+      "baseline_global_delta_pct": 218.52,
+      "baseline_version_delta_pct": 210.38,
+      "regression_pct": 109.72
+    },
+    {
+      "endpoint": "Get tradable securities using only mandatory filters",
+      "status_level": 2,
+      "p95": 1448,
+      "baseline_global": 520,
+      "baseline_global_delta_pct": 178.73,
+      "baseline_version_delta_pct": 223.94,
+      "regression_pct": 1911.11
+    },
+    {
+      "endpoint": "Get tradable securities using optional filters - only type",
+      "status_level": 2,
+      "p95": 1463,
+      "baseline_global": 487,
+      "baseline_global_delta_pct": 200.61,
+      "baseline_version_delta_pct": 243.99,
+      "regression_pct": 2150.77
+    },
+    {
+      "endpoint": "Get tradable securities using optional filters - only market",
+      "status_level": 1,
+      "p95": 482,
+      "baseline_global": 446,
+      "baseline_global_delta_pct": 7.97,
+      "baseline_version_delta_pct": 32,
+      "regression_pct": 703.33
     }
   ],
-  "outliers": [],
+  "outliers": [
+    {
+      "time": "2026-04-07T20:13:04.976Z",
+      "run_id": "202604072013",
+      "version": "V10.3.65",
+      "environment": "Production",
+      "country": "Brasil",
+      "endpoint": "Get exchange scheme by UUID",
+      "p95": 351,
+      "baseline_global": 44,
+      "outlier_ratio": 8.01
+    },
+    {
+      "time": "2026-04-07T20:13:04.976Z",
+      "run_id": "202604072013",
+      "version": "V10.3.65",
+      "environment": "Production",
+      "country": "Brasil",
+      "endpoint": "Get markets by UUID",
+      "p95": 151,
+      "baseline_global": 47,
+      "outlier_ratio": 3.19
+    },
+    {
+      "time": "2026-04-07T20:13:04.976Z",
+      "run_id": "202604072013",
+      "version": "V10.3.65",
+      "environment": "Production",
+      "country": "Brasil",
+      "endpoint": "Get tradable securities using optional filters - only type",
+      "p95": 1463,
+      "baseline_global": 487,
+      "outlier_ratio": 3.01
+    }
+  ],
   "slowest_this_run": [
     {
       "endpoint": "Get investment metrics by ID",
-      "p95": 6466,
+      "p95": 6738,
       "payload_kb": 1.03
     },
     {
       "endpoint": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
-      "p95": 1903,
+      "p95": 1987,
       "payload_kb": 4.92
     },
     {
       "endpoint": "Appraise market value",
-      "p95": 1882,
+      "p95": 1705,
       "payload_kb": 0.63
     },
     {
+      "endpoint": "Get tradable securities using optional filters - only type",
+      "p95": 1463,
+      "payload_kb": 12.05
+    },
+    {
+      "endpoint": "Get tradable securities using only mandatory filters",
+      "p95": 1448,
+      "payload_kb": 12.02
+    },
+    {
       "endpoint": "Get investment irr sensitivity by ID",
-      "p95": 689,
+      "p95": 742,
       "payload_kb": 1.64
     },
     {
       "endpoint": "Get irrs - one bond",
-      "p95": 536,
+      "p95": 503,
       "payload_kb": 9.84
     },
     {
+      "endpoint": "Get tradable securities using optional filters - only market",
+      "p95": 482,
+      "payload_kb": 12.04
+    },
+    {
+      "endpoint": "Get tradable securities using optional filters - only query",
+      "p95": 477,
+      "payload_kb": 0.69
+    },
+    {
       "endpoint": "Get investment price sensitivity by ID",
-      "p95": 368,
+      "p95": 421,
       "payload_kb": 1.49
-    },
-    {
-      "endpoint": "All bonds - for issuer",
-      "p95": 364,
-      "payload_kb": 0.6
-    },
-    {
-      "endpoint": "Get parities",
-      "p95": 297,
-      "payload_kb": 24.92
-    },
-    {
-      "endpoint": "Get tradable security metrics",
-      "p95": 177,
-      "payload_kb": 1.24
-    },
-    {
-      "endpoint": "Get all mutual fund types",
-      "p95": 172,
-      "payload_kb": 0.13
     }
   ],
   "top_impact": [
     {
       "endpoint": "Get investment metrics by ID",
-      "impact_score": 214707,
-      "p95": 6466,
-      "baseline_global": 6710
+      "impact_score": 221165,
+      "p95": 6738,
+      "baseline_global": 6702
     },
     {
       "endpoint": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
-      "impact_score": 59083,
-      "p95": 1903,
-      "baseline_global": 1846
+      "impact_score": 60988,
+      "p95": 1987,
+      "baseline_global": 1848
     },
     {
       "endpoint": "Appraise market value",
-      "impact_score": 59058,
-      "p95": 1882,
-      "baseline_global": 1846
+      "impact_score": 60941,
+      "p95": 1705,
+      "baseline_global": 1847
     },
     {
       "endpoint": "Get investment irr sensitivity by ID",
-      "impact_score": 22407,
-      "p95": 689,
+      "impact_score": 23095,
+      "p95": 742,
       "baseline_global": 700
     },
     {
       "endpoint": "Get irrs - one bond",
-      "impact_score": 21340,
-      "p95": 536,
-      "baseline_global": 667
+      "impact_score": 21867,
+      "p95": 503,
+      "baseline_global": 663
     }
   ],
   "outlier_recurrence": [
@@ -156,7 +226,15 @@
       "occurrences": 2
     },
     {
+      "endpoint": "Get tradable securities using optional filters - only type",
+      "occurrences": 2
+    },
+    {
       "endpoint": "Get all instrument issuers",
+      "occurrences": 2
+    },
+    {
+      "endpoint": "Get exchange scheme by UUID",
       "occurrences": 2
     }
   ]
