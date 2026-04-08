@@ -1,14 +1,14 @@
 {
   "escalar_prioritario": {
-    "titulo": "Regresión crítica de 528% en 'Get all exchange schemes' (Status Level 2)",
-    "detalle": "El endpoint presenta una degradación severa con un p95 de 333ms frente a un baseline global de 167ms, superando los umbrales de seguridad en la versión V10.3.65."
+    "titulo": "Regresión crítica de +869% p95 en 'Bond coupons by UUID' (Status Level 2)",
+    "detalle": "El endpoint presenta una degradación masiva alcanzando los 2119ms frente a un baseline de 219ms, con 6 reincidencias registradas como outlier en la versión V10.3.65."
   },
   "investigar": {
-    "titulo": "Degradación del 202% en 'Get all valuation schemes' respecto a la versión",
-    "detalle": "Se detecta una anomalía sostenida con un p95 de 388ms (vs 161ms de baseline), sumado a que el 100% de los endpoints en el semáforo presentan alertas de nivel 1 o superior."
+    "titulo": "Anomalía en 'Get exchange scheme' (+103% p95) y recurrencia en sensibilidad IRR",
+    "detalle": "Se detectó una duplicación de latencia en el esquema de intercambio (96ms vs 47ms) y una tendencia de degradación sostenida con 3 reincidencias en el cálculo de sensibilidad IRR."
   },
   "optimizar": {
-    "titulo": "Impacto masivo de 228k en 'Get investment metrics by ID' con p95 de 6.7s",
-    "detalle": "Con un impact_score de 228,041 y latencias de 6716ms, este endpoint es el principal candidato para optimización de base de datos o caché para reducir la carga sistémica."
+    "titulo": "Optimización de 'Get investment metrics by ID' por alto Impact Score (234k)",
+    "detalle": "Este endpoint es el principal cuello de botella con un p95 de 7615ms; su optimización es prioritaria para reducir la carga acumulada y mejorar la percepción global de performance."
   }
 }
