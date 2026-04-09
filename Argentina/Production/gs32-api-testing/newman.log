@@ -2,35 +2,33 @@ newman
 
 Marvel APIs
 
-Iteration 1/3
-
 ❏ Pepper-GS32 / Regression-Test / Appraiser
 ↳ Appraise market value
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
-  │ '📅 VALUATION_DATE seteado a: 2026-04-08'
+  │ '📅 VALUATION_DATE seteado a: 2026-04-09'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-04-08   GET https://api.mercapabbaco.com/exchange-schemes   GET https://api.mercapabbaco.com/valuation-schemes [200 OK, 2.6kB, 365ms]
-  ┌
-  │ '📌 Link del bono encontrado: https://api.mercapabbaco
-  │ .com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a'
-  └
-[200 OK, 3.82kB, 375ms]
-  ┌
-  │ '💱 ExchangeScheme encontrado'
-  │ '   • Nombre: Esquema ARS - USD Oficial'
-  │ '   • Link:   https://api.mercapabbaco.com/exchange-sc
-  │ hemes/150dd7f3-1420-4c76-8ed6-827667455276'
-  └
-[200 OK, 4.65kB, 379ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-04-09   GET https://api.mercapabbaco.com/exchange-schemes   GET https://api.mercapabbaco.com/valuation-schemes [200 OK, 4.65kB, 421ms]
   ┌
   │ '📊 ValuationScheme encontrado'
   │ '   • Nombre: Esquema Mercado Default Nuevo'
   │ '   • Link:   https://api.mercapabbaco.com/valuation-s
   │ chemes/3082e254-40ce-4d06-b2df-58b5f14f97ef'
   └
-  POST https://api.mercapabbaco.com/appraiser [200 OK, 1.23kB, 727ms]
+[200 OK, 3.83kB, 833ms]
+  ┌
+  │ '💱 ExchangeScheme encontrado'
+  │ '   • Nombre: Esquema ARS - USD Oficial'
+  │ '   • Link:   https://api.mercapabbaco.com/exchange-sc
+  │ hemes/150dd7f3-1420-4c76-8ed6-827667455276'
+  └
+[200 OK, 2.6kB, 1000ms]
+  ┌
+  │ '📌 Link del bono encontrado: https://api.mercapabbaco
+  │ .com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a'
+  └
+  POST https://api.mercapabbaco.com/appraiser [200 OK, 1.21kB, 1308ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -78,7 +76,7 @@ Iteration 1/3
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds [200 OK, 7.07kB, 158ms]
+  GET https://api.mercapabbaco.com/bonds [200 OK, 7.07kB, 151ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -448,7 +446,7 @@ Iteration 1/3
   │ "Global link 'self' is valid: https://api.mercapabbaco
   │ .com/bonds"
   │ "Global link 'last' is valid: https://api.mercapabbaco
-  │ .com/bonds?limit=10&start=1021"
+  │ .com/bonds?limit=10&start=1041"
   └
   ✓  Global links are valid URLs
   ┌
@@ -482,12 +480,12 @@ Iteration 1/3
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/instrument-issuers [200 OK, 112.46kB, 483ms]
+  GET https://api.mercapabbaco.com/instrument-issuers [200 OK, 112.75kB, 475ms]
   ┌
   │ 'https://api.mercapabbaco.com/instrument-issuers/6f561
   │ 6c7-d1f0-4cd2-b4b3-bb99184712cf'
   └
-  GET https://api.mercapabbaco.com/bonds?issuer=https://api.mercapabbaco.com/instrument-issuers/6f5616c7-d1f0-4cd2-b4b3-bb99184712cf [200 OK, 5.64kB, 194ms]
+  GET https://api.mercapabbaco.com/bonds?issuer=https://api.mercapabbaco.com/instrument-issuers/6f5616c7-d1f0-4cd2-b4b3-bb99184712cf [200 OK, 5.64kB, 142ms]
   ┌
   │ 'Status code is 200.'
   └
@@ -780,22 +778,22 @@ Iteration 1/3
   └
   ✓  Links are valid URLs
   ✓  validar que solo devuelva items asociados al issuer enviado por parametro
-  GET https://api.mercapabbaco.com/instrument-issuers/6f5616c7-d1f0-4cd2-b4b3-bb99184712cf [200 OK, 903B, 136ms]
-  GET https://api.mercapabbaco.com/bonds/cd5f001c-175d-4a61-bfeb-6239808badaf/issue-conditions   GET https://api.mercapabbaco.com/bonds/58b357b2-5690-4ef7-be68-8a805c12d151/issue-conditions   GET https://api.mercapabbaco.com/bonds/0aeb580e-5063-4520-9c9c-d9f33506543e/issue-conditions   GET https://api.mercapabbaco.com/bonds/6a92ab62-8960-48a6-8e9a-fe4287771228/issue-conditions   GET https://api.mercapabbaco.com/bonds/bcbe1723-1e8d-406c-b184-13cd5e2111c6/issue-conditions   GET https://api.mercapabbaco.com/bonds/739a3340-2e44-417d-aa34-0ef159379482/issue-conditions   GET https://api.mercapabbaco.com/bonds/6e9f941e-e2ec-4795-acd3-f054844f5b0d/issue-conditions   GET https://api.mercapabbaco.com/bonds/c18f7d4a-57eb-43ea-8f83-a1d8b4694792/issue-conditions [200 OK, 1.35kB, 114ms]
-[200 OK, 1.35kB, 192ms]
-[200 OK, 1.36kB, 196ms]
-[200 OK, 2.24kB, 197ms]
-[200 OK, 1.35kB, 205ms]
-[200 OK, 1.36kB, 206ms]
-[200 OK, 1.35kB, 215ms]
-[200 OK, 1.35kB, 218ms]
+  GET https://api.mercapabbaco.com/instrument-issuers/6f5616c7-d1f0-4cd2-b4b3-bb99184712cf [200 OK, 895B, 84ms]
+  GET https://api.mercapabbaco.com/bonds/cd5f001c-175d-4a61-bfeb-6239808badaf/issue-conditions   GET https://api.mercapabbaco.com/bonds/58b357b2-5690-4ef7-be68-8a805c12d151/issue-conditions   GET https://api.mercapabbaco.com/bonds/0aeb580e-5063-4520-9c9c-d9f33506543e/issue-conditions   GET https://api.mercapabbaco.com/bonds/6a92ab62-8960-48a6-8e9a-fe4287771228/issue-conditions   GET https://api.mercapabbaco.com/bonds/bcbe1723-1e8d-406c-b184-13cd5e2111c6/issue-conditions   GET https://api.mercapabbaco.com/bonds/739a3340-2e44-417d-aa34-0ef159379482/issue-conditions   GET https://api.mercapabbaco.com/bonds/6e9f941e-e2ec-4795-acd3-f054844f5b0d/issue-conditions   GET https://api.mercapabbaco.com/bonds/c18f7d4a-57eb-43ea-8f83-a1d8b4694792/issue-conditions [200 OK, 1.36kB, 85ms]
+[200 OK, 1.36kB, 97ms]
+[200 OK, 1.36kB, 101ms]
+[200 OK, 2.24kB, 114ms]
+[200 OK, 1.35kB, 137ms]
+[200 OK, 1.35kB, 179ms]
+[200 OK, 1.36kB, 202ms]
+[200 OK, 1.35kB, 206ms]
 
 ↳ All bonds - start & limit parameters
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds?limit=5&start=2 [200 OK, 4.19kB, 165ms]
+  GET https://api.mercapabbaco.com/bonds?limit=5&start=2 [200 OK, 4.19kB, 121ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -997,7 +995,7 @@ Iteration 1/3
   │ "Global link 'self' is valid: https://api.mercapabbaco
   │ .com/bonds?limit=5&start=2"
   │ "Global link 'last' is valid: https://api.mercapabbaco
-  │ .com/bonds?limit=5&start=1026"
+  │ .com/bonds?limit=5&start=1041"
   └
   ✓  Global links are valid URLs
   ┌
@@ -1032,11 +1030,11 @@ Iteration 1/3
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   │ '▶ Ejecutando lookup para: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-04-08 [200 OK, 2.61kB, 48ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-04-09 [200 OK, 2.6kB, 42ms]
   ┌
   │ '🔎 SHORT_NAME encontrado: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds?shortName=AL30 [200 OK, 1.43kB, 126ms]
+  GET https://api.mercapabbaco.com/bonds?shortName=AL30 [200 OK, 1.42kB, 106ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1086,7 +1084,7 @@ Iteration 1/3
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a [200 OK, 1.41kB, 100ms]
+  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a [200 OK, 1.41kB, 51ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1125,7 +1123,7 @@ Iteration 1/3
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/payment-summary [200 OK, 2.08kB, 172ms]
+  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/payment-summary [200 OK, 1.19kB, 154ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1149,7 +1147,7 @@ Iteration 1/3
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/coupons [200 OK, 7.07kB, 176ms]
+  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/coupons [200 OK, 7.07kB, 121ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1204,7 +1202,7 @@ Iteration 1/3
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/issue-conditions [200 OK, 1.39kB, 126ms]
+  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/issue-conditions [200 OK, 1.39kB, 151ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1230,7 +1228,7 @@ Iteration 1/3
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/identifiers [200 OK, 800B, 151ms]
+  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/identifiers [200 OK, 1.67kB, 53ms]
   ✓  Status code is 200
   ✓  Response is an array
   ┌
@@ -1248,7 +1246,7 @@ Iteration 1/3
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   └
-  GET https://historical-data.mercapabbaco.com/irrs?short-names=AL30 [200 OK, 62.22kB, 2.7s]
+  GET https://historical-data.mercapabbaco.com/irrs?short-names=AL30 [200 OK, 62.26kB, 2.3s]
   ✓  Response is received
   ✓  Status code is 200
   ✓  Media-Type is correct
@@ -1260,7 +1258,7 @@ Iteration 1/3
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   └
-  GET https://historical-data.mercapabbaco.com/parities?short-names=AL30 [200 OK, 165.43kB, 2.8s]
+  GET https://historical-data.mercapabbaco.com/parities?short-names=AL30 [200 OK, 165.54kB, 2.2s]
   ┌
   │ 'Response received successfully.'
   └
@@ -1305,14 +1303,14 @@ Iteration 1/3
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
-  │ '📅 VALUATION_DATE seteado a: 2026-04-08'
+  │ '📅 VALUATION_DATE seteado a: 2026-04-09'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-04-08 [200 OK, 2.61kB, 45ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-04-09 [200 OK, 3.49kB, 39ms]
   ┌
   │ '📌 Link del bono encontrado: https://api.mercapabbaco
   │ .com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a'
   └
-  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 5.76kB, 786ms]
+  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 5.76kB, 695ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1352,7 +1350,7 @@ Iteration 1/3
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 2.96kB, 426ms]
+  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 2.96kB, 368ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1392,7 +1390,7 @@ Iteration 1/3
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 1.2kB, 196ms]
+  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 1.2kB, 131ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1437,7 +1435,7 @@ Iteration 1/3
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   └
-  GET https://api.mercapabbaco.com/bond-laws [200 OK, 1.86kB, 181ms]
+  GET https://api.mercapabbaco.com/bond-laws [200 OK, 1.87kB, 102ms]
   ✓  Response is received
   ✓  Status code is 200
   ✓  Response contains 'items' array with at least one element
@@ -1449,7 +1447,7 @@ Iteration 1/3
   ✓  Item 1 (Ley Argentina) contains expected properties
   ✓  Item 1 (Ley Argentina) 'name' is a non-empty string
   ✓  Item 1 (Ley Argentina) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/18bb25d4-8ab8-4837-b574-1754811dd222 [200 OK, 888B, 177ms]
+  GET https://api.mercapabbaco.com/bond-laws/18bb25d4-8ab8-4837-b574-1754811dd222 [200 OK, 894B, 138ms]
   ✓  Item 1 (Ley Argentina) self link returns status 200
   ┌
   │ '🔎 Testing Item 2 (Ley N.Y.)'
@@ -1457,7 +1455,7 @@ Iteration 1/3
   ✓  Item 2 (Ley N.Y.) contains expected properties
   ✓  Item 2 (Ley N.Y.) 'name' is a non-empty string
   ✓  Item 2 (Ley N.Y.) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/828bc536-1bff-4d3d-bff2-8c98ec12c57b [200 OK, 887B, 91ms]
+  GET https://api.mercapabbaco.com/bond-laws/828bc536-1bff-4d3d-bff2-8c98ec12c57b [200 OK, 897B, 105ms]
   ✓  Item 2 (Ley N.Y.) self link returns status 200
   ┌
   │ '🔎 Testing Item 3 (Ley Inglesa)'
@@ -1465,7 +1463,7 @@ Iteration 1/3
   ✓  Item 3 (Ley Inglesa) contains expected properties
   ✓  Item 3 (Ley Inglesa) 'name' is a non-empty string
   ✓  Item 3 (Ley Inglesa) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/f7f0b5a4-b1a8-4095-a1c6-dcccd2a42410 [200 OK, 886B, 96ms]
+  GET https://api.mercapabbaco.com/bond-laws/f7f0b5a4-b1a8-4095-a1c6-dcccd2a42410 [200 OK, 886B, 97ms]
   ✓  Item 3 (Ley Inglesa) self link returns status 200
   ┌
   │ '🔎 Testing Item 4 (Ley Chilena)'
@@ -1473,7 +1471,7 @@ Iteration 1/3
   ✓  Item 4 (Ley Chilena) contains expected properties
   ✓  Item 4 (Ley Chilena) 'name' is a non-empty string
   ✓  Item 4 (Ley Chilena) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/b7a5d364-9a04-42a3-9605-921eb5b704a8 [200 OK, 886B, 200ms]
+  GET https://api.mercapabbaco.com/bond-laws/b7a5d364-9a04-42a3-9605-921eb5b704a8 [200 OK, 890B, 127ms]
   ✓  Item 4 (Ley Chilena) self link returns status 200
   ┌
   │ '🔎 Testing Item 5 (Ley Paraguaya)'
@@ -1481,7 +1479,7 @@ Iteration 1/3
   ✓  Item 5 (Ley Paraguaya) contains expected properties
   ✓  Item 5 (Ley Paraguaya) 'name' is a non-empty string
   ✓  Item 5 (Ley Paraguaya) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/8c970aa1-9fa0-46a1-b355-4a8a79adbee6 [200 OK, 892B, 103ms]
+  GET https://api.mercapabbaco.com/bond-laws/8c970aa1-9fa0-46a1-b355-4a8a79adbee6 [200 OK, 890B, 152ms]
   ✓  Item 5 (Ley Paraguaya) self link returns status 200
   ┌
   │ '🔎 Testing Item 6 (Ley Europea)'
@@ -1489,7 +1487,7 @@ Iteration 1/3
   ✓  Item 6 (Ley Europea) contains expected properties
   ✓  Item 6 (Ley Europea) 'name' is a non-empty string
   ✓  Item 6 (Ley Europea) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/2a2af6f8-8264-41c9-86e9-a9eb810c4deb [200 OK, 884B, 192ms]
+  GET https://api.mercapabbaco.com/bond-laws/2a2af6f8-8264-41c9-86e9-a9eb810c4deb [200 OK, 892B, 108ms]
   ✓  Item 6 (Ley Europea) self link returns status 200
   ┌
   │ '🔎 Testing Item 7 (Ley Brasilera)'
@@ -1497,7 +1495,7 @@ Iteration 1/3
   ✓  Item 7 (Ley Brasilera) contains expected properties
   ✓  Item 7 (Ley Brasilera) 'name' is a non-empty string
   ✓  Item 7 (Ley Brasilera) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/5ef6489e-1b5c-4864-8fd2-c57c11038319 [200 OK, 892B, 101ms]
+  GET https://api.mercapabbaco.com/bond-laws/5ef6489e-1b5c-4864-8fd2-c57c11038319 [200 OK, 892B, 92ms]
   ✓  Item 7 (Ley Brasilera) self link returns status 200
   ┌
   │ '🔎 Testing Item 8 (Ley Mexicana)'
@@ -1505,7 +1503,7 @@ Iteration 1/3
   ✓  Item 8 (Ley Mexicana) contains expected properties
   ✓  Item 8 (Ley Mexicana) 'name' is a non-empty string
   ✓  Item 8 (Ley Mexicana) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/faaf8f43-b147-4c68-aaf9-ffbaf7d27695 [200 OK, 891B, 100ms]
+  GET https://api.mercapabbaco.com/bond-laws/faaf8f43-b147-4c68-aaf9-ffbaf7d27695 [200 OK, 893B, 132ms]
   ✓  Item 8 (Ley Mexicana) self link returns status 200
   ┌
   │ '🔎 Testing Item 9 (Ley Federal (EEUU))'
@@ -1513,42 +1511,42 @@ Iteration 1/3
   ✓  Item 9 (Ley Federal (EEUU)) contains expected properties
   ✓  Item 9 (Ley Federal (EEUU)) 'name' is a non-empty string
   ✓  Item 9 (Ley Federal (EEUU)) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/88948c32-92b6-4394-8505-00acd0124a7f [200 OK, 903B, 189ms]
+  GET https://api.mercapabbaco.com/bond-laws/88948c32-92b6-4394-8505-00acd0124a7f [200 OK, 887B, 52ms]
   ✓  Item 9 (Ley Federal (EEUU)) self link returns status 200
 
 ❏ Pepper-GS32 / Regression-Test / Bond Screener
 ↳ Filter by debt-type, issueCurrency, paymentCurrency, issuer & law
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🚀 Iniciando resolución de dependencias...'
+  │ '🚀 Iniciando resolución con protección de variables y
+  │  fallback...'
   └
-  GET https://api.mercapabbaco.com/debt-types   GET https://api.mercapabbaco.com/currencies   GET https://api.mercapabbaco.com/instrument-issuers   GET https://api.mercapabbaco.com/bond-laws [200 OK, 1.87kB, 166ms]
-  ┌
-  │ '✅ [SCREENER_BOND_LAW] Resuelto: LEY ARGENTINA -> http
-  │ s://api.mercapabbaco.com/bond-laws/18bb25d4-8ab8-4837-
-  │ b574-1754811dd222'
-  └
-[200 OK, 1.85kB, 172ms]
+  GET https://api.mercapabbaco.com/debt-types   GET https://api.mercapabbaco.com/currencies   GET https://api.mercapabbaco.com/instrument-issuers   GET https://api.mercapabbaco.com/bond-laws [200 OK, 1.85kB, 86ms]
   ┌
   │ '✅ [SCREENER_CURRENCY] Resuelto: USD -> https://api.me
   │ rcapabbaco.com/currencies/e852e30f-42ad-4343-a7f6-3bc4
   │ ec840ed1'
   └
-[200 OK, 1.19kB, 190ms]
+[200 OK, 1.87kB, 89ms]
+  ┌
+  │ '✅ [SCREENER_BOND_LAW] Resuelto: LEY ARGENTINA -> http
+  │ s://api.mercapabbaco.com/bond-laws/18bb25d4-8ab8-4837-
+  │ b574-1754811dd222'
+  └
+[200 OK, 1.19kB, 93ms]
   ┌
   │ '✅ [SCREENER_DEBT_TYPE] Resuelto: OBLIGACIÓN NEGOCIABL
   │ E -> https://api.mercapabbaco.com/debt-types/a6af5129-
   │ 7f88-46ce-879b-bfb0a4ee8a7b'
   └
-[200 OK, 112.47kB, 380ms]
+[200 OK, 112.75kB, 295ms]
   ┌
   │ '✅ [SCREENER_ISSUER] Resuelto: YPF S.A. -> https://api
   │ .mercapabbaco.com/instrument-issuers/be5aaaa6-e2c9-482
   │ d-8c97-0928ab9c3e49'
-  │ '✨ Todos los valores resueltos. Enviando request al sc
-  │ reener...'
+  │ '✨ Proceso completado.'
   └
-  POST https://api.mercapabbaco.com/bond-screener [200 OK, 17.2kB, 3.6s]
+  POST https://api.mercapabbaco.com/bond-screener [200 OK, 17.21kB, 2.7s]
   ✓  Response is received
   ✓  Status code is 200
   ✓  Media-Type is correct
@@ -1566,7 +1564,7 @@ Iteration 1/3
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   └
-  GET https://api.mercapabbaco.com/currencies [200 OK, 1.85kB, 110ms]
+  GET https://api.mercapabbaco.com/currencies [200 OK, 1.85kB, 135ms]
   ✓  Response is received
   ✓  Status code is 200
   ✓  Response contains 'items' array with at least one element
@@ -1579,7 +1577,7 @@ Iteration 1/3
   ✓  Item 1 (ARS) contains expected properties
   ✓  Item 1 (ARS) text fields are non-empty strings
   ✓  Item 1 (ARS) self link is a valid URL
-  GET https://api.mercapabbaco.com/currencies/1ab0ad33-7b34-4e64-8a52-a3d4f9cf8452 [200 OK, 922B, 174ms]
+  GET https://api.mercapabbaco.com/currencies/1ab0ad33-7b34-4e64-8a52-a3d4f9cf8452 [200 OK, 916B, 114ms]
   ✓  Item 1 (ARS) self link returns status 200
   ┌
   │ '🔎 Testing Item 2 (USD)'
@@ -1587,7 +1585,7 @@ Iteration 1/3
   ✓  Item 2 (USD) contains expected properties
   ✓  Item 2 (USD) text fields are non-empty strings
   ✓  Item 2 (USD) self link is a valid URL
-  GET https://api.mercapabbaco.com/currencies/e852e30f-42ad-4343-a7f6-3bc4ec840ed1 [200 OK, 926B, 97ms]
+  GET https://api.mercapabbaco.com/currencies/e852e30f-42ad-4343-a7f6-3bc4ec840ed1 [200 OK, 920B, 48ms]
   ✓  Item 2 (USD) self link returns status 200
   ┌
   │ '🔎 Testing Item 3 (EUR)'
@@ -1595,7 +1593,7 @@ Iteration 1/3
   ✓  Item 3 (EUR) contains expected properties
   ✓  Item 3 (EUR) text fields are non-empty strings
   ✓  Item 3 (EUR) self link is a valid URL
-  GET https://api.mercapabbaco.com/currencies/baeef6f0-0294-4ae5-bc16-dade743ae049 [200 OK, 922B, 104ms]
+  GET https://api.mercapabbaco.com/currencies/baeef6f0-0294-4ae5-bc16-dade743ae049 [200 OK, 918B, 120ms]
   ✓  Item 3 (EUR) self link returns status 200
   ┌
   │ '🔎 Testing Item 4 (GBP)'
@@ -1603,7 +1601,7 @@ Iteration 1/3
   ✓  Item 4 (GBP) contains expected properties
   ✓  Item 4 (GBP) text fields are non-empty strings
   ✓  Item 4 (GBP) self link is a valid URL
-  GET https://api.mercapabbaco.com/currencies/695a7f24-199f-4bf6-984f-0ba08c803956 [200 OK, 916B, 188ms]
+  GET https://api.mercapabbaco.com/currencies/695a7f24-199f-4bf6-984f-0ba08c803956 [200 OK, 918B, 92ms]
   ✓  Item 4 (GBP) self link returns status 200
   ┌
   │ '🔎 Testing Item 5 (CLP)'
@@ -1611,7 +1609,7 @@ Iteration 1/3
   ✓  Item 5 (CLP) contains expected properties
   ✓  Item 5 (CLP) text fields are non-empty strings
   ✓  Item 5 (CLP) self link is a valid URL
-  GET https://api.mercapabbaco.com/currencies/076f26bd-f0ee-4ead-9f6b-e3881eec23d2 [200 OK, 918B, 102ms]
+  GET https://api.mercapabbaco.com/currencies/076f26bd-f0ee-4ead-9f6b-e3881eec23d2 [200 OK, 922B, 133ms]
   ✓  Item 5 (CLP) self link returns status 200
   ┌
   │ '🔎 Testing Item 6 (PYG)'
@@ -1619,7 +1617,7 @@ Iteration 1/3
   ✓  Item 6 (PYG) contains expected properties
   ✓  Item 6 (PYG) text fields are non-empty strings
   ✓  Item 6 (PYG) self link is a valid URL
-  GET https://api.mercapabbaco.com/currencies/fd3c2d5a-267d-4c93-aa8a-15a490e283e5 [200 OK, 916B, 195ms]
+  GET https://api.mercapabbaco.com/currencies/fd3c2d5a-267d-4c93-aa8a-15a490e283e5 [200 OK, 932B, 149ms]
   ✓  Item 6 (PYG) self link returns status 200
   ┌
   │ '🔎 Testing Item 7 (MXN)'
@@ -1627,7 +1625,7 @@ Iteration 1/3
   ✓  Item 7 (MXN) contains expected properties
   ✓  Item 7 (MXN) text fields are non-empty strings
   ✓  Item 7 (MXN) self link is a valid URL
-  GET https://api.mercapabbaco.com/currencies/6684ef14-e0cf-4096-a088-9071a409e8b8 [200 OK, 924B, 101ms]
+  GET https://api.mercapabbaco.com/currencies/6684ef14-e0cf-4096-a088-9071a409e8b8 [200 OK, 920B, 108ms]
   ✓  Item 7 (MXN) self link returns status 200
 
 ❏ Pepper-GS32 / Regression-Test / Debt types
@@ -1635,7 +1633,7 @@ Iteration 1/3
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   └
-  GET https://api.mercapabbaco.com/debt-types [200 OK, 2.08kB, 178ms]
+  GET https://api.mercapabbaco.com/debt-types [200 OK, 1.2kB, 76ms]
   ✓  Response is received
   ✓  Status code is 200
   ✓  Response contains 'items' array with at least one element
@@ -1647,7 +1645,7 @@ Iteration 1/3
   ✓  Item 1 (Título Público) contains expected properties
   ✓  Item 1 (Título Público) 'singularName' is a non-empty string
   ✓  Item 1 (Título Público) self link is a valid URL
-  GET https://api.mercapabbaco.com/debt-types/e3da5be4-2107-4ca2-97d9-77b5cf8e8725 [200 OK, 899B, 179ms]
+  GET https://api.mercapabbaco.com/debt-types/e3da5be4-2107-4ca2-97d9-77b5cf8e8725 [200 OK, 905B, 122ms]
   ✓  Item 1 (Título Público) self link returns status 200
   ┌
   │ '🔎 Testing Item 2 (Obligación Negociable)'
@@ -1655,7 +1653,7 @@ Iteration 1/3
   ✓  Item 2 (Obligación Negociable) contains expected properties
   ✓  Item 2 (Obligación Negociable) 'singularName' is a non-empty string
   ✓  Item 2 (Obligación Negociable) self link is a valid URL
-  GET https://api.mercapabbaco.com/debt-types/a6af5129-7f88-46ce-879b-bfb0a4ee8a7b [200 OK, 907B, 102ms]
+  GET https://api.mercapabbaco.com/debt-types/a6af5129-7f88-46ce-879b-bfb0a4ee8a7b [200 OK, 915B, 152ms]
   ✓  Item 2 (Obligación Negociable) self link returns status 200
   ┌
   │ '🔎 Testing Item 3 (Fideicomiso)'
@@ -1663,7 +1661,7 @@ Iteration 1/3
   ✓  Item 3 (Fideicomiso) contains expected properties
   ✓  Item 3 (Fideicomiso) 'singularName' is a non-empty string
   ✓  Item 3 (Fideicomiso) self link is a valid URL
-  GET https://api.mercapabbaco.com/debt-types/c2b8670a-dec7-4bfd-b5ba-5ce86c0d5eab [200 OK, 898B, 196ms]
+  GET https://api.mercapabbaco.com/debt-types/c2b8670a-dec7-4bfd-b5ba-5ce86c0d5eab [200 OK, 900B, 108ms]
   ✓  Item 3 (Fideicomiso) self link returns status 200
 
 ❏ Pepper-GS32 / Regression-Test / Exchange Schemes
@@ -1671,7 +1669,7 @@ Iteration 1/3
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   └
-  GET https://api.mercapabbaco.com/exchange-schemes [200 OK, 3.83kB, 50ms]
+  GET https://api.mercapabbaco.com/exchange-schemes [200 OK, 3.84kB, 56ms]
   ✓  Response is received
   ✓  Status code is 200
   ✓  Media-Type is correct
@@ -1688,68 +1686,68 @@ Iteration 1/3
   │ pabbaco.com/exchange-schemes/150dd7f3-1420-4c76-8ed6-8
   │ 27667455276'
   └
-  GET https://api.mercapabbaco.com/exchange-schemes/150dd7f3-1420-4c76-8ed6-827667455276 [200 OK, 1.03kB, 113ms]
+  GET https://api.mercapabbaco.com/exchange-schemes/150dd7f3-1420-4c76-8ed6-827667455276 [200 OK, 1.02kB, 69ms]
   ✓  Item 1 (Esquema ARS - USD Oficial) self link returns status 200
   ✓  Item 2 (Esquema USD) contains expected properties
   ✓  Item 2 (Esquema USD) 'name' is non-empty
   ✓  Item 2 (Esquema USD) 'targetCurrency' is a valid URL
   ✓  Item 2 (Esquema USD) 'self' link is valid URL
-  GET https://api.mercapabbaco.com/exchange-schemes/f8886784-c23d-4de1-a058-5b27fce14ffe [200 OK, 1.01kB, 114ms]
+  GET https://api.mercapabbaco.com/exchange-schemes/f8886784-c23d-4de1-a058-5b27fce14ffe [200 OK, 1.02kB, 151ms]
   ✓  Item 2 (Esquema USD) self link returns status 200
   ✓  Item 3 (Esquema EUR) contains expected properties
   ✓  Item 3 (Esquema EUR) 'name' is non-empty
   ✓  Item 3 (Esquema EUR) 'targetCurrency' is a valid URL
   ✓  Item 3 (Esquema EUR) 'self' link is valid URL
-  GET https://api.mercapabbaco.com/exchange-schemes/1bf50dde-4343-49e7-8a60-62997a6b5001 [200 OK, 1.01kB, 117ms]
+  GET https://api.mercapabbaco.com/exchange-schemes/1bf50dde-4343-49e7-8a60-62997a6b5001 [200 OK, 1.02kB, 116ms]
   ✓  Item 3 (Esquema EUR) self link returns status 200
   ✓  Item 4 (Esquema CLP) contains expected properties
   ✓  Item 4 (Esquema CLP) 'name' is non-empty
   ✓  Item 4 (Esquema CLP) 'targetCurrency' is a valid URL
   ✓  Item 4 (Esquema CLP) 'self' link is valid URL
-  GET https://api.mercapabbaco.com/exchange-schemes/1cb8b99b-86b7-4036-9124-8f809066ed41 [200 OK, 1.02kB, 104ms]
+  GET https://api.mercapabbaco.com/exchange-schemes/1cb8b99b-86b7-4036-9124-8f809066ed41 [200 OK, 1.02kB, 162ms]
   ✓  Item 4 (Esquema CLP) self link returns status 200
   ✓  Item 5 (Esquema GBP) contains expected properties
   ✓  Item 5 (Esquema GBP) 'name' is non-empty
   ✓  Item 5 (Esquema GBP) 'targetCurrency' is a valid URL
   ✓  Item 5 (Esquema GBP) 'self' link is valid URL
-  GET https://api.mercapabbaco.com/exchange-schemes/9bd90858-0402-49fc-9975-0a1daf381643 [200 OK, 1.02kB, 113ms]
+  GET https://api.mercapabbaco.com/exchange-schemes/9bd90858-0402-49fc-9975-0a1daf381643 [200 OK, 1.02kB, 105ms]
   ✓  Item 5 (Esquema GBP) self link returns status 200
   ✓  Item 6 (Esquema PYG) contains expected properties
   ✓  Item 6 (Esquema PYG) 'name' is non-empty
   ✓  Item 6 (Esquema PYG) 'targetCurrency' is a valid URL
   ✓  Item 6 (Esquema PYG) 'self' link is valid URL
-  GET https://api.mercapabbaco.com/exchange-schemes/d85f0a6d-1a80-4f8d-b58b-b4818a47d8c6 [200 OK, 1.02kB, 113ms]
+  GET https://api.mercapabbaco.com/exchange-schemes/d85f0a6d-1a80-4f8d-b58b-b4818a47d8c6 [200 OK, 1.02kB, 84ms]
   ✓  Item 6 (Esquema PYG) self link returns status 200
   ✓  Item 7 (USD MEP) contains expected properties
   ✓  Item 7 (USD MEP) 'name' is non-empty
   ✓  Item 7 (USD MEP) 'targetCurrency' is a valid URL
   ✓  Item 7 (USD MEP) 'self' link is valid URL
-  GET https://api.mercapabbaco.com/exchange-schemes/cf410c0e-ab29-489f-96d3-db0c857240d2 [200 OK, 1.01kB, 102ms]
+  GET https://api.mercapabbaco.com/exchange-schemes/cf410c0e-ab29-489f-96d3-db0c857240d2 [200 OK, 1.03kB, 139ms]
   ✓  Item 7 (USD MEP) self link returns status 200
   ✓  Item 8 (Esquema ARS - USD MEP) contains expected properties
   ✓  Item 8 (Esquema ARS - USD MEP) 'name' is non-empty
   ✓  Item 8 (Esquema ARS - USD MEP) 'targetCurrency' is a valid URL
   ✓  Item 8 (Esquema ARS - USD MEP) 'self' link is valid URL
-  GET https://api.mercapabbaco.com/exchange-schemes/b0692058-1c49-4ed8-b2ca-3fe84a8c2c49 [200 OK, 1.03kB, 98ms]
+  GET https://api.mercapabbaco.com/exchange-schemes/b0692058-1c49-4ed8-b2ca-3fe84a8c2c49 [200 OK, 1.02kB, 54ms]
   ✓  Item 8 (Esquema ARS - USD MEP) self link returns status 200
   ✓  Item 9 (Esquema ARS - USD CCL) contains expected properties
   ✓  Item 9 (Esquema ARS - USD CCL) 'name' is non-empty
   ✓  Item 9 (Esquema ARS - USD CCL) 'targetCurrency' is a valid URL
   ✓  Item 9 (Esquema ARS - USD CCL) 'self' link is valid URL
-  GET https://api.mercapabbaco.com/exchange-schemes/f512817f-1d31-4cea-b325-691c2c05c031 [200 OK, 1.02kB, 101ms]
+  GET https://api.mercapabbaco.com/exchange-schemes/f512817f-1d31-4cea-b325-691c2c05c031 [200 OK, 1.02kB, 72ms]
   ✓  Item 9 (Esquema ARS - USD CCL) self link returns status 200
   ✓  Item 10 ((MPC) Esquema USD - Oficial) contains expected properties
   ✓  Item 10 ((MPC) Esquema USD - Oficial) 'name' is non-empty
   ✓  Item 10 ((MPC) Esquema USD - Oficial) 'targetCurrency' is a valid URL
   ✓  Item 10 ((MPC) Esquema USD - Oficial) 'self' link is valid URL
-  GET https://api.mercapabbaco.com/exchange-schemes/c0f4f0d8-6db9-44b2-8679-019e8029e79a [200 OK, 1.03kB, 103ms]
+  GET https://api.mercapabbaco.com/exchange-schemes/c0f4f0d8-6db9-44b2-8679-019e8029e79a [200 OK, 1.05kB, 110ms]
   ✓  Item 10 ((MPC) Esquema USD - Oficial) self link returns status 200
 
 ↳ Get exchange scheme by UUID
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   └
-  GET https://api.mercapabbaco.com/exchange-schemes/150dd7f3-1420-4c76-8ed6-827667455276 [200 OK, 1.04kB, 51ms]
+  GET https://api.mercapabbaco.com/exchange-schemes/150dd7f3-1420-4c76-8ed6-827667455276 [200 OK, 1.04kB, 44ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1782,15 +1780,15 @@ Iteration 1/3
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
-  │ '📅 VALUATION_DATE seteado a: 2026-04-08'
+  │ '📅 VALUATION_DATE seteado a: 2026-04-09'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-04-08 [200 OK, 3.49kB, 49ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-04-09 [200 OK, 2.6kB, 39ms]
   ┌
   │ '📌 TRADABLE_SECURITY_URL seteado a: https://api.merca
   │ pabbaco.com/tradable-securities/6cfdf5ed-d8da-411a-8e8
   │ 6-b1bbeef54f45'
   └
-  POST https://api.mercapabbaco.com/investments [201 Created, 1.81kB, 31.2s]
+  POST https://api.mercapabbaco.com/investments [201 Created, 1.8kB, 141ms]
   ┌
   │ 'Response received successfully with status 201 Create
   │ d.'
@@ -1861,15 +1859,15 @@ Iteration 1/3
   ✓  Price isDirty is true
   ┌
   │ '✔ SELF_INVESTMENT =', 'https://api.mercapabbaco.com/i
-  │ nvestments/21738'
+  │ nvestments/23423'
   │ '✔ INTERNAL_RATE_OF_RETURN_SENSITIVITY =', 'https://ap
-  │ i.mercapabbaco.com/investments/21738/irr-sensitivity'
+  │ i.mercapabbaco.com/investments/23423/irr-sensitivity'
   │ '✔ INVESTMENT_METRICS =', 'https://api.mercapabbaco.co
-  │ m/investments/21738/metrics'
+  │ m/investments/23423/metrics'
   │ '✔ PRICE_SENSITIVITY =', 'https://api.mercapabbaco.com
-  │ /investments/21738/price-sensitivity'
+  │ /investments/23423/price-sensitivity'
   │ '✔ EXCHANGE_RATE_SENSITIVITY =', 'https://api.mercapab
-  │ baco.com/investments/21738/exchange-rate-sensitivity'
+  │ baco.com/investments/23423/exchange-rate-sensitivity'
   └
 
 ↳ Get investment by ID
@@ -1877,58 +1875,316 @@ Iteration 1/3
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/investments/21738 [503 Service Unavailable, 648B, 91ms]
-  1. Response is received
-  2. Media-Type is correct
-  3⠄ JSONError in test-script
+  GET https://api.mercapabbaco.com/investments/23423 [200 OK, 1.86kB, 138ms]
+  ┌
+  │ 'Response received successfully with status 200 OK.'
+  └
+  ✓  Response is received
+  ┌
+  │ 'Content-Type header is correct.'
+  └
+  ✓  Media-Type is correct
+  ┌
+  │ 'Response body is not empty.'
+  └
+  ✓  Response body is not empty
+  ┌
+  │ 'Response contains all expected properties.'
+  └
+  ✓  Response contains expected properties
+  ┌
+  │ 'No fields are null.'
+  └
+  ✓  No fields are null
+  ┌
+  │ 'Optional property exchangeRateSensitivity is present.
+  │ '
+  └
+  ✓  Links contain expected mandatory and optional properties
+  ┌
+  │ 'All links are valid URLs.'
+  └
+  ✓  All links are valid URLs
+  ┌
+  │ 'Security link is valid.'
+  └
+  ✓  Security is a valid URL
+  ┌
+  │ 'Security link is correct:', 'https://api.mercapabbaco
+  │ .com/tradable-securities/6cfdf5ed-d8da-411a-8e86-b1bbe
+  │ ef54f45'
+  └
+  ✓  Security link is correct
+  ┌
+  │ 'Investment contains all expected properties.'
+  └
+  ✓  Investment contains expected properties
+  ┌
+  │ 'Settlement Date is correct.'
+  └
+  ✓  Settlement Date is correct
+  ┌
+  │ 'Investment Settlement Date is correct.'
+  └
+  ✓  Investment Settlement Date is correct
+  ┌
+  │ 'Asset amount is correct.'
+  └
+  ✓  Asset amount is correct
+  ┌
+  │ 'Every amount is correct.'
+  └
+  ✓  Every amount is correct
+  ┌
+  │ 'Price type is correct.'
+  └
+  ✓  Price type is correct
+  ┌
+  │ 'Price isDirty is true.'
+  └
+  ✓  Price isDirty is true
+  ┌
+  │ '✔ SELF_INVESTMENT =', 'https://api.mercapabbaco.com/i
+  │ nvestments/23423'
+  │ '✔ INTERNAL_RATE_OF_RETURN_SENSITIVITY =', 'https://ap
+  │ i.mercapabbaco.com/investments/23423/irr-sensitivity'
+  │ '✔ INVESTMENT_METRICS =', 'https://api.mercapabbaco.co
+  │ m/investments/23423/metrics'
+  │ '✔ PRICE_SENSITIVITY =', 'https://api.mercapabbaco.com
+  │ /investments/23423/price-sensitivity'
+  │ '✔ EXCHANGE_RATE_SENSITIVITY =', 'https://api.mercapab
+  │ baco.com/investments/23423/exchange-rate-sensitivity'
+  └
 
 ↳ Get investment metrics by ID
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/investments/21738/metrics [503 Service Unavailable, 654B, 91ms]
-  4. Response is received
-  5. Status code is 200
-  6. Media-Type is correct
-  7⠄ JSONError in test-script
+  GET https://api.mercapabbaco.com/investments/23423/metrics [200 OK, 2.19kB, 3.8s]
+  ✓  Response is received
+  ✓  Status code is 200
+  ✓  Media-Type is correct
+  ✓  Response contains required properties
+  ✓  Mandatory numeric fields have correct type
+  ✓  lastQuote structure is valid when present
+  ✓  lastIntradayQuote structure is valid
+  ✓  Cost and residualAmount structure is valid
+  ✓  Optional fields are valid when present
+  ✓  Links object exists
 
 ↳ Get investment irr sensitivity by ID
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/investments/21738/irr-sensitivity [503 Service Unavailable, 650B, 108ms]
-  8. Response is received
-  9. Media-Type is correct
- 10⠄ JSONError in test-script
+  GET https://api.mercapabbaco.com/investments/23423/irr-sensitivity [200 OK, 2.51kB, 765ms]
+  ┌
+  │ 'Response received successfully with status 200 OK.'
+  └
+  ✓  Response is received
+  ┌
+  │ 'Content-Type header is correct.'
+  └
+  ✓  Media-Type is correct
+  ┌
+  │ 'Response body is not empty.'
+  └
+  ✓  Response body is not empty
+  ┌
+  │ 'No main fields are null.'
+  └
+  ✓  No main fields are null
+  ┌
+  │ 'Baseline contains all mandatory properties.'
+  └
+  ✓  Baseline mandatory properties are present
+  ┌
+  │ "✔ Baseline optional field 'internalRateOfReturn' is v
+  │ alid"
+  │ "✔ Baseline optional field 'modifiedDuration' is valid
+  │ "
+  └
+  ✓  Baseline optional properties are valid when present
+  ┌
+  │ 'Results array has a valid length:', 11
+  └
+  ✓  Results array is valid
+  ┌
+  │ 'Result 1 contains all mandatory properties.'
+  │ 'Result 2 contains all mandatory properties.'
+  │ 'Result 3 contains all mandatory properties.'
+  │ 'Result 4 contains all mandatory properties.'
+  │ 'Result 5 contains all mandatory properties.'
+  │ 'Result 6 contains all mandatory properties.'
+  │ 'Result 7 contains all mandatory properties.'
+  │ 'Result 8 contains all mandatory properties.'
+  │ 'Result 9 contains all mandatory properties.'
+  │ 'Result 10 contains all mandatory properties.'
+  │ 'Result 11 contains all mandatory properties.'
+  └
+  ✓  Each result contains mandatory properties
+  ┌
+  │ "✔ Result 1 optional field 'internalRateOfReturn' is v
+  │ alid"
+  │ "✔ Result 1 optional field 'modifiedDuration' is valid
+  │ "
+  │ "✔ Result 2 optional field 'internalRateOfReturn' is v
+  │ alid"
+  │ "✔ Result 2 optional field 'modifiedDuration' is valid
+  │ "
+  │ "✔ Result 3 optional field 'internalRateOfReturn' is v
+  │ alid"
+  │ "✔ Result 3 optional field 'modifiedDuration' is valid
+  │ "
+  │ "✔ Result 4 optional field 'internalRateOfReturn' is v
+  │ alid"
+  │ "✔ Result 4 optional field 'modifiedDuration' is valid
+  │ "
+  │ "✔ Result 5 optional field 'internalRateOfReturn' is v
+  │ alid"
+  │ "✔ Result 5 optional field 'modifiedDuration' is valid
+  │ "
+  │ "✔ Result 6 optional field 'internalRateOfReturn' is v
+  │ alid"
+  │ "✔ Result 6 optional field 'modifiedDuration' is valid
+  │ "
+  │ "✔ Result 7 optional field 'internalRateOfReturn' is v
+  │ alid"
+  │ "✔ Result 7 optional field 'modifiedDuration' is valid
+  │ "
+  │ "✔ Result 8 optional field 'internalRateOfReturn' is v
+  │ alid"
+  │ "✔ Result 8 optional field 'modifiedDuration' is valid
+  │ "
+  │ "✔ Result 9 optional field 'internalRateOfReturn' is v
+  │ alid"
+  │ "✔ Result 9 optional field 'modifiedDuration' is valid
+  │ "
+  │ "✔ Result 10 optional field 'internalRateOfReturn' is 
+  │ valid"
+  │ "✔ Result 10 optional field 'modifiedDuration' is vali
+  │ d"
+  │ "✔ Result 11 optional field 'internalRateOfReturn' is 
+  │ valid"
+  │ "✔ Result 11 optional field 'modifiedDuration' is vali
+  │ d"
+  └
+  ✓  Each result optional properties are valid when present
+  ┌
+  │ 'numberOfScenarios and step have expected values.'
+  └
+  ✓  NumberOfScenarios and step have the expected values
 
 ↳ Get investment price sensitivity by ID
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/investments/21738/price-sensitivity [503 Service Unavailable, 648B, 96ms]
- 11. Response is received
- 12. Media-Type is correct
- 13⠄ JSONError in test-script
+  GET https://api.mercapabbaco.com/investments/23423/price-sensitivity [200 OK, 2.36kB, 129ms]
+  ┌
+  │ 'Response received successfully with status 200 OK.'
+  └
+  ✓  Response is received
+  ┌
+  │ 'Content-Type header is correct.'
+  └
+  ✓  Media-Type is correct
+  ┌
+  │ 'Response body is not empty.'
+  └
+  ✓  Response body is not empty
+  ┌
+  │ 'No main fields are null.'
+  └
+  ✓  No main fields are null
+  ┌
+  │ 'Step contains numberOfBasisPoint: 500'
+  └
+  ✓  Step contains expected properties
+  ┌
+  │ 'Baseline contains all expected properties.'
+  └
+  ✓  Baseline contains expected properties
+  ┌
+  │ 'Results array contains 11 scenarios.'
+  └
+  ✓  Results array is valid
+  ┌
+  │ 'Result 1 contains all expected properties.'
+  │ 'Result 2 contains all expected properties.'
+  │ 'Result 3 contains all expected properties.'
+  │ 'Result 4 contains all expected properties.'
+  │ 'Result 5 contains all expected properties.'
+  │ 'Result 6 contains all expected properties.'
+  │ 'Result 7 contains all expected properties.'
+  │ 'Result 8 contains all expected properties.'
+  │ 'Result 9 contains all expected properties.'
+  │ 'Result 10 contains all expected properties.'
+  │ 'Result 11 contains all expected properties.'
+  └
+  ✓  Each result contains expected properties
+  ┌
+  │ 'Result 1 values are valid.'
+  │ 'Result 2 values are valid.'
+  │ 'Result 3 values are valid.'
+  │ 'Result 4 values are valid.'
+  │ 'Result 5 values are valid.'
+  │ 'Result 6 values are valid.'
+  │ 'Result 7 values are valid.'
+  │ 'Result 8 values are valid.'
+  │ 'Result 9 values are valid.'
+  │ 'Result 10 values are valid.'
+  │ 'Result 11 values are valid.'
+  └
+  ✓  Check that properties in each 'results' have the expected format
+  ┌
+  │ 'NumberOfScenarios is 10 and step.numberOfBasisPoint i
+  │ s 500'
+  └
+  ✓  NumberOfScenarios and step have the expected values
 
 ↳ Get investment exchange rate sensitivity by ID
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/investments/21738/exchange-rate-sensitivity [503 Service Unavailable, 644B, 92ms]
- 14. Response is received
- 15. Media-Type is correct
- 16⠄ JSONError in test-script
+  GET https://api.mercapabbaco.com/investments/23423/exchange-rate-sensitivity [200 OK, 2.58kB, 850ms]
+  ┌
+  │ 'Response received successfully with status 200 OK.'
+  └
+  ✓  Response is received
+  ┌
+  │ 'Content-Type header is correct.'
+  └
+  ✓  Media-Type is correct
+  ┌
+  │ 'Response body is not empty.'
+  └
+  ✓  Response body is not empty
+  ┌
+  │ 'No main fields are null.'
+  └
+  ✓  No main fields are null
+  ┌
+  │ 'Results array contains 11 scenarios.'
+  └
+  ✓  Results array is valid
+  ┌
+  │ 'Step is correct: 0.01'
+  └
+  ✓  Step contains expected value
+  ┌
+  │ 'NumberOfScenarios is 10 and step is 0.01'
+  └
+  ✓  NumberOfScenarios and step have the expected values
 
 ❏ Pepper-GS32 / Regression-Test / Instrument Issuers
 ↳ Get all instrument issuers
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   └
-  GET https://api.mercapabbaco.com/instrument-issuers [200 OK, 112.46kB, 560ms]
+  GET https://api.mercapabbaco.com/instrument-issuers [200 OK, 112.74kB, 347ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -2024,32 +2280,32 @@ Iteration 1/3
   │ capabbaco.com/instrument-issuers/6f5616c7-d1f0-4cd2-b4
   │ b3-bb99184712cf'
   └
-  GET https://api.mercapabbaco.com/instrument-issuers/6f5616c7-d1f0-4cd2-b4b3-bb99184712cf   GET https://api.mercapabbaco.com/instrument-issuers/89874250-34f0-4358-a261-c13ce5bac46a   GET https://api.mercapabbaco.com/instrument-issuers/6dbaafee-d41d-4262-a53e-9df48c0de55a   GET https://api.mercapabbaco.com/instrument-issuers/383ff553-5419-4d7a-888d-48c68b1abcd4   GET https://api.mercapabbaco.com/instrument-issuers/0cf0cba4-9ccc-4904-9a26-68666dba6568   GET https://api.mercapabbaco.com/instrument-issuers/26e53912-2587-4855-9c61-d5e4915b3e49   GET https://api.mercapabbaco.com/instrument-issuers/b11a569e-610e-4519-b775-c6cd35dc72fc   GET https://api.mercapabbaco.com/instrument-issuers/8d1ba67d-5751-4ccc-8f59-242234628a68   GET https://api.mercapabbaco.com/instrument-issuers/88400bd6-f8f5-4da4-91d2-ad6fea90a273   GET https://api.mercapabbaco.com/instrument-issuers/66da8712-1d05-4180-b17f-27df7c13b8e2 [200 OK, 899B, 120ms]
+  GET https://api.mercapabbaco.com/instrument-issuers/6f5616c7-d1f0-4cd2-b4b3-bb99184712cf   GET https://api.mercapabbaco.com/instrument-issuers/89874250-34f0-4358-a261-c13ce5bac46a   GET https://api.mercapabbaco.com/instrument-issuers/6dbaafee-d41d-4262-a53e-9df48c0de55a   GET https://api.mercapabbaco.com/instrument-issuers/383ff553-5419-4d7a-888d-48c68b1abcd4   GET https://api.mercapabbaco.com/instrument-issuers/0cf0cba4-9ccc-4904-9a26-68666dba6568   GET https://api.mercapabbaco.com/instrument-issuers/26e53912-2587-4855-9c61-d5e4915b3e49   GET https://api.mercapabbaco.com/instrument-issuers/b11a569e-610e-4519-b775-c6cd35dc72fc   GET https://api.mercapabbaco.com/instrument-issuers/8d1ba67d-5751-4ccc-8f59-242234628a68   GET https://api.mercapabbaco.com/instrument-issuers/88400bd6-f8f5-4da4-91d2-ad6fea90a273   GET https://api.mercapabbaco.com/instrument-issuers/66da8712-1d05-4180-b17f-27df7c13b8e2 [200 OK, 899B, 52ms]
   ✓  Item 1 (BCRA) self link returns status 200
-[200 OK, 917B, 118ms]
-  ✓  Item 8 (Pcia. de Chaco) self link returns status 200
-[200 OK, 945B, 134ms]
+[200 OK, 945B, 55ms]
   ✓  Item 7 (Tesorería General de la Nación (Argentina)) self link returns status 200
-[200 OK, 898B, 140ms]
-  ✓  Item 4 (BCE) self link returns status 200
-[200 OK, 918B, 147ms]
-  ✓  Item 5 (Pcia. de Buenos Aires) self link returns status 200
-[200 OK, 916B, 154ms]
-  ✓  Item 3 (Republica Argentina) self link returns status 200
-[200 OK, 918B, 164ms]
-  ✓  Item 6 (Cdad. de Buenos Aires) self link returns status 200
-[200 OK, 912B, 172ms]
+[200 OK, 906B, 86ms]
   ✓  Item 2 (Federal Reserve) self link returns status 200
-[200 OK, 913B, 238ms]
-  ✓  Item 10 (Pcia. de Entre Ríos) self link returns status 200
-[200 OK, 906B, 246ms]
+[200 OK, 914B, 91ms]
+  ✓  Item 5 (Pcia. de Buenos Aires) self link returns status 200
+[200 OK, 894B, 147ms]
+  ✓  Item 4 (BCE) self link returns status 200
+[200 OK, 910B, 151ms]
+  ✓  Item 3 (Republica Argentina) self link returns status 200
+[200 OK, 912B, 152ms]
   ✓  Item 9 (Pcia. de Chubut) self link returns status 200
+[200 OK, 920B, 157ms]
+  ✓  Item 6 (Cdad. de Buenos Aires) self link returns status 200
+[200 OK, 911B, 164ms]
+  ✓  Item 8 (Pcia. de Chaco) self link returns status 200
+[200 OK, 917B, 190ms]
+  ✓  Item 10 (Pcia. de Entre Ríos) self link returns status 200
 
 ↳ Get instrument issuers by UUID
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   └
-  GET https://api.mercapabbaco.com/instrument-issuers/6f5616c7-d1f0-4cd2-b4b3-bb99184712cf [200 OK, 899B, 179ms]
+  GET https://api.mercapabbaco.com/instrument-issuers/6f5616c7-d1f0-4cd2-b4b3-bb99184712cf [200 OK, 899B, 140ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -2079,7 +2335,7 @@ Iteration 1/3
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   └
-  GET https://api.mercapabbaco.com/markets [200 OK, 1.54kB, 108ms]
+  GET https://api.mercapabbaco.com/markets [200 OK, 1.54kB, 167ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -2149,24 +2405,24 @@ Iteration 1/3
   │ '✔ MARKETS_UUID seteado:', 'https://api.mercapabbaco.c
   │ om/markets/4caa715b-06cb-428f-ac4c-f40a872a1064'
   └
-  GET https://api.mercapabbaco.com/markets/4caa715b-06cb-428f-ac4c-f40a872a1064   GET https://api.mercapabbaco.com/markets/48ad8a13-23a9-4a7d-81bb-32d0f7135f83   GET https://api.mercapabbaco.com/markets/400215b2-e24b-45a2-b0bc-ba3fee932ba2   GET https://api.mercapabbaco.com/markets/09f99b78-0440-48d1-a438-44d1e798d774   GET https://api.mercapabbaco.com/markets/8d92b182-30ea-4bc0-9d84-d221a606bc91   GET https://api.mercapabbaco.com/markets/384d384f-5c45-4d90-9ead-f022c6b970f6 [200 OK, 906B, 60ms]
+  GET https://api.mercapabbaco.com/markets/4caa715b-06cb-428f-ac4c-f40a872a1064   GET https://api.mercapabbaco.com/markets/48ad8a13-23a9-4a7d-81bb-32d0f7135f83   GET https://api.mercapabbaco.com/markets/400215b2-e24b-45a2-b0bc-ba3fee932ba2   GET https://api.mercapabbaco.com/markets/09f99b78-0440-48d1-a438-44d1e798d774   GET https://api.mercapabbaco.com/markets/8d92b182-30ea-4bc0-9d84-d221a606bc91   GET https://api.mercapabbaco.com/markets/384d384f-5c45-4d90-9ead-f022c6b970f6 [200 OK, 896B, 59ms]
   ✓  Item 1 (BYMA) self link returns status 200
-[200 OK, 917B, 97ms]
-  ✓  Item 2 (Mercado Internacional) self link returns status 200
-[200 OK, 1.79kB, 106ms]
-  ✓  Item 6 (CBONDS) self link returns status 200
-[200 OK, 1.79kB, 111ms]
-  ✓  Item 4 (VALMERCAP) self link returns status 200
-[200 OK, 909B, 117ms]
+[200 OK, 909B, 61ms]
   ✓  Item 3 (Mercado de Fondos) self link returns status 200
-[200 OK, 901B, 121ms]
+[200 OK, 917B, 73ms]
+  ✓  Item 2 (Mercado Internacional) self link returns status 200
+[200 OK, 898B, 78ms]
+  ✓  Item 6 (CBONDS) self link returns status 200
+[200 OK, 907B, 105ms]
   ✓  Item 5 (OTC) self link returns status 200
+[200 OK, 907B, 161ms]
+  ✓  Item 4 (VALMERCAP) self link returns status 200
 
 ↳ Get markets by UUID
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   └
-  GET https://api.mercapabbaco.com/markets/4caa715b-06cb-428f-ac4c-f40a872a1064 [200 OK, 914B, 61ms]
+  GET https://api.mercapabbaco.com/markets/4caa715b-06cb-428f-ac4c-f40a872a1064 [200 OK, 907B, 31ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -2194,7 +2450,7 @@ Iteration 1/3
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   └
-  GET https://api.mercapabbaco.com/mutual-fund-types [200 OK, 1.56kB, 159ms]
+  GET https://api.mercapabbaco.com/mutual-fund-types [200 OK, 1.56kB, 133ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -2274,24 +2530,24 @@ Iteration 1/3
   │ apabbaco.com/mutual-fund-types/01d9b1af-d6e9-43a8-a10a
   │ -6675bdf9992c'
   └
-  GET https://api.mercapabbaco.com/mutual-fund-types/01d9b1af-d6e9-43a8-a10a-6675bdf9992c   GET https://api.mercapabbaco.com/mutual-fund-types/5b136c50-48ff-4147-ba18-458b6915bb08   GET https://api.mercapabbaco.com/mutual-fund-types/8ad01c33-186b-4ca7-8b05-37afe197fa52   GET https://api.mercapabbaco.com/mutual-fund-types/fe2a9cf8-c614-4815-89fa-60892afad14e   GET https://api.mercapabbaco.com/mutual-fund-types/ebf42d78-8395-4bd0-8dbb-048976b7a2f5   GET https://api.mercapabbaco.com/mutual-fund-types/c53586fa-4327-459b-b059-1e75dc824816 [200 OK, 899B, 103ms]
-  ✓  Item 4 (Money Market) self link returns status 200
-[200 OK, 913B, 112ms]
-  ✓  Item 2 (Renta Variable) self link returns status 200
-[200 OK, 898B, 173ms]
+  GET https://api.mercapabbaco.com/mutual-fund-types/01d9b1af-d6e9-43a8-a10a-6675bdf9992c   GET https://api.mercapabbaco.com/mutual-fund-types/5b136c50-48ff-4147-ba18-458b6915bb08   GET https://api.mercapabbaco.com/mutual-fund-types/8ad01c33-186b-4ca7-8b05-37afe197fa52   GET https://api.mercapabbaco.com/mutual-fund-types/fe2a9cf8-c614-4815-89fa-60892afad14e   GET https://api.mercapabbaco.com/mutual-fund-types/ebf42d78-8395-4bd0-8dbb-048976b7a2f5   GET https://api.mercapabbaco.com/mutual-fund-types/c53586fa-4327-459b-b059-1e75dc824816 [200 OK, 896B, 68ms]
   ✓  Item 6 (Otros) self link returns status 200
-[200 OK, 908B, 194ms]
-  ✓  Item 5 (Infraestructura) self link returns status 200
-[200 OK, 901B, 200ms]
+[200 OK, 903B, 72ms]
+  ✓  Item 4 (Money Market) self link returns status 200
+[200 OK, 903B, 80ms]
   ✓  Item 1 (Renta Fija) self link returns status 200
-[200 OK, 898B, 207ms]
+[200 OK, 906B, 79ms]
+  ✓  Item 5 (Infraestructura) self link returns status 200
+[200 OK, 907B, 108ms]
+  ✓  Item 2 (Renta Variable) self link returns status 200
+[200 OK, 904B, 115ms]
   ✓  Item 3 (Mixto) self link returns status 200
 
 ↳ Get mutual fund type by UUID
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   └
-  GET https://api.mercapabbaco.com/mutual-fund-types/01d9b1af-d6e9-43a8-a10a-6675bdf9992c [200 OK, 901B, 195ms]
+  GET https://api.mercapabbaco.com/mutual-fund-types/01d9b1af-d6e9-43a8-a10a-6675bdf9992c [200 OK, 901B, 144ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -2324,7 +2580,7 @@ Iteration 1/3
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   └
-  GET https://api.mercapabbaco.com/mutual-fund-shares [200 OK, 5.07kB, 105ms]
+  GET https://api.mercapabbaco.com/mutual-fund-shares [200 OK, 5.07kB, 186ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -2478,26 +2734,26 @@ Iteration 1/3
   │ apabbaco.com/mutual-fund-shares/b45091ea-b613-47c1-81b
   │ 5-955f6e689f4d'
   └
-  GET https://api.mercapabbaco.com/mutual-fund-shares/b45091ea-b613-47c1-81b5-955f6e689f4d   GET https://api.mercapabbaco.com/mutual-fund-shares/e6dd7274-3da3-4fa9-8058-cb4cf0bfa2c5   GET https://api.mercapabbaco.com/mutual-fund-shares/2943749b-fd71-483c-8bc2-d0f88763254f   GET https://api.mercapabbaco.com/mutual-fund-shares/506c915b-6e58-4a0d-96c2-a1be22065424   GET https://api.mercapabbaco.com/mutual-fund-shares/13854960-b51d-4b8c-a67e-4dccc3495fff   GET https://api.mercapabbaco.com/mutual-fund-shares/bfe687a7-17f7-41c6-89ab-5ec793d05b88   GET https://api.mercapabbaco.com/mutual-fund-shares/6e5ddd18-7bb6-4ee5-8fae-143a7780f92d   GET https://api.mercapabbaco.com/mutual-fund-shares/d9221c2a-4e98-424b-993e-174ac44e02dd   GET https://api.mercapabbaco.com/mutual-fund-shares/86836316-069d-4c49-9a7f-2bb1b3290380   GET https://api.mercapabbaco.com/mutual-fund-shares/63e912ff-869b-4cf4-8eb8-7dec0a9736de [200 OK, 1.17kB, 93ms]
-  ✓  Item 9 (Alpha Pesos - Clase A) self link returns status 200
-[200 OK, 1.21kB, 102ms]
-  ✓  Item 5 (Pellegrini Renta Publica Federal - Clase A) self link returns status 200
-[200 OK, 1.17kB, 108ms]
-  ✓  Item 2 (Gainvest Renta Variable - Clase B) self link returns status 200
-[200 OK, 1.2kB, 108ms]
-  ✓  Item 7 (Alpha Renta Fija Serie 4 - Clase A) self link returns status 200
-[200 OK, 1.18kB, 112ms]
-  ✓  Item 1 (Gainvest Renta Variable - Clase A) self link returns status 200
-[200 OK, 1.19kB, 112ms]
-  ✓  Item 8 (Alpha Renta Fija Serie 4 - Clase B) self link returns status 200
-[200 OK, 1.21kB, 115ms]
-  ✓  Item 6 (Pellegrini Renta Publica Federal - Clase B) self link returns status 200
-[200 OK, 1.18kB, 116ms]
-  ✓  Item 3 (Pellegrini Renta Fija - Clase A) self link returns status 200
-[200 OK, 1.19kB, 122ms]
+  GET https://api.mercapabbaco.com/mutual-fund-shares/b45091ea-b613-47c1-81b5-955f6e689f4d   GET https://api.mercapabbaco.com/mutual-fund-shares/e6dd7274-3da3-4fa9-8058-cb4cf0bfa2c5   GET https://api.mercapabbaco.com/mutual-fund-shares/2943749b-fd71-483c-8bc2-d0f88763254f   GET https://api.mercapabbaco.com/mutual-fund-shares/506c915b-6e58-4a0d-96c2-a1be22065424   GET https://api.mercapabbaco.com/mutual-fund-shares/13854960-b51d-4b8c-a67e-4dccc3495fff   GET https://api.mercapabbaco.com/mutual-fund-shares/bfe687a7-17f7-41c6-89ab-5ec793d05b88   GET https://api.mercapabbaco.com/mutual-fund-shares/6e5ddd18-7bb6-4ee5-8fae-143a7780f92d   GET https://api.mercapabbaco.com/mutual-fund-shares/d9221c2a-4e98-424b-993e-174ac44e02dd   GET https://api.mercapabbaco.com/mutual-fund-shares/86836316-069d-4c49-9a7f-2bb1b3290380   GET https://api.mercapabbaco.com/mutual-fund-shares/63e912ff-869b-4cf4-8eb8-7dec0a9736de [200 OK, 1.19kB, 56ms]
   ✓  Item 4 (Pellegrini Renta Fija - Clase B) self link returns status 200
-[200 OK, 1.17kB, 186ms]
+[200 OK, 1.22kB, 81ms]
+  ✓  Item 6 (Pellegrini Renta Publica Federal - Clase B) self link returns status 200
+[200 OK, 1.18kB, 91ms]
+  ✓  Item 9 (Alpha Pesos - Clase A) self link returns status 200
+[200 OK, 1.18kB, 131ms]
   ✓  Item 10 (Alpha Pesos - Clase B) self link returns status 200
+[200 OK, 1.19kB, 148ms]
+  ✓  Item 3 (Pellegrini Renta Fija - Clase A) self link returns status 200
+[200 OK, 1.18kB, 151ms]
+  ✓  Item 1 (Gainvest Renta Variable - Clase A) self link returns status 200
+[200 OK, 1.18kB, 155ms]
+  ✓  Item 2 (Gainvest Renta Variable - Clase B) self link returns status 200
+[200 OK, 1.21kB, 155ms]
+  ✓  Item 5 (Pellegrini Renta Publica Federal - Clase A) self link returns status 200
+[200 OK, 1.2kB, 158ms]
+  ✓  Item 8 (Alpha Renta Fija Serie 4 - Clase B) self link returns status 200
+[200 OK, 1.2kB, 169ms]
+  ✓  Item 7 (Alpha Renta Fija Serie 4 - Clase A) self link returns status 200
 
 ↳ Get mutual fund share by UUID
   ┌
@@ -2506,7 +2762,7 @@ Iteration 1/3
   │ baco.com/mutual-fund-shares/b45091ea-b613-47c1-81b5-95
   │ 5f6e689f4d'
   └
-  GET https://api.mercapabbaco.com/mutual-fund-shares/b45091ea-b613-47c1-81b5-955f6e689f4d [200 OK, 1.19kB, 49ms]
+  GET https://api.mercapabbaco.com/mutual-fund-shares/b45091ea-b613-47c1-81b5-955f6e689f4d [200 OK, 1.19kB, 28ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -2543,7 +2799,7 @@ Iteration 1/3
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   └
-  GET https://api.mercapabbaco.com/stocks [200 OK, 4.27kB, 106ms]
+  GET https://api.mercapabbaco.com/stocks [200 OK, 4.28kB, 135ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -2576,7 +2832,7 @@ Iteration 1/3
   │ '✔ STOCKS_UUID seteado:', 'https://api.mercapabbaco.co
   │ m/stocks/7480a764-16d4-48fb-965f-ff92f84ed477'
   └
-  GET https://api.mercapabbaco.com/stocks/7480a764-16d4-48fb-965f-ff92f84ed477 [200 OK, 1.11kB, 106ms]
+  GET https://api.mercapabbaco.com/stocks/7480a764-16d4-48fb-965f-ff92f84ed477 [200 OK, 1.12kB, 140ms]
   ✓  Item 1 (AAL.BA) self link returns status 200
   ┌
   │ '\n▶ Testing Item 2 (AAPL.BA)'
@@ -2586,7 +2842,7 @@ Iteration 1/3
   ✓  Item 2 (AAPL.BA) 'issuer' is a non-empty string
   ✓  Item 2 (AAPL.BA) 'issueCurrency' is a valid URL
   ✓  Item 2 (AAPL.BA) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/stocks/2d21bb48-4e8c-498d-b0a2-f30db68511ea [200 OK, 1.1kB, 106ms]
+  GET https://api.mercapabbaco.com/stocks/2d21bb48-4e8c-498d-b0a2-f30db68511ea [200 OK, 1.1kB, 94ms]
   ✓  Item 2 (AAPL.BA) self link returns status 200
   ┌
   │ '\n▶ Testing Item 3 (ABBV.BA)'
@@ -2596,7 +2852,7 @@ Iteration 1/3
   ✓  Item 3 (ABBV.BA) 'issuer' is a non-empty string
   ✓  Item 3 (ABBV.BA) 'issueCurrency' is a valid URL
   ✓  Item 3 (ABBV.BA) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/stocks/14dafd91-1407-4e04-a0a6-c91c04faf5fe [200 OK, 1.1kB, 102ms]
+  GET https://api.mercapabbaco.com/stocks/14dafd91-1407-4e04-a0a6-c91c04faf5fe [200 OK, 1.1kB, 127ms]
   ✓  Item 3 (ABBV.BA) self link returns status 200
   ┌
   │ '\n▶ Testing Item 4 (ABEV.BA)'
@@ -2606,7 +2862,7 @@ Iteration 1/3
   ✓  Item 4 (ABEV.BA) 'issuer' is a non-empty string
   ✓  Item 4 (ABEV.BA) 'issueCurrency' is a valid URL
   ✓  Item 4 (ABEV.BA) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/stocks/41590ed6-55a6-4c2f-a318-7d21c131216e [200 OK, 1.1kB, 96ms]
+  GET https://api.mercapabbaco.com/stocks/41590ed6-55a6-4c2f-a318-7d21c131216e [200 OK, 1.11kB, 67ms]
   ✓  Item 4 (ABEV.BA) self link returns status 200
   ┌
   │ '\n▶ Testing Item 5 (ABNB.BA)'
@@ -2616,7 +2872,7 @@ Iteration 1/3
   ✓  Item 5 (ABNB.BA) 'issuer' is a non-empty string
   ✓  Item 5 (ABNB.BA) 'issueCurrency' is a valid URL
   ✓  Item 5 (ABNB.BA) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/stocks/e3684bf6-56f5-4c13-97e7-16a34173a060 [200 OK, 1.1kB, 107ms]
+  GET https://api.mercapabbaco.com/stocks/e3684bf6-56f5-4c13-97e7-16a34173a060 [200 OK, 1.11kB, 91ms]
   ✓  Item 5 (ABNB.BA) self link returns status 200
   ┌
   │ '\n▶ Testing Item 6 (ABT.BA)'
@@ -2626,7 +2882,7 @@ Iteration 1/3
   ✓  Item 6 (ABT.BA) 'issuer' is a non-empty string
   ✓  Item 6 (ABT.BA) 'issueCurrency' is a valid URL
   ✓  Item 6 (ABT.BA) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/stocks/e901db1d-386b-4c80-b6ee-252367b8fe07 [200 OK, 1.98kB, 113ms]
+  GET https://api.mercapabbaco.com/stocks/e901db1d-386b-4c80-b6ee-252367b8fe07 [200 OK, 1.12kB, 101ms]
   ✓  Item 6 (ABT.BA) self link returns status 200
   ┌
   │ '\n▶ Testing Item 7 (ADBE.BA)'
@@ -2636,7 +2892,7 @@ Iteration 1/3
   ✓  Item 7 (ADBE.BA) 'issuer' is a non-empty string
   ✓  Item 7 (ADBE.BA) 'issueCurrency' is a valid URL
   ✓  Item 7 (ADBE.BA) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/stocks/e9c1e5d2-a723-4e1f-888e-f9363e1ccb81 [200 OK, 1.11kB, 89ms]
+  GET https://api.mercapabbaco.com/stocks/e9c1e5d2-a723-4e1f-888e-f9363e1ccb81 [200 OK, 1.12kB, 131ms]
   ✓  Item 7 (ADBE.BA) self link returns status 200
   ┌
   │ '\n▶ Testing Item 8 (ADGO.BA)'
@@ -2646,7 +2902,7 @@ Iteration 1/3
   ✓  Item 8 (ADGO.BA) 'issuer' is a non-empty string
   ✓  Item 8 (ADGO.BA) 'issueCurrency' is a valid URL
   ✓  Item 8 (ADGO.BA) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/stocks/604ac5e4-d596-4823-a309-9a5d77dcb432 [200 OK, 1.1kB, 101ms]
+  GET https://api.mercapabbaco.com/stocks/604ac5e4-d596-4823-a309-9a5d77dcb432 [200 OK, 1.11kB, 162ms]
   ✓  Item 8 (ADGO.BA) self link returns status 200
   ┌
   │ '\n▶ Testing Item 9 (ADI.BA)'
@@ -2656,7 +2912,7 @@ Iteration 1/3
   ✓  Item 9 (ADI.BA) 'issuer' is a non-empty string
   ✓  Item 9 (ADI.BA) 'issueCurrency' is a valid URL
   ✓  Item 9 (ADI.BA) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/stocks/1b624053-b576-4509-aecf-67ef69f3b6af [200 OK, 1.1kB, 98ms]
+  GET https://api.mercapabbaco.com/stocks/1b624053-b576-4509-aecf-67ef69f3b6af [200 OK, 1.11kB, 93ms]
   ✓  Item 9 (ADI.BA) self link returns status 200
   ┌
   │ '\n▶ Testing Item 10 (ADP.BA)'
@@ -2666,7 +2922,7 @@ Iteration 1/3
   ✓  Item 10 (ADP.BA) 'issuer' is a non-empty string
   ✓  Item 10 (ADP.BA) 'issueCurrency' is a valid URL
   ✓  Item 10 (ADP.BA) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/stocks/da074fa7-7db4-444c-8e0a-9b82ea719c27 [200 OK, 1.11kB, 101ms]
+  GET https://api.mercapabbaco.com/stocks/da074fa7-7db4-444c-8e0a-9b82ea719c27 [200 OK, 1.12kB, 105ms]
   ✓  Item 10 (ADP.BA) self link returns status 200
   ┌
   │ '✔ Finished testing stocks (or no stocks to test)'
@@ -2679,7 +2935,7 @@ Iteration 1/3
   │ rcapabbaco.com/stocks/7480a764-16d4-48fb-965f-ff92f84e
   │ d477'
   └
-  GET https://api.mercapabbaco.com/stocks/7480a764-16d4-48fb-965f-ff92f84ed477 [200 OK, 1.13kB, 51ms]
+  GET https://api.mercapabbaco.com/stocks/7480a764-16d4-48fb-965f-ff92f84ed477 [200 OK, 1.12kB, 32ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -2715,9 +2971,9 @@ Iteration 1/3
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
-  │ '📅 VALUATION_DATE seteado a: 2026-04-08'
+  │ '📅 VALUATION_DATE seteado a: 2026-04-09'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?tradeDate=2026-04-08 [200 OK, 12.69kB, 105ms]
+  GET https://api.mercapabbaco.com/tradable-securities?tradeDate=2026-04-09 [200 OK, 12.68kB, 2s]
   ┌
   │ 'Response received successfully.'
   └
@@ -2764,9 +3020,9 @@ Iteration 1/3
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
-  │ '📅 VALUATION_DATE seteado a: 2026-04-08'
+  │ '📅 VALUATION_DATE seteado a: 2026-04-09'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?tradeDate=2026-04-08&query=AL30 [200 OK, 2.6kB, 106ms]
+  GET https://api.mercapabbaco.com/tradable-securities?tradeDate=2026-04-09&query=AL30 [200 OK, 3.48kB, 679ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -2817,9 +3073,9 @@ Iteration 1/3
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
-  │ '📅 VALUATION_DATE seteado a: 2026-04-08'
+  │ '📅 VALUATION_DATE seteado a: 2026-04-09'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?tradeDate=2026-04-08&type=Bond [200 OK, 12.73kB, 111ms]
+  GET https://api.mercapabbaco.com/tradable-securities?tradeDate=2026-04-09&type=Bond [200 OK, 12.74kB, 678ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -2866,10 +3122,10 @@ Iteration 1/3
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
-  │ '📅 VALUATION_DATE seteado a: 2026-04-08'
+  │ '📅 VALUATION_DATE seteado a: 2026-04-09'
   │ '🌍 Ubicación: Argentina | 📈 Market asignado: BYMA'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?tradeDate=2026-04-08&market=BYMA [200 OK, 12.62kB, 106ms]
+  GET https://api.mercapabbaco.com/tradable-securities?tradeDate=2026-04-09&market=BYMA [200 OK, 12.62kB, 621ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -2917,7 +3173,7 @@ Iteration 1/3
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities/6cfdf5ed-d8da-411a-8e86-b1bbeef54f45 [200 OK, 1.37kB, 47ms]
+  GET https://api.mercapabbaco.com/tradable-securities/6cfdf5ed-d8da-411a-8e86-b1bbeef54f45 [200 OK, 1.36kB, 52ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -2950,7 +3206,7 @@ Iteration 1/3
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities/6cfdf5ed-d8da-411a-8e86-b1bbeef54f45/metrics [200 OK, 2.4kB, 119ms]
+  GET https://api.mercapabbaco.com/tradable-securities/6cfdf5ed-d8da-411a-8e86-b1bbeef54f45/metrics [200 OK, 2.41kB, 159ms]
   ✓  Response is received
   ✓  Status code is 200
   ✓  Media-Type is correct
@@ -2973,7 +3229,7 @@ Iteration 1/3
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   └
-  GET https://api.mercapabbaco.com/valuation-schemes [200 OK, 4.67kB, 57ms]
+  GET https://api.mercapabbaco.com/valuation-schemes [200 OK, 4.67kB, 42ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -3006,7 +3262,7 @@ Iteration 1/3
   │ apabbaco.com/valuation-schemes/3082e254-40ce-4d06-b2df
   │ -58b5f14f97ef'
   └
-  GET https://api.mercapabbaco.com/valuation-schemes/3082e254-40ce-4d06-b2df-58b5f14f97ef [200 OK, 936B, 109ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/3082e254-40ce-4d06-b2df-58b5f14f97ef [200 OK, 941B, 128ms]
   ✓  Item 1 (Esquema Mercado Default Nuevo) self link returns status 200
   ┌
   │ '\n▶ Testing Item 2 (Valuacion BYMA ARS)'
@@ -3014,7 +3270,7 @@ Iteration 1/3
   ✓  Item 2 (Valuacion BYMA ARS) contains expected properties
   ✓  Item 2 (Valuacion BYMA ARS) 'name' is a non-empty string
   ✓  Item 2 (Valuacion BYMA ARS) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/f1552208-5cb2-40aa-9ebf-489a11678bf7 [200 OK, 925B, 101ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/f1552208-5cb2-40aa-9ebf-489a11678bf7 [200 OK, 935B, 102ms]
   ✓  Item 2 (Valuacion BYMA ARS) self link returns status 200
   ┌
   │ '\n' +
@@ -3023,7 +3279,7 @@ Iteration 1/3
   ✓  Item 3 (Valuacion BYMA USD Bolsa) contains expected properties
   ✓  Item 3 (Valuacion BYMA USD Bolsa) 'name' is a non-empty string
   ✓  Item 3 (Valuacion BYMA USD Bolsa) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/f9eec1df-b8de-4454-bae4-8a1ebf54bb11 [200 OK, 1.82kB, 102ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/f9eec1df-b8de-4454-bae4-8a1ebf54bb11 [200 OK, 949B, 103ms]
   ✓  Item 3 (Valuacion BYMA USD Bolsa) self link returns status 200
   ┌
   │ '\n' +
@@ -3032,7 +3288,7 @@ Iteration 1/3
   ✓  Item 4 (Valuacion BYMA USD Cable) contains expected properties
   ✓  Item 4 (Valuacion BYMA USD Cable) 'name' is a non-empty string
   ✓  Item 4 (Valuacion BYMA USD Cable) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/5072d341-e66f-439b-b759-9140f80ccd8c [200 OK, 937B, 98ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/5072d341-e66f-439b-b759-9140f80ccd8c [200 OK, 949B, 126ms]
   ✓  Item 4 (Valuacion BYMA USD Cable) self link returns status 200
   ┌
   │ '\n▶ Testing Item 5 (Valuación ISIN - CLP)'
@@ -3040,7 +3296,7 @@ Iteration 1/3
   ✓  Item 5 (Valuación ISIN - CLP) contains expected properties
   ✓  Item 5 (Valuación ISIN - CLP) 'name' is a non-empty string
   ✓  Item 5 (Valuación ISIN - CLP) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/8baf19d7-b1be-4fbd-aef8-bc857f604e46 [200 OK, 938B, 110ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/8baf19d7-b1be-4fbd-aef8-bc857f604e46 [200 OK, 938B, 160ms]
   ✓  Item 5 (Valuación ISIN - CLP) self link returns status 200
   ┌
   │ '\n▶ Testing Item 6 (Valuación ISIN - EUR)'
@@ -3048,7 +3304,7 @@ Iteration 1/3
   ✓  Item 6 (Valuación ISIN - EUR) contains expected properties
   ✓  Item 6 (Valuación ISIN - EUR) 'name' is a non-empty string
   ✓  Item 6 (Valuación ISIN - EUR) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/b79d71ac-1319-42b9-a6a9-b58456e41699 [200 OK, 936B, 100ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/b79d71ac-1319-42b9-a6a9-b58456e41699 [200 OK, 936B, 105ms]
   ✓  Item 6 (Valuación ISIN - EUR) self link returns status 200
   ┌
   │ '\n▶ Testing Item 7 (Valuación ISIN - GBP)'
@@ -3056,7 +3312,7 @@ Iteration 1/3
   ✓  Item 7 (Valuación ISIN - GBP) contains expected properties
   ✓  Item 7 (Valuación ISIN - GBP) 'name' is a non-empty string
   ✓  Item 7 (Valuación ISIN - GBP) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/e56546cd-f85f-4ae4-9ddd-c37c08cf9c33 [200 OK, 930B, 94ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/e56546cd-f85f-4ae4-9ddd-c37c08cf9c33 [200 OK, 1.82kB, 91ms]
   ✓  Item 7 (Valuación ISIN - GBP) self link returns status 200
   ┌
   │ '\n▶ Testing Item 8 (Valuación ISIN - PYG)'
@@ -3064,7 +3320,7 @@ Iteration 1/3
   ✓  Item 8 (Valuación ISIN - PYG) contains expected properties
   ✓  Item 8 (Valuación ISIN - PYG) 'name' is a non-empty string
   ✓  Item 8 (Valuación ISIN - PYG) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/989d7d2e-0e19-4147-8079-eb58f0992789 [200 OK, 934B, 113ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/989d7d2e-0e19-4147-8079-eb58f0992789 [200 OK, 942B, 138ms]
   ✓  Item 8 (Valuación ISIN - PYG) self link returns status 200
   ┌
   │ '\n▶ Testing Item 9 (Valuacion ISIN - USD)'
@@ -3072,7 +3328,7 @@ Iteration 1/3
   ✓  Item 9 (Valuacion ISIN - USD) contains expected properties
   ✓  Item 9 (Valuacion ISIN - USD) 'name' is a non-empty string
   ✓  Item 9 (Valuacion ISIN - USD) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/d88805b9-4869-4672-a367-52d5a3e92dba [200 OK, 933B, 105ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/d88805b9-4869-4672-a367-52d5a3e92dba [200 OK, 951B, 151ms]
   ✓  Item 9 (Valuacion ISIN - USD) self link returns status 200
   ┌
   │ '\n' +
@@ -3082,7 +3338,7 @@ Iteration 1/3
   ✓  Item 10 (Valuacion BYMA ARS + Instrumentos No Liquidos - USD MEP) contains expected properties
   ✓  Item 10 (Valuacion BYMA ARS + Instrumentos No Liquidos - USD MEP) 'name' is a non-empty string
   ✓  Item 10 (Valuacion BYMA ARS + Instrumentos No Liquidos - USD MEP) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/0c023c86-2bba-4784-906e-ba295da322c0 [200 OK, 968B, 102ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/0c023c86-2bba-4784-906e-ba295da322c0 [200 OK, 1.86kB, 106ms]
   ✓  Item 10 (Valuacion BYMA ARS + Instrumentos No Liquidos - USD MEP) self link returns status 200
   ┌
   │ '\n' +
@@ -3092,7 +3348,7 @@ Iteration 1/3
   ✓  Item 11 (Valucion Tecnica Instrumentos No Liquidos) contains expected properties
   ✓  Item 11 (Valucion Tecnica Instrumentos No Liquidos) 'name' is a non-empty string
   ✓  Item 11 (Valucion Tecnica Instrumentos No Liquidos) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/5e97d0ac-ff92-41b4-adc9-607e24798066 [200 OK, 950B, 111ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/5e97d0ac-ff92-41b4-adc9-607e24798066 [200 OK, 962B, 106ms]
   ✓  Item 11 (Valucion Tecnica Instrumentos No Liquidos) self link returns status 200
   ┌
   │ '\n' +
@@ -3102,7 +3358,7 @@ Iteration 1/3
   ✓  Item 12 (Valuacion BYMA ARS + Instrumentos No Liquidos - USD Oficial) contains expected properties
   ✓  Item 12 (Valuacion BYMA ARS + Instrumentos No Liquidos - USD Oficial) 'name' is a non-empty string
   ✓  Item 12 (Valuacion BYMA ARS + Instrumentos No Liquidos - USD Oficial) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/5792abb7-7d88-4533-afeb-de2137b6e553 [200 OK, 984B, 113ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/5792abb7-7d88-4533-afeb-de2137b6e553 [200 OK, 976B, 127ms]
   ✓  Item 12 (Valuacion BYMA ARS + Instrumentos No Liquidos - USD Oficial) self link returns status 200
   ┌
   │ '\n▶ Testing Item 13 (Brasil)'
@@ -3110,7 +3366,7 @@ Iteration 1/3
   ✓  Item 13 (Brasil) contains expected properties
   ✓  Item 13 (Brasil) 'name' is a non-empty string
   ✓  Item 13 (Brasil) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/defd88c7-32a9-4765-a945-41c0e7d74fd8 [200 OK, 909B, 112ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/defd88c7-32a9-4765-a945-41c0e7d74fd8 [200 OK, 923B, 147ms]
   ✓  Item 13 (Brasil) self link returns status 200
   ┌
   │ '\n' +
@@ -3120,7 +3376,7 @@ Iteration 1/3
   ✓  Item 14 (Valuacion BYMA ARS + Instrumentos No Liquidos - USD CCL) contains expected properties
   ✓  Item 14 (Valuacion BYMA ARS + Instrumentos No Liquidos - USD CCL) 'name' is a non-empty string
   ✓  Item 14 (Valuacion BYMA ARS + Instrumentos No Liquidos - USD CCL) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/d6358214-68de-479c-bddb-edb7cf5a0bec [200 OK, 966B, 98ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/d6358214-68de-479c-bddb-edb7cf5a0bec [200 OK, 972B, 106ms]
   ✓  Item 14 (Valuacion BYMA ARS + Instrumentos No Liquidos - USD CCL) self link returns status 200
   ┌
   │ '\n' +
@@ -3129,7 +3385,7 @@ Iteration 1/3
   ✓  Item 15 (Valuacion Tecnica Bonos CER) contains expected properties
   ✓  Item 15 (Valuacion Tecnica Bonos CER) 'name' is a non-empty string
   ✓  Item 15 (Valuacion Tecnica Bonos CER) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/9093cb69-0fef-4e29-a53e-a597aef4f115 [200 OK, 940B, 110ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/9093cb69-0fef-4e29-a53e-a597aef4f115 [200 OK, 950B, 96ms]
   ✓  Item 15 (Valuacion Tecnica Bonos CER) self link returns status 200
   ┌
   │ '\n' +
@@ -3139,7 +3395,7 @@ Iteration 1/3
   ✓  Item 16 ((AV) Valuacion BYMA ARS + Instrumentos No Liquidos VT - USD MEP) contains expected properties
   ✓  Item 16 ((AV) Valuacion BYMA ARS + Instrumentos No Liquidos VT - USD MEP) 'name' is a non-empty string
   ✓  Item 16 ((AV) Valuacion BYMA ARS + Instrumentos No Liquidos VT - USD MEP) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/66b74cee-6431-4f80-a282-f536276d9516 [200 OK, 978B, 95ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/66b74cee-6431-4f80-a282-f536276d9516 [200 OK, 988B, 100ms]
   ✓  Item 16 ((AV) Valuacion BYMA ARS + Instrumentos No Liquidos VT - USD MEP) self link returns status 200
   ┌
   │ '\n' +
@@ -3149,7 +3405,7 @@ Iteration 1/3
   ✓  Item 17 ((AV) Valuacion BYMA ARS + Instrumentos No Liquidos VT - USD CCL) contains expected properties
   ✓  Item 17 ((AV) Valuacion BYMA ARS + Instrumentos No Liquidos VT - USD CCL) 'name' is a non-empty string
   ✓  Item 17 ((AV) Valuacion BYMA ARS + Instrumentos No Liquidos VT - USD CCL) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/434fb1df-45ec-483b-b786-058f0cb829e3 [200 OK, 974B, 105ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/434fb1df-45ec-483b-b786-058f0cb829e3 [200 OK, 974B, 59ms]
   ✓  Item 17 ((AV) Valuacion BYMA ARS + Instrumentos No Liquidos VT - USD CCL) self link returns status 200
   ┌
   │ '\n' +
@@ -3159,7 +3415,7 @@ Iteration 1/3
   ✓  Item 18 ((AV) Valuacion BYMA ARS + Instrumentos No Liquidos VT - USD Oficial) contains expected properties
   ✓  Item 18 ((AV) Valuacion BYMA ARS + Instrumentos No Liquidos VT - USD Oficial) 'name' is a non-empty string
   ✓  Item 18 ((AV) Valuacion BYMA ARS + Instrumentos No Liquidos VT - USD Oficial) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/bfa1c297-5f18-404c-873c-eb6a952994a4 [200 OK, 978B, 107ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/bfa1c297-5f18-404c-873c-eb6a952994a4 [200 OK, 980B, 54ms]
   ✓  Item 18 ((AV) Valuacion BYMA ARS + Instrumentos No Liquidos VT - USD Oficial) self link returns status 200
   ┌
   │ '\n' +
@@ -3169,7 +3425,7 @@ Iteration 1/3
   ✓  Item 19 (Valuacion BYMA USD + Instrumentos No Liquidos - USD MEP) contains expected properties
   ✓  Item 19 (Valuacion BYMA USD + Instrumentos No Liquidos - USD MEP) 'name' is a non-empty string
   ✓  Item 19 (Valuacion BYMA USD + Instrumentos No Liquidos - USD MEP) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/5c659860-3ecf-4574-9c64-cf6e08ede086 [200 OK, 968B, 105ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/5c659860-3ecf-4574-9c64-cf6e08ede086 [200 OK, 986B, 76ms]
   ✓  Item 19 (Valuacion BYMA USD + Instrumentos No Liquidos - USD MEP) self link returns status 200
   ┌
   │ '\n' +
@@ -3179,7 +3435,7 @@ Iteration 1/3
   ✓  Item 20 (Valuacion BYMA USD + Instrumentos No Liquidos - USD Oficial) contains expected properties
   ✓  Item 20 (Valuacion BYMA USD + Instrumentos No Liquidos - USD Oficial) 'name' is a non-empty string
   ✓  Item 20 (Valuacion BYMA USD + Instrumentos No Liquidos - USD Oficial) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/c45389ee-a34c-4c7b-a427-ef0d9d184297 [200 OK, 970B, 110ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/c45389ee-a34c-4c7b-a427-ef0d9d184297 [200 OK, 978B, 127ms]
   ✓  Item 20 (Valuacion BYMA USD + Instrumentos No Liquidos - USD Oficial) self link returns status 200
   ┌
   │ '\n' +
@@ -3189,7 +3445,7 @@ Iteration 1/3
   ✓  Item 21 (Valuacion BYMA USD + Instrumentos No Liquidos - USD CCL) contains expected properties
   ✓  Item 21 (Valuacion BYMA USD + Instrumentos No Liquidos - USD CCL) 'name' is a non-empty string
   ✓  Item 21 (Valuacion BYMA USD + Instrumentos No Liquidos - USD CCL) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/73f92601-22f0-4ced-bac1-dc149c5db36e [200 OK, 960B, 103ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/73f92601-22f0-4ced-bac1-dc149c5db36e [200 OK, 972B, 158ms]
   ✓  Item 21 (Valuacion BYMA USD + Instrumentos No Liquidos - USD CCL) self link returns status 200
   ┌
   │ '\n' +
@@ -3198,7 +3454,7 @@ Iteration 1/3
   ✓  Item 22 (Valuacion Tenica Bonos) contains expected properties
   ✓  Item 22 (Valuacion Tenica Bonos) 'name' is a non-empty string
   ✓  Item 22 (Valuacion Tenica Bonos) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/161e4468-60b8-4f75-aae7-c9f4637a6258 [200 OK, 925B, 116ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/161e4468-60b8-4f75-aae7-c9f4637a6258 [200 OK, 937B, 102ms]
   ✓  Item 22 (Valuacion Tenica Bonos) self link returns status 200
   ┌
   │ '\n▶ Testing Item 23 (Valuacion CBONDS)'
@@ -3206,7 +3462,7 @@ Iteration 1/3
   ✓  Item 23 (Valuacion CBONDS) contains expected properties
   ✓  Item 23 (Valuacion CBONDS) 'name' is a non-empty string
   ✓  Item 23 (Valuacion CBONDS) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/cd9c07ec-a9ec-4469-a0b9-efd63f8c771c [200 OK, 927B, 114ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/cd9c07ec-a9ec-4469-a0b9-efd63f8c771c [200 OK, 937B, 91ms]
   ✓  Item 23 (Valuacion CBONDS) self link returns status 200
   ┌
   │ '\n' +
@@ -3216,7 +3472,7 @@ Iteration 1/3
   ✓  Item 24 ((LH) Valuacion BYMA ARS - USD BNA) contains expected properties
   ✓  Item 24 ((LH) Valuacion BYMA ARS - USD BNA) 'name' is a non-empty string
   ✓  Item 24 ((LH) Valuacion BYMA ARS - USD BNA) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/f4c7aca1-f8f3-4dfc-8189-f54414e038e2 [200 OK, 938B, 96ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/f4c7aca1-f8f3-4dfc-8189-f54414e038e2 [200 OK, 954B, 99ms]
   ✓  Item 24 ((LH) Valuacion BYMA ARS - USD BNA) self link returns status 200
   ┌
   │ '\n' +
@@ -3226,7 +3482,7 @@ Iteration 1/3
   ✓  Item 25 ((LH) Valuacion BYMA ARS - USD MEP) contains expected properties
   ✓  Item 25 ((LH) Valuacion BYMA ARS - USD MEP) 'name' is a non-empty string
   ✓  Item 25 ((LH) Valuacion BYMA ARS - USD MEP) 'self' link is a valid URL
-  GET https://api.mercapabbaco.com/valuation-schemes/915dfd79-e2a9-44f1-a33f-b4b6a4276d20 [200 OK, 944B, 105ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/915dfd79-e2a9-44f1-a33f-b4b6a4276d20 [200 OK, 954B, 109ms]
   ✓  Item 25 ((LH) Valuacion BYMA ARS - USD MEP) self link returns status 200
   ┌
   │ '✔ Finished testing valuation schemes'
@@ -3236,7 +3492,7 @@ Iteration 1/3
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   └
-  GET https://api.mercapabbaco.com/valuation-schemes/3082e254-40ce-4d06-b2df-58b5f14f97ef [200 OK, 953B, 61ms]
+  GET https://api.mercapabbaco.com/valuation-schemes/3082e254-40ce-4d06-b2df-58b5f14f97ef [200 OK, 953B, 37ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -3265,7 +3521,7 @@ Iteration 1/3
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   └
-  GET https://api.mercapabbaco.com/yield-curves [200 OK, 18.68kB, 182ms]
+  GET https://api.mercapabbaco.com/yield-curves [200 OK, 19.56kB, 59ms]
   ✓  Response is received
   ✓  Status code is 200
   ✓  Response contains 'items' array with at least one element
@@ -3277,7 +3533,7 @@ Iteration 1/3
   ✓  Item 1 (Argentina - BCRA - BOPREALs - USD) contains expected properties
   ✓  Item 1 (Argentina - BCRA - BOPREALs - USD) 'name' is a non-empty string
   ✓  Item 1 (Argentina - BCRA - BOPREALs - USD) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/c7955d2f-7731-43c4-80ec-fd70662ec57f [200 OK, 1.3kB, 173ms]
+  GET https://api.mercapabbaco.com/yield-curves/c7955d2f-7731-43c4-80ec-fd70662ec57f [200 OK, 5.65kB, 77ms]
   ✓  Item 1 (Argentina - BCRA - BOPREALs - USD) self link returns 200
   ┌
   │ '🔎 Testing Item 2 (Argentina - Corporativos - Aliment
@@ -3286,7 +3542,7 @@ Iteration 1/3
   ✓  Item 2 (Argentina - Corporativos - Alimentos - USD	) contains expected properties
   ✓  Item 2 (Argentina - Corporativos - Alimentos - USD	) 'name' is a non-empty string
   ✓  Item 2 (Argentina - Corporativos - Alimentos - USD	) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/fefe3e07-ef73-491d-836e-6295a611487e [200 OK, 1.3kB, 683ms]
+  GET https://api.mercapabbaco.com/yield-curves/fefe3e07-ef73-491d-836e-6295a611487e [200 OK, 9.84kB, 57ms]
   ✓  Item 2 (Argentina - Corporativos - Alimentos - USD	) self link returns 200
   ┌
   │ '🔎 Testing Item 3 (Argentina - Corporativos - Bancos 
@@ -3295,7 +3551,7 @@ Iteration 1/3
   ✓  Item 3 (Argentina - Corporativos - Bancos Comerciales - USD	) contains expected properties
   ✓  Item 3 (Argentina - Corporativos - Bancos Comerciales - USD	) 'name' is a non-empty string
   ✓  Item 3 (Argentina - Corporativos - Bancos Comerciales - USD	) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/3eb6de95-31e7-4e1f-9f72-e59a49e7a246 [200 OK, 1.31kB, 221ms]
+  GET https://api.mercapabbaco.com/yield-curves/3eb6de95-31e7-4e1f-9f72-e59a49e7a246 [200 OK, 3.19kB, 59ms]
   ✓  Item 3 (Argentina - Corporativos - Bancos Comerciales - USD	) self link returns 200
   ┌
   │ '🔎 Testing Item 4 (Argentina - Corporativos - Desarro
@@ -3304,7 +3560,7 @@ Iteration 1/3
   ✓  Item 4 (Argentina - Corporativos - Desarrollo y Admin. de Bienes Inmobiliarios - USD	) contains expected properties
   ✓  Item 4 (Argentina - Corporativos - Desarrollo y Admin. de Bienes Inmobiliarios - USD	) 'name' is a non-empty string
   ✓  Item 4 (Argentina - Corporativos - Desarrollo y Admin. de Bienes Inmobiliarios - USD	) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/9c5949e1-fc58-4755-bbd1-149b880df9f3 [200 OK, 1.34kB, 220ms]
+  GET https://api.mercapabbaco.com/yield-curves/9c5949e1-fc58-4755-bbd1-149b880df9f3 [200 OK, 4.85kB, 58ms]
   ✓  Item 4 (Argentina - Corporativos - Desarrollo y Admin. de Bienes Inmobiliarios - USD	) self link returns 200
   ┌
   │ '🔎 Testing Item 5 (Argentina - Corporativos - Metales
@@ -3313,7 +3569,7 @@ Iteration 1/3
   ✓  Item 5 (Argentina - Corporativos - Metales y Mineria - USD	) contains expected properties
   ✓  Item 5 (Argentina - Corporativos - Metales y Mineria - USD	) 'name' is a non-empty string
   ✓  Item 5 (Argentina - Corporativos - Metales y Mineria - USD	) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/9a0416e2-c4b3-4010-9480-41100aa00612 [200 OK, 1.32kB, 153ms]
+  GET https://api.mercapabbaco.com/yield-curves/9a0416e2-c4b3-4010-9480-41100aa00612 [200 OK, 3.18kB, 71ms]
   ✓  Item 5 (Argentina - Corporativos - Metales y Mineria - USD	) self link returns 200
   ┌
   │ '🔎 Testing Item 6 (Argentina - Corporativos - ONs Dol
@@ -3322,7 +3578,7 @@ Iteration 1/3
   ✓  Item 6 (Argentina - Corporativos - ONs Dollar Linked - ARS) contains expected properties
   ✓  Item 6 (Argentina - Corporativos - ONs Dollar Linked - ARS) 'name' is a non-empty string
   ✓  Item 6 (Argentina - Corporativos - ONs Dollar Linked - ARS) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/827b8d5e-06ae-43cb-ad7e-bfda0f85c1ba [200 OK, 1.31kB, 292ms]
+  GET https://api.mercapabbaco.com/yield-curves/827b8d5e-06ae-43cb-ad7e-bfda0f85c1ba [200 OK, 15.66kB, 66ms]
   ✓  Item 6 (Argentina - Corporativos - ONs Dollar Linked - ARS) self link returns 200
   ┌
   │ '🔎 Testing Item 7 (Argentina - Corporativos - ONs en 
@@ -3331,7 +3587,7 @@ Iteration 1/3
   ✓  Item 7 (Argentina - Corporativos - ONs en UVA - ARS) contains expected properties
   ✓  Item 7 (Argentina - Corporativos - ONs en UVA - ARS) 'name' is a non-empty string
   ✓  Item 7 (Argentina - Corporativos - ONs en UVA - ARS) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/c93100f0-4113-4e99-a8f4-26bb00a60562 [200 OK, 1.3kB, 231ms]
+  GET https://api.mercapabbaco.com/yield-curves/c93100f0-4113-4e99-a8f4-26bb00a60562 [200 OK, 3.17kB, 56ms]
   ✓  Item 7 (Argentina - Corporativos - ONs en UVA - ARS) self link returns 200
   ┌
   │ '🔎 Testing Item 8 (Argentina - Corporativos - ONs Ley
@@ -3340,7 +3596,7 @@ Iteration 1/3
   ✓  Item 8 (Argentina - Corporativos - ONs Ley Argentina - USD) contains expected properties
   ✓  Item 8 (Argentina - Corporativos - ONs Ley Argentina - USD) 'name' is a non-empty string
   ✓  Item 8 (Argentina - Corporativos - ONs Ley Argentina - USD) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/592b2907-1322-490b-88e9-b4b8f9eb3560 [200 OK, 1.31kB, 699ms]
+  GET https://api.mercapabbaco.com/yield-curves/592b2907-1322-490b-88e9-b4b8f9eb3560 [200 OK, 119kB, 67ms]
   ✓  Item 8 (Argentina - Corporativos - ONs Ley Argentina - USD) self link returns 200
   ┌
   │ '🔎 Testing Item 9 (Argentina - Corporativos - ONs Ley
@@ -3349,7 +3605,7 @@ Iteration 1/3
   ✓  Item 9 (Argentina - Corporativos - ONs Ley Extranjera - USD) contains expected properties
   ✓  Item 9 (Argentina - Corporativos - ONs Ley Extranjera - USD) 'name' is a non-empty string
   ✓  Item 9 (Argentina - Corporativos - ONs Ley Extranjera - USD) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/45ef3a43-28cc-4878-9329-cbed2dacc258 [200 OK, 1.31kB, 291ms]
+  GET https://api.mercapabbaco.com/yield-curves/45ef3a43-28cc-4878-9329-cbed2dacc258 [200 OK, 31.47kB, 57ms]
   ✓  Item 9 (Argentina - Corporativos - ONs Ley Extranjera - USD) self link returns 200
   ┌
   │ '🔎 Testing Item 10 (Argentina - Corporativos - ONs TA
@@ -3358,7 +3614,7 @@ Iteration 1/3
   ✓  Item 10 (Argentina - Corporativos - ONs TAMAR - ARS) contains expected properties
   ✓  Item 10 (Argentina - Corporativos - ONs TAMAR - ARS) 'name' is a non-empty string
   ✓  Item 10 (Argentina - Corporativos - ONs TAMAR - ARS) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/d35422e9-f639-4ee8-8654-1d489e0af78e [200 OK, 1.31kB, 11.8s]
+  GET https://api.mercapabbaco.com/yield-curves/d35422e9-f639-4ee8-8654-1d489e0af78e [200 OK, 14kB, 71ms]
   ✓  Item 10 (Argentina - Corporativos - ONs TAMAR - ARS) self link returns 200
   ┌
   │ '🔎 Testing Item 11 (Argentina - Corporativos - Petrol
@@ -3367,7 +3623,7 @@ Iteration 1/3
   ✓  Item 11 (Argentina - Corporativos - Petroleo, Gas y Combustibles - USD	) contains expected properties
   ✓  Item 11 (Argentina - Corporativos - Petroleo, Gas y Combustibles - USD	) 'name' is a non-empty string
   ✓  Item 11 (Argentina - Corporativos - Petroleo, Gas y Combustibles - USD	) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/562ff5d6-a30e-4e18-a181-985dc783e842 [200 OK, 1.32kB, 320ms]
+  GET https://api.mercapabbaco.com/yield-curves/562ff5d6-a30e-4e18-a181-985dc783e842 [200 OK, 29.8kB, 63ms]
   ✓  Item 11 (Argentina - Corporativos - Petroleo, Gas y Combustibles - USD	) self link returns 200
   ┌
   │ '🔎 Testing Item 12 (Argentina - Corporativos - Produc
@@ -3376,7 +3632,7 @@ Iteration 1/3
   ✓  Item 12 (Argentina - Corporativos - Productos Quimicos - USD	) contains expected properties
   ✓  Item 12 (Argentina - Corporativos - Productos Quimicos - USD	) 'name' is a non-empty string
   ✓  Item 12 (Argentina - Corporativos - Productos Quimicos - USD	) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/a46c78e3-71d2-483b-ab4d-497c18be5378 [200 OK, 1.32kB, 746ms]
+  GET https://api.mercapabbaco.com/yield-curves/a46c78e3-71d2-483b-ab4d-497c18be5378 [200 OK, 3.18kB, 58ms]
   ✓  Item 12 (Argentina - Corporativos - Productos Quimicos - USD	) self link returns 200
   ┌
   │ '🔎 Testing Item 13 (Argentina - Corporativos - Servic
@@ -3385,7 +3641,7 @@ Iteration 1/3
   ✓  Item 13 (Argentina - Corporativos - Servicios Financieros Personales - USD	) contains expected properties
   ✓  Item 13 (Argentina - Corporativos - Servicios Financieros Personales - USD	) 'name' is a non-empty string
   ✓  Item 13 (Argentina - Corporativos - Servicios Financieros Personales - USD	) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/89e1fa10-5fe8-4b2d-9e42-70767154759c [200 OK, 1.33kB, 147ms]
+  GET https://api.mercapabbaco.com/yield-curves/89e1fa10-5fe8-4b2d-9e42-70767154759c [200 OK, 3.19kB, 54ms]
   ✓  Item 13 (Argentina - Corporativos - Servicios Financieros Personales - USD	) self link returns 200
   ┌
   │ '🔎 Testing Item 14 (Argentina - Corporativos - Sumini
@@ -3394,7 +3650,7 @@ Iteration 1/3
   ✓  Item 14 (Argentina - Corporativos - Suministro Electrico - USD	) contains expected properties
   ✓  Item 14 (Argentina - Corporativos - Suministro Electrico - USD	) 'name' is a non-empty string
   ✓  Item 14 (Argentina - Corporativos - Suministro Electrico - USD	) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/590a70ce-0175-4679-8409-d8be1dce306d [200 OK, 1.32kB, 216ms]
+  GET https://api.mercapabbaco.com/yield-curves/590a70ce-0175-4679-8409-d8be1dce306d [200 OK, 13.27kB, 64ms]
   ✓  Item 14 (Argentina - Corporativos - Suministro Electrico - USD	) self link returns 200
   ┌
   │ '🔎 Testing Item 15 (Argentina - Corporativos - Transp
@@ -3403,7 +3659,7 @@ Iteration 1/3
   ✓  Item 15 (Argentina - Corporativos - Transportes - USD	) contains expected properties
   ✓  Item 15 (Argentina - Corporativos - Transportes - USD	) 'name' is a non-empty string
   ✓  Item 15 (Argentina - Corporativos - Transportes - USD	) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/0d88324d-d0bc-4c44-9ff9-fb406dbd880a [200 OK, 2.19kB, 179ms]
+  GET https://api.mercapabbaco.com/yield-curves/0d88324d-d0bc-4c44-9ff9-fb406dbd880a [200 OK, 5.71kB, 53ms]
   ✓  Item 15 (Argentina - Corporativos - Transportes - USD	) self link returns 200
   ┌
   │ '🔎 Testing Item 16 (Argentina - Soberanos - Bonos del
@@ -3412,7 +3668,7 @@ Iteration 1/3
   ✓  Item 16 (Argentina - Soberanos - Bonos del Tesoro Capitalizables BONCAP - ARS) contains expected properties
   ✓  Item 16 (Argentina - Soberanos - Bonos del Tesoro Capitalizables BONCAP - ARS) 'name' is a non-empty string
   ✓  Item 16 (Argentina - Soberanos - Bonos del Tesoro Capitalizables BONCAP - ARS) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/7654381b-b94b-44dd-97d2-d6c846ef1046 [200 OK, 1.33kB, 292ms]
+  GET https://api.mercapabbaco.com/yield-curves/7654381b-b94b-44dd-97d2-d6c846ef1046 [200 OK, 4.85kB, 71ms]
   ✓  Item 16 (Argentina - Soberanos - Bonos del Tesoro Capitalizables BONCAP - ARS) self link returns 200
   ┌
   │ '🔎 Testing Item 17 (Argentina - Soberanos - Bonos dua
@@ -3421,7 +3677,7 @@ Iteration 1/3
   ✓  Item 17 (Argentina - Soberanos - Bonos duales (Conversion 2025) - ARS) contains expected properties
   ✓  Item 17 (Argentina - Soberanos - Bonos duales (Conversion 2025) - ARS) 'name' is a non-empty string
   ✓  Item 17 (Argentina - Soberanos - Bonos duales (Conversion 2025) - ARS) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/7684bfc8-5437-413e-b18f-da978a4c7456 [200 OK, 1.33kB, 200ms]
+  GET https://api.mercapabbaco.com/yield-curves/7684bfc8-5437-413e-b18f-da978a4c7456 [200 OK, 4.09kB, 74ms]
   ✓  Item 17 (Argentina - Soberanos - Bonos duales (Conversion 2025) - ARS) self link returns 200
   ┌
   │ '🔎 Testing Item 18 (Argentina - Soberanos - Letras de
@@ -3430,7 +3686,7 @@ Iteration 1/3
   ✓  Item 18 (Argentina - Soberanos - Letras del Tesoro (LECER) - ARS ) contains expected properties
   ✓  Item 18 (Argentina - Soberanos - Letras del Tesoro (LECER) - ARS ) 'name' is a non-empty string
   ✓  Item 18 (Argentina - Soberanos - Letras del Tesoro (LECER) - ARS ) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/583f592b-ff37-47ed-a796-698767d4114c [200 OK, 1.31kB, 176ms]
+  GET https://api.mercapabbaco.com/yield-curves/583f592b-ff37-47ed-a796-698767d4114c [200 OK, 4.92kB, 62ms]
   ✓  Item 18 (Argentina - Soberanos - Letras del Tesoro (LECER) - ARS ) self link returns 200
   ┌
   │ '🔎 Testing Item 19 (Argentina - Soberanos - Letras de
@@ -3439,7 +3695,7 @@ Iteration 1/3
   ✓  Item 19 (Argentina - Soberanos - Letras del Tesoro (TAMAR) - ARS) contains expected properties
   ✓  Item 19 (Argentina - Soberanos - Letras del Tesoro (TAMAR) - ARS) 'name' is a non-empty string
   ✓  Item 19 (Argentina - Soberanos - Letras del Tesoro (TAMAR) - ARS) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/93c298d0-7615-4c01-9f7a-f9312f3255fb [200 OK, 1.31kB, 225ms]
+  GET https://api.mercapabbaco.com/yield-curves/93c298d0-7615-4c01-9f7a-f9312f3255fb [200 OK, 4.01kB, 50ms]
   ✓  Item 19 (Argentina - Soberanos - Letras del Tesoro (TAMAR) - ARS) self link returns 200
   ┌
   │ '🔎 Testing Item 20 (Argentina - Soberanos - Letras de
@@ -3448,7 +3704,7 @@ Iteration 1/3
   ✓  Item 20 (Argentina - Soberanos - Letras del Tesoro Capitalizables (LECAP) - ARS) contains expected properties
   ✓  Item 20 (Argentina - Soberanos - Letras del Tesoro Capitalizables (LECAP) - ARS) 'name' is a non-empty string
   ✓  Item 20 (Argentina - Soberanos - Letras del Tesoro Capitalizables (LECAP) - ARS) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/dafe5d79-334c-4861-a28b-8ffeb595abad [200 OK, 1.33kB, 319ms]
+  GET https://api.mercapabbaco.com/yield-curves/dafe5d79-334c-4861-a28b-8ffeb595abad [200 OK, 9.01kB, 58ms]
   ✓  Item 20 (Argentina - Soberanos - Letras del Tesoro Capitalizables (LECAP) - ARS) self link returns 200
   ┌
   │ '🔎 Testing Item 21 (Argentina - Soberanos - Letras de
@@ -3457,7 +3713,7 @@ Iteration 1/3
   ✓  Item 21 (Argentina - Soberanos - Letras del Tesoro vinculadas al u$s (LELINK) - ARS) contains expected properties
   ✓  Item 21 (Argentina - Soberanos - Letras del Tesoro vinculadas al u$s (LELINK) - ARS) 'name' is a non-empty string
   ✓  Item 21 (Argentina - Soberanos - Letras del Tesoro vinculadas al u$s (LELINK) - ARS) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/3edb7ca4-ff54-496b-bae0-4e1c367b07c6 [200 OK, 1.34kB, 162ms]
+  GET https://api.mercapabbaco.com/yield-curves/3edb7ca4-ff54-496b-bae0-4e1c367b07c6 [200 OK, 2.35kB, 67ms]
   ✓  Item 21 (Argentina - Soberanos - Letras del Tesoro vinculadas al u$s (LELINK) - ARS) self link returns 200
   ┌
   │ '🔎 Testing Item 22 (Argentina - Soberanos - Ley Argen
@@ -3466,7 +3722,7 @@ Iteration 1/3
   ✓  Item 22 (Argentina - Soberanos - Ley Argentina - USD ) contains expected properties
   ✓  Item 22 (Argentina - Soberanos - Ley Argentina - USD ) 'name' is a non-empty string
   ✓  Item 22 (Argentina - Soberanos - Ley Argentina - USD ) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/1eb1c353-c294-4fee-a932-297f3b11448f [200 OK, 2.19kB, 185ms]
+  GET https://api.mercapabbaco.com/yield-curves/1eb1c353-c294-4fee-a932-297f3b11448f [200 OK, 7.32kB, 57ms]
   ✓  Item 22 (Argentina - Soberanos - Ley Argentina - USD ) self link returns 200
   ┌
   │ '🔎 Testing Item 23 (Argentina - Soberanos - Ley Extra
@@ -3475,7 +3731,7 @@ Iteration 1/3
   ✓  Item 23 (Argentina - Soberanos - Ley Extranjera - USD) contains expected properties
   ✓  Item 23 (Argentina - Soberanos - Ley Extranjera - USD) 'name' is a non-empty string
   ✓  Item 23 (Argentina - Soberanos - Ley Extranjera - USD) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/9d234b34-d635-4ace-bd37-a2a4f2e86faf [200 OK, 1.31kB, 229ms]
+  GET https://api.mercapabbaco.com/yield-curves/9d234b34-d635-4ace-bd37-a2a4f2e86faf [200 OK, 5.66kB, 53ms]
   ✓  Item 23 (Argentina - Soberanos - Ley Extranjera - USD) self link returns 200
   ┌
   │ '🔎 Testing Item 24 (Argentina - Soberanos - Tasa Fija
@@ -3484,7 +3740,7 @@ Iteration 1/3
   ✓  Item 24 (Argentina - Soberanos - Tasa Fija + CER - ARS) contains expected properties
   ✓  Item 24 (Argentina - Soberanos - Tasa Fija + CER - ARS) 'name' is a non-empty string
   ✓  Item 24 (Argentina - Soberanos - Tasa Fija + CER - ARS) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/f9c0db3d-9190-4692-9c70-0d7b0eb9e9ee [200 OK, 2.19kB, 304ms]
+  GET https://api.mercapabbaco.com/yield-curves/f9c0db3d-9190-4692-9c70-0d7b0eb9e9ee [200 OK, 15.72kB, 56ms]
   ✓  Item 24 (Argentina - Soberanos - Tasa Fija + CER - ARS) self link returns 200
   ┌
   │ '🔎 Testing Item 25 (Argentina - Soberanos - Tasa Fija
@@ -3493,7 +3749,7 @@ Iteration 1/3
   ✓  Item 25 (Argentina - Soberanos - Tasa Fija - ARS) contains expected properties
   ✓  Item 25 (Argentina - Soberanos - Tasa Fija - ARS) 'name' is a non-empty string
   ✓  Item 25 (Argentina - Soberanos - Tasa Fija - ARS) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/8e165b0c-69f7-4ddb-b346-a73b47aeef0e [200 OK, 1.31kB, 158ms]
+  GET https://api.mercapabbaco.com/yield-curves/8e165b0c-69f7-4ddb-b346-a73b47aeef0e [200 OK, 2.32kB, 53ms]
   ✓  Item 25 (Argentina - Soberanos - Tasa Fija - ARS) self link returns 200
   ┌
   │ '🔎 Testing Item 26 (Argentina - Soberanos - Tasa Flot
@@ -3502,7 +3758,7 @@ Iteration 1/3
   ✓  Item 26 (Argentina - Soberanos - Tasa Flotante - ARS) contains expected properties
   ✓  Item 26 (Argentina - Soberanos - Tasa Flotante - ARS) 'name' is a non-empty string
   ✓  Item 26 (Argentina - Soberanos - Tasa Flotante - ARS) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/9bdc4ab6-b86b-43c0-bb1e-f78e4c11ca55 [200 OK, 1.31kB, 281ms]
+  GET https://api.mercapabbaco.com/yield-curves/9bdc4ab6-b86b-43c0-bb1e-f78e4c11ca55 [200 OK, 3.16kB, 67ms]
   ✓  Item 26 (Argentina - Soberanos - Tasa Flotante - ARS) self link returns 200
   ┌
   │ '🔎 Testing Item 27 (Argentina - SubSoberanos - Dollar
@@ -3511,7 +3767,7 @@ Iteration 1/3
   ✓  Item 27 (Argentina - SubSoberanos - Dollar Linked - USD) contains expected properties
   ✓  Item 27 (Argentina - SubSoberanos - Dollar Linked - USD) 'name' is a non-empty string
   ✓  Item 27 (Argentina - SubSoberanos - Dollar Linked - USD) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/902200b8-5367-4468-98e8-b85e494bb9d2 [200 OK, 1.31kB, 232ms]
+  GET https://api.mercapabbaco.com/yield-curves/902200b8-5367-4468-98e8-b85e494bb9d2 [200 OK, 2.34kB, 59ms]
   ✓  Item 27 (Argentina - SubSoberanos - Dollar Linked - USD) self link returns 200
   ┌
   │ '🔎 Testing Item 28 (Argentina - SubSoberanos - Tasa F
@@ -3520,7 +3776,7 @@ Iteration 1/3
   ✓  Item 28 (Argentina - SubSoberanos - Tasa Fija - USD) contains expected properties
   ✓  Item 28 (Argentina - SubSoberanos - Tasa Fija - USD) 'name' is a non-empty string
   ✓  Item 28 (Argentina - SubSoberanos - Tasa Fija - USD) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/faba1cba-97a1-4f56-83c5-9ca4e9a5909c [200 OK, 1.3kB, 12.3s]
+  GET https://api.mercapabbaco.com/yield-curves/faba1cba-97a1-4f56-83c5-9ca4e9a5909c [200 OK, 9.85kB, 72ms]
   ✓  Item 28 (Argentina - SubSoberanos - Tasa Fija - USD) self link returns 200
   ┌
   │ '🔎 Testing Item 29 (Argentina - SubSoberanos - Tasa F
@@ -3529,7 +3785,7 @@ Iteration 1/3
   ✓  Item 29 (Argentina - SubSoberanos - Tasa Flotante - ARS) contains expected properties
   ✓  Item 29 (Argentina - SubSoberanos - Tasa Flotante - ARS) 'name' is a non-empty string
   ✓  Item 29 (Argentina - SubSoberanos - Tasa Flotante - ARS) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/9193993e-4b18-4889-94e6-4cefc7485e4a [200 OK, 1.31kB, 211ms]
+  GET https://api.mercapabbaco.com/yield-curves/9193993e-4b18-4889-94e6-4cefc7485e4a [200 OK, 3.15kB, 62ms]
   ✓  Item 29 (Argentina - SubSoberanos - Tasa Flotante - ARS) self link returns 200
   ┌
   │ '🔎 Testing Item 30 (Brasil - Soberanos - Bonos Global
@@ -3538,7 +3794,7 @@ Iteration 1/3
   ✓  Item 30 (Brasil - Soberanos - Bonos Globales - USD) contains expected properties
   ✓  Item 30 (Brasil - Soberanos - Bonos Globales - USD) 'name' is a non-empty string
   ✓  Item 30 (Brasil - Soberanos - Bonos Globales - USD) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/8217e3c3-7a60-4dc5-a772-856732650b8a [200 OK, 1.3kB, 2.1s]
+  GET https://api.mercapabbaco.com/yield-curves/8217e3c3-7a60-4dc5-a772-856732650b8a [200 OK, 17.53kB, 60ms]
   ✓  Item 30 (Brasil - Soberanos - Bonos Globales - USD) self link returns 200
   ┌
   │ '🔎 Testing Item 31 (Chile - Soberanos - Bonos Globale
@@ -3547,7 +3803,7 @@ Iteration 1/3
   ✓  Item 31 (Chile - Soberanos - Bonos Globales - USD) contains expected properties
   ✓  Item 31 (Chile - Soberanos - Bonos Globales - USD) 'name' is a non-empty string
   ✓  Item 31 (Chile - Soberanos - Bonos Globales - USD) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/577aa710-749c-412f-9cab-7f1ce6379673 [200 OK, 2.19kB, 335ms]
+  GET https://api.mercapabbaco.com/yield-curves/577aa710-749c-412f-9cab-7f1ce6379673 [200 OK, 14.25kB, 134ms]
   ✓  Item 31 (Chile - Soberanos - Bonos Globales - USD) self link returns 200
   ┌
   │ '🔎 Testing Item 32 (Colombia - Soberanos - Bonos Glob
@@ -3556,7 +3812,7 @@ Iteration 1/3
   ✓  Item 32 (Colombia - Soberanos - Bonos Globales - USD	) contains expected properties
   ✓  Item 32 (Colombia - Soberanos - Bonos Globales - USD	) 'name' is a non-empty string
   ✓  Item 32 (Colombia - Soberanos - Bonos Globales - USD	) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/8c2d9de4-5cb3-4f2f-85ad-9aee19f88a8e [200 OK, 1.31kB, 2.8s]
+  GET https://api.mercapabbaco.com/yield-curves/8c2d9de4-5cb3-4f2f-85ad-9aee19f88a8e [200 OK, 21.81kB, 60ms]
   ✓  Item 32 (Colombia - Soberanos - Bonos Globales - USD	) self link returns 200
   ┌
   │ '🔎 Testing Item 33 (Estados Unidos - Soberanos - Trea
@@ -3565,7 +3821,7 @@ Iteration 1/3
   ✓  Item 33 (Estados Unidos - Soberanos - Treasury Notes/Bonds - USD) contains expected properties
   ✓  Item 33 (Estados Unidos - Soberanos - Treasury Notes/Bonds - USD) 'name' is a non-empty string
   ✓  Item 33 (Estados Unidos - Soberanos - Treasury Notes/Bonds - USD) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/3e5993cf-64c5-4fa2-ba5b-9fae8bfcd6d5 [200 OK, 1.32kB, 1016ms]
+  GET https://api.mercapabbaco.com/yield-curves/3e5993cf-64c5-4fa2-ba5b-9fae8bfcd6d5 [200 OK, 8.25kB, 62ms]
   ✓  Item 33 (Estados Unidos - Soberanos - Treasury Notes/Bonds - USD) self link returns 200
   ┌
   │ '🔎 Testing Item 34 (Mexico - Soberanos - Bonos Global
@@ -3574,7 +3830,7 @@ Iteration 1/3
   ✓  Item 34 (Mexico - Soberanos - Bonos Globales - USD) contains expected properties
   ✓  Item 34 (Mexico - Soberanos - Bonos Globales - USD) 'name' is a non-empty string
   ✓  Item 34 (Mexico - Soberanos - Bonos Globales - USD) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/86a282be-f60d-4cd6-be14-b1fd2871ba9b [200 OK, 1.3kB, 8.9s]
+  GET https://api.mercapabbaco.com/yield-curves/86a282be-f60d-4cd6-be14-b1fd2871ba9b [200 OK, 34.57kB, 63ms]
   ✓  Item 34 (Mexico - Soberanos - Bonos Globales - USD) self link returns 200
   ┌
   │ '🔎 Testing Item 35 (Paraguay - Soberanos - Bonos Glob
@@ -3583,7 +3839,7 @@ Iteration 1/3
   ✓  Item 35 (Paraguay - Soberanos - Bonos Globales - USD) contains expected properties
   ✓  Item 35 (Paraguay - Soberanos - Bonos Globales - USD) 'name' is a non-empty string
   ✓  Item 35 (Paraguay - Soberanos - Bonos Globales - USD) links contain valid URLs
-  GET https://api.mercapabbaco.com/yield-curves/b0d8c01d-972c-4e1e-97e9-1edcaffb2b20 [200 OK, 1.31kB, 351ms]
+  GET https://api.mercapabbaco.com/yield-curves/b0d8c01d-972c-4e1e-97e9-1edcaffb2b20 [200 OK, 9.13kB, 50ms]
   ✓  Item 35 (Paraguay - Soberanos - Bonos Globales - USD) self link returns 200
 
 ❏ Pepper-GS32 / Regression-Test / Bond Groups
@@ -3591,85 +3847,85 @@ Iteration 1/3
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   └
-  GET https://api.mercapabbaco.com/bond-groups [200 OK, 4.62kB, 175ms]
+  GET https://api.mercapabbaco.com/bond-groups [200 OK, 4.61kB, 60ms]
   ✓  Response is received and status is 200
   ✓  Media-Type is correct
   ✓  Items array is present and not empty
   ✓  Self link matches expected URL
   ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] structure and properties
-  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 1 (AE38) structure
-  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 2 (TX26) structure
-  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 3 (AL41) structure
-  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 4 (AL30) structure
-  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 5 (TX28) structure
-  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 6 (AL29) structure
-  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 7 (AL35) structure
+  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 1 (AL29) structure
+  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 2 (AL41) structure
+  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 3 (TX26) structure
+  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 4 (AL35) structure
+  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 5 (AL30) structure
+  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 6 (TX28) structure
+  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 7 (AE38) structure
   ┌
   │ '✔ Variable BOND_GROUPS actualizada:', 'https://api.me
   │ rcapabbaco.com/bond-groups/80de27c0-0ac0-4189-b4cf-e39
   │ 757e1c6a6'
   └
-  GET https://api.mercapabbaco.com/bond-groups/80de27c0-0ac0-4189-b4cf-e39757e1c6a6   GET https://api.mercapabbaco.com/bonds/02d0b59c-a9ae-41df-8034-153706b8c0ee   GET https://api.mercapabbaco.com/bonds/2525ae7e-d0da-4cb3-8835-57f153e872e2   GET https://api.mercapabbaco.com/bonds/89d139cc-c382-4848-91b5-861ea758ee0c   GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a   GET https://api.mercapabbaco.com/bonds/abc31ef9-f305-4c76-a6b8-8578174cf8dd   GET https://api.mercapabbaco.com/bonds/af22aea0-cd76-44d2-bf1e-ee2a92b4793d   GET https://api.mercapabbaco.com/bonds/f9db6679-83f2-40bc-9e52-d9ebbb87cbf8 [200 OK, 1.38kB, 153ms]
-  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 6 (AL29) self link returns 200
-[200 OK, 1.39kB, 156ms]
-  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 7 (AL35) self link returns 200
-[200 OK, 1.39kB, 174ms]
-  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 4 (AL30) self link returns 200
-[200 OK, 1.41kB, 175ms]
-  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 5 (TX28) self link returns 200
-[200 OK, 3.09kB, 179ms]
+  GET https://api.mercapabbaco.com/bond-groups/80de27c0-0ac0-4189-b4cf-e39757e1c6a6   GET https://api.mercapabbaco.com/bonds/af22aea0-cd76-44d2-bf1e-ee2a92b4793d   GET https://api.mercapabbaco.com/bonds/89d139cc-c382-4848-91b5-861ea758ee0c   GET https://api.mercapabbaco.com/bonds/2525ae7e-d0da-4cb3-8835-57f153e872e2   GET https://api.mercapabbaco.com/bonds/f9db6679-83f2-40bc-9e52-d9ebbb87cbf8   GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a   GET https://api.mercapabbaco.com/bonds/abc31ef9-f305-4c76-a6b8-8578174cf8dd   GET https://api.mercapabbaco.com/bonds/02d0b59c-a9ae-41df-8034-153706b8c0ee [200 OK, 1.41kB, 61ms]
+  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 6 (TX28) self link returns 200
+[200 OK, 1.39kB, 124ms]
+  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 2 (AL41) self link returns 200
+[200 OK, 1.39kB, 126ms]
+  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 4 (AL35) self link returns 200
+[200 OK, 2.28kB, 128ms]
+  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 7 (AE38) self link returns 200
+[200 OK, 1.38kB, 133ms]
+  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 1 (AL29) self link returns 200
+[200 OK, 1.4kB, 136ms]
+  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 5 (AL30) self link returns 200
+[200 OK, 2.21kB, 142ms]
   ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] self link returns 200
-[200 OK, 1.39kB, 183ms]
-  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 1 (AE38) self link returns 200
-[200 OK, 1.39kB, 188ms]
-  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 3 (AL41) self link returns 200
+[200 OK, 1.4kB, 172ms]
+  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 3 (TX26) self link returns 200
   ✓  [Group 2: Bonos Canje 2020 - Ley NY] structure and properties
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 1 (GE35) structure
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 2 (GD29) structure
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 3 (GE38) structure
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 4 (GE29) structure
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 5 (GE46) structure
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 6 (GD30) structure
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 7 (GE41) structure
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 8 (GD38) structure
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 9 (GE30) structure
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 10 (GD35) structure
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 11 (GD46) structure
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 12 (GD41) structure
-  GET https://api.mercapabbaco.com/bond-groups/b008b23b-cf39-41ca-bce6-64bfe0ba258b   GET https://api.mercapabbaco.com/bonds/47517c75-1a97-47e2-b085-10b99c490edd   GET https://api.mercapabbaco.com/bonds/3d87aa62-0701-45fe-87ce-2b50ad378df9   GET https://api.mercapabbaco.com/bonds/0adff71d-a978-43c8-9d66-c3062ee00a54   GET https://api.mercapabbaco.com/bonds/8d8a220b-7054-4e29-aa69-d410231f8598   GET https://api.mercapabbaco.com/bonds/d5ded37c-49e7-4d4c-895f-3e90cca74e29   GET https://api.mercapabbaco.com/bonds/a18d235c-06a3-4a05-a794-8d463a547dc3   GET https://api.mercapabbaco.com/bonds/8e7d4748-f358-4a96-954c-70101f02816f   GET https://api.mercapabbaco.com/bonds/9a11f6b9-1cc3-4d89-b88d-c1accbdac6ee   GET https://api.mercapabbaco.com/bonds/db5b8de7-a16f-4437-bfc3-5610776cbeb9   GET https://api.mercapabbaco.com/bonds/914170da-9f70-42a0-9e3d-de4c1a87ca27   GET https://api.mercapabbaco.com/bonds/1953200f-72bf-47dd-b440-07d198bd6a5a   GET https://api.mercapabbaco.com/bonds/9a10266b-08cb-44d7-97f7-cc81a037aa90 [200 OK, 1.4kB, 149ms]
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 1 (GE35) self link returns 200
-[200 OK, 1.41kB, 151ms]
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 7 (GE41) self link returns 200
-[200 OK, 1.41kB, 165ms]
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 5 (GE46) self link returns 200
-[200 OK, 1.4kB, 168ms]
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 12 (GD41) self link returns 200
-[200 OK, 1.4kB, 173ms]
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 3 (GE38) self link returns 200
-[200 OK, 1.39kB, 176ms]
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 2 (GD29) self link returns 200
-[200 OK, 1.4kB, 177ms]
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 4 (GE29) self link returns 200
-[200 OK, 1.4kB, 181ms]
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 10 (GD35) self link returns 200
-[200 OK, 1.4kB, 182ms]
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 8 (GD38) self link returns 200
-[200 OK, 3.16kB, 187ms]
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 1 (GE38) structure
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 2 (GE35) structure
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 3 (GD35) structure
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 4 (GD46) structure
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 5 (GD30) structure
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 6 (GE41) structure
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 7 (GD41) structure
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 8 (GD29) structure
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 9 (GD38) structure
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 10 (GE46) structure
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 11 (GE30) structure
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 12 (GE29) structure
+  GET https://api.mercapabbaco.com/bond-groups/b008b23b-cf39-41ca-bce6-64bfe0ba258b   GET https://api.mercapabbaco.com/bonds/0adff71d-a978-43c8-9d66-c3062ee00a54   GET https://api.mercapabbaco.com/bonds/47517c75-1a97-47e2-b085-10b99c490edd   GET https://api.mercapabbaco.com/bonds/914170da-9f70-42a0-9e3d-de4c1a87ca27   GET https://api.mercapabbaco.com/bonds/1953200f-72bf-47dd-b440-07d198bd6a5a   GET https://api.mercapabbaco.com/bonds/a18d235c-06a3-4a05-a794-8d463a547dc3   GET https://api.mercapabbaco.com/bonds/8e7d4748-f358-4a96-954c-70101f02816f   GET https://api.mercapabbaco.com/bonds/9a10266b-08cb-44d7-97f7-cc81a037aa90   GET https://api.mercapabbaco.com/bonds/3d87aa62-0701-45fe-87ce-2b50ad378df9   GET https://api.mercapabbaco.com/bonds/9a11f6b9-1cc3-4d89-b88d-c1accbdac6ee   GET https://api.mercapabbaco.com/bonds/d5ded37c-49e7-4d4c-895f-3e90cca74e29   GET https://api.mercapabbaco.com/bonds/db5b8de7-a16f-4437-bfc3-5610776cbeb9   GET https://api.mercapabbaco.com/bonds/8d8a220b-7054-4e29-aa69-d410231f8598 [200 OK, 1.4kB, 51ms]
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 7 (GD41) self link returns 200
+[200 OK, 1.4kB, 115ms]
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 8 (GD29) self link returns 200
+[200 OK, 1.41kB, 118ms]
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 10 (GE46) self link returns 200
+[200 OK, 1.41kB, 120ms]
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 9 (GD38) self link returns 200
+[200 OK, 1.4kB, 123ms]
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 6 (GE41) self link returns 200
+[200 OK, 1.4kB, 125ms]
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 4 (GD46) self link returns 200
+[200 OK, 3.17kB, 127ms]
   ✓  [Group 2: Bonos Canje 2020 - Ley NY] self link returns 200
-[200 OK, 1.4kB, 244ms]
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 11 (GD46) self link returns 200
-[200 OK, 1.4kB, 1906ms]
-  ✓  [Group 1: Bonos Canje 2020 - Ley Argentina] - Bond 2 (TX26) self link returns 200
-[200 OK, 2.28kB, 1602ms]
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 6 (GD30) self link returns 200
-[200 OK, 1.4kB, 1611ms]
-  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 9 (GE30) self link returns 200
+[200 OK, 1.4kB, 133ms]
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 3 (GD35) self link returns 200
+[200 OK, 1.4kB, 136ms]
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 1 (GE38) self link returns 200
+[200 OK, 1.4kB, 138ms]
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 5 (GD30) self link returns 200
+[200 OK, 1.41kB, 152ms]
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 11 (GE30) self link returns 200
+[200 OK, 1.4kB, 163ms]
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 2 (GE35) self link returns 200
+[200 OK, 1.4kB, 211ms]
+  ✓  [Group 2: Bonos Canje 2020 - Ley NY] - Bond 12 (GE29) self link returns 200
 
 ↳ Get bond groups by UUID
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
   └
-  GET https://api.mercapabbaco.com/bond-groups/80de27c0-0ac0-4189-b4cf-e39757e1c6a6 [200 OK, 2.21kB, 140ms]
+  GET https://api.mercapabbaco.com/bond-groups/80de27c0-0ac0-4189-b4cf-e39757e1c6a6 [200 OK, 2.21kB, 65ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -3709,1542 +3965,22 @@ Iteration 1/3
   └
   ✓  Link of bond group is correct
 
-Iteration 2/3
-
-❏ Pepper-GS32 / Regression-Test / Appraiser
-↳ Appraise market value
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
-  │ '📅 VALUATION_DATE seteado a: 2026-04-08'
-  └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-04-08   GET https://api.mercapabbaco.com/exchange-schemes   GET https://api.mercapabbaco.com/valuation-schemes [200 OK, 4.66kB, 43ms]
-  ┌
-  │ '📊 ValuationScheme encontrado'
-  │ '   • Nombre: Esquema Mercado Default Nuevo'
-  │ '   • Link:   https://api.mercapabbaco.com/valuation-s
-  │ chemes/3082e254-40ce-4d06-b2df-58b5f14f97ef'
-  └
-[200 OK, 3.83kB, 50ms]
-  ┌
-  │ '💱 ExchangeScheme encontrado'
-  │ '   • Nombre: Esquema ARS - USD Oficial'
-  │ '   • Link:   https://api.mercapabbaco.com/exchange-sc
-  │ hemes/150dd7f3-1420-4c76-8ed6-827667455276'
-  └
-[200 OK, 2.6kB, 56ms]
-  ┌
-  │ '📌 Link del bono encontrado: https://api.mercapabbaco
-  │ .com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a'
-  └
-  POST https://api.mercapabbaco.com/appraiser [200 OK, 1.22kB, 839ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ 'Result is a non-empty array.'
-  └
-  ✓  Result is a non-empty array
-  ┌
-  │ 'Each result object has the expected properties.'
-  └
-  ✓  Each result object has expected properties
-  ┌
-  │ 'Value amount is positive.'
-  └
-  ✓  Value amount is positive
-  ┌
-  │ 'Instrument URL is correct.'
-  └
-  ✓  Instrument URL is correct
-  ┌
-  │ 'Unit URL in every is correct.'
-  └
-  ✓  Unit URL in every is correct
-  ┌
-  │ 'Validation completed for amounts: 100 or 1000.'
-  └
-  ✓  Validate that 'amount' is either 100 or 1000
-  ┌
-  │ "Validate that 'type' is instrument quote."
-  └
-  ✓  Validate that 'type' is instrument quote
-
-❏ Pepper-GS32 / Regression-Test / Bonds
-↳ All bonds - deault parameters
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
-  └
-  GET https://api.mercapabbaco.com/bonds [200 OK, 7.95kB, 119ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ "'items' array is present and not empty."
-  └
-  ✓  Response contains 'items' array with elements
-  ┌
-  │ 'Bond 0 validated successfully.'
-  │ 'Bond 1 validated successfully.'
-  │ 'Bond 2 validated successfully.'
-  │ 'Bond 3 validated successfully.'
-  │ 'Bond 4 validated successfully.'
-  │ 'Bond 5 validated successfully.'
-  │ 'Bond 6 validated successfully.'
-  │ 'Bond 7 validated successfully.'
-  │ 'Bond 8 validated successfully.'
-  │ 'Bond 9 validated successfully.'
-  └
-  ✓  Each bond has required properties
-  ┌
-  │ 'Bond 0: shortName is valid: GYC5O'
-  │ 'Bond 0: name is valid: \t360 ENERGY 2027 U$S 8.75% (G
-  │ YC5O)'
-  │ 'Bond 0: debtType is valid: Obligación Negociable'
-  │ 'Bond 0: links object is present.'
-  │ 'Bond 0: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/9f8d6a98-199c-41e7-ad56-d70f08d78628/coup
-  │ ons'
-  │ 'Bond 0: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/9f8d6a98-199c-41e7-ad56-d70f08d78628/
-  │ identifiers'
-  │ 'Bond 0: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/9f8d6a98-199c-41e7-ad56-d70f08d78628'
-  │ 'Bond 0: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/9f8d6a98-199c-41e7-ad56-d70f08d78
-  │ 628/issue-conditions'
-  │ 'Bond 0: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/9f8d6a98-199c-41e7-ad56-d70f08d786
-  │ 28/payment-summary'
-  │ 'Bond 1: shortName is valid: BVCPO'
-  │ 'Bond 1: name is valid: \tBST 2026 U$S 8 % (BVCPO)'
-  │ 'Bond 1: debtType is valid: Obligación Negociable'
-  │ 'Bond 1: links object is present.'
-  │ 'Bond 1: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/5b5084c6-16b3-49f8-9bed-ee122ebeef11/coup
-  │ ons'
-  │ 'Bond 1: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/5b5084c6-16b3-49f8-9bed-ee122ebeef11/
-  │ identifiers'
-  │ 'Bond 1: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/5b5084c6-16b3-49f8-9bed-ee122ebeef11'
-  │ 'Bond 1: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/5b5084c6-16b3-49f8-9bed-ee122ebee
-  │ f11/issue-conditions'
-  │ 'Bond 1: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/5b5084c6-16b3-49f8-9bed-ee122ebeef
-  │ 11/payment-summary'
-  │ 'Bond 2: shortName is valid: BVCQO'
-  │ 'Bond 2: name is valid: \tBST 2026 U$S linked 9 % (BVC
-  │ QO )'
-  │ 'Bond 2: debtType is valid: Obligación Negociable'
-  │ 'Bond 2: links object is present.'
-  │ 'Bond 2: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/49000a70-e07c-4a25-8527-84453147fd7e/coup
-  │ ons'
-  │ 'Bond 2: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/49000a70-e07c-4a25-8527-84453147fd7e/
-  │ identifiers'
-  │ 'Bond 2: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/49000a70-e07c-4a25-8527-84453147fd7e'
-  │ 'Bond 2: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/49000a70-e07c-4a25-8527-84453147f
-  │ d7e/issue-conditions'
-  │ 'Bond 2: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/49000a70-e07c-4a25-8527-84453147fd
-  │ 7e/payment-summary'
-  │ 'Bond 3: shortName is valid: TMC2O'
-  │ 'Bond 3: name is valid: \tCrucianelli ON PyME Serie II
-  │  2026 Badlar+600bp (TMC2O)'
-  │ 'Bond 3: debtType is valid: Obligación Negociable'
-  │ 'Bond 3: links object is present.'
-  │ 'Bond 3: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/8d524bde-1e01-457b-9831-424cb8eef20d/coup
-  │ ons'
-  │ 'Bond 3: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/8d524bde-1e01-457b-9831-424cb8eef20d/
-  │ identifiers'
-  │ 'Bond 3: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/8d524bde-1e01-457b-9831-424cb8eef20d'
-  │ 'Bond 3: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/8d524bde-1e01-457b-9831-424cb8eef
-  │ 20d/issue-conditions'
-  │ 'Bond 3: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/8d524bde-1e01-457b-9831-424cb8eef2
-  │ 0d/payment-summary'
-  │ 'Bond 4: shortName is valid: MM16A)'
-  │ 'Bond 4: name is valid: \tFF Moni Mobile XV VDF A (MM1
-  │ 6A)'
-  │ 'Bond 4: debtType is valid: Fideicomiso'
-  │ 'Bond 4: links object is present.'
-  │ 'Bond 4: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/8fa4a451-8a2f-40dc-8070-d358f92166f1/coup
-  │ ons'
-  │ 'Bond 4: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/8fa4a451-8a2f-40dc-8070-d358f92166f1/
-  │ identifiers'
-  │ 'Bond 4: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/8fa4a451-8a2f-40dc-8070-d358f92166f1'
-  │ 'Bond 4: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/8fa4a451-8a2f-40dc-8070-d358f9216
-  │ 6f1/issue-conditions'
-  │ 'Bond 4: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/8fa4a451-8a2f-40dc-8070-d358f92166
-  │ f1/payment-summary'
-  │ 'Bond 5: shortName is valid: MR40O'
-  │ 'Bond 5: name is valid: \tGEMSA 2031 u$s 11% (MR40O)'
-  │ 'Bond 5: debtType is valid: Obligación Negociable'
-  │ 'Bond 5: links object is present.'
-  │ 'Bond 5: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/aca1c2b2-0dda-4235-9f91-f61b2710a955/coup
-  │ ons'
-  │ 'Bond 5: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/aca1c2b2-0dda-4235-9f91-f61b2710a955/
-  │ identifiers'
-  │ 'Bond 5: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/aca1c2b2-0dda-4235-9f91-f61b2710a955'
-  │ 'Bond 5: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/aca1c2b2-0dda-4235-9f91-f61b2710a
-  │ 955/issue-conditions'
-  │ 'Bond 5: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/aca1c2b2-0dda-4235-9f91-f61b2710a9
-  │ 55/payment-summary'
-  │ 'Bond 6: shortName is valid: RES2P'
-  │ 'Bond 6: name is valid: \tRECARD S.A 2028 $ Badlar+800
-  │ bp (RES2P)'
-  │ 'Bond 6: debtType is valid: Obligación Negociable'
-  │ 'Bond 6: links object is present.'
-  │ 'Bond 6: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/467a0102-75f2-4b59-aa66-5d182e6c1d58/coup
-  │ ons'
-  │ 'Bond 6: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/467a0102-75f2-4b59-aa66-5d182e6c1d58/
-  │ identifiers'
-  │ 'Bond 6: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/467a0102-75f2-4b59-aa66-5d182e6c1d58'
-  │ 'Bond 6: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/467a0102-75f2-4b59-aa66-5d182e6c1
-  │ d58/issue-conditions'
-  │ 'Bond 6: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/467a0102-75f2-4b59-aa66-5d182e6c1d
-  │ 58/payment-summary'
-  │ 'Bond 7: shortName is valid: TTCBO'
-  │ 'Bond 7: name is valid: \tTecpetrol 2027 u$s 6.5% (TTC
-  │ BO)'
-  │ 'Bond 7: debtType is valid: Obligación Negociable'
-  │ 'Bond 7: links object is present.'
-  │ 'Bond 7: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/ca619c61-beaf-4160-9bcc-b9df0e0e7938/coup
-  │ ons'
-  │ 'Bond 7: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/ca619c61-beaf-4160-9bcc-b9df0e0e7938/
-  │ identifiers'
-  │ 'Bond 7: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/ca619c61-beaf-4160-9bcc-b9df0e0e7938'
-  │ 'Bond 7: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/ca619c61-beaf-4160-9bcc-b9df0e0e7
-  │ 938/issue-conditions'
-  │ 'Bond 7: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/ca619c61-beaf-4160-9bcc-b9df0e0e79
-  │ 38/payment-summary'
-  │ 'Bond 8: shortName is valid: GYC4O'
-  │ 'Bond 8: name is valid: 360 ENERGY 2027 U$S 8% (GYC4O)
-  │ '
-  │ 'Bond 8: debtType is valid: Obligación Negociable'
-  │ 'Bond 8: links object is present.'
-  │ 'Bond 8: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/935718fe-3140-424e-817d-3ba64bbc60a6/coup
-  │ ons'
-  │ 'Bond 8: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/935718fe-3140-424e-817d-3ba64bbc60a6/
-  │ identifiers'
-  │ 'Bond 8: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/935718fe-3140-424e-817d-3ba64bbc60a6'
-  │ 'Bond 8: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/935718fe-3140-424e-817d-3ba64bbc6
-  │ 0a6/issue-conditions'
-  │ 'Bond 8: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/935718fe-3140-424e-817d-3ba64bbc60
-  │ a6/payment-summary'
-  │ 'Bond 9: shortName is valid: GYC3O'
-  │ 'Bond 9: name is valid: 360 Energy 2032 u$s-linked 5% 
-  │ (GYC3O)'
-  │ 'Bond 9: debtType is valid: Obligación Negociable'
-  │ 'Bond 9: links object is present.'
-  │ 'Bond 9: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/c205e424-1203-475f-b83b-127bfcd77dc6/coup
-  │ ons'
-  │ 'Bond 9: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/c205e424-1203-475f-b83b-127bfcd77dc6/
-  │ identifiers'
-  │ 'Bond 9: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/c205e424-1203-475f-b83b-127bfcd77dc6'
-  │ 'Bond 9: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/c205e424-1203-475f-b83b-127bfcd77
-  │ dc6/issue-conditions'
-  │ 'Bond 9: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/c205e424-1203-475f-b83b-127bfcd77d
-  │ c6/payment-summary'
-  └
-  ✓  Each bond property has the correct format
-  ┌
-  │ "Link 'coupons' in bond 0 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/9f8d6a98-199c-41e7-ad56-d70f08d786
-  │ 28/coupons'
-  │ "Link 'identifiers' in bond 0 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/9f8d6a98-199c-41e7-ad56-d70f08
-  │ d78628/identifiers'
-  │ "Link 'self' in bond 0 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/9f8d6a98-199c-41e7-ad56-d70f08d78628'
-  │ "Link 'issueConditions' in bond 0 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/9f8d6a98-199c-41e7-ad56-d7
-  │ 0f08d78628/issue-conditions'
-  │ "Link 'paymentSummary' in bond 0 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/9f8d6a98-199c-41e7-ad56-d70
-  │ f08d78628/payment-summary'
-  │ "Link 'coupons' in bond 1 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/5b5084c6-16b3-49f8-9bed-ee122ebeef
-  │ 11/coupons'
-  │ "Link 'identifiers' in bond 1 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/5b5084c6-16b3-49f8-9bed-ee122e
-  │ beef11/identifiers'
-  │ "Link 'self' in bond 1 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/5b5084c6-16b3-49f8-9bed-ee122ebeef11'
-  │ "Link 'issueConditions' in bond 1 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/5b5084c6-16b3-49f8-9bed-ee
-  │ 122ebeef11/issue-conditions'
-  │ "Link 'paymentSummary' in bond 1 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/5b5084c6-16b3-49f8-9bed-ee1
-  │ 22ebeef11/payment-summary'
-  │ "Link 'coupons' in bond 2 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/49000a70-e07c-4a25-8527-84453147fd
-  │ 7e/coupons'
-  │ "Link 'identifiers' in bond 2 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/49000a70-e07c-4a25-8527-844531
-  │ 47fd7e/identifiers'
-  │ "Link 'self' in bond 2 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/49000a70-e07c-4a25-8527-84453147fd7e'
-  │ "Link 'issueConditions' in bond 2 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/49000a70-e07c-4a25-8527-84
-  │ 453147fd7e/issue-conditions'
-  │ "Link 'paymentSummary' in bond 2 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/49000a70-e07c-4a25-8527-844
-  │ 53147fd7e/payment-summary'
-  │ "Link 'coupons' in bond 3 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/8d524bde-1e01-457b-9831-424cb8eef2
-  │ 0d/coupons'
-  │ "Link 'identifiers' in bond 3 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/8d524bde-1e01-457b-9831-424cb8
-  │ eef20d/identifiers'
-  │ "Link 'self' in bond 3 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/8d524bde-1e01-457b-9831-424cb8eef20d'
-  │ "Link 'issueConditions' in bond 3 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/8d524bde-1e01-457b-9831-42
-  │ 4cb8eef20d/issue-conditions'
-  │ "Link 'paymentSummary' in bond 3 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/8d524bde-1e01-457b-9831-424
-  │ cb8eef20d/payment-summary'
-  │ "Link 'coupons' in bond 4 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/8fa4a451-8a2f-40dc-8070-d358f92166
-  │ f1/coupons'
-  │ "Link 'identifiers' in bond 4 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/8fa4a451-8a2f-40dc-8070-d358f9
-  │ 2166f1/identifiers'
-  │ "Link 'self' in bond 4 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/8fa4a451-8a2f-40dc-8070-d358f92166f1'
-  │ "Link 'issueConditions' in bond 4 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/8fa4a451-8a2f-40dc-8070-d3
-  │ 58f92166f1/issue-conditions'
-  │ "Link 'paymentSummary' in bond 4 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/8fa4a451-8a2f-40dc-8070-d35
-  │ 8f92166f1/payment-summary'
-  │ "Link 'coupons' in bond 5 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/aca1c2b2-0dda-4235-9f91-f61b2710a9
-  │ 55/coupons'
-  │ "Link 'identifiers' in bond 5 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/aca1c2b2-0dda-4235-9f91-f61b27
-  │ 10a955/identifiers'
-  │ "Link 'self' in bond 5 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/aca1c2b2-0dda-4235-9f91-f61b2710a955'
-  │ "Link 'issueConditions' in bond 5 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/aca1c2b2-0dda-4235-9f91-f6
-  │ 1b2710a955/issue-conditions'
-  │ "Link 'paymentSummary' in bond 5 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/aca1c2b2-0dda-4235-9f91-f61
-  │ b2710a955/payment-summary'
-  │ "Link 'coupons' in bond 6 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/467a0102-75f2-4b59-aa66-5d182e6c1d
-  │ 58/coupons'
-  │ "Link 'identifiers' in bond 6 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/467a0102-75f2-4b59-aa66-5d182e
-  │ 6c1d58/identifiers'
-  │ "Link 'self' in bond 6 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/467a0102-75f2-4b59-aa66-5d182e6c1d58'
-  │ "Link 'issueConditions' in bond 6 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/467a0102-75f2-4b59-aa66-5d
-  │ 182e6c1d58/issue-conditions'
-  │ "Link 'paymentSummary' in bond 6 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/467a0102-75f2-4b59-aa66-5d1
-  │ 82e6c1d58/payment-summary'
-  │ "Link 'coupons' in bond 7 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/ca619c61-beaf-4160-9bcc-b9df0e0e79
-  │ 38/coupons'
-  │ "Link 'identifiers' in bond 7 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/ca619c61-beaf-4160-9bcc-b9df0e
-  │ 0e7938/identifiers'
-  │ "Link 'self' in bond 7 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/ca619c61-beaf-4160-9bcc-b9df0e0e7938'
-  │ "Link 'issueConditions' in bond 7 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/ca619c61-beaf-4160-9bcc-b9
-  │ df0e0e7938/issue-conditions'
-  │ "Link 'paymentSummary' in bond 7 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/ca619c61-beaf-4160-9bcc-b9d
-  │ f0e0e7938/payment-summary'
-  │ "Link 'coupons' in bond 8 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/935718fe-3140-424e-817d-3ba64bbc60
-  │ a6/coupons'
-  │ "Link 'identifiers' in bond 8 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/935718fe-3140-424e-817d-3ba64b
-  │ bc60a6/identifiers'
-  │ "Link 'self' in bond 8 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/935718fe-3140-424e-817d-3ba64bbc60a6'
-  │ "Link 'issueConditions' in bond 8 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/935718fe-3140-424e-817d-3b
-  │ a64bbc60a6/issue-conditions'
-  │ "Link 'paymentSummary' in bond 8 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/935718fe-3140-424e-817d-3ba
-  │ 64bbc60a6/payment-summary'
-  │ "Link 'coupons' in bond 9 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/c205e424-1203-475f-b83b-127bfcd77d
-  │ c6/coupons'
-  │ "Link 'identifiers' in bond 9 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/c205e424-1203-475f-b83b-127bfc
-  │ d77dc6/identifiers'
-  │ "Link 'self' in bond 9 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/c205e424-1203-475f-b83b-127bfcd77dc6'
-  │ "Link 'issueConditions' in bond 9 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/c205e424-1203-475f-b83b-12
-  │ 7bfcd77dc6/issue-conditions'
-  │ "Link 'paymentSummary' in bond 9 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/c205e424-1203-475f-b83b-127
-  │ bfcd77dc6/payment-summary'
-  └
-  ✓  Links are valid URLs
-  ┌
-  │ "Global link 'next' is valid: https://api.mercapabbaco
-  │ .com/bonds?limit=10&start=11"
-  │ "Global link 'self' is valid: https://api.mercapabbaco
-  │ .com/bonds"
-  │ "Global link 'last' is valid: https://api.mercapabbaco
-  │ .com/bonds?limit=10&start=1021"
-  └
-  ✓  Global links are valid URLs
-  ┌
-  │ "No 'query' parameter provided in request."
-  └
-  ✓  Results match the query parameter
-  ┌
-  │ "No 'shortName' parameter provided in request."
-  └
-  ✓  Results match the shortName parameter
-  ┌
-  │ 'Results respect the limit parameter (max 10 items).'
-  └
-  ✓  Results respect the limit parameter
-  ┌
-  │ 'Validated that the first bond in response starts at i
-  │ ndex 1.'
-  └
-  ✓  Start parameter skips the correct number of bonds
-  ┌
-  │ 'Response code is not 406, no validation necessary.'
-  └
-  ✓  Error 406 response structure
-  ┌
-  │ 'Limit is not 0, skipping error validation.'
-  └
-  ✓  Limit parameter is 0, response should be 400
-
-↳ All bonds - for issuer
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
-  └
-  GET https://api.mercapabbaco.com/instrument-issuers [200 OK, 112.47kB, 405ms]
-  ┌
-  │ 'https://api.mercapabbaco.com/instrument-issuers/6f561
-  │ 6c7-d1f0-4cd2-b4b3-bb99184712cf'
-  └
-  GET https://api.mercapabbaco.com/bonds?issuer=https://api.mercapabbaco.com/instrument-issuers/6f5616c7-d1f0-4cd2-b4b3-bb99184712cf [200 OK, 5.64kB, 206ms]
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ "'items' array is present and not empty."
-  └
-  ✓  Response contains 'items' array with elements
-  ┌
-  │ 'Bond 0 validated successfully.'
-  │ 'Bond 1 validated successfully.'
-  │ 'Bond 2 validated successfully.'
-  │ 'Bond 3 validated successfully.'
-  │ 'Bond 4 validated successfully.'
-  │ 'Bond 5 validated successfully.'
-  │ 'Bond 6 validated successfully.'
-  │ 'Bond 7 validated successfully.'
-  └
-  ✓  Each bond has required properties
-  ┌
-  │ 'Bond 0: shortName is valid: BPOA7'
-  │ 'Bond 0: name is valid: BOPREAL 2027 Serie 1.A u$s 5% 
-  │ (BPOA7)'
-  │ 'Bond 0: debtType is valid: Título Público'
-  │ 'Bond 0: links object is present.'
-  │ 'Bond 0: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/cd5f001c-175d-4a61-bfeb-6239808badaf/coup
-  │ ons'
-  │ 'Bond 0: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/cd5f001c-175d-4a61-bfeb-6239808badaf/
-  │ identifiers'
-  │ 'Bond 0: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/cd5f001c-175d-4a61-bfeb-6239808badaf'
-  │ 'Bond 0: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/cd5f001c-175d-4a61-bfeb-6239808ba
-  │ daf/issue-conditions'
-  │ 'Bond 0: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/cd5f001c-175d-4a61-bfeb-6239808bad
-  │ af/payment-summary'
-  │ 'Bond 1: shortName is valid: BPOB7'
-  │ 'Bond 1: name is valid: BOPREAL 2027 Serie 1.B u$s 5% 
-  │ (BPOB7)'
-  │ 'Bond 1: debtType is valid: Título Público'
-  │ 'Bond 1: links object is present.'
-  │ 'Bond 1: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/58b357b2-5690-4ef7-be68-8a805c12d151/coup
-  │ ons'
-  │ 'Bond 1: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/58b357b2-5690-4ef7-be68-8a805c12d151/
-  │ identifiers'
-  │ 'Bond 1: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/58b357b2-5690-4ef7-be68-8a805c12d151'
-  │ 'Bond 1: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/58b357b2-5690-4ef7-be68-8a805c12d
-  │ 151/issue-conditions'
-  │ 'Bond 1: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/58b357b2-5690-4ef7-be68-8a805c12d1
-  │ 51/payment-summary'
-  │ 'Bond 2: shortName is valid: BPOC7'
-  │ 'Bond 2: name is valid: BOPREAL 2027 Serie 1.C u$s 5% 
-  │ (BPOC7)'
-  │ 'Bond 2: debtType is valid: Título Público'
-  │ 'Bond 2: links object is present.'
-  │ 'Bond 2: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/0aeb580e-5063-4520-9c9c-d9f33506543e/coup
-  │ ons'
-  │ 'Bond 2: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/0aeb580e-5063-4520-9c9c-d9f33506543e/
-  │ identifiers'
-  │ 'Bond 2: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/0aeb580e-5063-4520-9c9c-d9f33506543e'
-  │ 'Bond 2: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/0aeb580e-5063-4520-9c9c-d9f335065
-  │ 43e/issue-conditions'
-  │ 'Bond 2: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/0aeb580e-5063-4520-9c9c-d9f3350654
-  │ 3e/payment-summary'
-  │ 'Bond 3: shortName is valid: BPOD7'
-  │ 'Bond 3: name is valid: BOPREAL 2027 Serie 1.D u$s 5% 
-  │ (BPOD7)'
-  │ 'Bond 3: debtType is valid: Título Público'
-  │ 'Bond 3: links object is present.'
-  │ 'Bond 3: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/6a92ab62-8960-48a6-8e9a-fe4287771228/coup
-  │ ons'
-  │ 'Bond 3: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/6a92ab62-8960-48a6-8e9a-fe4287771228/
-  │ identifiers'
-  │ 'Bond 3: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/6a92ab62-8960-48a6-8e9a-fe4287771228'
-  │ 'Bond 3: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/6a92ab62-8960-48a6-8e9a-fe4287771
-  │ 228/issue-conditions'
-  │ 'Bond 3: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/6a92ab62-8960-48a6-8e9a-fe42877712
-  │ 28/payment-summary'
-  │ 'Bond 4: shortName is valid: BAJABO'
-  │ 'Bond 4: name is valid: BOPREAL 2027 u$s 5%'
-  │ 'Bond 4: debtType is valid: Título Público'
-  │ 'Bond 4: links object is present.'
-  │ 'Bond 4: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/bcbe1723-1e8d-406c-b184-13cd5e2111c6/coup
-  │ ons'
-  │ 'Bond 4: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/bcbe1723-1e8d-406c-b184-13cd5e2111c6/
-  │ identifiers'
-  │ 'Bond 4: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/bcbe1723-1e8d-406c-b184-13cd5e2111c6'
-  │ 'Bond 4: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/bcbe1723-1e8d-406c-b184-13cd5e211
-  │ 1c6/issue-conditions'
-  │ 'Bond 4: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/bcbe1723-1e8d-406c-b184-13cd5e2111
-  │ c6/payment-summary'
-  │ 'Bond 5: shortName is valid: BPO27'
-  │ 'Bond 5: name is valid: BOPREAL 2027 u$s 5% (BPO27)'
-  │ 'Bond 5: debtType is valid: Título Público'
-  │ 'Bond 5: links object is present.'
-  │ 'Bond 5: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/739a3340-2e44-417d-aa34-0ef159379482/coup
-  │ ons'
-  │ 'Bond 5: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/739a3340-2e44-417d-aa34-0ef159379482/
-  │ identifiers'
-  │ 'Bond 5: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/739a3340-2e44-417d-aa34-0ef159379482'
-  │ 'Bond 5: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/739a3340-2e44-417d-aa34-0ef159379
-  │ 482/issue-conditions'
-  │ 'Bond 5: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/739a3340-2e44-417d-aa34-0ef1593794
-  │ 82/payment-summary'
-  │ 'Bond 6: shortName is valid: BPOA8'
-  │ 'Bond 6: name is valid: BOPREAL 2028 Serie 4.A u$s 3% 
-  │ (BPOA8)'
-  │ 'Bond 6: debtType is valid: Título Público'
-  │ 'Bond 6: links object is present.'
-  │ 'Bond 6: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/6e9f941e-e2ec-4795-acd3-f054844f5b0d/coup
-  │ ons'
-  │ 'Bond 6: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/6e9f941e-e2ec-4795-acd3-f054844f5b0d/
-  │ identifiers'
-  │ 'Bond 6: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/6e9f941e-e2ec-4795-acd3-f054844f5b0d'
-  │ 'Bond 6: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/6e9f941e-e2ec-4795-acd3-f054844f5
-  │ b0d/issue-conditions'
-  │ 'Bond 6: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/6e9f941e-e2ec-4795-acd3-f054844f5b
-  │ 0d/payment-summary'
-  │ 'Bond 7: shortName is valid: BPOB8'
-  │ 'Bond 7: name is valid: BOPREAL 2028 Serie 4.B u$s 3% 
-  │ (BPOB8)'
-  │ 'Bond 7: debtType is valid: Título Público'
-  │ 'Bond 7: links object is present.'
-  │ 'Bond 7: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/c18f7d4a-57eb-43ea-8f83-a1d8b4694792/coup
-  │ ons'
-  │ 'Bond 7: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/c18f7d4a-57eb-43ea-8f83-a1d8b4694792/
-  │ identifiers'
-  │ 'Bond 7: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/c18f7d4a-57eb-43ea-8f83-a1d8b4694792'
-  │ 'Bond 7: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/c18f7d4a-57eb-43ea-8f83-a1d8b4694
-  │ 792/issue-conditions'
-  │ 'Bond 7: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/c18f7d4a-57eb-43ea-8f83-a1d8b46947
-  │ 92/payment-summary'
-  └
-  ✓  Each bond property has the correct format
-  ┌
-  │ "Link 'coupons' in bond 0 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/cd5f001c-175d-4a61-bfeb-6239808bad
-  │ af/coupons'
-  │ "Link 'identifiers' in bond 0 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/cd5f001c-175d-4a61-bfeb-623980
-  │ 8badaf/identifiers'
-  │ "Link 'self' in bond 0 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/cd5f001c-175d-4a61-bfeb-6239808badaf'
-  │ "Link 'issueConditions' in bond 0 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/cd5f001c-175d-4a61-bfeb-62
-  │ 39808badaf/issue-conditions'
-  │ "Link 'paymentSummary' in bond 0 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/cd5f001c-175d-4a61-bfeb-623
-  │ 9808badaf/payment-summary'
-  │ "Link 'coupons' in bond 1 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/58b357b2-5690-4ef7-be68-8a805c12d1
-  │ 51/coupons'
-  │ "Link 'identifiers' in bond 1 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/58b357b2-5690-4ef7-be68-8a805c
-  │ 12d151/identifiers'
-  │ "Link 'self' in bond 1 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/58b357b2-5690-4ef7-be68-8a805c12d151'
-  │ "Link 'issueConditions' in bond 1 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/58b357b2-5690-4ef7-be68-8a
-  │ 805c12d151/issue-conditions'
-  │ "Link 'paymentSummary' in bond 1 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/58b357b2-5690-4ef7-be68-8a8
-  │ 05c12d151/payment-summary'
-  │ "Link 'coupons' in bond 2 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/0aeb580e-5063-4520-9c9c-d9f3350654
-  │ 3e/coupons'
-  │ "Link 'identifiers' in bond 2 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/0aeb580e-5063-4520-9c9c-d9f335
-  │ 06543e/identifiers'
-  │ "Link 'self' in bond 2 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/0aeb580e-5063-4520-9c9c-d9f33506543e'
-  │ "Link 'issueConditions' in bond 2 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/0aeb580e-5063-4520-9c9c-d9
-  │ f33506543e/issue-conditions'
-  │ "Link 'paymentSummary' in bond 2 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/0aeb580e-5063-4520-9c9c-d9f
-  │ 33506543e/payment-summary'
-  │ "Link 'coupons' in bond 3 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/6a92ab62-8960-48a6-8e9a-fe42877712
-  │ 28/coupons'
-  │ "Link 'identifiers' in bond 3 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/6a92ab62-8960-48a6-8e9a-fe4287
-  │ 771228/identifiers'
-  │ "Link 'self' in bond 3 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/6a92ab62-8960-48a6-8e9a-fe4287771228'
-  │ "Link 'issueConditions' in bond 3 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/6a92ab62-8960-48a6-8e9a-fe
-  │ 4287771228/issue-conditions'
-  │ "Link 'paymentSummary' in bond 3 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/6a92ab62-8960-48a6-8e9a-fe4
-  │ 287771228/payment-summary'
-  │ "Link 'coupons' in bond 4 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/bcbe1723-1e8d-406c-b184-13cd5e2111
-  │ c6/coupons'
-  │ "Link 'identifiers' in bond 4 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/bcbe1723-1e8d-406c-b184-13cd5e
-  │ 2111c6/identifiers'
-  │ "Link 'self' in bond 4 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/bcbe1723-1e8d-406c-b184-13cd5e2111c6'
-  │ "Link 'issueConditions' in bond 4 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/bcbe1723-1e8d-406c-b184-13
-  │ cd5e2111c6/issue-conditions'
-  │ "Link 'paymentSummary' in bond 4 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/bcbe1723-1e8d-406c-b184-13c
-  │ d5e2111c6/payment-summary'
-  │ "Link 'coupons' in bond 5 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/739a3340-2e44-417d-aa34-0ef1593794
-  │ 82/coupons'
-  │ "Link 'identifiers' in bond 5 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/739a3340-2e44-417d-aa34-0ef159
-  │ 379482/identifiers'
-  │ "Link 'self' in bond 5 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/739a3340-2e44-417d-aa34-0ef159379482'
-  │ "Link 'issueConditions' in bond 5 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/739a3340-2e44-417d-aa34-0e
-  │ f159379482/issue-conditions'
-  │ "Link 'paymentSummary' in bond 5 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/739a3340-2e44-417d-aa34-0ef
-  │ 159379482/payment-summary'
-  │ "Link 'coupons' in bond 6 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/6e9f941e-e2ec-4795-acd3-f054844f5b
-  │ 0d/coupons'
-  │ "Link 'identifiers' in bond 6 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/6e9f941e-e2ec-4795-acd3-f05484
-  │ 4f5b0d/identifiers'
-  │ "Link 'self' in bond 6 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/6e9f941e-e2ec-4795-acd3-f054844f5b0d'
-  │ "Link 'issueConditions' in bond 6 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/6e9f941e-e2ec-4795-acd3-f0
-  │ 54844f5b0d/issue-conditions'
-  │ "Link 'paymentSummary' in bond 6 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/6e9f941e-e2ec-4795-acd3-f05
-  │ 4844f5b0d/payment-summary'
-  │ "Link 'coupons' in bond 7 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/c18f7d4a-57eb-43ea-8f83-a1d8b46947
-  │ 92/coupons'
-  │ "Link 'identifiers' in bond 7 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/c18f7d4a-57eb-43ea-8f83-a1d8b4
-  │ 694792/identifiers'
-  │ "Link 'self' in bond 7 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/c18f7d4a-57eb-43ea-8f83-a1d8b4694792'
-  │ "Link 'issueConditions' in bond 7 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/c18f7d4a-57eb-43ea-8f83-a1
-  │ d8b4694792/issue-conditions'
-  │ "Link 'paymentSummary' in bond 7 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/c18f7d4a-57eb-43ea-8f83-a1d
-  │ 8b4694792/payment-summary'
-  └
-  ✓  Links are valid URLs
-  ✓  validar que solo devuelva items asociados al issuer enviado por parametro
-  GET https://api.mercapabbaco.com/instrument-issuers/6f5616c7-d1f0-4cd2-b4b3-bb99184712cf [200 OK, 895B, 142ms]
-  GET https://api.mercapabbaco.com/bonds/cd5f001c-175d-4a61-bfeb-6239808badaf/issue-conditions   GET https://api.mercapabbaco.com/bonds/58b357b2-5690-4ef7-be68-8a805c12d151/issue-conditions   GET https://api.mercapabbaco.com/bonds/0aeb580e-5063-4520-9c9c-d9f33506543e/issue-conditions   GET https://api.mercapabbaco.com/bonds/6a92ab62-8960-48a6-8e9a-fe4287771228/issue-conditions   GET https://api.mercapabbaco.com/bonds/bcbe1723-1e8d-406c-b184-13cd5e2111c6/issue-conditions   GET https://api.mercapabbaco.com/bonds/739a3340-2e44-417d-aa34-0ef159379482/issue-conditions   GET https://api.mercapabbaco.com/bonds/6e9f941e-e2ec-4795-acd3-f054844f5b0d/issue-conditions   GET https://api.mercapabbaco.com/bonds/c18f7d4a-57eb-43ea-8f83-a1d8b4694792/issue-conditions [200 OK, 1.35kB, 98ms]
-[200 OK, 1.36kB, 174ms]
-[200 OK, 1.35kB, 185ms]
-[200 OK, 1.36kB, 190ms]
-[200 OK, 1.36kB, 197ms]
-[200 OK, 1.36kB, 200ms]
-[200 OK, 1.35kB, 204ms]
-[200 OK, 1.36kB, 205ms]
-
-↳ All bonds - start & limit parameters
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
-  └
-  GET https://api.mercapabbaco.com/bonds?limit=5&start=2 [200 OK, 4.19kB, 174ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ "'items' array is present and not empty."
-  └
-  ✓  Response contains 'items' array with elements
-  ┌
-  │ 'Bond 0 validated successfully.'
-  │ 'Bond 1 validated successfully.'
-  │ 'Bond 2 validated successfully.'
-  │ 'Bond 3 validated successfully.'
-  │ 'Bond 4 validated successfully.'
-  └
-  ✓  Each bond has required properties
-  ┌
-  │ 'Bond 0: shortName is valid: BVCPO'
-  │ 'Bond 0: name is valid: \tBST 2026 U$S 8 % (BVCPO)'
-  │ 'Bond 0: debtType is valid: Obligación Negociable'
-  │ 'Bond 0: links object is present.'
-  │ 'Bond 0: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/5b5084c6-16b3-49f8-9bed-ee122ebeef11/coup
-  │ ons'
-  │ 'Bond 0: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/5b5084c6-16b3-49f8-9bed-ee122ebeef11/
-  │ identifiers'
-  │ 'Bond 0: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/5b5084c6-16b3-49f8-9bed-ee122ebeef11'
-  │ 'Bond 0: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/5b5084c6-16b3-49f8-9bed-ee122ebee
-  │ f11/issue-conditions'
-  │ 'Bond 0: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/5b5084c6-16b3-49f8-9bed-ee122ebeef
-  │ 11/payment-summary'
-  │ 'Bond 1: shortName is valid: BVCQO'
-  │ 'Bond 1: name is valid: \tBST 2026 U$S linked 9 % (BVC
-  │ QO )'
-  │ 'Bond 1: debtType is valid: Obligación Negociable'
-  │ 'Bond 1: links object is present.'
-  │ 'Bond 1: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/49000a70-e07c-4a25-8527-84453147fd7e/coup
-  │ ons'
-  │ 'Bond 1: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/49000a70-e07c-4a25-8527-84453147fd7e/
-  │ identifiers'
-  │ 'Bond 1: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/49000a70-e07c-4a25-8527-84453147fd7e'
-  │ 'Bond 1: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/49000a70-e07c-4a25-8527-84453147f
-  │ d7e/issue-conditions'
-  │ 'Bond 1: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/49000a70-e07c-4a25-8527-84453147fd
-  │ 7e/payment-summary'
-  │ 'Bond 2: shortName is valid: TMC2O'
-  │ 'Bond 2: name is valid: \tCrucianelli ON PyME Serie II
-  │  2026 Badlar+600bp (TMC2O)'
-  │ 'Bond 2: debtType is valid: Obligación Negociable'
-  │ 'Bond 2: links object is present.'
-  │ 'Bond 2: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/8d524bde-1e01-457b-9831-424cb8eef20d/coup
-  │ ons'
-  │ 'Bond 2: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/8d524bde-1e01-457b-9831-424cb8eef20d/
-  │ identifiers'
-  │ 'Bond 2: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/8d524bde-1e01-457b-9831-424cb8eef20d'
-  │ 'Bond 2: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/8d524bde-1e01-457b-9831-424cb8eef
-  │ 20d/issue-conditions'
-  │ 'Bond 2: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/8d524bde-1e01-457b-9831-424cb8eef2
-  │ 0d/payment-summary'
-  │ 'Bond 3: shortName is valid: MM16A)'
-  │ 'Bond 3: name is valid: \tFF Moni Mobile XV VDF A (MM1
-  │ 6A)'
-  │ 'Bond 3: debtType is valid: Fideicomiso'
-  │ 'Bond 3: links object is present.'
-  │ 'Bond 3: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/8fa4a451-8a2f-40dc-8070-d358f92166f1/coup
-  │ ons'
-  │ 'Bond 3: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/8fa4a451-8a2f-40dc-8070-d358f92166f1/
-  │ identifiers'
-  │ 'Bond 3: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/8fa4a451-8a2f-40dc-8070-d358f92166f1'
-  │ 'Bond 3: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/8fa4a451-8a2f-40dc-8070-d358f9216
-  │ 6f1/issue-conditions'
-  │ 'Bond 3: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/8fa4a451-8a2f-40dc-8070-d358f92166
-  │ f1/payment-summary'
-  │ 'Bond 4: shortName is valid: MR40O'
-  │ 'Bond 4: name is valid: \tGEMSA 2031 u$s 11% (MR40O)'
-  │ 'Bond 4: debtType is valid: Obligación Negociable'
-  │ 'Bond 4: links object is present.'
-  │ 'Bond 4: coupons link is valid: https://api.mercapabba
-  │ co.com/bonds/aca1c2b2-0dda-4235-9f91-f61b2710a955/coup
-  │ ons'
-  │ 'Bond 4: identifiers link is valid: https://api.mercap
-  │ abbaco.com/bonds/aca1c2b2-0dda-4235-9f91-f61b2710a955/
-  │ identifiers'
-  │ 'Bond 4: self link is valid: https://api.mercapabbaco.
-  │ com/bonds/aca1c2b2-0dda-4235-9f91-f61b2710a955'
-  │ 'Bond 4: issueConditions link is valid: https://api.me
-  │ rcapabbaco.com/bonds/aca1c2b2-0dda-4235-9f91-f61b2710a
-  │ 955/issue-conditions'
-  │ 'Bond 4: paymentSummary link is valid: https://api.mer
-  │ capabbaco.com/bonds/aca1c2b2-0dda-4235-9f91-f61b2710a9
-  │ 55/payment-summary'
-  └
-  ✓  Each bond property has the correct format
-  ┌
-  │ "Link 'coupons' in bond 0 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/5b5084c6-16b3-49f8-9bed-ee122ebeef
-  │ 11/coupons'
-  │ "Link 'identifiers' in bond 0 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/5b5084c6-16b3-49f8-9bed-ee122e
-  │ beef11/identifiers'
-  │ "Link 'self' in bond 0 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/5b5084c6-16b3-49f8-9bed-ee122ebeef11'
-  │ "Link 'issueConditions' in bond 0 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/5b5084c6-16b3-49f8-9bed-ee
-  │ 122ebeef11/issue-conditions'
-  │ "Link 'paymentSummary' in bond 0 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/5b5084c6-16b3-49f8-9bed-ee1
-  │ 22ebeef11/payment-summary'
-  │ "Link 'coupons' in bond 1 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/49000a70-e07c-4a25-8527-84453147fd
-  │ 7e/coupons'
-  │ "Link 'identifiers' in bond 1 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/49000a70-e07c-4a25-8527-844531
-  │ 47fd7e/identifiers'
-  │ "Link 'self' in bond 1 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/49000a70-e07c-4a25-8527-84453147fd7e'
-  │ "Link 'issueConditions' in bond 1 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/49000a70-e07c-4a25-8527-84
-  │ 453147fd7e/issue-conditions'
-  │ "Link 'paymentSummary' in bond 1 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/49000a70-e07c-4a25-8527-844
-  │ 53147fd7e/payment-summary'
-  │ "Link 'coupons' in bond 2 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/8d524bde-1e01-457b-9831-424cb8eef2
-  │ 0d/coupons'
-  │ "Link 'identifiers' in bond 2 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/8d524bde-1e01-457b-9831-424cb8
-  │ eef20d/identifiers'
-  │ "Link 'self' in bond 2 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/8d524bde-1e01-457b-9831-424cb8eef20d'
-  │ "Link 'issueConditions' in bond 2 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/8d524bde-1e01-457b-9831-42
-  │ 4cb8eef20d/issue-conditions'
-  │ "Link 'paymentSummary' in bond 2 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/8d524bde-1e01-457b-9831-424
-  │ cb8eef20d/payment-summary'
-  │ "Link 'coupons' in bond 3 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/8fa4a451-8a2f-40dc-8070-d358f92166
-  │ f1/coupons'
-  │ "Link 'identifiers' in bond 3 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/8fa4a451-8a2f-40dc-8070-d358f9
-  │ 2166f1/identifiers'
-  │ "Link 'self' in bond 3 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/8fa4a451-8a2f-40dc-8070-d358f92166f1'
-  │ "Link 'issueConditions' in bond 3 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/8fa4a451-8a2f-40dc-8070-d3
-  │ 58f92166f1/issue-conditions'
-  │ "Link 'paymentSummary' in bond 3 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/8fa4a451-8a2f-40dc-8070-d35
-  │ 8f92166f1/payment-summary'
-  │ "Link 'coupons' in bond 4 is valid:", 'https://api.mer
-  │ capabbaco.com/bonds/aca1c2b2-0dda-4235-9f91-f61b2710a9
-  │ 55/coupons'
-  │ "Link 'identifiers' in bond 4 is valid:", 'https://api
-  │ .mercapabbaco.com/bonds/aca1c2b2-0dda-4235-9f91-f61b27
-  │ 10a955/identifiers'
-  │ "Link 'self' in bond 4 is valid:", 'https://api.mercap
-  │ abbaco.com/bonds/aca1c2b2-0dda-4235-9f91-f61b2710a955'
-  │ "Link 'issueConditions' in bond 4 is valid:", 'https:/
-  │ /api.mercapabbaco.com/bonds/aca1c2b2-0dda-4235-9f91-f6
-  │ 1b2710a955/issue-conditions'
-  │ "Link 'paymentSummary' in bond 4 is valid:", 'https://
-  │ api.mercapabbaco.com/bonds/aca1c2b2-0dda-4235-9f91-f61
-  │ b2710a955/payment-summary'
-  └
-  ✓  Links are valid URLs
-  ┌
-  │ "Global link 'first' is valid: https://api.mercapabbac
-  │ o.com/bonds?limit=5&start=1"
-  │ "Global link 'next' is valid: https://api.mercapabbaco
-  │ .com/bonds?limit=5&start=7"
-  │ "Global link 'self' is valid: https://api.mercapabbaco
-  │ .com/bonds?limit=5&start=2"
-  │ "Global link 'last' is valid: https://api.mercapabbaco
-  │ .com/bonds?limit=5&start=1026"
-  └
-  ✓  Global links are valid URLs
-  ┌
-  │ "No 'query' parameter provided in request."
-  └
-  ✓  Results match the query parameter
-  ┌
-  │ "No 'shortName' parameter provided in request."
-  └
-  ✓  Results match the shortName parameter
-  ┌
-  │ 'Results respect the limit parameter (max 5 items).'
-  └
-  ✓  Results respect the limit parameter
-  ┌
-  │ 'Validated that the first bond in response starts at i
-  │ ndex 2.'
-  └
-  ✓  Start parameter skips the correct number of bonds
-  ┌
-  │ 'Response code is not 406, no validation necessary.'
-  └
-  ✓  Error 406 response structure
-  ┌
-  │ 'Limit is not 0, skipping error validation.'
-  └
-  ✓  Limit parameter is 0, response should be 400
-
-↳ Only shortName parameter
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
-  │ '▶ Ejecutando lookup para: AL30'
-  └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-04-08 [200 OK, 2.61kB, 61ms]
-  ┌
-  │ '🔎 SHORT_NAME encontrado: AL30'
-  └
-  GET https://api.mercapabbaco.com/bonds?shortName=AL30 [200 OK, 1.42kB, 166ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ "'items' array is present and not empty."
-  └
-  ✓  Response contains 'items' array with elements
-  ┌
-  │ 'Bond 0 validated successfully.'
-  └
-  ✓  Each bond has required properties
-  ✓  Each bond property has the correct format
-  ✓  Links are valid URLs
-  ✓  Global links are valid URLs
-  ✓  Results match the query parameter
-  ✓  Results respect the limit parameter
-  ✓  Start parameter skips the correct number of bonds
-  ✓  Error 406 response structure
-  ✓  Limit parameter is 0, response should be 400
-  ┌
-  │ '✔ Variables seteadas:'
-  │ 'COUPONS:', 'https://api.mercapabbaco.com/bonds/ecfe88
-  │ 5d-8163-4222-acb1-f7020cf05a4a/coupons'
-  │ 'IDENTIFIERS:', 'https://api.mercapabbaco.com/bonds/ec
-  │ fe885d-8163-4222-acb1-f7020cf05a4a/identifiers'
-  │ 'SELF:', 'https://api.mercapabbaco.com/bonds/ecfe885d-
-  │ 8163-4222-acb1-f7020cf05a4a'
-  │ 'ISSUE_CONDITIONS:', 'https://api.mercapabbaco.com/bon
-  │ ds/ecfe885d-8163-4222-acb1-f7020cf05a4a/issue-conditio
-  │ ns'
-  │ 'PAYMENT_SUMMARY:', 'https://api.mercapabbaco.com/bond
-  │ s/ecfe885d-8163-4222-acb1-f7020cf05a4a/payment-summary
-  │ '
-  └
-
-↳ Bond by UUID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
-  └
-  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a [200 OK, 1.43kB, 46ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ 'All required properties are present.'
-  └
-  ✓  Response has required properties
-  ┌
-  │ 'All properties have correct data types.'
-  └
-  ✓  Response properties have correct data types
-  ┌
-  │ 'All required link properties are present.'
-  └
-  ✓  Links object has required properties
-  ┌
-  │ 'All links are valid URLs.'
-  └
-  ✓  Links are valid URLs
-  ┌
-  │ 'shortName is the expected:', 'AL30'
-  └
-  ✓  ShortName and name are as expected
-
-↳ Bond payment summary by UUID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
-  └
-  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/payment-summary [200 OK, 2.07kB, 104ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ✓  All main properties have the correct type
-  ✓  Amortization has correct properties and should be bullet
-  ✓  Links URLs are valid
-  ✓  Interest has correct properties
-  ✓  Accruement has correct properties
-
-↳ Bond coupons by UUID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
-  └
-  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/coupons [200 OK, 7.07kB, 168ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ "'items' array is present."
-  └
-  ✓  Response has 'items' array
-  ┌
-  │ 'All items have required properties.'
-  └
-  ✓  Each item has required properties
-  ┌
-  │ "All 'interestRate' objects have required properties."
-  └
-  ✓  Verify that 'interestRate' has required properties
-  ┌
-  │ "All 'links' objects have required properties."
-  └
-  ✓  All 'links' objects have required properties
-  ┌
-  │ 'All dates have correct format.'
-  └
-  ✓  Dates have correct format
-  ┌
-  │ 'All links are valid URLs.'
-  └
-  ✓  Links are valid URLs
-  ┌
-  │ "The 'self' link is correct."
-  └
-  ✓  Verify that 'self' has the correct link
-  ┌
-  │ 'Coupon numbers are consecutive.'
-  └
-  ✓  Coupon numbers are consecutive
-  ┌
-  │ "All 'type' values in 'interestRate' are 'fixed'."
-  └
-  ✓  Verify that 'type' in 'interestRate' is 'fixed' for each item
-
-↳ Bond issue conditions by UUID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
-  └
-  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/issue-conditions [200 OK, 1.4kB, 124ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ✓  All main properties have the correct type
-  ✓  Dates have correct format
-  ✓  SmallestDenomination has base and increment
-  ✓  FaceValue is greater than zero
-  ✓  Term has correct format
-  ✓  IssueUnit and PaymentCurrency are valid URLs
-  ✓  IssueCountry and Issuer are not empty
-
-↳ Bond identifiers by UUID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
-  └
-  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/identifiers [200 OK, 796B, 183ms]
-  ✓  Status code is 200
-  ✓  Response is an array
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ✓  Each item has type and value
-  ✓  Type is a non-empty string
-  ✓  Value is a non-empty string
-  ✓  Identifiers contain expected types
-  ✓  ISIN value format is correct
-
-❏ Pepper-GS32 / Regression-Test / Bond IRRS
-↳ Get irrs - one bond
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  └
-  GET https://historical-data.mercapabbaco.com/irrs?short-names=AL30 [200 OK, 62.22kB, 2.4s]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ✓  Response body is not empty
-  ✓  Response is valid JSON
-
-❏ Pepper-GS32 / Regression-Test / Bond Parities
-↳ Get parities
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  └
-  GET https://historical-data.mercapabbaco.com/parities?short-names=AL30 [200 OK, 165.43kB, 4.6s]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ 'Response body is not empty.'
-  └
-  ✓  Response body is not empty
-  ┌
-  │ 'Response is valid JSON.'
-  └
-  ✓  Response is valid JSON
-  ┌
-  │ "ShortName 'AL30' is included in the response."
-  └
-  ✓  Response includes shortName: AL30
-  ┌
-  │ "'AL30' is an array."
-  └
-  ✓  'AL30' is an array
-  ┌
-  │ "All items in 'AL30' contain properties date and value
-  │ ."
-  └
-  ✓  All items in 'AL30' have properties date and value
-  ┌
-  │ "Properties 'date' and 'value' in 'AL30' are correctly
-  │  formatted."
-  └
-  ✓  Properties 'date' and 'value' are correctly formatted in 'AL30'
-
-❏ Pepper-GS32 / Regression-Test / Bond Payment Forecasts
-↳ Get one bond cashflow - only dateInterval from
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
-  │ '📅 VALUATION_DATE seteado a: 2026-04-08'
-  └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-04-08 [200 OK, 2.6kB, 46ms]
-  ┌
-  │ '📌 Link del bono encontrado: https://api.mercapabbaco
-  │ .com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a'
-  └
-  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 5.77kB, 888ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ 'Result is a non-empty array.'
-  └
-  ✓  Result is a non-empty array
-  ┌
-  │ 'Each cashflow has the expected properties.'
-  └
-  ✓  Each cashflow has correct properties
-  ┌
-  │ 'Coupon values are incremental by 1.'
-  └
-  ✓  Verify that coupon value is incremental by 1
-  ┌
-  │ 'Due dates are in ascending order for each cashflow.'
-  └
-  ✓  Due dates are in ascending order
-  ┌
-  │ 'The bond link is correct:', 'https://api.mercapabbaco
-  │ .com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a'
-  └
-  ✓  Bond link is correct
-
-↳ Get one bond cashflow - dateInterval from and to
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
-  └
-  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 2.96kB, 9.8s]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ 'Result is a non-empty array.'
-  └
-  ✓  Result is a non-empty array
-  ┌
-  │ 'Each cashflow has the expected properties.'
-  └
-  ✓  Each cashflow has correct properties
-  ┌
-  │ 'Coupon values are incremental by 1.'
-  └
-  ✓  Verify that coupon value is incremental by 1
-  ┌
-  │ 'Due dates are in ascending order for each cashflow.'
-  └
-  ✓  Due dates are in ascending order
-  ┌
-  │ 'The bond link is correct:', 'https://api.mercapabbaco
-  │ .com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a'
-  └
-  ✓  Bond link is correct
-
-↳ Get payment forecasts
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '▶ [undefined] Ejecutando con ticker: AL30'
-  └
-  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 1.2kB, 199ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ 'Result is a non-empty array.'
-  └
-  ✓  Result is a non-empty array
-  ┌
-  │ 'Each flow has the expected properties.'
-  └
-  ✓  Each flow has correct properties
-  ┌
-  │ 'Bond link is correct.'
-  └
-  ✓  Bond link is correct
-  ┌
-  │ 'Response has id and jsonrpc.'
-  └
-  ✓  Response has id and jsonrpc
-  ┌
-  │ "'concept' is 'Renta' when 'flowMessage' is 'interestT
-  │ oPay'."
-  └
-  ✓  Validate that 'concept' is 'Renta' when 'flowMessage' is 'interestToPay'
-  ┌
-  │ "'concept' is 'Amortización' when 'flowMessage' is 'am
-  │ ortizationToPay'."
-  └
-  ✓  Validate that 'concept' is 'Amortización' when 'flowMessage' is 'amortizationToPay'
-
-❏ Pepper-GS32 / Regression-Test / Bond laws
-↳ Get all bond laws - validate each self link
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  └
-  GET https://api.mercapabbaco.com/bond-laws [200 OK, 1.86kB, 140ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Response contains 'items' array with at least one element
-  ✓  Response contains 'links.self'
-  ✓  No duplicate bond law names
-  ┌
-  │ '🔎 Testing Item 1 (Ley Argentina)'
-  └
-  ✓  Item 1 (Ley Argentina) contains expected properties
-  ✓  Item 1 (Ley Argentina) 'name' is a non-empty string
-  ✓  Item 1 (Ley Argentina) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/18bb25d4-8ab8-4837-b574-1754811dd222 [200 OK, 896B, 160ms]
-  ✓  Item 1 (Ley Argentina) self link returns status 200
-  ┌
-  │ '🔎 Testing Item 2 (Ley N.Y.)'
-  └
-  ✓  Item 2 (Ley N.Y.) contains expected properties
-  ✓  Item 2 (Ley N.Y.) 'name' is a non-empty string
-  ✓  Item 2 (Ley N.Y.) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/828bc536-1bff-4d3d-bff2-8c98ec12c57b [200 OK, 893B, 328ms]
-  ✓  Item 2 (Ley N.Y.) self link returns status 200
-  ┌
-  │ '🔎 Testing Item 3 (Ley Inglesa)'
-  └
-  ✓  Item 3 (Ley Inglesa) contains expected properties
-  ✓  Item 3 (Ley Inglesa) 'name' is a non-empty string
-  ✓  Item 3 (Ley Inglesa) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/f7f0b5a4-b1a8-4095-a1c6-dcccd2a42410 [200 OK, 884B, 185ms]
-  ✓  Item 3 (Ley Inglesa) self link returns status 200
-  ┌
-  │ '🔎 Testing Item 4 (Ley Chilena)'
-  └
-  ✓  Item 4 (Ley Chilena) contains expected properties
-  ✓  Item 4 (Ley Chilena) 'name' is a non-empty string
-  ✓  Item 4 (Ley Chilena) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/b7a5d364-9a04-42a3-9605-921eb5b704a8 [200 OK, 888B, 107ms]
-  ✓  Item 4 (Ley Chilena) self link returns status 200
-  ┌
-  │ '🔎 Testing Item 5 (Ley Paraguaya)'
-  └
-  ✓  Item 5 (Ley Paraguaya) contains expected properties
-  ✓  Item 5 (Ley Paraguaya) 'name' is a non-empty string
-  ✓  Item 5 (Ley Paraguaya) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/8c970aa1-9fa0-46a1-b355-4a8a79adbee6 [200 OK, 888B, 234ms]
-  ✓  Item 5 (Ley Paraguaya) self link returns status 200
-  ┌
-  │ '🔎 Testing Item 6 (Ley Europea)'
-  └
-  ✓  Item 6 (Ley Europea) contains expected properties
-  ✓  Item 6 (Ley Europea) 'name' is a non-empty string
-  ✓  Item 6 (Ley Europea) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/2a2af6f8-8264-41c9-86e9-a9eb810c4deb [200 OK, 884B, 168ms]
-  ✓  Item 6 (Ley Europea) self link returns status 200
-  ┌
-  │ '🔎 Testing Item 7 (Ley Brasilera)'
-  └
-  ✓  Item 7 (Ley Brasilera) contains expected properties
-  ✓  Item 7 (Ley Brasilera) 'name' is a non-empty string
-  ✓  Item 7 (Ley Brasilera) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/5ef6489e-1b5c-4864-8fd2-c57c11038319 [200 OK, 892B, 187ms]
-  ✓  Item 7 (Ley Brasilera) self link returns status 200
-  ┌
-  │ '🔎 Testing Item 8 (Ley Mexicana)'
-  └
-  ✓  Item 8 (Ley Mexicana) contains expected properties
-  ✓  Item 8 (Ley Mexicana) 'name' is a non-empty string
-  ✓  Item 8 (Ley Mexicana) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/faaf8f43-b147-4c68-aaf9-ffbaf7d27695 [200 OK, 891B, 107ms]
-  ✓  Item 8 (Ley Mexicana) self link returns status 200
-  ┌
-  │ '🔎 Testing Item 9 (Ley Federal (EEUU))'
-  └
-  ✓  Item 9 (Ley Federal (EEUU)) contains expected properties
-  ✓  Item 9 (Ley Federal (EEUU)) 'name' is a non-empty string
-  ✓  Item 9 (Ley Federal (EEUU)) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/88948c32-92b6-4394-8505-00acd0124a7f [200 OK, 899B, 311ms]
-  ✓  Item 9 (Ley Federal (EEUU)) self link returns status 200
-
-❏ Pepper-GS32 / Regression-Test / Bond Screener
-↳ Filter by debt-type, issueCurrency, paymentCurrency, issuer & law
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🚀 Iniciando resolución de dependencias...'
-  └
-  GET https://api.mercapabbaco.com/debt-types   GET https://api.mercapabbaco.com/currencies   GET https://api.mercapabbaco.com/instrument-issuers   GET https://api.mercapabbaco.com/bond-laws [200 OK, 1.86kB, 162ms]
-  ┌
-  │ "⚠️ No se encontró 'HTTPS://API.MERCAPABBACO.COM/BOND-
-  │ LAWS/18BB25D4-8AB8-4837-B574-1754811DD222' en /bond-la
-  │ ws"
-  │ 'Campos disponibles en el primer item:', [ 'name', 'li
-  │ nks' ]
-  │ '🛑 El pre-request falló:'
-  │ '   Motivo: No se encontró el valor para SCREENER_BOND
-  │ _LAW'
-<anonymous_script>:84
-        throw new Error(`Pre-request fallido: ${error}`);
-              ^
-
-Error: Pre-request fallido: No se encontró el valor para SCREENER_BOND_LAW
-    at main (eval at exec (evalmachine.<anonymous>:66:1819788), <anonymous>:84:15)
-    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
-
-Node.js v22.22.2
+┌─────────────────────────┬────────────────────┬───────────────────┐
+│                         │           executed │            failed │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              iterations │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│                requests │                220 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│            test-scripts │                171 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│      prerequest-scripts │                149 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              assertions │               1056 │                 0 │
+├─────────────────────────┴────────────────────┴───────────────────┤
+│ total run duration: 1m 19.8s                                     │
+├──────────────────────────────────────────────────────────────────┤
+│ total data received: 1.18MB (approx)                             │
+├──────────────────────────────────────────────────────────────────┤
+│ average response time: 197ms [min: 28ms, max: 3.8s, s.d.: 420ms] │
+└──────────────────────────────────────────────────────────────────┘
