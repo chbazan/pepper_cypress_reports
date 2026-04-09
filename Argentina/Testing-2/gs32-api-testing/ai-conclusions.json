@@ -1,0 +1,14 @@
+{
+  "escalar_prioritario": {
+    "titulo": "Degradación crítica de 6.4x en filtrado de deuda (5823ms p95)",
+    "detalle": "El endpoint de filtrado por múltiples criterios excede el baseline global de 902ms en un 545%. Se requiere auditoría urgente de las queries SQL y la estrategia de indexación para mitigar este outlier."
+  },
+  "investigar": {
+    "titulo": "Latencia sistémica superior a 3.5s en el 60% de los endpoints principales",
+    "detalle": "Se detectó un patrón de degradación en 6 endpoints con p95 entre 3503ms y 4028ms. Se debe investigar una posible contención de recursos o latencia de red en el entorno Testing-2 para la versión V10.2.91."
+  },
+  "optimizar": {
+    "titulo": "Optimización de 'Filter by debt-type' para mejorar el throughput (Impact: 5823)",
+    "detalle": "Este endpoint lidera el impact_score con 5823 puntos; su optimización es la vía más efectiva para reducir la latencia acumulada y estabilizar el promedio global de la versión actual."
+  }
+}
