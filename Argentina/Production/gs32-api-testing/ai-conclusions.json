@@ -1,14 +1,14 @@
 {
   "escalar_prioritario": {
-    "titulo": "Degradación crítica del 347% en p95 global detectada el 2026-04-10",
-    "detalle": "El p95 promedio escaló de un baseline de 414ms a 1852ms en la ejecución run_id 202604101216, afectando la estabilidad general de la versión V10.2.91."
+    "titulo": "Regresión crítica de +373% en Get valuation schemes by UUID",
+    "detalle": "El endpoint presenta una degradación severa con un p95 de 123ms frente a un baseline de 47ms, superando en un 163% la media global de la versión actual."
   },
   "investigar": {
-    "titulo": "Regresión sistemática >80% en endpoints de metadatos y deuda",
-    "detalle": "Los endpoints 'All bonds - for issuer' y 'Get all debt types' muestran deltas de baseline global de 83.06% y 81.38% respectivamente, indicando un patrón de degradación en la capa de consulta."
+    "titulo": "Degradación sistémica en consultas por UUID (+87% a +163% delta)",
+    "detalle": "Se observa un patrón anómalo en múltiples endpoints de consulta directa (Stocks, Markets, Bonds) con desviaciones superiores al 100% respecto al baseline global, sugiriendo latencia en la capa de persistencia."
   },
   "optimizar": {
-    "titulo": "Optimización de 'Filter by debt-type' por alto Impact Score (72,686)",
-    "detalle": "Este endpoint presenta un p95 de 2551ms; su optimización es prioritaria para reducir la latencia acumulada del sistema dado su alto volumen de ejecuciones y peso en el impacto total."
+    "titulo": "Optimización de Filter by debt-type (Impact Score: 72,546)",
+    "detalle": "Este endpoint es el principal cuello de botella con un p95 de 3229ms; su optimización es prioritaria para reducir la carga general dado su alto puntaje de impacto acumulado."
   }
 }
