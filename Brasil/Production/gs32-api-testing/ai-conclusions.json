@@ -1,14 +1,14 @@
 {
   "escalar_prioritario": {
-    "titulo": "Crítico: Latencia de 7.5s en 'Get investment metrics by ID' (+1250% vs avg)",
-    "detalle": "El endpoint presenta una degradación extrema con un p95 de 7506ms frente a un promedio previo de 552ms, superando masivamente el baseline global de 6851ms."
+    "titulo": "Regresión crítica de +343% en 'Get payment forecasts' (Outlier 4.43x)",
+    "detalle": "El endpoint presenta un p95 de 862ms frente a un baseline de 195ms, acumulando 4 reincidencias como outlier en la versión V10.3.65."
   },
   "investigar": {
-    "titulo": "Regresión sistémica >1000% en filtros de 'tradable securities'",
-    "detalle": "Se detectó un patrón de degradación anómalo en múltiples endpoints de filtrado, con picos de regresión de hasta 1860% en búsquedas por tipo y mercado."
+    "titulo": "Degradación sistémica en V10.3.65 con deltas superiores al 90%",
+    "detalle": "Se detectan 11 endpoints en nivel de alerta (status_level 1), con desviaciones críticas en 'All bonds' y 'Get tradable security' que superan el 100% del baseline global."
   },
   "optimizar": {
-    "titulo": "Optimización de 'Get investment metrics by ID' (Impact Score: 274,032)",
-    "detalle": "Este endpoint lidera el impacto acumulado del sistema; su optimización es prioritaria para reducir la contención de recursos y estabilizar la latencia en Producción."
+    "titulo": "Optimización de 'Get investment metrics by ID' (Impact Score: 281,554)",
+    "detalle": "Es el endpoint más lento con un p95 de 4529ms; su optimización es la vía más efectiva para reducir la latencia acumulada y el consumo de recursos en Producción."
   }
 }
