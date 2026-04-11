@@ -1,14 +1,14 @@
 {
   "escalar_prioritario": {
-    "titulo": "Regresión crítica de +373% en Get valuation schemes by UUID",
-    "detalle": "El endpoint presenta una degradación severa con un p95 de 123ms frente a un baseline de 47ms, superando en un 163% la media global de la versión actual."
+    "titulo": "Regresión crítica de +565% en 'Create an investment' (Outlier Ratio 6.65)",
+    "detalle": "El endpoint presenta un p95 de 886ms frente a un baseline global de 133ms, registrando una regresión del 446.91% que compromete la operación de escritura en producción."
   },
   "investigar": {
-    "titulo": "Degradación sistémica en consultas por UUID (+87% a +163% delta)",
-    "detalle": "Se observa un patrón anómalo en múltiples endpoints de consulta directa (Stocks, Markets, Bonds) con desviaciones superiores al 100% respecto al baseline global, sugiriendo latencia en la capa de persistencia."
+    "titulo": "Degradación sostenida en 'Get parities' con +110% de desviación global",
+    "detalle": "Se observa una tendencia de lentitud recurrente en las últimas ejecuciones (p95 de 3651ms) y una carga de payload elevada de 161.68KB que podría estar afectando el throughput."
   },
   "optimizar": {
-    "titulo": "Optimización de Filter by debt-type (Impact Score: 72,546)",
-    "detalle": "Este endpoint es el principal cuello de botella con un p95 de 3229ms; su optimización es prioritaria para reducir la carga general dado su alto puntaje de impacto acumulado."
+    "titulo": "Optimización de filtros de deuda por alto Impact Score (75,788)",
+    "detalle": "El endpoint de filtrado por 'debt-type' es el candidato principal para optimización; reducir su p95 de 2675ms tendrá el mayor efecto multiplicador en la estabilidad general del sistema."
   }
 }
