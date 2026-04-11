@@ -1,14 +1,14 @@
 {
   "escalar_prioritario": {
-    "titulo": "Regresión crítica de +343% en 'Get payment forecasts' (Outlier 4.43x)",
-    "detalle": "El endpoint presenta un p95 de 862ms frente a un baseline de 195ms, acumulando 4 reincidencias como outlier en la versión V10.3.65."
+    "titulo": "Regresión crítica de 32x en 'Get one bond cashflow' (5905ms p95)",
+    "detalle": "El endpoint presenta una degradación del 3099% respecto a su baseline global de 185ms, alcanzando un ratio de outlier de 32.0 en la versión V10.3.65."
   },
   "investigar": {
-    "titulo": "Degradación sistémica en V10.3.65 con deltas superiores al 90%",
-    "detalle": "Se detectan 11 endpoints en nivel de alerta (status_level 1), con desviaciones críticas en 'All bonds' y 'Get tradable security' que superan el 100% del baseline global."
+    "titulo": "Degradación del 55% en p95 global y reincidencia en 'Bond coupons'",
+    "detalle": "El promedio p95 global subió de 496ms a 772ms en 24 horas, con 'Bond coupons by UUID' acumulando 7 reincidencias de outliers y un p95 de 2127ms."
   },
   "optimizar": {
-    "titulo": "Optimización de 'Get investment metrics by ID' (Impact Score: 281,554)",
-    "detalle": "Es el endpoint más lento con un p95 de 4529ms; su optimización es la vía más efectiva para reducir la latencia acumulada y el consumo de recursos en Producción."
+    "titulo": "Optimizar 'Get investment metrics by ID' (Impact Score: 286k)",
+    "detalle": "Este endpoint lidera el impacto sistémico con un p95 de 6348ms; su optimización es prioritaria para reducir la latencia acumulada más alta del entorno de Brasil."
   }
 }
