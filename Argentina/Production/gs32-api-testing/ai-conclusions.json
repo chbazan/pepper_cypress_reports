@@ -1,14 +1,14 @@
 {
   "escalar_prioritario": {
-    "titulo": "+117% p95 en 'Get investment metrics by ID' (Status Level 2)",
-    "detalle": "Este endpoint presenta una regresión crítica del 215.34% alcanzando los 3434ms, duplicando su baseline global de 1577ms en la versión V10.2.91."
+    "titulo": "Degradación crítica (+107% p95) en Get investment irr sensitivity by ID",
+    "detalle": "Endpoint identificado con status_level 2 y una latencia de 1193ms frente al baseline de 574ms, registrando además 3 reincidencias históricas como outlier."
   },
   "investigar": {
-    "titulo": "7.6x outlier ratio y +662% de degradación en validación de deuda",
-    "detalle": "El endpoint 'Get all debt types' muestra una desviación extrema de 822ms frente a un baseline de 108ms, coincidiendo con un aumento del avg_p95 global de 412ms a 523ms."
+    "titulo": "Picos anómalos de latencia (>76s) en versión V10.2.91",
+    "detalle": "Se detectaron outliers extremos en 'Bond coupons by UUID' con un ratio de 652x (76850ms), elevando el promedio global de la corrida de 416ms a 3255ms."
   },
   "optimizar": {
-    "titulo": "Optimizar 'Filter by debt-type' con Impact Score máximo de 78,454",
-    "detalle": "Con un p95 de 4142ms y el mayor puntaje de impacto, la optimización de este endpoint de filtrado reducirá drásticamente la latencia acumulada del sistema."
+    "titulo": "Optimización de Filter by debt-type por alto Impact Score (82641)",
+    "detalle": "Este endpoint lidera el impacto acumulado con un p95 de 3082ms; su optimización reducirá significativamente la latencia percibida dada su frecuencia de uso."
   }
 }
