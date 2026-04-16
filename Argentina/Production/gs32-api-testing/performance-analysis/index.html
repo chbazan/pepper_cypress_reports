@@ -127,9 +127,9 @@
         <div class="meta-item"><strong>País</strong> Argentina</div>
         <div class="meta-item"><strong>Ambiente</strong> Production</div>
         <div class="meta-item"><strong>Versión</strong> V10.2.91</div>
-        <div class="meta-item"><strong>Run ID</strong> 202604151211</div>
-        <div class="meta-item"><strong>Generado</strong> 2026-04-15 12:11 UTC</div>
-        <div class="meta-item"><a href="https://github.com/Mercap/pepper-API-testing/actions/runs/24453612969" style="color:#90cdf4;text-decoration:none;" target="_blank">↗ Ver workflow</a></div>
+        <div class="meta-item"><strong>Run ID</strong> 202604161213</div>
+        <div class="meta-item"><strong>Generado</strong> 2026-04-16 12:13 UTC</div>
+        <div class="meta-item"><a href="https://github.com/Mercap/pepper-API-testing/actions/runs/24509426745" style="color:#90cdf4;text-decoration:none;" target="_blank">↗ Ver workflow</a></div>
         <div class="meta-item"><a href="https://monitoring.mercap.com.ar/d/affx497yxyjggd/apis-gs32-metrics?orgId=1&from=now-7d&to=now&var-environment=Production&var-country=Argentina&var-version=V10.2.91" style="color:#90cdf4;text-decoration:none;" target="_blank">📊 Ver dashboard</a></div>
       </div>
     </div>
@@ -146,23 +146,23 @@
   <div class="cards">
     <div class="card">
       <div class="card-label">avg P95 actual</div>
-      <div class="card-value">400 <span style="font-size:16px;font-weight:400;color:var(--muted)">ms</span></div>
+      <div class="card-value">333 <span style="font-size:16px;font-weight:400;color:var(--muted)">ms</span></div>
       <div class="card-sub">Más lento: Filter by debt-type, issueCurrency, paymentCurrency, issuer &amp; law</div>
     </div>
     <div class="card">
       <div class="card-label">Baseline global</div>
-      <div class="card-value">516 <span style="font-size:16px;font-weight:400;color:var(--muted)">ms</span></div>
+      <div class="card-value">512 <span style="font-size:16px;font-weight:400;color:var(--muted)">ms</span></div>
       <div class="card-sub">Promedio últimas 50 corridas</div>
     </div>
     <div class="card">
       <div class="card-label">Delta vs baseline</div>
-      <div class="card-value" style="color:#38a169">-22.5%</div>
+      <div class="card-value" style="color:#38a169">-35.0%</div>
       <div class="card-sub">Dentro del baseline</div>
     </div>
     <div class="card">
       <div class="card-label">Estado general</div>
       <div class="card-value status">🟡 ADVERTENCIA</div>
-      <div class="card-sub">0 críticos · 2 en advertencia</div>
+      <div class="card-sub">0 críticos · 1 en advertencia</div>
     </div>
   </div>
 
@@ -172,26 +172,26 @@
       <div class="conclusion-card escalar">
         <div class="conclusion-icon">🚨</div>
         <div class="conclusion-label">Escalar de forma prioritaria</div>
-        <div class="conclusion-titulo">Outlier crítico: 5.82x en 'Get all yield curves' con +481% de degradación</div>
-        <div class="conclusion-detalle">El endpoint presenta un p95 de 618ms frente a un baseline global de 106ms, registrando una regresión del 477.57% y 3 reincidencias históricas de outliers.</div>
+        <div class="conclusion-titulo">Alerta: 3.8x Outlier Ratio en 'Get all yield curves' (+281% vs baseline)</div>
+        <div class="conclusion-detalle">El endpoint registra un p95 de 542ms frente a los 142ms históricos, marcando su cuarta reincidencia como outlier crítico en el entorno de Argentina.</div>
       </div>
       <div class="conclusion-card investigar">
         <div class="conclusion-icon">🔍</div>
         <div class="conclusion-label">Investigar</div>
-        <div class="conclusion-titulo">Inestabilidad recurrente: 4 incidentes en 'Get tradable securities'</div>
-        <div class="conclusion-detalle">Se detecta un patrón de variabilidad con 4 ocurrencias de outliers en filtros obligatorios, sumado a una degradación general del sistema del 682% el pasado 13 de abril.</div>
+        <div class="conclusion-titulo">4x Outliers en 'Get tradable securities' sugieren degradación por filtros</div>
+        <div class="conclusion-detalle">Este endpoint muestra una inestabilidad persistente con 4 incidentes registrados, operando actualmente con un p95 de 874ms bajo filtros obligatorios.</div>
       </div>
       <div class="conclusion-card optimizar">
         <div class="conclusion-icon">⚡</div>
         <div class="conclusion-label">Optimizar</div>
-        <div class="conclusion-titulo">Optimización de alto impacto: 'Filter by debt-type' con score de 88,724</div>
-        <div class="conclusion-detalle">Este endpoint es el más lento de la ejecución actual con un p95 de 2955ms; su optimización es prioritaria para reducir la carga acumulada y mejorar la respuesta de filtros complejos.</div>
+        <div class="conclusion-titulo">Optimizar 'Filter by debt-type' para mitigar Impact Score crítico de 91,679</div>
+        <div class="conclusion-detalle">Representa la mayor carga de latencia del sistema con un p95 de 2593ms; su mejora reducirá significativamente el tiempo de respuesta global en la V10.2.91.</div>
       </div>
     </div>
   </section>
 
   <section>
-    <h2>🚦 Semáforo de Endpoints <span class="count">2 con alerta</span></h2>
+    <h2>🚦 Semáforo de Endpoints <span class="count">1 con alerta</span></h2>
     
     
     
@@ -201,19 +201,12 @@
         <thead><tr><th>Endpoint</th><th>P95</th><th>Baseline</th><th>Δ Global</th><th>Δ Versión</th><th>Regression</th></tr></thead>
         <tbody>
           <tr>
-            <td class="mono">Get investment price sensitivity by ID</td>
-            <td>596 ms</td>
-            <td>268 ms</td>
-            <td class="delta-pos">+122.7%</td>
-            <td class="delta-pos">+106.3%</td>
-            <td>-41.9%</td>
-          </tr><tr>
             <td class="mono">Get all yield curves - validate each self link</td>
-            <td>618 ms</td>
-            <td>106 ms</td>
-            <td class="delta-pos">+481.5%</td>
-            <td class="delta-pos">+528.4%</td>
-            <td><span class="delta-pos">+477.6%</span></td>
+            <td>542 ms</td>
+            <td>142 ms</td>
+            <td class="delta-pos">+281.1%</td>
+            <td class="delta-pos">+250.7%</td>
+            <td>-12.3%</td>
           </tr>
         </tbody>
       </table>
@@ -226,10 +219,6 @@
     <div style="background:var(--card);border-radius:8px;border:1px solid var(--border);padding:20px 24px;box-shadow:var(--shadow);">
       <div class="trend-chart">
         <div class="trend-bar-wrap">
-            <div class="trend-val">430</div>
-            <div class="trend-bar" style="height:13.210445468509985%;background:var(--green);" data-tip="2026-04-11 — avg P95: 430 ms · baseline: 411 ms"></div>
-            <div class="trend-date">04-11</div>
-          </div><div class="trend-bar-wrap">
             <div class="trend-val">523</div>
             <div class="trend-bar" style="height:16.067588325652842%;background:var(--red);" data-tip="2026-04-12 — avg P95: 523 ms · baseline: 412 ms"></div>
             <div class="trend-date">04-12</div>
@@ -245,6 +234,10 @@
             <div class="trend-val">400</div>
             <div class="trend-bar" style="height:12.288786482334869%;background:var(--green);" data-tip="2026-04-15 — avg P95: 400 ms · baseline: 516 ms"></div>
             <div class="trend-date">04-15</div>
+          </div><div class="trend-bar-wrap">
+            <div class="trend-val">333</div>
+            <div class="trend-bar" style="height:10.230414746543778%;background:var(--green);" data-tip="2026-04-16 — avg P95: 333 ms · baseline: 512 ms"></div>
+            <div class="trend-date">04-16</div>
           </div>
       </div>
       <div style="display:flex;gap:16px;margin-top:8px;font-size:11px;color:var(--muted);">
@@ -261,10 +254,10 @@
           <thead><tr><th>Endpoint</th><th>P95 observado</th><th>Baseline</th><th>Ratio</th></tr></thead>
           <tbody>
             <tr>
-                <td class="mono">Get all yield curves - validate each self link<span class="tag-reincidente">🚨 REINCIDENTE ×3</span></td>
-                <td><strong class="delta-pos">618 ms</strong></td>
-                <td>106 ms</td>
-                <td><span class="pill red">5.82×</span></td>
+                <td class="mono">Get all yield curves - validate each self link<span class="tag-reincidente">🚨 REINCIDENTE ×4</span></td>
+                <td><strong class="delta-pos">542 ms</strong></td>
+                <td>142 ms</td>
+                <td><span class="pill red">3.81×</span></td>
               </tr>
           </tbody>
         </table></div>
@@ -278,53 +271,53 @@
             <tr>
               <td class="rank">1</td>
               <td class="mono">Filter by debt-type, issueCurrency, paymentCurrency, issuer &amp; law</td>
-              <td><strong>2955 ms</strong></td>
+              <td><strong>2593 ms</strong></td>
               <td style="color:var(--muted)">17.8 KB</td>
             </tr><tr>
               <td class="rank">2</td>
-              <td class="mono">Get investment metrics by ID</td>
-              <td><strong>2460 ms</strong></td>
-              <td style="color:var(--muted)">1.38 KB</td>
+              <td class="mono">Appraise market value</td>
+              <td><strong>1366 ms</strong></td>
+              <td style="color:var(--muted)">0.6 KB</td>
             </tr><tr>
               <td class="rank">3</td>
               <td class="mono">Get parities</td>
-              <td><strong>1453 ms</strong></td>
-              <td style="color:var(--muted)">161.91 KB</td>
+              <td><strong>1338 ms</strong></td>
+              <td style="color:var(--muted)">162.02 KB</td>
             </tr><tr>
               <td class="rank">4</td>
-              <td class="mono">Appraise market value</td>
-              <td><strong>1443 ms</strong></td>
-              <td style="color:var(--muted)">0.6 KB</td>
+              <td class="mono">Get irrs - one bond</td>
+              <td><strong>1179 ms</strong></td>
+              <td style="color:var(--muted)">60.8 KB</td>
             </tr><tr>
               <td class="rank">5</td>
-              <td class="mono">Get irrs - one bond</td>
-              <td><strong>1425 ms</strong></td>
-              <td style="color:var(--muted)">60.76 KB</td>
+              <td class="mono">Get investment metrics by ID</td>
+              <td><strong>983 ms</strong></td>
+              <td style="color:var(--muted)">1.38 KB</td>
             </tr><tr>
               <td class="rank">6</td>
               <td class="mono">Get tradable securities using only mandatory filters</td>
-              <td><strong>933 ms</strong></td>
+              <td><strong>874 ms</strong></td>
               <td style="color:var(--muted)">11.4 KB</td>
             </tr><tr>
               <td class="rank">7</td>
               <td class="mono">Get one bond cashflow - only dateInterval from</td>
-              <td><strong>692 ms</strong></td>
+              <td><strong>695 ms</strong></td>
               <td style="color:var(--muted)">5.05 KB</td>
             </tr><tr>
               <td class="rank">8</td>
-              <td class="mono">Get tradable securities using optional filters - only market</td>
-              <td><strong>650 ms</strong></td>
-              <td style="color:var(--muted)">11.32 KB</td>
-            </tr><tr>
-              <td class="rank">9</td>
               <td class="mono">Get tradable securities using optional filters - only type</td>
-              <td><strong>649 ms</strong></td>
+              <td><strong>692 ms</strong></td>
               <td style="color:var(--muted)">11.43 KB</td>
             </tr><tr>
-              <td class="rank">10</td>
+              <td class="rank">9</td>
               <td class="mono">Get tradable securities using optional filters - only query</td>
-              <td><strong>623 ms</strong></td>
+              <td><strong>663 ms</strong></td>
               <td style="color:var(--muted)">1.76 KB</td>
+            </tr><tr>
+              <td class="rank">10</td>
+              <td class="mono">Get tradable securities using optional filters - only market</td>
+              <td><strong>626 ms</strong></td>
+              <td style="color:var(--muted)">11.32 KB</td>
             </tr>
           </tbody>
         </table></div>
@@ -341,33 +334,33 @@
             <tr>
               <td class="rank">🥇</td>
               <td class="mono">Filter by debt-type, issueCurrency, paymentCurrency, issuer &amp; law</td>
-              <td><span class="pill red">88.724</span></td>
-              <td>2957.4827586206898 ms</td>
-              <td style="color:var(--muted)">30</td>
+              <td><span class="pill red">91.679</span></td>
+              <td>2957.4 ms</td>
+              <td style="color:var(--muted)">31</td>
             </tr><tr>
               <td class="rank">🥈</td>
               <td class="mono">Get parities</td>
-              <td><span class="pill yellow">54.434</span></td>
-              <td>1814.4827586206898 ms</td>
-              <td style="color:var(--muted)">30</td>
+              <td><span class="pill yellow">55.875</span></td>
+              <td>1802.4333333333334 ms</td>
+              <td style="color:var(--muted)">31</td>
             </tr><tr>
               <td class="rank">🥉</td>
-              <td class="mono">Get irrs - one bond</td>
-              <td><span class="pill yellow">52.737</span></td>
-              <td>1757.896551724138 ms</td>
-              <td style="color:var(--muted)">30</td>
+              <td class="mono">Get investment metrics by ID</td>
+              <td><span class="pill yellow">54.557</span></td>
+              <td>1759.9 ms</td>
+              <td style="color:var(--muted)">31</td>
             </tr><tr>
               <td class="rank">4</td>
-              <td class="mono">Get investment metrics by ID</td>
-              <td><span class="pill blue">52.073</span></td>
-              <td>1735.7586206896551 ms</td>
-              <td style="color:var(--muted)">30</td>
+              <td class="mono">Get irrs - one bond</td>
+              <td><span class="pill blue">54.151</span></td>
+              <td>1746.8 ms</td>
+              <td style="color:var(--muted)">31</td>
             </tr><tr>
               <td class="rank">5</td>
               <td class="mono">Appraise market value</td>
-              <td><span class="pill blue">42.401</span></td>
-              <td>1413.3793103448277 ms</td>
-              <td style="color:var(--muted)">30</td>
+              <td><span class="pill blue">43.845</span></td>
+              <td>1414.3666666666666 ms</td>
+              <td style="color:var(--muted)">31</td>
             </tr>
           </tbody>
         </table></div>
@@ -377,7 +370,7 @@
 
 <footer>
   Generado por <a href="https://github.com/Mercap/pepper-API-testing" target="_blank">pepper-API-testing</a>
-  con <a href="https://aistudio.google.com/" target="_blank">Gemini 3 Flash</a> · 2026-04-15 12:11 UTC
+  con <a href="https://aistudio.google.com/" target="_blank">Gemini 3 Flash</a> · 2026-04-16 12:13 UTC
    · ✨ Análisis IA
 </footer>
 
