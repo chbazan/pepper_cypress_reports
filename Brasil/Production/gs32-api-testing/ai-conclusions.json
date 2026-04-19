@@ -1,14 +1,14 @@
 {
   "escalar_prioritario": {
-    "titulo": "Regresión crítica de 24x en 'Get one bond cashflow' (+3461% vs baseline)",
-    "detalle": "El endpoint presenta una degradación extrema con un p95 de 5485ms frente a un baseline de 228ms, registrando el ratio de outlier más alto del sistema (24.04)."
+    "titulo": "Outlier crítico: Bond coupons by UUID con 11 reincidencias y +980% delta p95",
+    "detalle": "Este endpoint presenta una degradación severa de 2128ms frente a un baseline de 197ms, acumulando 11 eventos de outlier que comprometen la estabilidad en Brasil."
   },
   "investigar": {
-    "titulo": "Degradación sistémica en V10.3.65 y reincidencia de 10x en 'Bond coupons'",
-    "detalle": "Se detecta un incremento del 117% en el p95 global en las últimas 24h y una recurrencia de 10 eventos anómalos en el endpoint de cupones que sugiere un fallo de lógica persistente."
+    "titulo": "Inestabilidad en Get tradable security metrics con ratio de outlier de 19.22x",
+    "detalle": "Se observa una desviación extrema de 3671ms (1822% vs baseline global) en la versión V10.3.65, sugiriendo cuellos de botella intermitentes o problemas de contención."
   },
   "optimizar": {
-    "titulo": "Optimización de 'Get investment metrics by ID' (Impact Score: 326k)",
-    "detalle": "Este endpoint representa la mayor carga acumulada del sistema con un p95 de 6079ms; una reducción en su latencia base impactará directamente en la disponibilidad general de la API."
+    "titulo": "Optimización de Get investment metrics by ID: Impact Score de 332k y p95 >6s",
+    "detalle": "Es el principal candidato para optimización dado que su latencia de 6178ms y frecuencia de uso generan la mayor carga acumulada del sistema, afectando el rendimiento global."
   }
 }
