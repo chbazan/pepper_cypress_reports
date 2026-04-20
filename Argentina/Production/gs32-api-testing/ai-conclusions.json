@@ -1,14 +1,14 @@
 {
   "escalar_prioritario": {
-    "titulo": "5x Outlier recurrente en validación de Yield Curves",
-    "detalle": "Se han detectado 5 reincidencias de outliers en el endpoint 'Get all yield curves', lo que lo posiciona como el fallo de consistencia más crítico y repetitivo del sistema."
+    "titulo": "Degradación crítica de +121% p95 en Get investment metrics by ID",
+    "detalle": "El endpoint presenta un p95 de 3962ms frente a un baseline de 1793ms, registrando una regresión del 58.8% y reincidencia como outlier en la versión V10.2.91."
   },
   "investigar": {
-    "titulo": "Regresión del 216% en Price Sensitivity y degradación en Exchange Rate",
-    "detalle": "Ambos endpoints de sensibilidad presentan status_level 1 con desviaciones superiores al 113% respecto al baseline global (592ms y 785ms respectivamente), sugiriendo una degradación en la lógica de cálculo."
+    "titulo": "Desviación anómala de 3.85x en Get investment price sensitivity by ID",
+    "detalle": "Se detectó un outlier con p95 de 1105ms contra un baseline de 287ms, mostrando una degradación del 300% respecto al comportamiento esperado de la versión."
   },
   "optimizar": {
-    "titulo": "Reducción de carga: Filter by debt-type lidera Impact Score con 97k puntos",
-    "detalle": "Este endpoint registra un p95 crítico de 3025ms; su optimización es prioritaria para estabilizar la latencia general del sistema debido a su alto peso transaccional y latencia acumulada."
+    "titulo": "Optimización de Filter by debt-type por impacto crítico (100,053 score)",
+    "detalle": "Este endpoint posee el mayor impact_score del sistema con un p95 de 3185ms; su optimización es prioritaria para reducir la latencia acumulada en producción."
   }
 }
