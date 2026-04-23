@@ -1,14 +1,64 @@
 {
   "escalar_prioritario": {
-    "titulo": "Get all yield curves - validate each self link — 6 reincidencias",
-    "detalle": "El endpoint presenta un outlier_ratio de 7.04 en la corrida actual y acumula 6 reincidencias estructurales como outlier."
+    "titulo": "Curvas de rendimiento — Listar todas (resumen) — 6 reincidencias como outlier",
+    "detalle": "Se detectó una inestabilidad estructural con 6 corridas registradas como outlier para este endpoint. Aunque no presenta alerta roja hoy, la reincidencia histórica indica un problema persistente que es más grave que las alertas amarillas registradas en otros endpoints durante esta corrida."
   },
   "investigar": {
-    "titulo": "5 endpoints en amarillo simultáneos — posible causa de infra",
-    "detalle": "La degradación simultánea de 5 endpoints con un avg_p95 actual de 453ms sugiere un cuello de botella sistémico en infraestructura."
+    "titulo": "4 endpoints en amarillo simultáneos — posible causa de infra",
+    "detalle": "La degradación simultánea de 4 endpoints en los servicios Investments, Markets, Stocks y Valuation Schemes sugiere una causa de infraestructura compartida. La evidencia radica en la afectación de múltiples módulos distintos en la misma ventana de ejecución."
   },
   "optimizar": {
-    "titulo": "Filter by debt-type, issueCurrency... — 106.034 impact_score",
-    "detalle": "Con un impact_score de 106.034, impact_p95_used de 2.945,4ms y 36 ejecuciones, una reducción del 20% en su P95 evitaría 21.206,8ms de latencia acumulada por ciclo de vida del endpoint."
-  }
+    "titulo": "Bond Screener — Filtro múltiple de bonos — Impacto: 108.491",
+    "detalle": "Este endpoint presenta un impact_score de 108.491 con un P95 típico de 2.932ms y 37 ejecuciones totales. Una reducción del 20% en su P95 representaría 21.698,2 ms de latencia acumulada evitada por ciclo de vida del endpoint."
+  },
+  "bottleneck_narrative": "Se observa una tendencia de cambio del -87,8% con un avg P95 que varió de 3.255ms a 396ms, advirtiendo que el baseline global está absorbiendo la degradación progresivamente. En la corrida del 13-04 se registró un pico aislado (avg P95: 3.255ms) con los endpoints Bond coupons by UUID y All bonds - for issuer como responsables; ese evento fue esporádico y no influyó en la clasificación actual.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Causa de infraestructura compartida (DB o red interna)",
+      "evidence": "4 endpoints afectados simultáneamente en los servicios Investments, Markets, Stocks y Valuation Schemes.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Inestabilidad estructural en Curvas de rendimiento",
+      "evidence": "El endpoint Curvas de rendimiento — Listar todas (resumen) registró 6 ocurrencias como outlier.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Cuello de botella por tamaño de respuesta",
+      "evidence": "El endpoint Get parities tiene un payload de 162.49 KB y un P95 de 1483ms, lo cual es significativamente superior a los endpoints livianos.",
+      "priority": "media"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P1",
+      "accion": "Estabilizar Curvas de rendimiento — Listar todas (resumen) — 6 reincidencias",
+      "endpoint_target": "Get all yield curves - validate each self link",
+      "evidencia": "6 occurrences"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Estabilizar Valores negociables — Filtros obligatorios — 4 reincidencias",
+      "endpoint_target": "Get tradable securities using only mandatory filters",
+      "evidencia": "4 occurrences"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Analizar causa sistémica en infraestructura — 4 servicios afectados",
+      "endpoint_target": "—",
+      "evidencia": "4 status_level 1"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Optimizar serialización de datos — correlación payload/latencia detectada",
+      "endpoint_target": "—",
+      "evidencia": "payload_correlated: true"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Optimizar Bond Screener — Filtro múltiple de bonos — alto impacto acumulado",
+      "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "evidencia": "108.491 impact_score"
+    }
+  ]
 }
