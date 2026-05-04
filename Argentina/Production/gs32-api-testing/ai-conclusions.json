@@ -1,0 +1,64 @@
+{
+  "escalar_prioritario": {
+    "titulo": "Curvas de rendimiento — Listar todas (resumen) — 7 reincidencias como outlier",
+    "detalle": "Este endpoint presenta una inestabilidad estructural crítica al haber sido registrado como outlier en 7 corridas distintas, lo que indica un problema persistente más allá de las alertas puntuales. Aunque la corrida actual muestra 4 alertas amarillas en otros servicios, la reincidencia histórica de este componente requiere atención prioritaria."
+  },
+  "investigar": {
+    "titulo": "4 endpoints en amarillo simultáneos — posible causa de infra",
+    "detalle": "La degradación simultánea de 4 endpoints pertenecientes a los servicios de Bonds y Tradable Securities sugiere una causa de infraestructura compartida o saturación en la base de datos. Esta simultaneidad en módulos funcionalmente distintos apunta a un cuello de botella sistémico y no a la lógica de una API específica."
+  },
+  "optimizar": {
+    "titulo": "Optimizar Bond Screener — Filtro múltiple de bonos — Impacto: 129.779",
+    "detalle": "Con un impact score de 129.779 y un P95 limpio de 2.949 ms en 44 ejecuciones, este endpoint es el principal generador de latencia acumulada. Una reducción del 20% en su P95 representaría 25.955 ms de latencia evitada para el sistema en su ciclo de vida."
+  },
+  "bottleneck_narrative": "La corrida actual presenta 4 alertas amarillas, lo cual, sin una tendencia de degradación sostenida, sugiere que el patrón es compatible con una regresión puntual. La tendencia aparece negativa porque el punto de comparación de la ventana incluye el pico del 28-04 (avg P95: 2.022ms) donde Bond coupons by UUID, Get tradable security metrics y Bond issue conditions by UUID fueron responsables, por lo que los niveles actuales son normales y no una mejora real.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Causa de infraestructura compartida (DB o CPU saturada)",
+      "evidence": "4 endpoints afectados simultáneamente en los servicios de Bonds y Tradable Securities.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Inestabilidad estructural recurrente en Curvas de rendimiento",
+      "evidence": "El endpoint Curvas de rendimiento — Listar todas (resumen) registra 7 apariciones como outlier.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Cuello de botella por tamaño de respuesta",
+      "evidence": "Get parities con 163.19 KB y P95 de 1400ms confirma correlación entre volumen y latencia.",
+      "priority": "media"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P1",
+      "accion": "Estabilizar Curvas de rendimiento — Listar todas (resumen) por reincidencia",
+      "endpoint_target": "Get all yield curves - validate each self link",
+      "evidencia": "7 ocurrencias como outlier"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Investigar inestabilidad en Valores negociables — Filtros obligatorios",
+      "endpoint_target": "Get tradable securities using only mandatory filters",
+      "evidencia": "5 ocurrencias como outlier"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Corregir comportamiento errático en Obtener todos los bonos",
+      "endpoint_target": "All bonds - deault parameters",
+      "evidencia": "4 ocurrencias como outlier"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Revisar saturación de recursos en servicios de Bonds y Tradable Securities",
+      "endpoint_target": "—",
+      "evidencia": "4 alertas amarillas simultáneas"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Optimizar Bond Screener — alto peso acumulado en performance",
+      "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "evidencia": "impact score: 129.779"
+    }
+  ]
+}
