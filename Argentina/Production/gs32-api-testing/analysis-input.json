@@ -3,16 +3,10 @@
     "environment": "Production",
     "country": "Argentina",
     "version": "V10.2.93",
-    "run_id": "202605051219",
-    "run_time": "2026-05-05T12:19:04.873Z"
+    "run_id": "202605061224",
+    "run_time": "2026-05-06T12:24:42.641Z"
   },
   "recent_runs": [
-    {
-      "date": "2026-04-22",
-      "avg_p95": 453,
-      "baseline": 499,
-      "slowest": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law"
-    },
     {
       "date": "2026-04-23",
       "avg_p95": 396,
@@ -66,76 +60,92 @@
       "avg_p95": 410,
       "baseline": 522,
       "slowest": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law"
+    },
+    {
+      "date": "2026-05-06",
+      "avg_p95": 462,
+      "baseline": 520,
+      "slowest": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law"
     }
   ],
   "traffic_lights": [
     {
-      "endpoint": "Get tradable securities using only mandatory filters",
+      "endpoint": "Appraise market value",
       "api_info": {
-        "api_name": "Valores negociables — Filtros obligatorios",
-        "service": "Tradable Securities",
-        "protocol": "REST",
-        "description": "Obtiene la lista de valores negociables usando solo los filtros obligatorios (exchange, valuationDate, valuationName). Retorna todos los instrumentos negociables para esa fecha y mercado — respuesta potencialmente grande.",
+        "api_name": "Valoración de instrumento financiero",
+        "service": "Appraiser",
+        "protocol": "JRPC",
+        "description": "Calcula la valoración de mercado o técnica de un instrumento financiero (bonds, stocks, etc.). Operación matemáticamente intensiva — usa distintos métodos: appraise-market-value, appraise-in-currency, appraise, etc.",
         "complexity": "high"
       },
       "status_level": 1,
-      "p95": 788,
-      "baseline_global": 662,
-      "baseline_global_delta_pct": 18.97,
-      "baseline_version_delta_pct": 43.66,
-      "regression_pct": 562.18,
-      "total_executions": 45
+      "p95": 1978,
+      "baseline_global": 1510,
+      "baseline_global_delta_pct": 30.96,
+      "baseline_version_delta_pct": 12.74,
+      "regression_pct": 75.35,
+      "total_executions": 46
     },
     {
-      "endpoint": "Get tradable securities using optional filters - only query",
+      "endpoint": "Get investment metrics by ID",
       "api_info": {
-        "api_name": "Valores negociables — Búsqueda por texto libre",
-        "service": "Tradable Securities",
+        "api_name": "Métricas de inversión por ID",
+        "service": "Investments",
         "protocol": "REST",
-        "description": "Filtra valores negociables por búsqueda de texto libre sobre nombre o identificadores.",
-        "complexity": "medium"
+        "description": "Calcula métricas financieras de una inversión: duración modificada, convexidad, TIR, precio técnico, etc. Cálculo matemáticamente intensivo que combina valoración + análisis de sensibilidad.",
+        "complexity": "high"
       },
       "status_level": 1,
-      "p95": 664,
-      "baseline_global": 502,
-      "baseline_global_delta_pct": 32.16,
-      "baseline_version_delta_pct": 32.8,
-      "regression_pct": 577.55,
-      "total_executions": 45
+      "p95": 1066,
+      "baseline_global": 1767,
+      "baseline_global_delta_pct": -39.67,
+      "baseline_version_delta_pct": 56.48,
+      "regression_pct": 73.62,
+      "total_executions": 46
     },
     {
-      "endpoint": "Get tradable securities using optional filters - only type",
+      "endpoint": "Get investment irr sensitivity by ID",
       "api_info": {
-        "api_name": "Valores negociables — Filtrado por tipo",
-        "service": "Tradable Securities",
+        "api_name": "Sensibilidad de TIR de inversión por ID",
+        "service": "Investments",
         "protocol": "REST",
-        "description": "Filtra valores negociables por tipo de instrumento (bono, acción, FCI, etc.).",
-        "complexity": "medium"
+        "description": "Analiza cómo cambia la TIR de la inversión ante variaciones en la tasa de descuento. Requiere múltiples iteraciones de valoración — operación computacionalmente costosa.",
+        "complexity": "high"
       },
       "status_level": 1,
-      "p95": 737,
-      "baseline_global": 528,
-      "baseline_global_delta_pct": 39.59,
-      "baseline_version_delta_pct": 11.5,
-      "regression_pct": 615.53,
-      "total_executions": 45
+      "p95": 682,
+      "baseline_global": 558,
+      "baseline_global_delta_pct": 22.17,
+      "baseline_version_delta_pct": 173.62,
+      "regression_pct": 181.82,
+      "total_executions": 46
     },
     {
-      "endpoint": "Get tradable securities using optional filters - only market",
+      "endpoint": "Get investment exchange rate sensitivity by ID",
       "api_info": {
-        "api_name": "Valores negociables — Filtrado por mercado",
-        "service": "Tradable Securities",
+        "api_name": "Sensibilidad al tipo de cambio de inversión por ID",
+        "service": "Investments",
         "protocol": "REST",
-        "description": "Filtra valores negociables por mercado específico (BYMA, MAE, etc.).",
-        "complexity": "medium"
+        "description": "Analiza el impacto de variaciones en el tipo de cambio sobre el valor de la inversión.",
+        "complexity": "high"
       },
       "status_level": 1,
-      "p95": 713,
-      "baseline_global": 535,
-      "baseline_global_delta_pct": 33.2,
-      "baseline_version_delta_pct": 3.58,
-      "regression_pct": 620.2,
-      "total_executions": 45
+      "p95": 502,
+      "baseline_global": 360,
+      "baseline_global_delta_pct": 39.54,
+      "baseline_version_delta_pct": 165.61,
+      "regression_pct": 123.11,
+      "total_executions": 46
+    },
+    {
+      "endpoint": "Get all mutual fund types",
+      "status_level": 1,
+      "p95": 331,
+      "baseline_global": 157,
+      "baseline_global_delta_pct": 110.98,
+      "baseline_version_delta_pct": 91.33,
+      "regression_pct": 94.71,
+      "total_executions": 46
     },
     {
       "endpoint": "Get all yield curves - validate each self link",
@@ -147,49 +157,32 @@
         "complexity": "high"
       },
       "status_level": 1,
-      "p95": 1143,
+      "p95": 1648,
       "baseline_global": 183,
-      "baseline_global_delta_pct": 524.93,
-      "baseline_version_delta_pct": 295.96,
-      "regression_pct": 489.18,
-      "total_executions": 45
-    },
-    {
-      "endpoint": "Get all bond groups",
-      "api_info": {
-        "api_name": "Grupos de bonos — Obtener todos",
-        "service": "Bond Groups",
-        "protocol": "REST",
-        "description": "Devuelve todos los grupos de bonos (agrupaciones lógicas del catálogo de instrumentos). Tabla de maestros.",
-        "complexity": "low"
-      },
-      "status_level": 1,
-      "p95": 715,
-      "baseline_global": 301,
-      "baseline_global_delta_pct": 137.18,
-      "baseline_version_delta_pct": 153.85,
-      "regression_pct": 200.42,
-      "total_executions": 45
+      "baseline_global_delta_pct": 801.04,
+      "baseline_version_delta_pct": 470.9,
+      "regression_pct": 44.18,
+      "total_executions": 46
     }
   ],
   "outliers": [
     {
-      "time": "2026-05-05T12:19:04.873Z",
-      "run_id": "202605051219",
+      "time": "2026-05-06T12:24:42.641Z",
+      "run_id": "202605061224",
       "version": "V10.2.93",
       "environment": "Production",
       "country": "Argentina",
       "endpoint": "Get all yield curves - validate each self link",
-      "p95": 1143,
+      "p95": 1648,
       "baseline_global": 183,
-      "outlier_ratio": 6.25
+      "outlier_ratio": 9.01
     }
   ],
   "slowest_this_run": [
     {
       "endpoint": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
-      "p95": 4247,
-      "payload_kb": 17.81,
+      "p95": 2629,
+      "payload_kb": 17.8,
       "api_info": {
         "api_name": "Bond Screener — Filtro múltiple de bonos",
         "service": "Bond Screener",
@@ -199,49 +192,8 @@
       }
     },
     {
-      "endpoint": "Get irrs - one bond",
-      "p95": 1399,
-      "payload_kb": 61.28,
-      "api_info": {
-        "api_name": "Tasas Internas de Retorno (TIR/IRR) de un bono",
-        "service": "Bond Payment Forecasts v2",
-        "protocol": "JRPC",
-        "description": "Calcula las Tasas Internas de Retorno (TIR/IRR) de un bono. Requiere cálculo iterativo de flujos de caja descontados — operación matemáticamente intensiva.",
-        "complexity": "high"
-      }
-    },
-    {
-      "endpoint": "Get parities",
-      "p95": 1393,
-      "payload_kb": 163.31,
-      "api_info": {
-        "api_name": "Paridades de bono",
-        "service": "Bond Payment Forecasts v2",
-        "protocol": "JRPC",
-        "description": "Calcula las paridades de un bono (relación precio de mercado / valor técnico). Involucra proyección de flujos futuros.",
-        "complexity": "high"
-      }
-    },
-    {
-      "endpoint": "Get tradable securities using optional filters - ticker & tradeDate",
-      "p95": 1155,
-      "payload_kb": 1.21
-    },
-    {
-      "endpoint": "Get all yield curves - validate each self link",
-      "p95": 1143,
-      "payload_kb": 0.49,
-      "api_info": {
-        "api_name": "Curvas de rendimiento — Listar todas (resumen)",
-        "service": "Yield Curves",
-        "protocol": "REST",
-        "description": "Devuelve todas las curvas de rendimiento disponibles en formato resumido: solo nombre y links de navegación (self, metrics, intradayMetrics, metricsOfSameRiskBonds), sin puntos de la curva ni datos de mercado. Usa el Accept header application/vnd.mercap.yield-curve-summary+json; la variante completa (application/vnd.mercap.yield-curve+json) incluye además labeledPoints y points.",
-        "complexity": "high"
-      }
-    },
-    {
       "endpoint": "Appraise market value",
-      "p95": 1128,
+      "p95": 1978,
       "payload_kb": 0.6,
       "api_info": {
         "api_name": "Valoración de instrumento financiero",
@@ -252,8 +204,61 @@
       }
     },
     {
+      "endpoint": "Get all yield curves - validate each self link",
+      "p95": 1648,
+      "payload_kb": 0.49,
+      "api_info": {
+        "api_name": "Curvas de rendimiento — Listar todas (resumen)",
+        "service": "Yield Curves",
+        "protocol": "REST",
+        "description": "Devuelve todas las curvas de rendimiento disponibles en formato resumido: solo nombre y links de navegación (self, metrics, intradayMetrics, metricsOfSameRiskBonds), sin puntos de la curva ni datos de mercado. Usa el Accept header application/vnd.mercap.yield-curve-summary+json; la variante completa (application/vnd.mercap.yield-curve+json) incluye además labeledPoints y points.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get irrs - one bond",
+      "p95": 1510,
+      "payload_kb": 61.33,
+      "api_info": {
+        "api_name": "Tasas Internas de Retorno (TIR/IRR) de un bono",
+        "service": "Bond Payment Forecasts v2",
+        "protocol": "JRPC",
+        "description": "Calcula las Tasas Internas de Retorno (TIR/IRR) de un bono. Requiere cálculo iterativo de flujos de caja descontados — operación matemáticamente intensiva.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get parities",
+      "p95": 1509,
+      "payload_kb": 163.43,
+      "api_info": {
+        "api_name": "Paridades de bono",
+        "service": "Bond Payment Forecasts v2",
+        "protocol": "JRPC",
+        "description": "Calcula las paridades de un bono (relación precio de mercado / valor técnico). Involucra proyección de flujos futuros.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get tradable securities using optional filters - ticker & tradeDate",
+      "p95": 1251,
+      "payload_kb": 1.21
+    },
+    {
+      "endpoint": "Get investment metrics by ID",
+      "p95": 1066,
+      "payload_kb": 1.39,
+      "api_info": {
+        "api_name": "Métricas de inversión por ID",
+        "service": "Investments",
+        "protocol": "REST",
+        "description": "Calcula métricas financieras de una inversión: duración modificada, convexidad, TIR, precio técnico, etc. Cálculo matemáticamente intensivo que combina valoración + análisis de sensibilidad.",
+        "complexity": "high"
+      }
+    },
+    {
       "endpoint": "Get tradable securities using only mandatory filters",
-      "p95": 788,
+      "p95": 799,
       "payload_kb": 11.4,
       "api_info": {
         "api_name": "Valores negociables — Filtros obligatorios",
@@ -264,32 +269,20 @@
       }
     },
     {
-      "endpoint": "Get tradable securities using optional filters - only type",
-      "p95": 737,
-      "payload_kb": 11.43,
+      "endpoint": "Get tradable securities using optional filters - only query",
+      "p95": 735,
+      "payload_kb": 1.76,
       "api_info": {
-        "api_name": "Valores negociables — Filtrado por tipo",
+        "api_name": "Valores negociables — Búsqueda por texto libre",
         "service": "Tradable Securities",
         "protocol": "REST",
-        "description": "Filtra valores negociables por tipo de instrumento (bono, acción, FCI, etc.).",
+        "description": "Filtra valores negociables por búsqueda de texto libre sobre nombre o identificadores.",
         "complexity": "medium"
       }
     },
     {
-      "endpoint": "Get all bond groups",
-      "p95": 715,
-      "payload_kb": 0.61,
-      "api_info": {
-        "api_name": "Grupos de bonos — Obtener todos",
-        "service": "Bond Groups",
-        "protocol": "REST",
-        "description": "Devuelve todos los grupos de bonos (agrupaciones lógicas del catálogo de instrumentos). Tabla de maestros.",
-        "complexity": "low"
-      }
-    },
-    {
       "endpoint": "Get tradable securities using optional filters - only market",
-      "p95": 713,
+      "p95": 727,
       "payload_kb": 11.32,
       "api_info": {
         "api_name": "Valores negociables — Filtrado por mercado",
@@ -310,11 +303,11 @@
         "description": "Filtra la cartera de bonos usando múltiples criterios simultáneos: tipo de deuda, moneda de emisión, moneda de pago, emisor y legislación. La combinación de filtros genera una consulta compleja sobre el catálogo completo de bonos.",
         "complexity": "high"
       },
-      "impact_score": 133288,
-      "p95": 4247,
-      "impact_p95_used": 2961.9545454545455,
-      "total_executions": 45,
-      "baseline_global": 2962
+      "impact_score": 137564,
+      "p95": 2629,
+      "impact_p95_used": 2990.511111111111,
+      "total_executions": 46,
+      "baseline_global": 2991
     },
     {
       "endpoint": "Get investment metrics by ID",
@@ -325,11 +318,11 @@
         "description": "Calcula métricas financieras de una inversión: duración modificada, convexidad, TIR, precio técnico, etc. Cálculo matemáticamente intensivo que combina valoración + análisis de sensibilidad.",
         "complexity": "high"
       },
-      "impact_score": 80688,
-      "p95": 614,
-      "impact_p95_used": 1793.0681818181818,
-      "total_executions": 45,
-      "baseline_global": 1793
+      "impact_score": 81276,
+      "p95": 1066,
+      "impact_p95_used": 1766.8666666666666,
+      "total_executions": 46,
+      "baseline_global": 1767
     },
     {
       "endpoint": "Get parities",
@@ -340,11 +333,11 @@
         "description": "Calcula las paridades de un bono (relación precio de mercado / valor técnico). Involucra proyección de flujos futuros.",
         "complexity": "high"
       },
-      "impact_score": 79742,
-      "p95": 1393,
-      "impact_p95_used": 1772.0454545454545,
-      "total_executions": 45,
-      "baseline_global": 1772
+      "impact_score": 81127,
+      "p95": 1509,
+      "impact_p95_used": 1763.6222222222223,
+      "total_executions": 46,
+      "baseline_global": 1764
     },
     {
       "endpoint": "Get irrs - one bond",
@@ -355,11 +348,11 @@
         "description": "Calcula las Tasas Internas de Retorno (TIR/IRR) de un bono. Requiere cálculo iterativo de flujos de caja descontados — operación matemáticamente intensiva.",
         "complexity": "high"
       },
-      "impact_score": 78363,
-      "p95": 1399,
-      "impact_p95_used": 1741.409090909091,
-      "total_executions": 45,
-      "baseline_global": 1741
+      "impact_score": 79755,
+      "p95": 1510,
+      "impact_p95_used": 1733.8,
+      "total_executions": 46,
+      "baseline_global": 1734
     },
     {
       "endpoint": "Appraise market value",
@@ -370,17 +363,17 @@
         "description": "Calcula la valoración de mercado o técnica de un instrumento financiero (bonds, stocks, etc.). Operación matemáticamente intensiva — usa distintos métodos: appraise-market-value, appraise-in-currency, appraise, etc.",
         "complexity": "high"
       },
-      "impact_score": 68356,
-      "p95": 1128,
-      "impact_p95_used": 1519.0227272727273,
-      "total_executions": 45,
-      "baseline_global": 1519
+      "impact_score": 69475,
+      "p95": 1978,
+      "impact_p95_used": 1510.3333333333333,
+      "total_executions": 46,
+      "baseline_global": 1510
     }
   ],
   "outlier_recurrence": [
     {
       "endpoint": "Get all yield curves - validate each self link",
-      "occurrences": 8,
+      "occurrences": 9,
       "api_info": {
         "api_name": "Curvas de rendimiento — Listar todas (resumen)",
         "service": "Yield Curves",
@@ -586,7 +579,7 @@
     "reds_count": 0,
     "yellows_count": 6,
     "outliers_count": 1,
-    "trend_delta_pct": -9.5,
+    "trend_delta_pct": 16.7,
     "reasoning": "6 alerta(s) activas sin tendencia sostenida en las últimas 10 corridas.",
     "notable_historical_spikes": [
       {
@@ -601,24 +594,24 @@
     ]
   },
   "payload_stats": {
-    "avg_payload_kb": 27.95,
+    "avg_payload_kb": 27.07,
     "heaviest_endpoints": [
       {
         "endpoint": "Get parities",
-        "payload_kb": 163.31,
-        "p95": 1393
+        "payload_kb": 163.43,
+        "p95": 1509
       },
       {
         "endpoint": "Get irrs - one bond",
-        "payload_kb": 61.28,
-        "p95": 1399
+        "payload_kb": 61.33,
+        "p95": 1510
       },
       {
         "endpoint": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
-        "payload_kb": 17.81,
-        "p95": 4247
+        "payload_kb": 17.8,
+        "p95": 2629
       }
     ],
-    "payload_correlated": true
+    "payload_correlated": false
   }
 }
