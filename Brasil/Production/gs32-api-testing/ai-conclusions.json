@@ -1,0 +1,58 @@
+{
+  "escalar_prioritario": {
+    "titulo": "Cupones de bono por UUID — 13 reincidencias como outlier",
+    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 13 registros históricos como outlier, indicando un problema persistente que trasciende la degradación puntual. Aunque la corrida actual registra alertas amarillas en otros servicios, la recurrencia histórica de este endpoint requiere escalado prioritario por su carácter estructural."
+  },
+  "investigar": {
+    "titulo": "Tendencia de latencia al alza — incremento del 16% en avg P95",
+    "detalle": "Se observa una tendencia donde el avg_p95 subió de 351ms a 407ms entre la primera y última corrida analizada. Es necesario investigar esta deriva ya que el baseline global absorberá la degradación progresivamente, enmascarando alertas futuras."
+  },
+  "optimizar": {
+    "titulo": "Optimizar Métricas de inversión por ID — impact score: 376.156",
+    "detalle": "Este endpoint posee el mayor peso acumulado con un impact_score de 376.156 y un P95 limpio de 6.839ms sobre 55 ejecuciones. Una reducción del 20% en su P95 representaría 75.231,2 ms de latencia acumulada evitada por ciclo de vida del endpoint."
+  },
+  "bottleneck_narrative": "La corrida actual presenta 2 alertas amarillas, lo cual sugiere un patrón compatible con una regresión puntual al no presentar una tendencia de degradación de tiempos superior al umbral de clasificación. En la corrida del 16-04 se registró un pico aislado (avg P95: 1.416ms) con los endpoints Get all instrument issuers, Get one bond cashflow - only dateInterval from y Bond coupons by UUID como principales responsables; ese evento fue esporádico y no influyó en la clasificación actual.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Inestabilidad estructural recurrente en Cupones de bono por UUID",
+      "evidence": "Endpoint registrado como outlier en 13 corridas distintas con un outlier_ratio actual de 10.88.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Regresión puntual en el módulo de cupones de bonos",
+      "evidence": "Baseline_global_delta_pct de 987.73% y p95 de 2083ms vs baseline de 192ms.",
+      "priority": "media"
+    },
+    {
+      "hypothesis": "Degradación estructural acumulada en el motor GS32",
+      "evidence": "Incremento del 16% en el avg_p95 a lo largo de las últimas corridas analizadas.",
+      "priority": "media"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P1",
+      "accion": "Corregir inestabilidad estructural en Cupones de bono por UUID",
+      "endpoint_target": "Bond coupons by UUID",
+      "evidencia": "13 reincidencias como outlier"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Estabilizar performance en Sensibilidad de TIR de inversión por ID",
+      "endpoint_target": "Get investment irr sensitivity by ID",
+      "evidencia": "4 reincidencias como outlier"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Analizar regresión en Valoración de instrumento financiero — +111% vs anterior",
+      "endpoint_target": "Appraise market value",
+      "evidencia": "3355ms vs baseline 1837ms"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Optimizar Métricas de inversión por ID — alto impacto acumulado en latencia",
+      "endpoint_target": "Get investment metrics by ID",
+      "evidencia": "impact score: 376.156"
+    }
+  ]
+}
