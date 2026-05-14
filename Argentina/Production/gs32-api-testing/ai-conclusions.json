@@ -1,0 +1,64 @@
+{
+  "escalar_prioritario": {
+    "titulo": "Curvas de rendimiento — Listar todas (resumen) — 12 reincidencias como outlier",
+    "detalle": "Este endpoint registra 12 corridas como outlier, lo que indica una inestabilidad estructural persistente más grave que una degradación puntual. Aunque la corrida actual presenta alertas amarillas en otros servicios, la recurrencia histórica de este componente requiere atención inmediata."
+  },
+  "investigar": {
+    "titulo": "3 endpoints en amarillo simultáneos — posible causa de infra",
+    "detalle": "La degradación simultánea de 3 endpoints pertenecientes a los servicios de Investments y Yield Curves sugiere una causa de infraestructura compartida. La afectación concurrente en módulos funcionales distintos apunta a una saturación de recursos comunes más que a errores de lógica de aplicación."
+  },
+  "optimizar": {
+    "titulo": "Optimizar Bond Screener — Filtro múltiple de bonos — impact score: 154.013",
+    "detalle": "Este endpoint genera el mayor impacto sistémico con un impact_score de 154.013 y un P95 de 2.597 ms. Una reducción del 20% en su latencia evitaría 30.802 ms de tiempo de procesamiento acumulado por ciclo de vida."
+  },
+  "bottleneck_narrative": "La corrida actual presenta 3 alertas amarillas, lo cual, sin una tendencia sostenida de degradación (8.3%), es compatible con una regresión puntual. En la corrida del 07-05 se registró un pico aislado (avg P95: 1.328ms) con los endpoints All bonds - start & limit parameters, All bonds - for issuer y Get all yield curves - validate each self link como principales responsables; ese evento fue esporádico y no influyó en la clasificación actual.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Causa de infraestructura compartida",
+      "evidence": "3 endpoints afectados simultáneamente en los servicios Investments y Yield Curves",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Inestabilidad estructural recurrente en Curvas de rendimiento",
+      "evidence": "12 reincidencias como outlier en el historial de ejecuciones",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Regresión puntual en módulo de Yield Curves",
+      "evidence": "regression_pct de 250.29% y baseline_global_delta_pct de 203.79%",
+      "priority": "media"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P1",
+      "accion": "Estabilizar Curvas de rendimiento — Listar todas (resumen)",
+      "endpoint_target": "Get all yield curves - validate each self link",
+      "evidencia": "12 reincidencias como outlier"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Investigar inestabilidad en Valores negociables — Filtros obligatorios",
+      "endpoint_target": "Get tradable securities using only mandatory filters",
+      "evidencia": "5 reincidencias como outlier"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Corregir reincidencia en Obtener todos los bonos — parámetros por defecto",
+      "endpoint_target": "All bonds - deault parameters",
+      "evidencia": "4 reincidencias como outlier"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Analizar causa de infraestructura compartida por alertas simultáneas",
+      "endpoint_target": "—",
+      "evidencia": "3 alertas amarillas en módulos distintos"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Optimizar Bond Screener — alto peso acumulado en performance",
+      "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "evidencia": "impact score: 154.013"
+    }
+  ]
+}
