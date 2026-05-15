@@ -1,64 +1,58 @@
 {
   "escalar_prioritario": {
     "titulo": "Cupones de bono por UUID — 14 reincidencias como outlier",
-    "detalle": "El endpoint presenta una inestabilidad estructural crítica con 14 registros históricos como outlier, indicando un problema persistente que trasciende la degradación puntual de esta corrida. Aunque actualmente se encuentra en nivel amarillo, su reincidencia histórica lo posiciona como la prioridad máxima de escalado."
+    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 14 registros históricos como outlier. Aunque no posee alerta roja en esta corrida, su reincidencia persistente indica un problema de fondo más grave que las degradaciones puntuales detectadas en otros servicios."
   },
   "investigar": {
-    "titulo": "Detección de outliers — Bond coupons by UUID con ratio 9.01",
-    "detalle": "Se identificó un endpoint operando como outlier significativo en esta corrida: Bond coupons by UUID alcanzó un P95 de 2105ms, lo que representa 9.01 veces su baseline global de 234ms."
+    "titulo": "Tendencia de mejora en latencia — variación del -45.3%",
+    "detalle": "El avg_p95 descendió de 508ms a 278ms en las últimas 10 corridas. Se debe monitorear esta tendencia para asegurar que la reducción de tiempos no esté enmascarando cambios en el volumen de datos procesados que afecten la representatividad del baseline global."
   },
   "optimizar": {
-    "titulo": "Optimizar Métricas de inversión por ID — Impact Score: 380.159",
-    "detalle": "Este endpoint registra el mayor peso acumulado en la performance sistémica con un P95 limpio de 6554.46ms en 58 ejecuciones. Una reducción del 20% en su latencia evitaría 76.031ms de latencia acumulada por ciclo de vida."
+    "titulo": "Métricas de inversión por ID — alto impacto sistémico (score: 378.899)",
+    "detalle": "Este endpoint de alta complejidad posee el mayor peso acumulado con un impact_p95_used de 6422.02ms y 59 ejecuciones. Una reducción del 20% en su P95 representaría 75779.8 ms de latencia acumulada evitada por ciclo de vida."
   },
-  "bottleneck_narrative": "La corrida actual presenta 0 alertas rojas y 2 amarillas, lo cual sugiere un patrón compatible con una regresión puntual en el desempeño de módulos específicos. La tendencia de latencia aparece como negativa (-53.2%) debido a que el inicio de la ventana de comparación incluye picos de corridas anteriores (708ms), por lo que los niveles actuales representan una normalización y no una mejora estructural.",
+  "bottleneck_narrative": "La corrida actual presenta 2 alertas amarillas, lo cual es compatible con una regresión puntual dado que no existe una tendencia sostenida de degradación de tiempos. La tendencia de la ventana aparece como negativa (-45.3%) debido a que el punto de comparación inicial incluía valores más altos, por lo que los niveles actuales se consideran dentro de la normalidad operativa.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Inestabilidad estructural recurrente en Cupones de bono",
-      "evidence": "Endpoint con 14 ocurrencias históricas como outlier y un P95 actual de 2105ms.",
+      "hypothesis": "Inestabilidad estructural en Cupones de bono por UUID",
+      "evidence": "Endpoint registrado como outlier en 14 corridas distintas.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Inestabilidad recurrente en Sensibilidad de TIR",
-      "evidence": "Registra 4 ocurrencias como outlier y una desviación de versión del 115.84%.",
+      "hypothesis": "Inestabilidad recurrente en Bond Payment Forecasts v2",
+      "evidence": "Endpoints Flujos de caja y Previsión de pagos con 7 reincidencias como outlier cada uno.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Regresión puntual en el módulo de Bonds",
-      "evidence": "Regression_pct de 1294.04% y baseline_global_delta_pct de 800.92% en Bond coupons by UUID.",
-      "priority": "media"
+      "hypothesis": "Variabilidad de performance dentro de parámetros normales",
+      "evidence": "avg_p95 actual de 278ms frente a un baseline de 509ms.",
+      "priority": "baja"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Resolver inestabilidad estructural en Cupones de bono por UUID — 14 reincidencias",
+      "accion": "Estabilizar Cupones de bono por UUID — 14 reincidencias históricas como outlier",
       "endpoint_target": "Bond coupons by UUID",
-      "evidencia": "14 occurrences, 2105ms P95"
+      "evidence": "14 occurrences"
     },
     {
       "prioridad": "P1",
-      "accion": "Estabilizar Sensibilidad de TIR de inversión por ID — 4 reincidencias",
-      "endpoint_target": "Get investment irr sensitivity by ID",
-      "evidencia": "4 occurrences, 115.84% version delta"
-    },
-    {
-      "prioridad": "P2",
-      "accion": "Investigar reincidencia de outliers en Flujos de caja de bono desde fecha",
+      "accion": "Analizar regresión en Flujos de caja de bono desde fecha — +250% vs anterior",
       "endpoint_target": "Get one bond cashflow - only dateInterval from",
-      "evidencia": "7 occurrences"
+      "evidence": "250% regression_pct"
     },
     {
       "prioridad": "P2",
-      "accion": "Analizar regresión en Cupones de bono por UUID — +1294% vs corrida anterior",
-      "endpoint_target": "Bond coupons by UUID",
-      "evidencia": "1294.04% regression_pct"
+      "accion": "Investigar degradación en Previsión de pagos de bono — +85.45% vs anterior",
+      "endpoint_target": "Get payment forecasts",
+      "evidence": "85.45% regression_pct"
     },
     {
       "prioridad": "P3",
       "accion": "Optimizar Métricas de inversión por ID — mayor impacto acumulado en latencia",
       "endpoint_target": "Get investment metrics by ID",
-      "evidencia": "impact score 380.159"
+      "evidence": "378.899 impact_score"
     }
   ]
 }
