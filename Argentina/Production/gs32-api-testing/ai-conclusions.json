@@ -1,64 +1,64 @@
 {
   "escalar_prioritario": {
     "titulo": "Curvas de rendimiento — Listar todas (resumen) — 13 reincidencias como outlier",
-    "detalle": "El endpoint ha sido registrado como outlier en 13 corridas distintas, lo que evidencia una inestabilidad estructural persistente. Aunque no presenta alertas activas hoy, esta reincidencia histórica es más crítica que una degradación puntual por su carácter recurrente."
+    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 13 registros históricos como outlier. Aunque no posee alerta roja en esta corrida, su reincidencia es una señal de degradación persistente que requiere intervención prioritaria sobre las alertas puntuales."
   },
   "investigar": {
-    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 27.67 KB",
-    "detalle": "Se observa que el tiempo de espera está influenciado por la transferencia de datos, con un payload promedio de 27.67 KB en los servicios más lentos. Se recomienda revisar Paridades de bono, Tasas Internas de Retorno (TIR/IRR) de un bono y Bond Screener — Filtro múltiple de bonos."
+    "titulo": "3 endpoints con degradación moderada — posible causa de infra",
+    "detalle": "La degradación simultánea de 3 endpoints en los servicios de Investments y Yield Curves sugiere una posible saturación en recursos compartidos. La evidencia radica en la simultaneidad de las alertas amarillas en módulos funcionalmente distintos durante la misma corrida."
   },
   "optimizar": {
-    "titulo": "Optimizar Bond Screener — Filtro múltiple de bonos",
-    "detalle": "Este servicio presenta un impact score de 158.866, con un P95 limpio de 2.941,96 ms y 54 ejecuciones totales. Una reducción del 20% en su latencia evitaría 31.773,2 ms de tiempo de procesamiento acumulado en el sistema."
+    "titulo": "Bond Screener — Filtro múltiple de bonos — impact score: 161.398",
+    "detalle": "Este endpoint genera el mayor impacto acumulado en latencia con un P95 de 3.075ms y 55 ejecuciones. Una reducción del 20% en su P95 representaría 32.279,6 ms de latencia acumulada evitada por ciclo de vida."
   },
-  "bottleneck_narrative": "El sistema se encuentra en un estado estable con un avg P95 de 359ms frente a un baseline de 533ms en la corrida actual. En la corrida del 07-05 se registró un pico aislado (avg P95: 1.328ms) con los endpoints All bonds - start & limit parameters, All bonds - for issuer y Get all yield curves - validate each self link como principales responsables; ese evento fue esporádico y no influyó en la clasificación actual.",
+  "bottleneck_narrative": "La corrida actual presenta 3 alertas amarillas, lo cual es compatible con una regresión puntual dado que no se observa una tendencia de degradación sostenida. La tendencia de -1.7% se debe a que la ventana incluye el pico del 07-05 (avg P95: 1.328ms) causado por All bonds - start & limit parameters, All bonds - for issuer y Get all yield curves - validate each self link, por lo que los niveles actuales son normales y no una mejora real.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Inestabilidad estructural recurrente en Curvas de rendimiento",
-      "evidence": "El endpoint Curvas de rendimiento — Listar todas (resumen) registró 13 ocurrencias como outlier",
+      "hypothesis": "Inestabilidad estructural recurrente en Yield Curves",
+      "evidence": "Endpoint Curvas de rendimiento — Listar todas (resumen) registrado como outlier en 13 corridas.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Cuello de botella por tamaño de respuesta",
-      "evidence": "Get parities con 164.36 KB y p95 de 1239ms frente a endpoints livianos",
-      "priority": "media"
+      "hypothesis": "Causa de infraestructura compartida",
+      "evidence": "3 endpoints afectados simultáneamente en los servicios de Investments y Yield Curves.",
+      "priority": "alta"
     },
     {
-      "hypothesis": "Variabilidad de performance dentro de parámetros normales",
-      "evidence": "avg_p95 de 359ms vs baseline de 533ms en la corrida actual",
-      "priority": "baja"
+      "hypothesis": "Regresión puntual en módulo de Yield Curves",
+      "evidence": "regression_pct de 324.03% en el endpoint de listado de curvas de rendimiento.",
+      "priority": "media"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Estabilizar Curvas de rendimiento — Listar todas (resumen) por reincidencia",
+      "accion": "Corregir inestabilidad estructural en Curvas de rendimiento — Listar todas",
       "endpoint_target": "Get all yield curves - validate each self link",
       "evidencia": "13 occurrences"
     },
     {
       "prioridad": "P1",
-      "accion": "Estabilizar Valores negociables — Filtros obligatorios por reincidencia",
-      "endpoint_target": "Get tradable securities using only mandatory filters",
-      "evidencia": "5 occurrences"
-    },
-    {
-      "prioridad": "P1",
-      "accion": "Estabilizar Obtener todos los bonos — parámetros por defecto por reincidencia",
+      "accion": "Estabilizar performance de Obtener todos los bonos — parámetros por defecto",
       "endpoint_target": "All bonds - deault parameters",
       "evidencia": "4 occurrences"
     },
     {
       "prioridad": "P2",
-      "accion": "Investigar reincidencia en Grupos de bonos — Obtener todos",
-      "endpoint_target": "Get all bond groups",
-      "evidencia": "3 occurrences"
+      "accion": "Analizar regresión en Métricas de inversión por ID — +126.95% vs anterior",
+      "endpoint_target": "Get investment metrics by ID",
+      "evidencia": "2265 ms"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Revisar degradación en Sensibilidad al tipo de cambio de inversión por ID",
+      "endpoint_target": "Get investment exchange rate sensitivity by ID",
+      "evidencia": "117.57% delta global"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Bond Screener — alto impacto acumulado en performance",
+      "accion": "Optimizar Bond Screener — alto impacto acumulado en latencia",
       "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
-      "evidencia": "impact score: 158.866"
+      "evidencia": "161.398 impact score"
     }
   ]
 }
