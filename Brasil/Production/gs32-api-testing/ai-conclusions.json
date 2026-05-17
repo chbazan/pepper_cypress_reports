@@ -1,58 +1,64 @@
 {
   "escalar_prioritario": {
-    "titulo": "Flujos de caja de bono desde fecha — +3258% vs baseline global",
-    "detalle": "El endpoint presenta un P95 de 6086ms frente a un baseline global de 181ms, con desviaciones críticas del 3258.72% global y 3426.07% en la versión actual. Su registro en 8 corridas como outlier confirma una inestabilidad estructural persistente que requiere atención inmediata."
+    "titulo": "Cupones de bono por UUID — 15 reincidencias como outlier",
+    "detalle": "Este endpoint ha sido registrado como outlier en 15 corridas distintas, indicando una inestabilidad estructural persistente que es más grave que una degradación puntual. Aunque no tenga una alerta roja hoy, su reincidencia histórica lo convierte en una prioridad de escalado. La corrida actual también presenta alertas amarillas en otros endpoints, pero la recurrencia de este es un problema de mayor peso estructural."
   },
   "investigar": {
-    "titulo": "25 alertas amarillas simultáneas — posible causa de infraestructura",
-    "detalle": "La degradación concurrente de 25 endpoints en módulos diversos como Appraiser, Bonds, Investments y Tradable Securities sugiere un cuello de botella en recursos compartidos. Esta simultaneidad en servicios funcionalmente independientes es evidencia de una afectación sistémica, no de código de aplicación aislado."
+    "titulo": "Tendencia de latencia al alza — +43.2% en las últimas 10 corridas",
+    "detalle": "El P95 promedio ha aumentado un 43.2% en las últimas 10 corridas, pasando de 354ms a 507ms. Esta degradación progresiva podría enmascarar futuras alertas al elevar el baseline global."
   },
   "optimizar": {
-    "titulo": "Métricas de inversión por ID — alto impacto sistémico (score: 374.137)",
-    "detalle": "Este endpoint registra un impact_score de 374.137 con un P95 típico de 6235ms sobre 60 ejecuciones históricas. Una reducción del 20% en su latencia representaría 74.827ms de tiempo de procesamiento evitado por ciclo de vida del sistema."
+    "titulo": "Métricas de inversión por ID — Alto impacto acumulado (372.348)",
+    "detalle": "El endpoint 'Métricas de inversión por ID' tiene el mayor impacto acumulado (372.348). Una reducción del 20% en su P95 (6104.06ms) representaría 74469.6 ms de latencia acumulada evitada por ciclo de vida del endpoint."
   },
-  "bottleneck_narrative": "La corrida actual presenta 1 alerta roja y 25 amarillas, lo que indica que el patrón es compatible con una regresión puntual severa en el motor de valoración. Al no registrarse una tendencia sostenida previa al incremento del 104.3% en el P95 promedio, el estado actual sugiere el inicio de una degradación estructural o un evento de saturación aislado.",
+  "bottleneck_narrative": "La corrida actual presenta 2 alertas amarillas, lo que es compatible con una regresión puntual o el inicio de una. A pesar de la clasificación como REGRESSION-SPIKE, se observa una tendencia de latencia al alza del 43.2% en las últimas corridas, lo que sugiere una posible degradación en curso. En la corrida del 16-05 se registró un pico aislado (avg P95: 1056ms) con los endpoints 'Get one bond cashflow - only dateInterval from', 'Get tradable security metrics' y 'Get tradable securities using optional filters - only query' como principales responsables; ese evento fue esporádico y no influyó en la clasificación actual.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Falla o saturación en infraestructura compartida",
-      "evidence": "26 alertas simultáneas en servicios Appraiser, Bonds, Investments y Tradable Securities",
+      "hypothesis": "Inestabilidad estructural recurrente en 'Cupones de bono por UUID'.",
+      "evidence": "El endpoint 'Bond coupons by UUID' ha sido outlier en 15 corridas distintas.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Inestabilidad estructural recurrente en catálogo de bonos",
-      "evidence": "Cupones de bono por UUID registrado como outlier en 15 corridas distintas",
+      "hypothesis": "Degradación crítica en 'Métricas de valor negociable' por cambio reciente.",
+      "evidence": "P95 actual de 5220ms, un 2630.41% por encima de su baseline global de 191ms.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Regresión puntual en módulo de proyecciones financieras",
-      "evidence": "regression_pct de 1921.93% en Flujos de caja de bono desde fecha",
-      "priority": "alta"
+      "hypothesis": "Regresión puntual o inicio de degradación sistémica.",
+      "evidence": "La clasificación es REGRESSION-SPIKE con 2 alertas amarillas y un aumento del 43.2% en el P95 promedio de las últimas 10 corridas.",
+      "priority": "media"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Analizar regresión en Flujos de caja de bono desde fecha — +3258% vs baseline",
-      "endpoint_target": "Get one bond cashflow - only dateInterval from",
-      "evidencia": "6086 ms"
+      "accion": "Investigar regresión crítica en Métricas de valor negociable",
+      "endpoint_target": "Get tradable security metrics",
+      "evidencia": "+2630% vs baseline global"
     },
     {
       "prioridad": "P1",
-      "accion": "Estabilizar Cupones de bono por UUID — 15 reincidencias como outlier",
+      "accion": "Analizar inestabilidad recurrente en Cupones de bono por UUID",
       "endpoint_target": "Bond coupons by UUID",
-      "evidencia": "15 conteos"
+      "evidencia": "15 reincidencias como outlier"
     },
     {
       "prioridad": "P2",
-      "accion": "Investigar saturación de recursos — 26 degradaciones en múltiples servicios",
-      "endpoint_target": "—",
-      "evidencia": "26 alertas"
+      "accion": "Investigar degradación moderada en Valores negociables — Búsqueda por ticker y fecha",
+      "endpoint_target": "Get tradable securities using optional filters - ticker & tradeDate",
+      "evidencia": "+60.27% vs corrida anterior"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Revisar recurrencia de outliers en Monedas — Listar todas",
+      "endpoint_target": "Get all curencies - validate each self link",
+      "evidencia": "3 reincidencias como outlier"
     },
     {
       "prioridad": "P3",
       "accion": "Optimizar Métricas de inversión por ID — alto impacto acumulado",
       "endpoint_target": "Get investment metrics by ID",
-      "evidencia": "374.137 score"
+      "evidencia": "Impact score: 372.348"
     }
   ]
 }
