@@ -12,12 +12,14 @@ Marvel APIs
   │ ty, assertTradableSecurityList'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [503 Service Unavailable, 591B, 559ms]
-  POST https://api.testing-2.mercap.com.ar/appraiser [503 Service Unavailable, 592B, 80ms]
-  1. Response is received
-  2. Status code is 200
-  3. Media-Type is correct
-  4⠄ JSONError in test-script
+  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [errored]
+     ESOCKETTIMEDOUT
+  POST https://api.testing-2.mercap.com.ar/appraiser [errored]
+     ESOCKETTIMEDOUT
+  3. Response is received
+  4. Status code is 200
+  5. Media-Type is correct
+  6⠄ JSONError in test-script
 
 ❏ Pepper-GS32 / Regression-Test / Bonds
 ↳ All bonds - deault parameters
@@ -29,9 +31,11 @@ Marvel APIs
   │ ty, assertTradableSecurityList'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [503 Service Unavailable, 591B, 60ms]
-  GET https://api.testing-2.mercap.com.ar/bonds [503 Service Unavailable, 596B, 70ms]
-  5⠄ JSONError in test-script
+  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [errored]
+     ESOCKETTIMEDOUT
+  GET https://api.testing-2.mercap.com.ar/bonds [errored]
+     ESOCKETTIMEDOUT
+  9⠄ JSONError in test-script
 
 ↳ All bonds - for issuer
   ┌
@@ -42,10 +46,10 @@ Marvel APIs
   │ ty, assertTradableSecurityList'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [503 Service Unavailable, 597B, 59ms]
-  GET https://api.testing-2.mercap.com.ar/instrument-issuers [503 Service Unavailable, 596B, 66ms]
-  GET https://api.testing-2.mercap.com.ar/bonds?issuer={{issuer}} [503 Service Unavailable, 602B, 66ms]
-  6⠄ JSONError in test-script
+  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [502 Bad Gateway, 1.65kB, 2.4s]
+  GET https://api.testing-2.mercap.com.ar/instrument-issuers [502 Bad Gateway, 7.23kB, 3.1s]
+  GET https://api.testing-2.mercap.com.ar/bonds?issuer={{issuer}} [503 Service Unavailable, 600B, 101ms]
+ 10⠄ JSONError in test-script
 
 ↳ All bonds - start & limit parameters
   ┌
@@ -56,11 +60,9 @@ Marvel APIs
   │ ty, assertTradableSecurityList'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [errored]
-     ESOCKETTIMEDOUT
-  GET https://api.testing-2.mercap.com.ar/bonds?limit=5&start=2 [errored]
-     ESOCKETTIMEDOUT
-  9⠄ JSONError in test-script
+  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [503 Service Unavailable, 597B, 100ms]
+  GET https://api.testing-2.mercap.com.ar/bonds?limit=5&start=2 [503 Service Unavailable, 604B, 100ms]
+ 11⠄ JSONError in test-script
 
 ↳ Only shortName parameter
   ┌
@@ -71,10 +73,8 @@ Marvel APIs
   │ ty, assertTradableSecurityList'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [errored]
-     ESOCKETTIMEDOUT
-  GET https://api.testing-2.mercap.com.ar/bonds?shortName=AL30 [errored]
-     ESOCKETTIMEDOUT
+  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [503 Service Unavailable, 593B, 117ms]
+  GET https://api.testing-2.mercap.com.ar/bonds?shortName=AL30 [503 Service Unavailable, 598B, 132ms]
  12⠄ JSONError in test-script
 
 ↳ Bond by UUID
@@ -86,11 +86,10 @@ Marvel APIs
   │ ty, assertTradableSecurityList'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [errored]
-     ESOCKETTIMEDOUT
+  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [503 Service Unavailable, 599B, 90ms]
   GET  [errored]
      runtime:extensions~request: request url is empty
- 15⠄ JSONError in test-script
+ 14⠄ JSONError in test-script
 
 ↳ Bond payment summary by UUID
   ┌
@@ -105,7 +104,7 @@ Marvel APIs
      ESOCKETTIMEDOUT
   GET  [errored]
      runtime:extensions~request: request url is empty
- 18⠄ JSONError in test-script
+ 17⠄ JSONError in test-script
 
 ↳ Bond coupons by UUID
   ┌
@@ -120,7 +119,7 @@ Marvel APIs
      ESOCKETTIMEDOUT
   GET  [errored]
      runtime:extensions~request: request url is empty
- 21⠄ JSONError in test-script
+ 20⠄ JSONError in test-script
 
 ↳ Bond issue conditions by UUID
   ┌
@@ -131,7 +130,8 @@ Marvel APIs
   │ ty, assertTradableSecurityList'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [502 Bad Gateway, 1.66kB, 3.1s]
+  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [errored]
+     ESOCKETTIMEDOUT
   GET  [errored]
      runtime:extensions~request: request url is empty
  23⠄ JSONError in test-script
@@ -145,10 +145,11 @@ Marvel APIs
   │ ty, assertTradableSecurityList'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [503 Service Unavailable, 603B, 61ms]
+  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [errored]
+     ESOCKETTIMEDOUT
   GET  [errored]
      runtime:extensions~request: request url is empty
- 25⠄ JSONError in test-script
+ 26⠄ JSONError in test-script
 
 ❏ Pepper-GS32 / Regression-Test / Bond IRRS
 ↳ Get irrs - one bond
@@ -159,7 +160,7 @@ Marvel APIs
   │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
   │ ty, assertTradableSecurityList'
   └
-  GET https://historical-data.mercapabbaco.com/irrs?short-names=AL30 [200 OK, 63.47kB, 1870ms]
+  GET https://historical-data.mercapabbaco.com/irrs?short-names=AL30 [200 OK, 63.47kB, 2s]
   ✓  Response is received
   ✓  Status code is 200
   ✓  Media-Type is correct
@@ -175,7 +176,7 @@ Marvel APIs
   │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
   │ ty, assertTradableSecurityList'
   └
-  GET https://historical-data.mercapabbaco.com/parities?short-names=AL30 [200 OK, 168.77kB, 2s]
+  GET https://historical-data.mercapabbaco.com/parities?short-names=AL30 [200 OK, 168.77kB, 1686ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -225,11 +226,9 @@ Marvel APIs
   │ ty, assertTradableSecurityList'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [errored]
-     ESOCKETTIMEDOUT
-  POST https://api.testing-2.mercap.com.ar/bond-payment-forecast [errored]
-     ESOCKETTIMEDOUT
- 28⠄ JSONError in test-script
+  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [503 Service Unavailable, 605B, 341ms]
+  POST https://api.testing-2.mercap.com.ar/bond-payment-forecast [503 Service Unavailable, 594B, 122ms]
+ 27⠄ JSONError in test-script
 
 ↳ Get one bond cashflow - dateInterval from and to
   ┌
@@ -240,14 +239,12 @@ Marvel APIs
   │ ty, assertTradableSecurityList'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [errored]
-     ESOCKETTIMEDOUT
-  POST https://api.testing-2.mercap.com.ar/bond-payment-forecast [errored]
-     ESOCKETTIMEDOUT
- 31. Response is received
- 32. Status code is 200
- 33. Media-Type is correct
- 34⠄ JSONError in test-script
+  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [503 Service Unavailable, 591B, 108ms]
+  POST https://api.testing-2.mercap.com.ar/bond-payment-forecast [503 Service Unavailable, 594B, 123ms]
+ 28. Response is received
+ 29. Status code is 200
+ 30. Media-Type is correct
+ 31⠄ JSONError in test-script
 
 ↳ Get payment forecasts
   ┌
@@ -258,12 +255,12 @@ Marvel APIs
   │ ty, assertTradableSecurityList'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [502 Bad Gateway, 1.66kB, 5.2s]
-  POST https://api.testing-2.mercap.com.ar/bond-payment-forecast [503 Service Unavailable, 598B, 78ms]
- 35. Response is received
- 36. Status code is 200
- 37. Media-Type is correct
- 38⠄ JSONError in test-script
+  GET https://api.testing-2.mercap.com.ar/tradable-securities?query=AL30&tradeDate=2026-05-20 [503 Service Unavailable, 605B, 95ms]
+  POST https://api.testing-2.mercap.com.ar/bond-payment-forecast [503 Service Unavailable, 596B, 94ms]
+ 32. Response is received
+ 33. Status code is 200
+ 34. Media-Type is correct
+ 35⠄ JSONError in test-script
 
 ❏ Pepper-GS32 / Regression-Test / Bond laws
 ↳ Get all bond laws - validate each self link
@@ -274,10 +271,11 @@ Marvel APIs
   │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
   │ ty, assertTradableSecurityList'
   └
-  GET https://api.testing-2.mercap.com.ar/bond-laws [503 Service Unavailable, 598B, 67ms]
- 39. Response is received
- 40. Status code is 200
- 41⠄ JSONError in test-script
+  GET https://api.testing-2.mercap.com.ar/bond-laws [errored]
+     ESOCKETTIMEDOUT
+ 37. Response is received
+ 38. Status code is 200
+ 39⠄ JSONError in test-script
 
 ❏ Pepper-GS32 / Regression-Test / Bond Screener
 ↳ Filter by debt-type, issueCurrency, paymentCurrency, issuer & law
@@ -290,56 +288,56 @@ Marvel APIs
   │ '🚀 Iniciando resolución con protección de variables y
   │  fallback...'
   └
-  GET https://api.testing-2.mercap.com.ar/debt-types   GET https://api.testing-2.mercap.com.ar/currencies   GET https://api.testing-2.mercap.com.ar/instrument-issuers   GET https://api.testing-2.mercap.com.ar/bond-laws [503 Service Unavailable, 598B, 57ms]
+  GET https://api.testing-2.mercap.com.ar/debt-types   GET https://api.testing-2.mercap.com.ar/currencies   GET https://api.testing-2.mercap.com.ar/instrument-issuers   GET https://api.testing-2.mercap.com.ar/bond-laws [503 Service Unavailable, 600B, 139ms]
   ┌
   │ '⚠️ Intento fallido para SCREENER_DEBT_TYPE (OBLIGACIÓ
   │ N NEGOCIABLE). Reintentando...'
   └
-[503 Service Unavailable, 592B, 91ms]
-  ┌
-  │ '⚠️ Intento fallido para SCREENER_BOND_LAW (LEY ARGENT
-  │ INA). Reintentando...'
-  └
-[503 Service Unavailable, 604B, 136ms]
+[503 Service Unavailable, 596B, 157ms]
   ┌
   │ '⚠️ Intento fallido para SCREENER_CURRENCY (USD). Rein
   │ tentando...'
   └
-[503 Service Unavailable, 596B, 138ms]
+[503 Service Unavailable, 598B, 161ms]
+  ┌
+  │ '⚠️ Intento fallido para SCREENER_BOND_LAW (LEY ARGENT
+  │ INA). Reintentando...'
+  └
+[503 Service Unavailable, 594B, 172ms]
   ┌
   │ '⚠️ Intento fallido para SCREENER_ISSUER (YPF S.A.). R
   │ eintentando...'
   └
-  GET https://api.testing-2.mercap.com.ar/debt-types   GET https://api.testing-2.mercap.com.ar/bond-laws [503 Service Unavailable, 602B, 60ms]
+  GET https://api.testing-2.mercap.com.ar/debt-types   GET https://api.testing-2.mercap.com.ar/currencies   GET https://api.testing-2.mercap.com.ar/bond-laws   GET https://api.testing-2.mercap.com.ar/instrument-issuers [503 Service Unavailable, 596B, 107ms]
   ┌
   │ '⚠️ Intento fallido para SCREENER_DEBT_TYPE (OBLIGACIÓ
   │ N NEGOCIABLE). Reintentando...'
   └
-  GET https://api.testing-2.mercap.com.ar/currencies   GET https://api.testing-2.mercap.com.ar/instrument-issuers [503 Service Unavailable, 600B, 83ms]
-  ┌
-  │ '⚠️ Intento fallido para SCREENER_BOND_LAW (LEY ARGENT
-  │ INA). Reintentando...'
-  └
-[503 Service Unavailable, 604B, 80ms]
+[503 Service Unavailable, 590B, 85ms]
   ┌
   │ '⚠️ Intento fallido para SCREENER_ISSUER (YPF S.A.). R
   │ eintentando...'
   └
-[503 Service Unavailable, 594B, 83ms]
+[503 Service Unavailable, 590B, 101ms]
   ┌
   │ '⚠️ Intento fallido para SCREENER_CURRENCY (USD). Rein
   │ tentando...'
   └
-  GET https://api.testing-2.mercap.com.ar/debt-types [503 Service Unavailable, 600B, 58ms]
+[503 Service Unavailable, 598B, 126ms]
   ┌
-  │ '🛑 Error crítico: Error de red o status 503 en /debt-
-  │ types'
+  │ '⚠️ Intento fallido para SCREENER_BOND_LAW (LEY ARGENT
+  │ INA). Reintentando...'
+  └
+  GET https://api.testing-2.mercap.com.ar/debt-types   GET https://api.testing-2.mercap.com.ar/instrument-issuers   GET https://api.testing-2.mercap.com.ar/currencies   GET https://api.testing-2.mercap.com.ar/bond-laws [503 Service Unavailable, 600B, 92ms]
+  ┌
+  │ '🛑 Error crítico: Error de red o status 503 en /curre
+  │ ncies'
 <anonymous_script>:107
         throw new Error(`Fallo en Pre-request: ${error}`);
               ^
 
-Error: Fallo en Pre-request: Error de red o status 503 en /debt-types
+Error: Fallo en Pre-request: Error de red o status 503 en /currencies
     at main (eval at exec (evalmachine.<anonymous>:66:1819788), <anonymous>:107:15)
     at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
 
-Node.js v22.22.3
+Node.js v22.22.2
