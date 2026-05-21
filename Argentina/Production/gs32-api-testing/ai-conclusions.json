@@ -1,64 +1,64 @@
 {
   "escalar_prioritario": {
-    "titulo": "Curvas de rendimiento — Listar todas (resumen) — 14 reincidencias como outlier",
-    "detalle": "Este endpoint registra inestabilidad estructural con 14 apariciones como outlier, lo que indica un problema persistente más grave que una degradación puntual. Aunque la corrida actual presenta alertas amarillas en otros servicios, la reincidencia histórica de este componente requiere atención prioritaria."
+    "titulo": "Curvas de rendimiento — Listar todas (resumen) — 13 reincidencias como outlier",
+    "detalle": "El endpoint presenta una inestabilidad estructural crítica con 13 registros históricos como outlier. Aunque no tiene alerta roja hoy, la persistencia de este comportamiento indica un problema de fondo que requiere atención prioritaria sobre degradaciones puntuales."
   },
   "investigar": {
-    "titulo": "3 endpoints en amarillo simultáneos — posible causa de infra",
-    "detalle": "La degradación simultánea de endpoints en los servicios de Mutual Fund Shares, Valuation Schemes y Yield Curves sugiere una causa de infraestructura compartida. Se debe investigar saturación en recursos comunes dado que la afectación cruza múltiples módulos funcionales."
+    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 25.67 KB",
+    "detalle": "Existe una correlación directa entre el tamaño de respuesta y la latencia observada en los servicios más lentos. Los endpoints Paridades de bono (164.71 KB) y Tasas Internas de Retorno (61.81 KB) son candidatos a revisión por su volumen de datos."
   },
   "optimizar": {
-    "titulo": "Optimizar Bond Screener — Filtro múltiple de bonos — impact score: 168.279",
-    "detalle": "Con un impact_score de 168.279 y un P95 típico de 2.952 ms, este endpoint es el de mayor peso sistémico. Una reducción del 20% en su latencia evitaría 33.655 ms de tiempo de procesamiento acumulado en el ciclo de vida del motor."
+    "titulo": "Bond Screener — Filtro múltiple de bonos — impact score: 168.279",
+    "detalle": "Este endpoint genera el mayor impacto sistémico con 57 ejecuciones y un P95 de 2.939ms. Una reducción del 20% en su P95 representaría 33.655,8 ms de latencia acumulada evitada por ciclo de vida del sistema."
   },
-  "bottleneck_narrative": "La corrida actual presenta 3 alertas amarillas y 3 outliers, lo cual, al no superar el umbral de tendencia sostenida con un 14.5%, es compatible con una regresión puntual. Los niveles de latencia se mantienen dentro de una variabilidad que no indica una degradación estructural del baseline global por el momento.",
+  "bottleneck_narrative": "Se confirma la estabilidad general del motor GS32 en esta corrida. El promedio P95 actual de 378ms se mantiene saludablemente por debajo del baseline de 539ms, sin alertas de degradación activas.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Causa de infraestructura compartida (DB o Red)",
-      "evidence": "3 endpoints degradados simultáneamente en los servicios Mutual Fund Shares, Valuation Schemes y Yield Curves.",
+      "hypothesis": "Inestabilidad estructural recurrente en Curvas de rendimiento",
+      "evidence": "Endpoint registrado como outlier en 13 corridas distintas.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Inestabilidad estructural recurrente en Yield Curves",
-      "evidence": "El endpoint Curvas de rendimiento — Listar todas (resumen) registra 14 apariciones como outlier.",
-      "priority": "alta"
-    },
-    {
-      "hypothesis": "Regresión puntual en módulo de Fondos Comunes",
-      "evidence": "Regression_pct de 406.78% en el endpoint Fondo Común de Inversión por UUID.",
+      "hypothesis": "Cuello de botella por tamaño de respuesta (serialización)",
+      "evidence": "Paridades de bono con 164.71 KB y P95 de 1681ms frente a endpoints livianos.",
       "priority": "media"
+    },
+    {
+      "hypothesis": "Variabilidad de performance dentro de parámetros normales",
+      "evidence": "avg_p95 de 378ms vs baseline de 539ms en la corrida actual.",
+      "priority": "baja"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Estabilizar Curvas de rendimiento — Listar todas (resumen)",
+      "accion": "Estabilizar Curvas de rendimiento — Listar todas (resumen) — 13 reincidencias",
       "endpoint_target": "Get all yield curves - validate each self link",
-      "evidencia": "14 reincidencias como outlier"
+      "evidencia": "13 occurrences"
     },
     {
       "prioridad": "P1",
-      "accion": "Corregir inestabilidad en Obtener todos los bonos — parámetros por defecto",
+      "accion": "Estabilizar Valores negociables — Filtros obligatorios — 5 reincidencias",
+      "endpoint_target": "Get tradable securities using only mandatory filters",
+      "evidencia": "5 occurrences"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Estabilizar Obtener todos los bonos — parámetros por defecto — 4 reincidencias",
       "endpoint_target": "All bonds - deault parameters",
-      "evidencia": "4 reincidencias como outlier"
+      "evidencia": "4 occurrences"
     },
     {
       "prioridad": "P2",
-      "accion": "Analizar regresión en Fondo Común de Inversión por UUID",
-      "endpoint_target": "Get mutual fund share by UUID",
-      "evidencia": "406.78% de regresión vs corrida anterior"
-    },
-    {
-      "prioridad": "P2",
-      "accion": "Investigar saturación de recursos en servicios compartidos",
-      "endpoint_target": "—",
-      "evidencia": "3 servicios con alertas amarillas simultáneas"
+      "accion": "Analizar impacto de payload en Paridades de bono — 164.71 KB",
+      "endpoint_target": "Get parities",
+      "evidencia": "164.71 KB"
     },
     {
       "prioridad": "P3",
       "accion": "Optimizar Bond Screener — alto impacto acumulado en latencia",
       "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
-      "evidencia": "impact score: 168.279"
+      "evidencia": "168.279 impact score"
     }
   ]
 }
