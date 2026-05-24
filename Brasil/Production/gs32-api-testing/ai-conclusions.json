@@ -1,64 +1,64 @@
 {
   "escalar_prioritario": {
-    "titulo": "Cupones de bono por UUID — 17 reincidencias como outlier",
-    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 17 registros históricos como outlier, indicando un problema persistente más allá de la corrida actual. Aunque hoy se encuentra en alerta amarilla, la reincidencia histórica es más grave que una degradación puntual por su carácter estructural."
+    "titulo": "Cupones de bono por UUID — 18 reincidencias como outlier",
+    "detalle": "Este endpoint ha sido registrado como outlier en 18 corridas distintas, indicando una inestabilidad estructural persistente más grave que una degradación puntual. Aunque la corrida actual también presenta 9 alertas amarillas en otros endpoints, la reincidencia histórica de 'Cupones de bono por UUID' lo convierte en la prioridad de escalado."
   },
   "investigar": {
-    "titulo": "5 endpoints en alerta amarilla simultáneos — posible causa de infra",
-    "detalle": "La degradación simultánea en módulos de Bonds, Bond Payment Forecasts v2, Investments y Tradable Securities sugiere una causa de infraestructura compartida. Esta afectación multiservicio apunta a una posible saturación en recursos comunes como la base de datos o la red interna."
+    "titulo": "9 endpoints en amarillo simultáneos — posible causa de infraestructura",
+    "detalle": "La degradación simultánea de 9 endpoints de los servicios Bonds, Bond Payment Forecasts v2, Investments y Tradable Securities sugiere una causa raíz en la infraestructura compartida, no en el código de aplicación."
   },
   "optimizar": {
-    "titulo": "Optimizar Métricas de inversión por ID — impact score: 363.777",
-    "detalle": "Este endpoint posee el mayor peso acumulado en la performance global con un impact score de 363.777 y 67 ejecuciones históricas. Una reducción del 20% en su P95 representaría 72755.4 ms de latencia acumulada evitada por ciclo de vida."
+    "titulo": "Métricas de inversión por ID — Alto impacto acumulado",
+    "detalle": "El endpoint 'Métricas de inversión por ID' tiene el mayor impacto acumulado (Impact Score: 351.952), con un P95 de 5.175,76ms en 68 ejecuciones. Una reducción del 20% en su P95 representaría 70.390,4 ms de latencia acumulada evitada, siendo una oportunidad doble de mejora al tener también una alerta amarilla activa."
   },
-  "bottleneck_narrative": "La corrida actual presenta 5 alertas amarillas y 4 outliers, lo cual es compatible con una regresión puntual dado que el incremento del 103.6% en el avg P95 no responde a una tendencia sostenida previa. El comportamiento sugiere un evento de inestabilidad aislado en esta ejecución que afecta a múltiples servicios simultáneamente.",
+  "bottleneck_narrative": "La corrida actual presenta 9 alertas amarillas, lo que es compatible con una regresión puntual o el inicio de una, dado que la clasificación indica que no hay una tendencia sostenida de degradación de tiempos. No se identificaron picos históricos anómalos recientes que influyan en esta clasificación.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Causa de infraestructura compartida (DB o Red)",
-      "evidence": "5 endpoints afectados simultáneamente en los servicios Bonds, Bond Payment Forecasts v2, Investments y Tradable Securities",
+      "hypothesis": "Causa de infraestructura compartida",
+      "evidence": "9 endpoints de los servicios Bonds, Bond Payment Forecasts v2, Investments y Tradable Securities afectados simultáneamente.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Inestabilidad estructural recurrente en Cupones de bono",
-      "evidence": "Endpoint 'Bond coupons by UUID' registrado como outlier en 17 corridas distintas",
+      "hypothesis": "Inestabilidad estructural recurrente en Cupones de bono por UUID",
+      "evidence": "Endpoint 'Bond coupons by UUID' ha sido outlier en 18 corridas distintas.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Regresión puntual en módulo de flujos de caja",
-      "evidence": "Regression_pct de 3734.78% y baseline_global_delta_pct de 2305.24% en 'Get one bond cashflow'",
+      "hypothesis": "Degradación general de performance en las últimas corridas",
+      "evidence": "El avg P95 ha aumentado un 128.8% en las últimas 10 corridas, de 278ms a 636ms.",
       "priority": "media"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Estabilizar Cupones de bono por UUID — 17 reincidencias estructurales",
+      "accion": "Investigar inestabilidad recurrente en Cupones de bono por UUID",
       "endpoint_target": "Bond coupons by UUID",
-      "evidence": "17 occurrences"
+      "evidencia": "18 reincidencias como outlier, P95 actual 2186ms"
     },
     {
       "prioridad": "P1",
-      "accion": "Corregir regresión en Métricas de valor negociable — +2866% vs baseline global",
-      "endpoint_target": "Get tradable security metrics",
-      "evidence": "5813 ms"
-    },
-    {
-      "prioridad": "P2",
-      "accion": "Analizar degradación en Flujos de caja de bono desde fecha — +3734% de regresión",
+      "accion": "Investigar inestabilidad recurrente en Flujos de caja de bono desde fecha",
       "endpoint_target": "Get one bond cashflow - only dateInterval from",
-      "evidence": "5292 ms"
+      "evidencia": "10 reincidencias como outlier, P95 actual 2316ms"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Investigar inestabilidad recurrente en Métricas de valor negociable",
+      "endpoint_target": "Get tradable security metrics",
+      "evidencia": "9 reincidencias como outlier, P95 actual 4181ms"
     },
     {
       "prioridad": "P2",
-      "accion": "Investigar saturación de infraestructura compartida — afectación multiservicio",
+      "accion": "Evaluar capacidad de infraestructura compartida",
       "endpoint_target": "—",
-      "evidence": "5 alertas amarillas"
+      "evidencia": "9 endpoints de módulos distintos con alertas amarillas"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Métricas de inversión por ID — alto impacto acumulado",
+      "accion": "Optimizar Métricas de inversión por ID",
       "endpoint_target": "Get investment metrics by ID",
-      "evidence": "363777 impact score"
+      "evidencia": "Impact score: 351.952, P95 actual 2394ms"
     }
   ]
 }
