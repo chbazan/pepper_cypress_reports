@@ -1,64 +1,64 @@
 {
   "escalar_prioritario": {
-    "titulo": "Curvas de rendimiento — Listar todas (resumen) — 15 reincidencias como outlier",
-    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 15 registros históricos como outlier. Aunque hoy tiene alerta amarilla, su reincidencia histórica es más grave que una degradación puntual e indica un problema de fondo persistente."
+    "titulo": "Curvas de rendimiento — Listar todas (resumen) — 16 reincidencias como outlier",
+    "detalle": "Este endpoint registra 16 corridas como outlier, lo que indica una inestabilidad estructural persistente más grave que una degradación puntual. Aunque la corrida actual presenta otras 4 alertas activas, la reincidencia histórica de este servicio requiere atención prioritaria."
   },
   "investigar": {
-    "titulo": "5 endpoints en alerta amarilla simultánea — posible causa de infraestructura",
-    "detalle": "La degradación simultánea en los servicios Appraiser, Investments, Yield Curves y Bond Groups sugiere una causa de infraestructura compartida. Esta afectación multi-módulo indica que el origen no es una regresión de código específica sino una saturación de recursos comunes."
+    "titulo": "4 endpoints en amarillo simultáneos — posible causa de infra",
+    "detalle": "La degradación simultánea de 4 endpoints pertenecientes a los servicios Bond Payment Forecasts v2, Investments y Yield Curves sugiere un cuello de botella en la infraestructura compartida. Se debe descartar saturación en la base de datos o recursos de red que afecten a múltiples módulos."
   },
   "optimizar": {
-    "titulo": "Optimizar Bond Screener — Filtro múltiple de bonos — impact score: 177.911",
-    "detalle": "Una reducción del 20% en su P95 evitaría 35.582,2 ms de latencia acumulada por ciclo de vida. Este endpoint representa el mayor peso sistémico debido a su latencia base de 2.965 ms y volumen de ejecuciones."
+    "titulo": "Optimizar Bond Screener — Filtro múltiple de bonos — impact score: 181.657",
+    "detalle": "Con un impact_score de 181.657 y un P95 de 3.044 ms, este endpoint es el de mayor peso sistémico. Una reducción del 20% en su latencia evitaría 36.331,4 ms de tiempo de espera acumulado por ciclo de ejecución."
   },
-  "bottleneck_narrative": "La corrida actual registra 0 alertas rojas y 5 amarillas, lo cual, sin una tendencia sostenida de degradación (4.1%), sugiere un patrón compatible con una regresión puntual. Los niveles de latencia se mantienen estables respecto a la ventana reciente a pesar de las alertas individuales activas.",
+  "bottleneck_narrative": "La corrida actual presenta 4 alertas amarillas y 2 outliers, lo cual es compatible con una regresión puntual dado que la tendencia de latencia promedio (6.2%) no es sostenida. Los niveles actuales de performance se mantienen dentro de los parámetros históricos generales a pesar de los picos detectados en endpoints específicos.",
   "root_cause_hypotheses": [
     {
       "hypothesis": "Causa de infraestructura compartida",
-      "evidence": "5 endpoints afectados simultáneamente en los servicios Appraiser, Investments, Yield Curves y Bond Groups",
+      "evidence": "4 endpoints degradados simultáneamente en los servicios Bond Payment Forecasts v2, Investments y Yield Curves",
       "priority": "alta"
     },
     {
-      "hypothesis": "Inestabilidad estructural recurrente en Curvas de rendimiento",
-      "evidence": "Endpoint con 15 ocurrencias históricas como outlier",
+      "hypothesis": "Inestabilidad estructural recurrente en Yield Curves",
+      "evidence": "16 reincidencias como outlier en el endpoint de Curvas de rendimiento",
       "priority": "alta"
     },
     {
-      "hypothesis": "Regresión puntual en módulo de Curvas de rendimiento",
-      "evidence": "baseline_global_delta_pct de 324.95% y regression_pct de 157.98%",
+      "hypothesis": "Regresión puntual en el módulo de Investments",
+      "evidence": "regression_pct de 1263.01% y delta vs baseline de 585.26% en Obtener inversión por ID",
       "priority": "media"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Estabilizar Curvas de rendimiento — Listar todas (resumen)",
+      "accion": "Estabilizar Curvas de rendimiento — Listar todas (resumen) — 16 reincidencias",
       "endpoint_target": "Get all yield curves - validate each self link",
-      "evidencia": "15 reincidencias como outlier"
+      "evidencia": "16 occurrences"
     },
     {
       "prioridad": "P1",
-      "accion": "Estabilizar Valores negociables — Filtros obligatorios",
-      "endpoint_target": "Get tradable securities using only mandatory filters",
-      "evidencia": "5 reincidencias como outlier"
-    },
-    {
-      "prioridad": "P1",
-      "accion": "Estabilizar Obtener todos los bonos — parámetros por defecto",
+      "accion": "Analizar reincidencia en Obtener todos los bonos — parámetros por defecto",
       "endpoint_target": "All bonds - deault parameters",
-      "evidencia": "4 reincidencias como outlier"
+      "evidencia": "4 occurrences"
     },
     {
       "prioridad": "P2",
-      "accion": "Investigar saturación de recursos compartidos (CPU/Red/DB)",
+      "accion": "Investigar regresión crítica en Obtener inversión por ID",
+      "endpoint_target": "Get investment by ID",
+      "evidencia": "1263.01% regression"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Analizar saturación de recursos en infraestructura compartida",
       "endpoint_target": "—",
-      "evidencia": "5 servicios con degradación simultánea"
+      "evidencia": "4 servicios afectados"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Bond Screener — alto impacto acumulado",
+      "accion": "Optimizar Bond Screener — alto impacto acumulado en latencia",
       "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
-      "evidencia": "impact score: 177.911"
+      "evidencia": "impact score: 181.657"
     }
   ]
 }
