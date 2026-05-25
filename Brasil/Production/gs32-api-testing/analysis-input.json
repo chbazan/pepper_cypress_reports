@@ -3,16 +3,10 @@
     "environment": "Production",
     "country": "Brasil",
     "version": "V10.3.68",
-    "run_id": "202605241240",
-    "run_time": "2026-05-24T12:40:51.010Z"
+    "run_id": "202605251328",
+    "run_time": "2026-05-25T13:28:36.740Z"
   },
   "recent_runs": [
-    {
-      "date": "2026-05-15",
-      "avg_p95": 278,
-      "baseline": 509,
-      "slowest": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law"
-    },
     {
       "date": "2026-05-16",
       "avg_p95": 1056,
@@ -66,226 +60,20 @@
       "avg_p95": 636,
       "baseline": 508,
       "slowest": "Get tradable security metrics"
+    },
+    {
+      "date": "2026-05-25",
+      "avg_p95": 287,
+      "baseline": 513,
+      "slowest": "Get investment metrics by ID"
     }
   ],
-  "traffic_lights": [
-    {
-      "endpoint": "All bonds - start & limit parameters",
-      "api_info": {
-        "api_name": "Obtener todos los bonos — con paginación",
-        "service": "Bonds",
-        "protocol": "REST",
-        "description": "Devuelve bonos con paginación explícita (parámetros start y limit).",
-        "complexity": "low"
-      },
-      "status_level": 1,
-      "p95": 354,
-      "baseline_global": 171,
-      "baseline_global_delta_pct": 106.65,
-      "baseline_version_delta_pct": 99.65,
-      "regression_pct": 102.29,
-      "total_executions": 68
-    },
-    {
-      "endpoint": "Bond coupons by UUID",
-      "api_info": {
-        "api_name": "Cupones de bono por UUID",
-        "service": "Bonds",
-        "protocol": "REST",
-        "description": "Devuelve los cupones de pago de un bono específico. El tamaño de la respuesta varía según la cantidad de cupones del instrumento.",
-        "complexity": "low"
-      },
-      "status_level": 1,
-      "p95": 2186,
-      "baseline_global": 719,
-      "baseline_global_delta_pct": 203.97,
-      "baseline_version_delta_pct": 166.23,
-      "regression_pct": 3.95,
-      "total_executions": 68
-    },
-    {
-      "endpoint": "Get parities",
-      "api_info": {
-        "api_name": "Paridades de bono",
-        "service": "Bond Payment Forecasts v2",
-        "protocol": "JRPC",
-        "description": "Calcula las paridades de un bono (relación precio de mercado / valor técnico). Involucra proyección de flujos futuros.",
-        "complexity": "high"
-      },
-      "status_level": 1,
-      "p95": 490,
-      "baseline_global": 326,
-      "baseline_global_delta_pct": 50.09,
-      "baseline_version_delta_pct": 58.62,
-      "regression_pct": 87.02,
-      "total_executions": 68
-    },
-    {
-      "endpoint": "Get one bond cashflow - only dateInterval from",
-      "api_info": {
-        "api_name": "Flujos de caja de bono desde fecha",
-        "service": "Bond Payment Forecasts v2",
-        "protocol": "JRPC",
-        "description": "Proyecta los flujos de caja futuros de un bono a partir de una fecha dada (sin fecha de fin). El tamaño de la respuesta depende de los cupones restantes del bono.",
-        "complexity": "high"
-      },
-      "status_level": 1,
-      "p95": 2316,
-      "baseline_global": 220,
-      "baseline_global_delta_pct": 952.63,
-      "baseline_version_delta_pct": 1079.99,
-      "regression_pct": -56.24,
-      "total_executions": 68
-    },
-    {
-      "endpoint": "Get investment irr sensitivity by ID",
-      "api_info": {
-        "api_name": "Sensibilidad de TIR de inversión por ID",
-        "service": "Investments",
-        "protocol": "REST",
-        "description": "Analiza cómo cambia la TIR de la inversión ante variaciones en la tasa de descuento. Requiere múltiples iteraciones de valoración — operación computacionalmente costosa.",
-        "complexity": "high"
-      },
-      "status_level": 1,
-      "p95": 2281,
-      "baseline_global": 914,
-      "baseline_global_delta_pct": 149.56,
-      "baseline_version_delta_pct": 185.59,
-      "regression_pct": -5.51,
-      "total_executions": 68
-    },
-    {
-      "endpoint": "Get tradable securities using optional filters - only type",
-      "api_info": {
-        "api_name": "Valores negociables — Filtrado por tipo",
-        "service": "Tradable Securities",
-        "protocol": "REST",
-        "description": "Filtra valores negociables por tipo de instrumento (bono, acción, FCI, etc.).",
-        "complexity": "medium"
-      },
-      "status_level": 1,
-      "p95": 746,
-      "baseline_global": 510,
-      "baseline_global_delta_pct": 46.33,
-      "baseline_version_delta_pct": 23.87,
-      "regression_pct": 53.5,
-      "total_executions": 68
-    },
-    {
-      "endpoint": "Get tradable securities using optional filters - only market",
-      "api_info": {
-        "api_name": "Valores negociables — Filtrado por mercado",
-        "service": "Tradable Securities",
-        "protocol": "REST",
-        "description": "Filtra valores negociables por mercado específico (BYMA, MAE, etc.).",
-        "complexity": "medium"
-      },
-      "status_level": 1,
-      "p95": 712,
-      "baseline_global": 539,
-      "baseline_global_delta_pct": 32.02,
-      "baseline_version_delta_pct": 9.84,
-      "regression_pct": 52.46,
-      "total_executions": 68
-    },
-    {
-      "endpoint": "Get tradable security by UUID",
-      "api_info": {
-        "api_name": "Valor negociable por UUID",
-        "service": "Tradable Securities",
-        "protocol": "REST",
-        "description": "Devuelve un valor negociable específico por UUID. Simple lookup por clave primaria.",
-        "complexity": "low"
-      },
-      "status_level": 1,
-      "p95": 346,
-      "baseline_global": 157,
-      "baseline_global_delta_pct": 120.44,
-      "baseline_version_delta_pct": 76.6,
-      "regression_pct": 116.25,
-      "total_executions": 68
-    },
-    {
-      "endpoint": "Get tradable security metrics",
-      "api_info": {
-        "api_name": "Métricas de valor negociable",
-        "service": "Tradable Securities",
-        "protocol": "REST",
-        "description": "Calcula las métricas del valor negociable: precio de mercado, duración, paridad, TIR, etc. Involucra valoración en tiempo real.",
-        "complexity": "high"
-      },
-      "status_level": 1,
-      "p95": 4181,
-      "baseline_global": 196,
-      "baseline_global_delta_pct": 2033.6,
-      "baseline_version_delta_pct": 1654.51,
-      "regression_pct": -28.08,
-      "total_executions": 68
-    }
-  ],
-  "outliers": [
-    {
-      "time": "2026-05-24T12:40:51.010Z",
-      "run_id": "202605241240",
-      "version": "V10.3.68",
-      "environment": "Production",
-      "country": "Brasil",
-      "endpoint": "Bond coupons by UUID",
-      "p95": 2186,
-      "baseline_global": 719,
-      "outlier_ratio": 3.04
-    },
-    {
-      "time": "2026-05-24T12:40:51.010Z",
-      "run_id": "202605241240",
-      "version": "V10.3.68",
-      "environment": "Production",
-      "country": "Brasil",
-      "endpoint": "Get one bond cashflow - only dateInterval from",
-      "p95": 2316,
-      "baseline_global": 220,
-      "outlier_ratio": 10.53
-    },
-    {
-      "time": "2026-05-24T12:40:51.010Z",
-      "run_id": "202605241240",
-      "version": "V10.3.68",
-      "environment": "Production",
-      "country": "Brasil",
-      "endpoint": "Get tradable security metrics",
-      "p95": 4181,
-      "baseline_global": 196,
-      "outlier_ratio": 21.34
-    }
-  ],
+  "traffic_lights": [],
+  "outliers": [],
   "slowest_this_run": [
     {
-      "endpoint": "Get tradable security metrics",
-      "p95": 4181,
-      "payload_kb": 1.25,
-      "api_info": {
-        "api_name": "Métricas de valor negociable",
-        "service": "Tradable Securities",
-        "protocol": "REST",
-        "description": "Calcula las métricas del valor negociable: precio de mercado, duración, paridad, TIR, etc. Involucra valoración en tiempo real.",
-        "complexity": "high"
-      }
-    },
-    {
-      "endpoint": "Appraise market value",
-      "p95": 2415,
-      "payload_kb": 0.63,
-      "api_info": {
-        "api_name": "Valoración de instrumento financiero",
-        "service": "Appraiser",
-        "protocol": "JRPC",
-        "description": "Calcula la valoración de mercado o técnica de un instrumento financiero (bonds, stocks, etc.). Operación matemáticamente intensiva — usa distintos métodos: appraise-market-value, appraise-in-currency, appraise, etc.",
-        "complexity": "high"
-      }
-    },
-    {
       "endpoint": "Get investment metrics by ID",
-      "p95": 2394,
+      "p95": 2066,
       "payload_kb": 1.04,
       "api_info": {
         "api_name": "Métricas de inversión por ID",
@@ -296,44 +84,20 @@
       }
     },
     {
-      "endpoint": "Get one bond cashflow - only dateInterval from",
-      "p95": 2316,
-      "payload_kb": 5.26,
+      "endpoint": "Appraise market value",
+      "p95": 1666,
+      "payload_kb": 0.63,
       "api_info": {
-        "api_name": "Flujos de caja de bono desde fecha",
-        "service": "Bond Payment Forecasts v2",
+        "api_name": "Valoración de instrumento financiero",
+        "service": "Appraiser",
         "protocol": "JRPC",
-        "description": "Proyecta los flujos de caja futuros de un bono a partir de una fecha dada (sin fecha de fin). El tamaño de la respuesta depende de los cupones restantes del bono.",
+        "description": "Calcula la valoración de mercado o técnica de un instrumento financiero (bonds, stocks, etc.). Operación matemáticamente intensiva — usa distintos métodos: appraise-market-value, appraise-in-currency, appraise, etc.",
         "complexity": "high"
-      }
-    },
-    {
-      "endpoint": "Get investment irr sensitivity by ID",
-      "p95": 2281,
-      "payload_kb": 1.65,
-      "api_info": {
-        "api_name": "Sensibilidad de TIR de inversión por ID",
-        "service": "Investments",
-        "protocol": "REST",
-        "description": "Analiza cómo cambia la TIR de la inversión ante variaciones en la tasa de descuento. Requiere múltiples iteraciones de valoración — operación computacionalmente costosa.",
-        "complexity": "high"
-      }
-    },
-    {
-      "endpoint": "Bond coupons by UUID",
-      "p95": 2186,
-      "payload_kb": 7.91,
-      "api_info": {
-        "api_name": "Cupones de bono por UUID",
-        "service": "Bonds",
-        "protocol": "REST",
-        "description": "Devuelve los cupones de pago de un bono específico. El tamaño de la respuesta varía según la cantidad de cupones del instrumento.",
-        "complexity": "low"
       }
     },
     {
       "endpoint": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
-      "p95": 1599,
+      "p95": 1455,
       "payload_kb": 4.94,
       "api_info": {
         "api_name": "Bond Screener — Filtro múltiple de bonos",
@@ -344,8 +108,32 @@
       }
     },
     {
+      "endpoint": "Get investment price sensitivity by ID",
+      "p95": 485,
+      "payload_kb": 1.5,
+      "api_info": {
+        "api_name": "Sensibilidad de precio de inversión por ID",
+        "service": "Investments",
+        "protocol": "REST",
+        "description": "Analiza cómo varía el precio del instrumento ante cambios en la tasa. Operación matemáticamente intensiva (análisis de sensibilidad).",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get investment irr sensitivity by ID",
+      "p95": 476,
+      "payload_kb": 1.65,
+      "api_info": {
+        "api_name": "Sensibilidad de TIR de inversión por ID",
+        "service": "Investments",
+        "protocol": "REST",
+        "description": "Analiza cómo cambia la TIR de la inversión ante variaciones en la tasa de descuento. Requiere múltiples iteraciones de valoración — operación computacionalmente costosa.",
+        "complexity": "high"
+      }
+    },
+    {
       "endpoint": "Get irrs - one bond",
-      "p95": 915,
+      "p95": 468,
       "payload_kb": 10.36,
       "api_info": {
         "api_name": "Tasas Internas de Retorno (TIR/IRR) de un bono",
@@ -356,20 +144,20 @@
       }
     },
     {
-      "endpoint": "Get tradable securities using only mandatory filters",
-      "p95": 765,
-      "payload_kb": 12.02,
+      "endpoint": "Get tradable securities using optional filters - only market",
+      "p95": 466,
+      "payload_kb": 12.04,
       "api_info": {
-        "api_name": "Valores negociables — Filtros obligatorios",
+        "api_name": "Valores negociables — Filtrado por mercado",
         "service": "Tradable Securities",
         "protocol": "REST",
-        "description": "Obtiene la lista de valores negociables usando solo los filtros obligatorios (exchange, valuationDate, valuationName). Retorna todos los instrumentos negociables para esa fecha y mercado — respuesta potencialmente grande.",
-        "complexity": "high"
+        "description": "Filtra valores negociables por mercado específico (BYMA, MAE, etc.).",
+        "complexity": "medium"
       }
     },
     {
       "endpoint": "Get tradable securities using optional filters - only type",
-      "p95": 746,
+      "p95": 462,
       "payload_kb": 12.05,
       "api_info": {
         "api_name": "Valores negociables — Filtrado por tipo",
@@ -378,6 +166,23 @@
         "description": "Filtra valores negociables por tipo de instrumento (bono, acción, FCI, etc.).",
         "complexity": "medium"
       }
+    },
+    {
+      "endpoint": "Get tradable securities using optional filters - only query",
+      "p95": 406,
+      "payload_kb": 0.69,
+      "api_info": {
+        "api_name": "Valores negociables — Búsqueda por texto libre",
+        "service": "Tradable Securities",
+        "protocol": "REST",
+        "description": "Filtra valores negociables por búsqueda de texto libre sobre nombre o identificadores.",
+        "complexity": "medium"
+      }
+    },
+    {
+      "endpoint": "Get tradable securities using optional filters - ticker & tradeDate",
+      "p95": 368,
+      "payload_kb": 2.97
     }
   ],
   "top_impact": [
@@ -390,11 +195,11 @@
         "description": "Calcula métricas financieras de una inversión: duración modificada, convexidad, TIR, precio técnico, etc. Cálculo matemáticamente intensivo que combina valoración + análisis de sensibilidad.",
         "complexity": "high"
       },
-      "impact_score": 351952,
-      "p95": 2394,
-      "impact_p95_used": 5175.76,
-      "total_executions": 68,
-      "baseline_global": 5176
+      "impact_score": 354116,
+      "p95": 2066,
+      "impact_p95_used": 5132.12,
+      "total_executions": 69,
+      "baseline_global": 5132
     },
     {
       "endpoint": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
@@ -405,11 +210,11 @@
         "description": "Filtra la cartera de bonos usando múltiples criterios simultáneos: tipo de deuda, moneda de emisión, moneda de pago, emisor y legislación. La combinación de filtros genera una consulta compleja sobre el catálogo completo de bonos.",
         "complexity": "high"
       },
-      "impact_score": 139253,
-      "p95": 1599,
-      "impact_p95_used": 2047.84,
-      "total_executions": 68,
-      "baseline_global": 2048
+      "impact_score": 140741,
+      "p95": 1455,
+      "impact_p95_used": 2039.72,
+      "total_executions": 69,
+      "baseline_global": 2040
     },
     {
       "endpoint": "Appraise market value",
@@ -420,11 +225,11 @@
         "description": "Calcula la valoración de mercado o técnica de un instrumento financiero (bonds, stocks, etc.). Operación matemáticamente intensiva — usa distintos métodos: appraise-market-value, appraise-in-currency, appraise, etc.",
         "complexity": "high"
       },
-      "impact_score": 129521,
-      "p95": 2415,
-      "impact_p95_used": 1904.72,
-      "total_executions": 68,
-      "baseline_global": 1905
+      "impact_score": 132457,
+      "p95": 1666,
+      "impact_p95_used": 1919.66,
+      "total_executions": 69,
+      "baseline_global": 1920
     },
     {
       "endpoint": "Get investment irr sensitivity by ID",
@@ -435,11 +240,11 @@
         "description": "Analiza cómo cambia la TIR de la inversión ante variaciones en la tasa de descuento. Requiere múltiples iteraciones de valoración — operación computacionalmente costosa.",
         "complexity": "high"
       },
-      "impact_score": 62152,
-      "p95": 2281,
-      "impact_p95_used": 914,
-      "total_executions": 68,
-      "baseline_global": 914
+      "impact_score": 65395,
+      "p95": 476,
+      "impact_p95_used": 947.76,
+      "total_executions": 69,
+      "baseline_global": 948
     },
     {
       "endpoint": "Bond coupons by UUID",
@@ -450,11 +255,11 @@
         "description": "Devuelve los cupones de pago de un bono específico. El tamaño de la respuesta varía según la cantidad de cupones del instrumento.",
         "complexity": "low"
       },
-      "impact_score": 48902,
-      "p95": 2186,
-      "impact_p95_used": 719.14,
-      "total_executions": 68,
-      "baseline_global": 719
+      "impact_score": 52407,
+      "p95": 157,
+      "impact_p95_used": 759.52,
+      "total_executions": 69,
+      "baseline_global": 760
     }
   ],
   "outlier_recurrence": [
@@ -581,30 +386,30 @@
     }
   ],
   "bottleneck_class": {
-    "class": "REGRESSION-SPIKE",
+    "class": "HEALTHY",
     "reds_count": 0,
-    "yellows_count": 9,
-    "outliers_count": 3,
-    "trend_delta_pct": 128.8,
-    "reasoning": "9 alerta(s) activas sin tendencia sostenida en las últimas 10 corridas."
+    "yellows_count": 0,
+    "outliers_count": 0,
+    "trend_delta_pct": -72.8,
+    "reasoning": "Sin alertas ni outliers en esta corrida."
   },
   "payload_stats": {
-    "avg_payload_kb": 5.71,
+    "avg_payload_kb": 4.79,
     "heaviest_endpoints": [
       {
         "endpoint": "Get tradable securities using optional filters - only type",
         "payload_kb": 12.05,
-        "p95": 746
+        "p95": 462
       },
       {
-        "endpoint": "Get tradable securities using only mandatory filters",
-        "payload_kb": 12.02,
-        "p95": 765
+        "endpoint": "Get tradable securities using optional filters - only market",
+        "payload_kb": 12.04,
+        "p95": 466
       },
       {
         "endpoint": "Get irrs - one bond",
         "payload_kb": 10.36,
-        "p95": 915
+        "p95": 468
       }
     ],
     "payload_correlated": false

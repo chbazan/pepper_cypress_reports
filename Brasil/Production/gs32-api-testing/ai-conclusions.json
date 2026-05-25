@@ -1,64 +1,59 @@
 {
   "escalar_prioritario": {
     "titulo": "Cupones de bono por UUID — 18 reincidencias como outlier",
-    "detalle": "Este endpoint ha sido registrado como outlier en 18 corridas distintas, indicando una inestabilidad estructural persistente más grave que una degradación puntual. Aunque la corrida actual también presenta 9 alertas amarillas en otros endpoints, la reincidencia histórica de 'Cupones de bono por UUID' lo convierte en la prioridad de escalado."
+    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 18 registros históricos como outlier, lo cual indica un problema persistente más allá de la estabilidad de la corrida actual. Aunque no existan alertas activas hoy, la recurrencia histórica es una señal de degradación estructural más grave que un pico puntual."
   },
   "investigar": {
-    "titulo": "9 endpoints en amarillo simultáneos — posible causa de infraestructura",
-    "detalle": "La degradación simultánea de 9 endpoints de los servicios Bonds, Bond Payment Forecasts v2, Investments y Tradable Securities sugiere una causa raíz en la infraestructura compartida, no en el código de aplicación."
+    "titulo": "Performance estable — avg P95: 287 ms vs baseline 513 ms",
+    "detalle": "Los valores de las últimas corridas confirman una tendencia de mejora en la performance global del sistema GS32. Se identifican Métricas de inversión por ID, Valoración de instrumento financiero y Bond Screener — Filtro múltiple de bonos como los candidatos preventivos a monitorear por ser los más expuestos ante incrementos de carga."
   },
   "optimizar": {
-    "titulo": "Métricas de inversión por ID — Alto impacto acumulado",
-    "detalle": "El endpoint 'Métricas de inversión por ID' tiene el mayor impacto acumulado (Impact Score: 351.952), con un P95 de 5.175,76ms en 68 ejecuciones. Una reducción del 20% en su P95 representaría 70.390,4 ms de latencia acumulada evitada, siendo una oportunidad doble de mejora al tener también una alerta amarilla activa."
+    "titulo": "Optimizar Métricas de inversión por ID — alto impacto sistémico",
+    "detalle": "Este endpoint posee el mayor peso acumulado con un impact score de 354.116 y un P95 limpio de 5.132 ms sobre 69 ejecuciones. Una reducción del 20% en su latencia representaría 70.823 ms de latencia acumulada evitada por ciclo de vida del endpoint."
   },
-  "bottleneck_narrative": "La corrida actual presenta 9 alertas amarillas, lo que es compatible con una regresión puntual o el inicio de una, dado que la clasificación indica que no hay una tendencia sostenida de degradación de tiempos. No se identificaron picos históricos anómalos recientes que influyan en esta clasificación.",
+  "bottleneck_narrative": "La corrida actual se clasifica como saludable al no registrarse alertas de semáforo ni endpoints categorizados como outliers en el último run. El promedio de latencia P95 de 287 ms se mantiene significativamente por debajo del baseline histórico de 513 ms, consolidando la estabilidad operativa del motor de valoración.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Causa de infraestructura compartida",
-      "evidence": "9 endpoints de los servicios Bonds, Bond Payment Forecasts v2, Investments y Tradable Securities afectados simultáneamente.",
+      "hypothesis": "Inestabilidad estructural recurrente en Cupones de bono",
+      "evidence": "Endpoint 'Bond coupons by UUID' con 18 ocurrencias en el historial de outlier_recurrence.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Inestabilidad estructural recurrente en Cupones de bono por UUID",
-      "evidence": "Endpoint 'Bond coupons by UUID' ha sido outlier en 18 corridas distintas.",
-      "priority": "alta"
-    },
-    {
-      "hypothesis": "Degradación general de performance en las últimas corridas",
-      "evidence": "El avg P95 ha aumentado un 128.8% en las últimas 10 corridas, de 278ms a 636ms.",
-      "priority": "media"
+      "hypothesis": "Variabilidad de performance dentro de parámetros normales",
+      "evidence": "avg_p95 actual de 287 ms vs baseline de 513 ms en recent_runs.",
+      "priority": "baja"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Investigar inestabilidad recurrente en Cupones de bono por UUID",
+      "accion": "Estabilizar Cupones de bono por UUID — 18 reincidencias como outlier",
       "endpoint_target": "Bond coupons by UUID",
-      "evidencia": "18 reincidencias como outlier, P95 actual 2186ms"
+      "evidencia": "18 occurrences"
     },
     {
       "prioridad": "P1",
-      "accion": "Investigar inestabilidad recurrente en Flujos de caja de bono desde fecha",
+      "accion": "Analizar recurrencia en Flujos de caja de bono desde fecha",
       "endpoint_target": "Get one bond cashflow - only dateInterval from",
-      "evidencia": "10 reincidencias como outlier, P95 actual 2316ms"
-    },
-    {
-      "prioridad": "P1",
-      "accion": "Investigar inestabilidad recurrente en Métricas de valor negociable",
-      "endpoint_target": "Get tradable security metrics",
-      "evidencia": "9 reincidencias como outlier, P95 actual 4181ms"
+      "evidencia": "10 occurrences"
     },
     {
       "prioridad": "P2",
-      "accion": "Evaluar capacidad de infraestructura compartida",
-      "endpoint_target": "—",
-      "evidencia": "9 endpoints de módulos distintos con alertas amarillas"
+      "accion": "Investigar inestabilidad en Métricas de valor negociable",
+      "endpoint_target": "Get tradable security metrics",
+      "evidencia": "9 occurrences"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Métricas de inversión por ID",
+      "accion": "Optimizar Métricas de inversión por ID — alto peso acumulado en performance",
       "endpoint_target": "Get investment metrics by ID",
-      "evidencia": "Impact score: 351.952, P95 actual 2394ms"
+      "evidencia": "354.116 impact_score"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Revisar Bond Screener — Filtro múltiple de bonos por impacto sistémico",
+      "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "evidencia": "140.741 impact_score"
     }
   ]
 }
