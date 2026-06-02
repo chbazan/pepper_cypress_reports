@@ -1,0 +1,64 @@
+{
+  "escalar_prioritario": {
+    "titulo": "Curvas de rendimiento — Listar todas (resumen) — 17 reincidencias como outlier",
+    "detalle": "Este endpoint registra 17 corridas como outlier, lo que indica una inestabilidad estructural persistente más grave que una degradación puntual. Aunque la corrida actual presenta alertas en otros servicios como Emisores de instrumentos, la prioridad de escalado es esta reincidencia por su carácter sistémico."
+  },
+  "investigar": {
+    "titulo": "Tendencia de latencia al alza — variación del 31.4% en últimas corridas",
+    "detalle": "La variación del 31.4% en el avg_p95 advierte que el baseline global absorberá la degradación progresivamente, enmascarando alertas futuras. El promedio de latencia subió de 388ms a 510ms entre el 21-05 y el 02-06."
+  },
+  "optimizar": {
+    "titulo": "Optimizar Bond Screener — Filtro múltiple de bonos (Impact Score: 197.978)",
+    "detalle": "Una reducción del 20% en su P95 representaría 39.595,6 ms de latencia acumulada evitada por ciclo de vida del endpoint. Actualmente registra un P95 de 3.836 ms frente a un baseline de 3.000 ms con 66 ejecuciones acumuladas."
+  },
+  "bottleneck_narrative": "La corrida actual presenta 1 alerta amarilla y 1 outlier, lo que sugiere una regresión puntual dado que no se identifica una tendencia de degradación sostenida en la clasificación determinista. El incremento del 31.4% en la tendencia, aunque notable, no ha sido suficiente para desplazar la clasificación de un pico de regresión hacia una degradación latente según los parámetros actuales.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Inestabilidad estructural en Curvas de rendimiento",
+      "evidence": "Endpoint 'Get all yield curves - validate each self link' registrado como outlier en 17 corridas distintas.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Inestabilidad estructural en Obtener todos los bonos",
+      "evidence": "Endpoint 'All bonds - deault parameters' registrado como outlier en 4 corridas distintas.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Regresión puntual en módulo Instrument Issuers",
+      "evidence": "Regression_pct de 4691% y baseline_global_delta_pct de 4674.29% en 'Get all instrument issuers'.",
+      "priority": "media"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P1",
+      "accion": "Estabilizar Curvas de rendimiento — Listar todas (resumen) — 17 reincidencias",
+      "endpoint_target": "Get all yield curves - validate each self link",
+      "evidencia": "17 occurrences"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Estabilizar Obtener todos los bonos — parámetros por defecto — 4 reincidencias",
+      "endpoint_target": "All bonds - deault parameters",
+      "evidencia": "4 occurrences"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Analizar regresión en Emisores de instrumentos — Obtener todos — +4691% vs anterior",
+      "endpoint_target": "Get all instrument issuers",
+      "evidencia": "9582 ms"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Investigar reincidencia en Grupos de bonos — Obtener todos",
+      "endpoint_target": "Get all bond groups",
+      "evidencia": "3 occurrences"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Optimizar Bond Screener — Filtro múltiple de bonos — alto impacto acumulado",
+      "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "evidencia": "197.978 impact score"
+    }
+  ]
+}
