@@ -1,0 +1,64 @@
+{
+  "escalar_prioritario": {
+    "titulo": "Curvas de rendimiento — Listar todas (resumen) — 17 reincidencias como outlier",
+    "detalle": "El endpoint 'Curvas de rendimiento — Listar todas (resumen)' ha sido registrado como outlier en 17 corridas distintas, indicando una inestabilidad estructural persistente que es más grave que una degradación puntual. Aunque la corrida actual presenta 3 alertas amarillas en otros endpoints, la reincidencia histórica de este endpoint lo convierte en la prioridad de escalado por su carácter estructural."
+  },
+  "investigar": {
+    "titulo": "3 endpoints en alerta amarilla simultáneamente — posible causa de infraestructura compartida",
+    "detalle": "La degradación simultánea de 3 endpoints de servicios distintos (Appraiser, Bonds y Get all mutual fund types) sugiere una causa raíz en la infraestructura compartida, no en el código de aplicación específico de cada uno."
+  },
+  "optimizar": {
+    "titulo": "Optimizar Bond Screener — alto impacto acumulado (203.183)",
+    "detalle": "El endpoint 'Bond Screener — Filtro múltiple de bonos' tiene el mayor impacto acumulado (impact score: 203.183), con un P95 de 3.032,58 ms en 67 ejecuciones. Una reducción del 20% en su P95 representaría 40.636,6 ms de latencia acumulada evitada por ciclo de vida del endpoint."
+  },
+  "bottleneck_narrative": "La corrida actual muestra 0 alertas rojas y 3 amarillas, lo que es compatible con una regresión puntual o el inicio de una, dado que no se observa una tendencia sostenida de degradación de tiempos.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Degradación por infraestructura compartida",
+      "evidence": "3 endpoints de servicios distintos (Appraiser, Bonds, Get all mutual fund types) en alerta amarilla simultáneamente.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Inestabilidad estructural recurrente en Curvas de rendimiento",
+      "evidence": "El endpoint 'Get all yield curves - validate each self link' ha sido outlier en 17 corridas.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Regresión puntual en el módulo de Bonos",
+      "evidence": "El endpoint 'All bonds - for issuer' muestra una regresión del 8851.63% vs la corrida anterior y +8142.4% vs baseline global.",
+      "priority": "media"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P1",
+      "accion": "Investigar inestabilidad recurrente en Curvas de rendimiento — Listar todas (resumen)",
+      "endpoint_target": "Get all yield curves - validate each self link",
+      "evidencia": "17 reincidencias como outlier"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Analizar inestabilidad recurrente en Valores negociables — Filtros obligatorios",
+      "endpoint_target": "Get tradable securities using only mandatory filters",
+      "evidencia": "5 reincidencias como outlier"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Revisar inestabilidad recurrente en Obtener todos los bonos — parámetros por defecto",
+      "endpoint_target": "All bonds - deault parameters",
+      "evidencia": "4 reincidencias como outlier"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Investigar causa raíz de degradación sistémica",
+      "endpoint_target": "—",
+      "evidencia": "3 endpoints en alerta amarilla"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Investigar regresión crítica en Obtener todos los bonos — filtrado por emisor",
+      "endpoint_target": "All bonds - for issuer",
+      "evidencia": "+8142% vs baseline global"
+    }
+  ]
+}
