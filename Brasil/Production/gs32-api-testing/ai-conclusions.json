@@ -1,32 +1,32 @@
 {
   "escalar_prioritario": {
     "titulo": "Cupones de bono por UUID — 18 reincidencias como outlier",
-    "detalle": "Este endpoint registra inestabilidad estructural en 18 corridas distintas, lo que indica un problema persistente más grave que una degradación puntual nueva. Aunque la corrida actual presenta alertas amarillas en otros 6 endpoints, la reincidencia histórica de este servicio es la prioridad de escalado."
+    "detalle": "Este endpoint registra 18 corridas como outlier, indicando una inestabilidad estructural que persiste a pesar de no presentar alertas en la corrida actual. La reincidencia histórica es más grave que una degradación puntual nueva porque indica un problema estructural que persiste."
   },
   "investigar": {
-    "titulo": "6 endpoints en amarillo simultáneos — posible causa de infra",
-    "detalle": "La degradación simultánea de 6 endpoints en los servicios de Bonds y Tradable Securities sugiere una causa de infraestructura compartida como base de datos o red. Esta afectación en múltiples módulos indica que el problema no reside en el código de una aplicación específica."
+    "titulo": "Performance estable — avg P95: 292 ms vs baseline 487 ms",
+    "detalle": "Los valores de recent_runs confirman la estabilidad del sistema. Se recomienda monitorear preventivamente a Valoración de instrumento financiero, Bond Screener — Filtro múltiple de bonos y Métricas de inversión por ID por ser los más expuestos ante incrementos de carga."
   },
   "optimizar": {
-    "titulo": "Optimizar Métricas de inversión por ID — impact score: 329.769",
-    "detalle": "Con un impact score de 329.769 y 77 ejecuciones históricas, este endpoint es el de mayor peso sistémico actual. Una reducción del 20% en su P95 representaría 65.953,8 ms de latencia acumulada evitada por ciclo de vida del endpoint."
+    "titulo": "Optimizar Métricas de inversión por ID — alto impacto sistémico",
+    "detalle": "Este endpoint posee un impact_score de 324.408 basado en 78 ejecuciones y un P95 limpio de 4.159 ms. Una reducción del 20% en su latencia representaría 64.881 ms de latencia acumulada evitada por ciclo de vida del endpoint."
   },
-  "bottleneck_narrative": "La corrida actual presenta 6 alertas amarillas sin una tendencia sostenida de degradación, lo cual es compatible con una regresión puntual. La tendencia de -41.7% aparece negativa porque el punto de comparación incluye picos de corridas anteriores que inflaron el valor inicial, por lo que los niveles actuales se consideran normales dentro de la ventana analizada.",
+  "bottleneck_narrative": "La performance del sistema se mantiene estable con un avg P95 de 292ms frente a un baseline de 487ms. No se detectaron alertas de semáforo ni outliers en la corrida actual, confirmando un estado saludable de la operación.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Causa de infraestructura compartida",
-      "evidence": "6 endpoints afectados simultáneamente en servicios Bonds y Tradable Securities",
+      "hypothesis": "Inestabilidad estructural recurrente en Cupones de bono por UUID",
+      "evidence": "18 corridas registradas como outlier en el historial de recurrencia",
       "priority": "alta"
     },
     {
-      "hypothesis": "Inestabilidad estructural recurrente",
-      "evidence": "Cupones de bono por UUID registrado como outlier en 18 corridas",
+      "hypothesis": "Inestabilidad estructural en Flujos de caja de bono desde fecha",
+      "evidence": "14 corridas registradas como outlier en el historial de recurrencia",
       "priority": "alta"
     },
     {
-      "hypothesis": "Regresión puntual en módulo Tradable Securities",
-      "evidence": "regression_pct de 274.26% en Valor negociable por UUID",
-      "priority": "media"
+      "hypothesis": "Variabilidad de performance dentro de parámetros normales",
+      "evidence": "avg_p95 actual de 292ms vs baseline de 487ms",
+      "priority": "baja"
     }
   ],
   "recommendations": [
@@ -37,22 +37,16 @@
       "evidencia": "18 occurrences"
     },
     {
-      "prioridad": "P2",
-      "accion": "Investigar saturación en infraestructura compartida — 6 alertas simultáneas",
-      "endpoint_target": "—",
-      "evidencia": "6 yellow alerts"
-    },
-    {
-      "prioridad": "P2",
-      "accion": "Analizar regresión en Valor negociable por UUID — +274% vs corrida anterior",
-      "endpoint_target": "Get tradable security by UUID",
-      "evidencia": "274.26% regression"
+      "prioridad": "P1",
+      "accion": "Analizar inestabilidad en Flujos de caja de bono desde fecha — 14 reincidencias",
+      "endpoint_target": "Get one bond cashflow - only dateInterval from",
+      "evidencia": "14 occurrences"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Métricas de inversión por ID — alto impacto acumulado en latencia",
+      "accion": "Optimizar Métricas de inversión por ID — alto impacto acumulado (impact score: 324.408)",
       "endpoint_target": "Get investment metrics by ID",
-      "evidencia": "329.769 impact score"
+      "evidencia": "324.408 impact_score"
     }
   ]
 }
