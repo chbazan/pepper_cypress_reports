@@ -1,32 +1,32 @@
 {
   "escalar_prioritario": {
     "titulo": "Cupones de bono por UUID — 18 reincidencias como outlier",
-    "detalle": "Este endpoint registra 18 corridas como outlier, indicando una inestabilidad estructural que persiste a pesar de no presentar alertas en la corrida actual. La reincidencia histórica es más grave que una degradación puntual nueva porque indica un problema estructural que persiste."
+    "detalle": "El endpoint Cupones de bono por UUID registra 18 corridas como outlier, lo que indica una inestabilidad estructural persistente que requiere atención prioritaria sobre degradaciones puntuales. La corrida actual también presenta alertas amarillas en otros 5 servicios, pero la reincidencia histórica de este componente es el factor crítico de riesgo."
   },
   "investigar": {
-    "titulo": "Performance estable — avg P95: 292 ms vs baseline 487 ms",
-    "detalle": "Los valores de recent_runs confirman la estabilidad del sistema. Se recomienda monitorear preventivamente a Valoración de instrumento financiero, Bond Screener — Filtro múltiple de bonos y Métricas de inversión por ID por ser los más expuestos ante incrementos de carga."
+    "titulo": "5 endpoints en amarillo simultáneos — posible causa de infra",
+    "detalle": "La degradación simultánea de 5 endpoints en los servicios de Bonds, Mutual Fund Shares, Stocks y Tradable Securities sugiere una causa de infraestructura compartida. Esta afectación transversal en módulos funcionalmente independientes apunta a una saturación de recursos comunes en lugar de problemas aislados de código."
   },
   "optimizar": {
     "titulo": "Optimizar Métricas de inversión por ID — alto impacto sistémico",
-    "detalle": "Este endpoint posee un impact_score de 324.408 basado en 78 ejecuciones y un P95 limpio de 4.159 ms. Una reducción del 20% en su latencia representaría 64.881 ms de latencia acumulada evitada por ciclo de vida del endpoint."
+    "detalle": "Con un impact score de 320,293 basado en un P95 de 4,054.34 ms y 79 ejecuciones, este endpoint es el principal generador de latencia acumulada. Una reducción del 20% en su P95 representaría 64,058.6 ms de latencia evitada por ciclo de vida del sistema."
   },
-  "bottleneck_narrative": "La performance del sistema se mantiene estable con un avg P95 de 292ms frente a un baseline de 487ms. No se detectaron alertas de semáforo ni outliers en la corrida actual, confirmando un estado saludable de la operación.",
+  "bottleneck_narrative": "La corrida actual registra 5 alertas amarillas sin una tendencia sostenida de degradación, lo cual sugiere que el patrón es compatible con una regresión puntual. La tendencia de la ventana aparece negativa (-25.3%) porque el punto de comparación inicial incluye valores más altos de corridas previas, indicando que los niveles actuales no representan una mejora real sino un retorno a la normalidad tras picos aislados.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Inestabilidad estructural recurrente en Cupones de bono por UUID",
-      "evidence": "18 corridas registradas como outlier en el historial de recurrencia",
+      "hypothesis": "Saturación de infraestructura compartida o base de datos",
+      "evidence": "5 endpoints degradados simultáneamente en los servicios de Bonds, Mutual Fund Shares, Stocks y Tradable Securities",
       "priority": "alta"
     },
     {
-      "hypothesis": "Inestabilidad estructural en Flujos de caja de bono desde fecha",
-      "evidence": "14 corridas registradas como outlier en el historial de recurrencia",
+      "hypothesis": "Inestabilidad estructural recurrente en Cupones de bono",
+      "evidence": "El endpoint Bond coupons by UUID ha sido registrado como outlier en 18 corridas distintas",
       "priority": "alta"
     },
     {
-      "hypothesis": "Variabilidad de performance dentro de parámetros normales",
-      "evidence": "avg_p95 actual de 292ms vs baseline de 487ms",
-      "priority": "baja"
+      "hypothesis": "Regresión puntual en el módulo de Stocks",
+      "evidence": "regression_pct de 271.74% y baseline_global_delta_pct de 96.39% en el endpoint Get all stocks",
+      "priority": "media"
     }
   ],
   "recommendations": [
@@ -38,15 +38,27 @@
     },
     {
       "prioridad": "P1",
-      "accion": "Analizar inestabilidad en Flujos de caja de bono desde fecha — 14 reincidencias",
+      "accion": "Investigar inestabilidad en Flujos de caja de bono desde fecha",
       "endpoint_target": "Get one bond cashflow - only dateInterval from",
       "evidencia": "14 occurrences"
     },
     {
+      "prioridad": "P2",
+      "accion": "Analizar regresión en Acciones — Obtener todas",
+      "endpoint_target": "Get all stocks",
+      "evidencia": "271.74% regression_pct"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Analizar regresión en Obtener todos los bonos — parámetros por defecto",
+      "endpoint_target": "All bonds - deault parameters",
+      "evidencia": "256.19% regression_pct"
+    },
+    {
       "prioridad": "P3",
-      "accion": "Optimizar Métricas de inversión por ID — alto impacto acumulado (impact score: 324.408)",
+      "accion": "Optimizar Métricas de inversión por ID — alto peso acumulado en performance",
       "endpoint_target": "Get investment metrics by ID",
-      "evidencia": "324.408 impact_score"
+      "evidencia": "impact score: 320,293"
     }
   ]
 }
