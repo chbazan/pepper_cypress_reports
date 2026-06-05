@@ -144,11 +144,11 @@
         <div class="meta-item"><strong>País</strong> Brasil</div>
         <div class="meta-item"><strong>Ambiente</strong> Production</div>
         <div class="meta-item"><strong>Versión</strong> V1.10.0</div>
-        <div class="meta-item"><strong>Run ID</strong> 202606051925</div>
-        <div class="meta-item"><strong>Generado</strong> 2026-06-05 19:27 UTC</div>
+        <div class="meta-item"><strong>Run ID</strong> 202606052007</div>
+        <div class="meta-item"><strong>Generado</strong> 2026-06-05 20:11 UTC</div>
       </div>
       <div class="meta-grid" style="margin-top:8px;">
-        <div class="meta-item"><a href="https://github.com/Mercap/pepper-API-testing/actions/runs/27035106556" style="color:#90cdf4;text-decoration:none;" target="_blank">↗ Ver workflow #17</a></div>
+        <div class="meta-item"><a href="https://github.com/Mercap/pepper-API-testing/actions/runs/27037040093" style="color:#90cdf4;text-decoration:none;" target="_blank">↗ Ver workflow #18</a></div>
         <div class="meta-item"><a href="https://monitoring.mercap.com.ar/d/affx497yxyjggd/apis-gs32-metrics?orgId=1&from=now-7d&to=now&var-environment=Production&var-country=Brasil&var-version=V1.10.0" style="color:#90cdf4;text-decoration:none;" target="_blank">📊 Ver dashboard</a></div>
         <div class="meta-item"><a href="https://chbazan.github.io/pepper_cypress_reports/Brasil/Production/gs32-api-testing/" style="color:#90cdf4;text-decoration:none;" target="_blank">🧪 Test report</a></div>
         <div class="meta-item"><a href="https://chbazan.github.io/pepper_cypress_reports/Brasil/Production/gs32-api-testing/newman.log" style="color:#90cdf4;text-decoration:none;" target="_blank">📋 Newman logs</a></div>
@@ -170,8 +170,8 @@
   <div class="cards">
     <div class="card">
       <div class="card-label">avg P95 actual</div>
-      <div class="card-value">425 <span style="font-size:16px;font-weight:400;color:var(--muted)">ms</span></div>
-      <div class="card-sub">Más lento: Get all yield curves - validate each metrics link</div>
+      <div class="card-value">441 <span style="font-size:16px;font-weight:400;color:var(--muted)">ms</span></div>
+      <div class="card-sub">Más lento: Get all bonds</div>
     </div>
     <div class="card">
       <div class="card-label">Baseline global</div>
@@ -180,7 +180,7 @@
     </div>
     <div class="card">
       <div class="card-label">Delta vs baseline</div>
-      <div class="card-value" style="color:#38a169">-12.2%</div>
+      <div class="card-value" style="color:#38a169">-8.9%</div>
       <div class="card-sub">Dentro del baseline</div>
     </div>
     <div class="card">
@@ -205,10 +205,10 @@
           
           
           
-          <span class="bottleneck-stat">📈 Tendencia: +29.6%</span>
+          <span class="bottleneck-stat">📈 Tendencia: +34.5%</span>
         </div>
       </div>
-      <p class="bottleneck-narrative">La corrida actual se clasifica como estable, con un promedio P95 de 425ms frente a un baseline de 484ms. No se detectaron alertas de semáforo ni outliers puntuales en esta ejecución específica.</p>
+      <p class="bottleneck-narrative">El sistema se mantiene en estado saludable sin alertas activas ni outliers en la corrida actual. El promedio P95 de 441ms se sitúa por debajo del baseline de 484ms, confirmando estabilidad operativa inmediata.</p>
       <p class="bottleneck-reasoning">Todos los endpoints operan dentro de sus rangos históricos normales en esta corrida. No hay degradación detectada.</p>
     </div>
 
@@ -257,19 +257,19 @@
         <div class="conclusion-icon">🚨</div>
         <div class="conclusion-label">Escalar de forma prioritaria</div>
         <div class="conclusion-titulo">Cupones de bono por UUID — 18 reincidencias como outlier</div>
-        <div class="conclusion-detalle">Este endpoint presenta una inestabilidad estructural crítica con 18 registros históricos como outlier, indicando un problema persistente más allá de la corrida actual. Aunque hoy no presenta alerta activa, la reincidencia histórica es prioritaria por su carácter estructural frente a degradaciones puntuales.</div>
+        <div class="conclusion-detalle">Este endpoint registra 18 corridas como outlier, lo que indica una inestabilidad estructural persistente a pesar de no presentar alertas en la corrida actual. La reincidencia histórica representa un riesgo técnico mayor que una degradación puntual por su carácter sistémico.</div>
       </div>
       <div class="conclusion-card investigar">
         <div class="conclusion-icon">🔍</div>
         <div class="conclusion-label">Investigar</div>
-        <div class="conclusion-titulo">Tendencia de latencia al alza — incremento del 29.6% en avg P95</div>
-        <div class="conclusion-detalle">Se observa una degradación progresiva en las últimas corridas, pasando de un promedio P95 de 328ms a 425ms. Este patrón sugiere que el baseline global absorberá la degradación gradualmente, lo que podría enmascarar alertas críticas en el futuro cercano.</div>
+        <div class="conclusion-titulo">Tendencia de latencia al alza — incremento del 34.5% en avg P95</div>
+        <div class="conclusion-detalle">La variación sostenida entre los 328ms de la primera corrida y los 441ms de la actual advierte que el baseline global absorberá la degradación progresivamente. Este comportamiento enmascara alertas futuras al normalizar tiempos de respuesta más lentos.</div>
       </div>
       <div class="conclusion-card optimizar">
         <div class="conclusion-icon">⚡</div>
         <div class="conclusion-label">Optimizar</div>
-        <div class="conclusion-titulo">Optimizar Get all yield curves - validate cada link — impact score: 1.386</div>
-        <div class="conclusion-detalle">Este endpoint lidera el impacto sistémico con un P95 de 1.386ms en su ejecución única. Una reducción del 20% en su latencia representaría 277.2ms de latencia acumulada evitada por ciclo de vida del endpoint.</div>
+        <div class="conclusion-titulo">Optimizar Get all bonds — impact score: 1.386</div>
+        <div class="conclusion-detalle">Este endpoint lidera el ranking de impacto con un P95 de 1.386ms en su ejecución. Una reducción del 20% en su latencia representaría 277.2 ms de tiempo de procesamiento evitado por ciclo de vida del sistema.</div>
       </div>
     </div>
   </section>
@@ -281,15 +281,15 @@
         <div class="hypothesis-card">
             <div class="hypothesis-priority" style="color:#e53e3e;background:#fff5f5;border-color:#feb2b2;">🔴 Alta</div>
             <div class="hypothesis-text">Inestabilidad estructural recurrente en Cupones de bono</div>
-            <div class="hypothesis-evidence">Endpoint registrado como outlier en 18 corridas distintas.</div>
+            <div class="hypothesis-evidence">Endpoint Bond coupons by UUID registrado como outlier en 18 corridas distintas.</div>
           </div><div class="hypothesis-card">
-            <div class="hypothesis-priority" style="color:#e53e3e;background:#fff5f5;border-color:#feb2b2;">🔴 Alta</div>
-            <div class="hypothesis-text">Inestabilidad recurrente en Flujos de caja de bono</div>
-            <div class="hypothesis-evidence">Endpoint registrado como outlier en 14 corridas distintas.</div>
+            <div class="hypothesis-priority" style="color:#d69e2e;background:#fffff0;border-color:#faf089;">🟡 Media</div>
+            <div class="hypothesis-text">Cuello de botella por tamaño de respuesta</div>
+            <div class="hypothesis-evidence">Payload de 303.75 KB en endpoints lentos con correlación positiva de latencia.</div>
           </div><div class="hypothesis-card">
             <div class="hypothesis-priority" style="color:#3182ce;background:#ebf8ff;border-color:#90cdf4;">🔵 Baja</div>
             <div class="hypothesis-text">Variabilidad de performance dentro de parámetros normales</div>
-            <div class="hypothesis-evidence">avg_p95 actual de 425ms se mantiene por debajo del baseline de 484ms.</div>
+            <div class="hypothesis-evidence">avg_p95 actual de 441ms frente a un baseline de 484ms.</div>
           </div>
       </div>
   </section>
@@ -310,29 +310,29 @@
           <tbody>
             <tr>
               <td><span class="pill red">P1</span></td>
-              <td>Investigar inestabilidad estructural en Cupones de bono por UUID</td>
+              <td>Estabilizar Cupones de bono por UUID — 18 reincidencias como outlier</td>
               <td class="mono">Bond coupons by UUID</td>
               <td style="color:var(--muted);font-size:12px;">18 occurrences</td>
             </tr><tr>
               <td><span class="pill red">P1</span></td>
-              <td>Analizar degradación recurrente en Flujos de caja de bono desde fecha</td>
+              <td>Estabilizar Flujos de caja de bono desde fecha — 14 reincidencias</td>
               <td class="mono">Get one bond cashflow - only dateInterval from</td>
               <td style="color:var(--muted);font-size:12px;">14 occurrences</td>
             </tr><tr>
-              <td><span class="pill red">P1</span></td>
-              <td>Revisar lógica de valoración en Métricas de valor negociable</td>
-              <td class="mono">Get tradable security metrics</td>
-              <td style="color:var(--muted);font-size:12px;">10 occurrences</td>
+              <td><span class="pill yellow">P2</span></td>
+              <td>Analizar correlación de latencia con payloads pesados (&gt;300 KB)</td>
+              <td class="mono"><span style="color:var(--muted)">—</span></td>
+              <td style="color:var(--muted);font-size:12px;">payload_correlated: true</td>
             </tr><tr>
               <td><span class="pill yellow">P2</span></td>
-              <td>Monitorear estabilidad de Monedas — Listar todas ante picos recurrentes</td>
+              <td>Investigar Monedas — Listar todas por reincidencia estructural</td>
               <td class="mono">Get all curencies - validate each self link</td>
               <td style="color:var(--muted);font-size:12px;">3 occurrences</td>
             </tr><tr>
               <td><span class="pill blue">P3</span></td>
-              <td>Optimizar Get all yield curves — alto impacto acumulado en latencia</td>
-              <td class="mono">Get all yield curves - validate each metrics link</td>
-              <td style="color:var(--muted);font-size:12px;">1.386 ms</td>
+              <td>Optimizar Get all bonds — alto impacto acumulado</td>
+              <td class="mono">Get all bonds</td>
+              <td style="color:var(--muted);font-size:12px;">1386 ms</td>
             </tr>
           </tbody>
         </table>
@@ -387,8 +387,8 @@
             <div class="trend-bar" style="height:45.21604938271605%;background:var(--green);" data-tip="2026-06-05 — avg P95: 293 ms · baseline: 485 ms"></div>
             <div class="trend-date">06-05</div>
           </div><div class="trend-bar-wrap">
-            <div class="trend-val">425</div>
-            <div class="trend-bar" style="height:65.58641975308642%;background:var(--green);" data-tip="2026-06-05 — avg P95: 425 ms · baseline: 484 ms"></div>
+            <div class="trend-val">441</div>
+            <div class="trend-bar" style="height:68.05555555555556%;background:var(--green);" data-tip="2026-06-05 — avg P95: 441 ms · baseline: 484 ms"></div>
             <div class="trend-date">06-05</div>
           </div>
       </div>
@@ -414,57 +414,57 @@
           <tbody>
             <tr>
               <td class="rank">1</td>
-              <td class="mono">Get all yield curves - validate each metrics link</td>
-              <td><strong>1386.00 ms</strong></td>
-              <td style="color:var(--muted)">4.48 KB</td>
-            </tr><tr>
-              <td class="rank">2</td>
               <td class="mono">Get all bonds</td>
-              <td><strong>1211.00 ms</strong></td>
+              <td><strong>1386.00 ms</strong></td>
               <td style="color:var(--muted)">303.68 KB</td>
             </tr><tr>
-              <td class="rank">3</td>
+              <td class="rank">2</td>
               <td class="mono">Get all bonds with includeNonAlive false</td>
-              <td><strong>326.00 ms</strong></td>
+              <td><strong>670.00 ms</strong></td>
               <td style="color:var(--muted)">303.75 KB</td>
+            </tr><tr>
+              <td class="rank">3</td>
+              <td class="mono">Get all bonds with includeNonAlive true</td>
+              <td><strong>616.00 ms</strong></td>
+              <td style="color:var(--muted)">117.33 KB</td>
             </tr><tr>
               <td class="rank">4</td>
               <td class="mono">Get all bonds - start &amp; limit parameters</td>
-              <td><strong>266.00 ms</strong></td>
+              <td><strong>434.00 ms</strong></td>
               <td style="color:var(--muted)">228.95 KB</td>
             </tr><tr>
               <td class="rank">5</td>
-              <td class="mono">Get all bonds with includeNonAlive true</td>
-              <td><strong>196.00 ms</strong></td>
-              <td style="color:var(--muted)">117.33 KB</td>
-            </tr><tr>
-              <td class="rank">6</td>
               <td class="mono">Get all bonds - start &amp; limit parameters with includeNonAlive true</td>
-              <td><strong>163.00 ms</strong></td>
+              <td><strong>269.00 ms</strong></td>
               <td style="color:var(--muted)">76.23 KB</td>
             </tr><tr>
-              <td class="rank">7</td>
+              <td class="rank">6</td>
               <td class="mono">All</td>
-              <td><strong>138.00 ms</strong></td>
+              <td><strong>237.00 ms</strong></td>
               <td style="color:var(--muted)">1.46 KB</td>
             </tr><tr>
+              <td class="rank">7</td>
+              <td class="mono">Get all yield curves - validate each metrics link</td>
+              <td><strong>149.00 ms</strong></td>
+              <td style="color:var(--muted)">4.48 KB</td>
+            </tr><tr>
               <td class="rank">8</td>
-              <td class="mono">Get calendars</td>
-              <td><strong>69.00 ms</strong></td>
-              <td style="color:var(--muted)">10.62 KB</td>
+              <td class="mono">Get calendars summary</td>
+              <td><strong>120.00 ms</strong></td>
+              <td style="color:var(--muted)">1.15 KB</td>
             </tr><tr>
               <td class="rank">9</td>
-              <td class="mono">Get calendars summary</td>
-              <td><strong>67.00 ms</strong></td>
-              <td style="color:var(--muted)">1.15 KB</td>
+              <td class="mono">Get calendars</td>
+              <td><strong>86.00 ms</strong></td>
+              <td style="color:var(--muted)">10.62 KB</td>
             </tr>
           </tbody>
         </table></div>
       
-      <div style="margin-top:12px;padding:12px 16px;background:var(--grn-bg);border:1px solid var(--grn-bd);border-radius:8px;font-size:13px;color:var(--text);">
-        <strong style="color:var(--green);">ℹ️ La lentitud no viene del tamaño de las respuestas</strong>
+      <div style="margin-top:12px;padding:12px 16px;background:var(--yel-bg);border:1px solid var(--yel-bd);border-radius:8px;font-size:13px;color:var(--text);">
+        <strong style="color:var(--yellow);">⚡ Los endpoints lentos devuelven respuestas grandes</strong>
         — tamaño promedio de respuesta: 116.41 KB.
-        Los endpoints más lentos no son lentos por el volumen de datos que devuelven — la demora está en el procesamiento del servidor (cálculos, consultas, etc.), no en la cantidad de información transferida.
+        Los endpoints con mayor volumen de datos también son los más lentos. El tiempo de espera incluye la transferencia de esos datos además del procesamiento del servidor. Candidatos a revisar: <em>Get all bonds with includeNonAlive false, Get all bonds, Get all bonds - start &amp; limit parameters</em>.
       </div>
   </section>
 
@@ -479,33 +479,33 @@
           <tbody>
             <tr>
               <td class="rank">🥇</td>
-              <td class="mono">Get all yield curves - validate each metrics link</td>
+              <td class="mono">Get all bonds</td>
               <td><span class="pill red">1.386</span></td>
               <td>1386.00 ms</td>
               <td style="color:var(--muted)">1</td>
             </tr><tr>
               <td class="rank">🥈</td>
-              <td class="mono">Get all bonds</td>
-              <td><span class="pill yellow">1.211</span></td>
-              <td>1211.00 ms</td>
+              <td class="mono">Get all bonds with includeNonAlive false</td>
+              <td><span class="pill yellow">670</span></td>
+              <td>670.00 ms</td>
               <td style="color:var(--muted)">1</td>
             </tr><tr>
               <td class="rank">🥉</td>
-              <td class="mono">Get all bonds with includeNonAlive false</td>
-              <td><span class="pill yellow">326</span></td>
-              <td>326.00 ms</td>
+              <td class="mono">Get all bonds with includeNonAlive true</td>
+              <td><span class="pill yellow">616</span></td>
+              <td>616.00 ms</td>
               <td style="color:var(--muted)">1</td>
             </tr><tr>
               <td class="rank">4</td>
               <td class="mono">Get all bonds - start &amp; limit parameters</td>
-              <td><span class="pill blue">266</span></td>
-              <td>266.00 ms</td>
+              <td><span class="pill blue">434</span></td>
+              <td>434.00 ms</td>
               <td style="color:var(--muted)">1</td>
             </tr><tr>
               <td class="rank">5</td>
-              <td class="mono">Get all bonds with includeNonAlive true</td>
-              <td><span class="pill blue">196</span></td>
-              <td>196.00 ms</td>
+              <td class="mono">Get all bonds - start &amp; limit parameters with includeNonAlive true</td>
+              <td><span class="pill blue">269</span></td>
+              <td>269.00 ms</td>
               <td style="color:var(--muted)">1</td>
             </tr>
           </tbody>
@@ -516,7 +516,7 @@
 
 <footer>
   Generado por <a href="https://github.com/Mercap/pepper-API-testing" target="_blank">pepper-API-testing</a>
-  con <a href="https://aistudio.google.com/" target="_blank">Gemini 3 Flash</a> · 2026-06-05 19:27 UTC
+  con <a href="https://aistudio.google.com/" target="_blank">Gemini 3 Flash</a> · 2026-06-05 20:11 UTC
    · ✨ Análisis IA
 </footer>
 

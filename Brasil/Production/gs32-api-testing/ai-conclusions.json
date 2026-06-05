@@ -1,64 +1,64 @@
 {
   "escalar_prioritario": {
     "titulo": "Cupones de bono por UUID — 18 reincidencias como outlier",
-    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 18 registros históricos como outlier, indicando un problema persistente más allá de la corrida actual. Aunque hoy no presenta alerta activa, la reincidencia histórica es prioritaria por su carácter estructural frente a degradaciones puntuales."
+    "detalle": "Este endpoint registra 18 corridas como outlier, lo que indica una inestabilidad estructural persistente a pesar de no presentar alertas en la corrida actual. La reincidencia histórica representa un riesgo técnico mayor que una degradación puntual por su carácter sistémico."
   },
   "investigar": {
-    "titulo": "Tendencia de latencia al alza — incremento del 29.6% en avg P95",
-    "detalle": "Se observa una degradación progresiva en las últimas corridas, pasando de un promedio P95 de 328ms a 425ms. Este patrón sugiere que el baseline global absorberá la degradación gradualmente, lo que podría enmascarar alertas críticas en el futuro cercano."
+    "titulo": "Tendencia de latencia al alza — incremento del 34.5% en avg P95",
+    "detalle": "La variación sostenida entre los 328ms de la primera corrida y los 441ms de la actual advierte que el baseline global absorberá la degradación progresivamente. Este comportamiento enmascara alertas futuras al normalizar tiempos de respuesta más lentos."
   },
   "optimizar": {
-    "titulo": "Optimizar Get all yield curves - validate cada link — impact score: 1.386",
-    "detalle": "Este endpoint lidera el impacto sistémico con un P95 de 1.386ms en su ejecución única. Una reducción del 20% en su latencia representaría 277.2ms de latencia acumulada evitada por ciclo de vida del endpoint."
+    "titulo": "Optimizar Get all bonds — impact score: 1.386",
+    "detalle": "Este endpoint lidera el ranking de impacto con un P95 de 1.386ms en su ejecución. Una reducción del 20% en su latencia representaría 277.2 ms de tiempo de procesamiento evitado por ciclo de vida del sistema."
   },
-  "bottleneck_narrative": "La corrida actual se clasifica como estable, con un promedio P95 de 425ms frente a un baseline de 484ms. No se detectaron alertas de semáforo ni outliers puntuales en esta ejecución específica.",
+  "bottleneck_narrative": "El sistema se mantiene en estado saludable sin alertas activas ni outliers en la corrida actual. El promedio P95 de 441ms se sitúa por debajo del baseline de 484ms, confirmando estabilidad operativa inmediata.",
   "root_cause_hypotheses": [
     {
       "hypothesis": "Inestabilidad estructural recurrente en Cupones de bono",
-      "evidence": "Endpoint registrado como outlier en 18 corridas distintas.",
+      "evidence": "Endpoint Bond coupons by UUID registrado como outlier en 18 corridas distintas.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Inestabilidad recurrente en Flujos de caja de bono",
-      "evidence": "Endpoint registrado como outlier en 14 corridas distintas.",
-      "priority": "alta"
+      "hypothesis": "Cuello de botella por tamaño de respuesta",
+      "evidence": "Payload de 303.75 KB en endpoints lentos con correlación positiva de latencia.",
+      "priority": "media"
     },
     {
       "hypothesis": "Variabilidad de performance dentro de parámetros normales",
-      "evidence": "avg_p95 actual de 425ms se mantiene por debajo del baseline de 484ms.",
+      "evidence": "avg_p95 actual de 441ms frente a un baseline de 484ms.",
       "priority": "baja"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Investigar inestabilidad estructural en Cupones de bono por UUID",
+      "accion": "Estabilizar Cupones de bono por UUID — 18 reincidencias como outlier",
       "endpoint_target": "Bond coupons by UUID",
       "evidencia": "18 occurrences"
     },
     {
       "prioridad": "P1",
-      "accion": "Analizar degradación recurrente en Flujos de caja de bono desde fecha",
+      "accion": "Estabilizar Flujos de caja de bono desde fecha — 14 reincidencias",
       "endpoint_target": "Get one bond cashflow - only dateInterval from",
       "evidencia": "14 occurrences"
     },
     {
-      "prioridad": "P1",
-      "accion": "Revisar lógica de valoración en Métricas de valor negociable",
-      "endpoint_target": "Get tradable security metrics",
-      "evidencia": "10 occurrences"
+      "prioridad": "P2",
+      "accion": "Analizar correlación de latencia con payloads pesados (>300 KB)",
+      "endpoint_target": "—",
+      "evidencia": "payload_correlated: true"
     },
     {
       "prioridad": "P2",
-      "accion": "Monitorear estabilidad de Monedas — Listar todas ante picos recurrentes",
+      "accion": "Investigar Monedas — Listar todas por reincidencia estructural",
       "endpoint_target": "Get all curencies - validate each self link",
       "evidencia": "3 occurrences"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Get all yield curves — alto impacto acumulado en latencia",
-      "endpoint_target": "Get all yield curves - validate each metrics link",
-      "evidencia": "1.386 ms"
+      "accion": "Optimizar Get all bonds — alto impacto acumulado",
+      "endpoint_target": "Get all bonds",
+      "evidencia": "1386 ms"
     }
   ]
 }
