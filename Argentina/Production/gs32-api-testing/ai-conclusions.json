@@ -1,31 +1,31 @@
 {
   "escalar_prioritario": {
     "titulo": "Curvas de rendimiento — Listar todas (resumen) — 17 reincidencias como outlier",
-    "detalle": "Este endpoint registra 17 corridas como outlier, lo que indica una inestabilidad estructural crítica que persiste a pesar de no tener alerta roja hoy. Aunque la corrida actual presenta 17 alertas amarillas en otros servicios, la reincidencia histórica de este endpoint es la prioridad de escalado."
+    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 17 registros históricos como outlier, indicando un problema persistente más allá de la corrida actual. Aunque no posee alerta roja hoy, su reincidencia histórica es una señal de degradación estructural más grave que las alertas puntuales de esta corrida."
   },
   "investigar": {
-    "titulo": "17 endpoints en amarillo simultáneos — posible causa de infraestructura",
-    "detalle": "La degradación simultánea de 17 endpoints en módulos diversos como Appraiser, Bonds y Currencies sugiere una causa de infraestructura compartida. Esta afectación masiva en una sola corrida apunta a saturación de recursos o latencia en la base de datos común."
+    "titulo": "5 alertas amarillas simultáneas — posible causa de infraestructura compartida",
+    "detalle": "La degradación simultánea de 5 endpoints en los servicios de Investments y Tradable Securities sugiere un cuello de botella en recursos compartidos. La simultaneidad en módulos distintos apunta a una causa de infraestructura y no a cambios específicos en el código de una aplicación."
   },
   "optimizar": {
-    "titulo": "Bond Screener — Filtro múltiple de bonos — impact score: 205.847",
-    "detalle": "Con un impact score de 205.847 y un P95 de 2.343ms, este endpoint es el de mayor peso sistémico. Una reducción del 20% en su P95 representaría 41.169,4 ms de latencia acumulada evitada por ciclo de vida del endpoint."
+    "titulo": "Bond Screener — Filtro múltiple de bonos — impact score: 207.160",
+    "detalle": "Una reducción del 20% en su P95 representaría 41.432 ms de latencia acumulada evitada por ciclo de vida del endpoint. Con un impact_p95_used de 3.002,32 ms y 69 ejecuciones, es el principal candidato para mejorar la performance global del sistema."
   },
-  "bottleneck_narrative": "La corrida actual presenta 17 alertas amarillas, lo cual, sin una tendencia sostenida de degradación, sugiere un patrón compatible con una regresión puntual. Aunque la tendencia de las últimas corridas muestra una leve mejora del -5,7%, la cantidad de endpoints afectados simultáneamente indica una inestabilidad que no debe ignorarse.",
+  "bottleneck_narrative": "La corrida actual presenta 0 alertas rojas y 5 amarillas, lo cual, sumado a una tendencia de mejora del -7,3% en el avg_p95, sugiere que el patrón es compatible con una regresión puntual. No se detecta una tendencia sostenida de degradación, pero la cantidad de alertas amarillas requiere monitoreo preventivo para evitar que se conviertan en fallos críticos.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Causa de infraestructura compartida (DB o red interna)",
-      "evidence": "17 endpoints afectados simultáneamente en servicios como Bonds, Appraiser y Currencies.",
+      "hypothesis": "Saturación de recursos en infraestructura compartida",
+      "evidence": "5 endpoints con status_level 1 pertenecientes a los servicios de Investments y Tradable Securities.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Inestabilidad estructural recurrente en Curvas de rendimiento",
-      "evidence": "El endpoint registra 17 ocurrencias como outlier en el historial de corridas.",
+      "hypothesis": "Inestabilidad estructural en Curvas de rendimiento",
+      "evidence": "Endpoint 'Get all yield curves' registrado como outlier en 17 corridas distintas.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Regresión puntual en el módulo de Currencies",
-      "evidence": "regression_pct de 303,16% y baseline_global_delta_pct de 360,33% en Monedas — Listar todas.",
+      "hypothesis": "Regresión puntual en el módulo Tradable Securities",
+      "evidence": "regression_pct de 432,41% y baseline_version_delta_pct de 592,38% en filtros obligatorios.",
       "priority": "media"
     }
   ],
@@ -34,31 +34,31 @@
       "prioridad": "P1",
       "accion": "Estabilizar Curvas de rendimiento — Listar todas (resumen) por reincidencia",
       "endpoint_target": "Get all yield curves - validate each self link",
-      "evidencia": "17 reincidencias como outlier"
+      "evidencia": "17 occurrences"
     },
     {
       "prioridad": "P1",
-      "accion": "Analizar inestabilidad estructural en Obtener todos los bonos",
+      "accion": "Investigar inestabilidad en Obtener todos los bonos — parámetros por defecto",
       "endpoint_target": "All bonds - deault parameters",
-      "evidencia": "4 reincidencias como outlier"
+      "evidencia": "4 occurrences"
     },
     {
       "prioridad": "P2",
-      "accion": "Investigar regresión en Monedas — Listar todas",
-      "endpoint_target": "Get all curencies - validate each self link",
-      "evidencia": "303,16% de regresión"
+      "accion": "Analizar regresión en Valores negociables — Filtros obligatorios",
+      "endpoint_target": "Get tradable securities using only mandatory filters",
+      "evidencia": "432,41% regression"
     },
     {
       "prioridad": "P2",
-      "accion": "Revisar saturación de recursos en infraestructura compartida",
+      "accion": "Revisar salud de infraestructura compartida por alertas múltiples",
       "endpoint_target": "—",
-      "evidencia": "17 alertas amarillas simultáneas"
+      "evidencia": "5 status_level 1"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Bond Screener — alto impacto acumulado en performance",
+      "accion": "Optimizar Bond Screener — Filtro múltiple de bonos — alto impacto acumulado",
       "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
-      "evidencia": "205.847 impact score"
+      "evidencia": "impact score: 207.160"
     }
   ]
 }
