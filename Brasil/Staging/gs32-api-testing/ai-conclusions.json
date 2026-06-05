@@ -1,0 +1,52 @@
+{
+  "escalar_prioritario": {
+    "titulo": "Sin alertas críticas — avg P95: 151ms",
+    "detalle": "La corrida actual no presenta endpoints en estado ROJO ni reincidencias críticas de outliers. El P95 promedio de esta corrida es 151ms, por debajo del baseline de 357ms."
+  },
+  "investigar": {
+    "titulo": "Tendencia de mejora sostenida — avg P95: 526ms a 151ms",
+    "detalle": "El P95 promedio ha disminuido un 71.48% en las últimas corridas, pasando de 526ms a 151ms, lo que indica una mejora consistente en la performance general del sistema."
+  },
+  "optimizar": {
+    "titulo": "Optimizar Métricas de inversión por ID — alto impacto acumulado",
+    "detalle": "El endpoint 'Métricas de inversión por ID' tiene el mayor impacto acumulado (impact score: 9.620) con un P95 de 2.405ms en 4 ejecuciones. Una reducción del 20% en su P95 representaría 1.924 ms de latencia acumulada evitada por ciclo de vida."
+  },
+  "bottleneck_narrative": "La corrida actual presenta 1 alerta amarilla y 0 rojas. La tendencia general de las últimas corridas muestra una leve mejora en la performance.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Regresión puntual en 'Sensibilidad al tipo de cambio de inversión por ID'.",
+      "evidence": "Endpoint con P95 de 49ms, 113.04% por encima de su baseline global de 23ms.",
+      "priority": "media"
+    },
+    {
+      "hypothesis": "Carga computacional elevada en endpoints de valoración.",
+      "evidence": "Los 3 endpoints más lentos ('Métricas de inversión por ID', 'Tasas Internas de Retorno (TIR/IRR) de un bono', 'Valoración de instrumento financiero') tienen P95s de 837ms, 767ms y 732ms respectivamente, y son de complejidad alta.",
+      "priority": "media"
+    },
+    {
+      "hypothesis": "Variabilidad de performance dentro de parámetros normales.",
+      "evidence": "Avg P95 de 151ms vs baseline de 357ms en la última corrida.",
+      "priority": "baja"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P2",
+      "accion": "Investigar regresión en Sensibilidad al tipo de cambio de inversión por ID",
+      "endpoint_target": "Get investment exchange rate sensitivity by ID",
+      "evidencia": "P95: 49ms, +113.04% vs baseline global"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Optimizar Métricas de inversión por ID — alto impacto acumulado",
+      "endpoint_target": "Get investment metrics by ID",
+      "evidencia": "Impact score: 9.620, P95: 2.405ms"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Revisar performance de Tasas Internas de Retorno (TIR/IRR) de un bono",
+      "endpoint_target": "Get irrs - one bond",
+      "evidencia": "P95: 767ms"
+    }
+  ]
+}

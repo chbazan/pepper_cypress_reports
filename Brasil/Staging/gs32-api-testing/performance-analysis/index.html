@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informe de Performance IA — Brasil Staging</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:     #e53e3e;
+      --red-bg:  #fff5f5;
+      --red-bd:  #feb2b2;
+      --yellow:  #d69e2e;
+      --yel-bg:  #fffff0;
+      --yel-bd:  #faf089;
+      --green:   #38a169;
+      --grn-bg:  #f0fff4;
+      --grn-bd:  #9ae6b4;
+      --blue:    #3182ce;
+      --blu-bg:  #ebf8ff;
+      --blu-bd:  #90cdf4;
+      --header:  #1a202c;
+      --surface: #f7fafc;
+      --card:    #ffffff;
+      --border:  #e2e8f0;
+      --text:    #2d3748;
+      --muted:   #718096;
+      --shadow:  0 1px 3px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.06);
+      --shadow-md: 0 4px 6px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.06);
+    }
+
+    body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background: var(--surface); color: var(--text); font-size: 14px; line-height: 1.6; }
+
+    /* ── Header ── */
+    .header { background: var(--header); color: #fff; padding: 24px 32px; }
+    .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+    .header h1 { font-size: 22px; font-weight: 700; letter-spacing: -.3px; display: flex; align-items: center; gap: 10px; }
+    .header h1 .badge { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 20px; background: #d69e2e22; border: 1px solid #d69e2e66; color: #d69e2e; }
+    .meta-grid { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 12px; }
+    .meta-item { font-size: 12px; color: #a0aec0; }
+    .meta-item strong { color: #e2e8f0; font-weight: 500; }
+    .header-right { text-align: right; flex-shrink: 0; }
+    .ai-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: #a0aec0; border: 1px solid #4a5568; border-radius: 6px; padding: 4px 10px; }
+
+    /* ── Layout ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 24px 32px; }
+    section { margin-bottom: 28px; }
+    h2 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; padding-bottom: 8px; border-bottom: 2px solid var(--border); }
+    h2 .count { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 12px; background: var(--border); color: var(--muted); }
+
+    /* ── Cards row ── */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 28px; }
+    .card { background: var(--card); border-radius: 10px; padding: 18px 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+    .card-label { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 6px; }
+    .card-value { font-size: 26px; font-weight: 700; color: var(--text); line-height: 1.1; }
+    .card-value.status { color: #d69e2e; }
+    .card-sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+    /* ── Bottleneck card ── */
+    .bottleneck-card { border-radius: 10px; padding: 20px 24px; border: 1px solid; border-left: 5px solid; box-shadow: var(--shadow-md); }
+    .bottleneck-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 14px; }
+    .bottleneck-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; padding: 5px 14px; border-radius: 20px; border: 1.5px solid; }
+    .bottleneck-stats { display: flex; gap: 16px; flex-wrap: wrap; }
+    .bottleneck-stat { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 4px; }
+    .bottleneck-narrative { font-size: 14px; color: var(--text); line-height: 1.7; margin-bottom: 8px; }
+    .bottleneck-reasoning { font-size: 12px; color: var(--muted); font-style: italic; }
+
+    /* ── Conclusions ── */
+    .conclusions { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+    .conclusion-card { border-radius: 10px; padding: 20px; border-left: 5px solid; box-shadow: var(--shadow); }
+    .conclusion-card.escalar  { background: var(--red-bg); border-color: var(--red); }
+    .conclusion-card.investigar { background: var(--yel-bg); border-color: var(--yellow); }
+    .conclusion-card.optimizar { background: var(--blu-bg); border-color: var(--blue); }
+    .conclusion-icon  { font-size: 20px; margin-bottom: 8px; }
+    .conclusion-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--muted); margin-bottom: 6px; }
+    .conclusion-card.escalar  .conclusion-label { color: var(--red); }
+    .conclusion-card.investigar .conclusion-label { color: var(--yellow); }
+    .conclusion-card.optimizar  .conclusion-label { color: var(--blue); }
+    .conclusion-titulo { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.3; }
+    .conclusion-detalle { font-size: 13px; color: var(--text); line-height: 1.6; }
+
+    /* ── Root cause hypotheses ── */
+    .hypothesis-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+    .hypothesis-card { background: var(--card); border-radius: 10px; padding: 18px 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+    .hypothesis-priority { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 12px; border: 1px solid; margin-bottom: 10px; }
+    .hypothesis-text { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.4; }
+    .hypothesis-evidence { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    /* ── Tables ── */
+    .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+    table { width: 100%; border-collapse: collapse; background: var(--card); font-size: 13px; }
+    thead th { background: #f8fafc; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
+    tbody td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: #f8fafc; }
+    .mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
+    .pill { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 12px; }
+    .pill.red    { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-bd); }
+    .pill.yellow { background: var(--yel-bg); color: var(--yellow); border: 1px solid var(--yel-bd); }
+    .pill.green  { background: var(--grn-bg); color: var(--green); border: 1px solid var(--grn-bd); }
+    .pill.blue   { background: var(--blu-bg); color: var(--blue); border: 1px solid var(--blu-bd); }
+    .tag-reincidente { font-size: 10px; font-weight: 700; color: var(--red); background: var(--red-bg); border: 1px solid var(--red-bd); border-radius: 4px; padding: 1px 5px; margin-left: 4px; }
+    .delta-pos { color: var(--red); font-weight: 600; }
+    .delta-neg { color: var(--green); font-weight: 600; }
+    .rank { font-size: 12px; font-weight: 700; color: var(--muted); }
+
+    /* ── Trend chart ── */
+    .trend-chart { display: flex; align-items: flex-end; gap: 10px; height: 120px; padding: 0 4px 8px; }
+    .trend-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%; justify-content: flex-end; }
+    .trend-bar { width: 100%; border-radius: 4px 4px 0 0; min-height: 4px; position: relative; transition: opacity .2s; cursor: default; }
+    .trend-bar:hover::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); background: var(--header); color: #fff; font-size: 11px; padding: 4px 8px; border-radius: 4px; white-space: nowrap; z-index: 10; pointer-events: none; }
+    .trend-date { font-size: 10px; color: var(--muted); text-align: center; white-space: nowrap; }
+    .trend-val  { font-size: 11px; font-weight: 700; color: var(--text); }
+
+    /* ── Empty state ── */
+    .empty { text-align: center; padding: 32px; color: var(--muted); font-size: 13px; background: var(--card); border-radius: 8px; border: 1px dashed var(--border); }
+    .empty span { display: block; font-size: 28px; margin-bottom: 8px; }
+
+    /* ── Footer ── */
+    footer { text-align: center; padding: 24px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--border); margin-top: 8px; }
+    footer a { color: var(--blue); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      .container { padding: 16px; }
+      .header { padding: 16px; }
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .conclusions { grid-template-columns: 1fr; }
+      .hypothesis-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div>
+      <h1>
+        🤖 Informe de Performance IA
+        <span class="badge">🟡 ADVERTENCIA</span>
+      </h1>
+      <div class="meta-grid">
+        <div class="meta-item"><strong>País</strong> Brasil</div>
+        <div class="meta-item"><strong>Ambiente</strong> Staging</div>
+        <div class="meta-item"><strong>Versión</strong> V10.3.69</div>
+        <div class="meta-item"><strong>Run ID</strong> 202606051857</div>
+        <div class="meta-item"><strong>Generado</strong> 2026-06-05 18:57 UTC</div>
+      </div>
+      <div class="meta-grid" style="margin-top:8px;">
+        <div class="meta-item"><a href="https://github.com/Mercap/pepper-API-testing/actions/runs/27034044357" style="color:#90cdf4;text-decoration:none;" target="_blank">↗ Ver workflow #149</a></div>
+        <div class="meta-item"><a href="https://monitoring.mercap.com.ar/d/affx497yxyjggd/apis-gs32-metrics?orgId=1&from=now-7d&to=now&var-environment=Staging&var-country=Brasil&var-version=V10.3.69" style="color:#90cdf4;text-decoration:none;" target="_blank">📊 Ver dashboard</a></div>
+        <div class="meta-item"><a href="https://chbazan.github.io/pepper_cypress_reports/Brasil/Staging/gs32-api-testing/" style="color:#90cdf4;text-decoration:none;" target="_blank">🧪 Test report</a></div>
+        <div class="meta-item"><a href="https://chbazan.github.io/pepper_cypress_reports/Brasil/Staging/gs32-api-testing/newman.log" style="color:#90cdf4;text-decoration:none;" target="_blank">📋 Newman logs</a></div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="ai-badge">
+        ✨ Conclusiones generadas por Gemini AI
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container">
+
+  <!-- ── KPI Cards ── -->
+  <div class="cards">
+    <div class="card">
+      <div class="card-label">avg P95 actual</div>
+      <div class="card-value">151 <span style="font-size:16px;font-weight:400;color:var(--muted)">ms</span></div>
+      <div class="card-sub">Más lento: Get investment metrics by ID</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Baseline global</div>
+      <div class="card-value">357 <span style="font-size:16px;font-weight:400;color:var(--muted)">ms</span></div>
+      <div class="card-sub">Promedio últimas 50 corridas</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Delta vs baseline</div>
+      <div class="card-value" style="color:#38a169">-57.7%</div>
+      <div class="card-sub">Dentro del baseline</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Estado general</div>
+      <div class="card-value status">🟡 ADVERTENCIA</div>
+      <div class="card-sub">0 críticos · 1 en advertencia</div>
+    </div>
+  </div>
+
+  <!-- ── Bottleneck Classification ── -->
+  <section>
+    <h2>🏗️ Clasificación de Cuello de Botella</h2>
+    <div class="bottleneck-card" style="background:#fffff0;border-color:#faf089;border-left-color:#d69e2e;">
+      <div class="bottleneck-header">
+        <div>
+          <span class="bottleneck-badge" style="color:#d69e2e;background:#fffff0;border-color:#faf089;">
+            🟡 REGRESSION-SPIKE
+          </span>
+          <span style="margin-left:10px;font-size:14px;font-weight:600;color:#d69e2e;">Regresión puntual detectada</span>
+        </div>
+        <div class="bottleneck-stats">
+          
+          <span class="bottleneck-stat">🟡 1 advertencia(s)</span>
+          
+          <span class="bottleneck-stat">📈 Tendencia: -71.3%</span>
+        </div>
+      </div>
+      <p class="bottleneck-narrative">La corrida actual presenta 1 alerta amarilla y 0 rojas. La tendencia general de las últimas corridas muestra una leve mejora en la performance.</p>
+      <p class="bottleneck-reasoning">Uno o más endpoints presentaron degradación en esta corrida, pero sin evidencia de que sea parte de una tendencia histórica acumulada. Puede ser una anomalía puntual o el inicio de una regresión.</p>
+    </div>
+
+    <!-- Tabla de referencia de clasificaciones (desplegable) -->
+    <details style="margin-top:14px;">
+      <summary style="cursor:pointer;font-size:13px;color:var(--muted);user-select:none;padding:6px 0;">
+        📖 Guía de clasificaciones — ¿qué significa cada estado?
+      </summary>
+      <div style="margin-top:10px;" class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Clasificación</th><th>Qué significa</th><th>Urgencia</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color:#38a169;">✅ HEALTHY</strong><br><span style="font-size:11px;color:var(--muted);">Sistema saludable</span></td>
+              <td style="font-size:12px;">Todos los endpoints funcionan dentro de sus rangos históricos normales. No se detectaron alertas ni picos anómalos.</td>
+              <td><span class="pill green">Sin acción</span></td>
+            </tr>
+            <tr>
+              <td><strong style="color:#3182ce;">🔵 OUTLIER-PATTERN</strong><br><span style="font-size:11px;color:var(--muted);">Picos esporádicos</span></td>
+              <td style="font-size:12px;">Algunos endpoints tuvieron picos de latencia muy alta de forma puntual, pero sin convertirse en una tendencia. El semáforo no tiene alertas activas.</td>
+              <td><span class="pill blue">Monitorear</span></td>
+            </tr>
+            <tr>
+              <td><strong style="color:#d69e2e;">🟡 REGRESSION-SPIKE</strong><br><span style="font-size:11px;color:var(--muted);">Regresión puntual</span></td>
+              <td style="font-size:12px;">Hay endpoints degradados en esta corrida, pero sin evidencia de una tendencia acumulada. Puede ser temporal o el inicio de un problema. Requiere investigación.</td>
+              <td><span class="pill yellow">Investigar</span></td>
+            </tr>
+            <tr>
+              <td><strong style="color:#e53e3e;">🔴 LATENCY-DEGRADED</strong><br><span style="font-size:11px;color:var(--muted);">Degradación progresiva</span></td>
+              <td style="font-size:12px;">La latencia creció de forma gradual y consistente a lo largo de varias corridas. El riesgo es que el sistema de alertas automáticas pierde sensibilidad: el promedio histórico (baseline) empieza a absorber la degradación.</td>
+              <td><span class="pill red">Acción urgente</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </section>
+
+  <!-- ── Conclusions ── -->
+  <section>
+    <h2>💡 Conclusiones y Accionables</h2>
+    <div class="conclusions">
+      <div class="conclusion-card escalar">
+        <div class="conclusion-icon">🚨</div>
+        <div class="conclusion-label">Escalar de forma prioritaria</div>
+        <div class="conclusion-titulo">Sin alertas críticas — avg P95: 151ms</div>
+        <div class="conclusion-detalle">La corrida actual no presenta endpoints en estado ROJO ni reincidencias críticas de outliers. El P95 promedio de esta corrida es 151ms, por debajo del baseline de 357ms.</div>
+      </div>
+      <div class="conclusion-card investigar">
+        <div class="conclusion-icon">🔍</div>
+        <div class="conclusion-label">Investigar</div>
+        <div class="conclusion-titulo">Tendencia de mejora sostenida — avg P95: 526ms a 151ms</div>
+        <div class="conclusion-detalle">El P95 promedio ha disminuido un 71.48% en las últimas corridas, pasando de 526ms a 151ms, lo que indica una mejora consistente en la performance general del sistema.</div>
+      </div>
+      <div class="conclusion-card optimizar">
+        <div class="conclusion-icon">⚡</div>
+        <div class="conclusion-label">Optimizar</div>
+        <div class="conclusion-titulo">Optimizar Métricas de inversión por ID — alto impacto acumulado</div>
+        <div class="conclusion-detalle">El endpoint 'Métricas de inversión por ID' tiene el mayor impacto acumulado (impact score: 9.620) con un P95 de 2.405ms en 4 ejecuciones. Una reducción del 20% en su P95 representaría 1.924 ms de latencia acumulada evitada por ciclo de vida.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Root Cause Hypotheses ── -->
+  <section>
+    <h2>🔬 Hipótesis de Causa Raíz <span class="count">3 hipótesis</span></h2>
+    <div class="hypothesis-list">
+        <div class="hypothesis-card">
+            <div class="hypothesis-priority" style="color:#d69e2e;background:#fffff0;border-color:#faf089;">🟡 Media</div>
+            <div class="hypothesis-text">Regresión puntual en 'Sensibilidad al tipo de cambio de inversión por ID'.</div>
+            <div class="hypothesis-evidence">Endpoint con P95 de 49ms, 113.04% por encima de su baseline global de 23ms.</div>
+          </div><div class="hypothesis-card">
+            <div class="hypothesis-priority" style="color:#d69e2e;background:#fffff0;border-color:#faf089;">🟡 Media</div>
+            <div class="hypothesis-text">Carga computacional elevada en endpoints de valoración.</div>
+            <div class="hypothesis-evidence">Los 3 endpoints más lentos ('Métricas de inversión por ID', 'Tasas Internas de Retorno (TIR/IRR) de un bono', 'Valoración de instrumento financiero') tienen P95s de 837ms, 767ms y 732ms respectivamente, y son de complejidad alta.</div>
+          </div><div class="hypothesis-card">
+            <div class="hypothesis-priority" style="color:#3182ce;background:#ebf8ff;border-color:#90cdf4;">🔵 Baja</div>
+            <div class="hypothesis-text">Variabilidad de performance dentro de parámetros normales.</div>
+            <div class="hypothesis-evidence">Avg P95 de 151ms vs baseline de 357ms en la última corrida.</div>
+          </div>
+      </div>
+  </section>
+
+  <!-- ── Recommendations ── -->
+  <section>
+    <h2>📋 Recomendaciones Priorizadas <span class="count">3 acciones</span></h2>
+    <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Prioridad</th>
+              <th>Acción</th>
+              <th>Endpoint Target</th>
+              <th>Evidencia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="pill yellow">P2</span></td>
+              <td>Investigar regresión en Sensibilidad al tipo de cambio de inversión por ID</td>
+              <td class="mono">Get investment exchange rate sensitivity by ID</td>
+              <td style="color:var(--muted);font-size:12px;">P95: 49ms, +113.04% vs baseline global</td>
+            </tr><tr>
+              <td><span class="pill blue">P3</span></td>
+              <td>Optimizar Métricas de inversión por ID — alto impacto acumulado</td>
+              <td class="mono">Get investment metrics by ID</td>
+              <td style="color:var(--muted);font-size:12px;">Impact score: 9.620, P95: 2.405ms</td>
+            </tr><tr>
+              <td><span class="pill blue">P3</span></td>
+              <td>Revisar performance de Tasas Internas de Retorno (TIR/IRR) de un bono</td>
+              <td class="mono">Get irrs - one bond</td>
+              <td style="color:var(--muted);font-size:12px;">P95: 767ms</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </section>
+
+  <!-- ── Traffic Light ── -->
+  <section>
+    <h2>🚦 Semáforo de Endpoints <span class="count">1 con alerta</span></h2>
+    
+    
+    
+    <p style="font-size:12px;font-weight:700;color:var(--yellow);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;">🟡 Advertencia — status_level 1</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Endpoint (nombre del test)</th><th>Servicio / API real</th><th>P95</th><th>Baseline</th><th>Δ Global</th><th>Δ Versión</th><th>Regression</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="mono">Get investment exchange rate sensitivity by ID</td>
+            <td style="font-size:12px;"><strong>Sensibilidad al tipo de cambio de inversión por ID</strong><br><span style="color:var(--muted);">Investments · REST</span></td>
+            <td>49.00 ms</td>
+            <td>23.00 ms</td>
+            <td class="delta-pos">+113.0%</td>
+            <td class="delta-pos">0.0%</td>
+            <td><span class="delta-pos">+113.0%</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  </section>
+
+  <!-- ── Trend ── -->
+  <section>
+    <h2>📈 Tendencia — Últimas 4 corridas</h2>
+    <div style="background:var(--card);border-radius:8px;border:1px solid var(--border);padding:20px 24px;box-shadow:var(--shadow);">
+      <div class="trend-chart">
+        <div class="trend-bar-wrap">
+            <div class="trend-val">526</div>
+            <div class="trend-bar" style="height:100%;background:var(--green);" data-tip="2026-03-31 — avg P95: 526 ms · baseline: 526 ms"></div>
+            <div class="trend-date">03-31</div>
+          </div><div class="trend-bar-wrap">
+            <div class="trend-val">221</div>
+            <div class="trend-bar" style="height:42.01520912547528%;background:var(--green);" data-tip="2026-03-31 — avg P95: 221 ms · baseline: 526 ms"></div>
+            <div class="trend-date">03-31</div>
+          </div><div class="trend-bar-wrap">
+            <div class="trend-val">325</div>
+            <div class="trend-bar" style="height:61.78707224334601%;background:var(--green);" data-tip="2026-05-19 — avg P95: 325 ms · baseline: 374 ms"></div>
+            <div class="trend-date">05-19</div>
+          </div><div class="trend-bar-wrap">
+            <div class="trend-val">151</div>
+            <div class="trend-bar" style="height:28.707224334600763%;background:var(--green);" data-tip="2026-06-05 — avg P95: 151 ms · baseline: 357 ms"></div>
+            <div class="trend-date">06-05</div>
+          </div>
+      </div>
+      <div style="display:flex;gap:16px;margin-top:8px;font-size:11px;color:var(--muted);">
+        <span><span style="color:var(--green);font-weight:700;">■</span> Dentro del baseline</span>
+        <span><span style="color:var(--yellow);font-weight:700;">■</span> Levemente elevado</span>
+        <span><span style="color:var(--red);font-weight:700;">■</span> Por encima del baseline</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Outliers ── -->
+  <section>
+    <h2>⚠️ Outliers Detectados <span class="count">0 en esta corrida</span></h2>
+    <div class="empty"><span>✅</span>Sin outliers en esta corrida.</div>
+  </section>
+
+  <!-- ── Top 10 Slowest ── -->
+  <section>
+    <h2>🐢 Top 10 Endpoints Más Lentos</h2>
+    <div class="table-wrap"><table>
+          <thead><tr><th>#</th><th>Endpoint</th><th>P95</th><th>Payload</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="rank">1</td>
+              <td class="mono">Get investment metrics by ID</td>
+              <td><strong>837.00 ms</strong></td>
+              <td style="color:var(--muted)">1.07 KB</td>
+            </tr><tr>
+              <td class="rank">2</td>
+              <td class="mono">Get irrs - one bond</td>
+              <td><strong>767.00 ms</strong></td>
+              <td style="color:var(--muted)">10.48 KB</td>
+            </tr><tr>
+              <td class="rank">3</td>
+              <td class="mono">Appraise market value</td>
+              <td><strong>732.00 ms</strong></td>
+              <td style="color:var(--muted)">0.66 KB</td>
+            </tr><tr>
+              <td class="rank">4</td>
+              <td class="mono">Get tradable securities using optional filters - ticker &amp; tradeDate</td>
+              <td><strong>266.00 ms</strong></td>
+              <td style="color:var(--muted)">3.02 KB</td>
+            </tr><tr>
+              <td class="rank">5</td>
+              <td class="mono">Get parities</td>
+              <td><strong>262.00 ms</strong></td>
+              <td style="color:var(--muted)">26.73 KB</td>
+            </tr><tr>
+              <td class="rank">6</td>
+              <td class="mono">Get investment price sensitivity by ID</td>
+              <td><strong>241.00 ms</strong></td>
+              <td style="color:var(--muted)">1.5 KB</td>
+            </tr><tr>
+              <td class="rank">7</td>
+              <td class="mono">Get one bond cashflow - only dateInterval from</td>
+              <td><strong>200.00 ms</strong></td>
+              <td style="color:var(--muted)">5.55 KB</td>
+            </tr><tr>
+              <td class="rank">8</td>
+              <td class="mono">Get all yield curves - validate each self link</td>
+              <td><strong>192.00 ms</strong></td>
+              <td style="color:var(--muted)">0.53 KB</td>
+            </tr><tr>
+              <td class="rank">9</td>
+              <td class="mono">All bonds - start &amp; limit parameters</td>
+              <td><strong>186.00 ms</strong></td>
+              <td style="color:var(--muted)">3.61 KB</td>
+            </tr><tr>
+              <td class="rank">10</td>
+              <td class="mono">Get one bond cashflow - dateInterval from and to</td>
+              <td><strong>184.00 ms</strong></td>
+              <td style="color:var(--muted)">2.5 KB</td>
+            </tr>
+          </tbody>
+        </table></div>
+      
+      <div style="margin-top:12px;padding:12px 16px;background:var(--grn-bg);border:1px solid var(--grn-bd);border-radius:8px;font-size:13px;color:var(--text);">
+        <strong style="color:var(--green);">ℹ️ La lentitud no viene del tamaño de las respuestas</strong>
+        — tamaño promedio de respuesta: 5.56 KB.
+        Los endpoints más lentos no son lentos por el volumen de datos que devuelven — la demora está en el procesamiento del servidor (cálculos, consultas, etc.), no en la cantidad de información transferida.
+      </div>
+  </section>
+
+  <!-- ── Impact Ranking ── -->
+  <section>
+    <h2>🏆 Impact Ranking — Top 5</h2>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">
+      <code>impact_score = p95_típico_limpio × muestras_totales</code> — Cuánta latencia acumulada genera cada endpoint a lo largo del tiempo. Los endpoints con mayor score son los que más tiempo de respuesta consumen en total, independientemente de si tienen alertas activas o no.
+    </p>
+    <div class="table-wrap"><table>
+          <thead><tr><th>#</th><th>Endpoint</th><th>Impact Score</th><th>P95 Típico</th><th>Muestras</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="rank">🥇</td>
+              <td class="mono">Get investment metrics by ID</td>
+              <td><span class="pill red">9.620</span></td>
+              <td>2405.00 ms</td>
+              <td style="color:var(--muted)">4</td>
+            </tr><tr>
+              <td class="rank">🥈</td>
+              <td class="mono">Appraise market value</td>
+              <td><span class="pill yellow">5.289</span></td>
+              <td>1322.33 ms</td>
+              <td style="color:var(--muted)">4</td>
+            </tr><tr>
+              <td class="rank">🥉</td>
+              <td class="mono">Get one bond cashflow - only dateInterval from</td>
+              <td><span class="pill yellow">4.377</span></td>
+              <td>1094.33 ms</td>
+              <td style="color:var(--muted)">4</td>
+            </tr><tr>
+              <td class="rank">4</td>
+              <td class="mono">Get investment irr sensitivity by ID</td>
+              <td><span class="pill blue">4.245</span></td>
+              <td>1061.33 ms</td>
+              <td style="color:var(--muted)">4</td>
+            </tr><tr>
+              <td class="rank">5</td>
+              <td class="mono">Bond coupons by UUID</td>
+              <td><span class="pill blue">3.593</span></td>
+              <td>898.33 ms</td>
+              <td style="color:var(--muted)">4</td>
+            </tr>
+          </tbody>
+        </table></div>
+  </section>
+
+</div>
+
+<footer>
+  Generado por <a href="https://github.com/Mercap/pepper-API-testing" target="_blank">pepper-API-testing</a>
+  con <a href="https://aistudio.google.com/" target="_blank">Gemini 3 Flash</a> · 2026-06-05 18:57 UTC
+   · ✨ Análisis IA
+</footer>
+
+</body>
+</html>
