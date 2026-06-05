@@ -2,2774 +2,777 @@ newman
 
 Marvel APIs
 
-❏ Pepper-GS32 / Regression-Test / Appraiser
-↳ Appraise market value
+❏ Pepper-GS64 / Bonds / Zero Coupon / Cero Cupón
+↳ Create LTN105
   ┌
   │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
   └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-06-05 [200 OK, 1.47kB, 447ms]
-  ┌
-  │ '📌 BOND_INSTRUMENT_URL seteado'
-  └
-  GET https://api.brasil.mercap.com.ar/exchange-schemes [200 OK, 1.29kB, 44ms]
-  ┌
-  │ '💱 EXCHANGE_SCHEME_URL seteado'
-  └
-  GET https://api.brasil.mercap.com.ar/valuation-schemes [200 OK, 1.39kB, 51ms]
-  ┌
-  │ '📊 VALUATION_SCHEME_URL seteado'
-  └
-  POST https://api.brasil.mercap.com.ar/appraiser [200 OK, 1.22kB, 1364ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
+
+↳ Create duplicate LTN105
+
+↳ Get all bonds
+  GET https://api.brasil.mercap.com.ar/brasil/bonds [200 OK, 311.81kB, 950ms]
+  ✓  Los headers requeridos están presentes y son correctos
+  ✓  El código de respuesta debe ser 200
+  ✓  Todos los atributos requeridos deben estar presentes
+  ✓  No debe haber atributos con valores vacíos (excepto embeddedOptions)
+  ✓  El atributo embeddedOptions debe estar vacío
+  ✓  Cada atributo debe tener el formato correcto
+  ✓  Debe existir objeto links con atributos self y deactivate
+
+↳ Get all bonds - start & limit parameters
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?limit=14&start=1 [200 OK, 235.28kB, 408ms]
+  ✓  Los headers requeridos están presentes y son correctos
+  ✓  El código de respuesta debe ser 200
+  ✓  Todos los atributos requeridos deben estar presentes
+  ✓  No debe haber atributos con valores vacíos (excepto embeddedOptions)
+  ✓  El atributo embeddedOptions debe estar vacío
+  ✓  Cada atributo debe tener el formato correcto
+  ✓  Debe existir objeto links con atributos self y deactivate
+  ✓  La cantidad de bonos debe coincidir con la esperada
+
+↳ Find LTN105 by shortName
+
+↳ Find LTN105 by name
+
+↳ Find LTN105 by identifier
+
+↳ Edit Bond
+
+↳ Find LTN105 by shortName & includeNonAlive true
+
+↳ Deactivate LTN105
+
+↳ Find LTN105 by shortName & includeNonAlive false
+
+↳ Activate LTN105
+
+❏ Pepper-GS64 / Bonds / Zero Coupon / Cero Cupón - Call - American - Fixed
+↳ Create LB5S0A
+
+↳ Create duplicate LB5S0A
+
+↳ Get all bonds with includeNonAlive true
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?includeNonAlive=true [200 OK, 121.02kB, 270ms]
+  ✓  Los headers requeridos están presentes y son correctos
+  ✓  El código de respuesta debe ser 200
+  ✓  Todos los atributos requeridos deben estar presentes
+  ✓  No debe haber atributos con valores vacíos (excepto embeddedOptions)
+  ✓  Cada atributo debe tener el formato correcto
+  ✓  Debe existir objeto links con atributos self y deactivate
+
+↳ Get all bonds - start & limit parameters with includeNonAlive true
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?limit=14&start=1&includeNonAlive=true [200 OK, 78.94kB, 212ms]
+  ✓  Los headers requeridos están presentes y son correctos
+  ✓  El código de respuesta debe ser 200
+  ✓  Todos los atributos requeridos deben estar presentes
+  ✓  No debe haber atributos con valores vacíos (excepto embeddedOptions)
+  ✓  Cada atributo debe tener el formato correcto
+  ✓  Debe existir objeto links con atributos self y deactivate
+  ✓  La cantidad de bonos debe coincidir con la esperada
+
+↳ Find LB5S0A by shortName
+
+↳ Find LB5S0A by name
+
+↳ Find LB5S0A by identifier
+
+↳ Edit LB5S0A
+
+↳ Find LB5S0AX by shortName & includeNonAlive true
+
+↳ Deactivate LB5S0
+
+↳ Find LB5S0AX by shortName & includeNonAlive false
+
+↳ Activate LB5S0
+
+❏ Pepper-GS64 / Bonds / Zero Coupon / Cero Cupón - Dollar linked
+↳ Create YMCOO
+
+↳ Create duplicate YMCOO
+
+↳ Get all bonds with includeNonAlive false
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?includeNonAlive=false [200 OK, 311.92kB, 464ms]
+  ✓  Los headers requeridos están presentes y son correctos
+  ✓  El código de respuesta debe ser 200
+  ✓  Todos los atributos requeridos deben estar presentes
+  ✓  No debe haber atributos con valores vacíos (excepto embeddedOptions)
+  ✓  El atributo embeddedOptions debe estar vacío
+  ✓  Cada atributo debe tener el formato correcto
+  ✓  Debe existir objeto links con atributos self y deactivate
+
+↳ Find YMCOO by shortName
+
+↳ Find YMCOO by name
+
+↳ Find YMCOO by identifier
+
+↳ Edit YMCOO
+
+↳ Find YMCOO by shortName & includeNonAlive true
+
+↳ Deactivate YMCOO
+
+↳ Find YMCOO by shortName & includeNonAlive false
+
+↳ Activate YMCOO
+
+❏ Pepper-GS64 / Bonds / Without Coupons / Bullet - Fixed Interest - Paid in issue currency
+↳ Create 0AJWR6
+
+↳ Create duplicate 0AJWR6
+
+↳ Find 0AJWR6 by shortName
+
+↳ Find 0AJWR6 by name
+
+↳ Find 0AJWR6 by identifier
+
+↳ Edit 0AJWR6
+
+↳ Find 0AJWR6 by shortName & includeNonAlive true
+
+↳ Deactivate 0AJWR6
+
+↳ Find 0AJWR6 by shortName & includeNonAlive false
+
+↳ Activate 0AJWR6
+
+❏ Pepper-GS64 / Bonds / Without Coupons / Bullet - Fixed Interest - Issued in indexed unit
+↳ Create TLC8O
+
+↳ Create duplicate TLC8O
+
+↳ Find TLC8O by shortName
+
+↳ Find TLC8O by name
+
+↳ Find TLC8O by identifier
+
+↳ Edit TLC80
+
+↳ Find TLC8O by shortName & includeNonAlive true
+
+↳ Deactivate TLC8O
+
+↳ Find TLC8O by shortName & includeNonAlive false
+
+↳ Activate TLC8O
+
+❏ Pepper-GS64 / Bonds / Without Coupons / Bullet - Fixed Interest - Call American - Technical value percentage
+↳ Create ARCO28
+
+↳ Create duplicate ARCO28
+
+↳ Find ARCO28 by shortName
+
+↳ Find ARCO28 by name
+
+↳ Find ARCO28 by identifier
+
+↳ Edit ARCO28
+
+↳ Find ARCO28 by shortName & includeNonAlive true
+
+↳ Deactivate ARCO28
+
+↳ Find ARCO28 by shortName & includeNonAlive false
+
+↳ Activate ARCO28
+
+❏ Pepper-GS64 / Bonds / Without Coupons / Floating Interest - Call American - StrikePrice fixed - Amortization homogeneous
+↳ Create BCIUL
+
+↳ Create duplicate BCIUL
+
+↳ Find BCIUL by shortName
+
+↳ Find BCIUL by name
+
+↳ Find BCIUL by identifier
+
+↳ Edit BCIUL
+
+↳ Find BCIUL by shortName & includeNonAlive true
+
+↳ Deactivate BCIUL
+
+↳ Find BCIUL by shortName & includeNonAlive false
+
+↳ Activate BCIUL
+
+❏ Pepper-GS64 / Bonds / Without Coupons / Fake Bullet - Floating Interest - FF
+↳ Create C190A
+
+↳ Create duplicate C190A
+
+↳ Find C190A by shortName
+
+↳ Find C190A by name
+
+↳ Find C190A by identifier
+
+↳ Edit C190A
+
+↳ Find C190A by shortName & includeNonAlive true
+
+↳ Deactivate C190A
+
+↳ Find C190A by shortName & includeNonAlive false
+
+↳ Activate C190A
+
+❏ Pepper-GS64 / Bonds / With Coupons / Coupons fixed Interest - Principal adjustment Index based
+↳ Create TX28
+
+↳ Create TX28 missing parameter
+
+↳ Find TX28 by shortName
+
+↳ Find TX28 by name
+
+↳ Find TX28 by identifier
+
+↳ Edit TX28
+
+↳ Find TX28 by shortName & includeNonAlive true
+
+↳ Deactivate TX28
+
+↳ Find C190A by shortName & includeNonAlive false
+
+↳ Activate TX28
+
+❏ Pepper-GS64 / Bonds / With Coupons / Coupons fixed Interest - Principal adjustment Not adjusted
+↳ Create DICA
+
+↳ Create DICA missing parameter
+
+↳ Find DICA by shortName
+
+↳ Find DICA by name
+
+↳ Find DICA by identifier
+
+↳ Edit DICA
+
+↳ Find DICA by shortName & includeNonAlive true
+
+↳ Deactivate DICA
+
+↳ Find DICA by shortName & includeNonAlive false
+
+↳ Activate DICA
+
+❏ Pepper-GS64 / Bonds / With Coupons / Coupons floating Interest - Principal adjustment Not adjusted - Formula arithmetic mean
+↳ Create MRCZO
+
+↳ Create MRCZO missing parameter
+
+↳ Find MRCZO by shortName
+
+↳ Find MRCZO by name
+
+↳ Find MRCZO by identifier
+
+↳ Edit MRCZO
+
+↳ Find MRCZO by shortName & includeNonAlive true
+
+↳ Deactivate MRCZO
+
+↳ Find MRCZO by shortName & includeNonAlive false
+
+↳ Activate MRCZO
+
+❏ Pepper-GS64 / Bonds / Negative Cases / shortName
+↳ Create empty shortName bond
+
+↳ Create invalid shortName bond
+
+↳ Create missing shortName bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / name
+↳ Create empty name bond
+
+↳ Create invalid name bond
+
+↳ Create missing name bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / issue & maturityDate
+↳ Create empty issueDate bond
+
+↳ Create invalid issueDate bond
+
+↳ Create invalid format issueDate bond
+
+↳ Create empty maturityDate bond
+
+↳ Create invalid maturityDate bond
+
+↳ Create invalid format maturityDate bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / debtType
+↳ Create empty debtType bond
+
+↳ Create invalid debtType bond
+
+↳ Create missing debtType bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / issueCountry
+↳ Create empty issueCountry bond
+
+↳ Create invalid issueCountry bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / issuer
+↳ Create empty issuer bond
+
+↳ Create invalid issuer bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / law
+↳ Create empty law bond
+
+↳ Create invalid law bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / faceValueAmount
+↳ Create zero faceValueAmount bond
+
+↳ Create invalid faceValueAmount bond
+
+↳ Create negative faceValueAmount bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / smallestDenomination / increment
+↳ Create invalid increment bond
+
+↳ Create zero increment bond
+
+↳ Create negative increment bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / smallestDenomination / base
+↳ Create invalid base bond
+
+↳ Create zero base bond
+
+↳ Create negative base bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / dayCountBasis / type
+↳ Create empty dayCountBasis type bond
+
+↳ Create invalid dayCountBasis type bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / dayCountBasis / calendar
+↳ Create empty dayCountBasis calendar bond
+
+↳ Create invalid dayCountBasis calendar bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / cashflowUnits / type
+↳ Create empty cashflowUnits type bond
+
+↳ Create invalid cashflowUnits type bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / cashflowUnits / issueCurrency
+↳ Create empty cashflowUnits issueCurrency bond
+
+↳ Create invalid cashflowUnits issueCurrency bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / cashflowUnits / paymentCurrency
+↳ Create empty cashflowUnits paymentCurrency bond
+
+↳ Create invalid cashflowUnits paymentCurrency bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / cashflowUnits / exchangeMarket
+↳ Create empty cashflowUnits exchangeMarket bond
+
+↳ Create invalid cashflowUnits exchangeMarket bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / cashflowUnits / exchangeSource
+↳ Create empty cashflowUnits exchangeSource bond
+
+↳ Create invalid cashflowUnits exchangeSource bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / cashflowUnits / exchangeDateOffsetDays
+↳ Create invalid cashflowUnits exchangeDateOffsetDays bond
+
+↳ Create missing cashflowUnits exchangeDateOffsetDays bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / cashflowUnits / exchangeCalendar
+↳ Create empty cashflowUnits exchangeCalendar bond
+
+↳ Create invalid cashflowUnits exchangeCalendar bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / embeddedOptions / type
+↳ Create empty embeddedOptions type bond
+
+↳ Create invalid embeddedOptions type bond
+
+↳ Create wrong embeddedOptions type bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / embeddedOptions / exerciseStyle
+↳ Create empty embeddedOptions exerciseStyle bond
+
+↳ Create invalid embeddedOptions exerciseStyle bond
+
+↳ Create wrong embeddedOptions exerciseStyle bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / embeddedOptions / dateFrom & dateTo
+↳ Create empty embeddedOptions dateFrom bond
+
+↳ Create invalid embeddedOptions dateFrom bond
+
+↳ Create invalid format embeddedOptions dateFrom bond
+
+↳ Create empty embeddedOptions dateTo bond
+
+↳ Create invalid embeddedOptions dateTo bond
+
+↳ Create invalid format embeddedOptions dateTo bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / embeddedOptions / strikePrice / type
+↳ Create empty strikePrice type bond
+
+↳ Create invalid strikePrice type bond
+
+↳ Create wrong strikePrice type bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / embeddedOptions / strikePrice / amount
+↳ Create zero strikePrice amount bond
+
+↳ Create invalid strikePrice amount bond
+
+↳ Create negative strikePrice amount bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / embeddedOptions / strikePrice / unit
+↳ Create empty embeddedOptions unit bond
+
+↳ Create invalid embeddedOptions unit bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / couponPayment / offsetDays
+↳ Create invalid couponPayment offsetDays bond
+
+↳ Create missing couponPayment offsetDays bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / couponPayment / movementPolicy
+↳ Create empty couponPayment movementPolicy bond
+
+↳ Create invalid couponPayment movementPolicy bond
+
+↳ Create wrong couponPayment movementPolicy bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / couponPayment / calendar
+↳ Create empty couponPayment calendar bond
+
+↳ Create invalid couponPayment calendar bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / couponPayment / keepInMonth
+↳ Create empty couponPayment keepInMonth bond
+
+↳ Create invalid couponPayment keepInMonth bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / calculation
+↳ Create empty interest calculation bond
+
+↳ Create invalid interest calculation bond
+
+↳ Create missing interest calculation bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / accruementStartDate
+↳ Create empty interest accruementStartDate bond
+
+↳ Create invalid interest accruementStartDate bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / firstDueDate
+↳ Create empty interest firstDueDate bond
+
+↳ Create invalid interest firstDueDate bond
+
+↳ Create outside the bond term
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / accrueUntilPaymentDate
+↳ Create missing interest accrueUntilPaymentDate bond
+
+↳ Create invalid interest accrueUntilPaymentDate bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / periodicity
+↳ Create empty interest periodicity bond
+
+↳ Create invalid interest periodicity bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / type
+↳ Create empty interest type bond
+
+↳ Create invalid interest type bond
+
+↳ Create wrong interest type bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / rateTerm
+↳ Create empty interest rateTerm bond
+
+↳ Create invalid interest rateTerm bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / spreadPercentage
+↳ Create invalid interest spreadPercentage bond
+
+↳ Create missing interest spreadPercentage bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / formula
+↳ Create empty interest formula bond
+
+↳ Create invalid interest formula bond
+
+↳ Create wrong interest formula bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / yearlyRatePercentage
+↳ Create missing interest yearlyRatePercentage bond
+
+↳ Create invalid interest yearlyRatePercentage bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / dateOffsetDays
+↳ Create invalid interest dateOffsetDays bond
+
+↳ Create mising interest dateOffsetDays bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / amortization / type
+↳ Create empty amortization type bond
+
+↳ Create invalid amortization type bond
+
+↳ Create wrong amortization type bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / amortization / gracePeriodCoupons
+↳ Create invalid amortization gracePeriodCoupons bond
+
+↳ Create negative amortization gracePeriodCoupons bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / amortization / percentage
+↳ Create invalid amortization percentage bond
+
+↳ Create negative amortization percentage bond
+
+↳ Create long amortization percentage bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / amortization / applyEveryCoupons
+↳ Create invalid amortization applyEveryCoupons bond
+
+↳ Create negative amortization applyEveryCoupons bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / invalid headers
+↳ Create LTN105 with invalid content type value
+
+↳ Create LTN105 with invalid content type
+
+❏ Pepper-GS64 / Bonds / Negative Cases / invalid auth
+↳ Create LTN105 without auth
+
+❏ Pepper-GS64 / Bonds / Negative Cases / invalid url
+↳ Create LTN105 with invalid path
+
+❏ Pepper-GS64 / Bond Laws
+↳ All
+  GET https://api.brasil.mercap.com.ar/bond-laws [200 OK, 1.2kB, 256ms]
   ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ 'Result is a non-empty array.'
-  └
-  ✓  Result is a non-empty array
-  ┌
-  │ 'Each result object has the expected properties.'
-  └
-  ✓  Each result object has expected properties
-  ┌
-  │ 'Value amount is positive.'
-  └
-  ✓  Value amount is positive
-  ┌
-  │ 'Instrument URL is correct.'
-  └
-  ✓  Instrument URL is correct
-  ┌
-  │ 'Unit URL in every is correct.'
-  └
-  ✓  Unit URL in every is correct
-  ┌
-  │ 'Validation completed for amounts: 100 or 1000.'
-  └
-  ✓  Validate that 'amount' is either 100 or 1000
-  ┌
-  │ "Validate that 'type' is instrument quote."
-  └
-  ✓  Validate that 'type' is instrument quote
+  ✓  Not empty
 
-❏ Pepper-GS32 / Regression-Test / Bonds
-↳ All bonds - deault parameters
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-06-05 [200 OK, 1.47kB, 48ms]
-  ┌
-  │ '🔎 SHORT_NAME: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/bonds [200 OK, 7.37kB, 99ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
+↳ By UUID
+
+❏ Pepper-GS64 / Cashflow / Cashflow
+↳ Get Cashflow - fixed rate without amortization
+
+↳ Get Cashflow - fixed rate without amortization - query quantity
+
+↳ Get Cashflow - Fixed rate with amortization
+
+↳ Get Cashflow - Fixed rate with amortization - fromDate - toDate
+
+↳ Get Cashflow -  Zero coupon fixed rate
+
+❏ Pepper-GS64 / Cashflow / technical-value
+↳ Get technical-value - on expiration cupon date
+
+↳ Get technical-value - before the first amortization
+
+↳ Get technical-value - after the first amortization
+
+↳ Get technical-value -  before the bond date range
+
+↳ Get technical-value - after the first amortization - query quantity
+
+↳ Get technical-value -  after the bond date range
+
+❏ Pepper-GS64 / Cashflow / accrued-interest
+↳ Get Accrued-interest  - on expiration cupon date
+
+↳ Get Accrued-interest  - after the first amortization
+
+↳ Get Accrued-interest - before the first amortization
+
+↳ Get accrued-interest - after the first amortization - query quantity
+
+↳ Get accrued-interest -  after the bond date range
+
+↳ Get accrued-interest -  before the bond date range
+
+❏ Pepper-GS64 / Cashflow / residual-value
+↳ Get residual-value - on expiration cupon date
+
+↳ Get residual-value - after the first amortization
+
+↳ Get residual-value -  before the bond date range
+
+↳ Get residual-value -  after the bond date range
+
+❏ Pepper-GS64 / Cashflow / Negative Case Cashflow
+↳ Get Cashflow - parametro invalido
+
+↳ Get Cashflow - not found bonds
+
+↳ Get Cashflow - accept invalido
+
+↳ Get technical-value - empty date
+
+↳ Get technical-value - invalid format date
+
+↳ Get technical-value - invalid format Quantity
+
+↳ Get technical-value - not found bond
+
+↳ Get technical-value - invalid accept
+
+↳ Get technical-value - quantity 0
+
+↳ Get technical-value - invalid accept
+
+↳ Get accrued-interest - not found bond
+
+↳ Get accrued-interest - quantity 0
+
+↳ Get accrued-interest - invalid format Quantity
+
+↳ Get accrued-interest - invalid format date
+
+↳ Get accrued-interest - empty date
+
+❏ Pepper-GS64 / Currencies64
+↳ All
+  GET https://api.brasil.mercap.com.ar/currencies [200 OK, 1.34kB, 247ms]
   ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ "'items' array is present and not empty."
-  └
-  ✓  Response contains 'items' array with elements
-  ┌
-  │ 'Bond 0 validated successfully.'
-  │ 'Bond 1 validated successfully.'
-  │ 'Bond 2 validated successfully.'
-  │ 'Bond 3 validated successfully.'
-  │ 'Bond 4 validated successfully.'
-  │ 'Bond 5 validated successfully.'
-  │ 'Bond 6 validated successfully.'
-  │ 'Bond 7 validated successfully.'
-  │ 'Bond 8 validated successfully.'
-  │ 'Bond 9 validated successfully.'
-  └
-  ✓  Each bond has required properties
-  ┌
-  │ 'Bond 0: shortName is valid: BR2WAVDBS026'
-  │ 'Bond 0: name is valid: 2W Ecobank SA 2038 BRL 10.5565
-  │ % (BR2WAVDBS026)'
-  │ 'Bond 0: debtType is valid: Debenture'
-  │ 'Bond 0: links object is present.'
-  │ 'Bond 0: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/22fa4efc-300e-460a-b3fd-5e15cd3af1eb/
-  │ coupons'
-  │ 'Bond 0: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/22fa4efc-300e-460a-b3fd-5e15cd3af
-  │ 1eb/identifiers'
-  │ 'Bond 0: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/22fa4efc-300e-460a-b3fd-5e15cd3af1eb'
-  │ 'Bond 0: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/22fa4efc-300e-460a-b3fd-5e15c
-  │ d3af1eb/issue-conditions'
-  │ 'Bond 0: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/22fa4efc-300e-460a-b3fd-5e15cd
-  │ 3af1eb/payment-summary'
-  │ 'Bond 1: shortName is valid: BRRRRPDBS056'
-  │ 'Bond 1: name is valid: 3R Petroleum Oleo e Gas SA 203
-  │ 3 BRL 8.4166% (BRRRRPDBS056)'
-  │ 'Bond 1: debtType is valid: Debenture'
-  │ 'Bond 1: links object is present.'
-  │ 'Bond 1: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/80472dfc-9806-418e-9194-17cbfb7d6c1b/
-  │ coupons'
-  │ 'Bond 1: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/80472dfc-9806-418e-9194-17cbfb7d6
-  │ c1b/identifiers'
-  │ 'Bond 1: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/80472dfc-9806-418e-9194-17cbfb7d6c1b'
-  │ 'Bond 1: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/80472dfc-9806-418e-9194-17cbf
-  │ b7d6c1b/issue-conditions'
-  │ 'Bond 1: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/80472dfc-9806-418e-9194-17cbfb
-  │ 7d6c1b/payment-summary'
-  │ 'Bond 2: shortName is valid: BRQUATDBS043'
-  │ 'Bond 2: name is valid: Acucareira Quata SA 2034 BRL 7
-  │ .8722% (BRQUATDBS043)'
-  │ 'Bond 2: debtType is valid: Debenture'
-  │ 'Bond 2: links object is present.'
-  │ 'Bond 2: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8fe132e5c/
-  │ coupons'
-  │ 'Bond 2: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8fe132
-  │ e5c/identifiers'
-  │ 'Bond 2: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8fe132e5c'
-  │ 'Bond 2: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8f
-  │ e132e5c/issue-conditions'
-  │ 'Bond 2: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8fe
-  │ 132e5c/payment-summary'
-  │ 'Bond 3: shortName is valid: AEGPA7'
-  │ 'Bond 3: name is valid: Aegea Saneamento E Participaco
-  │ es 2026 BRL DI + 2,7500% (AEGPA7)'
-  │ 'Bond 3: debtType is valid: Debenture'
-  │ 'Bond 3: links object is present.'
-  │ 'Bond 3: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38e856433a4a/
-  │ coupons'
-  │ 'Bond 3: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38e856433
-  │ a4a/identifiers'
-  │ 'Bond 3: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/675761bb-32e3-4e69-8a3d-38e856433a4a'
-  │ 'Bond 3: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38e85
-  │ 6433a4a/issue-conditions'
-  │ 'Bond 3: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38e856
-  │ 433a4a/payment-summary'
-  │ 'Bond 4: shortName is valid: AEGP17'
-  │ 'Bond 4: name is valid: Aegea Saneamento E Participaco
-  │ es 2027 BRL DI + 2,1500% (AEGP17)'
-  │ 'Bond 4: debtType is valid: Debenture'
-  │ 'Bond 4: links object is present.'
-  │ 'Bond 4: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/ab423946-5626-429e-bbc6-fe239ea0132c/
-  │ coupons'
-  │ 'Bond 4: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/ab423946-5626-429e-bbc6-fe239ea01
-  │ 32c/identifiers'
-  │ 'Bond 4: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/ab423946-5626-429e-bbc6-fe239ea0132c'
-  │ 'Bond 4: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/ab423946-5626-429e-bbc6-fe239
-  │ ea0132c/issue-conditions'
-  │ 'Bond 4: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/ab423946-5626-429e-bbc6-fe239e
-  │ a0132c/payment-summary'
-  │ 'Bond 5: shortName is valid: AEGP19'
-  │ 'Bond 5: name is valid: Aegea Saneamento E Participaco
-  │ es 2028 BRL DI + 1,9000% (AEGP19)\t'
-  │ 'Bond 5: debtType is valid: Debenture'
-  │ 'Bond 5: links object is present.'
-  │ 'Bond 5: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8dfce38fe/
-  │ coupons'
-  │ 'Bond 5: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8dfce3
-  │ 8fe/identifiers'
-  │ 'Bond 5: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8dfce38fe'
-  │ 'Bond 5: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8d
-  │ fce38fe/issue-conditions'
-  │ 'Bond 5: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8df
-  │ ce38fe/payment-summary'
-  │ 'Bond 6: shortName is valid: AEGPB7'
-  │ 'Bond 6: name is valid: Aegea Saneamento E Participaco
-  │ es 2028 BRL DI + 2,9500% (AEGPB7)'
-  │ 'Bond 6: debtType is valid: Debenture'
-  │ 'Bond 6: links object is present.'
-  │ 'Bond 6: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/77cd58d4-f98a-4665-b189-cb58805c372f/
-  │ coupons'
-  │ 'Bond 6: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/77cd58d4-f98a-4665-b189-cb58805c3
-  │ 72f/identifiers'
-  │ 'Bond 6: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/77cd58d4-f98a-4665-b189-cb58805c372f'
-  │ 'Bond 6: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/77cd58d4-f98a-4665-b189-cb588
-  │ 05c372f/issue-conditions'
-  │ 'Bond 6: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/77cd58d4-f98a-4665-b189-cb5880
-  │ 5c372f/payment-summary'
-  │ 'Bond 7: shortName is valid: AEGPA4'
-  │ 'Bond 7: name is valid: Aegea Saneamento E Participaco
-  │ es 2028 BRL DI + 3,4700% (AEGPA4)'
-  │ 'Bond 7: debtType is valid: Debenture'
-  │ 'Bond 7: links object is present.'
-  │ 'Bond 7: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/8c071fbb-eece-49ee-911e-ba86370543a7/
-  │ coupons'
-  │ 'Bond 7: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/8c071fbb-eece-49ee-911e-ba8637054
-  │ 3a7/identifiers'
-  │ 'Bond 7: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/8c071fbb-eece-49ee-911e-ba86370543a7'
-  │ 'Bond 7: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/8c071fbb-eece-49ee-911e-ba863
-  │ 70543a7/issue-conditions'
-  │ 'Bond 7: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/8c071fbb-eece-49ee-911e-ba8637
-  │ 0543a7/payment-summary'
-  │ 'Bond 8: shortName is valid: AEGPB3'
-  │ 'Bond 8: name is valid: Aegea Saneamento E Participaco
-  │ es 2032 BRL DI + 1,8000% (AEGPB3)'
-  │ 'Bond 8: debtType is valid: Debenture'
-  │ 'Bond 8: links object is present.'
-  │ 'Bond 8: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/a75ec024-b701-476d-86a2-fdf345042cb5/
-  │ coupons'
-  │ 'Bond 8: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/a75ec024-b701-476d-86a2-fdf345042
-  │ cb5/identifiers'
-  │ 'Bond 8: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/a75ec024-b701-476d-86a2-fdf345042cb5'
-  │ 'Bond 8: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/a75ec024-b701-476d-86a2-fdf34
-  │ 5042cb5/issue-conditions'
-  │ 'Bond 8: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/a75ec024-b701-476d-86a2-fdf345
-  │ 042cb5/payment-summary'
-  │ 'Bond 9: shortName is valid: TIET29'
-  │ 'Bond 9: name is valid: AES Brasil Operacoes SA 2029 B
-  │ RL 4,7133% (TIET29)'
-  │ 'Bond 9: debtType is valid: Debenture'
-  │ 'Bond 9: links object is present.'
-  │ 'Bond 9: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/95c42978-52f9-41f4-b203-7591a86855e8/
-  │ coupons'
-  │ 'Bond 9: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/95c42978-52f9-41f4-b203-7591a8685
-  │ 5e8/identifiers'
-  │ 'Bond 9: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/95c42978-52f9-41f4-b203-7591a86855e8'
-  │ 'Bond 9: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/95c42978-52f9-41f4-b203-7591a
-  │ 86855e8/issue-conditions'
-  │ 'Bond 9: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/95c42978-52f9-41f4-b203-7591a8
-  │ 6855e8/payment-summary'
-  └
-  ✓  Each bond property has the correct format
-  ┌
-  │ "Link 'coupons' in bond 0 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/22fa4efc-300e-460a-b3fd-5e15cd
-  │ 3af1eb/coupons'
-  │ "Link 'identifiers' in bond 0 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/22fa4efc-300e-460a-b3fd-5e
-  │ 15cd3af1eb/identifiers'
-  │ "Link 'self' in bond 0 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/22fa4efc-300e-460a-b3fd-5e15cd3af
-  │ 1eb'
-  │ "Link 'issueConditions' in bond 0 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/22fa4efc-300e-460a-b3f
-  │ d-5e15cd3af1eb/issue-conditions'
-  │ "Link 'paymentSummary' in bond 0 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/22fa4efc-300e-460a-b3fd
-  │ -5e15cd3af1eb/payment-summary'
-  │ "Link 'coupons' in bond 1 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/80472dfc-9806-418e-9194-17cbfb
-  │ 7d6c1b/coupons'
-  │ "Link 'identifiers' in bond 1 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/80472dfc-9806-418e-9194-17
-  │ cbfb7d6c1b/identifiers'
-  │ "Link 'self' in bond 1 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/80472dfc-9806-418e-9194-17cbfb7d6
-  │ c1b'
-  │ "Link 'issueConditions' in bond 1 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/80472dfc-9806-418e-919
-  │ 4-17cbfb7d6c1b/issue-conditions'
-  │ "Link 'paymentSummary' in bond 1 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/80472dfc-9806-418e-9194
-  │ -17cbfb7d6c1b/payment-summary'
-  │ "Link 'coupons' in bond 2 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8fe
-  │ 132e5c/coupons'
-  │ "Link 'identifiers' in bond 2 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9c
-  │ e8fe132e5c/identifiers'
-  │ "Link 'self' in bond 2 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8fe132
-  │ e5c'
-  │ "Link 'issueConditions' in bond 2 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a
-  │ 1-9ce8fe132e5c/issue-conditions'
-  │ "Link 'paymentSummary' in bond 2 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1
-  │ -9ce8fe132e5c/payment-summary'
-  │ "Link 'coupons' in bond 3 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38e856
-  │ 433a4a/coupons'
-  │ "Link 'identifiers' in bond 3 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38
-  │ e856433a4a/identifiers'
-  │ "Link 'self' in bond 3 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38e856433
-  │ a4a'
-  │ "Link 'issueConditions' in bond 3 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/675761bb-32e3-4e69-8a3
-  │ d-38e856433a4a/issue-conditions'
-  │ "Link 'paymentSummary' in bond 3 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d
-  │ -38e856433a4a/payment-summary'
-  │ "Link 'coupons' in bond 4 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/ab423946-5626-429e-bbc6-fe239e
-  │ a0132c/coupons'
-  │ "Link 'identifiers' in bond 4 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/ab423946-5626-429e-bbc6-fe
-  │ 239ea0132c/identifiers'
-  │ "Link 'self' in bond 4 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/ab423946-5626-429e-bbc6-fe239ea01
-  │ 32c'
-  │ "Link 'issueConditions' in bond 4 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/ab423946-5626-429e-bbc
-  │ 6-fe239ea0132c/issue-conditions'
-  │ "Link 'paymentSummary' in bond 4 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/ab423946-5626-429e-bbc6
-  │ -fe239ea0132c/payment-summary'
-  │ "Link 'coupons' in bond 5 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8df
-  │ ce38fe/coupons'
-  │ "Link 'identifiers' in bond 5 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4d
-  │ a8dfce38fe/identifiers'
-  │ "Link 'self' in bond 5 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8dfce3
-  │ 8fe'
-  │ "Link 'issueConditions' in bond 5 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed
-  │ 3-4da8dfce38fe/issue-conditions'
-  │ "Link 'paymentSummary' in bond 5 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3
-  │ -4da8dfce38fe/payment-summary'
-  │ "Link 'coupons' in bond 6 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/77cd58d4-f98a-4665-b189-cb5880
-  │ 5c372f/coupons'
-  │ "Link 'identifiers' in bond 6 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/77cd58d4-f98a-4665-b189-cb
-  │ 58805c372f/identifiers'
-  │ "Link 'self' in bond 6 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/77cd58d4-f98a-4665-b189-cb58805c3
-  │ 72f'
-  │ "Link 'issueConditions' in bond 6 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/77cd58d4-f98a-4665-b18
-  │ 9-cb58805c372f/issue-conditions'
-  │ "Link 'paymentSummary' in bond 6 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/77cd58d4-f98a-4665-b189
-  │ -cb58805c372f/payment-summary'
-  │ "Link 'coupons' in bond 7 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/8c071fbb-eece-49ee-911e-ba8637
-  │ 0543a7/coupons'
-  │ "Link 'identifiers' in bond 7 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/8c071fbb-eece-49ee-911e-ba
-  │ 86370543a7/identifiers'
-  │ "Link 'self' in bond 7 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/8c071fbb-eece-49ee-911e-ba8637054
-  │ 3a7'
-  │ "Link 'issueConditions' in bond 7 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/8c071fbb-eece-49ee-911
-  │ e-ba86370543a7/issue-conditions'
-  │ "Link 'paymentSummary' in bond 7 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/8c071fbb-eece-49ee-911e
-  │ -ba86370543a7/payment-summary'
-  │ "Link 'coupons' in bond 8 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/a75ec024-b701-476d-86a2-fdf345
-  │ 042cb5/coupons'
-  │ "Link 'identifiers' in bond 8 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/a75ec024-b701-476d-86a2-fd
-  │ f345042cb5/identifiers'
-  │ "Link 'self' in bond 8 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/a75ec024-b701-476d-86a2-fdf345042
-  │ cb5'
-  │ "Link 'issueConditions' in bond 8 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/a75ec024-b701-476d-86a
-  │ 2-fdf345042cb5/issue-conditions'
-  │ "Link 'paymentSummary' in bond 8 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/a75ec024-b701-476d-86a2
-  │ -fdf345042cb5/payment-summary'
-  │ "Link 'coupons' in bond 9 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/95c42978-52f9-41f4-b203-7591a8
-  │ 6855e8/coupons'
-  │ "Link 'identifiers' in bond 9 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/95c42978-52f9-41f4-b203-75
-  │ 91a86855e8/identifiers'
-  │ "Link 'self' in bond 9 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/95c42978-52f9-41f4-b203-7591a8685
-  │ 5e8'
-  │ "Link 'issueConditions' in bond 9 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/95c42978-52f9-41f4-b20
-  │ 3-7591a86855e8/issue-conditions'
-  │ "Link 'paymentSummary' in bond 9 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/95c42978-52f9-41f4-b203
-  │ -7591a86855e8/payment-summary'
-  └
-  ✓  Links are valid URLs
-  ┌
-  │ "Global link 'next' is valid: https://api.brasil.merca
-  │ p.com.ar/bonds?limit=10&start=11"
-  │ "Global link 'self' is valid: https://api.brasil.merca
-  │ p.com.ar/bonds"
-  │ "Global link 'last' is valid: https://api.brasil.merca
-  │ p.com.ar/bonds?limit=10&start=1031"
-  └
-  ✓  Global links are valid URLs
-  ┌
-  │ "No 'query' parameter provided in request."
-  └
-  ✓  Results match the query parameter
-  ┌
-  │ "No 'shortName' parameter provided in request."
-  └
-  ✓  Results match the shortName parameter
-  ┌
-  │ 'Results respect the limit parameter (max 10 items).'
-  └
-  ✓  Results respect the limit parameter
-  ┌
-  │ 'Validated that the first bond in response starts at i
-  │ ndex 1.'
-  └
-  ✓  Start parameter skips the correct number of bonds
-  ┌
-  │ 'Response code is not 406, no validation necessary.'
-  └
-  ✓  Error 406 response structure
-  ┌
-  │ 'Limit is not 0, skipping error validation.'
-  └
-  ✓  Limit parameter is 0, response should be 400
+  ✓  Not empty
 
-↳ All bonds - for issuer
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-06-05 [200 OK, 1.47kB, 51ms]
-  ┌
-  │ '🔎 SHORT_NAME: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/instrument-issuers [200 OK, 6.45kB, 78ms]
-  ┌
-  │ 'https://api.brasil.mercap.com.ar/instrument-issuers/0
-  │ 08ddb57-2324-4991-8fbb-b36bdcd8a431'
-  └
-  GET https://api.brasil.mercap.com.ar/bonds?issuer=https://api.brasil.mercap.com.ar/instrument-issuers/008ddb57-2324-4991-8fbb-b36bdcd8a431 [200 OK, 7.86kB, 159ms]
-  ┌
-  │ 'Status code is 200.'
-  └
+↳ By UUID
+
+❏ Pepper-GS64 / Calendars / Creating
+↳ Create Calendar with Only Name
+
+↳ Create Calendar with All Rules
+
+↳ Crate Date Rule for a Specific Calendar
+
+↳ Create Day Of Month Rule for a Specific Calendar
+
+↳ Create Day Of Week Rule for a Specific Calendar
+
+↳ Create Rule with validityFrom & to
+
+↳ Create Rule with validityFrom
+
+↳ Create Rule with validityTo
+
+❏ Pepper-GS64 / Calendars / Querying
+↳ Get calendars
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.56kB, 105ms]
+  ✓  El código de respuesta debe ser 200
+  ✓  La respuesta debe tener items
+  ✓  Cada calendario debe tener la estructura correcta
+
+↳ Get calendars summary
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 1.87kB, 107ms]
+  ✓  El header Accept es correcto
+  ✓  El código de respuesta debe ser 200
+  ✓  La respuesta debe tener 'items' y 'links.self'
+  ✓  Cada calendario debe tener estructura correcta y no debe tener holidayRules como objeto
+
+↳ Get calendar by UUID
+
+↳ Get holiday rules
+
+↳ Get holiday rules without header
+
+↳ Get day of week rule
+
+↳ Get date rule
+
+↳ Get day of month rule
+
+↳ Get rule with validityFrom & to
+
+↳ Get rule with validityFrom
+
+↳ Get rule with validityTo
+
+❏ Pepper-GS64 / Calendars / Date movement
+↳ Move Forward with Days
+
+↳ Move Backward with Days
+
+↳ Move Forward with Hours
+
+↳ Move Backward with Hours
+
+↳ Validate Date Rule using Move Forward
+
+↳ Validate Date Rule using Move Backward
+
+↳ Validate Day of Month Rule using Move Forward
+
+↳ Validate Day of Month Rule using Move Backward
+
+↳ Validate Day of Week Rule using Move Forward
+
+↳ Validate Day of Week Rule using Move Backward
+
+↳ Validate Rule with validityFrom & to using Move Forward
+
+↳ Validate Rule with validityFrom & to using Move Backward
+
+↳ Validate Rule with validityFrom using Move Forward
+
+↳ Validate Rule with validityFrom using Move Backward
+
+↳ Validate Rule with validityTo using Move Forward
+
+↳ Validate Rule with validityTo using Move Backward
+
+❏ Pepper-GS64 / Calendars / Updating
+↳ Patch Day of Week Holiday Rule
+
+↳ Patch Day of Month Holiday Rule
+
+↳ Patch Date Rule
+
+↳ Patch validityFrom & validityTo Rule
+
+↳ Patch validityFrom Rule
+
+↳ Patch validityTo Rule
+
+↳ Patch Only Name Calendar
+
+❏ Pepper-GS64 / Calendars / Activation
+↳ Desactive calendar by UUID
+
+↳ Activate calendar by UUID
+
+❏ Pepper-GS64 / Debt Types
+↳ All
+  GET https://api.brasil.mercap.com.ar/debt-types [200 OK, 2.17kB, 162ms]
   ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ "'items' array is present and not empty."
-  └
-  ✓  Response contains 'items' array with elements
-  ┌
-  │ 'Bond 0 validated successfully.'
-  │ 'Bond 1 validated successfully.'
-  │ 'Bond 2 validated successfully.'
-  │ 'Bond 3 validated successfully.'
-  │ 'Bond 4 validated successfully.'
-  │ 'Bond 5 validated successfully.'
-  │ 'Bond 6 validated successfully.'
-  │ 'Bond 7 validated successfully.'
-  │ 'Bond 8 validated successfully.'
-  │ 'Bond 9 validated successfully.'
-  └
-  ✓  Each bond has required properties
-  ┌
-  │ 'Bond 0: shortName is valid: BR2WAVDBS026'
-  │ 'Bond 0: name is valid: 2W Ecobank SA 2038 BRL 10.5565
-  │ % (BR2WAVDBS026)'
-  │ 'Bond 0: debtType is valid: Debenture'
-  │ 'Bond 0: links object is present.'
-  │ 'Bond 0: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/22fa4efc-300e-460a-b3fd-5e15cd3af1eb/
-  │ coupons'
-  │ 'Bond 0: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/22fa4efc-300e-460a-b3fd-5e15cd3af
-  │ 1eb/identifiers'
-  │ 'Bond 0: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/22fa4efc-300e-460a-b3fd-5e15cd3af1eb'
-  │ 'Bond 0: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/22fa4efc-300e-460a-b3fd-5e15c
-  │ d3af1eb/issue-conditions'
-  │ 'Bond 0: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/22fa4efc-300e-460a-b3fd-5e15cd
-  │ 3af1eb/payment-summary'
-  │ 'Bond 1: shortName is valid: BRRRRPDBS056'
-  │ 'Bond 1: name is valid: 3R Petroleum Oleo e Gas SA 203
-  │ 3 BRL 8.4166% (BRRRRPDBS056)'
-  │ 'Bond 1: debtType is valid: Debenture'
-  │ 'Bond 1: links object is present.'
-  │ 'Bond 1: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/80472dfc-9806-418e-9194-17cbfb7d6c1b/
-  │ coupons'
-  │ 'Bond 1: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/80472dfc-9806-418e-9194-17cbfb7d6
-  │ c1b/identifiers'
-  │ 'Bond 1: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/80472dfc-9806-418e-9194-17cbfb7d6c1b'
-  │ 'Bond 1: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/80472dfc-9806-418e-9194-17cbf
-  │ b7d6c1b/issue-conditions'
-  │ 'Bond 1: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/80472dfc-9806-418e-9194-17cbfb
-  │ 7d6c1b/payment-summary'
-  │ 'Bond 2: shortName is valid: BRQUATDBS043'
-  │ 'Bond 2: name is valid: Acucareira Quata SA 2034 BRL 7
-  │ .8722% (BRQUATDBS043)'
-  │ 'Bond 2: debtType is valid: Debenture'
-  │ 'Bond 2: links object is present.'
-  │ 'Bond 2: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8fe132e5c/
-  │ coupons'
-  │ 'Bond 2: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8fe132
-  │ e5c/identifiers'
-  │ 'Bond 2: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8fe132e5c'
-  │ 'Bond 2: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8f
-  │ e132e5c/issue-conditions'
-  │ 'Bond 2: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8fe
-  │ 132e5c/payment-summary'
-  │ 'Bond 3: shortName is valid: AEGPA7'
-  │ 'Bond 3: name is valid: Aegea Saneamento E Participaco
-  │ es 2026 BRL DI + 2,7500% (AEGPA7)'
-  │ 'Bond 3: debtType is valid: Debenture'
-  │ 'Bond 3: links object is present.'
-  │ 'Bond 3: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38e856433a4a/
-  │ coupons'
-  │ 'Bond 3: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38e856433
-  │ a4a/identifiers'
-  │ 'Bond 3: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/675761bb-32e3-4e69-8a3d-38e856433a4a'
-  │ 'Bond 3: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38e85
-  │ 6433a4a/issue-conditions'
-  │ 'Bond 3: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38e856
-  │ 433a4a/payment-summary'
-  │ 'Bond 4: shortName is valid: AEGP17'
-  │ 'Bond 4: name is valid: Aegea Saneamento E Participaco
-  │ es 2027 BRL DI + 2,1500% (AEGP17)'
-  │ 'Bond 4: debtType is valid: Debenture'
-  │ 'Bond 4: links object is present.'
-  │ 'Bond 4: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/ab423946-5626-429e-bbc6-fe239ea0132c/
-  │ coupons'
-  │ 'Bond 4: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/ab423946-5626-429e-bbc6-fe239ea01
-  │ 32c/identifiers'
-  │ 'Bond 4: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/ab423946-5626-429e-bbc6-fe239ea0132c'
-  │ 'Bond 4: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/ab423946-5626-429e-bbc6-fe239
-  │ ea0132c/issue-conditions'
-  │ 'Bond 4: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/ab423946-5626-429e-bbc6-fe239e
-  │ a0132c/payment-summary'
-  │ 'Bond 5: shortName is valid: AEGP19'
-  │ 'Bond 5: name is valid: Aegea Saneamento E Participaco
-  │ es 2028 BRL DI + 1,9000% (AEGP19)\t'
-  │ 'Bond 5: debtType is valid: Debenture'
-  │ 'Bond 5: links object is present.'
-  │ 'Bond 5: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8dfce38fe/
-  │ coupons'
-  │ 'Bond 5: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8dfce3
-  │ 8fe/identifiers'
-  │ 'Bond 5: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8dfce38fe'
-  │ 'Bond 5: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8d
-  │ fce38fe/issue-conditions'
-  │ 'Bond 5: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8df
-  │ ce38fe/payment-summary'
-  │ 'Bond 6: shortName is valid: AEGPB7'
-  │ 'Bond 6: name is valid: Aegea Saneamento E Participaco
-  │ es 2028 BRL DI + 2,9500% (AEGPB7)'
-  │ 'Bond 6: debtType is valid: Debenture'
-  │ 'Bond 6: links object is present.'
-  │ 'Bond 6: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/77cd58d4-f98a-4665-b189-cb58805c372f/
-  │ coupons'
-  │ 'Bond 6: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/77cd58d4-f98a-4665-b189-cb58805c3
-  │ 72f/identifiers'
-  │ 'Bond 6: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/77cd58d4-f98a-4665-b189-cb58805c372f'
-  │ 'Bond 6: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/77cd58d4-f98a-4665-b189-cb588
-  │ 05c372f/issue-conditions'
-  │ 'Bond 6: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/77cd58d4-f98a-4665-b189-cb5880
-  │ 5c372f/payment-summary'
-  │ 'Bond 7: shortName is valid: AEGPA4'
-  │ 'Bond 7: name is valid: Aegea Saneamento E Participaco
-  │ es 2028 BRL DI + 3,4700% (AEGPA4)'
-  │ 'Bond 7: debtType is valid: Debenture'
-  │ 'Bond 7: links object is present.'
-  │ 'Bond 7: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/8c071fbb-eece-49ee-911e-ba86370543a7/
-  │ coupons'
-  │ 'Bond 7: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/8c071fbb-eece-49ee-911e-ba8637054
-  │ 3a7/identifiers'
-  │ 'Bond 7: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/8c071fbb-eece-49ee-911e-ba86370543a7'
-  │ 'Bond 7: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/8c071fbb-eece-49ee-911e-ba863
-  │ 70543a7/issue-conditions'
-  │ 'Bond 7: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/8c071fbb-eece-49ee-911e-ba8637
-  │ 0543a7/payment-summary'
-  │ 'Bond 8: shortName is valid: AEGPB3'
-  │ 'Bond 8: name is valid: Aegea Saneamento E Participaco
-  │ es 2032 BRL DI + 1,8000% (AEGPB3)'
-  │ 'Bond 8: debtType is valid: Debenture'
-  │ 'Bond 8: links object is present.'
-  │ 'Bond 8: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/a75ec024-b701-476d-86a2-fdf345042cb5/
-  │ coupons'
-  │ 'Bond 8: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/a75ec024-b701-476d-86a2-fdf345042
-  │ cb5/identifiers'
-  │ 'Bond 8: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/a75ec024-b701-476d-86a2-fdf345042cb5'
-  │ 'Bond 8: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/a75ec024-b701-476d-86a2-fdf34
-  │ 5042cb5/issue-conditions'
-  │ 'Bond 8: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/a75ec024-b701-476d-86a2-fdf345
-  │ 042cb5/payment-summary'
-  │ 'Bond 9: shortName is valid: TIET29'
-  │ 'Bond 9: name is valid: AES Brasil Operacoes SA 2029 B
-  │ RL 4,7133% (TIET29)'
-  │ 'Bond 9: debtType is valid: Debenture'
-  │ 'Bond 9: links object is present.'
-  │ 'Bond 9: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/95c42978-52f9-41f4-b203-7591a86855e8/
-  │ coupons'
-  │ 'Bond 9: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/95c42978-52f9-41f4-b203-7591a8685
-  │ 5e8/identifiers'
-  │ 'Bond 9: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/95c42978-52f9-41f4-b203-7591a86855e8'
-  │ 'Bond 9: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/95c42978-52f9-41f4-b203-7591a
-  │ 86855e8/issue-conditions'
-  │ 'Bond 9: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/95c42978-52f9-41f4-b203-7591a8
-  │ 6855e8/payment-summary'
-  └
-  ✓  Each bond property has the correct format
-  ┌
-  │ "Link 'coupons' in bond 0 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/22fa4efc-300e-460a-b3fd-5e15cd
-  │ 3af1eb/coupons'
-  │ "Link 'identifiers' in bond 0 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/22fa4efc-300e-460a-b3fd-5e
-  │ 15cd3af1eb/identifiers'
-  │ "Link 'self' in bond 0 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/22fa4efc-300e-460a-b3fd-5e15cd3af
-  │ 1eb'
-  │ "Link 'issueConditions' in bond 0 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/22fa4efc-300e-460a-b3f
-  │ d-5e15cd3af1eb/issue-conditions'
-  │ "Link 'paymentSummary' in bond 0 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/22fa4efc-300e-460a-b3fd
-  │ -5e15cd3af1eb/payment-summary'
-  │ "Link 'coupons' in bond 1 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/80472dfc-9806-418e-9194-17cbfb
-  │ 7d6c1b/coupons'
-  │ "Link 'identifiers' in bond 1 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/80472dfc-9806-418e-9194-17
-  │ cbfb7d6c1b/identifiers'
-  │ "Link 'self' in bond 1 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/80472dfc-9806-418e-9194-17cbfb7d6
-  │ c1b'
-  │ "Link 'issueConditions' in bond 1 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/80472dfc-9806-418e-919
-  │ 4-17cbfb7d6c1b/issue-conditions'
-  │ "Link 'paymentSummary' in bond 1 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/80472dfc-9806-418e-9194
-  │ -17cbfb7d6c1b/payment-summary'
-  │ "Link 'coupons' in bond 2 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8fe
-  │ 132e5c/coupons'
-  │ "Link 'identifiers' in bond 2 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9c
-  │ e8fe132e5c/identifiers'
-  │ "Link 'self' in bond 2 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8fe132
-  │ e5c'
-  │ "Link 'issueConditions' in bond 2 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a
-  │ 1-9ce8fe132e5c/issue-conditions'
-  │ "Link 'paymentSummary' in bond 2 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1
-  │ -9ce8fe132e5c/payment-summary'
-  │ "Link 'coupons' in bond 3 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38e856
-  │ 433a4a/coupons'
-  │ "Link 'identifiers' in bond 3 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38
-  │ e856433a4a/identifiers'
-  │ "Link 'self' in bond 3 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38e856433
-  │ a4a'
-  │ "Link 'issueConditions' in bond 3 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/675761bb-32e3-4e69-8a3
-  │ d-38e856433a4a/issue-conditions'
-  │ "Link 'paymentSummary' in bond 3 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d
-  │ -38e856433a4a/payment-summary'
-  │ "Link 'coupons' in bond 4 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/ab423946-5626-429e-bbc6-fe239e
-  │ a0132c/coupons'
-  │ "Link 'identifiers' in bond 4 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/ab423946-5626-429e-bbc6-fe
-  │ 239ea0132c/identifiers'
-  │ "Link 'self' in bond 4 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/ab423946-5626-429e-bbc6-fe239ea01
-  │ 32c'
-  │ "Link 'issueConditions' in bond 4 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/ab423946-5626-429e-bbc
-  │ 6-fe239ea0132c/issue-conditions'
-  │ "Link 'paymentSummary' in bond 4 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/ab423946-5626-429e-bbc6
-  │ -fe239ea0132c/payment-summary'
-  │ "Link 'coupons' in bond 5 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8df
-  │ ce38fe/coupons'
-  │ "Link 'identifiers' in bond 5 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4d
-  │ a8dfce38fe/identifiers'
-  │ "Link 'self' in bond 5 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8dfce3
-  │ 8fe'
-  │ "Link 'issueConditions' in bond 5 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed
-  │ 3-4da8dfce38fe/issue-conditions'
-  │ "Link 'paymentSummary' in bond 5 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3
-  │ -4da8dfce38fe/payment-summary'
-  │ "Link 'coupons' in bond 6 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/77cd58d4-f98a-4665-b189-cb5880
-  │ 5c372f/coupons'
-  │ "Link 'identifiers' in bond 6 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/77cd58d4-f98a-4665-b189-cb
-  │ 58805c372f/identifiers'
-  │ "Link 'self' in bond 6 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/77cd58d4-f98a-4665-b189-cb58805c3
-  │ 72f'
-  │ "Link 'issueConditions' in bond 6 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/77cd58d4-f98a-4665-b18
-  │ 9-cb58805c372f/issue-conditions'
-  │ "Link 'paymentSummary' in bond 6 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/77cd58d4-f98a-4665-b189
-  │ -cb58805c372f/payment-summary'
-  │ "Link 'coupons' in bond 7 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/8c071fbb-eece-49ee-911e-ba8637
-  │ 0543a7/coupons'
-  │ "Link 'identifiers' in bond 7 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/8c071fbb-eece-49ee-911e-ba
-  │ 86370543a7/identifiers'
-  │ "Link 'self' in bond 7 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/8c071fbb-eece-49ee-911e-ba8637054
-  │ 3a7'
-  │ "Link 'issueConditions' in bond 7 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/8c071fbb-eece-49ee-911
-  │ e-ba86370543a7/issue-conditions'
-  │ "Link 'paymentSummary' in bond 7 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/8c071fbb-eece-49ee-911e
-  │ -ba86370543a7/payment-summary'
-  │ "Link 'coupons' in bond 8 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/a75ec024-b701-476d-86a2-fdf345
-  │ 042cb5/coupons'
-  │ "Link 'identifiers' in bond 8 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/a75ec024-b701-476d-86a2-fd
-  │ f345042cb5/identifiers'
-  │ "Link 'self' in bond 8 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/a75ec024-b701-476d-86a2-fdf345042
-  │ cb5'
-  │ "Link 'issueConditions' in bond 8 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/a75ec024-b701-476d-86a
-  │ 2-fdf345042cb5/issue-conditions'
-  │ "Link 'paymentSummary' in bond 8 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/a75ec024-b701-476d-86a2
-  │ -fdf345042cb5/payment-summary'
-  │ "Link 'coupons' in bond 9 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/95c42978-52f9-41f4-b203-7591a8
-  │ 6855e8/coupons'
-  │ "Link 'identifiers' in bond 9 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/95c42978-52f9-41f4-b203-75
-  │ 91a86855e8/identifiers'
-  │ "Link 'self' in bond 9 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/95c42978-52f9-41f4-b203-7591a8685
-  │ 5e8'
-  │ "Link 'issueConditions' in bond 9 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/95c42978-52f9-41f4-b20
-  │ 3-7591a86855e8/issue-conditions'
-  │ "Link 'paymentSummary' in bond 9 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/95c42978-52f9-41f4-b203
-  │ -7591a86855e8/payment-summary'
-  └
-  ✓  Links are valid URLs
-  ✓  validar que solo devuelva items asociados al issuer enviado por parametro
-  GET https://api.brasil.mercap.com.ar/instrument-issuers/008ddb57-2324-4991-8fbb-b36bdcd8a431 [200 OK, 1.01kB, 49ms]
-  GET https://api.brasil.mercap.com.ar/bonds/22fa4efc-300e-460a-b3fd-5e15cd3af1eb/issue-conditions   GET https://api.brasil.mercap.com.ar/bonds/80472dfc-9806-418e-9194-17cbfb7d6c1b/issue-conditions   GET https://api.brasil.mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8fe132e5c/issue-conditions   GET https://api.brasil.mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38e856433a4a/issue-conditions   GET https://api.brasil.mercap.com.ar/bonds/ab423946-5626-429e-bbc6-fe239ea0132c/issue-conditions   GET https://api.brasil.mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8dfce38fe/issue-conditions   GET https://api.brasil.mercap.com.ar/bonds/77cd58d4-f98a-4665-b189-cb58805c372f/issue-conditions   GET https://api.brasil.mercap.com.ar/bonds/8c071fbb-eece-49ee-911e-ba86370543a7/issue-conditions   GET https://api.brasil.mercap.com.ar/bonds/a75ec024-b701-476d-86a2-fdf345042cb5/issue-conditions   GET https://api.brasil.mercap.com.ar/bonds/95c42978-52f9-41f4-b203-7591a86855e8/issue-conditions [200 OK, 1.36kB, 162ms]
-[200 OK, 1.34kB, 167ms]
-[200 OK, 1.36kB, 176ms]
-[200 OK, 1.36kB, 186ms]
-[200 OK, 1.34kB, 190ms]
-[200 OK, 1.33kB, 196ms]
-[200 OK, 1.35kB, 205ms]
-[200 OK, 1.35kB, 256ms]
-[200 OK, 1.35kB, 266ms]
-[200 OK, 1.33kB, 271ms]
+  ✓  Not empty
 
-↳ All bonds - start & limit parameters
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-06-05 [200 OK, 1.47kB, 49ms]
-  ┌
-  │ '🔎 SHORT_NAME: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/bonds?limit=5&start=2 [200 OK, 4.36kB, 177ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ "'items' array is present and not empty."
-  └
-  ✓  Response contains 'items' array with elements
-  ┌
-  │ 'Bond 0 validated successfully.'
-  │ 'Bond 1 validated successfully.'
-  │ 'Bond 2 validated successfully.'
-  │ 'Bond 3 validated successfully.'
-  │ 'Bond 4 validated successfully.'
-  └
-  ✓  Each bond has required properties
-  ┌
-  │ 'Bond 0: shortName is valid: BRRRRPDBS056'
-  │ 'Bond 0: name is valid: 3R Petroleum Oleo e Gas SA 203
-  │ 3 BRL 8.4166% (BRRRRPDBS056)'
-  │ 'Bond 0: debtType is valid: Debenture'
-  │ 'Bond 0: links object is present.'
-  │ 'Bond 0: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/80472dfc-9806-418e-9194-17cbfb7d6c1b/
-  │ coupons'
-  │ 'Bond 0: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/80472dfc-9806-418e-9194-17cbfb7d6
-  │ c1b/identifiers'
-  │ 'Bond 0: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/80472dfc-9806-418e-9194-17cbfb7d6c1b'
-  │ 'Bond 0: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/80472dfc-9806-418e-9194-17cbf
-  │ b7d6c1b/issue-conditions'
-  │ 'Bond 0: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/80472dfc-9806-418e-9194-17cbfb
-  │ 7d6c1b/payment-summary'
-  │ 'Bond 1: shortName is valid: BRQUATDBS043'
-  │ 'Bond 1: name is valid: Acucareira Quata SA 2034 BRL 7
-  │ .8722% (BRQUATDBS043)'
-  │ 'Bond 1: debtType is valid: Debenture'
-  │ 'Bond 1: links object is present.'
-  │ 'Bond 1: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8fe132e5c/
-  │ coupons'
-  │ 'Bond 1: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8fe132
-  │ e5c/identifiers'
-  │ 'Bond 1: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8fe132e5c'
-  │ 'Bond 1: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8f
-  │ e132e5c/issue-conditions'
-  │ 'Bond 1: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8fe
-  │ 132e5c/payment-summary'
-  │ 'Bond 2: shortName is valid: AEGPA7'
-  │ 'Bond 2: name is valid: Aegea Saneamento E Participaco
-  │ es 2026 BRL DI + 2,7500% (AEGPA7)'
-  │ 'Bond 2: debtType is valid: Debenture'
-  │ 'Bond 2: links object is present.'
-  │ 'Bond 2: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38e856433a4a/
-  │ coupons'
-  │ 'Bond 2: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38e856433
-  │ a4a/identifiers'
-  │ 'Bond 2: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/675761bb-32e3-4e69-8a3d-38e856433a4a'
-  │ 'Bond 2: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38e85
-  │ 6433a4a/issue-conditions'
-  │ 'Bond 2: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38e856
-  │ 433a4a/payment-summary'
-  │ 'Bond 3: shortName is valid: AEGP17'
-  │ 'Bond 3: name is valid: Aegea Saneamento E Participaco
-  │ es 2027 BRL DI + 2,1500% (AEGP17)'
-  │ 'Bond 3: debtType is valid: Debenture'
-  │ 'Bond 3: links object is present.'
-  │ 'Bond 3: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/ab423946-5626-429e-bbc6-fe239ea0132c/
-  │ coupons'
-  │ 'Bond 3: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/ab423946-5626-429e-bbc6-fe239ea01
-  │ 32c/identifiers'
-  │ 'Bond 3: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/ab423946-5626-429e-bbc6-fe239ea0132c'
-  │ 'Bond 3: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/ab423946-5626-429e-bbc6-fe239
-  │ ea0132c/issue-conditions'
-  │ 'Bond 3: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/ab423946-5626-429e-bbc6-fe239e
-  │ a0132c/payment-summary'
-  │ 'Bond 4: shortName is valid: AEGP19'
-  │ 'Bond 4: name is valid: Aegea Saneamento E Participaco
-  │ es 2028 BRL DI + 1,9000% (AEGP19)\t'
-  │ 'Bond 4: debtType is valid: Debenture'
-  │ 'Bond 4: links object is present.'
-  │ 'Bond 4: coupons link is valid: https://api.brasil.mer
-  │ cap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8dfce38fe/
-  │ coupons'
-  │ 'Bond 4: identifiers link is valid: https://api.brasil
-  │ .mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8dfce3
-  │ 8fe/identifiers'
-  │ 'Bond 4: self link is valid: https://api.brasil.mercap
-  │ .com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8dfce38fe'
-  │ 'Bond 4: issueConditions link is valid: https://api.br
-  │ asil.mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8d
-  │ fce38fe/issue-conditions'
-  │ 'Bond 4: paymentSummary link is valid: https://api.bra
-  │ sil.mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8df
-  │ ce38fe/payment-summary'
-  └
-  ✓  Each bond property has the correct format
-  ┌
-  │ "Link 'coupons' in bond 0 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/80472dfc-9806-418e-9194-17cbfb
-  │ 7d6c1b/coupons'
-  │ "Link 'identifiers' in bond 0 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/80472dfc-9806-418e-9194-17
-  │ cbfb7d6c1b/identifiers'
-  │ "Link 'self' in bond 0 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/80472dfc-9806-418e-9194-17cbfb7d6
-  │ c1b'
-  │ "Link 'issueConditions' in bond 0 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/80472dfc-9806-418e-919
-  │ 4-17cbfb7d6c1b/issue-conditions'
-  │ "Link 'paymentSummary' in bond 0 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/80472dfc-9806-418e-9194
-  │ -17cbfb7d6c1b/payment-summary'
-  │ "Link 'coupons' in bond 1 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8fe
-  │ 132e5c/coupons'
-  │ "Link 'identifiers' in bond 1 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9c
-  │ e8fe132e5c/identifiers'
-  │ "Link 'self' in bond 1 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1-9ce8fe132
-  │ e5c'
-  │ "Link 'issueConditions' in bond 1 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a
-  │ 1-9ce8fe132e5c/issue-conditions'
-  │ "Link 'paymentSummary' in bond 1 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/20b75ecc-0b5c-4ec4-95a1
-  │ -9ce8fe132e5c/payment-summary'
-  │ "Link 'coupons' in bond 2 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38e856
-  │ 433a4a/coupons'
-  │ "Link 'identifiers' in bond 2 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38
-  │ e856433a4a/identifiers'
-  │ "Link 'self' in bond 2 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d-38e856433
-  │ a4a'
-  │ "Link 'issueConditions' in bond 2 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/675761bb-32e3-4e69-8a3
-  │ d-38e856433a4a/issue-conditions'
-  │ "Link 'paymentSummary' in bond 2 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/675761bb-32e3-4e69-8a3d
-  │ -38e856433a4a/payment-summary'
-  │ "Link 'coupons' in bond 3 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/ab423946-5626-429e-bbc6-fe239e
-  │ a0132c/coupons'
-  │ "Link 'identifiers' in bond 3 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/ab423946-5626-429e-bbc6-fe
-  │ 239ea0132c/identifiers'
-  │ "Link 'self' in bond 3 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/ab423946-5626-429e-bbc6-fe239ea01
-  │ 32c'
-  │ "Link 'issueConditions' in bond 3 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/ab423946-5626-429e-bbc
-  │ 6-fe239ea0132c/issue-conditions'
-  │ "Link 'paymentSummary' in bond 3 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/ab423946-5626-429e-bbc6
-  │ -fe239ea0132c/payment-summary'
-  │ "Link 'coupons' in bond 4 is valid:", 'https://api.bra
-  │ sil.mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8df
-  │ ce38fe/coupons'
-  │ "Link 'identifiers' in bond 4 is valid:", 'https://api
-  │ .brasil.mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4d
-  │ a8dfce38fe/identifiers'
-  │ "Link 'self' in bond 4 is valid:", 'https://api.brasil
-  │ .mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3-4da8dfce3
-  │ 8fe'
-  │ "Link 'issueConditions' in bond 4 is valid:", 'https:/
-  │ /api.brasil.mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed
-  │ 3-4da8dfce38fe/issue-conditions'
-  │ "Link 'paymentSummary' in bond 4 is valid:", 'https://
-  │ api.brasil.mercap.com.ar/bonds/d12a5b1c-9f01-4353-bed3
-  │ -4da8dfce38fe/payment-summary'
-  └
-  ✓  Links are valid URLs
-  ┌
-  │ "Global link 'first' is valid: https://api.brasil.merc
-  │ ap.com.ar/bonds?limit=5&start=1"
-  │ "Global link 'next' is valid: https://api.brasil.merca
-  │ p.com.ar/bonds?limit=5&start=7"
-  │ "Global link 'self' is valid: https://api.brasil.merca
-  │ p.com.ar/bonds?limit=5&start=2"
-  │ "Global link 'last' is valid: https://api.brasil.merca
-  │ p.com.ar/bonds?limit=5&start=1031"
-  └
-  ✓  Global links are valid URLs
-  ┌
-  │ "No 'query' parameter provided in request."
-  └
-  ✓  Results match the query parameter
-  ┌
-  │ "No 'shortName' parameter provided in request."
-  └
-  ✓  Results match the shortName parameter
-  ┌
-  │ 'Results respect the limit parameter (max 5 items).'
-  └
-  ✓  Results respect the limit parameter
-  ┌
-  │ 'Validated that the first bond in response starts at i
-  │ ndex 2.'
-  └
-  ✓  Start parameter skips the correct number of bonds
-  ┌
-  │ 'Response code is not 406, no validation necessary.'
-  └
-  ✓  Error 406 response structure
-  ┌
-  │ 'Limit is not 0, skipping error validation.'
-  └
-  ✓  Limit parameter is 0, response should be 400
+↳ By UUID
 
-↳ Only shortName parameter
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-06-05 [200 OK, 1.47kB, 45ms]
-  ┌
-  │ '🔎 SHORT_NAME: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/bonds?shortName=RESA15 [200 OK, 1.39kB, 65ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ "'items' array is present and not empty."
-  └
-  ✓  Response contains 'items' array with elements
-  ┌
-  │ 'Bond 0 validated successfully.'
-  └
-  ✓  Each bond has required properties
-  ✓  Each bond property has the correct format
-  ✓  Links are valid URLs
-  ✓  Global links are valid URLs
-  ✓  Results match the query parameter
-  ✓  Results respect the limit parameter
-  ✓  Start parameter skips the correct number of bonds
-  ✓  Error 406 response structure
-  ✓  Limit parameter is 0, response should be 400
-  ┌
-  │ '✔ Variables seteadas:'
-  │ 'COUPONS:', 'https://api.brasil.mercap.com.ar/bonds/f0
-  │ f3dad8-8d2c-4184-999e-2377996b8c30/coupons'
-  │ 'IDENTIFIERS:', 'https://api.brasil.mercap.com.ar/bond
-  │ s/f0f3dad8-8d2c-4184-999e-2377996b8c30/identifiers'
-  │ 'SELF:', 'https://api.brasil.mercap.com.ar/bonds/f0f3d
-  │ ad8-8d2c-4184-999e-2377996b8c30'
-  │ 'ISSUE_CONDITIONS:', 'https://api.brasil.mercap.com.ar
-  │ /bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30/issue-cond
-  │ itions'
-  │ 'PAYMENT_SUMMARY:', 'https://api.brasil.mercap.com.ar/
-  │ bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30/payment-sum
-  │ mary'
-  └
-
-↳ Bond by UUID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-06-05 [200 OK, 1.47kB, 46ms]
-  ┌
-  │ '🔎 SHORT_NAME: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30 [200 OK, 1.34kB, 69ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ 'All required properties are present.'
-  └
-  ✓  Response has required properties
-  ┌
-  │ 'All properties have correct data types.'
-  └
-  ✓  Response properties have correct data types
-  ┌
-  │ 'All required link properties are present.'
-  └
-  ✓  Links object has required properties
-  ┌
-  │ 'All links are valid URLs.'
-  └
-  ✓  Links are valid URLs
-  ┌
-  │ 'shortName is the expected:', 'RESA15'
-  └
-  ✓  ShortName and name are as expected
-
-↳ Bond payment summary by UUID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-06-05 [200 OK, 1.47kB, 50ms]
-  ┌
-  │ '🔎 SHORT_NAME: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30/payment-summary [200 OK, 1.16kB, 113ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ✓  All main properties have the correct type
-  ✓  Amortization has correct properties and should be bullet
-  ✓  Links URLs are valid
-  ✓  Interest has correct properties
-  ✓  Accruement has correct properties
-
-↳ Bond coupons by UUID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-06-05 [200 OK, 1.48kB, 47ms]
-  ┌
-  │ '🔎 SHORT_NAME: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30/coupons [200 OK, 8.78kB, 2s]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ "'items' array is present."
-  └
-  ✓  Response has 'items' array
-  ┌
-  │ 'All items have required properties.'
-  └
-  ✓  Each item has required properties
-  ┌
-  │ "All 'interestRate' objects have required properties."
-  └
-  ✓  Verify that 'interestRate' has required properties
-  ┌
-  │ "All 'links' objects have required properties."
-  └
-  ✓  All 'links' objects have required properties
-  ┌
-  │ 'All dates have correct format.'
-  └
-  ✓  Dates have correct format
-  ┌
-  │ 'All links are valid URLs.'
-  └
-  ✓  Links are valid URLs
-  ┌
-  │ "The 'self' link is correct."
-  └
-  ✓  Verify that 'self' has the correct link
-  ┌
-  │ 'Coupon numbers are consecutive.'
-  └
-  ✓  Coupon numbers are consecutive
-  ┌
-  │ "All 'type' values in 'interestRate' are 'fixed'."
-  └
-  ✓  Verify that 'type' in 'interestRate' is 'fixed' for each item
-
-↳ Bond issue conditions by UUID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-06-05 [200 OK, 1.48kB, 50ms]
-  ┌
-  │ '🔎 SHORT_NAME: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30/issue-conditions [200 OK, 1.33kB, 76ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ✓  All main properties have the correct type
-  ✓  Dates have correct format
-  ✓  SmallestDenomination has base and increment
-  ✓  FaceValue is greater than zero
-  ✓  Term has correct format
-  ✓  IssueUnit and PaymentCurrency are valid URLs
-  ✓  IssueCountry and Issuer are not empty
-
-↳ Bond identifiers by UUID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-06-05 [200 OK, 1.47kB, 45ms]
-  ┌
-  │ '🔎 SHORT_NAME: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30/identifiers [200 OK, 676B, 100ms]
-  ✓  Status code is 200
-  ✓  Response is an array
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ✓  Each item has type and value
-  ✓  Type is a non-empty string
-  ✓  Value is a non-empty string
-  ✓  Identifiers contain expected types
-  ✓  ISIN value format is correct
-
-❏ Pepper-GS32 / Regression-Test / Bond IRRS
-↳ Get irrs - one bond
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  └
-  GET https://historical-data.brasil.mercap.com.ar/irrs?short-names=RESA15 [200 OK, 11.36kB, 779ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ✓  Response body is not empty
-  ✓  Response is valid JSON
-
-❏ Pepper-GS32 / Regression-Test / Bond Parities
-↳ Get parities
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  └
-  GET https://historical-data.brasil.mercap.com.ar/parities?short-names=RESA15 [200 OK, 28.01kB, 312ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ 'Response body is not empty.'
-  └
-  ✓  Response body is not empty
-  ┌
-  │ 'Response is valid JSON.'
-  └
-  ✓  Response is valid JSON
-  ┌
-  │ "ShortName 'RESA15' is included in the response."
-  └
-  ✓  Response includes shortName: RESA15
-  ┌
-  │ "'RESA15' is an array."
-  └
-  ✓  'RESA15' is an array
-  ┌
-  │ "All items in 'RESA15' contain properties date and val
-  │ ue."
-  └
-  ✓  All items in 'RESA15' have properties date and value
-  ┌
-  │ "Properties 'date' and 'value' in 'RESA15' are correct
-  │ ly formatted."
-  └
-  ✓  Properties 'date' and 'value' are correctly formatted in 'RESA15'
-
-❏ Pepper-GS32 / Regression-Test / Bond Payment Forecasts
-↳ Get one bond cashflow - only dateInterval from
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-06-05 [200 OK, 1.48kB, 44ms]
-  ┌
-  │ '📌 BOND_INSTRUMENT_URL: https://api.brasil.mercap.com
-  │ .ar/brasil/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30'
-  └
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 5.97kB, 168ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ 'Result is a non-empty array.'
-  └
-  ✓  Result is a non-empty array
-  ┌
-  │ 'Each cashflow has the expected properties.'
-  └
-  ✓  Each cashflow has correct properties
-  ┌
-  │ 'Coupon values are incremental by 1.'
-  └
-  ✓  Verify that coupon value is incremental by 1
-  ┌
-  │ 'Due dates are in ascending order for each cashflow.'
-  └
-  ✓  Due dates are in ascending order
-  ┌
-  │ 'The bond link is correct:', 'https://api.brasil.merca
-  │ p.com.ar/brasil/bonds/f0f3dad8-8d2c-4184-999e-2377996b
-  │ 8c30'
-  └
-  ✓  Bond link is correct
-
-↳ Get one bond cashflow - dateInterval from and to
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-06-05 [200 OK, 1.47kB, 50ms]
-  ┌
-  │ '📌 BOND_INSTRUMENT_URL: https://api.brasil.mercap.com
-  │ .ar/brasil/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30'
-  └
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 3.01kB, 176ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ 'Result is a non-empty array.'
-  └
-  ✓  Result is a non-empty array
-  ┌
-  │ 'Each cashflow has the expected properties.'
-  └
-  ✓  Each cashflow has correct properties
-  ┌
-  │ 'Coupon values are incremental by 1.'
-  └
-  ✓  Verify that coupon value is incremental by 1
-  ┌
-  │ 'Due dates are in ascending order for each cashflow.'
-  └
-  ✓  Due dates are in ascending order
-  ┌
-  │ 'The bond link is correct:', 'https://api.brasil.merca
-  │ p.com.ar/brasil/bonds/f0f3dad8-8d2c-4184-999e-2377996b
-  │ 8c30'
-  └
-  ✓  Bond link is correct
-
-↳ Get payment forecasts
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-06-05 [200 OK, 1.47kB, 43ms]
-  ┌
-  │ '📌 BOND_INSTRUMENT_URL: https://api.brasil.mercap.com
-  │ .ar/brasil/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30'
-  └
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 1.23kB, 94ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ 'Result is a non-empty array.'
-  └
-  ✓  Result is a non-empty array
-  ┌
-  │ 'Each flow has the expected properties.'
-  └
-  ✓  Each flow has correct properties
-  ┌
-  │ 'Bond link is correct.'
-  └
-  ✓  Bond link is correct
-  ┌
-  │ 'Response has id and jsonrpc.'
-  └
-  ✓  Response has id and jsonrpc
-  ┌
-  │ "'concept' is 'Renta' when 'flowMessage' is 'interestT
-  │ oPay'."
-  └
-  ✓  Validate that 'concept' is 'Renta' when 'flowMessage' is 'interestToPay'
-  ┌
-  │ "'concept' is 'Amortización' when 'flowMessage' is 'am
-  │ ortizationToPay'."
-  └
-  ✓  Validate that 'concept' is 'Amortización' when 'flowMessage' is 'amortizationToPay'
-
-❏ Pepper-GS32 / Regression-Test / Bond laws
-↳ Get all bond laws - validate each self link
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  └
-  GET https://api.brasil.mercap.com.ar/bond-laws [200 OK, 1.2kB, 60ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Response contains 'items' array with at least one element
-  ✓  Response contains 'links.self'
-  ✓  No duplicate bond law names
-  ┌
-  │ '🔎 Testing Item 1 (Lei N.Y.)'
-  └
-  ✓  Item 1 (Lei N.Y.) contains expected properties
-  ✓  Item 1 (Lei N.Y.) 'name' is a non-empty string
-  ✓  Item 1 (Lei N.Y.) self link is a valid URL
-  GET https://api.brasil.mercap.com.ar/bond-laws/86ec5fbe-c27b-4f29-a27d-b174c2a25899 [200 OK, 957B, 61ms]
-  ✓  Item 1 (Lei N.Y.) self link returns status 200
-  ┌
-  │ '🔎 Testing Item 2 (Lei Brasileira)'
-  └
-  ✓  Item 2 (Lei Brasileira) contains expected properties
-  ✓  Item 2 (Lei Brasileira) 'name' is a non-empty string
-  ✓  Item 2 (Lei Brasileira) self link is a valid URL
-  GET https://api.brasil.mercap.com.ar/bond-laws/f5c5b146-8f26-4e82-a4e0-ff3cbc386c67 [200 OK, 951B, 68ms]
-  ✓  Item 2 (Lei Brasileira) self link returns status 200
-
-❏ Pepper-GS32 / Regression-Test / Bond Screener
-↳ Filter by debt-type, issueCurrency, paymentCurrency, issuer & law
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '🚀 Iniciando resolución con protección de variables y
-  │  fallback...'
-  └
-  GET https://api.brasil.mercap.com.ar/debt-types   GET https://api.brasil.mercap.com.ar/currencies   GET https://api.brasil.mercap.com.ar/instrument-issuers   GET https://api.brasil.mercap.com.ar/bond-laws [200 OK, 1.21kB, 47ms]
-  ┌
-  │ '✅ [SCREENER_BOND_LAW] Resuelto: LEI BRASILEIRA -> htt
-  │ ps://api.brasil.mercap.com.ar/bond-laws/f5c5b146-8f26-
-  │ 4e82-a4e0-ff3cbc386c67'
-  └
-[200 OK, 1.27kB, 51ms]
-  ┌
-  │ '✅ [SCREENER_CURRENCY] Resuelto: BRL -> https://api.br
-  │ asil.mercap.com.ar/currencies/5e28e713-4c64-48b6-863e-
-  │ a3227a6869da'
-  └
-[200 OK, 2.18kB, 66ms]
-  ┌
-  │ '✅ [SCREENER_DEBT_TYPE] Resuelto: DEBENTURE -> https:/
-  │ /api.brasil.mercap.com.ar/debt-types/9f60c589-e591-413
-  │ 0-b7c1-a23c670333a6'
-  └
-[200 OK, 6.44kB, 82ms]
-  ┌
-  │ '✅ [SCREENER_ISSUER] Resuelto: COMPANHIA DE ELETRICIDA
-  │ DE DO ESTADO DA BAHIA COELBA -> https://api.brasil.mer
-  │ cap.com.ar/instrument-issuers/01699af4-94b1-4255-9e44-
-  │ d637d10ec2d1'
-  │ '✨ Proceso completado.'
-  └
-  POST https://api.brasil.mercap.com.ar/bond-screener [200 OK, 5.65kB, 1474ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ✓  Result is a non-empty array
-  ✓  Each result object has expected properties
-  ✓  Bond and tradableSecurity links are valid URLs
-  ✓  Issuer name is consistent across results
-  ✓  Issue currency is consistent across results
-  ✓  Law is consistent across results
-  ✓  Debt type is consistent across results
-  ✓  Coupon yearly rate is non-negative
-
-❏ Pepper-GS32 / Regression-Test / Currencies
-↳ Get all curencies - validate each self link
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  └
-  GET https://api.brasil.mercap.com.ar/currencies [200 OK, 1.35kB, 43ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Response contains 'items' array with at least one element
-  ✓  Response contains 'links.self'
-  ✓  No duplicate currency signs
-  ✓  No duplicate singular names
-  ┌
-  │ '🔎 Testing Item 1 (USD)'
-  └
-  ✓  Item 1 (USD) contains expected properties
-  ✓  Item 1 (USD) text fields are non-empty strings
-  ✓  Item 1 (USD) self link is a valid URL
-  GET https://api.brasil.mercap.com.ar/currencies/842f92a0-4a32-4970-8b2a-d387033903d6 [200 OK, 985B, 57ms]
-  ✓  Item 1 (USD) self link returns status 200
-  ┌
-  │ '🔎 Testing Item 2 (BRL)'
-  └
-  ✓  Item 2 (BRL) contains expected properties
-  ✓  Item 2 (BRL) text fields are non-empty strings
-  ✓  Item 2 (BRL) self link is a valid URL
-  GET https://api.brasil.mercap.com.ar/currencies/5e28e713-4c64-48b6-863e-a3227a6869da [200 OK, 981B, 48ms]
-  ✓  Item 2 (BRL) self link returns status 200
-
-❏ Pepper-GS32 / Regression-Test / Debt types
-↳ Get all debt types - validate each self link
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  └
-  GET https://api.brasil.mercap.com.ar/debt-types [200 OK, 2.17kB, 64ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Response contains 'items' array with at least one element
-  ✓  Response contains 'links.self'
-  ✓  No duplicate debt type names
-  ┌
-  │ '🔎 Testing Item 1 (Debenture)'
-  └
-  ✓  Item 1 (Debenture) contains expected properties
-  ✓  Item 1 (Debenture) 'singularName' is a non-empty string
-  ✓  Item 1 (Debenture) self link is a valid URL
-  GET https://api.brasil.mercap.com.ar/debt-types/9f60c589-e591-4130-b7c1-a23c670333a6 [200 OK, 957B, 59ms]
-  ✓  Item 1 (Debenture) self link returns status 200
-  ┌
-  │ '🔎 Testing Item 2 (Letra Financeira)'
-  └
-  ✓  Item 2 (Letra Financeira) contains expected properties
-  ✓  Item 2 (Letra Financeira) 'singularName' is a non-empty string
-  ✓  Item 2 (Letra Financeira) self link is a valid URL
-  GET https://api.brasil.mercap.com.ar/debt-types/fcf6f777-3701-4ba4-860e-e1ef3c773e7f [200 OK, 962B, 55ms]
-  ✓  Item 2 (Letra Financeira) self link returns status 200
-  ┌
-  │ '🔎 Testing Item 3 (C.R.I.)'
-  └
-  ✓  Item 3 (C.R.I.) contains expected properties
-  ✓  Item 3 (C.R.I.) 'singularName' is a non-empty string
-  ✓  Item 3 (C.R.I.) self link is a valid URL
-  GET https://api.brasil.mercap.com.ar/debt-types/178fe3f0-97b3-4b90-b9f1-c97a642bf6f6 [200 OK, 956B, 62ms]
-  ✓  Item 3 (C.R.I.) self link returns status 200
-  ┌
-  │ '🔎 Testing Item 4 (Titulo Publico)'
-  └
-  ✓  Item 4 (Titulo Publico) contains expected properties
-  ✓  Item 4 (Titulo Publico) 'singularName' is a non-empty string
-  ✓  Item 4 (Titulo Publico) self link is a valid URL
-  GET https://api.brasil.mercap.com.ar/debt-types/0753974a-9ea0-450c-b9ae-318f70a4320d [200 OK, 968B, 49ms]
-  ✓  Item 4 (Titulo Publico) self link returns status 200
-  ┌
-  │ '🔎 Testing Item 5 (C.R.A.)'
-  └
-  ✓  Item 5 (C.R.A.) contains expected properties
-  ✓  Item 5 (C.R.A.) 'singularName' is a non-empty string
-  ✓  Item 5 (C.R.A.) self link is a valid URL
-  GET https://api.brasil.mercap.com.ar/debt-types/54feb6f9-f842-4ab0-9529-7735353f5f2e [200 OK, 950B, 53ms]
-  ✓  Item 5 (C.R.A.) self link returns status 200
-  ┌
-  │ '🔎 Testing Item 6 (Fideicomiso)'
-  └
-  ✓  Item 6 (Fideicomiso) contains expected properties
-  ✓  Item 6 (Fideicomiso) 'singularName' is a non-empty string
-  ✓  Item 6 (Fideicomiso) self link is a valid URL
-  GET https://api.brasil.mercap.com.ar/debt-types/3ea32273-4350-4151-a85f-7768b9d2f48e [200 OK, 961B, 53ms]
-  ✓  Item 6 (Fideicomiso) self link returns status 200
-
-❏ Pepper-GS32 / Regression-Test / Exchange Schemes
-↳ Get all exchange schemes
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  └
-  GET https://api.brasil.mercap.com.ar/exchange-schemes [200 OK, 1.29kB, 41ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ✓  Items array is present and not empty
-  ✓  No duplicate names in items
-  ✓  Links are unique for each item
-  ✓  Self link matches expected URL
-  ┌
-  │ '✔ EXCHANGE_SCHEMES_UUID seteado: https://api.brasil.m
-  │ ercap.com.ar/exchange-schemes/952c425f-8c27-45a0-906d-
-  │ 2b926ac70fd3'
-  └
-  ✓  Item 1 (BRL - USD) contains expected properties
-  ✓  Item 1 (BRL - USD) 'name' is non-empty
-  ✓  Item 1 (BRL - USD) 'targetCurrency' is a valid URL
-  ✓  Item 1 (BRL - USD) 'self' link is valid URL
-  GET https://api.brasil.mercap.com.ar/exchange-schemes/952c425f-8c27-45a0-906d-2b926ac70fd3 [200 OK, 973B, 181ms]
-  ✓  Item 1 (BRL - USD) self link returns status 200
-  ✓  Item 2 (Esquema USD) contains expected properties
-  ✓  Item 2 (Esquema USD) 'name' is non-empty
-  ✓  Item 2 (Esquema USD) 'targetCurrency' is a valid URL
-  ✓  Item 2 (Esquema USD) 'self' link is valid URL
-  GET https://api.brasil.mercap.com.ar/exchange-schemes/aad65ff2-43cd-4ac4-9d11-6d9e954a6eab [200 OK, 988B, 36ms]
-  ✓  Item 2 (Esquema USD) self link returns status 200
-
-↳ Get exchange scheme by UUID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  └
-  GET https://api.brasil.mercap.com.ar/exchange-schemes/952c425f-8c27-45a0-906d-2b926ac70fd3 [200 OK, 978B, 33ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ┌
-  │ 'Response has correct properties.'
-  └
-  ✓  Response has correct properties
-  ┌
-  │ 'targetCurrency belongs to the correct domain.'
-  └
-  ✓  TargetCurrency belongs to the correct domain
-  ┌
-  │ 'Self link is correct:', 'https://api.brasil.mercap.co
-  │ m.ar/exchange-schemes/952c425f-8c27-45a0-906d-2b926ac7
-  │ 0fd3'
-  └
-  ✓  Self link is correct
-
-❏ Pepper-GS32 / Regression-Test / Investments
-↳ Create an investment
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-06-05 [200 OK, 1.48kB, 41ms]
-  ┌
-  │ '📌 TRADABLE_SECURITY_URL: https://api.brasil.mercap.c
-  │ om.ar/tradable-securities/a893fba7-70e3-4798-a1f5-c670
-  │ 6fbe9a0d'
-  └
-  POST https://api.brasil.mercap.com.ar/investments [201 Created, 1.74kB, 61ms]
-  ┌
-  │ 'Response received successfully with status 201 Create
-  │ d.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ 'Response body is not empty.'
-  └
-  ✓  Response body is not empty
-  ┌
-  │ 'Response contains all expected properties.'
-  └
-  ✓  Response contains expected properties
-  ┌
-  │ 'No fields are null.'
-  └
-  ✓  No fields are null
-  ┌
-  │ 'Optional property exchangeRateSensitivity is NOT pres
-  │ ent (allowed).'
-  └
-  ✓  Links contain expected mandatory and optional properties
-  ┌
-  │ 'All links are valid URLs.'
-  └
-  ✓  All links are valid URLs
-  ┌
-  │ 'Security link is valid.'
-  └
-  ✓  Security is a valid URL
-  ┌
-  │ 'Security link is correct:', 'https://api.brasil.merca
-  │ p.com.ar/tradable-securities/a893fba7-70e3-4798-a1f5-c
-  │ 6706fbe9a0d'
-  └
-  ✓  Security link is correct
-  ┌
-  │ 'Investment contains all expected properties.'
-  └
-  ✓  Investment contains expected properties
-  ┌
-  │ 'Settlement Date is correct.'
-  └
-  ✓  Settlement Date is correct
-  ┌
-  │ 'Investment Settlement Date is correct.'
-  └
-  ✓  Investment Settlement Date is correct
-  ┌
-  │ 'Asset amount is correct.'
-  └
-  ✓  Asset amount is correct
-  ┌
-  │ 'Every amount is correct.'
-  └
-  ✓  Every amount is correct
-  ┌
-  │ 'Price type is correct.'
-  └
-  ✓  Price type is correct
-  ┌
-  │ 'Price isDirty is true.'
-  └
-  ✓  Price isDirty is true
-  ┌
-  │ '✔ SELF_INVESTMENT =', 'https://api.brasil.mercap.com.
-  │ ar/investments/287'
-  │ '✔ INTERNAL_RATE_OF_RETURN_SENSITIVITY =', 'https://ap
-  │ i.brasil.mercap.com.ar/investments/287/irr-sensitivity
-  │ '
-  │ '✔ INVESTMENT_METRICS =', 'https://api.brasil.mercap.c
-  │ om.ar/investments/287/metrics'
-  │ '✔ PRICE_SENSITIVITY =', 'https://api.brasil.mercap.co
-  │ m.ar/investments/287/price-sensitivity'
-  │ "ℹ No vino 'exchangeRateSensitivity' (correcto)"
-  └
-
-↳ Get investment by ID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-06-05 [200 OK, 1.48kB, 38ms]
-  ┌
-  │ '📌 TRADABLE_SECURITY_URL: https://api.brasil.mercap.c
-  │ om.ar/tradable-securities/a893fba7-70e3-4798-a1f5-c670
-  │ 6fbe9a0d'
-  └
-  GET https://api.brasil.mercap.com.ar/investments/287 [200 OK, 1.76kB, 102ms]
-  ┌
-  │ 'Response received successfully with status 200 OK.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ 'Response body is not empty.'
-  └
-  ✓  Response body is not empty
-  ┌
-  │ 'Response contains all expected properties.'
-  └
-  ✓  Response contains expected properties
-  ┌
-  │ 'No fields are null.'
-  └
-  ✓  No fields are null
-  ┌
-  │ 'Optional property exchangeRateSensitivity is NOT pres
-  │ ent (allowed).'
-  └
-  ✓  Links contain expected mandatory and optional properties
-  ┌
-  │ 'All links are valid URLs.'
-  └
-  ✓  All links are valid URLs
-  ┌
-  │ 'Security link is valid.'
-  └
-  ✓  Security is a valid URL
-  ┌
-  │ 'Security link is correct:', 'https://api.brasil.merca
-  │ p.com.ar/tradable-securities/a893fba7-70e3-4798-a1f5-c
-  │ 6706fbe9a0d'
-  └
-  ✓  Security link is correct
-  ┌
-  │ 'Investment contains all expected properties.'
-  └
-  ✓  Investment contains expected properties
-  ┌
-  │ 'Settlement Date is correct.'
-  └
-  ✓  Settlement Date is correct
-  ┌
-  │ 'Investment Settlement Date is correct.'
-  └
-  ✓  Investment Settlement Date is correct
-  ┌
-  │ 'Asset amount is correct.'
-  └
-  ✓  Asset amount is correct
-  ┌
-  │ 'Every amount is correct.'
-  └
-  ✓  Every amount is correct
-  ┌
-  │ 'Price type is correct.'
-  └
-  ✓  Price type is correct
-  ┌
-  │ 'Price isDirty is true.'
-  └
-  ✓  Price isDirty is true
-  ┌
-  │ '✔ SELF_INVESTMENT =', 'https://api.brasil.mercap.com.
-  │ ar/investments/287'
-  │ '✔ INTERNAL_RATE_OF_RETURN_SENSITIVITY =', 'https://ap
-  │ i.brasil.mercap.com.ar/investments/287/irr-sensitivity
-  │ '
-  │ '✔ INVESTMENT_METRICS =', 'https://api.brasil.mercap.c
-  │ om.ar/investments/287/metrics'
-  │ '✔ PRICE_SENSITIVITY =', 'https://api.brasil.mercap.co
-  │ m.ar/investments/287/price-sensitivity'
-  │ "ℹ No vino 'exchangeRateSensitivity' (correcto)"
-  └
-
-↳ Get investment metrics by ID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-06-05 [200 OK, 1.49kB, 42ms]
-  ┌
-  │ '📌 TRADABLE_SECURITY_URL: https://api.brasil.mercap.c
-  │ om.ar/tradable-securities/a893fba7-70e3-4798-a1f5-c670
-  │ 6fbe9a0d'
-  └
-  GET https://api.brasil.mercap.com.ar/investments/287/metrics [200 OK, 1.8kB, 901ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ✓  Response contains required properties
-  ✓  Mandatory numeric fields have correct type
-  ✓  lastQuote structure is valid when present
-  ┌
-  │ 'lastIntradayQuote not present in Brasil (expected sce
-  │ nario)'
-  └
-  ✓  lastIntradayQuote structure is valid
-  ✓  Cost and residualAmount structure is valid
-  ✓  Optional fields are valid when present
-  ✓  Links object exists
-
-↳ Get investment irr sensitivity by ID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-06-05 [200 OK, 1.47kB, 60ms]
-  ┌
-  │ '📌 TRADABLE_SECURITY_URL: https://api.brasil.mercap.c
-  │ om.ar/tradable-securities/a893fba7-70e3-4798-a1f5-c670
-  │ 6fbe9a0d'
-  └
-  GET https://api.brasil.mercap.com.ar/investments/287/irr-sensitivity [200 OK, 2.43kB, 457ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ✓  Response body is not empty
-  ✓  No main fields are null
-  ✓  Results array is valid
-  ┌
-  │ 'Baseline contains all mandatory properties.'
-  └
-  ✓  Baseline mandatory properties are present
-  ✓  Baseline optional properties are valid when present
-  ┌
-  │ 'Result 1 contains all mandatory fields.'
-  │ 'Result 2 contains all mandatory fields.'
-  │ 'Result 3 contains all mandatory fields.'
-  │ 'Result 4 contains all mandatory fields.'
-  │ 'Result 5 contains all mandatory fields.'
-  │ 'Result 6 contains all mandatory fields.'
-  │ 'Result 7 contains all mandatory fields.'
-  │ 'Result 8 contains all mandatory fields.'
-  │ 'Result 9 contains all mandatory fields.'
-  │ 'Result 10 contains all mandatory fields.'
-  │ 'Result 11 contains all mandatory fields.'
-  └
-  ✓  Each result contains mandatory properties
-
-↳ Get investment price sensitivity by ID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-06-05 [200 OK, 1.47kB, 52ms]
-  ┌
-  │ '📌 TRADABLE_SECURITY_URL: https://api.brasil.mercap.c
-  │ om.ar/tradable-securities/a893fba7-70e3-4798-a1f5-c670
-  │ 6fbe9a0d'
-  └
-  GET https://api.brasil.mercap.com.ar/investments/287/price-sensitivity [200 OK, 2.29kB, 369ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ✓  Response body is not empty
-  ✓  No main fields are null
-  ✓  Results array is valid
-  ┌
-  │ 'Step contains numberOfBasisPoint: 500'
-  └
-  ✓  Step contains expected properties
-  ┌
-  │ 'Baseline contains all expected properties.'
-  └
-  ✓  Baseline contains expected properties
-  ┌
-  │ 'Result 1 contains all expected properties.'
-  │ 'Result 2 contains all expected properties.'
-  │ 'Result 3 contains all expected properties.'
-  │ 'Result 4 contains all expected properties.'
-  │ 'Result 5 contains all expected properties.'
-  │ 'Result 6 contains all expected properties.'
-  │ 'Result 7 contains all expected properties.'
-  │ 'Result 8 contains all expected properties.'
-  │ 'Result 9 contains all expected properties.'
-  │ 'Result 10 contains all expected properties.'
-  │ 'Result 11 contains all expected properties.'
-  └
-  ✓  Each result contains expected properties
-  ✓  Check that properties in each 'results' have the expected format
-
-↳ Get investment exchange rate sensitivity by ID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?query=RESA15&tradeDate=2026-06-05 [200 OK, 1.47kB, 37ms]
-  ┌
-  │ '📌 TRADABLE_SECURITY_URL: https://api.brasil.mercap.c
-  │ om.ar/tradable-securities/a893fba7-70e3-4798-a1f5-c670
-  │ 6fbe9a0d'
-  │ '⚠️ Saltando request: Escenario no disponible para Bra
-  │ sil o variable faltante.'
-  └
-
-❏ Pepper-GS32 / Regression-Test / Instrument Issuers
-↳ Get all instrument issuers
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  └
-  GET https://api.brasil.mercap.com.ar/instrument-issuers [200 OK, 6.45kB, 90ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ✓  Items array is present and not empty
-  ✓  No duplicate names in items
-  ✓  Links are unique for each item
-  ✓  Self link matches expected URL
-  ┌
-  │ '✔ INSTRUMENT_ISSUERS_UUID seteado: https://api.brasil
-  │ .mercap.com.ar/instrument-issuers/008ddb57-2324-4991-8
-  │ fbb-b36bdcd8a431'
-  └
-  ✓  Item 1 (Energisa Minas Rio Distribuidora de Energia SA) contains expected properties
-  ✓  Item 1 (Energisa Minas Rio Distribuidora de Energia SA) 'name' is a non-empty string
-  ✓  Item 1 (Energisa Minas Rio Distribuidora de Energia SA) 'self' link is a valid URL
-  ✓  Item 2 (Companhia de Eletricidade do Estado da Bahia COELBA) contains expected properties
-  ✓  Item 2 (Companhia de Eletricidade do Estado da Bahia COELBA) 'name' is a non-empty string
-  ✓  Item 2 (Companhia de Eletricidade do Estado da Bahia COELBA) 'self' link is a valid URL
-  ✓  Item 3 (IRB-Brasil Resseguros SA) contains expected properties
-  ✓  Item 3 (IRB-Brasil Resseguros SA) 'name' is a non-empty string
-  ✓  Item 3 (IRB-Brasil Resseguros SA) 'self' link is a valid URL
-  ✓  Item 4 (Petroleo Brasileiro S.A - Petrobras) contains expected properties
-  ✓  Item 4 (Petroleo Brasileiro S.A - Petrobras) 'name' is a non-empty string
-  ✓  Item 4 (Petroleo Brasileiro S.A - Petrobras) 'self' link is a valid URL
-  ✓  Item 5 (Mata de Santa Genebra Transmissao SA) contains expected properties
-  ✓  Item 5 (Mata de Santa Genebra Transmissao SA) 'name' is a non-empty string
-  ✓  Item 5 (Mata de Santa Genebra Transmissao SA) 'self' link is a valid URL
-  ✓  Item 6 (Tim S.A.) contains expected properties
-  ✓  Item 6 (Tim S.A.) 'name' is a non-empty string
-  ✓  Item 6 (Tim S.A.) 'self' link is a valid URL
-  ✓  Item 7 (Colombo Agroindustria SA) contains expected properties
-  ✓  Item 7 (Colombo Agroindustria SA) 'name' is a non-empty string
-  ✓  Item 7 (Colombo Agroindustria SA) 'self' link is a valid URL
-  ✓  Item 8 (RB Capital Investimentos DTVM LTDA) contains expected properties
-  ✓  Item 8 (RB Capital Investimentos DTVM LTDA) 'name' is a non-empty string
-  ✓  Item 8 (RB Capital Investimentos DTVM LTDA) 'self' link is a valid URL
-  ✓  Item 9 (Concessionaria Ecovias do Cerrado SA) contains expected properties
-  ✓  Item 9 (Concessionaria Ecovias do Cerrado SA) 'name' is a non-empty string
-  ✓  Item 9 (Concessionaria Ecovias do Cerrado SA) 'self' link is a valid URL
-  ✓  Item 10 (Echoenergia Participacoes SA) contains expected properties
-  ✓  Item 10 (Echoenergia Participacoes SA) 'name' is a non-empty string
-  ✓  Item 10 (Echoenergia Participacoes SA) 'self' link is a valid URL
-  GET https://api.brasil.mercap.com.ar/instrument-issuers/008ddb57-2324-4991-8fbb-b36bdcd8a431   GET https://api.brasil.mercap.com.ar/instrument-issuers/01699af4-94b1-4255-9e44-d637d10ec2d1   GET https://api.brasil.mercap.com.ar/instrument-issuers/037cf7ce-0542-4b67-93c9-906e775d0dfe   GET https://api.brasil.mercap.com.ar/instrument-issuers/0398b6b0-e9a5-4a3c-9c17-3e99c663996c   GET https://api.brasil.mercap.com.ar/instrument-issuers/03c55849-4655-4185-8b37-79987d1d4ed3   GET https://api.brasil.mercap.com.ar/instrument-issuers/03cec1bf-17c5-44f1-a9a0-d50ca317dcc8   GET https://api.brasil.mercap.com.ar/instrument-issuers/03e40740-b30c-4b74-8873-b8017b69e4c0   GET https://api.brasil.mercap.com.ar/instrument-issuers/054b0928-06e6-4d29-b944-b22cb1876c04   GET https://api.brasil.mercap.com.ar/instrument-issuers/0561d7d9-ccd8-4a7d-b538-68eead88c5bc   GET https://api.brasil.mercap.com.ar/instrument-issuers/05f5745e-b40c-40a9-9e9e-a66fa2641ed0 [200 OK, 994B, 47ms]
-  ✓  Item 3 (IRB-Brasil Resseguros SA) self link returns status 200
-[200 OK, 1kB, 53ms]
-  ✓  Item 8 (RB Capital Investimentos DTVM LTDA) self link returns status 200
-[200 OK, 1kB, 59ms]
-  ✓  Item 9 (Concessionaria Ecovias do Cerrado SA) self link returns status 200
-[200 OK, 976B, 68ms]
-  ✓  Item 6 (Tim S.A.) self link returns status 200
-[200 OK, 1.02kB, 73ms]
-  ✓  Item 1 (Energisa Minas Rio Distribuidora de Energia SA) self link returns status 200
-[200 OK, 1kB, 73ms]
-  ✓  Item 5 (Mata de Santa Genebra Transmissao SA) self link returns status 200
-[200 OK, 984B, 76ms]
-  ✓  Item 7 (Colombo Agroindustria SA) self link returns status 200
-[200 OK, 1.01kB, 83ms]
-  ✓  Item 2 (Companhia de Eletricidade do Estado da Bahia COELBA) self link returns status 200
-[200 OK, 996B, 84ms]
-  ✓  Item 10 (Echoenergia Participacoes SA) self link returns status 200
-[200 OK, 1kB, 95ms]
-  ✓  Item 4 (Petroleo Brasileiro S.A - Petrobras) self link returns status 200
-
-↳ Get instrument issuers by UUID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  └
-  GET https://api.brasil.mercap.com.ar/instrument-issuers/008ddb57-2324-4991-8fbb-b36bdcd8a431 [200 OK, 1.02kB, 52ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ┌
-  │ 'Response has correct properties (including optional l
-  │ inks).'
-  └
-  ✓  Response has correct properties
-  ┌
-  │ 'Self link is correct:', 'https://api.brasil.mercap.co
-  │ m.ar/instrument-issuers/008ddb57-2324-4991-8fbb-b36bdc
-  │ d8a431'
-  └
-  ✓  Self link is correct
-
-❏ Pepper-GS32 / Regression-Test / Markets
-↳ Get all markets
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  └
-  GET https://api.brasil.mercap.com.ar/markets [200 OK, 1.27kB, 135ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ✓  Items array is present and not empty
-  ✓  No duplicate names in items
-  ✓  Links are unique for each item
-  ✓  Self link matches expected URL
-  ┌
-  │ '✔ MARKETS_UUID seteado: https://api.brasil.mercap.com
-  │ .ar/markets/48c06779-f4bf-4764-a7f1-e118d6f0612e'
-  └
-  ✓  Item 1 (BYMA) contains expected properties
-  ✓  Item 1 (BYMA) 'name' is a non-empty string
-  ✓  Item 1 (BYMA) 'self' link is a valid URL
-  ✓  Item 2 (B3) contains expected properties
-  ✓  Item 2 (B3) 'name' is a non-empty string
-  ✓  Item 2 (B3) 'self' link is a valid URL
-  ✓  Item 3 (ANBIMA) contains expected properties
-  ✓  Item 3 (ANBIMA) 'name' is a non-empty string
-  ✓  Item 3 (ANBIMA) 'self' link is a valid URL
-  ✓  Item 4 (test2) contains expected properties
-  ✓  Item 4 (test2) 'name' is a non-empty string
-  ✓  Item 4 (test2) 'self' link is a valid URL
-  GET https://api.brasil.mercap.com.ar/markets/48c06779-f4bf-4764-a7f1-e118d6f0612e   GET https://api.brasil.mercap.com.ar/markets/6bf4295d-14b7-4261-b83a-8ee7ab16e129   GET https://api.brasil.mercap.com.ar/markets/ba17bf81-76da-4ae1-af8c-7ea6bff466e7   GET https://api.brasil.mercap.com.ar/markets/033d6817-485b-4154-b947-086cfbd9c62b [200 OK, 864B, 43ms]
-  ✓  Item 1 (BYMA) self link returns status 200
-[200 OK, 856B, 50ms]
-  ✓  Item 2 (B3) self link returns status 200
-[200 OK, 867B, 52ms]
-  ✓  Item 4 (test2) self link returns status 200
-[200 OK, 864B, 55ms]
-  ✓  Item 3 (ANBIMA) self link returns status 200
-
-↳ Get markets by UUID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  └
-  GET https://api.brasil.mercap.com.ar/markets/48c06779-f4bf-4764-a7f1-e118d6f0612e [200 OK, 860B, 48ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ┌
-  │ 'Response has correct properties.'
-  └
-  ✓  Response has correct properties
-  ┌
-  │ 'Self link is correct:', 'https://api.brasil.mercap.co
-  │ m.ar/markets/48c06779-f4bf-4764-a7f1-e118d6f0612e'
-  └
-  ✓  Self link is correct
-
-❏ Pepper-GS32 / Regression-Test / Mutual Fund Types
-↳ Get all mutual fund types
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  └
-  GET https://api.brasil.mercap.com.ar/mutual-fund-types [200 OK, 1.54kB, 65ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ✓  Items array is present and not empty
-  ✓  No duplicate names in items
-  ✓  Links are unique for each item
-  ✓  Self link matches expected URL
-  ┌
-  │ '✔ MUTUAL_FUND_TYPES_UUID seteado: https://api.brasil.
-  │ mercap.com.ar/mutual-fund-types/0e73b4af-92f4-440e-b01
-  │ 7-9cd1b2983d97'
-  └
-  ✓  Item 1 (Renta Fija) contains expected properties
-  ✓  Item 1 (Renta Fija) 'name' is a non-empty string
-  ✓  Item 1 (Renta Fija) 'self' link is a valid URL
-  ✓  Item 2 (Renta Variable) contains expected properties
-  ✓  Item 2 (Renta Variable) 'name' is a non-empty string
-  ✓  Item 2 (Renta Variable) 'self' link is a valid URL
-  ✓  Item 3 (Mixto) contains expected properties
-  ✓  Item 3 (Mixto) 'name' is a non-empty string
-  ✓  Item 3 (Mixto) 'self' link is a valid URL
-  ✓  Item 4 (Money Market) contains expected properties
-  ✓  Item 4 (Money Market) 'name' is a non-empty string
-  ✓  Item 4 (Money Market) 'self' link is a valid URL
-  ✓  Item 5 (Infraestructura) contains expected properties
-  ✓  Item 5 (Infraestructura) 'name' is a non-empty string
-  ✓  Item 5 (Infraestructura) 'self' link is a valid URL
-  ✓  Item 6 (Otros) contains expected properties
-  ✓  Item 6 (Otros) 'name' is a non-empty string
-  ✓  Item 6 (Otros) 'self' link is a valid URL
-  ┌
-  │ "At least one item has 'Renta Variable' as name."
-  └
-  ✓  At least one item has 'Renta Variable' as name
-  GET https://api.brasil.mercap.com.ar/mutual-fund-types/0e73b4af-92f4-440e-b017-9cd1b2983d97   GET https://api.brasil.mercap.com.ar/mutual-fund-types/89b9fde4-ab26-42ff-9fa3-7a31c62aaabd   GET https://api.brasil.mercap.com.ar/mutual-fund-types/e809dd37-2c95-48e1-9f8c-a8cb16390db4   GET https://api.brasil.mercap.com.ar/mutual-fund-types/afd32424-8fea-4fe4-a181-1ea204168a20   GET https://api.brasil.mercap.com.ar/mutual-fund-types/a2887f15-cccd-4736-803e-18d8bd415533   GET https://api.brasil.mercap.com.ar/mutual-fund-types/c0601b9b-754a-4bb8-a12d-9419d87eb3e1 [200 OK, 869B, 78ms]
-  ✓  Item 2 (Renta Variable) self link returns status 200
-[200 OK, 856B, 79ms]
-  ✓  Item 3 (Mixto) self link returns status 200
-[200 OK, 853B, 87ms]
-  ✓  Item 1 (Renta Fija) self link returns status 200
-[200 OK, 868B, 148ms]
-  ✓  Item 5 (Infraestructura) self link returns status 200
-[200 OK, 854B, 149ms]
-  ✓  Item 6 (Otros) self link returns status 200
-[200 OK, 863B, 161ms]
-  ✓  Item 4 (Money Market) self link returns status 200
-
-↳ Get mutual fund type by UUID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  └
-  GET https://api.brasil.mercap.com.ar/mutual-fund-types/0e73b4af-92f4-440e-b017-9cd1b2983d97 [200 OK, 853B, 166ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ┌
-  │ 'Response has the correct properties.'
-  └
-  ✓  Response has correct properties
-  ┌
-  │ 'Self link is correct:', 'https://api.brasil.mercap.co
-  │ m.ar/mutual-fund-types/0e73b4af-92f4-440e-b017-9cd1b29
-  │ 83d97'
-  └
-  ✓  Self link is correct
-
-❏ Pepper-GS32 / Regression-Test / Mutual Fund Shares
-↳ Get all mutual fund shares
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  └
-  GET https://api.brasil.mercap.com.ar/mutual-fund-shares [200 OK, 839B, 47ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ✓  Items array is present
-  ✓  No duplicate names in items
-  ✓  Links are unique for each item
-  ✓  Self link matches expected URL
-  ┌
-  │ 'ℹ No UUID encontrado para MUTUAL_FUND_SHARE_UUID (vál
-  │ ido en Brasil)'
-  │ 'ℹ No items detected (Brasil scenario or empty base).'
-  └
-
-↳ Get mutual fund share by UUID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '⚠️ Saltando Request: Ubicación Brasil detectada (Serv
-  │ icio no disponible aún)'
-  └
-
-❏ Pepper-GS32 / Regression-Test / Stocks
-↳ Get all stocks
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  └
-  GET https://api.brasil.mercap.com.ar/stocks [200 OK, 815B, 59ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ✓  Items array is present
-  ✓  No duplicate names in items
-  ✓  Links are unique for each item
-  ✓  Self link matches expected URL
-  ┌
-  │ 'ℹ No UUID encontrado para STOCKS_UUID (válido en Bras
-  │ il)'
-  │ '✔ Finished testing stocks (or no stocks to test)'
-  └
-
-↳ Get stocks by UUID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '⚠️ Saltando Request de Stocks: Ubicación Brasil detec
-  │ tada (Servicio de Stocks no disponible aún)'
-  └
-
-❏ Pepper-GS32 / Regression-Test / Tradable Securities
-↳ Get tradable securities using only mandatory filters
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  │ '📅 VALUATION_DATE seteado a: 2026-06-05'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?tradeDate=2026-06-05 [200 OK, 13.27kB, 487ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ✓  Items array is present and not empty
-  ✓  Each item has correct properties
-  ✓  No duplicate tickers in items
-  ✓  Links are unique for each tradable security
-  ✓  TradingEvery has value 100 or 1000 for each item
-  ✓  Security.type has value Bond for each item
-  ✓  Self link is present and has correct structure
-
-↳ Get tradable securities using optional filters - only query
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  │ '📅 VALUATION_DATE seteado a: 2026-06-05'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?tradeDate=2026-06-05&query=RESA15 [200 OK, 1.46kB, 460ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ✓  Items array is present and not empty
-  ✓  Each item has correct properties
-  ✓  No duplicate tickers in items
-  ✓  Links are unique for each tradable security
-  ✓  TradingEvery has value 100 or 1000 for each item
-  ✓  Security.type has value Bond for each item
-  ┌
-  │ '✔ TS_SELF: https://api.brasil.mercap.com.ar/tradable-
-  │ securities/a893fba7-70e3-4798-a1f5-c6706fbe9a0d'
-  │ '✔ TS_METRICS: https://api.brasil.mercap.com.ar/tradab
-  │ le-securities/a893fba7-70e3-4798-a1f5-c6706fbe9a0d/met
-  │ rics'
-  └
-
-↳ Get tradable securities using optional filters - only type
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  │ '📅 VALUATION_DATE seteado a: 2026-06-05'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?tradeDate=2026-06-05&type=Bond [200 OK, 13.33kB, 496ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ✓  Items array is present and not empty
-  ✓  Each item has correct properties
-  ✓  No duplicate tickers in items
-  ✓  Links are unique for each tradable security
-  ✓  TradingEvery has value 100 or 1000 for each item
-  ✓  Security.type has value Bond for each item
-  ✓  Self link is present and has correct structure
-
-↳ Get tradable securities using optional filters - only market
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  │ '📅 VALUATION_DATE seteado a: 2026-06-05'
-  │ '🌍 Ubicación: Brasil | 📈 Market asignado: B3'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?tradeDate=2026-06-05&market=B3 [200 OK, 13.32kB, 432ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ✓  Items array is present and not empty
-  ✓  Each item has correct properties
-  ✓  No duplicate tickers in items
-  ✓  Links are unique for each tradable security
-  ✓  TradingEvery has value 100 or 1000 for each item
-  ✓  Security.type has value Bond for each item
-  ✓  Self link is present and has correct structure
-
-↳ Get tradable security by UUID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities/a893fba7-70e3-4798-a1f5-c6706fbe9a0d [200 OK, 1.36kB, 47ms]
-  ┌
-  │ 'Response received successfully.'
-  └
-  ✓  Response is received
-  ┌
-  │ 'Status code is 200.'
-  └
-  ✓  Status code is 200
-  ┌
-  │ 'Content-Type header is correct.'
-  └
-  ✓  Media-Type is correct
-  ┌
-  │ 'Each item has the correct properties (Validated as si
-  │ ngle object)'
-  └
-  ✓  Each item has correct properties
-  ┌
-  │ 'Type is Bond.'
-  └
-  ✓  Type is Bond
-  ┌
-  │ 'tradingEvery validated correctly.'
-  └
-  ✓  TradingEvery has value 100 or 1000 for each item
-  ✓  Ticker on response is the expected
-
-↳ Get tradable security metrics
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities/a893fba7-70e3-4798-a1f5-c6706fbe9a0d/metrics [200 OK, 2.01kB, 181ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ✓  Response contains expected properties
-  ✓  Numeric values are valid
-  ✓  All dates are valid (YYYY-MM-DD)
-  ✓  Last quote contains expected properties
-  ┌
-  │ 'Verified every.amount is 1000 for Brasil'
-  └
-  ✓  Every.amount logic is correct based on location
-  ✓  Links are valid URLs
-  ✓  Cost and ResidualAmount are valid objects
-  ✓  Coupon yearly rate is valid
-  ✓  Links match environment variables
-
-↳ Get tradable securities using optional filters - ticker & tradeDate
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ '▶ [undefined] Ejecutando con ticker: RESA15'
-  │ '⏭️ Skipping - test solo aplica para Argentina'
-  └
-  GET https://api.brasil.mercap.com.ar/tradable-securities?security=https://api.brasil.mercap.com.ar/tradable-securities/a893fba7-70e3-4798-a1f5-c6706fbe9a0d&tradeDate=2026-06-05 [200 OK, 4.13kB, 426ms]
-  ┌
-  │ '⏭️ Skipping - test solo aplica para Argentina'
-  └
-
-❏ Pepper-GS32 / Regression-Test / Valuation Schemes
-↳ Get all valuation schemes
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  └
-  GET https://api.brasil.mercap.com.ar/valuation-schemes [200 OK, 1.4kB, 49ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ✓  Items array is present and not empty
-  ✓  No duplicate names in items
-  ✓  Links are unique for each item
-  ✓  Self link matches expected URL
-  ┌
-  │ '✔ VALUATION_SCHEMES_UUID seteado: https://api.brasil.
-  │ mercap.com.ar/valuation-schemes/ec8de522-6382-4a72-acc
-  │ 0-9b5eadefcc49'
-  │ '\n▶ Testing Item 1 (Valuacion B3 BRL)'
-  └
-  ✓  Item 1 (Valuacion B3 BRL) contains expected properties
-  ✓  Item 1 (Valuacion B3 BRL) 'name' is a non-empty string
-  ✓  Item 1 (Valuacion B3 BRL) 'self' link is a valid URL
-  GET https://api.brasil.mercap.com.ar/valuation-schemes/ec8de522-6382-4a72-acc0-9b5eadefcc49 [200 OK, 891B, 61ms]
-  ✓  Item 1 (Valuacion B3 BRL) self link returns status 200
-  ┌
-  │ '\n▶ Testing Item 2 (Valuacion ANBIMA BRL)'
-  └
-  ✓  Item 2 (Valuacion ANBIMA BRL) contains expected properties
-  ✓  Item 2 (Valuacion ANBIMA BRL) 'name' is a non-empty string
-  ✓  Item 2 (Valuacion ANBIMA BRL) 'self' link is a valid URL
-  GET https://api.brasil.mercap.com.ar/valuation-schemes/ffe776f2-b036-498d-be0f-5fb4ecf3815e [200 OK, 901B, 67ms]
-  ✓  Item 2 (Valuacion ANBIMA BRL) self link returns status 200
-  ┌
-  │ '\n' +
-  │   '▶ Testing Item 3 (Valuacion Mercado Default)'
-  └
-  ✓  Item 3 (Valuacion Mercado Default) contains expected properties
-  ✓  Item 3 (Valuacion Mercado Default) 'name' is a non-empty string
-  ✓  Item 3 (Valuacion Mercado Default) 'self' link is a valid URL
-  GET https://api.brasil.mercap.com.ar/valuation-schemes/29bbe2dc-afd7-4603-9b9a-69e05e0a05c8 [200 OK, 904B, 54ms]
-  ✓  Item 3 (Valuacion Mercado Default) self link returns status 200
-  ┌
-  │ '\n▶ Testing Item 4 (Valuacion ANBIMA USD)'
-  └
-  ✓  Item 4 (Valuacion ANBIMA USD) contains expected properties
-  ✓  Item 4 (Valuacion ANBIMA USD) 'name' is a non-empty string
-  ✓  Item 4 (Valuacion ANBIMA USD) 'self' link is a valid URL
-  GET https://api.brasil.mercap.com.ar/valuation-schemes/8a20366b-41c0-4848-8347-69aef4f29921 [200 OK, 899B, 55ms]
-  ✓  Item 4 (Valuacion ANBIMA USD) self link returns status 200
-  ┌
-  │ '✔ Finished testing valuation schemes'
-  └
-
-↳ Get valuation schemes by UUID
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  └
-  GET https://api.brasil.mercap.com.ar/valuation-schemes/ec8de522-6382-4a72-acc0-9b5eadefcc49 [200 OK, 893B, 67ms]
-  ✓  Response is received
-  ✓  Status code is 200
-  ✓  Media-Type is correct
-  ┌
-  │ 'Response has correct properties.'
-  └
-  ✓  Response has correct properties
-  ┌
-  │ 'Self link is correct:', 'https://api.brasil.mercap.co
-  │ m.ar/valuation-schemes/ec8de522-6382-4a72-acc0-9b5eade
-  │ fcc49'
-  └
-  ✓  Self link is correct
-
-❏ Pepper-GS32 / Regression-Test / Yield Curves
-↳ Get all yield curves - validate each self link
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  └
-  GET https://api.brasil.mercap.com.ar/yield-curves [200 OK, 7.12kB, 134ms]
+❏ Pepper-GS64
+↳ Get all yield curves - validate each metrics link
+  GET https://api.brasil.mercap.com.ar/yield-curves [200 OK, 7.12kB, 150ms]
   ✓  Response is received
   ✓  Status code is 200
   ✓  Response contains 'items' array with at least one element
@@ -2781,8 +784,8 @@ Marvel APIs
   ✓  Item 1 (Brasil - Titulos Privados - C.R.A.s - Taxa Fixa - BRL) contains expected properties
   ✓  Item 1 (Brasil - Titulos Privados - C.R.A.s - Taxa Fixa - BRL) 'name' is a non-empty string
   ✓  Item 1 (Brasil - Titulos Privados - C.R.A.s - Taxa Fixa - BRL) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/efeab688-db18-40b0-9061-2d4a21af0f62 [200 OK, 1.27kB, 366ms]
-  ✓  Item 1 (Brasil - Titulos Privados - C.R.A.s - Taxa Fixa - BRL) self link returns 200
+  GET https://api.brasil.mercap.com.ar/yield-curves/efeab688-db18-40b0-9061-2d4a21af0f62/metrics [200 OK, 67.77kB, 25.8s]
+  ✓  Item 1 (Brasil - Titulos Privados - C.R.A.s - Taxa Fixa - BRL) metrics link returns status 200
   ┌
   │ '🔎 Testing Item 2 (Brasil - Titulos Privados - C.R.A.
   │ s - Taxa Variavel - BRL - ANBIMA)'
@@ -2790,8 +793,8 @@ Marvel APIs
   ✓  Item 2 (Brasil - Titulos Privados - C.R.A.s - Taxa Variavel - BRL - ANBIMA) contains expected properties
   ✓  Item 2 (Brasil - Titulos Privados - C.R.A.s - Taxa Variavel - BRL - ANBIMA) 'name' is a non-empty string
   ✓  Item 2 (Brasil - Titulos Privados - C.R.A.s - Taxa Variavel - BRL - ANBIMA) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/cb12d532-3579-4477-a420-a7722846de3a [200 OK, 1.28kB, 298ms]
-  ✓  Item 2 (Brasil - Titulos Privados - C.R.A.s - Taxa Variavel - BRL - ANBIMA) self link returns 200
+  GET https://api.brasil.mercap.com.ar/yield-curves/cb12d532-3579-4477-a420-a7722846de3a/metrics [200 OK, 9.95kB, 4.7s]
+  ✓  Item 2 (Brasil - Titulos Privados - C.R.A.s - Taxa Variavel - BRL - ANBIMA) metrics link returns status 200
   ┌
   │ '🔎 Testing Item 3 (Brasil - Titulos Privados - C.R.I.
   │ s - Taxa Fixa - BRL)'
@@ -2799,8 +802,8 @@ Marvel APIs
   ✓  Item 3 (Brasil - Titulos Privados - C.R.I.s - Taxa Fixa - BRL) contains expected properties
   ✓  Item 3 (Brasil - Titulos Privados - C.R.I.s - Taxa Fixa - BRL) 'name' is a non-empty string
   ✓  Item 3 (Brasil - Titulos Privados - C.R.I.s - Taxa Fixa - BRL) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/60f87950-cd71-4ed4-9cab-2860f24fe77a [200 OK, 1.26kB, 6.7s]
-  ✓  Item 3 (Brasil - Titulos Privados - C.R.I.s - Taxa Fixa - BRL) self link returns 200
+  GET https://api.brasil.mercap.com.ar/yield-curves/60f87950-cd71-4ed4-9cab-2860f24fe77a/metrics [200 OK, 74.19kB, 22.6s]
+  ✓  Item 3 (Brasil - Titulos Privados - C.R.I.s - Taxa Fixa - BRL) metrics link returns status 200
   ┌
   │ '🔎 Testing Item 4 (Brasil - Titulos Privados - C.R.I.
   │ s - Taxa Variavel - BRL - ANBIMA)'
@@ -2808,8 +811,8 @@ Marvel APIs
   ✓  Item 4 (Brasil - Titulos Privados - C.R.I.s - Taxa Variavel - BRL - ANBIMA) contains expected properties
   ✓  Item 4 (Brasil - Titulos Privados - C.R.I.s - Taxa Variavel - BRL - ANBIMA) 'name' is a non-empty string
   ✓  Item 4 (Brasil - Titulos Privados - C.R.I.s - Taxa Variavel - BRL - ANBIMA) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/e1974aef-9243-40aa-8909-41b18bc5806f [200 OK, 1.28kB, 607ms]
-  ✓  Item 4 (Brasil - Titulos Privados - C.R.I.s - Taxa Variavel - BRL - ANBIMA) self link returns 200
+  GET https://api.brasil.mercap.com.ar/yield-curves/e1974aef-9243-40aa-8909-41b18bc5806f/metrics [200 OK, 9.94kB, 4.5s]
+  ✓  Item 4 (Brasil - Titulos Privados - C.R.I.s - Taxa Variavel - BRL - ANBIMA) metrics link returns status 200
   ┌
   │ '🔎 Testing Item 5 (Brasil - Titulos Privados - Debent
   │ ures - Aguas e Saneamiento - BRL)'
@@ -2817,8 +820,8 @@ Marvel APIs
   ✓  Item 5 (Brasil - Titulos Privados - Debentures - Aguas e Saneamiento - BRL) contains expected properties
   ✓  Item 5 (Brasil - Titulos Privados - Debentures - Aguas e Saneamiento - BRL) 'name' is a non-empty string
   ✓  Item 5 (Brasil - Titulos Privados - Debentures - Aguas e Saneamiento - BRL) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/6764b6fe-321f-4633-88cc-66b5689ae53a [200 OK, 1.27kB, 161ms]
-  ✓  Item 5 (Brasil - Titulos Privados - Debentures - Aguas e Saneamiento - BRL) self link returns 200
+  GET https://api.brasil.mercap.com.ar/yield-curves/6764b6fe-321f-4633-88cc-66b5689ae53a/metrics [200 OK, 4.43kB, 504ms]
+  ✓  Item 5 (Brasil - Titulos Privados - Debentures - Aguas e Saneamiento - BRL) metrics link returns status 200
   ┌
   │ '🔎 Testing Item 6 (Brasil - Titulos Privados - Debent
   │ ures - Concessoes - BRL)'
@@ -2826,8 +829,8 @@ Marvel APIs
   ✓  Item 6 (Brasil - Titulos Privados - Debentures - Concessoes - BRL) contains expected properties
   ✓  Item 6 (Brasil - Titulos Privados - Debentures - Concessoes - BRL) 'name' is a non-empty string
   ✓  Item 6 (Brasil - Titulos Privados - Debentures - Concessoes - BRL) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/cf8336c2-f116-488e-9bec-7bd71b1cd0fd [200 OK, 1.26kB, 301ms]
-  ✓  Item 6 (Brasil - Titulos Privados - Debentures - Concessoes - BRL) self link returns 200
+  GET https://api.brasil.mercap.com.ar/yield-curves/cf8336c2-f116-488e-9bec-7bd71b1cd0fd/metrics [200 OK, 8.11kB, 763ms]
+  ✓  Item 6 (Brasil - Titulos Privados - Debentures - Concessoes - BRL) metrics link returns status 200
   ┌
   │ '🔎 Testing Item 7 (Brasil - Titulos Privados - Debent
   │ ures - Energia - BRL)'
@@ -2835,8 +838,8 @@ Marvel APIs
   ✓  Item 7 (Brasil - Titulos Privados - Debentures - Energia - BRL) contains expected properties
   ✓  Item 7 (Brasil - Titulos Privados - Debentures - Energia - BRL) 'name' is a non-empty string
   ✓  Item 7 (Brasil - Titulos Privados - Debentures - Energia - BRL) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/cc72cb5a-d88e-449c-bfa2-665a737c0a54 [200 OK, 1.26kB, 2.6s]
-  ✓  Item 7 (Brasil - Titulos Privados - Debentures - Energia - BRL) self link returns 200
+  GET https://api.brasil.mercap.com.ar/yield-curves/cc72cb5a-d88e-449c-bfa2-665a737c0a54/metrics [200 OK, 62.28kB, 4.2s]
+  ✓  Item 7 (Brasil - Titulos Privados - Debentures - Energia - BRL) metrics link returns status 200
   ┌
   │ '🔎 Testing Item 8 (Brasil - Titulos Privados - Debent
   │ ures - Metais - BRL)'
@@ -2844,8 +847,8 @@ Marvel APIs
   ✓  Item 8 (Brasil - Titulos Privados - Debentures - Metais - BRL) contains expected properties
   ✓  Item 8 (Brasil - Titulos Privados - Debentures - Metais - BRL) 'name' is a non-empty string
   ✓  Item 8 (Brasil - Titulos Privados - Debentures - Metais - BRL) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/991d07aa-44ee-4288-93ab-a4a7e137595e [200 OK, 1.26kB, 979ms]
-  ✓  Item 8 (Brasil - Titulos Privados - Debentures - Metais - BRL) self link returns 200
+  GET https://api.brasil.mercap.com.ar/yield-curves/991d07aa-44ee-4288-93ab-a4a7e137595e/metrics [200 OK, 2.59kB, 427ms]
+  ✓  Item 8 (Brasil - Titulos Privados - Debentures - Metais - BRL) metrics link returns status 200
   ┌
   │ '🔎 Testing Item 9 (Brasil - Titulos Privados - Debent
   │ ures - Transporte e Logistica - BRL)'
@@ -2853,8 +856,8 @@ Marvel APIs
   ✓  Item 9 (Brasil - Titulos Privados - Debentures - Transporte e Logistica - BRL) contains expected properties
   ✓  Item 9 (Brasil - Titulos Privados - Debentures - Transporte e Logistica - BRL) 'name' is a non-empty string
   ✓  Item 9 (Brasil - Titulos Privados - Debentures - Transporte e Logistica - BRL) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/f6f9894d-83f2-460c-89bb-84b8189697a6 [200 OK, 1.28kB, 171ms]
-  ✓  Item 9 (Brasil - Titulos Privados - Debentures - Transporte e Logistica - BRL) self link returns 200
+  GET https://api.brasil.mercap.com.ar/yield-curves/f6f9894d-83f2-460c-89bb-84b8189697a6/metrics [200 OK, 4.43kB, 597ms]
+  ✓  Item 9 (Brasil - Titulos Privados - Debentures - Transporte e Logistica - BRL) metrics link returns status 200
   ┌
   │ '🔎 Testing Item 10 (Brasil - Titulos Publicos - LTN -
   │  BRL - ANBIMA)'
@@ -2862,8 +865,8 @@ Marvel APIs
   ✓  Item 10 (Brasil - Titulos Publicos - LTN - BRL - ANBIMA) contains expected properties
   ✓  Item 10 (Brasil - Titulos Publicos - LTN - BRL - ANBIMA) 'name' is a non-empty string
   ✓  Item 10 (Brasil - Titulos Publicos - LTN - BRL - ANBIMA) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/e06ece86-f627-49e5-9643-d85e0cc4e487 [200 OK, 1.25kB, 127ms]
-  ✓  Item 10 (Brasil - Titulos Publicos - LTN - BRL - ANBIMA) self link returns 200
+  GET https://api.brasil.mercap.com.ar/yield-curves/e06ece86-f627-49e5-9643-d85e0cc4e487/metrics [200 OK, 6.18kB, 2.6s]
+  ✓  Item 10 (Brasil - Titulos Publicos - LTN - BRL - ANBIMA) metrics link returns status 200
   ┌
   │ '🔎 Testing Item 11 (Brasil - Titulos Publicos - NTN-B
   │  - BRL\t- ANBIMA)'
@@ -2871,8 +874,8 @@ Marvel APIs
   ✓  Item 11 (Brasil - Titulos Publicos - NTN-B - BRL	- ANBIMA) contains expected properties
   ✓  Item 11 (Brasil - Titulos Publicos - NTN-B - BRL	- ANBIMA) 'name' is a non-empty string
   ✓  Item 11 (Brasil - Titulos Publicos - NTN-B - BRL	- ANBIMA) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/c600e136-4bc4-4a2f-935a-b0509789f431 [200 OK, 1.25kB, 1200ms]
-  ✓  Item 11 (Brasil - Titulos Publicos - NTN-B - BRL	- ANBIMA) self link returns 200
+  GET https://api.brasil.mercap.com.ar/yield-curves/c600e136-4bc4-4a2f-935a-b0509789f431/metrics [200 OK, 11.78kB, 5.4s]
+  ✓  Item 11 (Brasil - Titulos Publicos - NTN-B - BRL	- ANBIMA) metrics link returns status 200
   ┌
   │ '🔎 Testing Item 12 (Brasil - Titulos Publicos - NTN-F
   │  - BRL)'
@@ -2880,43 +883,28 @@ Marvel APIs
   ✓  Item 12 (Brasil - Titulos Publicos - NTN-F - BRL) contains expected properties
   ✓  Item 12 (Brasil - Titulos Publicos - NTN-F - BRL) 'name' is a non-empty string
   ✓  Item 12 (Brasil - Titulos Publicos - NTN-F - BRL) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/f5510395-c441-4cc5-9603-8e9f8128c621 [200 OK, 1.25kB, 240ms]
-  ✓  Item 12 (Brasil - Titulos Publicos - NTN-F - BRL) self link returns 200
-
-❏ Pepper-GS32 / Regression-Test / Bond Groups
-↳ Get all bond groups
+  GET https://api.brasil.mercap.com.ar/yield-curves/f5510395-c441-4cc5-9603-8e9f8128c621/metrics [200 OK, 5.34kB, 2.4s]
+  ✓  Item 12 (Brasil - Titulos Publicos - NTN-F - BRL) metrics link returns status 200
   ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  │ '🌎 COUNTRY: BR'
-  │ '🧰 Helpers cargados: assertBase, assertListMeta, asse
-  │ rtItemsSendRequest, assertCatalogItem, assertSensitivi
-  │ ty, assertTradableSecurityList'
-  │ "⚠️ Saltando 'Get all bond groups': No disponible en B
-  │ rasil."
+  │ '✅ Finalizó la iteración de items'
   └
-  GET https://api.brasil.mercap.com.ar/bond-groups [404 Not Found, 586B, 104ms]
-  ┌
-  │ 'ℹ️ Saltando validaciones de Bond Groups para Brasil (
-  │ 404 esperado).'
-  └
-  ✓  Ambiente: Brasil - Validaciones omitidas
 
 ┌─────────────────────────┬────────────────────┬───────────────────┐
 │                         │           executed │            failed │
 ├─────────────────────────┼────────────────────┼───────────────────┤
 │              iterations │                  1 │                 0 │
 ├─────────────────────────┼────────────────────┼───────────────────┤
-│                requests │                130 │                 0 │
+│                requests │                 23 │                 0 │
 ├─────────────────────────┼────────────────────┼───────────────────┤
-│            test-scripts │                161 │                 0 │
+│            test-scripts │                 37 │                 0 │
 ├─────────────────────────┼────────────────────┼───────────────────┤
-│      prerequest-scripts │                197 │                 0 │
+│      prerequest-scripts │               1006 │                 0 │
 ├─────────────────────────┼────────────────────┼───────────────────┤
-│              assertions │                564 │                 0 │
+│              assertions │                100 │                 0 │
 ├─────────────────────────┴────────────────────┴───────────────────┤
-│ total run duration: 1m 29.1s                                     │
+│ total run duration: 8m 42.5s                                     │
 ├──────────────────────────────────────────────────────────────────┤
-│ total data received: 195.27kB (approx)                           │
+│ total data received: 1.33MB (approx)                             │
 ├──────────────────────────────────────────────────────────────────┤
-│ average response time: 256ms [min: 33ms, max: 6.7s, s.d.: 682ms] │
+│ average response time: 3.4s [min: 105ms, max: 25.8s, s.d.: 6.6s] │
 └──────────────────────────────────────────────────────────────────┘

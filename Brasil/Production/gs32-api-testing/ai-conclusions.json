@@ -1,31 +1,31 @@
 {
   "escalar_prioritario": {
     "titulo": "Cupones de bono por UUID — 18 reincidencias como outlier",
-    "detalle": "Este endpoint registra 18 corridas como outlier, indicando una inestabilidad estructural que persiste a pesar de no tener alerta roja hoy. La corrida actual también presenta una alerta amarilla con una regresión del 1222.78%, lo que refuerza la prioridad de escalado por su carácter recurrente."
+    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 18 registros históricos como outlier. Aunque no posea una alerta roja en la corrida actual, su reincidencia persistente indica un problema de fondo más grave que una degradación puntual."
   },
   "investigar": {
-    "titulo": "Performance estable — avg P95: 293 ms vs baseline 485 ms",
-    "detalle": "Los valores de las últimas corridas confirman la estabilidad general del sistema con un promedio actual de 293ms. Se identifican Bond Screener — Filtro múltiple de bonos (1474ms) y Valoración de instrumento financiero (1364ms) como candidatos preventivos a monitorear por ser los más expuestos."
+    "titulo": "Tendencia de latencia al alza — incremento del 103.8% en avg P95",
+    "detalle": "La variación sostenida entre la primera corrida (287ms) y la última (585ms) advierte que el baseline global absorberá la degradación progresivamente. Esto podría enmascarar alertas futuras al normalizar tiempos de respuesta degradados."
   },
   "optimizar": {
-    "titulo": "Optimizar Métricas de inversión por ID — impact score: 315.898",
-    "detalle": "Este endpoint presenta el mayor peso acumulado con un impact_p95_used de 3948.72 ms sobre 80 ejecuciones. Una reducción del 20% en su P95 representaría 63179.6 ms de latencia acumulada evitada por ciclo de vida del endpoint."
+    "titulo": "Get all yield curves — alto impacto acumulado (impact score: 2.490)",
+    "detalle": "Este endpoint lidera el ranking de impacto sistémico con un P95 de 2.490ms. Una reducción del 20% en su latencia representaría 498.0 ms de tiempo de procesamiento ahorrado por ciclo de vida del componente."
   },
-  "bottleneck_narrative": "La corrida actual presenta 1 alerta amarilla, lo cual es compatible con una regresión puntual dado que no se observa una tendencia sostenida de degradación. La tendencia de latencia muestra una mejora del 11.7% en las últimas corridas, situando el promedio actual (293ms) por debajo del baseline histórico.",
+  "bottleneck_narrative": "La corrida actual se mantiene en niveles de estabilidad operativa con un avg_p95 de 585ms frente a un baseline de 487ms. No se detectaron alertas de semáforo ni outliers en esta ejecución específica, confirmando la clasificación de salud del sistema.",
   "root_cause_hypotheses": [
     {
       "hypothesis": "Inestabilidad estructural recurrente en Cupones de bono",
-      "evidence": "18 ocurrencias como outlier en el historial de ejecuciones del endpoint Bond coupons by UUID.",
+      "evidence": "Endpoint 'Cupones de bono por UUID' registrado como outlier en 18 corridas distintas.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Regresión puntual en el módulo de Bonds",
-      "evidence": "regression_pct de 1222.78% y baseline_global_delta_pct de 126.36% en Cupones de bono por UUID.",
-      "priority": "media"
+      "hypothesis": "Inestabilidad recurrente en Flujos de caja de bono",
+      "evidence": "Endpoint 'Flujos de caja de bono desde fecha' registrado como outlier en 14 corridas.",
+      "priority": "alta"
     },
     {
       "hypothesis": "Variabilidad de performance dentro de parámetros normales",
-      "evidence": "avg_p95 actual de 293ms frente a un baseline de 485ms en la corrida del 2026-06-05.",
+      "evidence": "avg_p95 actual de 585ms vs baseline de 487ms sin alertas activas.",
       "priority": "baja"
     }
   ],
@@ -38,27 +38,21 @@
     },
     {
       "prioridad": "P1",
-      "accion": "Corregir inestabilidad en Flujos de caja de bono desde fecha — 14 reincidencias",
+      "accion": "Estabilizar Flujos de caja de bono desde fecha — 14 reincidencias como outlier",
       "endpoint_target": "Get one bond cashflow - only dateInterval from",
       "evidencia": "14 occurrences"
     },
     {
       "prioridad": "P1",
-      "accion": "Abordar recurrencia en Métricas de valor negociable — 10 reincidencias",
+      "accion": "Estabilizar Métricas de valor negociable — 10 reincidencias como outlier",
       "endpoint_target": "Get tradable security metrics",
       "evidencia": "10 occurrences"
     },
     {
-      "prioridad": "P2",
-      "accion": "Investigar Monedas — Listar todas — 3 reincidencias como outlier",
-      "endpoint_target": "Get all curencies - validate each self link",
-      "evidencia": "3 occurrences"
-    },
-    {
       "prioridad": "P3",
-      "accion": "Optimizar Métricas de inversión por ID — alto impacto acumulado",
-      "endpoint_target": "Get investment metrics by ID",
-      "evidencia": "315898 impact_score"
+      "accion": "Optimizar Get all yield curves — alto impacto acumulado en latencia",
+      "endpoint_target": "Get all yield curves - validate each metrics link",
+      "evidencia": "2490 ms"
     }
   ]
 }
