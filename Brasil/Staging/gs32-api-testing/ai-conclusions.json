@@ -1,52 +1,53 @@
 {
   "escalar_prioritario": {
-    "titulo": "Sin alertas críticas — avg P95: 151ms",
-    "detalle": "La corrida actual no presenta endpoints en estado ROJO ni reincidencias críticas de outliers. El P95 promedio de esta corrida es 151ms, por debajo del baseline de 357ms."
+    "titulo": "Sin alertas críticas — avg P95: 183ms",
+    "detalle": "La corrida actual muestra un avg P95 de 183ms, lo cual está por debajo del baseline de 306ms, indicando estabilidad general."
   },
   "investigar": {
-    "titulo": "Tendencia de mejora sostenida — avg P95: 526ms a 151ms",
-    "detalle": "El P95 promedio ha disminuido un 71.48% en las últimas corridas, pasando de 526ms a 151ms, lo que indica una mejora consistente en la performance general del sistema."
+    "titulo": "Múltiples endpoints en amarillo — posible causa de infraestructura compartida",
+    "detalle": "Cuatro endpoints de los servicios Bonds, Bond Payment Forecasts v2 e Investments muestran degradación simultánea, sugiriendo una causa raíz en la infraestructura compartida en lugar de un problema de código de aplicación específico."
   },
   "optimizar": {
-    "titulo": "Optimizar Métricas de inversión por ID — alto impacto acumulado",
-    "detalle": "El endpoint 'Métricas de inversión por ID' tiene el mayor impacto acumulado (impact score: 9.620) con un P95 de 2.405ms en 4 ejecuciones. Una reducción del 20% en su P95 representaría 1.924 ms de latencia acumulada evitada por ciclo de vida."
+    "titulo": "Métricas de inversión por ID — alto impacto acumulado: 10.065",
+    "detalle": "El endpoint 'Métricas de inversión por ID' tiene el mayor impacto acumulado (10.065), con un P95 típico de 2.013ms en 5 ejecuciones. Una reducción del 20% en su P95 representaría 2.013ms de latencia acumulada evitada por ciclo de vida del endpoint."
   },
-  "bottleneck_narrative": "La corrida actual presenta 1 alerta amarilla y 0 rojas. La tendencia general de las últimas corridas muestra una leve mejora en la performance.",
+  "bottleneck_narrative": "La corrida actual presenta 4 alertas amarillas, lo cual es compatible con una regresión puntual o el inicio de una, aunque la tendencia general de las últimas corridas muestra una leve mejora del -65.2% en el avg P95. No se han registrado picos anómalos históricos recientes que influyan en esta clasificación.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Regresión puntual en 'Sensibilidad al tipo de cambio de inversión por ID'.",
-      "evidence": "Endpoint con P95 de 49ms, 113.04% por encima de su baseline global de 23ms.",
-      "priority": "media"
+      "hypothesis": "Degradación por infraestructura compartida",
+      "evidence": "4 endpoints de los servicios Bonds, Bond Payment Forecasts v2 e Investments muestran degradación simultánea.",
+      "priority": "alta"
     },
     {
-      "hypothesis": "Carga computacional elevada en endpoints de valoración.",
-      "evidence": "Los 3 endpoints más lentos ('Métricas de inversión por ID', 'Tasas Internas de Retorno (TIR/IRR) de un bono', 'Valoración de instrumento financiero') tienen P95s de 837ms, 767ms y 732ms respectivamente, y son de complejidad alta.",
+      "hypothesis": "Regresión puntual en Obtener todos los bonos — filtrado por emisor",
+      "evidence": "El endpoint 'Obtener todos los bonos — filtrado por emisor' muestra una regresión del 611.86% respecto a la corrida anterior y un +32.49% vs baseline global.",
       "priority": "media"
-    },
-    {
-      "hypothesis": "Variabilidad de performance dentro de parámetros normales.",
-      "evidence": "Avg P95 de 151ms vs baseline de 357ms en la última corrida.",
-      "priority": "baja"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P2",
-      "accion": "Investigar regresión en Sensibilidad al tipo de cambio de inversión por ID",
-      "endpoint_target": "Get investment exchange rate sensitivity by ID",
-      "evidencia": "P95: 49ms, +113.04% vs baseline global"
+      "accion": "Investigar causa raíz de degradación sistémica",
+      "endpoint_target": "—",
+      "evidencia": "4 endpoints de servicios distintos en alerta amarilla"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Analizar regresión en Obtener todos los bonos — filtrado por emisor",
+      "endpoint_target": "All bonds - for issuer",
+      "evidencia": "+611.86% vs corrida anterior, +32.49% vs baseline global"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Revisar degradación en Paridades de bono",
+      "endpoint_target": "Get parities",
+      "evidencia": "+65.74% vs baseline global, +111.45% vs corrida anterior"
     },
     {
       "prioridad": "P3",
       "accion": "Optimizar Métricas de inversión por ID — alto impacto acumulado",
       "endpoint_target": "Get investment metrics by ID",
-      "evidencia": "Impact score: 9.620, P95: 2.405ms"
-    },
-    {
-      "prioridad": "P3",
-      "accion": "Revisar performance de Tasas Internas de Retorno (TIR/IRR) de un bono",
-      "endpoint_target": "Get irrs - one bond",
-      "evidencia": "P95: 767ms"
+      "evidencia": "Impact score: 10.065, P95: 2.013ms"
     }
   ]
 }
