@@ -1,53 +1,53 @@
 {
   "escalar_prioritario": {
-    "titulo": "Sin alertas críticas — avg P95: 183ms",
-    "detalle": "La corrida actual muestra un avg P95 de 183ms, lo cual está por debajo del baseline de 306ms, indicando estabilidad general."
+    "titulo": "Sin alertas críticas — avg P95: 231ms",
+    "detalle": "La corrida actual no presenta degradaciones graves (Rojo), manteniendo un promedio P95 de 231ms que se sitúa por debajo del baseline de 281ms de la ventana reciente."
   },
   "investigar": {
-    "titulo": "Múltiples endpoints en amarillo — posible causa de infraestructura compartida",
-    "detalle": "Cuatro endpoints de los servicios Bonds, Bond Payment Forecasts v2 e Investments muestran degradación simultánea, sugiriendo una causa raíz en la infraestructura compartida en lugar de un problema de código de aplicación específico."
+    "titulo": "8 endpoints en amarillo simultáneos — posible causa de infra",
+    "detalle": "La degradación simultánea de 8 endpoints en módulos diversos como Bonds, Markets e Investments sugiere una posible contención en recursos de infraestructura compartida. La afectación abarca desde lookups simples de baja complejidad hasta cálculos matemáticos intensivos."
   },
   "optimizar": {
-    "titulo": "Métricas de inversión por ID — alto impacto acumulado: 10.065",
-    "detalle": "El endpoint 'Métricas de inversión por ID' tiene el mayor impacto acumulado (10.065), con un P95 típico de 2.013ms en 5 ejecuciones. Una reducción del 20% en su P95 representaría 2.013ms de latencia acumulada evitada por ciclo de vida del endpoint."
+    "titulo": "Optimizar Métricas de inversión por ID — impacto sistémico 10.710",
+    "detalle": "Este endpoint posee el mayor peso acumulado con un impact score de 10.710 y un P95 limpio de 1.785ms. Una reducción del 20% en su latencia evitaría 2.142ms de tiempo de procesamiento total por ciclo de vida."
   },
-  "bottleneck_narrative": "La corrida actual presenta 4 alertas amarillas, lo cual es compatible con una regresión puntual o el inicio de una, aunque la tendencia general de las últimas corridas muestra una leve mejora del -65.2% en el avg P95. No se han registrado picos anómalos históricos recientes que influyan en esta clasificación.",
+  "bottleneck_narrative": "La corrida actual presenta 8 alertas amarillas, lo cual sugiere una regresión puntual o el inicio de una degradación en múltiples servicios. Aunque la tendencia aparece como -56.1%, esto se debe a que el punto de comparación de la ventana incluye picos iniciales elevados que inflaron el valor de inicio, por lo que los niveles actuales son normales y no una mejora estructural.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Degradación por infraestructura compartida",
-      "evidence": "4 endpoints de los servicios Bonds, Bond Payment Forecasts v2 e Investments muestran degradación simultánea.",
+      "hypothesis": "Saturación o contención en infraestructura compartida",
+      "evidence": "8 endpoints degradados simultáneamente en servicios de Bonds, Markets, Investments y Tradable Securities.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Regresión puntual en Obtener todos los bonos — filtrado por emisor",
-      "evidence": "El endpoint 'Obtener todos los bonos — filtrado por emisor' muestra una regresión del 611.86% respecto a la corrida anterior y un +32.49% vs baseline global.",
-      "priority": "media"
+      "hypothesis": "Variabilidad de performance por complejidad computacional",
+      "evidence": "Los endpoints más lentos (942ms y 914ms) corresponden a operaciones de alta complejidad matemática.",
+      "priority": "baja"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P2",
-      "accion": "Investigar causa raíz de degradación sistémica",
+      "accion": "Analizar degradación en Mercado por UUID — +202% vs baseline global",
+      "endpoint_target": "Get markets by UUID",
+      "evidence": "150ms vs 50ms baseline"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Revisar regresión en Obtener bono por UUID — +135% vs versión actual",
+      "endpoint_target": "Bond by UUID",
+      "evidence": "198ms vs 106ms baseline"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Verificar saturación de recursos compartidos por alertas en 4 servicios",
       "endpoint_target": "—",
-      "evidencia": "4 endpoints de servicios distintos en alerta amarilla"
-    },
-    {
-      "prioridad": "P2",
-      "accion": "Analizar regresión en Obtener todos los bonos — filtrado por emisor",
-      "endpoint_target": "All bonds - for issuer",
-      "evidencia": "+611.86% vs corrida anterior, +32.49% vs baseline global"
-    },
-    {
-      "prioridad": "P2",
-      "accion": "Revisar degradación en Paridades de bono",
-      "endpoint_target": "Get parities",
-      "evidencia": "+65.74% vs baseline global, +111.45% vs corrida anterior"
+      "evidence": "8 alertas amarillas simultáneas"
     },
     {
       "prioridad": "P3",
       "accion": "Optimizar Métricas de inversión por ID — alto impacto acumulado",
       "endpoint_target": "Get investment metrics by ID",
-      "evidencia": "Impact score: 10.065, P95: 2.013ms"
+      "evidence": "impact score: 10.710"
     }
   ]
 }
