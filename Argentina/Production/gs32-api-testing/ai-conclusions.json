@@ -1,64 +1,64 @@
 {
   "escalar_prioritario": {
     "titulo": "Curvas de rendimiento — Listar todas (resumen) — 17 reincidencias como outlier",
-    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 17 registros históricos como outlier, indicando un problema persistente más allá de la corrida actual. Aunque no posee alerta roja hoy, su reincidencia histórica es una señal de degradación estructural más grave que las alertas puntuales de esta corrida."
+    "detalle": "El endpoint registra 17 corridas como outlier, evidenciando una inestabilidad estructural persistente a pesar de no tener alerta roja hoy. Aunque existen otras alertas activas, la reincidencia histórica demanda atención prioritaria por su carácter estructural."
   },
   "investigar": {
-    "titulo": "5 alertas amarillas simultáneas — posible causa de infraestructura compartida",
-    "detalle": "La degradación simultánea de 5 endpoints en los servicios de Investments y Tradable Securities sugiere un cuello de botella en recursos compartidos. La simultaneidad en módulos distintos apunta a una causa de infraestructura y no a cambios específicos en el código de una aplicación."
+    "titulo": "4 endpoints en amarillo simultáneos — posible causa de infra",
+    "detalle": "La degradación simultánea de 4 endpoints en los servicios Tradable Securities y Yield Curves sugiere una causa de infraestructura compartida en lugar de un problema de código específico."
   },
   "optimizar": {
-    "titulo": "Bond Screener — Filtro múltiple de bonos — impact score: 207.160",
-    "detalle": "Una reducción del 20% en su P95 representaría 41.432 ms de latencia acumulada evitada por ciclo de vida del endpoint. Con un impact_p95_used de 3.002,32 ms y 69 ejecuciones, es el principal candidato para mejorar la performance global del sistema."
+    "titulo": "Bond Screener — Filtro múltiple de bonos — impact score: 206.062",
+    "detalle": "Una reducción del 20% en su P95 representaría 41.212,4 ms de latencia acumulada evitada por ciclo de vida del endpoint dado su alto volumen de ejecuciones."
   },
-  "bottleneck_narrative": "La corrida actual presenta 0 alertas rojas y 5 amarillas, lo cual, sumado a una tendencia de mejora del -7,3% en el avg_p95, sugiere que el patrón es compatible con una regresión puntual. No se detecta una tendencia sostenida de degradación, pero la cantidad de alertas amarillas requiere monitoreo preventivo para evitar que se conviertan en fallos críticos.",
+  "bottleneck_narrative": "La corrida actual presenta 4 alertas amarillas, lo cual sugiere un patrón compatible con una regresión puntual al no detectarse una tendencia de degradación sostenida. La tendencia de la ventana se visualiza negativa (-21,1%) reflejando una mejora en las últimas corridas tras el pico de 695ms registrado el día 03-06.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Saturación de recursos en infraestructura compartida",
-      "evidence": "5 endpoints con status_level 1 pertenecientes a los servicios de Investments y Tradable Securities.",
+      "hypothesis": "Causa de infraestructura compartida en servicios GS32",
+      "evidence": "4 endpoints afectados simultáneamente en los servicios Tradable Securities y Yield Curves",
       "priority": "alta"
     },
     {
-      "hypothesis": "Inestabilidad estructural en Curvas de rendimiento",
-      "evidence": "Endpoint 'Get all yield curves' registrado como outlier en 17 corridas distintas.",
+      "hypothesis": "Inestabilidad estructural recurrente en Yield Curves",
+      "evidence": "Curvas de rendimiento — Listar todas (resumen) con 17 reincidencias como outlier",
       "priority": "alta"
     },
     {
-      "hypothesis": "Regresión puntual en el módulo Tradable Securities",
-      "evidence": "regression_pct de 432,41% y baseline_version_delta_pct de 592,38% en filtros obligatorios.",
+      "hypothesis": "Regresión puntual en módulo de Curvas de Rendimiento",
+      "evidence": "regression_pct de 484,97% en Curvas de rendimiento — Listar todas (resumen)",
       "priority": "media"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Estabilizar Curvas de rendimiento — Listar todas (resumen) por reincidencia",
+      "accion": "Estabilizar Curvas de rendimiento — Listar todas (resumen) — 17 reincidencias",
       "endpoint_target": "Get all yield curves - validate each self link",
       "evidencia": "17 occurrences"
     },
     {
       "prioridad": "P1",
-      "accion": "Investigar inestabilidad en Obtener todos los bonos — parámetros por defecto",
+      "accion": "Analizar inestabilidad en Valores negociables — Filtros obligatorios",
+      "endpoint_target": "Get tradable securities using only mandatory filters",
+      "evidencia": "5 occurrences"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Corregir inestabilidad en Obtener todos los bonos — parámetros por defecto",
       "endpoint_target": "All bonds - deault parameters",
       "evidencia": "4 occurrences"
     },
     {
       "prioridad": "P2",
-      "accion": "Analizar regresión en Valores negociables — Filtros obligatorios",
-      "endpoint_target": "Get tradable securities using only mandatory filters",
-      "evidencia": "432,41% regression"
-    },
-    {
-      "prioridad": "P2",
-      "accion": "Revisar salud de infraestructura compartida por alertas múltiples",
+      "accion": "Evaluar saturación en infraestructura compartida por degradación de 4 servicios",
       "endpoint_target": "—",
-      "evidencia": "5 status_level 1"
+      "evidencia": "4 alertas amarillas"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Bond Screener — Filtro múltiple de bonos — alto impacto acumulado",
+      "accion": "Optimizar Bond Screener — alto impacto acumulado (impact score: 206.062)",
       "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
-      "evidencia": "impact score: 207.160"
+      "evidencia": "206.062 impact score"
     }
   ]
 }
