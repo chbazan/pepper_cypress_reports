@@ -1,0 +1,53 @@
+{
+  "escalar_prioritario": {
+    "titulo": "Sin alertas críticas — avg P95: 593ms",
+    "detalle": "La corrida actual no presenta degradaciones críticas (rojas), registrando un promedio P95 de 593ms frente al baseline de 902ms."
+  },
+  "investigar": {
+    "titulo": "4 endpoints en amarillo simultáneos — posible causa de infra",
+    "detalle": "La degradación simultánea de 4 endpoints en los servicios Bond Laws, Debt Types, Markets y Bond Groups sugiere una causa de infraestructura compartida. Esta afectación en múltiples módulos indica un problema sistémico y no de lógica de aplicación."
+  },
+  "optimizar": {
+    "titulo": "Optimizar Bond Screener — alto impacto acumulado (11.646)",
+    "detalle": "El endpoint Bond Screener — Filtro múltiple de bonos posee el mayor peso acumulado; una reducción del 20% en su P95 evitaría 2.329,2 ms de latencia acumulada."
+  },
+  "bottleneck_narrative": "La corrida actual presenta 4 alertas amarillas, lo cual, sin una tendencia sostenida de degradación de tiempos, sugiere una regresión puntual. La tendencia de -34.3% muestra una mejora en el promedio de latencia respecto a la corrida anterior, aunque la simultaneidad de alertas indica una posible inestabilidad.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Causa de infraestructura compartida (DB o red interna)",
+      "evidence": "4 endpoints afectados simultáneamente en los servicios Bond Laws, Debt Types, Markets y Bond Groups.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Variabilidad de performance dentro de parámetros normales",
+      "evidence": "avg_p95 actual de 593ms vs baseline de 902ms.",
+      "priority": "baja"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P2",
+      "accion": "Analizar regresión en Mercado por UUID — +153% vs baseline global",
+      "endpoint_target": "Get markets by UUID",
+      "evidencia": "153.19%"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Investigar causa sistémica — 4 servicios con degradación moderada",
+      "endpoint_target": "—",
+      "evidencia": "4 alertas amarillas"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Analizar regresión en Leyes de bono — Listar todas — +104% vs baseline global",
+      "endpoint_target": "Get all bond laws - validate each self link",
+      "evidencia": "104.21%"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Optimizar Bond Screener — alto impacto acumulado (impact score: 11.646)",
+      "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "evidencia": "11.646"
+    }
+  ]
+}

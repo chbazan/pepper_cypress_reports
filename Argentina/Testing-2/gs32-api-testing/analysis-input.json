@@ -1,0 +1,316 @@
+{
+  "meta": {
+    "environment": "Testing-2",
+    "country": "Argentina",
+    "version": "V10.3.68",
+    "run_id": "202606081821",
+    "run_time": "2026-06-08T18:21:01.952Z"
+  },
+  "recent_runs": [
+    {
+      "date": "2026-04-09",
+      "avg_p95": 902,
+      "baseline": 902,
+      "slowest": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law"
+    },
+    {
+      "date": "2026-06-08",
+      "avg_p95": 593,
+      "baseline": 902,
+      "slowest": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law"
+    }
+  ],
+  "traffic_lights": [
+    {
+      "endpoint": "Get all bond laws - validate each self link",
+      "api_info": {
+        "api_name": "Leyes de bono — Listar todas",
+        "service": "Bond Laws",
+        "protocol": "REST",
+        "description": "Devuelve todas las leyes bajo las cuales se emiten bonos (ej. legislación argentina, New York law). Tabla de maestros de referencia.",
+        "complexity": "low"
+      },
+      "status_level": 1,
+      "p95": 194,
+      "baseline_global": 95,
+      "baseline_global_delta_pct": 104.21,
+      "baseline_version_delta_pct": 0,
+      "regression_pct": 104.21,
+      "total_executions": 2
+    },
+    {
+      "endpoint": "Get all debt types - validate each self link",
+      "api_info": {
+        "api_name": "Tipos de deuda — Listar todos",
+        "service": "Debt Types",
+        "protocol": "REST",
+        "description": "Devuelve todos los tipos de deuda disponibles (ej. soberana, corporativa, sub-soberana). Tabla de maestros de referencia.",
+        "complexity": "low"
+      },
+      "status_level": 1,
+      "p95": 196,
+      "baseline_global": 97,
+      "baseline_global_delta_pct": 102.06,
+      "baseline_version_delta_pct": 0,
+      "regression_pct": 102.06,
+      "total_executions": 2
+    },
+    {
+      "endpoint": "Get markets by UUID",
+      "api_info": {
+        "api_name": "Mercado por UUID",
+        "service": "Markets",
+        "protocol": "REST",
+        "description": "Devuelve un mercado específico por UUID.",
+        "complexity": "low"
+      },
+      "status_level": 1,
+      "p95": 119,
+      "baseline_global": 47,
+      "baseline_global_delta_pct": 153.19,
+      "baseline_version_delta_pct": 0,
+      "regression_pct": 153.19,
+      "total_executions": 2
+    },
+    {
+      "endpoint": "Get bond groups by UUID",
+      "api_info": {
+        "api_name": "Grupo de bonos por UUID",
+        "service": "Bond Groups",
+        "protocol": "REST",
+        "description": "Devuelve un grupo de bonos específico por UUID.",
+        "complexity": "low"
+      },
+      "status_level": 1,
+      "p95": 173,
+      "baseline_global": 86,
+      "baseline_global_delta_pct": 101.16,
+      "baseline_version_delta_pct": 0,
+      "regression_pct": 101.16,
+      "total_executions": 2
+    }
+  ],
+  "outliers": [],
+  "slowest_this_run": [
+    {
+      "endpoint": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "p95": 6958,
+      "payload_kb": 18.27,
+      "api_info": {
+        "api_name": "Bond Screener — Filtro múltiple de bonos",
+        "service": "Bond Screener",
+        "protocol": "JRPC",
+        "description": "Filtra la cartera de bonos usando múltiples criterios simultáneos: tipo de deuda, moneda de emisión, moneda de pago, emisor y legislación. La combinación de filtros genera una consulta compleja sobre el catálogo completo de bonos.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Appraise market value",
+      "p95": 5792,
+      "payload_kb": 0.63,
+      "api_info": {
+        "api_name": "Valoración de instrumento financiero",
+        "service": "Appraiser",
+        "protocol": "JRPC",
+        "description": "Calcula la valoración de mercado o técnica de un instrumento financiero (bonds, stocks, etc.). Operación matemáticamente intensiva — usa distintos métodos: appraise-market-value, appraise-in-currency, appraise, etc.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get tradable securities using optional filters - ticker & tradeDate",
+      "p95": 2507,
+      "payload_kb": 1.27
+    },
+    {
+      "endpoint": "Get parities",
+      "p95": 1935,
+      "payload_kb": 165.99,
+      "api_info": {
+        "api_name": "Paridades de bono",
+        "service": "Bond Payment Forecasts v2",
+        "protocol": "JRPC",
+        "description": "Calcula las paridades de un bono (relación precio de mercado / valor técnico). Involucra proyección de flujos futuros.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get irrs - one bond",
+      "p95": 1824,
+      "payload_kb": 62.29,
+      "api_info": {
+        "api_name": "Tasas Internas de Retorno (TIR/IRR) de un bono",
+        "service": "Bond Payment Forecasts v2",
+        "protocol": "JRPC",
+        "description": "Calcula las Tasas Internas de Retorno (TIR/IRR) de un bono. Requiere cálculo iterativo de flujos de caja descontados — operación matemáticamente intensiva.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get investment metrics by ID",
+      "p95": 1287,
+      "payload_kb": 1.43,
+      "api_info": {
+        "api_name": "Métricas de inversión por ID",
+        "service": "Investments",
+        "protocol": "REST",
+        "description": "Calcula métricas financieras de una inversión: duración modificada, convexidad, TIR, precio técnico, etc. Cálculo matemáticamente intensivo que combina valoración + análisis de sensibilidad.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get one bond cashflow - only dateInterval from",
+      "p95": 1063,
+      "payload_kb": 5.31,
+      "api_info": {
+        "api_name": "Flujos de caja de bono desde fecha",
+        "service": "Bond Payment Forecasts v2",
+        "protocol": "JRPC",
+        "description": "Proyecta los flujos de caja futuros de un bono a partir de una fecha dada (sin fecha de fin). El tamaño de la respuesta depende de los cupones restantes del bono.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get one bond cashflow - dateInterval from and to",
+      "p95": 774,
+      "payload_kb": 2.43,
+      "api_info": {
+        "api_name": "Flujos de caja de bono en rango de fechas",
+        "service": "Bond Payment Forecasts v2",
+        "protocol": "JRPC",
+        "description": "Proyecta los flujos de caja de un bono en un rango de fechas definido. Subconjunto acotado de la proyección completa.",
+        "complexity": "medium"
+      }
+    },
+    {
+      "endpoint": "Get investment price sensitivity by ID",
+      "p95": 406,
+      "payload_kb": 1.52,
+      "api_info": {
+        "api_name": "Sensibilidad de precio de inversión por ID",
+        "service": "Investments",
+        "protocol": "REST",
+        "description": "Analiza cómo varía el precio del instrumento ante cambios en la tasa. Operación matemáticamente intensiva (análisis de sensibilidad).",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get payment forecasts",
+      "p95": 359,
+      "payload_kb": 0.63,
+      "api_info": {
+        "api_name": "Previsión de pagos de bono",
+        "service": "Bond Payment Forecasts v2",
+        "protocol": "JRPC",
+        "description": "Devuelve la previsión de pagos futuros de un bono (cupones y amortizaciones).",
+        "complexity": "medium"
+      }
+    }
+  ],
+  "top_impact": [
+    {
+      "endpoint": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "api_info": {
+        "api_name": "Bond Screener — Filtro múltiple de bonos",
+        "service": "Bond Screener",
+        "protocol": "JRPC",
+        "description": "Filtra la cartera de bonos usando múltiples criterios simultáneos: tipo de deuda, moneda de emisión, moneda de pago, emisor y legislación. La combinación de filtros genera una consulta compleja sobre el catálogo completo de bonos.",
+        "complexity": "high"
+      },
+      "impact_score": 11646,
+      "p95": 6958,
+      "impact_p95_used": 5823,
+      "total_executions": 2,
+      "baseline_global": 5823
+    },
+    {
+      "endpoint": "Appraise market value",
+      "api_info": {
+        "api_name": "Valoración de instrumento financiero",
+        "service": "Appraiser",
+        "protocol": "JRPC",
+        "description": "Calcula la valoración de mercado o técnica de un instrumento financiero (bonds, stocks, etc.). Operación matemáticamente intensiva — usa distintos métodos: appraise-market-value, appraise-in-currency, appraise, etc.",
+        "complexity": "high"
+      },
+      "impact_score": 8056,
+      "p95": 5792,
+      "impact_p95_used": 4028,
+      "total_executions": 2,
+      "baseline_global": 4028
+    },
+    {
+      "endpoint": "Get one bond cashflow - only dateInterval from",
+      "api_info": {
+        "api_name": "Flujos de caja de bono desde fecha",
+        "service": "Bond Payment Forecasts v2",
+        "protocol": "JRPC",
+        "description": "Proyecta los flujos de caja futuros de un bono a partir de una fecha dada (sin fecha de fin). El tamaño de la respuesta depende de los cupones restantes del bono.",
+        "complexity": "high"
+      },
+      "impact_score": 7752,
+      "p95": 1063,
+      "impact_p95_used": 3876,
+      "total_executions": 2,
+      "baseline_global": 3876
+    },
+    {
+      "endpoint": "All bonds - deault parameters",
+      "api_info": {
+        "api_name": "Obtener todos los bonos — parámetros por defecto",
+        "service": "Bonds",
+        "protocol": "REST",
+        "description": "Devuelve la lista completa de bonos sin filtros. La latencia depende del volumen total de bonos cargados en el sistema.",
+        "complexity": "medium"
+      },
+      "impact_score": 7652,
+      "p95": 171,
+      "impact_p95_used": 3826,
+      "total_executions": 2,
+      "baseline_global": 3826
+    },
+    {
+      "endpoint": "Get investment metrics by ID",
+      "api_info": {
+        "api_name": "Métricas de inversión por ID",
+        "service": "Investments",
+        "protocol": "REST",
+        "description": "Calcula métricas financieras de una inversión: duración modificada, convexidad, TIR, precio técnico, etc. Cálculo matemáticamente intensivo que combina valoración + análisis de sensibilidad.",
+        "complexity": "high"
+      },
+      "impact_score": 7256,
+      "p95": 1287,
+      "impact_p95_used": 3628,
+      "total_executions": 2,
+      "baseline_global": 3628
+    }
+  ],
+  "outlier_recurrence": [],
+  "bottleneck_class": {
+    "class": "REGRESSION-SPIKE",
+    "reds_count": 0,
+    "yellows_count": 4,
+    "outliers_count": 0,
+    "trend_delta_pct": -34.3,
+    "reasoning": "4 alerta(s) activas sin tendencia sostenida en las últimas 2 corridas."
+  },
+  "payload_stats": {
+    "avg_payload_kb": 25.98,
+    "heaviest_endpoints": [
+      {
+        "endpoint": "Get parities",
+        "payload_kb": 165.99,
+        "p95": 1935
+      },
+      {
+        "endpoint": "Get irrs - one bond",
+        "payload_kb": 62.29,
+        "p95": 1824
+      },
+      {
+        "endpoint": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+        "payload_kb": 18.27,
+        "p95": 6958
+      }
+    ],
+    "payload_correlated": false
+  }
+}
