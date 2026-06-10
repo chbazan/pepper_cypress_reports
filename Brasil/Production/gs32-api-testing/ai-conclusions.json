@@ -1,64 +1,58 @@
 {
   "escalar_prioritario": {
-    "titulo": "Flujos de caja de bono desde fecha — 18 reincidencias como outlier",
-    "detalle": "Este endpoint registra 18 apariciones como outlier en el historial, lo que indica una inestabilidad estructural persistente más allá de su P95 de 4.510ms en esta corrida. Aunque no presenta alerta roja hoy, la reincidencia histórica es crítica y se suma a otras 7 alertas amarillas activas en el sistema."
+    "titulo": "Cupones de bono por UUID — 18 reincidencias como outlier",
+    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 18 registros históricos como outlier, lo que indica un problema persistente más allá de la corrida actual. Aunque hoy no presenta alerta roja, su reincidencia histórica lo posiciona como la mayor prioridad de escalado frente a otras degradaciones puntuales."
   },
   "investigar": {
-    "titulo": "8 endpoints en amarillo simultáneos — posible causa de infra",
-    "detalle": "La degradación simultánea de 8 endpoints en módulos diversos como Bonds, Investments y Tradable Securities sugiere una causa de infraestructura compartida. Esta afectación transversal impacta tanto a servicios de baja complejidad como a operaciones matemáticamente intensivas."
+    "titulo": "Performance estable — avg P95: 335 ms vs baseline 489 ms",
+    "detalle": "La performance global se mantiene dentro de los parámetros esperados según la tendencia de las últimas corridas. Se identifican los endpoints Cupones de bono por UUID, Bond Screener — Filtro múltiple de bonos y Valoración de instrumento financiero como los más lentos de la corrida, candidatos a monitoreo preventivo."
   },
   "optimizar": {
-    "titulo": "Optimizar Métricas de inversión por ID — impacto 305.376",
-    "detalle": "Con un impact_score de 305.376 y 85 ejecuciones, este endpoint es el principal generador de latencia acumulada en el sistema. Una reducción del 20% en su P95 de 3.592ms representaría 61.075ms de latencia acumulada evitada por ciclo de vida."
+    "titulo": "Optimizar Métricas de inversión por ID — Impact Score: 297.541",
+    "detalle": "Este endpoint posee el mayor peso acumulado en la performance global con un impact_score de 297.541 y un P95 limpio de 3.459,78 ms en 86 ejecuciones. Una reducción del 20% en su latencia evitaría 59.508,2 ms de demora acumulada por ciclo de vida."
   },
-  "bottleneck_narrative": "La corrida actual presenta 8 alertas amarillas y 0 rojas, un patrón compatible con una regresión puntual dado que no se identifica una tendencia de degradación sostenida en el historial inmediato. El incremento del 38.3% en el promedio de latencia respecto al inicio de la ventana de observación señala un desvío significativo que requiere seguimiento preventivo.",
+  "bottleneck_narrative": "La corrida actual registra 1 alerta amarilla y 0 rojas, lo cual es compatible con una regresión puntual dado que la tendencia de degradación del 14,7% no alcanza el umbral de cambio sostenido. Los niveles de latencia promedio se mantienen por debajo del baseline histórico a pesar de la alerta individual detectada.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Saturación de infraestructura compartida",
-      "evidence": "8 endpoints afectados simultáneamente en los servicios Bonds, Investments y Tradable Securities",
+      "hypothesis": "Inestabilidad estructural recurrente en Cupones de bono",
+      "evidence": "Endpoint registrado como outlier en 18 corridas distintas.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Inestabilidad estructural recurrente en flujos de caja",
-      "evidence": "El endpoint Flujos de caja de bono desde fecha registra 18 ocurrencias como outlier",
+      "hypothesis": "Inestabilidad estructural en Flujos de caja de bono",
+      "evidence": "Endpoint registrado como outlier en 18 corridas distintas.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Regresión puntual en módulo de valores negociables",
-      "evidence": "regression_pct de 1502.86% en Valores negociables — Filtros obligatorios",
-      "priority": "media"
+      "hypothesis": "Variabilidad de performance dentro de parámetros normales",
+      "evidence": "avg_p95 actual de 335 ms frente a un baseline de 489 ms.",
+      "priority": "baja"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Investigar inestabilidad estructural en Flujos de caja de bono desde fecha",
-      "endpoint_target": "Get one bond cashflow - only dateInterval from",
-      "evidencia": "18 reincidencias como outlier"
+      "accion": "Estabilizar latencia en Cupones de bono por UUID — reincidencia crítica",
+      "endpoint_target": "Bond coupons by UUID",
+      "evidencia": "18 occurrences"
     },
     {
       "prioridad": "P1",
-      "accion": "Analizar degradación recurrente en Cupones de bono por UUID",
-      "endpoint_target": "Bond coupons by UUID",
-      "evidencia": "18 reincidencias como outlier"
+      "accion": "Estabilizar latencia en Flujos de caja de bono desde fecha",
+      "endpoint_target": "Get one bond cashflow - only dateInterval from",
+      "evidencia": "18 occurrences"
     },
     {
       "prioridad": "P2",
-      "accion": "Analizar regresión en Valores negociables — Filtros obligatorios — +1502%",
-      "endpoint_target": "Get tradable securities using only mandatory filters",
-      "evidencia": "regression_pct: 1502.86%"
-    },
-    {
-      "prioridad": "P2",
-      "accion": "Revisar saturación de recursos en infraestructura compartida",
-      "endpoint_target": "—",
-      "evidencia": "8 alertas amarillas en módulos distintos"
+      "accion": "Analizar degradación en Get all mutual fund types — +135% vs baseline",
+      "endpoint_target": "Get all mutual fund types",
+      "evidencia": "135.19%"
     },
     {
       "prioridad": "P3",
       "accion": "Optimizar Métricas de inversión por ID — alto impacto acumulado",
       "endpoint_target": "Get investment metrics by ID",
-      "evidencia": "impact_score: 305.376"
+      "evidencia": "297.541 impact score"
     }
   ]
 }

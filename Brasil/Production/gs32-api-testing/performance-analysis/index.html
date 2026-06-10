@@ -144,11 +144,11 @@
         <div class="meta-item"><strong>País</strong> Brasil</div>
         <div class="meta-item"><strong>Ambiente</strong> Production</div>
         <div class="meta-item"><strong>Versión</strong> V10.3.69</div>
-        <div class="meta-item"><strong>Run ID</strong> 202606101334</div>
-        <div class="meta-item"><strong>Generado</strong> 2026-06-10 13:42 UTC</div>
+        <div class="meta-item"><strong>Run ID</strong> 202606101358</div>
+        <div class="meta-item"><strong>Generado</strong> 2026-06-10 14:00 UTC</div>
       </div>
       <div class="meta-grid" style="margin-top:8px;">
-        <div class="meta-item"><a href="https://github.com/Mercap/pepper-API-testing/actions/runs/27279833264" style="color:#90cdf4;text-decoration:none;" target="_blank">↗ Ver workflow #158</a></div>
+        <div class="meta-item"><a href="https://github.com/Mercap/pepper-API-testing/actions/runs/27281382317" style="color:#90cdf4;text-decoration:none;" target="_blank">↗ Ver workflow #159</a></div>
         <div class="meta-item"><a href="https://monitoring.mercap.com.ar/d/affx497yxyjggd/apis-gs32-metrics?orgId=1&from=now-7d&to=now&var-environment=Production&var-country=Brasil&var-version=V10.3.69" style="color:#90cdf4;text-decoration:none;" target="_blank">📊 Ver dashboard</a></div>
         <div class="meta-item"><a href="https://chbazan.github.io/pepper_cypress_reports/Brasil/Production/gs32-api-testing/" style="color:#90cdf4;text-decoration:none;" target="_blank">🧪 Test report</a></div>
         <div class="meta-item"><a href="https://chbazan.github.io/pepper_cypress_reports/Brasil/Production/gs32-api-testing/newman.log" style="color:#90cdf4;text-decoration:none;" target="_blank">📋 Newman logs</a></div>
@@ -170,23 +170,23 @@
   <div class="cards">
     <div class="card">
       <div class="card-label">avg P95 actual</div>
-      <div class="card-value">513 <span style="font-size:16px;font-weight:400;color:var(--muted)">ms</span></div>
-      <div class="card-sub">Más lento: Get one bond cashflow - only dateInterval from</div>
+      <div class="card-value">335 <span style="font-size:16px;font-weight:400;color:var(--muted)">ms</span></div>
+      <div class="card-sub">Más lento: Bond coupons by UUID</div>
     </div>
     <div class="card">
       <div class="card-label">Baseline global</div>
-      <div class="card-value">487 <span style="font-size:16px;font-weight:400;color:var(--muted)">ms</span></div>
+      <div class="card-value">489 <span style="font-size:16px;font-weight:400;color:var(--muted)">ms</span></div>
       <div class="card-sub">Promedio últimas 50 corridas</div>
     </div>
     <div class="card">
       <div class="card-label">Delta vs baseline</div>
-      <div class="card-value" style="color:#d69e2e">+5.3%</div>
-      <div class="card-sub">Levemente elevado</div>
+      <div class="card-value" style="color:#38a169">-31.5%</div>
+      <div class="card-sub">Dentro del baseline</div>
     </div>
     <div class="card">
       <div class="card-label">Estado general</div>
       <div class="card-value status">🟡 ADVERTENCIA</div>
-      <div class="card-sub">0 críticos · 8 en advertencia</div>
+      <div class="card-sub">0 críticos · 1 en advertencia</div>
     </div>
   </div>
 
@@ -203,12 +203,12 @@
         </div>
         <div class="bottleneck-stats">
           
-          <span class="bottleneck-stat">🟡 8 advertencia(s)</span>
-          <span class="bottleneck-stat">⚠️ 1 outlier(s)</span>
-          <span class="bottleneck-stat">📈 Tendencia: +38.3%</span>
+          <span class="bottleneck-stat">🟡 1 advertencia(s)</span>
+          
+          <span class="bottleneck-stat">📈 Tendencia: +14.7%</span>
         </div>
       </div>
-      <p class="bottleneck-narrative">La corrida actual presenta 8 alertas amarillas y 0 rojas, un patrón compatible con una regresión puntual dado que no se identifica una tendencia de degradación sostenida en el historial inmediato. El incremento del 38.3% en el promedio de latencia respecto al inicio de la ventana de observación señala un desvío significativo que requiere seguimiento preventivo.</p>
+      <p class="bottleneck-narrative">La corrida actual registra 1 alerta amarilla y 0 rojas, lo cual es compatible con una regresión puntual dado que la tendencia de degradación del 14,7% no alcanza el umbral de cambio sostenido. Los niveles de latencia promedio se mantienen por debajo del baseline histórico a pesar de la alerta individual detectada.</p>
       <p class="bottleneck-reasoning">Uno o más endpoints presentaron degradación en esta corrida, pero sin evidencia de que sea parte de una tendencia histórica acumulada. Puede ser una anomalía puntual o el inicio de una regresión.</p>
     </div>
 
@@ -256,20 +256,20 @@
       <div class="conclusion-card escalar">
         <div class="conclusion-icon">🚨</div>
         <div class="conclusion-label">Escalar de forma prioritaria</div>
-        <div class="conclusion-titulo">Flujos de caja de bono desde fecha — 18 reincidencias como outlier</div>
-        <div class="conclusion-detalle">Este endpoint registra 18 apariciones como outlier en el historial, lo que indica una inestabilidad estructural persistente más allá de su P95 de 4.510ms en esta corrida. Aunque no presenta alerta roja hoy, la reincidencia histórica es crítica y se suma a otras 7 alertas amarillas activas en el sistema.</div>
+        <div class="conclusion-titulo">Cupones de bono por UUID — 18 reincidencias como outlier</div>
+        <div class="conclusion-detalle">Este endpoint presenta una inestabilidad estructural crítica con 18 registros históricos como outlier, lo que indica un problema persistente más allá de la corrida actual. Aunque hoy no presenta alerta roja, su reincidencia histórica lo posiciona como la mayor prioridad de escalado frente a otras degradaciones puntuales.</div>
       </div>
       <div class="conclusion-card investigar">
         <div class="conclusion-icon">🔍</div>
         <div class="conclusion-label">Investigar</div>
-        <div class="conclusion-titulo">8 endpoints en amarillo simultáneos — posible causa de infra</div>
-        <div class="conclusion-detalle">La degradación simultánea de 8 endpoints en módulos diversos como Bonds, Investments y Tradable Securities sugiere una causa de infraestructura compartida. Esta afectación transversal impacta tanto a servicios de baja complejidad como a operaciones matemáticamente intensivas.</div>
+        <div class="conclusion-titulo">Performance estable — avg P95: 335 ms vs baseline 489 ms</div>
+        <div class="conclusion-detalle">La performance global se mantiene dentro de los parámetros esperados según la tendencia de las últimas corridas. Se identifican los endpoints Cupones de bono por UUID, Bond Screener — Filtro múltiple de bonos y Valoración de instrumento financiero como los más lentos de la corrida, candidatos a monitoreo preventivo.</div>
       </div>
       <div class="conclusion-card optimizar">
         <div class="conclusion-icon">⚡</div>
         <div class="conclusion-label">Optimizar</div>
-        <div class="conclusion-titulo">Optimizar Métricas de inversión por ID — impacto 305.376</div>
-        <div class="conclusion-detalle">Con un impact_score de 305.376 y 85 ejecuciones, este endpoint es el principal generador de latencia acumulada en el sistema. Una reducción del 20% en su P95 de 3.592ms representaría 61.075ms de latencia acumulada evitada por ciclo de vida.</div>
+        <div class="conclusion-titulo">Optimizar Métricas de inversión por ID — Impact Score: 297.541</div>
+        <div class="conclusion-detalle">Este endpoint posee el mayor peso acumulado en la performance global con un impact_score de 297.541 y un P95 limpio de 3.459,78 ms en 86 ejecuciones. Una reducción del 20% en su latencia evitaría 59.508,2 ms de demora acumulada por ciclo de vida.</div>
       </div>
     </div>
   </section>
@@ -280,23 +280,23 @@
     <div class="hypothesis-list">
         <div class="hypothesis-card">
             <div class="hypothesis-priority" style="color:#e53e3e;background:#fff5f5;border-color:#feb2b2;">🔴 Alta</div>
-            <div class="hypothesis-text">Saturación de infraestructura compartida</div>
-            <div class="hypothesis-evidence">8 endpoints afectados simultáneamente en los servicios Bonds, Investments y Tradable Securities</div>
+            <div class="hypothesis-text">Inestabilidad estructural recurrente en Cupones de bono</div>
+            <div class="hypothesis-evidence">Endpoint registrado como outlier en 18 corridas distintas.</div>
           </div><div class="hypothesis-card">
             <div class="hypothesis-priority" style="color:#e53e3e;background:#fff5f5;border-color:#feb2b2;">🔴 Alta</div>
-            <div class="hypothesis-text">Inestabilidad estructural recurrente en flujos de caja</div>
-            <div class="hypothesis-evidence">El endpoint Flujos de caja de bono desde fecha registra 18 ocurrencias como outlier</div>
+            <div class="hypothesis-text">Inestabilidad estructural en Flujos de caja de bono</div>
+            <div class="hypothesis-evidence">Endpoint registrado como outlier en 18 corridas distintas.</div>
           </div><div class="hypothesis-card">
-            <div class="hypothesis-priority" style="color:#d69e2e;background:#fffff0;border-color:#faf089;">🟡 Media</div>
-            <div class="hypothesis-text">Regresión puntual en módulo de valores negociables</div>
-            <div class="hypothesis-evidence">regression_pct de 1502.86% en Valores negociables — Filtros obligatorios</div>
+            <div class="hypothesis-priority" style="color:#3182ce;background:#ebf8ff;border-color:#90cdf4;">🔵 Baja</div>
+            <div class="hypothesis-text">Variabilidad de performance dentro de parámetros normales</div>
+            <div class="hypothesis-evidence">avg_p95 actual de 335 ms frente a un baseline de 489 ms.</div>
           </div>
       </div>
   </section>
 
   <!-- ── Recommendations ── -->
   <section>
-    <h2>📋 Recomendaciones Priorizadas <span class="count">5 acciones</span></h2>
+    <h2>📋 Recomendaciones Priorizadas <span class="count">4 acciones</span></h2>
     <div class="table-wrap">
         <table>
           <thead>
@@ -310,29 +310,24 @@
           <tbody>
             <tr>
               <td><span class="pill red">P1</span></td>
-              <td>Investigar inestabilidad estructural en Flujos de caja de bono desde fecha</td>
-              <td class="mono">Get one bond cashflow - only dateInterval from</td>
-              <td style="color:var(--muted);font-size:12px;">18 reincidencias como outlier</td>
+              <td>Estabilizar latencia en Cupones de bono por UUID — reincidencia crítica</td>
+              <td class="mono">Bond coupons by UUID</td>
+              <td style="color:var(--muted);font-size:12px;">18 occurrences</td>
             </tr><tr>
               <td><span class="pill red">P1</span></td>
-              <td>Analizar degradación recurrente en Cupones de bono por UUID</td>
-              <td class="mono">Bond coupons by UUID</td>
-              <td style="color:var(--muted);font-size:12px;">18 reincidencias como outlier</td>
+              <td>Estabilizar latencia en Flujos de caja de bono desde fecha</td>
+              <td class="mono">Get one bond cashflow - only dateInterval from</td>
+              <td style="color:var(--muted);font-size:12px;">18 occurrences</td>
             </tr><tr>
               <td><span class="pill yellow">P2</span></td>
-              <td>Analizar regresión en Valores negociables — Filtros obligatorios — +1502%</td>
-              <td class="mono">Get tradable securities using only mandatory filters</td>
-              <td style="color:var(--muted);font-size:12px;">regression_pct: 1502.86%</td>
-            </tr><tr>
-              <td><span class="pill yellow">P2</span></td>
-              <td>Revisar saturación de recursos en infraestructura compartida</td>
-              <td class="mono"><span style="color:var(--muted)">—</span></td>
-              <td style="color:var(--muted);font-size:12px;">8 alertas amarillas en módulos distintos</td>
+              <td>Analizar degradación en Get all mutual fund types — +135% vs baseline</td>
+              <td class="mono">Get all mutual fund types</td>
+              <td style="color:var(--muted);font-size:12px;">135.19%</td>
             </tr><tr>
               <td><span class="pill blue">P3</span></td>
               <td>Optimizar Métricas de inversión por ID — alto impacto acumulado</td>
               <td class="mono">Get investment metrics by ID</td>
-              <td style="color:var(--muted);font-size:12px;">impact_score: 305.376</td>
+              <td style="color:var(--muted);font-size:12px;">297.541 impact score</td>
             </tr>
           </tbody>
         </table>
@@ -341,7 +336,7 @@
 
   <!-- ── Traffic Light ── -->
   <section>
-    <h2>🚦 Semáforo de Endpoints <span class="count">8 con alerta</span></h2>
+    <h2>🚦 Semáforo de Endpoints <span class="count">1 con alerta</span></h2>
     
     
     
@@ -351,69 +346,13 @@
         <thead><tr><th>Endpoint (nombre del test)</th><th>Servicio / API real</th><th>P95</th><th>Baseline</th><th>Δ Global</th><th>Δ Versión</th><th>Regression</th></tr></thead>
         <tbody>
           <tr>
-            <td class="mono">Bond payment summary by UUID</td>
-            <td style="font-size:12px;"><strong>Resumen de pagos de bono por UUID</strong><br><span style="color:var(--muted);">Bonds · REST</span></td>
-            <td>356.00 ms</td>
-            <td>148.00 ms</td>
-            <td class="delta-pos">+140.9%</td>
-            <td class="delta-pos">+34.3%</td>
-            <td><span class="delta-pos">+187.1%</span></td>
-          </tr><tr>
-            <td class="mono">Bond coupons by UUID</td>
-            <td style="font-size:12px;"><strong>Cupones de bono por UUID</strong><br><span style="color:var(--muted);">Bonds · REST</span></td>
-            <td>2153.00 ms</td>
-            <td>1071.00 ms</td>
-            <td class="delta-pos">+101.1%</td>
-            <td class="delta-pos">+79.3%</td>
-            <td><span class="delta-pos">+1033.2%</span></td>
-          </tr><tr>
-            <td class="mono">Get one bond cashflow - only dateInterval from</td>
-            <td style="font-size:12px;"><strong>Flujos de caja de bono desde fecha</strong><br><span style="color:var(--muted);">Bond Payment Forecasts v2 · JRPC</span></td>
-            <td>4510.00 ms</td>
-            <td>410.00 ms</td>
-            <td class="delta-pos">+998.8%</td>
-            <td class="delta-pos">+2947.3%</td>
-            <td><span class="delta-pos">+2947.3%</span></td>
-          </tr><tr>
-            <td class="mono">Get investment irr sensitivity by ID</td>
-            <td style="font-size:12px;"><strong>Sensibilidad de TIR de inversión por ID</strong><br><span style="color:var(--muted);">Investments · REST</span></td>
-            <td>2386.00 ms</td>
-            <td>1062.00 ms</td>
-            <td class="delta-pos">+124.8%</td>
-            <td class="delta-pos">+40.9%</td>
-            <td><span class="delta-pos">+539.7%</span></td>
-          </tr><tr>
-            <td class="mono">Get tradable securities using only mandatory filters</td>
-            <td style="font-size:12px;"><strong>Valores negociables — Filtros obligatorios</strong><br><span style="color:var(--muted);">Tradable Securities · REST</span></td>
-            <td>561.00 ms</td>
-            <td>562.00 ms</td>
-            <td class="delta-pos">-0.1%</td>
-            <td class="delta-pos">+47.0%</td>
-            <td><span class="delta-pos">+1502.9%</span></td>
-          </tr><tr>
-            <td class="mono">Get tradable securities using optional filters - only query</td>
-            <td style="font-size:12px;"><strong>Valores negociables — Búsqueda por texto libre</strong><br><span style="color:var(--muted);">Tradable Securities · REST</span></td>
-            <td>547.00 ms</td>
-            <td>568.00 ms</td>
-            <td class="delta-pos">-3.7%</td>
-            <td class="delta-pos">+54.1%</td>
-            <td><span class="delta-pos">+859.6%</span></td>
-          </tr><tr>
-            <td class="mono">Get tradable securities using optional filters - only type</td>
-            <td style="font-size:12px;"><strong>Valores negociables — Filtrado por tipo</strong><br><span style="color:var(--muted);">Tradable Securities · REST</span></td>
-            <td>546.00 ms</td>
-            <td>565.00 ms</td>
-            <td class="delta-pos">-3.4%</td>
-            <td class="delta-pos">+21.2%</td>
-            <td><span class="delta-pos">+1265.0%</span></td>
-          </tr><tr>
-            <td class="mono">Get tradable securities using optional filters - only market</td>
-            <td style="font-size:12px;"><strong>Valores negociables — Filtrado por mercado</strong><br><span style="color:var(--muted);">Tradable Securities · REST</span></td>
-            <td>561.00 ms</td>
-            <td>622.00 ms</td>
-            <td class="delta-pos">-9.7%</td>
-            <td class="delta-pos">+46.5%</td>
-            <td><span class="delta-pos">+1376.3%</span></td>
+            <td class="mono">Get all mutual fund types</td>
+            <td style="font-size:12px;"><span style="color:var(--muted);">—</span></td>
+            <td>390.00 ms</td>
+            <td>166.00 ms</td>
+            <td class="delta-pos">+135.2%</td>
+            <td class="delta-pos">+119.9%</td>
+            <td><span class="delta-pos">+120.3%</span></td>
           </tr>
         </tbody>
       </table>
@@ -427,10 +366,6 @@
     <div style="background:var(--card);border-radius:8px;border:1px solid var(--border);padding:20px 24px;box-shadow:var(--shadow);">
       <div class="trend-chart">
         <div class="trend-bar-wrap">
-            <div class="trend-val">371</div>
-            <div class="trend-bar" style="height:39.55223880597015%;background:var(--green);" data-tip="2026-06-02 — avg P95: 371 ms · baseline: 490 ms"></div>
-            <div class="trend-date">06-02</div>
-          </div><div class="trend-bar-wrap">
             <div class="trend-val">292</div>
             <div class="trend-bar" style="height:31.13006396588486%;background:var(--green);" data-tip="2026-06-03 — avg P95: 292 ms · baseline: 487 ms"></div>
             <div class="trend-date">06-03</div>
@@ -466,6 +401,10 @@
             <div class="trend-val">513</div>
             <div class="trend-bar" style="height:54.69083155650319%;background:var(--yellow);" data-tip="2026-06-10 — avg P95: 513 ms · baseline: 487 ms"></div>
             <div class="trend-date">06-10</div>
+          </div><div class="trend-bar-wrap">
+            <div class="trend-val">335</div>
+            <div class="trend-bar" style="height:35.714285714285715%;background:var(--green);" data-tip="2026-06-10 — avg P95: 335 ms · baseline: 489 ms"></div>
+            <div class="trend-date">06-10</div>
           </div>
       </div>
       <div style="display:flex;gap:16px;margin-top:8px;font-size:11px;color:var(--muted);">
@@ -478,18 +417,8 @@
 
   <!-- ── Outliers ── -->
   <section>
-    <h2>⚠️ Outliers Detectados <span class="count">1 en esta corrida</span></h2>
-    <div class="table-wrap"><table>
-          <thead><tr><th>Endpoint</th><th>P95 observado</th><th>Baseline</th><th>Ratio</th></tr></thead>
-          <tbody>
-            <tr>
-                <td class="mono">Get one bond cashflow - only dateInterval from<span class="tag-reincidente">🚨 REINCIDENTE ×18</span></td>
-                <td><strong class="delta-pos">4510.00 ms</strong></td>
-                <td>410.00 ms</td>
-                <td><span class="pill red">10.99×</span></td>
-              </tr>
-          </tbody>
-        </table></div>
+    <h2>⚠️ Outliers Detectados <span class="count">0 en esta corrida</span></h2>
+    <div class="empty"><span>✅</span>Sin outliers en esta corrida.</div>
   </section>
 
   <!-- ── Top 10 Slowest ── -->
@@ -500,61 +429,61 @@
           <tbody>
             <tr>
               <td class="rank">1</td>
-              <td class="mono">Get one bond cashflow - only dateInterval from</td>
-              <td><strong>4510.00 ms</strong></td>
-              <td style="color:var(--muted)">5.26 KB</td>
+              <td class="mono">Bond coupons by UUID</td>
+              <td><strong>2138.00 ms</strong></td>
+              <td style="color:var(--muted)">7.91 KB</td>
             </tr><tr>
               <td class="rank">2</td>
               <td class="mono">Filter by debt-type, issueCurrency, paymentCurrency, issuer &amp; law</td>
-              <td><strong>2703.00 ms</strong></td>
+              <td><strong>1797.00 ms</strong></td>
               <td style="color:var(--muted)">4.94 KB</td>
             </tr><tr>
               <td class="rank">3</td>
-              <td class="mono">Get investment irr sensitivity by ID</td>
-              <td><strong>2386.00 ms</strong></td>
-              <td style="color:var(--muted)">1.65 KB</td>
-            </tr><tr>
-              <td class="rank">4</td>
-              <td class="mono">Bond coupons by UUID</td>
-              <td><strong>2153.00 ms</strong></td>
-              <td style="color:var(--muted)">7.91 KB</td>
-            </tr><tr>
-              <td class="rank">5</td>
               <td class="mono">Appraise market value</td>
-              <td><strong>1663.00 ms</strong></td>
+              <td><strong>1684.00 ms</strong></td>
               <td style="color:var(--muted)">0.63 KB</td>
             </tr><tr>
-              <td class="rank">6</td>
+              <td class="rank">4</td>
               <td class="mono">Get investment metrics by ID</td>
-              <td><strong>971.00 ms</strong></td>
+              <td><strong>1040.00 ms</strong></td>
               <td style="color:var(--muted)">1.04 KB</td>
             </tr><tr>
+              <td class="rank">5</td>
+              <td class="mono">Get tradable securities using optional filters - only query</td>
+              <td><strong>614.00 ms</strong></td>
+              <td style="color:var(--muted)">0.69 KB</td>
+            </tr><tr>
+              <td class="rank">6</td>
+              <td class="mono">Get tradable securities using optional filters - only type</td>
+              <td><strong>553.00 ms</strong></td>
+              <td style="color:var(--muted)">12.05 KB</td>
+            </tr><tr>
               <td class="rank">7</td>
-              <td class="mono">Get irrs - one bond</td>
-              <td><strong>843.00 ms</strong></td>
-              <td style="color:var(--muted)">10.48 KB</td>
+              <td class="mono">Get tradable securities using optional filters - ticker &amp; tradeDate</td>
+              <td><strong>506.00 ms</strong></td>
+              <td style="color:var(--muted)">2.97 KB</td>
             </tr><tr>
               <td class="rank">8</td>
-              <td class="mono">Get tradable securities using only mandatory filters</td>
-              <td><strong>561.00 ms</strong></td>
-              <td style="color:var(--muted)">12.02 KB</td>
-            </tr><tr>
-              <td class="rank">9</td>
               <td class="mono">Get tradable securities using optional filters - only market</td>
-              <td><strong>561.00 ms</strong></td>
+              <td><strong>502.00 ms</strong></td>
               <td style="color:var(--muted)">12.04 KB</td>
             </tr><tr>
+              <td class="rank">9</td>
+              <td class="mono">Get tradable securities using only mandatory filters</td>
+              <td><strong>473.00 ms</strong></td>
+              <td style="color:var(--muted)">12.02 KB</td>
+            </tr><tr>
               <td class="rank">10</td>
-              <td class="mono">Get tradable securities using optional filters - only query</td>
-              <td><strong>547.00 ms</strong></td>
-              <td style="color:var(--muted)">0.69 KB</td>
+              <td class="mono">Get irrs - one bond</td>
+              <td><strong>456.00 ms</strong></td>
+              <td style="color:var(--muted)">10.48 KB</td>
             </tr>
           </tbody>
         </table></div>
       
       <div style="margin-top:12px;padding:12px 16px;background:var(--grn-bg);border:1px solid var(--grn-bd);border-radius:8px;font-size:13px;color:var(--text);">
         <strong style="color:var(--green);">ℹ️ La lentitud no viene del tamaño de las respuestas</strong>
-        — tamaño promedio de respuesta: 5.67 KB.
+        — tamaño promedio de respuesta: 6.48 KB.
         Los endpoints más lentos no son lentos por el volumen de datos que devuelven — la demora está en el procesamiento del servidor (cálculos, consultas, etc.), no en la cantidad de información transferida.
       </div>
   </section>
@@ -571,33 +500,33 @@
             <tr>
               <td class="rank">🥇</td>
               <td class="mono">Get investment metrics by ID</td>
-              <td><span class="pill red">305.376</span></td>
-              <td>3592.66 ms</td>
-              <td style="color:var(--muted)">85</td>
+              <td><span class="pill red">297.541</span></td>
+              <td>3459.78 ms</td>
+              <td style="color:var(--muted)">86</td>
             </tr><tr>
               <td class="rank">🥈</td>
               <td class="mono">Filter by debt-type, issueCurrency, paymentCurrency, issuer &amp; law</td>
-              <td><span class="pill yellow">171.205</span></td>
-              <td>2014.18 ms</td>
-              <td style="color:var(--muted)">85</td>
+              <td><span class="pill yellow">174.647</span></td>
+              <td>2030.78 ms</td>
+              <td style="color:var(--muted)">86</td>
             </tr><tr>
               <td class="rank">🥉</td>
               <td class="mono">Appraise market value</td>
-              <td><span class="pill yellow">157.874</span></td>
-              <td>1857.34 ms</td>
-              <td style="color:var(--muted)">85</td>
+              <td><span class="pill yellow">159.685</span></td>
+              <td>1856.80 ms</td>
+              <td style="color:var(--muted)">86</td>
             </tr><tr>
               <td class="rank">4</td>
-              <td class="mono">Bond coupons by UUID</td>
-              <td><span class="pill blue">91.008</span></td>
-              <td>1070.68 ms</td>
-              <td style="color:var(--muted)">85</td>
+              <td class="mono">Get investment irr sensitivity by ID</td>
+              <td><span class="pill blue">93.838</span></td>
+              <td>1091.14 ms</td>
+              <td style="color:var(--muted)">86</td>
             </tr><tr>
               <td class="rank">5</td>
-              <td class="mono">Get investment irr sensitivity by ID</td>
-              <td><span class="pill blue">90.233</span></td>
-              <td>1061.56 ms</td>
-              <td style="color:var(--muted)">85</td>
+              <td class="mono">Bond coupons by UUID</td>
+              <td><span class="pill blue">92.137</span></td>
+              <td>1071.36 ms</td>
+              <td style="color:var(--muted)">86</td>
             </tr>
           </tbody>
         </table></div>
@@ -607,7 +536,7 @@
 
 <footer>
   Generado por <a href="https://github.com/Mercap/pepper-API-testing" target="_blank">pepper-API-testing</a>
-  con <a href="https://aistudio.google.com/" target="_blank">Gemini 3 Flash</a> · 2026-06-10 13:42 UTC
+  con <a href="https://aistudio.google.com/" target="_blank">Gemini 3 Flash</a> · 2026-06-10 14:00 UTC
    · ✨ Análisis IA
 </footer>
 
