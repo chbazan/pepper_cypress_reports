@@ -1,0 +1,1312 @@
+{
+  "meta": {
+    "environment": "Production",
+    "country": "Argentina",
+    "version": "V10.2.94",
+    "run_id": "202606181253",
+    "run_time": "2026-06-18T12:53:52.669Z"
+  },
+  "recent_runs": [
+    {
+      "date": "2026-06-03",
+      "avg_p95": 695,
+      "baseline": 536,
+      "slowest": "All bonds - for issuer",
+      "version": "V10.2.94"
+    },
+    {
+      "date": "2026-06-04",
+      "avg_p95": 382,
+      "baseline": 542,
+      "slowest": "Appraise market value",
+      "version": "V10.2.94"
+    },
+    {
+      "date": "2026-06-05",
+      "avg_p95": 381,
+      "baseline": 541,
+      "slowest": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "version": "V10.2.94"
+    },
+    {
+      "date": "2026-06-06",
+      "avg_p95": 363,
+      "baseline": 539,
+      "slowest": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "version": "V10.2.94"
+    },
+    {
+      "date": "2026-06-07",
+      "avg_p95": 423,
+      "baseline": 538,
+      "slowest": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "version": "V10.2.94"
+    },
+    {
+      "date": "2026-06-09",
+      "avg_p95": 363,
+      "baseline": 537,
+      "slowest": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "version": "V10.2.94"
+    },
+    {
+      "date": "2026-06-10",
+      "avg_p95": 483,
+      "baseline": 535,
+      "slowest": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "version": "V10.2.94"
+    },
+    {
+      "date": "2026-06-12",
+      "avg_p95": 467,
+      "baseline": 536,
+      "slowest": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "version": "V10.2.94"
+    },
+    {
+      "date": "2026-06-15",
+      "avg_p95": 429,
+      "baseline": 538,
+      "slowest": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "version": "V10.2.94"
+    },
+    {
+      "date": "2026-06-18",
+      "avg_p95": 424,
+      "baseline": 539,
+      "slowest": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "version": "V10.2.94"
+    }
+  ],
+  "traffic_lights": [
+    {
+      "endpoint": "Get investment metrics by ID",
+      "api_info": {
+        "api_name": "Métricas de inversión por ID",
+        "service": "Investments",
+        "protocol": "REST",
+        "description": "Calcula métricas financieras de una inversión: duración modificada, convexidad, TIR, precio técnico, etc. Cálculo matemáticamente intensivo que combina valoración + análisis de sensibilidad.",
+        "complexity": "high"
+      },
+      "status_level": 1,
+      "p95": 2144,
+      "baseline_global": 1440,
+      "baseline_global_delta_pct": 48.9,
+      "baseline_version_delta_pct": 136.7,
+      "regression_pct": 106.75,
+      "total_executions": 76
+    },
+    {
+      "endpoint": "Get investment exchange rate sensitivity by ID",
+      "api_info": {
+        "api_name": "Sensibilidad al tipo de cambio de inversión por ID",
+        "service": "Investments",
+        "protocol": "REST",
+        "description": "Analiza el impacto de variaciones en el tipo de cambio sobre el valor de la inversión.",
+        "complexity": "high"
+      },
+      "status_level": 1,
+      "p95": 820,
+      "baseline_global": 377,
+      "baseline_global_delta_pct": 117.48,
+      "baseline_version_delta_pct": 147.15,
+      "regression_pct": 125.27,
+      "total_executions": 76
+    },
+    {
+      "endpoint": "Get all yield curves - validate each self link",
+      "api_info": {
+        "api_name": "Curvas de rendimiento — Listar todas (resumen)",
+        "service": "Yield Curves",
+        "protocol": "REST",
+        "description": "Devuelve todas las curvas de rendimiento disponibles en formato resumido: solo nombre y links de navegación (self, metrics, intradayMetrics, metricsOfSameRiskBonds), sin puntos de la curva ni datos de mercado. Usa el Accept header application/vnd.mercap.yield-curve-summary+json; la variante completa (application/vnd.mercap.yield-curve+json) incluye además labeledPoints y points.",
+        "complexity": "high"
+      },
+      "status_level": 1,
+      "p95": 692,
+      "baseline_global": 509,
+      "baseline_global_delta_pct": 36.06,
+      "baseline_version_delta_pct": 42.39,
+      "regression_pct": 189.54,
+      "total_executions": 76
+    }
+  ],
+  "outliers": [],
+  "slowest_this_run": [
+    {
+      "endpoint": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "p95": 3171,
+      "payload_kb": 17.79,
+      "api_info": {
+        "api_name": "Bond Screener — Filtro múltiple de bonos",
+        "service": "Bond Screener",
+        "protocol": "JRPC",
+        "description": "Filtra la cartera de bonos usando múltiples criterios simultáneos: tipo de deuda, moneda de emisión, moneda de pago, emisor y legislación. La combinación de filtros genera una consulta compleja sobre el catálogo completo de bonos.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get investment metrics by ID",
+      "p95": 2144,
+      "payload_kb": 1.39,
+      "api_info": {
+        "api_name": "Métricas de inversión por ID",
+        "service": "Investments",
+        "protocol": "REST",
+        "description": "Calcula métricas financieras de una inversión: duración modificada, convexidad, TIR, precio técnico, etc. Cálculo matemáticamente intensivo que combina valoración + análisis de sensibilidad.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Appraise market value",
+      "p95": 1549,
+      "payload_kb": 0.6,
+      "api_info": {
+        "api_name": "Valoración de instrumento financiero",
+        "service": "Appraiser",
+        "protocol": "JRPC",
+        "description": "Calcula la valoración de mercado o técnica de un instrumento financiero (bonds, stocks, etc.). Operación matemáticamente intensiva — usa distintos métodos: appraise-market-value, appraise-in-currency, appraise, etc.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get tradable securities using optional filters - ticker & tradeDate",
+      "p95": 1454,
+      "payload_kb": 1.21
+    },
+    {
+      "endpoint": "Get irrs - one bond",
+      "p95": 1360,
+      "payload_kb": 62.6,
+      "api_info": {
+        "api_name": "Tasas Internas de Retorno (TIR/IRR) de un bono",
+        "service": "Bond Payment Forecasts v2",
+        "protocol": "JRPC",
+        "description": "Calcula las Tasas Internas de Retorno (TIR/IRR) de un bono. Requiere cálculo iterativo de flujos de caja descontados — operación matemáticamente intensiva.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get parities",
+      "p95": 1327,
+      "payload_kb": 166.81,
+      "api_info": {
+        "api_name": "Paridades de bono",
+        "service": "Bond Payment Forecasts v2",
+        "protocol": "JRPC",
+        "description": "Calcula las paridades de un bono (relación precio de mercado / valor técnico). Involucra proyección de flujos futuros.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get investment exchange rate sensitivity by ID",
+      "p95": 820,
+      "payload_kb": 1.73,
+      "api_info": {
+        "api_name": "Sensibilidad al tipo de cambio de inversión por ID",
+        "service": "Investments",
+        "protocol": "REST",
+        "description": "Analiza el impacto de variaciones en el tipo de cambio sobre el valor de la inversión.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get one bond cashflow - only dateInterval from",
+      "p95": 817,
+      "payload_kb": 5.05,
+      "api_info": {
+        "api_name": "Flujos de caja de bono desde fecha",
+        "service": "Bond Payment Forecasts v2",
+        "protocol": "JRPC",
+        "description": "Proyecta los flujos de caja futuros de un bono a partir de una fecha dada (sin fecha de fin). El tamaño de la respuesta depende de los cupones restantes del bono.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get tradable securities using optional filters - only type",
+      "p95": 734,
+      "payload_kb": 11.43,
+      "api_info": {
+        "api_name": "Valores negociables — Filtrado por tipo",
+        "service": "Tradable Securities",
+        "protocol": "REST",
+        "description": "Filtra valores negociables por tipo de instrumento (bono, acción, FCI, etc.).",
+        "complexity": "medium"
+      }
+    },
+    {
+      "endpoint": "Get tradable securities using only mandatory filters",
+      "p95": 717,
+      "payload_kb": 11.4,
+      "api_info": {
+        "api_name": "Valores negociables — Filtros obligatorios",
+        "service": "Tradable Securities",
+        "protocol": "REST",
+        "description": "Obtiene la lista de valores negociables usando solo los filtros obligatorios (exchange, valuationDate, valuationName). Retorna todos los instrumentos negociables para esa fecha y mercado — respuesta potencialmente grande.",
+        "complexity": "high"
+      }
+    }
+  ],
+  "top_impact": [
+    {
+      "endpoint": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "api_info": {
+        "api_name": "Bond Screener — Filtro múltiple de bonos",
+        "service": "Bond Screener",
+        "protocol": "JRPC",
+        "description": "Filtra la cartera de bonos usando múltiples criterios simultáneos: tipo de deuda, moneda de emisión, moneda de pago, emisor y legislación. La combinación de filtros genera una consulta compleja sobre el catálogo completo de bonos.",
+        "complexity": "high"
+      },
+      "impact_score": 223142,
+      "p95": 3171,
+      "impact_p95_used": 2936.08,
+      "total_executions": 76,
+      "baseline_global": 2936
+    },
+    {
+      "endpoint": "Appraise market value",
+      "api_info": {
+        "api_name": "Valoración de instrumento financiero",
+        "service": "Appraiser",
+        "protocol": "JRPC",
+        "description": "Calcula la valoración de mercado o técnica de un instrumento financiero (bonds, stocks, etc.). Operación matemáticamente intensiva — usa distintos métodos: appraise-market-value, appraise-in-currency, appraise, etc.",
+        "complexity": "high"
+      },
+      "impact_score": 129127,
+      "p95": 1549,
+      "impact_p95_used": 1699.04,
+      "total_executions": 76,
+      "baseline_global": 1699
+    },
+    {
+      "endpoint": "Get parities",
+      "api_info": {
+        "api_name": "Paridades de bono",
+        "service": "Bond Payment Forecasts v2",
+        "protocol": "JRPC",
+        "description": "Calcula las paridades de un bono (relación precio de mercado / valor técnico). Involucra proyección de flujos futuros.",
+        "complexity": "high"
+      },
+      "impact_score": 127335,
+      "p95": 1327,
+      "impact_p95_used": 1675.46,
+      "total_executions": 76,
+      "baseline_global": 1675
+    },
+    {
+      "endpoint": "Get irrs - one bond",
+      "api_info": {
+        "api_name": "Tasas Internas de Retorno (TIR/IRR) de un bono",
+        "service": "Bond Payment Forecasts v2",
+        "protocol": "JRPC",
+        "description": "Calcula las Tasas Internas de Retorno (TIR/IRR) de un bono. Requiere cálculo iterativo de flujos de caja descontados — operación matemáticamente intensiva.",
+        "complexity": "high"
+      },
+      "impact_score": 125927,
+      "p95": 1360,
+      "impact_p95_used": 1656.94,
+      "total_executions": 76,
+      "baseline_global": 1657
+    },
+    {
+      "endpoint": "Get investment metrics by ID",
+      "api_info": {
+        "api_name": "Métricas de inversión por ID",
+        "service": "Investments",
+        "protocol": "REST",
+        "description": "Calcula métricas financieras de una inversión: duración modificada, convexidad, TIR, precio técnico, etc. Cálculo matemáticamente intensivo que combina valoración + análisis de sensibilidad.",
+        "complexity": "high"
+      },
+      "impact_score": 109435,
+      "p95": 2144,
+      "impact_p95_used": 1439.94,
+      "total_executions": 76,
+      "baseline_global": 1440
+    }
+  ],
+  "outlier_recurrence": [
+    {
+      "endpoint": "Get all yield curves - validate each self link",
+      "occurrences": 17,
+      "api_info": {
+        "api_name": "Curvas de rendimiento — Listar todas (resumen)",
+        "service": "Yield Curves",
+        "protocol": "REST",
+        "description": "Devuelve todas las curvas de rendimiento disponibles en formato resumido: solo nombre y links de navegación (self, metrics, intradayMetrics, metricsOfSameRiskBonds), sin puntos de la curva ni datos de mercado. Usa el Accept header application/vnd.mercap.yield-curve-summary+json; la variante completa (application/vnd.mercap.yield-curve+json) incluye además labeledPoints y points.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get tradable securities using only mandatory filters",
+      "occurrences": 5,
+      "api_info": {
+        "api_name": "Valores negociables — Filtros obligatorios",
+        "service": "Tradable Securities",
+        "protocol": "REST",
+        "description": "Obtiene la lista de valores negociables usando solo los filtros obligatorios (exchange, valuationDate, valuationName). Retorna todos los instrumentos negociables para esa fecha y mercado — respuesta potencialmente grande.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get all markets",
+      "occurrences": 4,
+      "api_info": {
+        "api_name": "Mercados — Obtener todos",
+        "service": "Markets",
+        "protocol": "REST",
+        "description": "Devuelve todos los mercados disponibles (BYMA, MAE, etc.). Tabla de maestros de configuración.",
+        "complexity": "low"
+      }
+    },
+    {
+      "endpoint": "All bonds - deault parameters",
+      "occurrences": 4,
+      "api_info": {
+        "api_name": "Obtener todos los bonos — parámetros por defecto",
+        "service": "Bonds",
+        "protocol": "REST",
+        "description": "Devuelve la lista completa de bonos sin filtros. La latencia depende del volumen total de bonos cargados en el sistema.",
+        "complexity": "medium"
+      }
+    },
+    {
+      "endpoint": "Get all bond groups",
+      "occurrences": 3,
+      "api_info": {
+        "api_name": "Grupos de bonos — Obtener todos",
+        "service": "Bond Groups",
+        "protocol": "REST",
+        "description": "Devuelve todos los grupos de bonos (agrupaciones lógicas del catálogo de instrumentos). Tabla de maestros.",
+        "complexity": "low"
+      }
+    },
+    {
+      "endpoint": "Get investment irr sensitivity by ID",
+      "occurrences": 3,
+      "api_info": {
+        "api_name": "Sensibilidad de TIR de inversión por ID",
+        "service": "Investments",
+        "protocol": "REST",
+        "description": "Analiza cómo cambia la TIR de la inversión ante variaciones en la tasa de descuento. Requiere múltiples iteraciones de valoración — operación computacionalmente costosa.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get valuation schemes by UUID",
+      "occurrences": 3,
+      "api_info": {
+        "api_name": "Esquema de valoración por UUID",
+        "service": "Valuation Schemes",
+        "protocol": "REST",
+        "description": "Devuelve un esquema de valoración específico por UUID.",
+        "complexity": "low"
+      }
+    },
+    {
+      "endpoint": "Get stocks by UUID",
+      "occurrences": 3,
+      "api_info": {
+        "api_name": "Acción por UUID",
+        "service": "Stocks",
+        "protocol": "REST",
+        "description": "Devuelve una acción específica por UUID.",
+        "complexity": "low"
+      }
+    },
+    {
+      "endpoint": "Get all instrument issuers",
+      "occurrences": 3,
+      "api_info": {
+        "api_name": "Emisores de instrumentos — Obtener todos",
+        "service": "Instrument Issuers",
+        "protocol": "REST",
+        "description": "Devuelve todos los emisores de instrumentos financieros registrados. Tabla de maestros de baja complejidad.",
+        "complexity": "low"
+      }
+    },
+    {
+      "endpoint": "Get all mutual fund types",
+      "occurrences": 3
+    },
+    {
+      "endpoint": "All bonds - for issuer",
+      "occurrences": 3,
+      "api_info": {
+        "api_name": "Obtener todos los bonos — filtrado por emisor",
+        "service": "Bonds",
+        "protocol": "REST",
+        "description": "Devuelve bonos filtrados por emisor específico (ej. Nación Argentina). Subconjunto de la colección completa.",
+        "complexity": "medium"
+      }
+    },
+    {
+      "endpoint": "Get all mutual fund shares",
+      "occurrences": 2,
+      "api_info": {
+        "api_name": "Fondos Comunes de Inversión (FCI) — Obtener todos",
+        "service": "Mutual Fund Shares",
+        "protocol": "REST",
+        "description": "Devuelve todos los Fondos Comunes de Inversión disponibles. El tamaño de la respuesta depende de la cantidad de FCIs cargados.",
+        "complexity": "medium"
+      }
+    },
+    {
+      "endpoint": "Get investment metrics by ID",
+      "occurrences": 2,
+      "api_info": {
+        "api_name": "Métricas de inversión por ID",
+        "service": "Investments",
+        "protocol": "REST",
+        "description": "Calcula métricas financieras de una inversión: duración modificada, convexidad, TIR, precio técnico, etc. Cálculo matemáticamente intensivo que combina valoración + análisis de sensibilidad.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get tradable securities using optional filters - only query",
+      "occurrences": 2,
+      "api_info": {
+        "api_name": "Valores negociables — Búsqueda por texto libre",
+        "service": "Tradable Securities",
+        "protocol": "REST",
+        "description": "Filtra valores negociables por búsqueda de texto libre sobre nombre o identificadores.",
+        "complexity": "medium"
+      }
+    },
+    {
+      "endpoint": "Get tradable securities using optional filters - only type",
+      "occurrences": 2,
+      "api_info": {
+        "api_name": "Valores negociables — Filtrado por tipo",
+        "service": "Tradable Securities",
+        "protocol": "REST",
+        "description": "Filtra valores negociables por tipo de instrumento (bono, acción, FCI, etc.).",
+        "complexity": "medium"
+      }
+    },
+    {
+      "endpoint": "Get tradable securities using optional filters - only market",
+      "occurrences": 2,
+      "api_info": {
+        "api_name": "Valores negociables — Filtrado por mercado",
+        "service": "Tradable Securities",
+        "protocol": "REST",
+        "description": "Filtra valores negociables por mercado específico (BYMA, MAE, etc.).",
+        "complexity": "medium"
+      }
+    },
+    {
+      "endpoint": "Get one bond cashflow - dateInterval from and to",
+      "occurrences": 2,
+      "api_info": {
+        "api_name": "Flujos de caja de bono en rango de fechas",
+        "service": "Bond Payment Forecasts v2",
+        "protocol": "JRPC",
+        "description": "Proyecta los flujos de caja de un bono en un rango de fechas definido. Subconjunto acotado de la proyección completa.",
+        "complexity": "medium"
+      }
+    },
+    {
+      "endpoint": "Get all curencies - validate each self link",
+      "occurrences": 2,
+      "api_info": {
+        "api_name": "Monedas — Listar todas",
+        "service": "Currencies",
+        "protocol": "REST",
+        "description": "Devuelve todas las monedas disponibles en el sistema. Tabla de maestros de referencia.",
+        "complexity": "low"
+      }
+    },
+    {
+      "endpoint": "Get investment exchange rate sensitivity by ID",
+      "occurrences": 2,
+      "api_info": {
+        "api_name": "Sensibilidad al tipo de cambio de inversión por ID",
+        "service": "Investments",
+        "protocol": "REST",
+        "description": "Analiza el impacto de variaciones en el tipo de cambio sobre el valor de la inversión.",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Bond coupons by UUID",
+      "occurrences": 2,
+      "api_info": {
+        "api_name": "Cupones de bono por UUID",
+        "service": "Bonds",
+        "protocol": "REST",
+        "description": "Devuelve los cupones de pago de un bono específico. El tamaño de la respuesta varía según la cantidad de cupones del instrumento.",
+        "complexity": "low"
+      }
+    },
+    {
+      "endpoint": "Get investment price sensitivity by ID",
+      "occurrences": 2,
+      "api_info": {
+        "api_name": "Sensibilidad de precio de inversión por ID",
+        "service": "Investments",
+        "protocol": "REST",
+        "description": "Analiza cómo varía el precio del instrumento ante cambios en la tasa. Operación matemáticamente intensiva (análisis de sensibilidad).",
+        "complexity": "high"
+      }
+    },
+    {
+      "endpoint": "Get mutual fund share by UUID",
+      "occurrences": 2,
+      "api_info": {
+        "api_name": "Fondo Común de Inversión por UUID",
+        "service": "Mutual Fund Shares",
+        "protocol": "REST",
+        "description": "Devuelve un FCI específico por UUID.",
+        "complexity": "low"
+      }
+    },
+    {
+      "endpoint": "All bonds - start & limit parameters",
+      "occurrences": 2,
+      "api_info": {
+        "api_name": "Obtener todos los bonos — con paginación",
+        "service": "Bonds",
+        "protocol": "REST",
+        "description": "Devuelve bonos con paginación explícita (parámetros start y limit).",
+        "complexity": "low"
+      }
+    }
+  ],
+  "bottleneck_class": {
+    "class": "REGRESSION-SPIKE",
+    "reds_count": 0,
+    "yellows_count": 3,
+    "outliers_count": 0,
+    "trend_delta_pct": -39,
+    "reasoning": "3 alerta(s) activas sin tendencia sostenida en las últimas 10 corridas."
+  },
+  "payload_stats": {
+    "avg_payload_kb": 28,
+    "heaviest_endpoints": [
+      {
+        "endpoint": "Get parities",
+        "payload_kb": 166.81,
+        "p95": 1327
+      },
+      {
+        "endpoint": "Get irrs - one bond",
+        "payload_kb": 62.6,
+        "p95": 1360
+      },
+      {
+        "endpoint": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+        "payload_kb": 17.79,
+        "p95": 3171
+      }
+    ],
+    "payload_correlated": false
+  },
+  "version_comparison": {
+    "previous_version": "V10.2.93",
+    "current_version": "V10.2.94",
+    "avg_p95_previous": 510,
+    "avg_p95_current": 424,
+    "improved": [
+      {
+        "endpoint": "Get all instrument issuers",
+        "p95_current": 189,
+        "p95_previous": 9582,
+        "delta_pct": -98,
+        "api_info": {
+          "api_name": "Emisores de instrumentos — Obtener todos",
+          "service": "Instrument Issuers",
+          "protocol": "REST",
+          "description": "Devuelve todos los emisores de instrumentos financieros registrados. Tabla de maestros de baja complejidad.",
+          "complexity": "low"
+        }
+      },
+      {
+        "endpoint": "Get all curencies - validate each self link",
+        "p95_current": 58,
+        "p95_previous": 209,
+        "delta_pct": -72.2,
+        "api_info": {
+          "api_name": "Monedas — Listar todas",
+          "service": "Currencies",
+          "protocol": "REST",
+          "description": "Devuelve todas las monedas disponibles en el sistema. Tabla de maestros de referencia.",
+          "complexity": "low"
+        }
+      },
+      {
+        "endpoint": "Get tradable security by UUID",
+        "p95_current": 44,
+        "p95_previous": 83,
+        "delta_pct": -47,
+        "api_info": {
+          "api_name": "Valor negociable por UUID",
+          "service": "Tradable Securities",
+          "protocol": "REST",
+          "description": "Devuelve un valor negociable específico por UUID. Simple lookup por clave primaria.",
+          "complexity": "low"
+        }
+      },
+      {
+        "endpoint": "Bond coupons by UUID",
+        "p95_current": 80,
+        "p95_previous": 130,
+        "delta_pct": -38.5,
+        "api_info": {
+          "api_name": "Cupones de bono por UUID",
+          "service": "Bonds",
+          "protocol": "REST",
+          "description": "Devuelve los cupones de pago de un bono específico. El tamaño de la respuesta varía según la cantidad de cupones del instrumento.",
+          "complexity": "low"
+        }
+      },
+      {
+        "endpoint": "Get all valuation schemes",
+        "p95_current": 58,
+        "p95_previous": 84,
+        "delta_pct": -31,
+        "api_info": {
+          "api_name": "Esquemas de valoración — Obtener todos",
+          "service": "Valuation Schemes",
+          "protocol": "REST",
+          "description": "Devuelve todos los esquemas de valoración configurados en el sistema.",
+          "complexity": "low"
+        }
+      },
+      {
+        "endpoint": "Get stocks by UUID",
+        "p95_current": 39,
+        "p95_previous": 56,
+        "delta_pct": -30.4,
+        "api_info": {
+          "api_name": "Acción por UUID",
+          "service": "Stocks",
+          "protocol": "REST",
+          "description": "Devuelve una acción específica por UUID.",
+          "complexity": "low"
+        }
+      },
+      {
+        "endpoint": "Only shortName parameter",
+        "p95_current": 129,
+        "p95_previous": 185,
+        "delta_pct": -30.3,
+        "api_info": {
+          "api_name": "Obtener bonos — filtrado por nombre corto",
+          "service": "Bonds",
+          "protocol": "REST",
+          "description": "Devuelve bonos filtrados por nombre corto (shortName). Lookup por string.",
+          "complexity": "low"
+        }
+      },
+      {
+        "endpoint": "Get mutual fund share by UUID",
+        "p95_current": 43,
+        "p95_previous": 59,
+        "delta_pct": -27.1,
+        "api_info": {
+          "api_name": "Fondo Común de Inversión por UUID",
+          "service": "Mutual Fund Shares",
+          "protocol": "REST",
+          "description": "Devuelve un FCI específico por UUID.",
+          "complexity": "low"
+        }
+      },
+      {
+        "endpoint": "Get markets by UUID",
+        "p95_current": 37,
+        "p95_previous": 50,
+        "delta_pct": -26,
+        "api_info": {
+          "api_name": "Mercado por UUID",
+          "service": "Markets",
+          "protocol": "REST",
+          "description": "Devuelve un mercado específico por UUID.",
+          "complexity": "low"
+        }
+      },
+      {
+        "endpoint": "All bonds - deault parameters",
+        "p95_current": 103,
+        "p95_previous": 131,
+        "delta_pct": -21.4,
+        "api_info": {
+          "api_name": "Obtener todos los bonos — parámetros por defecto",
+          "service": "Bonds",
+          "protocol": "REST",
+          "description": "Devuelve la lista completa de bonos sin filtros. La latencia depende del volumen total de bonos cargados en el sistema.",
+          "complexity": "medium"
+        }
+      },
+      {
+        "endpoint": "Get irrs - one bond",
+        "p95_current": 1360,
+        "p95_previous": 1719,
+        "delta_pct": -20.9,
+        "api_info": {
+          "api_name": "Tasas Internas de Retorno (TIR/IRR) de un bono",
+          "service": "Bond Payment Forecasts v2",
+          "protocol": "JRPC",
+          "description": "Calcula las Tasas Internas de Retorno (TIR/IRR) de un bono. Requiere cálculo iterativo de flujos de caja descontados — operación matemáticamente intensiva.",
+          "complexity": "high"
+        }
+      },
+      {
+        "endpoint": "Get parities",
+        "p95_current": 1327,
+        "p95_previous": 1677,
+        "delta_pct": -20.9,
+        "api_info": {
+          "api_name": "Paridades de bono",
+          "service": "Bond Payment Forecasts v2",
+          "protocol": "JRPC",
+          "description": "Calcula las paridades de un bono (relación precio de mercado / valor técnico). Involucra proyección de flujos futuros.",
+          "complexity": "high"
+        }
+      },
+      {
+        "endpoint": "Get mutual fund type by UUID",
+        "p95_current": 114,
+        "p95_previous": 144,
+        "delta_pct": -20.8
+      },
+      {
+        "endpoint": "Get instrument issuers by UUID",
+        "p95_current": 75,
+        "p95_previous": 94,
+        "delta_pct": -20.2,
+        "api_info": {
+          "api_name": "Emisor de instrumento por UUID",
+          "service": "Instrument Issuers",
+          "protocol": "REST",
+          "description": "Devuelve un emisor específico por UUID.",
+          "complexity": "low"
+        }
+      },
+      {
+        "endpoint": "Bond issue conditions by UUID",
+        "p95_current": 92,
+        "p95_previous": 112,
+        "delta_pct": -17.9,
+        "api_info": {
+          "api_name": "Condiciones de emisión de bono por UUID",
+          "service": "Bonds",
+          "protocol": "REST",
+          "description": "Devuelve las condiciones de emisión de un bono (plazos, tasas, garantías, etc.).",
+          "complexity": "low"
+        }
+      }
+    ],
+    "improved_total": 17,
+    "degraded": [
+      {
+        "endpoint": "Get tradable securities using optional filters - only type",
+        "p95_current": 734,
+        "p95_previous": 77,
+        "delta_pct": 853.2,
+        "api_info": {
+          "api_name": "Valores negociables — Filtrado por tipo",
+          "service": "Tradable Securities",
+          "protocol": "REST",
+          "description": "Filtra valores negociables por tipo de instrumento (bono, acción, FCI, etc.).",
+          "complexity": "medium"
+        },
+        "in_alert_now": false,
+        "is_outlier_now": false,
+        "status_level": null,
+        "outlier_ratio": null
+      },
+      {
+        "endpoint": "Get all yield curves - validate each self link",
+        "p95_current": 692,
+        "p95_previous": 73,
+        "delta_pct": 847.9,
+        "api_info": {
+          "api_name": "Curvas de rendimiento — Listar todas (resumen)",
+          "service": "Yield Curves",
+          "protocol": "REST",
+          "description": "Devuelve todas las curvas de rendimiento disponibles en formato resumido: solo nombre y links de navegación (self, metrics, intradayMetrics, metricsOfSameRiskBonds), sin puntos de la curva ni datos de mercado. Usa el Accept header application/vnd.mercap.yield-curve-summary+json; la variante completa (application/vnd.mercap.yield-curve+json) incluye además labeledPoints y points.",
+          "complexity": "high"
+        },
+        "in_alert_now": true,
+        "is_outlier_now": false,
+        "status_level": 1,
+        "outlier_ratio": null
+      },
+      {
+        "endpoint": "Get tradable securities using optional filters - only market",
+        "p95_current": 658,
+        "p95_previous": 73,
+        "delta_pct": 801.4,
+        "api_info": {
+          "api_name": "Valores negociables — Filtrado por mercado",
+          "service": "Tradable Securities",
+          "protocol": "REST",
+          "description": "Filtra valores negociables por mercado específico (BYMA, MAE, etc.).",
+          "complexity": "medium"
+        },
+        "in_alert_now": false,
+        "is_outlier_now": false,
+        "status_level": null,
+        "outlier_ratio": null
+      },
+      {
+        "endpoint": "Get tradable securities using only mandatory filters",
+        "p95_current": 717,
+        "p95_previous": 87,
+        "delta_pct": 724.1,
+        "api_info": {
+          "api_name": "Valores negociables — Filtros obligatorios",
+          "service": "Tradable Securities",
+          "protocol": "REST",
+          "description": "Obtiene la lista de valores negociables usando solo los filtros obligatorios (exchange, valuationDate, valuationName). Retorna todos los instrumentos negociables para esa fecha y mercado — respuesta potencialmente grande.",
+          "complexity": "high"
+        },
+        "in_alert_now": false,
+        "is_outlier_now": false,
+        "status_level": null,
+        "outlier_ratio": null
+      },
+      {
+        "endpoint": "Get tradable securities using optional filters - only query",
+        "p95_current": 645,
+        "p95_previous": 79,
+        "delta_pct": 716.5,
+        "api_info": {
+          "api_name": "Valores negociables — Búsqueda por texto libre",
+          "service": "Tradable Securities",
+          "protocol": "REST",
+          "description": "Filtra valores negociables por búsqueda de texto libre sobre nombre o identificadores.",
+          "complexity": "medium"
+        },
+        "in_alert_now": false,
+        "is_outlier_now": false,
+        "status_level": null,
+        "outlier_ratio": null
+      },
+      {
+        "endpoint": "Get investment metrics by ID",
+        "p95_current": 2144,
+        "p95_previous": 292,
+        "delta_pct": 634.2,
+        "api_info": {
+          "api_name": "Métricas de inversión por ID",
+          "service": "Investments",
+          "protocol": "REST",
+          "description": "Calcula métricas financieras de una inversión: duración modificada, convexidad, TIR, precio técnico, etc. Cálculo matemáticamente intensivo que combina valoración + análisis de sensibilidad.",
+          "complexity": "high"
+        },
+        "in_alert_now": true,
+        "is_outlier_now": false,
+        "status_level": 1,
+        "outlier_ratio": null
+      },
+      {
+        "endpoint": "Get investment exchange rate sensitivity by ID",
+        "p95_current": 820,
+        "p95_previous": 225,
+        "delta_pct": 264.4,
+        "api_info": {
+          "api_name": "Sensibilidad al tipo de cambio de inversión por ID",
+          "service": "Investments",
+          "protocol": "REST",
+          "description": "Analiza el impacto de variaciones en el tipo de cambio sobre el valor de la inversión.",
+          "complexity": "high"
+        },
+        "in_alert_now": true,
+        "is_outlier_now": false,
+        "status_level": 1,
+        "outlier_ratio": null
+      },
+      {
+        "endpoint": "Get all debt types - validate each self link",
+        "p95_current": 154,
+        "p95_previous": 80,
+        "delta_pct": 92.5,
+        "api_info": {
+          "api_name": "Tipos de deuda — Listar todos",
+          "service": "Debt Types",
+          "protocol": "REST",
+          "description": "Devuelve todos los tipos de deuda disponibles (ej. soberana, corporativa, sub-soberana). Tabla de maestros de referencia.",
+          "complexity": "low"
+        },
+        "in_alert_now": false,
+        "is_outlier_now": false,
+        "status_level": null,
+        "outlier_ratio": null
+      },
+      {
+        "endpoint": "Appraise market value",
+        "p95_current": 1549,
+        "p95_previous": 864,
+        "delta_pct": 79.3,
+        "api_info": {
+          "api_name": "Valoración de instrumento financiero",
+          "service": "Appraiser",
+          "protocol": "JRPC",
+          "description": "Calcula la valoración de mercado o técnica de un instrumento financiero (bonds, stocks, etc.). Operación matemáticamente intensiva — usa distintos métodos: appraise-market-value, appraise-in-currency, appraise, etc.",
+          "complexity": "high"
+        },
+        "in_alert_now": false,
+        "is_outlier_now": false,
+        "status_level": null,
+        "outlier_ratio": null
+      },
+      {
+        "endpoint": "Get all mutual fund shares",
+        "p95_current": 171,
+        "p95_previous": 96,
+        "delta_pct": 78.1,
+        "api_info": {
+          "api_name": "Fondos Comunes de Inversión (FCI) — Obtener todos",
+          "service": "Mutual Fund Shares",
+          "protocol": "REST",
+          "description": "Devuelve todos los Fondos Comunes de Inversión disponibles. El tamaño de la respuesta depende de la cantidad de FCIs cargados.",
+          "complexity": "medium"
+        },
+        "in_alert_now": false,
+        "is_outlier_now": false,
+        "status_level": null,
+        "outlier_ratio": null
+      },
+      {
+        "endpoint": "Get all bond groups",
+        "p95_current": 234,
+        "p95_previous": 136,
+        "delta_pct": 72.1,
+        "api_info": {
+          "api_name": "Grupos de bonos — Obtener todos",
+          "service": "Bond Groups",
+          "protocol": "REST",
+          "description": "Devuelve todos los grupos de bonos (agrupaciones lógicas del catálogo de instrumentos). Tabla de maestros.",
+          "complexity": "low"
+        },
+        "in_alert_now": false,
+        "is_outlier_now": false,
+        "status_level": null,
+        "outlier_ratio": null
+      },
+      {
+        "endpoint": "All bonds - start & limit parameters",
+        "p95_current": 153,
+        "p95_previous": 90,
+        "delta_pct": 70,
+        "api_info": {
+          "api_name": "Obtener todos los bonos — con paginación",
+          "service": "Bonds",
+          "protocol": "REST",
+          "description": "Devuelve bonos con paginación explícita (parámetros start y limit).",
+          "complexity": "low"
+        },
+        "in_alert_now": false,
+        "is_outlier_now": false,
+        "status_level": null,
+        "outlier_ratio": null
+      },
+      {
+        "endpoint": "Get exchange scheme by UUID",
+        "p95_current": 58,
+        "p95_previous": 35,
+        "delta_pct": 65.7,
+        "api_info": {
+          "api_name": "Esquema de canje por UUID",
+          "service": "Exchange Schemes",
+          "protocol": "REST",
+          "description": "Devuelve un esquema de canje específico por UUID.",
+          "complexity": "low"
+        },
+        "in_alert_now": false,
+        "is_outlier_now": false,
+        "status_level": null,
+        "outlier_ratio": null
+      },
+      {
+        "endpoint": "Get investment by ID",
+        "p95_current": 158,
+        "p95_previous": 103,
+        "delta_pct": 53.4,
+        "api_info": {
+          "api_name": "Obtener inversión por ID",
+          "service": "Investments",
+          "protocol": "REST",
+          "description": "Devuelve los datos de una inversión específica por su ID numérico.",
+          "complexity": "low"
+        },
+        "in_alert_now": false,
+        "is_outlier_now": false,
+        "status_level": null,
+        "outlier_ratio": null
+      },
+      {
+        "endpoint": "Get all markets",
+        "p95_current": 135,
+        "p95_previous": 89,
+        "delta_pct": 51.7,
+        "api_info": {
+          "api_name": "Mercados — Obtener todos",
+          "service": "Markets",
+          "protocol": "REST",
+          "description": "Devuelve todos los mercados disponibles (BYMA, MAE, etc.). Tabla de maestros de configuración.",
+          "complexity": "low"
+        },
+        "in_alert_now": false,
+        "is_outlier_now": false,
+        "status_level": null,
+        "outlier_ratio": null
+      }
+    ],
+    "degraded_total": 22,
+    "endpoints_compared": 49,
+    "resolved_problems": [],
+    "new_problems": [
+      {
+        "endpoint": "Get all yield curves - validate each self link",
+        "p95_current": 692,
+        "p95_previous": 73,
+        "delta_pct": 847.9,
+        "api_info": {
+          "api_name": "Curvas de rendimiento — Listar todas (resumen)",
+          "service": "Yield Curves",
+          "protocol": "REST",
+          "description": "Devuelve todas las curvas de rendimiento disponibles en formato resumido: solo nombre y links de navegación (self, metrics, intradayMetrics, metricsOfSameRiskBonds), sin puntos de la curva ni datos de mercado. Usa el Accept header application/vnd.mercap.yield-curve-summary+json; la variante completa (application/vnd.mercap.yield-curve+json) incluye además labeledPoints y points.",
+          "complexity": "high"
+        },
+        "is_outlier_now": false,
+        "status_level": 1,
+        "outlier_ratio": null,
+        "historical_outlier_count": 17
+      },
+      {
+        "endpoint": "Get investment metrics by ID",
+        "p95_current": 2144,
+        "p95_previous": 292,
+        "delta_pct": 634.2,
+        "api_info": {
+          "api_name": "Métricas de inversión por ID",
+          "service": "Investments",
+          "protocol": "REST",
+          "description": "Calcula métricas financieras de una inversión: duración modificada, convexidad, TIR, precio técnico, etc. Cálculo matemáticamente intensivo que combina valoración + análisis de sensibilidad.",
+          "complexity": "high"
+        },
+        "is_outlier_now": false,
+        "status_level": 1,
+        "outlier_ratio": null,
+        "historical_outlier_count": 2
+      },
+      {
+        "endpoint": "Get investment exchange rate sensitivity by ID",
+        "p95_current": 820,
+        "p95_previous": 225,
+        "delta_pct": 264.4,
+        "api_info": {
+          "api_name": "Sensibilidad al tipo de cambio de inversión por ID",
+          "service": "Investments",
+          "protocol": "REST",
+          "description": "Analiza el impacto de variaciones en el tipo de cambio sobre el valor de la inversión.",
+          "complexity": "high"
+        },
+        "is_outlier_now": false,
+        "status_level": 1,
+        "outlier_ratio": null,
+        "historical_outlier_count": 2
+      }
+    ],
+    "verdict": "MIXTA"
+  },
+  "intra_version_trend": {
+    "version": "V10.2.94",
+    "run_count": 10,
+    "cold_cache_detected": true,
+    "trend": "stable",
+    "runs": [
+      {
+        "date": "2026-06-03 13:49",
+        "run_id": "202606031349",
+        "avg_p95": 695,
+        "baseline": 536
+      },
+      {
+        "date": "2026-06-04 12:51",
+        "run_id": "202606041251",
+        "avg_p95": 382,
+        "baseline": 542
+      },
+      {
+        "date": "2026-06-05 12:49",
+        "run_id": "202606051249",
+        "avg_p95": 381,
+        "baseline": 541
+      },
+      {
+        "date": "2026-06-06 12:17",
+        "run_id": "202606061217",
+        "avg_p95": 363,
+        "baseline": 539
+      },
+      {
+        "date": "2026-06-07 12:22",
+        "run_id": "202606071222",
+        "avg_p95": 423,
+        "baseline": 538
+      },
+      {
+        "date": "2026-06-09 12:50",
+        "run_id": "202606091250",
+        "avg_p95": 363,
+        "baseline": 537
+      },
+      {
+        "date": "2026-06-10 12:54",
+        "run_id": "202606101254",
+        "avg_p95": 483,
+        "baseline": 535
+      },
+      {
+        "date": "2026-06-12 12:54",
+        "run_id": "202606121254",
+        "avg_p95": 467,
+        "baseline": 536
+      },
+      {
+        "date": "2026-06-15 13:54",
+        "run_id": "202606151354",
+        "avg_p95": 429,
+        "baseline": 538
+      },
+      {
+        "date": "2026-06-18 12:53",
+        "run_id": "202606181253",
+        "avg_p95": 424,
+        "baseline": 539
+      }
+    ]
+  },
+  "versions_trend": [
+    {
+      "version": "V10.2.91",
+      "avg_p95": 493,
+      "run_count": 41,
+      "first_date": "2026-03-20",
+      "is_current": false
+    },
+    {
+      "version": "V10.2.93",
+      "avg_p95": 523,
+      "run_count": 25,
+      "first_date": "2026-04-28",
+      "is_current": false
+    },
+    {
+      "version": "V10.2.94",
+      "avg_p95": 441,
+      "run_count": 10,
+      "first_date": "2026-06-03",
+      "is_current": true
+    }
+  ],
+  "improvements_this_run": [
+    {
+      "endpoint": "Bond by UUID",
+      "api_info": {
+        "api_name": "Obtener bono por UUID",
+        "service": "Bonds",
+        "protocol": "REST",
+        "description": "Devuelve un bono específico por su identificador UUID. Simple lookup por clave primaria.",
+        "complexity": "low"
+      },
+      "p95_current": 74,
+      "p95_previous": 206,
+      "delta_pct": -64.1
+    },
+    {
+      "endpoint": "All bonds - deault parameters",
+      "api_info": {
+        "api_name": "Obtener todos los bonos — parámetros por defecto",
+        "service": "Bonds",
+        "protocol": "REST",
+        "description": "Devuelve la lista completa de bonos sin filtros. La latencia depende del volumen total de bonos cargados en el sistema.",
+        "complexity": "medium"
+      },
+      "p95_current": 103,
+      "p95_previous": 224,
+      "delta_pct": -54
+    },
+    {
+      "endpoint": "Get bond groups by UUID",
+      "api_info": {
+        "api_name": "Grupo de bonos por UUID",
+        "service": "Bond Groups",
+        "protocol": "REST",
+        "description": "Devuelve un grupo de bonos específico por UUID.",
+        "complexity": "low"
+      },
+      "p95_current": 98,
+      "p95_previous": 211,
+      "delta_pct": -53.6
+    }
+  ],
+  "endpoint_profiles": {
+    "Get investment metrics by ID": {
+      "classification": "VARIABLE",
+      "total_runs": 76,
+      "mean_p95": 1501,
+      "min_p95": 292,
+      "max_p95": 4589,
+      "cv": 0.65,
+      "outlier_runs": 1
+    },
+    "Get investment exchange rate sensitivity by ID": {
+      "classification": "VARIABLE",
+      "total_runs": 76,
+      "mean_p95": 360,
+      "min_p95": 110,
+      "max_p95": 997,
+      "cv": 0.61,
+      "outlier_runs": 0
+    },
+    "Get all yield curves - validate each self link": {
+      "classification": "EPISÓDICO",
+      "total_runs": 76,
+      "mean_p95": 434,
+      "min_p95": 29,
+      "max_p95": 1648,
+      "cv": 1.02,
+      "outlier_runs": 5
+    },
+    "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law": {
+      "classification": "CONSISTENTE",
+      "total_runs": 76,
+      "mean_p95": 2932,
+      "min_p95": 1991,
+      "max_p95": 5697,
+      "cv": 0.21,
+      "outlier_runs": 0
+    },
+    "Appraise market value": {
+      "classification": "VARIABLE",
+      "total_runs": 76,
+      "mean_p95": 1609,
+      "min_p95": 674,
+      "max_p95": 3430,
+      "cv": 0.32,
+      "outlier_runs": 0
+    },
+    "Get parities": {
+      "classification": "VARIABLE",
+      "total_runs": 76,
+      "mean_p95": 1692,
+      "min_p95": 1222,
+      "max_p95": 3651,
+      "cv": 0.27,
+      "outlier_runs": 0
+    },
+    "Get irrs - one bond": {
+      "classification": "VARIABLE",
+      "total_runs": 76,
+      "mean_p95": 1675,
+      "min_p95": 1102,
+      "max_p95": 3169,
+      "cv": 0.25,
+      "outlier_runs": 0
+    }
+  }
+}
