@@ -1,0 +1,65 @@
+{
+  "escalar_prioritario": {
+    "titulo": "Curvas de rendimiento — Listar todas (resumen) — 17 reincidencias como outlier",
+    "detalle": "El endpoint 'Curvas de rendimiento — Listar todas (resumen)' ha sido registrado como outlier en 17 corridas distintas, lo que indica una inestabilidad estructural grave y persistente. Aunque no presenta una alerta roja en esta corrida, su reincidencia histórica es más crítica que una degradación puntual nueva. La corrida actual también muestra una alerta amarilla en 'Sensibilidad de TIR de inversión por ID', pero la prioridad de escalado es la inestabilidad estructural de las curvas de rendimiento."
+  },
+  "investigar": {
+    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 29.11 KB",
+    "detalle": "Se observa una correlación entre el tamaño del payload y la latencia, sugiriendo que el tiempo de respuesta incluye una parte significativa de transferencia de datos. Los endpoints 'Paridades de bono' (166.93 KB), 'Tasas Internas de Retorno (TIR/IRR) de un bono' (62.64 KB) y 'Post /bond-payment-forecast...' (31.48 KB) son los que retornan los payloads más grandes y son candidatos a revisión."
+  },
+  "optimizar": {
+    "titulo": "Optimizar Bond Screener — Filtro múltiple de bonos (impact score: 226.842)",
+    "detalle": "El endpoint 'Bond Screener — Filtro múltiple de bonos' es el de mayor impacto acumulado en la performance global, con un P95 de 2946ms y 77 ejecuciones. Una reducción del 20% en su P95 representaría 45.368 ms de latencia acumulada evitada por ciclo de vida del endpoint."
+  },
+  "bottleneck_narrative": "La corrida actual presenta 1 alerta amarilla, lo que es compatible con una regresión puntual o el inicio de una. La tendencia de las últimas corridas muestra una variación del 0.8%, lo cual no es suficiente para confirmar una degradación sostenida.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Inestabilidad estructural recurrente en Curvas de rendimiento",
+      "evidence": "El endpoint 'Curvas de rendimiento — Listar todas (resumen)' ha sido registrado como outlier en 17 corridas distintas.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Cuello de botella por tamaño de respuesta",
+      "evidence": "El endpoint 'Paridades de bono' retorna 166.93 KB con P95 de 1247ms, y la correlación payload-latencia es positiva.",
+      "priority": "media"
+    },
+    {
+      "hypothesis": "Variabilidad de performance dentro de parámetros normales",
+      "evidence": "El avg P95 actual es 385ms, por debajo del baseline de 539ms.",
+      "priority": "baja"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P1",
+      "accion": "Investigar inestabilidad estructural recurrente en Curvas de rendimiento",
+      "endpoint_target": "Get all yield curves - validate each self link",
+      "evidencia": "17 reincidencias como outlier"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Investigar inestabilidad estructural recurrente en Valores negociables",
+      "endpoint_target": "Get tradable securities using only mandatory filters",
+      "evidencia": "5 reincidencias como outlier"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Analizar regresión y recurrencia en Sensibilidad de TIR de inversión",
+      "endpoint_target": "Get investment irr sensitivity by ID",
+      "evidencia": "P95 +128.6% vs corrida anterior, +23.82% vs baseline global, 3 reincidencias"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Optimizar manejo de payloads grandes en APIs de valoración",
+      "endpoint_target": "—",
+      "evidencia": "Payloads pesados correlacionados con latencia (avg 29.11 KB)"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Optimizar Bond Screener — alto impacto acumulado",
+      "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "evidencia": "Impact score: 226.842"
+    }
+  ],
+  "version_narrative": "La versión V10.2.94 muestra una mejora general significativa, con el avg P95 reduciéndose de 510ms a 385ms, lo que representa una mejora del 24.5% respecto a la versión anterior V10.2.93. Las mejoras más destacadas se observan en 'Emisores de instrumentos — Obtener todos' (-98%) y 'Monedas — Listar todas' (-41.1%), indicando optimizaciones en la recuperación de datos maestros. Sin embargo, se identificaron degradaciones en 'Métricas de inversión por ID' (+213.7%) y 'Sensibilidad de TIR de inversión por ID' (+128.6%), siendo esta última la que presenta una alerta activa en la corrida actual."
+}
