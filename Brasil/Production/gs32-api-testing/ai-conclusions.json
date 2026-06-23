@@ -1,59 +1,65 @@
 {
   "escalar_prioritario": {
-    "titulo": "Cupones de bono por UUID — 18 reincidencias como outlier",
-    "detalle": "El endpoint 'Cupones de bono por UUID' ha sido registrado como outlier en 18 corridas distintas, lo que indica una inestabilidad estructural persistente más grave que una degradación puntual. Aunque no presenta una alerta roja en esta corrida, su reincidencia histórica lo convierte en una prioridad de escalado, a pesar de las 4 alertas amarillas activas en otros endpoints."
+    "titulo": "Flujos de caja de bono desde fecha — 19 reincidencias como outlier",
+    "detalle": "El endpoint 'Flujos de caja de bono desde fecha' ha sido registrado como outlier en 19 corridas históricas, indicando una inestabilidad estructural más grave que una degradación puntual, aunque hoy solo tenga una alerta amarilla. La corrida actual también presenta alertas en otros 2 endpoints, pero la recurrencia histórica de este servicio lo convierte en la prioridad de escalado."
   },
   "investigar": {
-    "titulo": "Múltiples endpoints en alerta amarilla — posible causa de infraestructura compartida",
-    "detalle": "La degradación simultánea de 4 endpoints de distintos módulos (Bond Payment Forecasts v2, Investments, Tradable Securities) sugiere una causa raíz en la infraestructura compartida, no en el código de aplicación. Esto requiere una investigación sistémica para identificar el factor común que afecta a estos servicios."
+    "titulo": "3 endpoints en alerta amarilla simultáneos — posible causa de infraestructura",
+    "detalle": "La degradación simultánea de 3 endpoints, incluyendo dos del módulo 'Bond Payment Forecasts v2' y uno de 'Tradable Securities', sugiere una causa raíz en la infraestructura compartida, no en el código de aplicación específico de un solo servicio."
   },
   "optimizar": {
-    "titulo": "Optimizar Métricas de inversión por ID — alto impacto acumulado",
-    "detalle": "El endpoint 'Métricas de inversión por ID' tiene el mayor impacto acumulado (Impact Score: 258.035), con un P95 típico de 2.867ms en 90 ejecuciones. Una reducción del 20% en su P95 representaría 51.607ms de latencia acumulada evitada por ciclo de vida del endpoint. Este endpoint también presenta una alerta amarilla activa, lo que lo convierte en una oportunidad doble de mejora urgente y alto impacto sistémico."
+    "titulo": "Métricas de inversión por ID — alto impacto acumulado: 249.284",
+    "detalle": "El endpoint 'Métricas de inversión por ID' tiene el mayor impacto acumulado en la performance global (249.284). Una reducción del 20% en su P95 representaría 49.857 ms de latencia acumulada evitada por ciclo de vida del endpoint."
   },
-  "bottleneck_narrative": "La corrida actual presenta 4 alertas amarillas, lo que es compatible con una regresión puntual o el inicio de una, sin una tendencia sostenida de degradación de tiempos. Aunque la tendencia general de las últimas corridas muestra una leve mejora en la latencia promedio, es crucial monitorear estos picos para evitar una degradación estructural.",
+  "bottleneck_narrative": "La corrida actual presenta 3 alertas amarillas, lo que es compatible con una regresión puntual o el inicio de una, aunque la tendencia general de las últimas corridas muestra una leve mejora del -13.1%.",
   "root_cause_hypotheses": [
     {
       "hypothesis": "Causa de infraestructura compartida",
-      "evidence": "4 endpoints de Bond Payment Forecasts v2, Investments y Tradable Securities en alerta amarilla simultáneamente.",
+      "evidence": "3 endpoints en alerta (2 de 'Bond Payment Forecasts v2', 1 de 'Tradable Securities')",
       "priority": "alta"
     },
     {
-      "hypothesis": "Inestabilidad estructural recurrente en Cupones de bono por UUID",
-      "evidence": "El endpoint 'Bond coupons by UUID' ha sido outlier en 18 corridas.",
+      "hypothesis": "Inestabilidad estructural recurrente en Flujos de caja de bono desde fecha",
+      "evidence": "19 reincidencias como outlier",
       "priority": "alta"
     },
     {
-      "hypothesis": "Regresión puntual en el módulo Bonds",
-      "evidence": "El endpoint 'Bond coupons by UUID' se degradó un 2873.6% entre versiones V10.3.69 y V10.3.72.",
+      "hypothesis": "Regresión puntual en Flujos de caja de bono desde fecha",
+      "evidence": "regression_pct: 1930.32%, baseline_global_delta_pct: 682.84%",
       "priority": "media"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Investigar inestabilidad estructural en Cupones de bono por UUID",
-      "endpoint_target": "Cupones de bono por UUID",
-      "evidencia": "18 reincidencias como outlier"
+      "accion": "Investigar inestabilidad estructural en Flujos de caja de bono desde fecha",
+      "endpoint_target": "Get one bond cashflow - only dateInterval from",
+      "evidencia": "19 reincidencias como outlier, +1930% regresión"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Analizar regresión crítica en Previsión de pagos de bono",
+      "endpoint_target": "Get payment forecasts",
+      "evidencia": "p95: 1775ms, +1590% regresión"
     },
     {
       "prioridad": "P2",
-      "accion": "Investigar causa raíz de degradación en múltiples servicios",
+      "accion": "Evaluar saturación de recursos de infraestructura compartida",
       "endpoint_target": "—",
-      "evidencia": "4 endpoints en alerta amarilla"
+      "evidencia": "3 endpoints en alerta de módulos distintos"
     },
     {
       "prioridad": "P2",
-      "accion": "Analizar regresión en Métricas de inversión por ID",
-      "endpoint_target": "Métricas de inversión por ID",
-      "evidencia": "P95 +157.55% vs versión anterior"
+      "accion": "Revisar degradación en valores negociables con filtros",
+      "endpoint_target": "Get tradable securities using optional filters - ticker & tradeDate",
+      "evidencia": "p95: 1079ms, +104% vs baseline global"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Bond Screener — alto impacto acumulado",
-      "endpoint_target": "Bond Screener — Filtro múltiple de bonos",
-      "evidencia": "Impact Score: 181.181"
+      "accion": "Optimizar Métricas de inversión por ID — alto impacto acumulado",
+      "endpoint_target": "Get investment metrics by ID",
+      "evidencia": "impact score: 249.284"
     }
   ],
-  "version_narrative": "La versión V10.3.72 muestra una degradación general del rendimiento, con un P95 promedio de 335ms, un aumento del 29.07% respecto a los 258ms de la versión V10.3.69. Se observan mejoras significativas en APIs como 'Resumen de pagos de bono por UUID' (-58.2%) y 'Crear inversión en bono' (-42.5%), indicando optimizaciones puntuales en los módulos de Bonos e Investments. Sin embargo, APIs clave como 'Cupones de bono por UUID' (+2873.6%) y 'Métricas de inversión por ID' (+149.3%) se han degradado drásticamente, siendo esta última una de las APIs con alerta activa en la corrida actual."
+  "version_narrative": "La actualización a la versión V10.3.72 ha resultado en una degradación general del avg P95, pasando de 258ms en la versión anterior (V10.3.69) a 384ms en la actual, lo que representa un incremento del 48.8%. Se observaron mejoras significativas en endpoints como 'Valor negociable por UUID' (-83.7%) y 'Mercados — Obtener todos' (-73.2%), indicando optimizaciones puntuales en esos servicios. Sin embargo, la versión también introdujo degradaciones severas en 'Flujos de caja de bono desde fecha' (+3396.7%) y 'Previsión de pagos de bono' (+1749%), ambos actualmente con alertas activas."
 }
