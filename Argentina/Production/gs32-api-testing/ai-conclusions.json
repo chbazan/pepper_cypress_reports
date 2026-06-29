@@ -1,0 +1,65 @@
+{
+  "escalar_prioritario": {
+    "titulo": "Curvas de rendimiento — Listar todas (resumen) — 17 reincidencias como outlier",
+    "detalle": "El endpoint 'Curvas de rendimiento — Listar todas (resumen)' ha sido registrado como outlier en 17 corridas distintas, lo que indica una inestabilidad estructural grave que persiste. Aunque no tenga una alerta roja hoy, esta reincidencia histórica es más crítica que una degradación puntual nueva. La corrida actual también presenta 5 alertas amarillas en otros endpoints, pero la prioridad de escalado es la inestabilidad estructural de este servicio."
+  },
+  "investigar": {
+    "titulo": "Múltiples endpoints en alerta amarilla — 5 servicios afectados",
+    "detalle": "La degradación simultánea de 5 endpoints de distintos módulos ('Bond Payment Forecasts v2', 'Mutual Fund Shares', 'Stocks') sugiere una posible causa raíz en la infraestructura compartida, no en el código de aplicación. Esto requiere una investigación profunda de componentes como la base de datos, la red o la capacidad de CPU."
+  },
+  "optimizar": {
+    "titulo": "Bond Screener — Filtro múltiple de bonos — Alto impacto acumulado",
+    "detalle": "El endpoint 'Bond Screener — Filtro múltiple de bonos' tiene el mayor impacto acumulado (impact score: 243.447), con un P95 típico de 2.968,86 ms en 82 ejecuciones. Una reducción del 20% en su P95 representaría 48.689,4 ms de latencia acumulada evitada por ciclo de vida del endpoint."
+  },
+  "bottleneck_narrative": "La corrida actual presenta 5 alertas amarillas, compatible con una regresión puntual o el inicio de una, sin una tendencia sostenida de degradación de tiempos. La tendencia general de las últimas corridas muestra una leve mejora del -16.1% en el avg P95.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Degradación por infraestructura compartida",
+      "evidence": "5 endpoints de los servicios 'Bond Payment Forecasts v2', 'Mutual Fund Shares' y 'Stocks' afectados simultáneamente.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Inestabilidad estructural en Curvas de Rendimiento",
+      "evidence": "El endpoint 'Curvas de rendimiento — Listar todas (resumen)' ha sido outlier en 17 corridas.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Cuello de botella por tamaño de respuesta",
+      "evidence": "El endpoint 'Paridades de bono' tiene un payload de 167.63 KB y un P95 de 1185 ms, con correlación de payload-latencia confirmada.",
+      "priority": "media"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P1",
+      "accion": "Investigar inestabilidad recurrente en Curvas de Rendimiento",
+      "endpoint_target": "Curvas de rendimiento — Listar todas (resumen)",
+      "evidencia": "17 reincidencias como outlier"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Analizar regresión en Tasas Internas de Retorno (TIR/IRR) de un bono",
+      "endpoint_target": "Tasas Internas de Retorno (TIR/IRR) de un bono",
+      "evidencia": "+158.28% vs baseline global, +227.17% vs corrida anterior"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Investigar causa raíz de degradación generalizada",
+      "endpoint_target": "—",
+      "evidencia": "5 endpoints de servicios distintos en alerta amarilla"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Optimizar manejo de payload en endpoints lentos",
+      "endpoint_target": "Get parities",
+      "evidencia": "Payload de 167.63 KB con P95 de 1185 ms"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Optimizar Bond Screener — alto impacto acumulado",
+      "endpoint_target": "Bond Screener — Filtro múltiple de bonos",
+      "evidencia": "Impact score: 243.447"
+    }
+  ],
+  "version_narrative": "La nueva versión V10.2.96 muestra una mejora global significativa en la performance, con el avg P95 reduciéndose de 574 ms a 405 ms, lo que representa una mejora del 29.44% respecto a la versión V10.2.94. Las mejoras más destacadas se concentran en el módulo 'Tradable Securities', con endpoints como 'Valores negociables — Filtrado por mercado' y 'Valores negociables — Búsqueda por texto libre' mejorando más del 90%. Sin embargo, se observa una degradación en 'Tasas Internas de Retorno (TIR/IRR) de un bono' (+128.2%), 'Acción por UUID' (+103.6%) y 'Fondo Común de Inversión por UUID' (+80%), todos ellos actualmente con alertas activas."
+}
