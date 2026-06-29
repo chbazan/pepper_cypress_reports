@@ -1,1 +1,65 @@
-{"_ai_unavailable":true}
+{
+  "escalar_prioritario": {
+    "titulo": "Flujos de caja de bono desde fecha — 22 reincidencias como outlier",
+    "detalle": "La API 'Flujos de caja de bono desde fecha' ha sido registrada como outlier en 22 corridas distintas, lo que indica una inestabilidad estructural grave que persiste más allá de las degradaciones puntuales. Aunque la corrida actual presenta 3 alertas amarillas en otros endpoints, la recurrencia histórica de este endpoint lo convierte en la prioridad de escalado por su impacto estructural."
+  },
+  "investigar": {
+    "titulo": "Múltiples endpoints en amarillo — posible causa de infraestructura compartida",
+    "detalle": "La degradación simultánea de 3 endpoints de módulos distintos (Investments, Mutual Fund Shares, Tradable Securities) sugiere una causa raíz en la infraestructura compartida, no en el código de aplicación específico de cada API."
+  },
+  "optimizar": {
+    "titulo": "Métricas de inversión por ID — alto impacto acumulado (202.548)",
+    "detalle": "Este endpoint es el de mayor impacto acumulado en el sistema. Una reducción del 20% en su P95 representaría 40.510 ms de latencia acumulada evitada por ciclo de vida, siendo una oportunidad doble de mejora al estar también en alerta amarilla."
+  },
+  "bottleneck_narrative": "La corrida actual presenta 3 alertas amarillas y 1 outlier, lo que es compatible con una regresión puntual o el inicio de una, dado que no se observa una tendencia sostenida de degradación de tiempos. La tendencia de las últimas corridas muestra una leve mejora del -20.6% en el avg P95.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Problema de infraestructura compartida",
+      "evidence": "3 endpoints de los servicios Investments, Mutual Fund Shares y Tradable Securities con alertas amarillas simultáneas.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Inestabilidad estructural en Flujos de caja de bono desde fecha",
+      "evidence": "Endpoint 'Flujos de caja de bono desde fecha' ha sido outlier en 22 corridas.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Regresión puntual en Get all mutual fund types",
+      "evidence": "Endpoint 'Get all mutual fund types' con regression_pct del 392.93% y baseline_global_delta_pct del 476.83%.",
+      "priority": "media"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P1",
+      "accion": "Investigar inestabilidad estructural en Flujos de caja de bono desde fecha",
+      "endpoint_target": "Get one bond cashflow - only dateInterval from",
+      "evidencia": "22 reincidencias como outlier"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Investigar inestabilidad estructural en Cupones de bono por UUID",
+      "endpoint_target": "Bond coupons by UUID",
+      "evidencia": "18 reincidencias como outlier"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Analizar regresión en Get all mutual fund types",
+      "endpoint_target": "Get all mutual fund types",
+      "evidencia": "+392.93% vs corrida anterior"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Investigar degradación en Métricas de inversión por ID",
+      "endpoint_target": "Get investment metrics by ID",
+      "evidencia": "+151.61% vs corrida anterior"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Investigar degradación en Valores negociables — Filtros opcionales (ticker & tradeDate)",
+      "endpoint_target": "Get tradable securities using optional filters - ticker & tradeDate",
+      "evidencia": "+148.49% vs baseline global"
+    }
+  ],
+  "version_narrative": "La nueva versión V10.3.72 muestra una degradación general del avg P95, pasando de 258ms en la V10.3.69 a 373ms, lo que representa un aumento del 44.57%. Se observan mejoras significativas en APIs como 'Crear inversión en bono' (-47%) y 'Resumen de pagos de bono por UUID' (-44.8%), indicando optimizaciones puntuales en los servicios de Investments y Bonds. Sin embargo, la versión también introdujo degradaciones severas en 'Get all mutual fund types' (+513.8%), 'Valores negociables — Filtros opcionales (ticker & tradeDate)' (+265.4%) y 'Métricas de inversión por ID' (+209.7%), las cuales coinciden con las alertas activas de la corrida actual."
+}
