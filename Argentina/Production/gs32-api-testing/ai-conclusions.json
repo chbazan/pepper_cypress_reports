@@ -1,65 +1,65 @@
 {
   "escalar_prioritario": {
     "titulo": "Curvas de rendimiento — Listar todas (resumen) — 17 reincidencias como outlier",
-    "detalle": "El endpoint 'Curvas de rendimiento — Listar todas (resumen)' ha sido registrado como outlier en 17 corridas distintas, lo que indica una inestabilidad estructural grave que persiste. Aunque no tenga una alerta roja hoy, esta reincidencia histórica es más crítica que una degradación puntual nueva. La corrida actual también presenta 5 alertas amarillas en otros endpoints, pero la prioridad de escalado es la inestabilidad estructural de este servicio."
+    "detalle": "Aunque no presenta alerta roja en esta corrida, el endpoint 'Curvas de rendimiento — Listar todas (resumen)' ha sido registrado como outlier en 17 corridas históricas, lo que indica una inestabilidad estructural grave que requiere atención prioritaria. La corrida actual también presenta 9 alertas amarillas en otros endpoints, pero la recurrencia histórica de este endpoint es un problema más crítico."
   },
   "investigar": {
-    "titulo": "Múltiples endpoints en alerta amarilla — 5 servicios afectados",
-    "detalle": "La degradación simultánea de 5 endpoints de distintos módulos ('Bond Payment Forecasts v2', 'Mutual Fund Shares', 'Stocks') sugiere una posible causa raíz en la infraestructura compartida, no en el código de aplicación. Esto requiere una investigación profunda de componentes como la base de datos, la red o la capacidad de CPU."
+    "titulo": "9 endpoints en amarillo simultáneos — posible causa de infraestructura",
+    "detalle": "La degradación simultánea de 9 endpoints de distintos módulos (Appraiser, Bonds, Bond Laws, Investments, Tradable Securities) sugiere una causa raíz en la infraestructura compartida, no en el código de aplicación. Esto podría indicar saturación de recursos o problemas en componentes comunes."
   },
   "optimizar": {
-    "titulo": "Bond Screener — Filtro múltiple de bonos — Alto impacto acumulado",
-    "detalle": "El endpoint 'Bond Screener — Filtro múltiple de bonos' tiene el mayor impacto acumulado (impact score: 243.447), con un P95 típico de 2.968,86 ms en 82 ejecuciones. Una reducción del 20% en su P95 representaría 48.689,4 ms de latencia acumulada evitada por ciclo de vida del endpoint."
+    "titulo": "Bond Screener — Filtro múltiple de bonos — alto impacto acumulado",
+    "detalle": "El endpoint 'Bond Screener — Filtro múltiple de bonos' tiene el mayor impacto acumulado (impact score: 247.154), con un P95 típico de 2977.76ms en 83 ejecuciones. Una reducción del 20% en su P95 representaría 49430.8 ms de latencia acumulada evitada por ciclo de vida del endpoint."
   },
-  "bottleneck_narrative": "La corrida actual presenta 5 alertas amarillas, compatible con una regresión puntual o el inicio de una, sin una tendencia sostenida de degradación de tiempos. La tendencia general de las últimas corridas muestra una leve mejora del -16.1% en el avg P95.",
+  "bottleneck_narrative": "La corrida actual presenta 9 alertas amarillas, lo que es compatible con una regresión puntual o el inicio de una, dado que la tendencia de latencia en las últimas corridas muestra un leve incremento del 4.1%. No se identificaron picos históricos anómalos recientes que influyeran en esta clasificación.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Degradación por infraestructura compartida",
-      "evidence": "5 endpoints de los servicios 'Bond Payment Forecasts v2', 'Mutual Fund Shares' y 'Stocks' afectados simultáneamente.",
+      "hypothesis": "Problema de infraestructura compartida",
+      "evidence": "9 endpoints de los servicios Appraiser, Bonds, Bond Laws, Investments y Tradable Securities presentan alertas amarillas simultáneamente.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Inestabilidad estructural en Curvas de Rendimiento",
-      "evidence": "El endpoint 'Curvas de rendimiento — Listar todas (resumen)' ha sido outlier en 17 corridas.",
+      "hypothesis": "Inestabilidad estructural recurrente en Curvas de rendimiento",
+      "evidence": "El endpoint 'Curvas de rendimiento — Listar todas (resumen)' ha sido outlier en 17 corridas históricas.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Cuello de botella por tamaño de respuesta",
-      "evidence": "El endpoint 'Paridades de bono' tiene un payload de 167.63 KB y un P95 de 1185 ms, con correlación de payload-latencia confirmada.",
+      "hypothesis": "Regresión puntual en Valores negociables — Filtrado por mercado",
+      "evidence": "El endpoint 'Valores negociables — Filtrado por mercado' muestra una regresión del 952.17% respecto a la corrida anterior y un 12.15% sobre su baseline global.",
       "priority": "media"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Investigar inestabilidad recurrente en Curvas de Rendimiento",
-      "endpoint_target": "Curvas de rendimiento — Listar todas (resumen)",
-      "evidencia": "17 reincidencias como outlier"
+      "accion": "Investigar inestabilidad estructural en Curvas de rendimiento — 17 reincidencias como outlier",
+      "endpoint_target": "Get all yield curves - validate each self link",
+      "evidencia": "17 ocurrencias como outlier"
     },
     {
       "prioridad": "P1",
-      "accion": "Analizar regresión en Tasas Internas de Retorno (TIR/IRR) de un bono",
-      "endpoint_target": "Tasas Internas de Retorno (TIR/IRR) de un bono",
-      "evidencia": "+158.28% vs baseline global, +227.17% vs corrida anterior"
+      "accion": "Analizar recurrencia de outlier en Valores negociables — Filtros obligatorios",
+      "endpoint_target": "Get tradable securities using only mandatory filters",
+      "evidencia": "5 ocurrencias como outlier"
     },
     {
       "prioridad": "P2",
-      "accion": "Investigar causa raíz de degradación generalizada",
-      "endpoint_target": "—",
-      "evidencia": "5 endpoints de servicios distintos en alerta amarilla"
+      "accion": "Analizar regresión en Valores negociables — Filtrado por mercado",
+      "endpoint_target": "Get tradable securities using optional filters - only market",
+      "evidencia": "+952.17% vs corrida anterior"
     },
     {
       "prioridad": "P2",
-      "accion": "Optimizar manejo de payload en endpoints lentos",
-      "endpoint_target": "Get parities",
-      "evidencia": "Payload de 167.63 KB con P95 de 1185 ms"
+      "accion": "Revisar degradación en Valoración de instrumento financiero",
+      "endpoint_target": "Appraise market value",
+      "evidencia": "+35.15% vs baseline global"
     },
     {
       "prioridad": "P3",
       "accion": "Optimizar Bond Screener — alto impacto acumulado",
-      "endpoint_target": "Bond Screener — Filtro múltiple de bonos",
-      "evidencia": "Impact score: 243.447"
+      "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "evidencia": "Impact score: 247.154"
     }
   ],
-  "version_narrative": "La nueva versión V10.2.96 muestra una mejora global significativa en la performance, con el avg P95 reduciéndose de 574 ms a 405 ms, lo que representa una mejora del 29.44% respecto a la versión V10.2.94. Las mejoras más destacadas se concentran en el módulo 'Tradable Securities', con endpoints como 'Valores negociables — Filtrado por mercado' y 'Valores negociables — Búsqueda por texto libre' mejorando más del 90%. Sin embargo, se observa una degradación en 'Tasas Internas de Retorno (TIR/IRR) de un bono' (+128.2%), 'Acción por UUID' (+103.6%) y 'Fondo Común de Inversión por UUID' (+80%), todos ellos actualmente con alertas activas."
+  "version_narrative": "La versión V10.2.96 muestra una mejora global del 15.2% en el P95 promedio (486ms) respecto a la versión anterior V10.2.94 (574ms). Las mejoras más significativas se observan en APIs de datos maestros como 'Grupos de bonos — Obtener todos' (-76.9%) y 'Mercados — Obtener todos' (-63.3%), lo que sugiere optimizaciones en la recuperación de datos de referencia. Sin embargo, se identificaron degradaciones en APIs de cálculo intensivo como 'Métricas de inversión por ID' (+40.2%) y 'Valoración de instrumento financiero' (+26.6%), las cuales además presentan alertas activas en esta corrida."
 }
