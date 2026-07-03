@@ -1,0 +1,65 @@
+{
+  "escalar_prioritario": {
+    "titulo": "Flujos de caja de bono desde fecha — 23 reincidencias como outlier",
+    "detalle": "El endpoint 'Flujos de caja de bono desde fecha' ha sido registrado como outlier en 23 corridas distintas, lo que indica una inestabilidad estructural más grave que una degradación puntual. Aunque la corrida actual presenta 16 alertas amarillas en otros endpoints, la recurrencia histórica de este servicio lo convierte en la prioridad de escalado."
+  },
+  "investigar": {
+    "titulo": "16 endpoints en amarillo simultáneos — posible causa de infraestructura",
+    "detalle": "La degradación simultánea de 16 endpoints de 10 módulos distintos (Bonds, Bond Payment Forecasts v2, Exchange Schemes, Investments, Instrument Issuers, Markets, Mutual Fund Shares, Stocks, Tradable Securities, Valuation Schemes) sugiere una causa raíz de infraestructura compartida, no de código de aplicación."
+  },
+  "optimizar": {
+    "titulo": "Métricas de inversión por ID — alto impacto acumulado",
+    "detalle": "El endpoint 'Métricas de inversión por ID' tiene el mayor impacto acumulado (Impact Score: 197.131) con un P95 de 2011.54ms. Una reducción del 20% en su P95 representaría 39.426 ms de latencia acumulada evitada por ciclo de vida del endpoint, siendo una oportunidad doble al estar también en alerta amarilla."
+  },
+  "bottleneck_narrative": "La corrida actual presenta 0 alertas rojas y 16 amarillas, lo que es compatible con una regresión puntual o el inicio de una, dado que no se observa una tendencia sostenida de degradación en las últimas corridas. Esta situación requiere monitoreo cercano para determinar si la degradación se estabiliza o evoluciona hacia un patrón de latencia sostenida.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Causa de infraestructura compartida",
+      "evidence": "16 endpoints de 10 servicios distintos con alertas amarillas",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Inestabilidad estructural recurrente en Flujos de caja de bono desde fecha",
+      "evidence": "Endpoint 'Flujos de caja de bono desde fecha' con 23 reincidencias como outlier",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Regresión puntual en el módulo Bond Payment Forecasts v2",
+      "evidence": "Endpoint 'Flujos de caja de bono desde fecha' con +1932.65% de regresión y +1405.64% vs baseline global",
+      "priority": "media"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P1",
+      "accion": "Investigar inestabilidad estructural y regresión en Flujos de caja de bono desde fecha",
+      "endpoint_target": "Get one bond cashflow - only dateInterval from",
+      "evidencia": "23 reincidencias como outlier, +1932.65% regresión"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Analizar inestabilidad recurrente en Métricas de valor negociable",
+      "endpoint_target": "Get tradable security metrics",
+      "evidencia": "14 reincidencias como outlier, +3380.14% vs baseline global"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Investigar causa raíz de infraestructura compartida",
+      "endpoint_target": "—",
+      "evidencia": "16 endpoints de 10 servicios distintos con alertas amarillas"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Analizar regresión en Valores negociables — Filtros obligatorios",
+      "endpoint_target": "Get tradable securities using only mandatory filters",
+      "evidencia": "+1125.9% regresión vs corrida anterior"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Optimizar Métricas de inversión por ID — alto impacto acumulado",
+      "endpoint_target": "Get investment metrics by ID",
+      "evidencia": "Impact Score: 197.131, P95 actual: 3949ms"
+    }
+  ],
+  "version_narrative": "La nueva versión V10.3.75 muestra una degradación global del P95 promedio, pasando de 557ms en la versión V10.3.72 a 933ms en la corrida actual, lo que representa un aumento del 67.5%. Las mejoras más significativas se observan en 'Esquema de valoración por UUID' (-63.2%) y 'Mercado por UUID' (-57.9%), indicando optimizaciones puntuales en la recuperación de datos maestros. Sin embargo, se registran degradaciones severas en 'Flujos de caja de bono desde fecha' (+1932.7%), 'Valores negociables — Filtros obligatorios' (+1125.9%) y 'Valores negociables — Filtrado por mercado' (+797.5%), todos ellos con alertas activas en la corrida actual."
+}
