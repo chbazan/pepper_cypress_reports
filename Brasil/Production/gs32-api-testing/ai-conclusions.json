@@ -1,65 +1,65 @@
 {
   "escalar_prioritario": {
-    "titulo": "Métricas de valor negociable — +1150.5% P95 vs baseline global",
-    "detalle": "El endpoint 'Métricas de valor negociable' presenta una degradación grave con un P95 actual de 4968ms, muy por encima de su baseline global de 397ms (+1150.5%) y de su baseline de versión (+119.34%). Su recurrencia como outlier en 17 corridas históricas subraya un problema estructural persistente."
+    "titulo": "Flujos de caja de bono desde fecha — 25 reincidencias como outlier",
+    "detalle": "El endpoint 'Flujos de caja de bono desde fecha' ha sido registrado como outlier en 25 corridas distintas, lo que indica una inestabilidad estructural grave que persiste más allá de las degradaciones puntuales. Aunque la corrida actual presenta alertas amarillas en otros endpoints, la recurrencia histórica de este servicio lo convierte en la prioridad de escalado."
   },
   "investigar": {
-    "titulo": "20 alertas activas en múltiples módulos — posible causa de infraestructura",
-    "detalle": "La presencia de 20 alertas activas (1 roja y 19 amarillas) en endpoints de servicios diversos como Bonds, Bond Payment Forecasts v2, Investments y Tradable Securities sugiere una causa raíz de infraestructura compartida. Esta simultaneidad indica un problema que trasciende el código de aplicación de un único módulo."
+    "titulo": "Tendencia de latencia al alza — avg P95 subió 21.90% en las últimas corridas",
+    "detalle": "El P95 promedio de las últimas corridas ha aumentado de 315ms a 384ms, lo que sugiere una degradación progresiva. Esta tendencia puede enmascarar futuras alertas al elevar el baseline histórico."
   },
   "optimizar": {
-    "titulo": "Métricas de inversión por ID — alto impacto acumulado (198.691)",
-    "detalle": "El endpoint 'Métricas de inversión por ID' tiene el mayor impacto acumulado (198.691), con un P95 típico de 1967.24ms en 101 ejecuciones. Una reducción del 20% en su P95 representaría 39738.2 ms de latencia acumulada evitada por ciclo de vida, siendo una oportunidad doble al estar también en alerta amarilla."
+    "titulo": "Métricas de inversión por ID — Alto impacto acumulado (202.531)",
+    "detalle": "El endpoint 'Métricas de inversión por ID' tiene el mayor impacto acumulado (202.531), con un P95 de 1985.6ms en 102 ejecuciones. Una reducción del 20% en su P95 representaría 40506.2ms de latencia acumulada evitada por ciclo de vida del endpoint."
   },
-  "bottleneck_narrative": "La corrida actual muestra una degradación de latencia sostenida, con 1 alerta roja y 19 amarillas, y un incremento del 41.7% en el P95 promedio de las últimas corridas, pasando de 600ms a 850ms. Esta subida gradual y consistente de la latencia es crítica, ya que el baseline histórico se ajusta con ella, haciendo que el sistema de alertas deje de detectar los valores degradados al considerarlos el nuevo 'normal'.",
+  "bottleneck_narrative": "La performance del sistema muestra una degradación sostenida, con un incremento del 21.9% en el P95 promedio de las últimas corridas, pasando de 315ms a 384ms de forma gradual y consistente. Esta tendencia al alza es preocupante porque, a medida que la latencia aumenta progresivamente, el baseline histórico se ajusta, lo que puede llevar a que el sistema de alertas deje de detectar degradaciones al comparar contra un promedio ya contaminado.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Degradación por infraestructura compartida",
-      "evidence": "20 endpoints de 10 servicios distintos (Bonds, Investments, Tradable Securities, etc.) presentan alertas activas simultáneamente.",
+      "hypothesis": "Inestabilidad estructural recurrente en Flujos de caja de bono desde fecha",
+      "evidence": "Endpoint 'Get one bond cashflow - only dateInterval from' con 25 ocurrencias como outlier.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Inestabilidad estructural en Flujos de caja de bono desde fecha",
-      "evidence": "El endpoint 'Flujos de caja de bono desde fecha' ha sido registrado como outlier en 25 corridas históricas, indicando un problema recurrente.",
-      "priority": "alta"
+      "hypothesis": "Cuello de botella por tamaño de respuesta",
+      "evidence": "Correlación positiva entre payload y latencia; 'Get irrs - one bond' con 13.08 KB y P95 de 497ms.",
+      "priority": "media"
     },
     {
-      "hypothesis": "Regresión puntual en Valores negociables — Filtrado por mercado",
-      "evidence": "El endpoint 'Valores negociables — Filtrado por mercado' muestra una regresión del 1594% vs la corrida anterior y un delta global del 46.77%.",
+      "hypothesis": "Degradación estructural acumulada",
+      "evidence": "Tendencia de latencia al alza del 21.9% en el P95 promedio de las últimas corridas.",
       "priority": "media"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Investigar degradación crítica en Métricas de valor negociable",
-      "endpoint_target": "Get tradable security metrics",
-      "evidencia": "P95 actual 4968ms, +1150.5% vs baseline global"
-    },
-    {
-      "prioridad": "P1",
-      "accion": "Estabilizar Flujos de caja de bono desde fecha — alta recurrencia de outliers",
+      "accion": "Investigar inestabilidad estructural en Flujos de caja de bono desde fecha",
       "endpoint_target": "Get one bond cashflow - only dateInterval from",
       "evidencia": "25 reincidencias como outlier"
     },
     {
       "prioridad": "P1",
-      "accion": "Revisar inestabilidad en Cupones de bono por UUID",
-      "endpoint_target": "Bond coupons by UUID",
-      "evidencia": "18 reincidencias como outlier"
+      "accion": "Analizar degradación crítica en Métricas de valor negociable",
+      "endpoint_target": "Get tradable security metrics",
+      "evidencia": "P95 5870ms, +1159.93% vs baseline global, 18 reincidencias"
     },
     {
-      "prioridad": "P1",
-      "accion": "Analizar recurrencia de picos en Previsión de pagos de bono",
-      "endpoint_target": "Get payment forecasts",
-      "evidencia": "10 reincidencias como outlier"
+      "prioridad": "P2",
+      "accion": "Revisar degradación en Get tradable securities using optional filters - ticker & tradeDate",
+      "endpoint_target": "Get tradable securities using optional filters - ticker & tradeDate",
+      "evidencia": "P95 1675ms, +148.42% vs baseline global"
     },
     {
-      "prioridad": "P1",
-      "accion": "Investigar inestabilidad en Sensibilidad de TIR de inversión por ID",
-      "endpoint_target": "Get investment irr sensitivity by ID",
-      "evidencia": "9 reincidencias como outlier"
+      "prioridad": "P2",
+      "accion": "Monitorear recurrencia de outlier en Resumen de pagos de bono por UUID",
+      "endpoint_target": "Bond payment summary by UUID",
+      "evidencia": "3 reincidencias como outlier"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Optimizar Métricas de inversión por ID — alto impacto acumulado",
+      "endpoint_target": "Get investment metrics by ID",
+      "evidencia": "Impact score 202.531"
     }
   ],
-  "version_narrative": "La versión V10.3.75 muestra una degradación general del P95 promedio, pasando de 557ms en la V10.3.72 a 850ms, lo que representa un aumento del 52.6%. No se observaron mejoras significativas en ningún endpoint. Sin embargo, se identificaron degradaciones severas en 'Flujos de caja de bono desde fecha' (+1176.4%), 'Valores negociables — Filtros obligatorios' (+1144.8%) y 'Valores negociables — Filtrado por mercado' (+958.8%), todos ellos actualmente con alertas activas."
+  "version_narrative": "La nueva versión V10.3.75 muestra una mejora global significativa en la performance, con el P95 promedio reduciéndose de 557ms en la V10.3.72 a 384ms, lo que representa una mejora del 31.05%. Las mejoras más destacadas se observan en 'Cupones de bono por UUID' (-97%), 'Valores negociables — Filtrado por tipo' (-88.5%) y 'Sensibilidad de TIR de inversión por ID' (-81.9%), indicando optimizaciones en varios módulos clave. Sin embargo, se identificaron degradaciones en 'Get tradable securities using optional filters - ticker & tradeDate' (+33.9%), el cual actualmente presenta una alerta amarilla activa."
 }
