@@ -1,65 +1,65 @@
 {
   "escalar_prioritario": {
     "titulo": "Curvas de rendimiento — Listar todas (resumen) — 18 reincidencias como outlier",
-    "detalle": "El endpoint 'Curvas de rendimiento — Listar todas (resumen)' ha sido registrado como outlier en 18 corridas distintas, lo que indica una inestabilidad estructural más grave que una degradación puntual, a pesar de no tener una alerta roja activa en esta corrida. Aunque la corrida actual presenta 3 alertas amarillas en otros endpoints, la recurrencia histórica de este endpoint lo convierte en la prioridad de escalado por su carácter sistémico."
+    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 18 registros históricos como outlier, indicando un problema persistente que trasciende la corrida actual. Aunque no posee alerta roja hoy, su reincidencia histórica es la prioridad de escalado frente a degradaciones puntuales de otros servicios."
   },
   "investigar": {
-    "titulo": "Múltiples endpoints en amarillo — posible causa de infraestructura compartida",
-    "detalle": "La degradación simultánea de 3 endpoints de módulos distintos (Bonds, Investments, Valuation Schemes) sugiere una causa raíz en la infraestructura compartida, no en el código de aplicación específico de cada API. Esto requiere una investigación a nivel de plataforma."
+    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 30.96 KB",
+    "detalle": "Se observa una correlación directa entre el tamaño de respuesta y la latencia, destacando Paridades de bono con 168.68 KB y 4980ms. El tiempo de transferencia y serialización está impactando significativamente en el P95 de los servicios más lentos de esta corrida."
   },
   "optimizar": {
-    "titulo": "Bond Screener — Filtro múltiple de bonos — alto impacto acumulado",
-    "detalle": "El endpoint 'Bond Screener — Filtro múltiple de bonos' tiene el mayor impacto acumulado (impact score: 263.136). Una reducción del 20% en su P95 representaría 52.627 ms de latencia acumulada evitada por ciclo de vida del endpoint, lo que lo convierte en un candidato clave para optimización preventiva."
+    "titulo": "Optimizar Bond Screener — Filtro múltiple de bonos — impact score: 266.450",
+    "detalle": "Este endpoint genera la mayor latencia acumulada del sistema con un impact score de 266.450 basado en 89 ejecuciones. Una reducción del 20% en su P95 representaría 53.290 ms de latencia acumulada evitada por ciclo de vida del servicio."
   },
-  "bottleneck_narrative": "La corrida actual presenta 3 alertas amarillas y 2 outliers, lo que es compatible con una regresión puntual o el inicio de una. A pesar de estas alertas, la tendencia general de las últimas corridas muestra una leve mejora del -26.2% en el P95 promedio, lo que sugiere que la degradación no es sostenida.",
+  "bottleneck_narrative": "La corrida actual presenta 2 alertas amarillas, lo cual es compatible con una regresión puntual dado que no se observa una tendencia sostenida de degradación en la ventana analizada. La tendencia de -5.1% no refleja una mejora real, sino que está influenciada por la estabilización tras picos previos, manteniendo niveles de latencia dentro de rangos operativos normales para la mayoría de los servicios.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Degradación por infraestructura compartida",
-      "evidence": "3 endpoints de los servicios Bonds, Investments y Valuation Schemes con alertas amarillas simultáneas.",
+      "hypothesis": "Inestabilidad estructural recurrente en Curvas de rendimiento",
+      "evidence": "El endpoint registra 18 ocurrencias como outlier en el historial de ejecuciones.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Inestabilidad estructural en Curvas de Rendimiento",
-      "evidence": "Endpoint 'Curvas de rendimiento — Listar todas (resumen)' con 18 reincidencias como outlier.",
-      "priority": "alta"
-    },
-    {
-      "hypothesis": "Regresión puntual en Esquemas de Valoración",
-      "evidence": "Endpoint 'Esquemas de valoración — Obtener todos' con regresión del 400% vs corrida anterior.",
+      "hypothesis": "Cuello de botella por serialización y tamaño de respuesta",
+      "evidence": "Paridades de bono registra el mayor payload (168.68 KB) y la mayor latencia (4980ms).",
       "priority": "media"
+    },
+    {
+      "hypothesis": "Variabilidad de performance por complejidad de cálculo",
+      "evidence": "Métricas de inversión por ID muestra un regression_pct de 50.59% con complejidad alta.",
+      "priority": "baja"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Investigar inestabilidad recurrente en Curvas de rendimiento",
+      "accion": "Estabilizar Curvas de rendimiento — Listar todas (resumen) — 18 reincidencias",
       "endpoint_target": "Get all yield curves - validate each self link",
-      "evidencia": "18 reincidencias como outlier"
+      "evidencia": "18 occurrences"
     },
     {
       "prioridad": "P1",
-      "accion": "Analizar degradación y recurrencia en Obtener todos los bonos",
-      "endpoint_target": "All bonds - deault parameters",
-      "evidencia": "6 reincidencias como outlier, +1457% vs baseline global"
+      "accion": "Analizar regresión en Paridades de bono — +201.53% vs baseline global",
+      "endpoint_target": "Get parities",
+      "evidencia": "4980 ms"
     },
     {
       "prioridad": "P2",
-      "accion": "Investigar regresión en Esquemas de valoración — Obtener todos",
-      "endpoint_target": "Get all valuation schemes",
-      "evidencia": "+400% vs corrida anterior"
+      "accion": "Revisar serialización en Paridades de bono — payload crítico de 168.68 KB",
+      "endpoint_target": "Get parities",
+      "evidencia": "168.68 KB"
     },
     {
       "prioridad": "P2",
-      "accion": "Analizar regresión en Crear inversión en bono",
-      "endpoint_target": "Create an investment",
-      "evidencia": "+312% vs corrida anterior"
+      "accion": "Monitorear Métricas de inversión por ID — regresión del 50.59%",
+      "endpoint_target": "Get investment metrics by ID",
+      "evidencia": "50.59%"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Bond Screener — alto impacto acumulado",
+      "accion": "Optimizar Bond Screener — alto impacto acumulado en performance",
       "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
-      "evidencia": "Impact score: 263.136"
+      "evidencia": "266.450 impact score"
     }
   ],
-  "version_narrative": "La versión V10.2.96 muestra una mejora global del -8.9% en el P95 promedio (523ms) en comparación con la versión anterior V10.2.94 (574ms). Las mejoras más significativas se observan en 'Grupos de bonos — Obtener todos' (-69.5%) y 'Cupones de bono por UUID' (-56.1%), indicando optimizaciones en la gestión de datos maestros de bonos. Sin embargo, se registraron degradaciones notables en 'Obtener todos los bonos — parámetros por defecto' (+1231.8%), 'Crear inversión en bono' (+215.3%) y 'Esquemas de valoración — Obtener todos' (+47.9%), todos ellos con alertas activas en la corrida actual."
+  "version_narrative": "La versión V10.2.96 muestra una mejora global del 5% en el avg_p95 respecto a la V10.2.94 (545ms vs 574ms). Se destacan optimizaciones significativas en Grupos de bonos — Obtener todos (-61.3%) y Sensibilidad de TIR de inversión por ID (-60.8%), sugiriendo mejoras en el módulo de Investments. Sin embargo, Paridades de bono sufrió una degradación crítica del 274.7%, coincidiendo con la alerta amarilla y el estado de outlier en la corrida actual."
 }
