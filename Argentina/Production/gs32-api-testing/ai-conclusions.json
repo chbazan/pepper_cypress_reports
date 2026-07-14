@@ -1,0 +1,65 @@
+{
+  "escalar_prioritario": {
+    "titulo": "Curvas de rendimiento — Listar todas (resumen) — 18 reincidencias como outlier",
+    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 18 registros como outlier en el historial, lo que indica un problema persistente más allá de las alertas puntuales de esta corrida. La reincidencia histórica es una señal de degradación más grave que las alertas moderadas detectadas hoy en otros servicios, sugiriendo una falla de fondo que requiere atención inmediata."
+  },
+  "investigar": {
+    "titulo": "Tendencia de latencia al alza — +37.6% en las últimas 10 corridas",
+    "detalle": "La latencia promedio P95 se incrementó de forma sostenida de 434ms a 597ms, evidenciando una degradación progresiva que afectará la sensibilidad del monitoreo. Este comportamiento provocará que el baseline global absorba la latencia excedente, dificultando la detección de anomalías futuras al normalizar tiempos de respuesta fuera de los parámetros óptimos."
+  },
+  "optimizar": {
+    "titulo": "Bond Screener — Filtro múltiple de bonos — impact score: 269.242",
+    "detalle": "Este endpoint registra el mayor impacto sistémico con un score de 269.242 y un P95 limpio de 2.991,58ms sobre 90 ejecuciones. Una reducción del 20% en su latencia representaría 53.848,4ms de tiempo de espera acumulado evitado en el ciclo de vida del servicio."
+  },
+  "bottleneck_narrative": "Se observa una tendencia sostenida al alza en la latencia global, con un incremento del 37.6% donde el avg_p95 pasó de 434ms a 597ms de forma gradual y consistente. Existe el riesgo de que el sistema de alertas deje de detectar anomalías, ya que cuando la latencia sube poco a poco, el baseline histórico sube con ella y los valores degradados se convierten en el nuevo normal al compararse contra un promedio ya contaminado.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Inestabilidad estructural recurrente en Curvas de rendimiento",
+      "evidence": "Endpoint registrado como outlier en 18 corridas distintas del historial",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Regresión puntual en el módulo de Grupos de bonos",
+      "evidence": "regression_pct de 569.26% y baseline_global_delta_pct de 575.77% en esta corrida",
+      "priority": "media"
+    },
+    {
+      "hypothesis": "Cuello de botella por tamaño de respuesta en serialización",
+      "evidence": "Get parities con 168.79 KB de payload y payload_correlated marcado como true",
+      "priority": "media"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P1",
+      "accion": "Estabilizar Curvas de rendimiento — Listar todas (resumen)",
+      "endpoint_target": "Get all yield curves - validate each self link",
+      "evidencia": "18 reincidencias como outlier"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Investigar regresión crítica en Grupos de bonos — Obtener todos",
+      "endpoint_target": "Get all bond groups",
+      "evidencia": "+569.26% de regresión"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Analizar degradación en proyecciones de cashflow de bonos",
+      "endpoint_target": "Post /bond-payment-forecast - bond-cashflow - only dateInterval from - Bond Fixed rate, no adjustment, European-30-360",
+      "evidencia": "12434ms P95"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Optimizar serialización de datos por correlación de payload",
+      "endpoint_target": "—",
+      "evidencia": "29.31 KB avg payload"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Optimizar Bond Screener — alto impacto acumulado en latencia",
+      "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "evidencia": "impact score 269.242"
+    }
+  ],
+  "version_narrative": "La latencia global aumentó de 574ms a 597ms (+4%) entre las versiones V10.2.94 y V10.2.96. Se detectaron mejoras drásticas de hasta el 94% en el servicio de Tradable Securities, específicamente en los filtros obligatorios, por mercado y búsqueda libre. No obstante, estas optimizaciones fueron contrarrestadas por degradaciones en Grupos de bonos y proyecciones de cashflow, las cuales coinciden con las alertas amarillas activas en la corrida actual."
+}
