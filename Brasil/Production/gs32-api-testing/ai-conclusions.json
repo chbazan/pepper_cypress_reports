@@ -1,0 +1,59 @@
+{
+  "escalar_prioritario": {
+    "titulo": "Previsión de pagos de bono — +672% vs baseline global",
+    "detalle": "El endpoint registra un P95 de 1436ms frente a un baseline de 186ms, con una desviación del 456% respecto a la versión actual. Acumula 11 reincidencias como outlier, confirmando una degradación estructural en el servicio Bond Payment Forecasts v2."
+  },
+  "investigar": {
+    "titulo": "5 alertas amarillas simultáneas — posible causa de infraestructura",
+    "detalle": "La degradación concurrente en módulos de Investments, Tradable Securities e Instrument Issuers sugiere una saturación de recursos compartidos. La simultaneidad de alertas en servicios con lógicas funcionales distintas apunta a un cuello de botella sistémico."
+  },
+  "optimizar": {
+    "titulo": "Métricas de inversión por ID — mayor impacto acumulado (score: 235.319)",
+    "detalle": "Este endpoint genera la mayor latencia total del sistema con un P95 típico de 2178ms y 108 ejecuciones registradas. Una reducción del 20% en su P95 representaría 47.063ms de latencia acumulada evitada por ciclo de vida."
+  },
+  "bottleneck_narrative": "Se observa una tendencia sostenida al alza del 46.7% en las últimas corridas, donde el promedio P95 escaló de 456ms a 669ms de forma gradual. Este patrón es crítico ya que, al subir la latencia poco a poco, el baseline histórico sube con ella y el sistema de alertas deja de detectar valores degradados al normalizarlos como el nuevo estándar.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Saturación de infraestructura compartida",
+      "evidence": "6 alertas activas simultáneas en módulos de Investments, Bonds, Issuers y Tradable Securities",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Inestabilidad estructural recurrente en flujos de caja",
+      "evidence": "28 reincidencias como outlier en el endpoint Flujos de caja de bono desde fecha",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Cuello de botella por tamaño de respuesta",
+      "evidence": "Correlación positiva entre payload y latencia con picos de 10.6 KB en JRPC",
+      "priority": "media"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P1",
+      "accion": "Analizar regresión en Previsión de pagos de bono — +672% vs baseline global",
+      "endpoint_target": "Get payment forecasts",
+      "evidencia": "1436ms"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Estabilizar Flujos de caja de bono desde fecha — 28 reincidencias como outlier",
+      "endpoint_target": "Get one bond cashflow - only dateInterval from",
+      "evidencia": "28 occurrences"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Investigar salto de latencia en Métricas de valor negociable — +431% de regresión",
+      "endpoint_target": "Get tradable security metrics",
+      "evidencia": "431.94%"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Optimizar Métricas de inversión por ID — alto peso acumulado en performance",
+      "endpoint_target": "Get investment metrics by ID",
+      "evidencia": "235319 impact score"
+    }
+  ],
+  "version_narrative": "La versión V10.3.75 presenta una degradación global del 20% respecto a la V10.3.72, subiendo el promedio P95 de 557ms a 669ms. Se observan mejoras significativas en Métricas de valor negociable (-86%) y paginación de bonos, pero estas son opacadas por regresiones severas en el servicio Bond Payment Forecasts v2. Los endpoints de flujos de caja y previsión de pagos muestran alzas superiores al 600%, coincidiendo con las alertas críticas de la corrida actual."
+}
