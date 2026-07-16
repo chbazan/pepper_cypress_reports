@@ -1,0 +1,65 @@
+{
+  "escalar_prioritario": {
+    "titulo": "Curvas de rendimiento — Listar todas (resumen) — 18 reincidencias como outlier",
+    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 18 registros históricos como outlier, lo que indica un problema persistente más allá de la corrida actual. Aunque no presenta alerta roja hoy, la reincidencia histórica es prioritaria sobre las degradaciones puntuales de otros servicios por su carácter estructural."
+  },
+  "investigar": {
+    "titulo": "3 endpoints en amarillo simultáneos — posible causa de infra",
+    "detalle": "La degradación simultánea en los servicios de Bond Payment Forecasts, Bond Screener y Bond Groups sugiere una causa de infraestructura compartida. La simultaneidad de alertas en módulos funcionalmente distintos es evidencia de saturación de recursos o latencia en capas comunes del sistema."
+  },
+  "optimizar": {
+    "titulo": "Optimizar Bond Screener — alto impacto acumulado (impact score: 273.108)",
+    "detalle": "Con un impact_score de 273.108 y 92 ejecuciones, una reducción del 20% en su P95 representaría 54.621 ms de latencia acumulada evitada. Este endpoint también registra una alerta amarilla (+41.45% vs baseline), lo que lo convierte en un candidato crítico para optimización sistémica."
+  },
+  "bottleneck_narrative": "La corrida actual presenta 0 alertas rojas y 3 amarillas, lo cual es compatible con una regresión puntual dado que no se observa una tendencia de degradación sostenida. La tendencia de la ventana es estable (-0.6%), indicando que los niveles actuales son normales y el valor negativo se debe a la comparación con picos previos en el historial.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Causa de infraestructura compartida (DB o CPU saturada)",
+      "evidence": "3 endpoints de servicios distintos (Bond Payment Forecasts, Bond Screener, Bond Groups) degradados simultáneamente.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Inestabilidad estructural recurrente en Curvas de rendimiento",
+      "evidence": "El endpoint Curvas de rendimiento — Listar todas (resumen) registra 18 apariciones como outlier en el historial.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Cuello de botella por tamaño de respuesta",
+      "evidence": "El endpoint Get parities con 169.03 KB de payload muestra correlación directa entre volumen de datos y latencia.",
+      "priority": "media"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P1",
+      "accion": "Estabilizar Curvas de rendimiento — Listar todas (resumen) por reincidencia",
+      "endpoint_target": "Get all yield curves - validate each self link",
+      "evidencia": "18 reincidencias como outlier"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Investigar inestabilidad en Obtener todos los bonos — parámetros por defecto",
+      "endpoint_target": "All bonds - deault parameters",
+      "evidencia": "6 reincidencias como outlier"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Analizar regresión en Grupos de bonos — Obtener todos — +88% vs baseline",
+      "endpoint_target": "Get all bond groups",
+      "evidencia": "506 ms (+88.86% vs baseline global)"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Revisar degradación en Bond Screener — Filtro múltiple de bonos",
+      "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "evidencia": "4199 ms (+41.45% vs baseline global)"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Optimizar Bond Screener — alto impacto acumulado en performance",
+      "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "evidencia": "impact score: 273.108"
+    }
+  ],
+  "version_narrative": "La versión V10.2.96 muestra una mejora global del 15.8% en la latencia promedio respecto a la V10.2.94 (483ms vs 574ms). Las mejoras se concentran en el módulo de Valores negociables, con reducciones de hasta el 90% en búsquedas y filtrados por mercado. Sin embargo, se observa una degradación en Bond Screener — Filtro múltiple de bonos (+29%), que coincide con las alertas amarillas activas en la corrida actual."
+}
