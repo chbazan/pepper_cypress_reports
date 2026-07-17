@@ -1,59 +1,53 @@
 {
   "escalar_prioritario": {
-    "titulo": "Previsión de pagos de bono — +672% vs baseline global",
-    "detalle": "El endpoint registra un P95 de 1436ms frente a un baseline de 186ms, con una desviación del 456% respecto a la versión actual. Acumula 11 reincidencias como outlier, confirmando una degradación estructural en el servicio Bond Payment Forecasts v2."
+    "titulo": "Flujos de caja de bono desde fecha — 28 reincidencias como outlier",
+    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 28 registros históricos como outlier, indicando un problema persistente que trasciende la corrida actual. Aunque hoy se encuentra en nivel amarillo, su reincidencia histórica es la señal de degradación más grave del sistema."
   },
   "investigar": {
-    "titulo": "5 alertas amarillas simultáneas — posible causa de infraestructura",
-    "detalle": "La degradación concurrente en módulos de Investments, Tradable Securities e Instrument Issuers sugiere una saturación de recursos compartidos. La simultaneidad de alertas en servicios con lógicas funcionales distintas apunta a un cuello de botella sistémico."
+    "titulo": "Outlier detectado en Previsión de pagos de bono — ratio 10.37x",
+    "detalle": "Se detectó un outlier con un ratio de 10.37 respecto a su baseline global de 186ms. Al no haber una tendencia de degradación sostenida en el avg_p95 general, este pico requiere un análisis aislado para descartar regresiones en el servicio Bond Payment Forecasts v2."
   },
   "optimizar": {
-    "titulo": "Métricas de inversión por ID — mayor impacto acumulado (score: 235.319)",
-    "detalle": "Este endpoint genera la mayor latencia total del sistema con un P95 típico de 2178ms y 108 ejecuciones registradas. Una reducción del 20% en su P95 representaría 47.063ms de latencia acumulada evitada por ciclo de vida."
+    "titulo": "Optimizar Métricas de inversión por ID — Impact Score: 239.508",
+    "detalle": "Este endpoint genera el mayor peso acumulado en la performance global con un impact_score de 239.508 y 109 ejecuciones. Una reducción del 20% en su P95 representaría 47.901 ms de latencia acumulada evitada por ciclo de vida del endpoint."
   },
-  "bottleneck_narrative": "Se observa una tendencia sostenida al alza del 46.7% en las últimas corridas, donde el promedio P95 escaló de 456ms a 669ms de forma gradual. Este patrón es crítico ya que, al subir la latencia poco a poco, el baseline histórico sube con ella y el sistema de alertas deja de detectar valores degradados al normalizarlos como el nuevo estándar.",
+  "bottleneck_narrative": "La corrida actual presenta 2 alertas amarillas y un outlier, lo cual es compatible con una regresión puntual dado que la tendencia general de la ventana no muestra una degradación sostenida. La tendencia aparece negativa (-35.3%) porque el punto de comparación de la ventana incluye picos aislados de corridas anteriores que inflaron artificialmente el valor de inicio, por lo que los niveles actuales representan una normalización.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Saturación de infraestructura compartida",
-      "evidence": "6 alertas activas simultáneas en módulos de Investments, Bonds, Issuers y Tradable Securities",
-      "priority": "alta"
-    },
-    {
       "hypothesis": "Inestabilidad estructural recurrente en flujos de caja",
-      "evidence": "28 reincidencias como outlier en el endpoint Flujos de caja de bono desde fecha",
+      "evidence": "Endpoint Flujos de caja de bono desde fecha con 28 ocurrencias históricas como outlier y P95 de 3.508ms.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Cuello de botella por tamaño de respuesta",
-      "evidence": "Correlación positiva entre payload y latencia con picos de 10.6 KB en JRPC",
+      "hypothesis": "Regresión puntual en módulo Bond Payment Forecasts v2",
+      "evidence": "Endpoint Previsión de pagos de bono con desviación del 937.45% vs baseline global y status_level 1.",
       "priority": "media"
+    },
+    {
+      "hypothesis": "Variabilidad de performance dentro de parámetros normales",
+      "evidence": "El avg_p95 actual (451ms) se mantiene por debajo del baseline de la corrida (494ms).",
+      "priority": "baja"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Analizar regresión en Previsión de pagos de bono — +672% vs baseline global",
-      "endpoint_target": "Get payment forecasts",
-      "evidencia": "1436ms"
-    },
-    {
-      "prioridad": "P1",
-      "accion": "Estabilizar Flujos de caja de bono desde fecha — 28 reincidencias como outlier",
+      "accion": "Analizar inestabilidad en Flujos de caja de bono desde fecha — 28 reincidencias",
       "endpoint_target": "Get one bond cashflow - only dateInterval from",
       "evidencia": "28 occurrences"
     },
     {
       "prioridad": "P2",
-      "accion": "Investigar salto de latencia en Métricas de valor negociable — +431% de regresión",
-      "endpoint_target": "Get tradable security metrics",
-      "evidencia": "431.94%"
+      "accion": "Investigar regresión en Previsión de pagos de bono — +937% vs baseline global",
+      "endpoint_target": "Get payment forecasts",
+      "evidencia": "1928 ms"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Métricas de inversión por ID — alto peso acumulado en performance",
+      "accion": "Optimizar Métricas de inversión por ID — alto impacto acumulado",
       "endpoint_target": "Get investment metrics by ID",
-      "evidencia": "235319 impact score"
+      "evidencia": "239508 impact score"
     }
   ],
-  "version_narrative": "La versión V10.3.75 presenta una degradación global del 20% respecto a la V10.3.72, subiendo el promedio P95 de 557ms a 669ms. Se observan mejoras significativas en Métricas de valor negociable (-86%) y paginación de bonos, pero estas son opacadas por regresiones severas en el servicio Bond Payment Forecasts v2. Los endpoints de flujos de caja y previsión de pagos muestran alzas superiores al 600%, coincidiendo con las alertas críticas de la corrida actual."
+  "version_narrative": "La versión V10.3.75 muestra una mejora global del 19% en el avg_p95 (451ms) respecto a los 557ms de la versión V10.3.72. Se observan optimizaciones significativas en Métricas de valor negociable (-95.7%) y Sensibilidad de TIR de inversión por ID (-80.8%), concentrando las mejoras en los módulos de Tradable Securities e Investments. Sin embargo, se detectó una degradación crítica en el servicio Bond Payment Forecasts v2, específicamente en Flujos de caja de bono desde fecha (+922.7%), que coincide con las alertas amarillas actuales."
 }
