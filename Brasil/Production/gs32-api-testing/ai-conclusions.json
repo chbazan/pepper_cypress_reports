@@ -1,65 +1,59 @@
 {
   "escalar_prioritario": {
     "titulo": "Flujos de caja de bono desde fecha — 30 reincidencias como outlier",
-    "detalle": "Se identifica una inestabilidad estructural crítica con 30 registros históricos como outlier, indicando un problema persistente que trasciende la degradación puntual de esta corrida. Aunque no presenta alerta roja hoy, su reincidencia histórica es prioritaria frente a las 6 alertas amarillas activas en otros servicios."
+    "detalle": "Se detecta una inestabilidad estructural crítica con 30 registros históricos como outlier, indicando un problema persistente más allá de la corrida actual. Aunque existen otros endpoints con alertas activas en este run, la reincidencia histórica de este servicio es la prioridad de escalado por su carácter estructural."
   },
   "investigar": {
-    "titulo": "7 endpoints con degradación simultánea — posible causa de infra",
-    "detalle": "La degradación concurrente en módulos de Bond Payment Forecasts, Investments, Mutual Fund Shares, Stocks, Tradable Securities y Valuation Schemes sugiere una causa de infraestructura compartida. La simultaneidad en 6 servicios distintos apunta a saturación en la base de datos o red interna más que a lógica de aplicación."
+    "titulo": "3 endpoints en amarillo simultáneos — posible causa de infra",
+    "detalle": "La degradación simultánea de 3 endpoints pertenecientes a los servicios Bond Payment Forecasts v2 e Investments sugiere una causa de infraestructura compartida. Se debe verificar la saturación de recursos o latencia en la base de datos que afecta a múltiples módulos en esta corrida."
   },
   "optimizar": {
-    "titulo": "Optimizar Métricas de inversión por ID — impacto sistémico de 251.617ms",
-    "detalle": "Este endpoint posee el mayor peso acumulado con un impact score de 251.617 y 113 ejecuciones históricas. Una reducción del 20% en su P95 representaría 50.323 ms de latencia acumulada evitada por ciclo de vida del sistema."
+    "titulo": "Métricas de inversión por ID — optimizar impacto sistémico",
+    "detalle": "Este endpoint presenta el mayor peso acumulado con un impact score de 250.777 y 114 ejecuciones históricas. Una reducción del 20% en su P95 representaría 50.155,4 ms de latencia acumulada evitada, destacando además por tener una alerta amarilla activa en la corrida actual."
   },
-  "bottleneck_narrative": "Se observa una tendencia sostenida al alza del 16.6%, con la latencia promedio subiendo de 577ms a 673ms de forma consistente en las últimas corridas. Este patrón es riesgoso ya que, al subir gradualmente, los valores degradados se convierten en el nuevo normal y el sistema de alertas deja de detectarlos al compararlos contra un promedio ya contaminado.",
+  "bottleneck_narrative": "La corrida actual presenta 3 alertas amarillas y 1 outlier, lo cual es compatible con una regresión puntual dado que no se observa una tendencia de degradación sostenida. La tendencia del -26.5% aparece como una mejora artificial debido a que el punto de comparación inicial de la ventana incluye picos aislados de corridas anteriores, mientras que los niveles actuales se mantienen en rangos operativos normales.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Saturación de recursos de infraestructura compartida",
-      "evidence": "7 endpoints de 6 servicios distintos (Investments, Stocks, etc.) degradados simultáneamente",
+      "hypothesis": "Causa de infraestructura compartida",
+      "evidence": "3 endpoints degradados simultáneamente en los servicios Bond Payment Forecasts v2 e Investments.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Inestabilidad estructural recurrente en proyección de flujos",
-      "evidence": "Endpoint 'Flujos de caja de bono desde fecha' registrado como outlier en 30 corridas distintas",
+      "hypothesis": "Inestabilidad estructural recurrente",
+      "evidence": "Endpoint Flujos de caja de bono desde fecha registrado como outlier en 30 corridas distintas.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Degradación estructural acumulada",
-      "evidence": "Tendencia ascendente sostenida del 16.6% en el avg_p95 de las últimas 10 corridas",
+      "hypothesis": "Regresión puntual en módulo de previsión de pagos",
+      "evidence": "Previsión de pagos de bono con regression_pct de 473.91% y baseline_global_delta_pct de 832.2%.",
       "priority": "media"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Sanear inestabilidad estructural en Flujos de caja de bono desde fecha",
+      "accion": "Estabilizar Flujos de caja de bono desde fecha — 30 reincidencias históricas",
       "endpoint_target": "Get one bond cashflow - only dateInterval from",
-      "evidencia": "30 reincidencias como outlier y +287.65% vs baseline global"
-    },
-    {
-      "prioridad": "P1",
-      "accion": "Corregir degradación recurrente en Sensibilidad de TIR de inversión por ID",
-      "endpoint_target": "Get investment irr sensitivity by ID",
-      "evidencia": "14 reincidencias como outlier y +161.89% vs baseline global"
+      "evidencia": "30 occurrences"
     },
     {
       "prioridad": "P2",
-      "accion": "Auditar performance de base de datos y red ante degradación multiservicio",
-      "endpoint_target": "—",
-      "evidencia": "7 alertas amarillas activas en módulos heterogéneos"
+      "accion": "Analizar regresión en Previsión de pagos de bono — +832% vs baseline global",
+      "endpoint_target": "Get payment forecasts",
+      "evidencia": "1848 ms"
     },
     {
-      "prioridad": "P3",
-      "accion": "Optimizar Métricas de inversión por ID — alto impacto acumulado",
+      "prioridad": "P2",
+      "accion": "Revisar Métricas de inversión por ID — degradación en módulo Investments",
       "endpoint_target": "Get investment metrics by ID",
-      "evidencia": "Impact score: 251.617"
+      "evidencia": "5196 ms"
     },
     {
       "prioridad": "P3",
-      "accion": "Estabilizar baseline global para evitar enmascaramiento de alertas",
-      "endpoint_target": "—",
-      "evidencia": "Tendencia de degradación sostenida del 16.6%"
+      "accion": "Optimizar Paridades de bono — alto impacto acumulado",
+      "endpoint_target": "Get parities",
+      "evidencia": "825 ms"
     }
   ],
-  "version_narrative": "La latencia promedio global aumentó un 20.8%, pasando de 557ms en la versión V10.3.72 a 673ms en la V10.3.75. Se destaca una mejora significativa del 91.6% en Métricas de valor negociable, logrando estabilizar un servicio históricamente inestable. Sin embargo, esta versión introdujo regresiones críticas en Flujos de caja de bono desde fecha (+2088.3%) y Valores negociables — Filtros obligatorios (+1072.4%), que explican las alertas actuales."
+  "version_narrative": "La versión V10.3.75 muestra una leve mejora global del 5% en la latencia promedio respecto a la V10.3.72 (529ms vs 557ms). Se destacan optimizaciones significativas en Métricas de valor negociable y Cupones de bono por UUID con reducciones de latencia superiores al 90%. Sin embargo, se observa una degradación crítica en Valores negociables — Filtros obligatorios y Previsión de pagos de bono, coincidiendo esta última con las alertas activas de la corrida actual."
 }
