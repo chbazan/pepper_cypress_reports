@@ -1,31 +1,31 @@
 {
   "escalar_prioritario": {
     "titulo": "Curvas de rendimiento — Listar todas (resumen) — 18 reincidencias como outlier",
-    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 18 registros históricos como outlier, lo cual indica un problema persistente más grave que una degradación puntual. Aunque la corrida actual registra una alerta amarilla en el cálculo de TIR, la reincidencia histórica en el listado de curvas demanda prioridad por su carácter estructural."
+    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 18 registros históricos como outlier, indicando un problema persistente que trasciende la corrida actual. Aunque no posee una alerta roja hoy, su reincidencia histórica es la señal de inestabilidad más grave del sistema y demanda prioridad sobre las degradaciones puntuales."
   },
   "investigar": {
-    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 29.48 KB",
-    "detalle": "Se observa una correlación directa entre el tamaño de la respuesta y la latencia, afectando principalmente a Paridades de bono (169.61 KB) y Tasas Internas de Retorno (63.65 KB). El tiempo de transferencia de datos está influyendo significativamente en el P95 de estos servicios de alta complejidad."
+    "titulo": "7 endpoints en amarillo simultáneos — posible causa de infra",
+    "detalle": "La degradación simultánea de 7 endpoints en los módulos de Investments, Markets y Tradable Securities sugiere una causa de infraestructura compartida. Se debe investigar la saturación de recursos comunes (CPU o DB) dado que la afectación es transversal a servicios funcionalmente distintos."
   },
   "optimizar": {
-    "titulo": "Optimizar Bond Screener — Filtro múltiple de bonos — impact score: 289.425",
-    "detalle": "Este endpoint genera el mayor peso acumulado en la performance global con un impact score de 289.425 y 97 ejecuciones históricas. Una reducción del 20% en su P95 representaría 57.885 ms de latencia acumulada evitada por ciclo de vida del endpoint."
+    "titulo": "Bond Screener — Filtro múltiple de bonos — optimizar impacto sistémico",
+    "detalle": "Con un impact_score de 292.536 y 98 ejecuciones, este endpoint es el mayor generador de latencia acumulada del sistema. Una reducción del 20% en su P95 representaría 58.507 ms de latencia acumulada evitada por ciclo de vida del endpoint."
   },
-  "bottleneck_narrative": "La corrida actual presenta una alerta amarilla en el servicio de Tasas Internas de Retorno, lo cual es compatible con una regresión puntual dado que no se observa una tendencia sostenida de degradación. La tendencia aparece negativa (-12.4%) debido a que el punto de comparación incluye el pico aislado de la corrida del 20-07 (780ms), por lo que los niveles actuales representan una normalización y no una mejora estructural.",
+  "bottleneck_narrative": "La corrida actual presenta 7 alertas amarillas sin una tendencia de degradación sostenida, lo cual es compatible con una regresión puntual en la versión actual. El cambio de tendencia del -4.2% no refleja una mejora estructural, sino la estabilización de la ventana de comparación tras picos de latencia en corridas previas.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Inestabilidad estructural recurrente en listado de curvas",
-      "evidence": "El endpoint Curvas de rendimiento — Listar todas (resumen) registra 18 apariciones como outlier en el historial.",
+      "hypothesis": "Inestabilidad estructural en Curvas de Rendimiento",
+      "evidence": "Endpoint 'Get all yield curves - validate each self link' con 18 apariciones como outlier.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Saturación de recursos en infraestructura compartida",
+      "evidence": "7 endpoints con alertas amarillas simultáneas en los servicios de Investments, Markets y Tradable Securities.",
       "priority": "alta"
     },
     {
       "hypothesis": "Cuello de botella por tamaño de respuesta y serialización",
-      "evidence": "Get parities registra 169.61 KB con un P95 de 1629ms, validando la correlación payload-latencia.",
-      "priority": "media"
-    },
-    {
-      "hypothesis": "Regresión puntual en módulo de proyecciones financieras",
-      "evidence": "Tasas Internas de Retorno (TIR/IRR) de un bono muestra un regression_pct de 107.69%.",
+      "evidence": "Correlación positiva entre payload y latencia con 'Get parities' liderando en 169.85 KB.",
       "priority": "media"
     }
   ],
@@ -37,23 +37,29 @@
       "evidencia": "18 occurrences"
     },
     {
+      "prioridad": "P1",
+      "accion": "Estabilizar Mercados — Obtener todos — 7 reincidencias como outlier",
+      "endpoint_target": "Get all markets",
+      "evidencia": "7 occurrences"
+    },
+    {
       "prioridad": "P2",
-      "accion": "Analizar regresión en Tasas Internas de Retorno (TIR/IRR) de un bono",
-      "endpoint_target": "Get irrs - one bond",
-      "evidencia": "2862 ms"
+      "accion": "Analizar regresión en Mercados — Obtener todos — +386% vs baseline global",
+      "endpoint_target": "Get all markets",
+      "evidencia": "778 ms"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Investigar saturación de infraestructura — 7 alertas amarillas transversales",
+      "endpoint_target": "—",
+      "evidencia": "7 endpoints"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Bond Screener — alto peso acumulado en performance",
+      "accion": "Optimizar Bond Screener — alto impacto acumulado (impact score: 292.536)",
       "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
-      "evidencia": "289425 impact score"
-    },
-    {
-      "prioridad": "P3",
-      "accion": "Reducir payload en Paridades de bono — correlación detectada",
-      "endpoint_target": "Get parities",
-      "evidencia": "169.61 KB"
+      "evidencia": "292.536 impact_score"
     }
   ],
-  "version_narrative": "La versión V10.2.97 muestra una leve mejora global del 2.1% en el avg P95 (458ms) respecto a la V10.2.96 (468ms). Se destacan optimizaciones significativas en el servicio de Valores negociables y Grupos de bonos con reducciones de latencia superiores al 80%. Sin embargo, se observa una degradación crítica en Tasas Internas de Retorno (TIR/IRR) de un bono (+155.8%), la cual coincide con la alerta activa en esta corrida."
+  "version_narrative": "La versión V10.2.97 muestra una degradación global del 11.5% en la latencia promedio respecto a la V10.2.96 (522ms vs 468ms). Se observan mejoras significativas en los servicios de Grupos de bonos y Curvas de rendimiento, con reducciones de latencia superiores al 70%. Sin embargo, estas mejoras son opacadas por regresiones críticas en Mercados — Obtener todos (+872.5%) y Métricas de inversión por ID, que coinciden con las alertas activas en esta corrida."
 }
