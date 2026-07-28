@@ -1,0 +1,65 @@
+{
+  "escalar_prioritario": {
+    "titulo": "Curvas de rendimiento — Listar todas (resumen) — 18 reincidencias como outlier",
+    "detalle": "El endpoint 'Curvas de rendimiento — Listar todas (resumen)' ha sido registrado como outlier en 18 corridas distintas. Esta reincidencia histórica es más grave que una degradación puntual nueva, indicando un problema estructural persistente. Aunque la corrida actual presenta alertas amarillas en otros endpoints, la prioridad de escalado es la inestabilidad recurrente de este servicio."
+  },
+  "investigar": {
+    "titulo": "Un outlier significativo detectado — 'Leyes de bono — Listar todas' con ratio 42.91x",
+    "detalle": "Se ha identificado un outlier en la corrida actual: 'Leyes de bono — Listar todas' superó su baseline global por 42.91 veces. Este comportamiento anómalo requiere una investigación específica para determinar su causa raíz."
+  },
+  "optimizar": {
+    "titulo": "Optimizar Bond Screener — Alto impacto acumulado (score: 295.901)",
+    "detalle": "El endpoint 'Bond Screener — Filtro múltiple de bonos' tiene el mayor impacto acumulado (295.901), con un P95 típico de 2.989ms en 99 ejecuciones. Una reducción del 20% en su P95 representaría 59.180ms de latencia acumulada evitada por ciclo de vida del endpoint, siendo una oportunidad doble al estar también en alerta amarilla."
+  },
+  "bottleneck_narrative": "La corrida actual muestra 2 alertas amarillas, lo que es compatible con una regresión puntual o el inicio de una, dado que la tendencia general de latencia en las últimas corridas es de una leve mejora del -14.9%. No se han registrado picos históricos anómalos recientes que influyan en esta clasificación.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Inestabilidad estructural recurrente en 'Curvas de rendimiento'",
+      "evidence": "'Curvas de rendimiento — Listar todas (resumen)' ha sido outlier en 18 corridas distintas, indicando un problema persistente.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Regresión puntual en el módulo 'Bond Laws'",
+      "evidence": "'Leyes de bono — Listar todas' muestra una regresión del 6253.85% respecto a la corrida anterior y un delta del 4190.59% vs. baseline global.",
+      "priority": "media"
+    },
+    {
+      "hypothesis": "Cuello de botella por tamaño de respuesta en APIs de alto payload",
+      "evidence": "Existe correlación entre payload y latencia; 'Get parities' retorna 169.96 KB con P95 de 1773ms, sugiriendo impacto por volumen de datos.",
+      "priority": "media"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P1",
+      "accion": "Investigar inestabilidad estructural en 'Curvas de rendimiento — Listar todas (resumen)'",
+      "endpoint_target": "Get all yield curves - validate each self link",
+      "evidencia": "18 reincidencias como outlier"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Analizar regresión crítica en 'Leyes de bono — Listar todas'",
+      "endpoint_target": "Get all bond laws - validate each self link",
+      "evidencia": "+6253.85% vs corrida anterior"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Revisar degradación en 'Bond Screener — Filtro múltiple de bonos'",
+      "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "evidencia": "+56.61% vs corrida anterior"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Optimizar serialización/transferencia de datos para APIs con payload pesado",
+      "endpoint_target": "—",
+      "evidencia": "Correlación payload-latencia detectada"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Optimizar 'Valoración de instrumento financiero' por alto impacto acumulado",
+      "endpoint_target": "Appraise market value",
+      "evidencia": "Impact score: 176.200"
+    }
+  ],
+  "version_narrative": "La versión V10.2.97 muestra una ligera degradación general, con un avg P95 de 508ms comparado con los 468ms de la V10.2.96, lo que representa un aumento del 8.55%. Se observan mejoras significativas en el módulo 'Tradable Securities' con 'Valores negociables — Filtros obligatorios' (-93.5%) y 'Valores negociables — Búsqueda por texto libre' (-91.1%). Sin embargo, 'Leyes de bono — Listar todas' se degradó drásticamente en un 5740.4% y está actualmente en alerta, junto con 'Crear inversión en bono' (+161%) y 'Identificadores de bono por UUID' (+106.6%) que también mostraron un deterioro notable."
+}
