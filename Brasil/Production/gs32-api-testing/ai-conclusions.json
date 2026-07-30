@@ -1,59 +1,65 @@
 {
   "escalar_prioritario": {
     "titulo": "Flujos de caja de bono desde fecha — 30 reincidencias como outlier",
-    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 30 registros históricos como outlier, indicando un problema persistente que trasciende la degradación puntual de la corrida actual. Aunque hoy se encuentra en alerta amarilla con 5.016ms, su reincidencia histórica es la prioridad de escalado por su carácter estructural."
+    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 30 registros históricos como outlier, indicando un problema persistente que trasciende la corrida actual. Aunque no posee alerta roja hoy, su reincidencia histórica es la señal de degradación más grave del sistema frente a las alertas amarillas puntuales."
   },
   "investigar": {
-    "titulo": "5 endpoints en alerta amarilla simultáneos — posible causa de infra",
-    "detalle": "La degradación simultánea en módulos de Bonds, Investments y Exchange Schemes sugiere una causa de infraestructura compartida o saturación en la base de datos. La afectación de múltiples servicios con lógicas funcionales distintas es evidencia de un cuello de botella sistémico y no de código de aplicación."
+    "titulo": "20 alertas amarillas simultáneas — posible causa de infraestructura",
+    "detalle": "La degradación simultánea de 20 endpoints de módulos diversos como Bonds, Investments y Currencies sugiere una saturación en recursos compartidos de infraestructura. Esta afectación transversal indica que el cuello de botella no reside en el código de una aplicación específica sino en la capa de servicios o base de datos común."
   },
   "optimizar": {
-    "titulo": "Optimizar Métricas de inversión por ID — alto impacto acumulado (277.711)",
-    "detalle": "Con un impact_score de 277.711 y un total de 117 ejecuciones, este endpoint es el principal generador de latencia sistémica. Una reducción del 20% en su P95 representaría 55.542 ms de latencia acumulada evitada por ciclo de vida del componente."
+    "titulo": "Optimizar Flujos de caja de bono desde fecha — impacto: 290.209",
+    "detalle": "Con un impact_score de 290.209 y 118 ejecuciones, este servicio es el principal generador de latencia acumulada en el motor GS32. Una reducción del 20% en su P95 limpio de 2.459 ms representaría un ahorro de 58.041 ms de latencia total evitada por ciclo de vida."
   },
-  "bottleneck_narrative": "La corrida actual presenta 5 alertas amarillas sin una tendencia de degradación sostenida (6.1%), lo cual es compatible con una regresión puntual en esta versión. No se registran picos históricos anómalos en la ventana de análisis que afecten la clasificación de la tendencia actual.",
+  "bottleneck_narrative": "Se observa una tendencia sostenida al alza con un incremento del 47.9%, donde el promedio P95 subió de 451ms a 667ms de forma consistente en las últimas 10 corridas. Este patrón es crítico ya que, al subir la latencia gradualmente, los valores degradados se convierten en el nuevo normal y el sistema de alertas deja de detectarlos al compararlos contra un promedio ya contaminado.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Causa de infraestructura compartida o saturación sistémica",
-      "evidence": "5 endpoints afectados simultáneamente en los servicios Bonds, Investments y Exchange Schemes.",
+      "hypothesis": "Saturación de infraestructura compartida o base de datos",
+      "evidence": "20 endpoints de servicios distintos (Bonds, Investments, Currencies, Markets) degradados simultáneamente.",
       "priority": "alta"
     },
     {
       "hypothesis": "Inestabilidad estructural recurrente en flujos de caja",
-      "evidence": "Endpoint Flujos de caja de bono desde fecha registrado como outlier en 30 corridas distintas.",
+      "evidence": "Endpoint 'Get one bond cashflow' registrado como outlier en 30 corridas distintas.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Regresión puntual en módulo de inversiones",
-      "evidence": "Sensibilidad de TIR de inversión por ID presenta un regression_pct de 890.54%.",
+      "hypothesis": "Degradación estructural acumulada por crecimiento de datos",
+      "evidence": "Trend_delta_pct sostenido del 47.9% a lo largo de las últimas 10 corridas.",
       "priority": "media"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Estabilizar Flujos de caja de bono desde fecha — 30 reincidencias como outlier",
+      "accion": "Analizar inestabilidad estructural en Flujos de caja de bono desde fecha",
       "endpoint_target": "Get one bond cashflow - only dateInterval from",
-      "evidencia": "30 conteos"
-    },
-    {
-      "prioridad": "P1",
-      "accion": "Corregir Cupones de bono por UUID — 18 reincidencias estructurales",
-      "endpoint_target": "Bond coupons by UUID",
-      "evidencia": "18 conteos"
+      "evidencia": "30 reincidencias como outlier"
     },
     {
       "prioridad": "P2",
-      "accion": "Analizar regresión en Sensibilidad de TIR de inversión por ID — +890% vs anterior",
-      "endpoint_target": "Get investment irr sensitivity by ID",
-      "evidencia": "890.54%"
+      "accion": "Investigar saturación de recursos en infraestructura compartida",
+      "endpoint_target": "—",
+      "evidencia": "20 alertas amarillas simultáneas"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Revisar regresión en Valores negociables — Filtros obligatorios",
+      "endpoint_target": "Get tradable securities using only mandatory filters",
+      "evidencia": "+1462.1% de incremento vs versión anterior"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Métricas de inversión por ID — alto impacto acumulado",
-      "endpoint_target": "Get investment metrics by ID",
-      "evidencia": "277.711 impact score"
+      "accion": "Optimizar Flujos de caja de bono desde fecha — alto impacto acumulado",
+      "endpoint_target": "Get one bond cashflow - only dateInterval from",
+      "evidencia": "impact score: 290.209"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Estabilizar baseline global para evitar enmascaramiento de alertas",
+      "endpoint_target": "—",
+      "evidencia": "tendencia de degradación del 47.9%"
     }
   ],
-  "version_narrative": "La latencia promedio P95 aumentó de 557ms en la versión V10.3.72 a 710ms en la V10.3.75, lo que representa una degradación global del 27.5%. Se destaca una mejora significativa en Métricas de valor negociable (-94.5%), aunque se observa una regresión crítica en Flujos de caja de bono desde fecha (+1362.4%) y Esquemas de canje — Obtener todos (+593.7%) que coincide con las alertas activas."
+  "version_narrative": "La versión V10.3.75 muestra una degradación global del 19.7% respecto a la V10.3.72, con un avg P95 que aumentó de 557ms a 667ms. Se identifican mejoras notables en el módulo de Investments, destacando Sensibilidad de TIR de inversión por ID (-70.3%) y Métricas de inversión por ID (-30.7%). No obstante, estas mejoras son contrarrestadas por degradaciones críticas en Valores negociables — Filtros obligatorios (+1462.1%) y Esquemas de canje — Obtener todos (+619%), los cuales explican el volumen de alertas amarillas actuales."
 }
