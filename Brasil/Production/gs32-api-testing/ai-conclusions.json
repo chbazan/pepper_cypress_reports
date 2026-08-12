@@ -1,65 +1,65 @@
 {
   "escalar_prioritario": {
     "titulo": "Flujos de caja de bono desde fecha — 32 reincidencias como outlier",
-    "detalle": "El endpoint 'Flujos de caja de bono desde fecha' muestra una inestabilidad estructural grave, habiendo sido registrado como outlier en 32 corridas históricas. Aunque no presente una alerta roja hoy, esta recurrencia es más crítica que una degradación puntual nueva porque indica un problema estructural que persiste. La corrida actual también presenta alertas amarillas en otros dos endpoints, pero la prioridad de escalado es la reincidencia por su carácter estructural."
+    "detalle": "Este endpoint de Bond Payment Forecasts v2 presenta una inestabilidad estructural crítica con 32 registros históricos como outlier, lo cual es más grave que su alerta amarilla actual. Aunque no hay alertas rojas en esta corrida, la recurrencia histórica indica un problema de fondo que persiste a través de múltiples versiones."
   },
   "investigar": {
-    "titulo": "Tendencia de mejora en avg P95 — -26.9% en las últimas corridas",
-    "detalle": "El promedio P95 ha mostrado una tendencia a la baja en las últimas corridas, pasando de 710ms el 2026-07-29 a 519ms el 2026-08-11. Esta mejora sostenida es un indicador positivo de la performance general del sistema."
+    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 7.05 KB",
+    "detalle": "Se detectó una correlación directa entre el tamaño de la respuesta y la latencia en los servicios de Bond Payment Forecasts v2 e Investments. Se deben monitorear preventivamente los endpoints más lentos, como Sensibilidad de TIR de inversión por ID, que muestra una regresión del 733.52% respecto a la corrida anterior."
   },
   "optimizar": {
-    "titulo": "Optimizar Flujos de caja de bono desde fecha — alto impacto acumulado",
-    "detalle": "El endpoint 'Flujos de caja de bono desde fecha' es el principal candidato para optimización, con un impact score de 398.931, un P95 limpio de 3166.12ms y 126 ejecuciones. Una reducción del 20% en su P95 representaría 79.786 ms de latencia acumulada evitada por ciclo de vida del endpoint."
+    "titulo": "Optimizar Flujos de caja de bono desde fecha — impacto sistémico de 408.457",
+    "detalle": "Con un impact_score de 408.457 y 127 ejecuciones, una reducción del 20% en su P95 evitaría 81.691 ms de latencia acumulada en el sistema. Este endpoint coincide con una alerta amarilla activa, lo que lo convierte en la oportunidad de optimización más urgente por su peso sistémico."
   },
-  "bottleneck_narrative": "La corrida actual presenta 0 alertas rojas, 2 amarillas y 1 outlier, lo que es compatible con una regresión puntual o el inicio de una, aunque la tendencia muestra una leve mejora en las últimas corridas. No se identificaron picos históricos anómalos en corridas recientes que influyeran en esta clasificación.",
+  "bottleneck_narrative": "La corrida actual presenta 2 alertas amarillas, lo cual es compatible con una regresión puntual en los módulos de Bond Payment Forecasts v2 e Investments. La tendencia de -14.8% no refleja una mejora real del sistema, sino que es el resultado de la normalización tras el pico de 971ms registrado el 10-08, que infló artificialmente el inicio de la ventana de comparación.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Inestabilidad estructural recurrente en Flujos de caja de bono desde fecha",
-      "evidence": "El endpoint 'Get one bond cashflow - only dateInterval from' ha sido outlier en 32 corridas.",
+      "hypothesis": "Inestabilidad estructural recurrente en flujos de caja",
+      "evidence": "Endpoint Get one bond cashflow registrado como outlier en 32 corridas distintas.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Regresión puntual en el módulo Tradable Securities",
-      "evidence": "El endpoint 'Get tradable security metrics' con regression_pct del 673.37% y baseline_global_delta_pct del 296.49%.",
+      "hypothesis": "Regresión puntual en módulo de inversiones",
+      "evidence": "Regression_pct de 733.52% en Sensibilidad de TIR de inversión por ID.",
       "priority": "media"
     },
     {
       "hypothesis": "Cuello de botella por tamaño de respuesta",
-      "evidence": "Payload correlacionado con latencia, con 'Get irrs - one bond' (13.68 KB) y 'Bond coupons by UUID' (7.89 KB) entre los más lentos.",
+      "evidence": "Payload_correlated es true con Get parities alcanzando 34.56 KB.",
       "priority": "media"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Investigar inestabilidad estructural en Flujos de caja de bono desde fecha",
+      "accion": "Estabilizar Flujos de caja de bono desde fecha — 32 reincidencias históricas",
       "endpoint_target": "Get one bond cashflow - only dateInterval from",
-      "evidencia": "32 reincidencias como outlier"
+      "evidencia": "32 occurrences"
     },
     {
       "prioridad": "P2",
-      "accion": "Analizar regresión en Métricas de valor negociable",
-      "endpoint_target": "Get tradable security metrics",
-      "evidencia": "+673.37% vs corrida anterior, +296.49% vs baseline global"
+      "accion": "Analizar regresión en Sensibilidad de TIR de inversión por ID — +733% vs anterior",
+      "endpoint_target": "Get investment irr sensitivity by ID",
+      "evidencia": "733.52%"
     },
     {
-      "prioridad": "P2",
-      "accion": "Analizar regresión en Resumen de pagos de bono por UUID",
-      "endpoint_target": "Bond payment summary by UUID",
-      "evidencia": "+384.21% vs corrida anterior, +194.8% vs baseline global"
+      "prioridad": "P3",
+      "accion": "Optimizar Flujos de caja de bono desde fecha — alto impacto acumulado",
+      "endpoint_target": "Get one bond cashflow - only dateInterval from",
+      "evidencia": "408.457 impact score"
     },
     {
-      "prioridad": "P2",
-      "accion": "Optimizar manejo de payload en endpoints lentos",
-      "endpoint_target": "—",
-      "evidencia": "Payload correlacionado con latencia (avg 4.76 KB)"
+      "prioridad": "P3",
+      "accion": "Optimizar Paridades de bono — mayor tamaño de respuesta detectado",
+      "endpoint_target": "Get parities",
+      "evidencia": "34.56 KB"
     },
     {
       "prioridad": "P3",
       "accion": "Optimizar Métricas de inversión por ID — alto impacto acumulado",
       "endpoint_target": "Get investment metrics by ID",
-      "evidencia": "Impact score: 343.267"
+      "evidencia": "341.132 impact score"
     }
   ],
-  "version_narrative": "La versión V10.3.75 muestra una mejora global del avg P95 del -6.82%, pasando de 557ms en la versión anterior (V10.3.72) a 519ms. Las mejoras más significativas se observan en 'Sensibilidad de TIR de inversión por ID' (-79.6%) y 'Métricas de valor negociable' (-76.1%), ambos servicios relacionados con cálculos financieros complejos. Sin embargo, se identificaron degradaciones notables en 'Flujos de caja de bono desde fecha' (+1086.6%) y 'Bond Screener — Filtro múltiple de bonos' (+117%), y 'Resumen de pagos de bono por UUID' (+77.6%) que además presenta una alerta activa en esta corrida."
+  "version_narrative": "La versión V10.3.75 muestra una degradación global leve del 2% en el P95 promedio respecto a la V10.3.72 (568ms vs 557ms). Se observan mejoras significativas en el módulo de Tradable Securities, destacando Métricas de valor negociable con una reducción del 97% en su latencia. Sin embargo, este avance es opacado por la fuerte degradación en Flujos de caja de bono desde fecha (+1905.5%) y Sensibilidad de TIR de inversión por ID (+70.2%), ambos con alertas activas en la corrida actual."
 }
