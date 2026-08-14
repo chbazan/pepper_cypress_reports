@@ -1,0 +1,47 @@
+{
+  "escalar_prioritario": {
+    "titulo": "Sin alertas críticas — avg P95: 481ms",
+    "detalle": "La corrida actual no registra degradaciones ni reincidencias de outliers. El avg P95 de 481ms es idéntico al baseline registrado para esta versión."
+  },
+  "investigar": {
+    "titulo": "Performance estable — avg P95: 481ms vs baseline 481ms",
+    "detalle": "La performance se mantiene dentro de los parámetros esperados. Se sugiere monitorear preventivamente 'Yield curves / Get all yield curves', 'Bonds / Zero Coupon / Cero Cupón / Get all bonds' y 'Bonds / Zero Coupon / Cero Cupón / Get all bonds - start & limit parameters' por ser los más expuestos."
+  },
+  "optimizar": {
+    "titulo": "Optimizar Yield curves / Get all yield curves — alto impacto sistémico",
+    "detalle": "Este endpoint lidera el impacto con un score de 2.489 y un P95 de 2.489ms. Una reducción del 20% en su latencia representaría 497.8 ms de latencia acumulada evitada por ciclo de vida del endpoint."
+  },
+  "bottleneck_narrative": "El sistema presenta un estado saludable sin alertas de degradación ni outliers detectados en la corrida actual. El promedio general de latencia de 481ms se encuentra alineado con el baseline de 481ms, confirmando la estabilidad operativa.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Variabilidad de performance dentro de parámetros normales",
+      "evidence": "avg_p95 actual de 481ms vs baseline de 481ms",
+      "priority": "baja"
+    },
+    {
+      "hypothesis": "Latencia influenciada por el volumen de datos en módulo Bonds",
+      "evidence": "heaviest_endpoints con payloads de hasta 303.2 KB en los endpoints más lentos",
+      "priority": "baja"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P3",
+      "accion": "Optimizar Yield curves / Get all yield curves — alto impacto acumulado (impact score: 2.489)",
+      "endpoint_target": "Yield curves / Get all yield curves - validate each metrics link",
+      "evidencia": "2489 ms"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Evaluar reducción de payload en Bonds / Zero Coupon / Cero Cupón - Dollar linked",
+      "endpoint_target": "Bonds / Zero Coupon / Cero Cupón - Dollar linked / Get all bonds with includeNonAlive false",
+      "evidencia": "303.2 KB"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Monitorear preventivamente latencia en Bonds / Zero Coupon / Cero Cupón / Get all bonds",
+      "endpoint_target": "Bonds / Zero Coupon / Cero Cupón / Get all bonds",
+      "evidencia": "1230 ms"
+    }
+  ]
+}
