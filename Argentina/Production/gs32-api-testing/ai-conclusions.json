@@ -1,65 +1,59 @@
 {
   "escalar_prioritario": {
     "titulo": "Curvas de rendimiento — Listar todas (resumen) — 18 reincidencias como outlier",
-    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 18 registros históricos como outlier, indicando un problema persistente que trasciende la corrida actual. La corrida actual también registra alertas en otros servicios, pero la reincidencia histórica de este endpoint es prioritaria por su carácter estructural."
+    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 18 registros históricos como outlier, lo cual indica un problema persistente más grave que la degradación puntual de esta corrida. Aunque actualmente hay una alerta amarilla en otro servicio, la prioridad de escalado es la reincidencia estructural de este componente."
   },
   "investigar": {
-    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 31.32 KB",
-    "detalle": "Se observa una correlación entre el tamaño de respuesta y la latencia, destacando a 'Paridades de bono' (171.37 KB), 'Tasas Internas de Retorno (TIR/IRR) de un bono' (64.31 KB) y 'Post /bond-payment-forecast' (30.95 KB). Estos endpoints son candidatos críticos para optimizar la serialización y reducir el tiempo de transferencia de datos."
+    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 32.29 KB",
+    "detalle": "Se detectó una correlación directa entre el tamaño de la respuesta y la latencia, sugiriendo que el tiempo de transferencia impacta significativamente el P95. Los endpoints Paridades de bono (171.48 KB) y Tasas Internas de Retorno (64.35 KB) son los principales candidatos a revisión de serialización."
   },
   "optimizar": {
-    "titulo": "Optimizar Bond Screener — Filtro múltiple de bonos (impact score: 353.326)",
-    "detalle": "Con un impact_score de 353.326 y 111 ejecuciones, una reducción del 20% en su P95 (3.183 ms) representaría 70.665,2 ms de latencia acumulada evitada por ciclo de vida del endpoint."
+    "titulo": "Bond Screener — Filtro múltiple de bonos — impact score: 357.278",
+    "detalle": "Este endpoint genera el mayor peso acumulado en la performance global con un P95 limpio de 3.189 ms sobre 112 ejecuciones. Una reducción del 20% en su latencia evitaría 71.455 ms de demora acumulada por ciclo de vida del sistema."
   },
-  "bottleneck_narrative": "La corrida actual presenta 2 alertas amarillas y 0 rojas, lo cual, junto a un incremento del 4.6% en la tendencia, es compatible con una regresión puntual pero insuficiente para confirmar una degradación sostenida. Al no registrarse picos históricos notables en la ventana analizada, la clasificación se centra en la degradación moderada de los servicios de Mercados y Grupos de Bonos.",
+  "bottleneck_narrative": "La corrida actual presenta una alerta amarilla, lo cual es compatible con una regresión puntual dado que no se observa una tendencia sostenida de degradación en el promedio global (-2.2%). Los niveles de latencia actuales se mantienen dentro de los parámetros normales de la ventana de observación a pesar del evento aislado.",
   "root_cause_hypotheses": [
     {
       "hypothesis": "Inestabilidad estructural recurrente en Curvas de rendimiento",
-      "evidence": "El endpoint registra 18 ocurrencias como outlier en el historial de ejecuciones.",
+      "evidence": "Endpoint 'Get all yield curves' registrado como outlier en 18 corridas distintas.",
       "priority": "alta"
     },
     {
       "hypothesis": "Cuello de botella por tamaño de respuesta y serialización",
-      "evidence": "Get parities registra 171.37 KB de payload con un P95 de 1942 ms.",
+      "evidence": "payload_correlated es true con 'Get parities' entregando 171.48 KB en 1894 ms.",
       "priority": "media"
     },
     {
       "hypothesis": "Variabilidad de performance dentro de parámetros normales",
-      "evidence": "avg_p95 actual de 501 ms frente a un baseline de 520 ms.",
+      "evidence": "avg_p95 actual de 494 ms frente a un baseline de 521 ms.",
       "priority": "baja"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Estabilizar Curvas de rendimiento — Listar todas (resumen) — 18 reincidencias",
+      "accion": "Estabilizar Curvas de rendimiento — Listar todas (resumen) por reincidencia",
       "endpoint_target": "Get all yield curves - validate each self link",
       "evidencia": "18 reincidencias"
     },
     {
       "prioridad": "P2",
-      "accion": "Analizar degradación en Mercado por UUID — +103.72% vs baseline global",
-      "endpoint_target": "Get markets by UUID",
-      "evidencia": "116 ms"
+      "accion": "Analizar degradación en Fondo Común de Inversión por UUID — +129% vs baseline",
+      "endpoint_target": "Get mutual fund share by UUID",
+      "evidencia": "130 ms"
     },
     {
       "prioridad": "P2",
-      "accion": "Revisar Grupos de bonos — Obtener todos — +82.8% vs baseline global",
-      "endpoint_target": "Get all bond groups",
-      "evidencia": "519 ms"
-    },
-    {
-      "prioridad": "P2",
-      "accion": "Optimizar transferencia de datos en Paridades de bono — payload 171.37 KB",
+      "accion": "Optimizar serialización en Paridades de bono por tamaño de respuesta",
       "endpoint_target": "Get parities",
-      "evidencia": "171.37 KB"
+      "evidencia": "171.48 KB"
     },
     {
       "prioridad": "P3",
       "accion": "Optimizar Bond Screener — Filtro múltiple de bonos — alto impacto acumulado",
       "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
-      "evidencia": "impact score 353.326"
+      "evidencia": "impact score: 357.278"
     }
   ],
-  "version_narrative": "La versión V10.2.97 muestra una degradación global del 7% en la latencia P95, pasando de 468 ms a 501 ms respecto a la V10.2.96. Se observan mejoras significativas en 'Curvas de rendimiento — Listar todas (resumen)' y 'Grupos de bonos — Obtener todos', servicios que presentaban inestabilidad histórica. No obstante, 33 endpoints sufrieron retrocesos, destacando 'Métricas de valor negociable' (+200%), lo que fundamenta el veredicto neutral del cambio de versión."
+  "version_narrative": "La versión V10.2.97 muestra un incremento del 5.5% en la latencia promedio (494 ms) respecto a la V10.2.96 (468 ms). Se observan mejoras significativas en Grupos de bonos — Obtener todos (-87.1%) y Curvas de rendimiento — Listar todas (-57.1%), pero se detectó una degradación crítica en Fondo Común de Inversión por UUID (+233.3%) que coincide con la alerta activa."
 }
