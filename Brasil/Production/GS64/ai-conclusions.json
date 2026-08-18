@@ -1,47 +1,47 @@
 {
   "escalar_prioritario": {
-    "titulo": "Sin alertas críticas — avg P95: 441ms",
-    "detalle": "La corrida actual se mantiene estable con un avg P95 de 441ms, coincidiendo exactamente con su baseline inicial para la versión V1.11.1."
+    "titulo": "Sin alertas críticas — avg P95: 239ms",
+    "detalle": "La corrida actual no presenta degradaciones críticas ni alertas de semáforo activas. El promedio general de latencia se mantiene en 239ms, alineado con el baseline de la versión V1.11.1."
   },
   "investigar": {
-    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 100.97 KB",
-    "detalle": "Se observa una carga de datos significativa en el módulo de Bonds, con respuestas que alcanzan los 291.31 KB. Se recomienda monitorear preventivamente los endpoints de Yield curves y Bonds, que lideran la latencia en esta corrida."
+    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 110.55 KB",
+    "detalle": "Se observa una correlación directa entre el tamaño de la respuesta y la latencia en los servicios de Bonds / Zero Coupon. Los endpoints con payloads cercanos a 300 KB presentan los mayores tiempos de respuesta del sistema."
   },
   "optimizar": {
-    "titulo": "Optimizar Yield curves — alto impacto acumulado (impact score: 3.208)",
-    "detalle": "Una reducción del 20% en el P95 de este endpoint representaría 641.6 ms de latencia acumulada evitada por ciclo de vida del servicio."
+    "titulo": "Optimizar Bonds / Zero Coupon / Cero Cupón / Get all bonds — alto impacto sistémico",
+    "detalle": "Este endpoint lidera el ranking de impacto con un score de 1.730 y una latencia P95 de 1.730ms. Una reducción del 20% en su P95 representaría 346ms de latencia acumulada evitada por ciclo de ejecución."
   },
-  "bottleneck_narrative": "El sistema presenta un estado saludable sin alertas de degradación ni presencia de outliers en la corrida actual. El promedio general de latencia P95 se sitúa en 441ms, alineado con el baseline de referencia para la versión V1.11.1.",
+  "bottleneck_narrative": "El sistema se encuentra en un estado saludable sin alertas de degradación ni presencia de outliers en la corrida actual. El promedio de latencia P95 registrado es de 239ms, coincidiendo exactamente con el baseline establecido para esta versión.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Variabilidad de performance dentro de parámetros normales",
-      "evidence": "avg_p95 actual de 441ms frente a un baseline idéntico de 441ms.",
-      "priority": "baja"
+      "hypothesis": "Cuello de botella por tamaño de respuesta",
+      "evidence": "El endpoint 'Bonds / Zero Coupon / Cero Cupón - Dollar linked' tiene un payload de 291.31 KB y una latencia de 568ms, confirmando correlación positiva.",
+      "priority": "media"
     },
     {
-      "hypothesis": "Latencia por volumen de datos en módulo Bonds",
-      "evidence": "Presencia de múltiples endpoints con payloads superiores a 290 KB en el top de lentitud.",
+      "hypothesis": "Variabilidad de performance dentro de parámetros normales",
+      "evidence": "El avg_p95 de 239ms es idéntico al baseline de la corrida, sin desviaciones significativas en el semáforo.",
       "priority": "baja"
     }
   ],
   "recommendations": [
     {
-      "prioridad": "P3",
-      "accion": "Optimizar Yield curves — alto peso acumulado en performance",
-      "endpoint_target": "Yield curves / Get all yield curves - validate each metrics link",
-      "evidencia": "3208 ms"
+      "prioridad": "P2",
+      "accion": "Evaluar estrategias de paginación en servicios de Bonds / Zero Coupon",
+      "endpoint_target": "Bonds / Zero Coupon / Cero Cupón - Dollar linked / Get all bonds with includeNonAlive false",
+      "evidencia": "291.31 KB"
     },
     {
       "prioridad": "P3",
-      "accion": "Evaluar paginación en módulo Bonds para reducir payloads elevados",
+      "accion": "Optimizar Bonds / Zero Coupon / Cero Cupón / Get all bonds — mayor impacto acumulado",
       "endpoint_target": "Bonds / Zero Coupon / Cero Cupón / Get all bonds",
-      "evidencia": "291.25 KB"
+      "evidencia": "1.730ms P95"
     },
     {
       "prioridad": "P3",
-      "accion": "Establecer baseline histórico para monitoreo de tendencias",
+      "accion": "Monitorear preventivamente los endpoints del módulo Bonds con latencia > 400ms",
       "endpoint_target": "—",
-      "evidencia": "1 ejecución"
+      "evidencia": "4 endpoints detectados"
     }
   ]
 }
