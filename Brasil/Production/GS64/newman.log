@@ -11,7 +11,7 @@ Marvel APIs
 ↳ Create duplicate LTN105
 
 ↳ Get all bonds
-  GET https://api.brasil.mercap.com.ar/brasil/bonds [200 OK, 311.24kB, 1230ms]
+  GET https://api.brasil.mercap.com.ar/brasil/bonds [200 OK, 299.06kB, 1093ms]
   ✓  Los headers requeridos están presentes y son correctos
   ✓  El código de respuesta debe ser 200
   ✓  Todos los atributos requeridos deben estar presentes
@@ -21,7 +21,7 @@ Marvel APIs
   ✓  Debe existir objeto links con atributos self y deactivate
 
 ↳ Get all bonds - start & limit parameters
-  GET https://api.brasil.mercap.com.ar/brasil/bonds?limit=14&start=1 [200 OK, 230.95kB, 746ms]
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?limit=14&start=1 [200 OK, 206.44kB, 424ms]
   ✓  Los headers requeridos están presentes y son correctos
   ✓  El código de respuesta debe ser 200
   ✓  Todos los atributos requeridos deben estar presentes
@@ -53,7 +53,7 @@ Marvel APIs
 ↳ Create duplicate LB5S0A
 
 ↳ Get all bonds with includeNonAlive true
-  GET https://api.brasil.mercap.com.ar/brasil/bonds?includeNonAlive=true [200 OK, 131.22kB, 441ms]
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?includeNonAlive=true [200 OK, 131.22kB, 361ms]
   ✓  Los headers requeridos están presentes y son correctos
   ✓  El código de respuesta debe ser 200
   ✓  Todos los atributos requeridos deben estar presentes
@@ -62,7 +62,7 @@ Marvel APIs
   ✓  Debe existir objeto links con atributos self y deactivate
 
 ↳ Get all bonds - start & limit parameters with includeNonAlive true
-  GET https://api.brasil.mercap.com.ar/brasil/bonds?limit=14&start=1&includeNonAlive=true [200 OK, 86.08kB, 328ms]
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?limit=14&start=1&includeNonAlive=true [200 OK, 86.07kB, 278ms]
   ✓  Los headers requeridos están presentes y son correctos
   ✓  El código de respuesta debe ser 200
   ✓  Todos los atributos requeridos deben estar presentes
@@ -93,7 +93,7 @@ Marvel APIs
 ↳ Create duplicate YMCOO
 
 ↳ Get all bonds with includeNonAlive false
-  GET https://api.brasil.mercap.com.ar/brasil/bonds?includeNonAlive=false [200 OK, 311.36kB, 692ms]
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?includeNonAlive=false [200 OK, 299.17kB, 508ms]
   ✓  Los headers requeridos están presentes y son correctos
   ✓  El código de respuesta debe ser 200
   ✓  Todos los atributos requeridos deben estar presentes
@@ -569,7 +569,7 @@ Marvel APIs
 
 ❏ Pepper-GS64 / Bond Laws
 ↳ All
-  GET https://api.brasil.mercap.com.ar/bond-laws [200 OK, 1.2kB, 414ms]
+  GET https://api.brasil.mercap.com.ar/bond-laws [200 OK, 1.2kB, 256ms]
   ✓  Status code is 200
   ✓  Not empty
 
@@ -654,7 +654,7 @@ Marvel APIs
 
 ❏ Pepper-GS64 / Currencies64
 ↳ All
-  GET https://api.brasil.mercap.com.ar/currencies [200 OK, 1.33kB, 291ms]
+  GET https://api.brasil.mercap.com.ar/currencies [200 OK, 1.35kB, 48ms]
   ✓  Status code is 200
   ✓  Not empty
 
@@ -679,13 +679,13 @@ Marvel APIs
 
 ❏ Pepper-GS64 / Calendars / Querying
 ↳ Get calendars
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.77kB, 135ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 117ms]
   ✓  El código de respuesta debe ser 200
   ✓  La respuesta debe tener items
   ✓  Cada calendario debe tener la estructura correcta
 
 ↳ Get calendars summary
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 2.07kB, 133ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 2.08kB, 109ms]
   ✓  El header Accept es correcto
   ✓  El código de respuesta debe ser 200
   ✓  La respuesta debe tener 'items' y 'links.self'
@@ -764,17 +764,17 @@ Marvel APIs
 
 ❏ Pepper-GS64 / Calendars / Day-count / Happy path
 ↳ QUERY /day-count - calculation of working days
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 286ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 705B, 173ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 176ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 703B, 141ms]
   ✓  Status code es 200
   ✓  Response tiene propiedad 'dayCount'
   ✓  Response Content-Type correcto
   ✓  'dayCount' es un número entero no negativo
-  ✓  Caso base: from=2026-04-14 , to=2026-10-24 → dayCount=135
+  ✓  Caso base: from=2026-04-18 , to=2026-10-28 → dayCount=134
 
 ↳ QUERY /day-count - calculation of working days and holiday
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 150ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 693B, 123ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.77kB, 118ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 695B, 92ms]
   ✓  Status code es 200
   ✓  Response tiene propiedad 'dayCount'
   ✓  Response Content-Type correcto
@@ -782,8 +782,8 @@ Marvel APIs
   ✓  Caso base: from=2026-12-20 , to=2026-12-26 → dayCount=4
 
 ↳ QUERY /day-count - calculation of weekend and holiday
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 149ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 701B, 126ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.77kB, 113ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 693B, 113ms]
   ✓  Status code es 200
   ✓  Response tiene propiedad 'dayCount'
   ✓  Response Content-Type correcto
@@ -791,51 +791,51 @@ Marvel APIs
   ✓  Caso base: from=2026-05-01 , to=2026-05-03 → dayCount=0
 
 ↳ QUERY /day-count - calculation of one working days
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 150ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 693B, 120ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.77kB, 112ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 699B, 102ms]
   ✓  Status code es 200
   ✓  Response tiene propiedad 'dayCount'
   ✓  Response Content-Type correcto
   ✓  'dayCount' es un número entero no negativo
-  ✓  Caso base: from=2026-08-14 , to=2026-08-14 → dayCount=1
+  ✓  Caso base: from=2026-08-18 , to=2026-08-18 → dayCount=1
 
 ↳ QUERY /day-count - calculation of working days of a year
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 150ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 693B, 115ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.77kB, 119ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 691B, 99ms]
   ✓  Status code es 200
   ✓  Response tiene propiedad 'dayCount'
   ✓  Response Content-Type correcto
   ✓  'dayCount' es un número entero no negativo
-  ✓  Caso base: from=2027-08-14 , to=2027-08-14 → dayCount=0
+  ✓  Caso base: from=2027-08-18 , to=2027-08-18 → dayCount=1
 
 ❏ Pepper-GS64 / Calendars / Day-count / Negative case
 ↳ QUERY /day-count - from > to
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 138ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [500 Internal Server Error, 628B, 173ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.77kB, 121ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [500 Internal Server Error, 632B, 167ms]
   ✓  Status code es 500
   ✓  Response tiene mensaje de error esperado
 
 ↳ QUERY /day-count - invalid date format
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.77kB, 139ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 626B, 117ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 124ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 628B, 152ms]
   ✓  Status code es 400
   ✓  Response tiene mensaje de error esperado
 
 ↳ QUERY /day-count - without date from
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.77kB, 160ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 617B, 132ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.77kB, 120ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 619B, 131ms]
   ✓  Status code es 400
   ✓  Response tiene mensaje de error esperado
 
 ↳ QUERY /day-count - without date to
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 374ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 615B, 119ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 112ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 625B, 97ms]
   ✓  Status code es 400
   ✓  Response tiene mensaje de error esperado
 
 ❏ Pepper-GS64 / Debt Types
 ↳ All
-  GET https://api.brasil.mercap.com.ar/debt-types [200 OK, 2.19kB, 139ms]
+  GET https://api.brasil.mercap.com.ar/debt-types [200 OK, 2.18kB, 104ms]
   ✓  Status code is 200
   ✓  Not empty
 
@@ -843,7 +843,7 @@ Marvel APIs
 
 ❏ Pepper-GS64 / Yield curves
 ↳ Get all yield curves - validate each metrics link
-  GET https://api.brasil.mercap.com.ar/yield-curves [200 OK, 6.59kB, 163ms]
+  GET https://api.brasil.mercap.com.ar/yield-curves [200 OK, 7.14kB, 167ms]
   ✓  Response is received
   ✓  Status code is 200
   ✓  Response contains 'items' array with at least one element
@@ -855,7 +855,7 @@ Marvel APIs
   ✓  Item 1 (Brasil - Titulos Privados - C.R.A.s - Taxa Fixa - BRL) contains expected properties
   ✓  Item 1 (Brasil - Titulos Privados - C.R.A.s - Taxa Fixa - BRL) 'name' is a non-empty string
   ✓  Item 1 (Brasil - Titulos Privados - C.R.A.s - Taxa Fixa - BRL) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/efeab688-db18-40b0-9061-2d4a21af0f62/metrics [200 OK, 64.06kB, 30s]
+  GET https://api.brasil.mercap.com.ar/yield-curves/efeab688-db18-40b0-9061-2d4a21af0f62/metrics [200 OK, 65.05kB, 28.5s]
   ✓  Item 1 (Brasil - Titulos Privados - C.R.A.s - Taxa Fixa - BRL) metrics link returns status 200
   ┌
   │ '🔎 Testing Item 2 (Brasil - Titulos Privados - C.R.A.
@@ -864,7 +864,7 @@ Marvel APIs
   ✓  Item 2 (Brasil - Titulos Privados - C.R.A.s - Taxa Variavel - BRL - ANBIMA) contains expected properties
   ✓  Item 2 (Brasil - Titulos Privados - C.R.A.s - Taxa Variavel - BRL - ANBIMA) 'name' is a non-empty string
   ✓  Item 2 (Brasil - Titulos Privados - C.R.A.s - Taxa Variavel - BRL - ANBIMA) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/cb12d532-3579-4477-a420-a7722846de3a/metrics [200 OK, 9.03kB, 4.6s]
+  GET https://api.brasil.mercap.com.ar/yield-curves/cb12d532-3579-4477-a420-a7722846de3a/metrics [200 OK, 9.03kB, 4.4s]
   ✓  Item 2 (Brasil - Titulos Privados - C.R.A.s - Taxa Variavel - BRL - ANBIMA) metrics link returns status 200
   ┌
   │ '🔎 Testing Item 3 (Brasil - Titulos Privados - C.R.I.
@@ -873,7 +873,7 @@ Marvel APIs
   ✓  Item 3 (Brasil - Titulos Privados - C.R.I.s - Taxa Fixa - BRL) contains expected properties
   ✓  Item 3 (Brasil - Titulos Privados - C.R.I.s - Taxa Fixa - BRL) 'name' is a non-empty string
   ✓  Item 3 (Brasil - Titulos Privados - C.R.I.s - Taxa Fixa - BRL) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/60f87950-cd71-4ed4-9cab-2860f24fe77a/metrics [200 OK, 76.03kB, 23.2s]
+  GET https://api.brasil.mercap.com.ar/yield-curves/60f87950-cd71-4ed4-9cab-2860f24fe77a/metrics [200 OK, 77.93kB, 29.1s]
   ✓  Item 3 (Brasil - Titulos Privados - C.R.I.s - Taxa Fixa - BRL) metrics link returns status 200
   ┌
   │ '🔎 Testing Item 4 (Brasil - Titulos Privados - C.R.I.
@@ -882,7 +882,7 @@ Marvel APIs
   ✓  Item 4 (Brasil - Titulos Privados - C.R.I.s - Taxa Variavel - BRL - ANBIMA) contains expected properties
   ✓  Item 4 (Brasil - Titulos Privados - C.R.I.s - Taxa Variavel - BRL - ANBIMA) 'name' is a non-empty string
   ✓  Item 4 (Brasil - Titulos Privados - C.R.I.s - Taxa Variavel - BRL - ANBIMA) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/e1974aef-9243-40aa-8909-41b18bc5806f/metrics [200 OK, 9.02kB, 3.9s]
+  GET https://api.brasil.mercap.com.ar/yield-curves/e1974aef-9243-40aa-8909-41b18bc5806f/metrics [200 OK, 9.04kB, 4.6s]
   ✓  Item 4 (Brasil - Titulos Privados - C.R.I.s - Taxa Variavel - BRL - ANBIMA) metrics link returns status 200
   ┌
   │ '🔎 Testing Item 5 (Brasil - Titulos Privados - Debent
@@ -891,7 +891,7 @@ Marvel APIs
   ✓  Item 5 (Brasil - Titulos Privados - Debentures - Aguas e Saneamiento - BRL) contains expected properties
   ✓  Item 5 (Brasil - Titulos Privados - Debentures - Aguas e Saneamiento - BRL) 'name' is a non-empty string
   ✓  Item 5 (Brasil - Titulos Privados - Debentures - Aguas e Saneamiento - BRL) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/6764b6fe-321f-4633-88cc-66b5689ae53a/metrics [200 OK, 2.59kB, 627ms]
+  GET https://api.brasil.mercap.com.ar/yield-curves/6764b6fe-321f-4633-88cc-66b5689ae53a/metrics [200 OK, 3.51kB, 994ms]
   ✓  Item 5 (Brasil - Titulos Privados - Debentures - Aguas e Saneamiento - BRL) metrics link returns status 200
   ┌
   │ '🔎 Testing Item 6 (Brasil - Titulos Privados - Debent
@@ -900,7 +900,7 @@ Marvel APIs
   ✓  Item 6 (Brasil - Titulos Privados - Debentures - Concessoes - BRL) contains expected properties
   ✓  Item 6 (Brasil - Titulos Privados - Debentures - Concessoes - BRL) 'name' is a non-empty string
   ✓  Item 6 (Brasil - Titulos Privados - Debentures - Concessoes - BRL) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/cf8336c2-f116-488e-9bec-7bd71b1cd0fd/metrics [200 OK, 8.1kB, 845ms]
+  GET https://api.brasil.mercap.com.ar/yield-curves/cf8336c2-f116-488e-9bec-7bd71b1cd0fd/metrics [200 OK, 9.03kB, 1236ms]
   ✓  Item 6 (Brasil - Titulos Privados - Debentures - Concessoes - BRL) metrics link returns status 200
   ┌
   │ '🔎 Testing Item 7 (Brasil - Titulos Privados - Debent
@@ -909,64 +909,73 @@ Marvel APIs
   ✓  Item 7 (Brasil - Titulos Privados - Debentures - Energia - BRL) contains expected properties
   ✓  Item 7 (Brasil - Titulos Privados - Debentures - Energia - BRL) 'name' is a non-empty string
   ✓  Item 7 (Brasil - Titulos Privados - Debentures - Energia - BRL) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/cc72cb5a-d88e-449c-bfa2-665a737c0a54/metrics [200 OK, 54.91kB, 8.6s]
+  GET https://api.brasil.mercap.com.ar/yield-curves/cc72cb5a-d88e-449c-bfa2-665a737c0a54/metrics [200 OK, 56.78kB, 6s]
   ✓  Item 7 (Brasil - Titulos Privados - Debentures - Energia - BRL) metrics link returns status 200
   ┌
   │ '🔎 Testing Item 8 (Brasil - Titulos Privados - Debent
+  │ ures - Taxa Variavel - BRL - ANBIMA)'
+  └
+  ✓  Item 8 (Brasil - Titulos Privados - Debentures - Taxa Variavel - BRL - ANBIMA) contains expected properties
+  ✓  Item 8 (Brasil - Titulos Privados - Debentures - Taxa Variavel - BRL - ANBIMA) 'name' is a non-empty string
+  ✓  Item 8 (Brasil - Titulos Privados - Debentures - Taxa Variavel - BRL - ANBIMA) links contain valid URLs
+  GET https://api.brasil.mercap.com.ar/yield-curves/fad521ae-93c1-4ec2-9917-f35cf5bd868d/metrics [200 OK, 20.97kB, 14.5s]
+  ✓  Item 8 (Brasil - Titulos Privados - Debentures - Taxa Variavel - BRL - ANBIMA) metrics link returns status 200
+  ┌
+  │ '🔎 Testing Item 9 (Brasil - Titulos Privados - Debent
   │ ures - Transporte e Logistica - BRL)'
   └
-  ✓  Item 8 (Brasil - Titulos Privados - Debentures - Transporte e Logistica - BRL) contains expected properties
-  ✓  Item 8 (Brasil - Titulos Privados - Debentures - Transporte e Logistica - BRL) 'name' is a non-empty string
-  ✓  Item 8 (Brasil - Titulos Privados - Debentures - Transporte e Logistica - BRL) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/f6f9894d-83f2-460c-89bb-84b8189697a6/metrics [200 OK, 4.44kB, 568ms]
-  ✓  Item 8 (Brasil - Titulos Privados - Debentures - Transporte e Logistica - BRL) metrics link returns status 200
+  ✓  Item 9 (Brasil - Titulos Privados - Debentures - Transporte e Logistica - BRL) contains expected properties
+  ✓  Item 9 (Brasil - Titulos Privados - Debentures - Transporte e Logistica - BRL) 'name' is a non-empty string
+  ✓  Item 9 (Brasil - Titulos Privados - Debentures - Transporte e Logistica - BRL) links contain valid URLs
+  GET https://api.brasil.mercap.com.ar/yield-curves/f6f9894d-83f2-460c-89bb-84b8189697a6/metrics [200 OK, 4.44kB, 880ms]
+  ✓  Item 9 (Brasil - Titulos Privados - Debentures - Transporte e Logistica - BRL) metrics link returns status 200
   ┌
-  │ '🔎 Testing Item 9 (Brasil - Titulos Publicos - LTN - 
-  │ BRL - ANBIMA)'
+  │ '🔎 Testing Item 10 (Brasil - Titulos Publicos - LTN -
+  │  BRL - ANBIMA)'
   └
-  ✓  Item 9 (Brasil - Titulos Publicos - LTN - BRL - ANBIMA) contains expected properties
-  ✓  Item 9 (Brasil - Titulos Publicos - LTN - BRL - ANBIMA) 'name' is a non-empty string
-  ✓  Item 9 (Brasil - Titulos Publicos - LTN - BRL - ANBIMA) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/e06ece86-f627-49e5-9643-d85e0cc4e487/metrics [200 OK, 5.29kB, 1985ms]
-  ✓  Item 9 (Brasil - Titulos Publicos - LTN - BRL - ANBIMA) metrics link returns status 200
+  ✓  Item 10 (Brasil - Titulos Publicos - LTN - BRL - ANBIMA) contains expected properties
+  ✓  Item 10 (Brasil - Titulos Publicos - LTN - BRL - ANBIMA) 'name' is a non-empty string
+  ✓  Item 10 (Brasil - Titulos Publicos - LTN - BRL - ANBIMA) links contain valid URLs
+  GET https://api.brasil.mercap.com.ar/yield-curves/e06ece86-f627-49e5-9643-d85e0cc4e487/metrics [200 OK, 5.29kB, 2.8s]
+  ✓  Item 10 (Brasil - Titulos Publicos - LTN - BRL - ANBIMA) metrics link returns status 200
   ┌
-  │ '🔎 Testing Item 10 (Brasil - Titulos Publicos - NTN-B
+  │ '🔎 Testing Item 11 (Brasil - Titulos Publicos - NTN-B
   │  - BRL\t- ANBIMA)'
   └
-  ✓  Item 10 (Brasil - Titulos Publicos - NTN-B - BRL	- ANBIMA) contains expected properties
-  ✓  Item 10 (Brasil - Titulos Publicos - NTN-B - BRL	- ANBIMA) 'name' is a non-empty string
-  ✓  Item 10 (Brasil - Titulos Publicos - NTN-B - BRL	- ANBIMA) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/c600e136-4bc4-4a2f-935a-b0509789f431/metrics [200 OK, 11.77kB, 5.1s]
-  ✓  Item 10 (Brasil - Titulos Publicos - NTN-B - BRL	- ANBIMA) metrics link returns status 200
+  ✓  Item 11 (Brasil - Titulos Publicos - NTN-B - BRL	- ANBIMA) contains expected properties
+  ✓  Item 11 (Brasil - Titulos Publicos - NTN-B - BRL	- ANBIMA) 'name' is a non-empty string
+  ✓  Item 11 (Brasil - Titulos Publicos - NTN-B - BRL	- ANBIMA) links contain valid URLs
+  GET https://api.brasil.mercap.com.ar/yield-curves/c600e136-4bc4-4a2f-935a-b0509789f431/metrics [200 OK, 11.79kB, 6.4s]
+  ✓  Item 11 (Brasil - Titulos Publicos - NTN-B - BRL	- ANBIMA) metrics link returns status 200
   ┌
-  │ '🔎 Testing Item 11 (Brasil - Titulos Publicos - NTN-F
+  │ '🔎 Testing Item 12 (Brasil - Titulos Publicos - NTN-F
   │  - BRL)'
   └
-  ✓  Item 11 (Brasil - Titulos Publicos - NTN-F - BRL) contains expected properties
-  ✓  Item 11 (Brasil - Titulos Publicos - NTN-F - BRL) 'name' is a non-empty string
-  ✓  Item 11 (Brasil - Titulos Publicos - NTN-F - BRL) links contain valid URLs
-  GET https://api.brasil.mercap.com.ar/yield-curves/f5510395-c441-4cc5-9603-8e9f8128c621/metrics [200 OK, 5.34kB, 2.4s]
-  ✓  Item 11 (Brasil - Titulos Publicos - NTN-F - BRL) metrics link returns status 200
+  ✓  Item 12 (Brasil - Titulos Publicos - NTN-F - BRL) contains expected properties
+  ✓  Item 12 (Brasil - Titulos Publicos - NTN-F - BRL) 'name' is a non-empty string
+  ✓  Item 12 (Brasil - Titulos Publicos - NTN-F - BRL) links contain valid URLs
+  GET https://api.brasil.mercap.com.ar/yield-curves/f5510395-c441-4cc5-9603-8e9f8128c621/metrics [200 OK, 5.35kB, 3.2s]
+  ✓  Item 12 (Brasil - Titulos Publicos - NTN-F - BRL) metrics link returns status 200
   ┌
   │ '✅ Finalizó la iteración de items'
   └
 
-┌─────────────────────────┬───────────────────┬──────────────────┐
-│                         │          executed │           failed │
-├─────────────────────────┼───────────────────┼──────────────────┤
-│              iterations │                 1 │                0 │
-├─────────────────────────┼───────────────────┼──────────────────┤
-│                requests │                40 │                0 │
-├─────────────────────────┼───────────────────┼──────────────────┤
-│            test-scripts │                73 │                0 │
-├─────────────────────────┼───────────────────┼──────────────────┤
-│      prerequest-scripts │              1042 │                0 │
-├─────────────────────────┼───────────────────┼──────────────────┤
-│              assertions │               129 │                0 │
-├─────────────────────────┴───────────────────┴──────────────────┤
-│ total run duration: 8m 55s                                     │
-├────────────────────────────────────────────────────────────────┤
-│ total data received: 1.43MB (approx)                           │
-├────────────────────────────────────────────────────────────────┤
-│ average response time: 2.2s [min: 115ms, max: 30s, s.d.: 5.9s] │
-└────────────────────────────────────────────────────────────────┘
+┌─────────────────────────┬───────────────────┬───────────────────┐
+│                         │          executed │            failed │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│              iterations │                 1 │                 0 │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│                requests │                41 │                 0 │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│            test-scripts │                73 │                 0 │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│      prerequest-scripts │              1042 │                 0 │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│              assertions │               133 │                 0 │
+├─────────────────────────┴───────────────────┴───────────────────┤
+│ total run duration: 9m 23.7s                                    │
+├─────────────────────────────────────────────────────────────────┤
+│ total data received: 1.41MB (approx)                            │
+├─────────────────────────────────────────────────────────────────┤
+│ average response time: 2.6s [min: 48ms, max: 29.1s, s.d.: 6.5s] │
+└─────────────────────────────────────────────────────────────────┘
