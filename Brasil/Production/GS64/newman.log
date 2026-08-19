@@ -11,7 +11,7 @@ Marvel APIs
 ↳ Create duplicate LTN105
 
 ↳ Get all bonds
-  GET https://api.brasil.mercap.com.ar/brasil/bonds [200 OK, 299.07kB, 1730ms]
+  GET https://api.brasil.mercap.com.ar/brasil/bonds [200 OK, 299.06kB, 2.6s]
   ✓  Los headers requeridos están presentes y son correctos
   ✓  El código de respuesta debe ser 200
   ✓  Todos los atributos requeridos deben estar presentes
@@ -21,7 +21,7 @@ Marvel APIs
   ✓  Debe existir objeto links con atributos self y deactivate
 
 ↳ Get all bonds - start & limit parameters
-  GET https://api.brasil.mercap.com.ar/brasil/bonds?limit=14&start=1 [200 OK, 206.43kB, 467ms]
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?limit=14&start=1 [200 OK, 206.43kB, 457ms]
   ✓  Los headers requeridos están presentes y son correctos
   ✓  El código de respuesta debe ser 200
   ✓  Todos los atributos requeridos deben estar presentes
@@ -53,7 +53,7 @@ Marvel APIs
 ↳ Create duplicate LB5S0A
 
 ↳ Get all bonds with includeNonAlive true
-  GET https://api.brasil.mercap.com.ar/brasil/bonds?includeNonAlive=true [200 OK, 131.23kB, 483ms]
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?includeNonAlive=true [200 OK, 131.22kB, 406ms]
   ✓  Los headers requeridos están presentes y son correctos
   ✓  El código de respuesta debe ser 200
   ✓  Todos los atributos requeridos deben estar presentes
@@ -62,7 +62,7 @@ Marvel APIs
   ✓  Debe existir objeto links con atributos self y deactivate
 
 ↳ Get all bonds - start & limit parameters with includeNonAlive true
-  GET https://api.brasil.mercap.com.ar/brasil/bonds?limit=14&start=1&includeNonAlive=true [200 OK, 86.08kB, 319ms]
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?limit=14&start=1&includeNonAlive=true [200 OK, 86.08kB, 275ms]
   ✓  Los headers requeridos están presentes y son correctos
   ✓  El código de respuesta debe ser 200
   ✓  Todos los atributos requeridos deben estar presentes
@@ -93,7 +93,7 @@ Marvel APIs
 ↳ Create duplicate YMCOO
 
 ↳ Get all bonds with includeNonAlive false
-  GET https://api.brasil.mercap.com.ar/brasil/bonds?includeNonAlive=false [200 OK, 299.19kB, 568ms]
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?includeNonAlive=false [200 OK, 299.18kB, 420ms]
   ✓  Los headers requeridos están presentes y son correctos
   ✓  El código de respuesta debe ser 200
   ✓  Todos los atributos requeridos deben estar presentes
@@ -569,7 +569,7 @@ Marvel APIs
 
 ❏ Pepper-GS64 / Bond Laws
 ↳ All Bond Laws
-  GET https://api.brasil.mercap.com.ar/bond-laws [200 OK, 1.2kB, 421ms]
+  GET https://api.brasil.mercap.com.ar/bond-laws [200 OK, 1.2kB, 307ms]
   ✓  Status code is 200
   ✓  Not empty
 
@@ -577,373 +577,84 @@ Marvel APIs
 
 ❏ Pepper-GS64 / Cashflow / Cashflow
 ↳ Get Cashflow - fixed rate without amortization
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 3.45kB, 1360ms]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/7cdbccbe-0170-41f4-8ccc-6155c97dff9c/cashflow [200 OK, 1.49kB, 151ms]
-  ✓  El código de respuesta debe ser 200
-  ✓  La respuesta contien las propiedades principales esperadas
-  ✓  'flows' es un array no vacío.
-  ✓  Cada elemento en 'flows' tiene propiedades requeridas
-  ✓  Las propiedades en 'flows' tienen tipos correctos.
-  ✓  'links' contiene 'self'
-  ✓  Cada elemento en 'flows' tiene propiedades requeridas
-  ✓  All 'paymentDate' are between 2025-08-18 and 2027-08-18
-  ✓  Validacion del calculo de intereses y amortizaciones
-  ✓  flows contiene la cantidad de cupones esperados
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/7cdbccbe-0170-41f4-8ccc-6155c97dff9c/deactivate [204 No Content, 501B, 150ms]
 
 ↳ Get Cashflow - fixed rate without amortization - query quantity
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 3.45kB, 153ms]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/7560be41-b36a-42d6-a60d-51a5bf4b00c3/cashflow?quantity=100 [200 OK, 1.52kB, 125ms]
-  ✓  El código de respuesta debe ser 200
-  ✓  La respuesta contien las propiedades principales esperadas
-  ✓  'flows' es un array no vacío.
-  ✓  Cada elemento en 'flows' tiene propiedades requeridas
-  ✓  Las propiedades en 'flows' tienen tipos correctos.
-  ✓  'links' contiene 'self'
-  ✓  Cada elemento en 'flows' tiene propiedades requeridas
-  ✓  All 'paymentDate' are between 2025-08-18 and 2027-08-18
-  ✓  Validacion del calculo de intereses y amortizaciones
-  ✓  flows contiene la cantidad de cupones esperados
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/7560be41-b36a-42d6-a60d-51a5bf4b00c3/deactivate [204 No Content, 509B, 155ms]
 
 ↳ Get Cashflow - Fixed rate with amortization
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 5.99kB, 2.2s]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/44aa84fa-40af-411f-930d-771dd032e7f1/cashflow [200 OK, 2.74kB, 138ms]
-  ✓  El código de respuesta debe ser 200
-  ✓  La respuesta contien las propiedades principales esperadas
-  ✓  'flows' es un array no vacío.
-  ✓  Cada elemento en 'flows' tiene propiedades requeridas
-  ✓  Las propiedades en 'flows' tienen tipos correctos.
-  ✓  'links' contiene 'self'
-  ✓  Cada elemento en 'flows' tiene propiedades requeridas
-  ✓  Todas las fechas de pago son entre 2025-02-18 y 2033-02-18
-  ✓  Validacion del calculo de intereses y amortizaciones
-  ✓  flows contiene la cantidad de cupones esperados
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/44aa84fa-40af-411f-930d-771dd032e7f1/deactivate [204 No Content, 503B, 142ms]
 
 ↳ Get Cashflow - Fixed rate with amortization - fromDate - toDate
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 5.99kB, 2.1s]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/33af2010-379c-48f6-9ccc-7c7a8350b2b9/cashflow?fromDate=2029-08-18&toDate=2030-02-19 [200 OK, 1.3kB, 157ms]
-  ✓  El código de respuesta debe ser 200
-  ✓  La respuesta contien las propiedades principales esperadas
-  ✓  'flows' es un array no vacío.
-  ✓  Cada elemento en 'flows' tiene propiedades requeridas
-  ✓  Las propiedades en 'flows' tienen tipos correctos.
-  ✓  'links' contiene 'self'
-  ✓  Cada elemento en 'flows' tiene propiedades requeridas
-  ✓  Todas las fechas de pago son entre 2029-08-18 y 2030-02-19
-  ✓  Validacion del calculo de intereses y amortizaciones
-  ✓  flows contiene la cantidad de cupones esperados
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/33af2010-379c-48f6-9ccc-7c7a8350b2b9/deactivate [204 No Content, 507B, 159ms]
 
 ↳ Get Cashflow -  Zero coupon fixed rate
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 3.04kB, 314ms]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/54cefe91-5b26-4768-a12d-40048402b151/cashflow [200 OK, 1.25kB, 147ms]
-  ✓  El código de respuesta debe ser 200
-  ✓  La respuesta contien las propiedades principales esperadas
-  ✓  'flows' es un array no vacío.
-  ✓  Cada elemento en 'flows' tiene propiedades requeridas
-  ✓  Las propiedades en 'flows' tienen tipos correctos.
-  ✓  'links' contiene 'self'
-  ✓  Cada elemento en 'flows' tiene propiedades requeridas
-  ✓  Todas las fechas de pago son entre  2026-03-18 y 2026-09-18
-  ✓  Validacion del calculo de intereses y amortizaciones
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/54cefe91-5b26-4768-a12d-40048402b151/deactivate [204 No Content, 505B, 156ms]
 
 ❏ Pepper-GS64 / Cashflow / technical-value
 ↳ Get technical-value - on expiration cupon date
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 5.99kB, 2s]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/03f347e1-8e5a-4938-bafe-7fbcefd6923f/technical-value?date=2030-08-19 [200 OK, 970B, 122ms]
-  ✓  Status code es 200
-  ✓  Media-Type es correcto
-  ✓  Response tiene las propiedades requeridas
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  unit es una URL válida
-  ✓  links.self es una URL válida
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  El monto de amount es acorde a la fecha 2030-08-19
-  ✓  La unidad unit es una URL válida
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/03f347e1-8e5a-4938-bafe-7fbcefd6923f/deactivate [204 No Content, 505B, 132ms]
 
 ↳ Get technical-value - before the first amortization
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 5.99kB, 2s]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/2c555479-5e54-462f-9d78-e8f421a4ba0c/technical-value?date=2030-09-18 [200 OK, 968B, 120ms]
-  ✓  Status code es 200
-  ✓  Media-Type es correcto
-  ✓  Response tiene las propiedades requeridas
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  unit es una URL válida
-  ✓  links.self es una URL válida
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  El monto de amount es acorde a la fecha 2030-09-18
-  ✓  La unidad unit es una URL válida
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/2c555479-5e54-462f-9d78-e8f421a4ba0c/deactivate [204 No Content, 503B, 131ms]
 
 ↳ Get technical-value - after the first amortization
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 5.99kB, 2s]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/55f73a6d-2de6-44d9-8116-4129d132e0c9/technical-value?date=2031-03-18 [200 OK, 971B, 123ms]
-  ✓  Status code es 200
-  ✓  Media-Type es correcto
-  ✓  Response tiene las propiedades requeridas
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  unit es una URL válida
-  ✓  links.self es una URL válida
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  El monto de amount es acorde a la fecha 2031-03-18
-  ✓  La unidad unit es una URL válida
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/55f73a6d-2de6-44d9-8116-4129d132e0c9/deactivate [204 No Content, 503B, 136ms]
 
 ↳ Get technical-value -  before the bond date range
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 5.99kB, 2.1s]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/77eadecc-22b3-4283-8ce2-8d8269e0bdb9/technical-value?date=2025-02-17 [200 OK, 961B, 161ms]
-  ✓  Status code es 200
-  ✓  Media-Type es correcto
-  ✓  Response tiene las propiedades requeridas
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  unit es una URL válida
-  ✓  links.self es una URL válida
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  El monto de amount es acorde a la fecha 2025-02-17
-  ✓  La unidad unit es una URL válida
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/77eadecc-22b3-4283-8ce2-8d8269e0bdb9/deactivate [204 No Content, 503B, 158ms]
 
 ↳ Get technical-value - after the first amortization - query quantity
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 5.99kB, 2.1s]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/18c8f88d-5c10-47bf-9385-a847fd77c58c/technical-value?date=2031-03-18&quantity=100 [200 OK, 986B, 125ms]
-  ✓  Status code es 200
-  ✓  Media-Type es correcto
-  ✓  Response tiene las propiedades requeridas
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  unit es una URL válida
-  ✓  links.self es una URL válida
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  El monto de amount es acorde a la fecha 2031-03-18
-  ✓  La unidad unit es una URL válida
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/18c8f88d-5c10-47bf-9385-a847fd77c58c/deactivate [204 No Content, 513B, 142ms]
 
 ↳ Get technical-value -  after the bond date range
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 6kB, 2.1s]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/7257170f-999c-4c01-9d46-73b56e8d706d/technical-value?date=2033-02-19 [200 OK, 957B, 140ms]
-  ✓  Status code es 200
-  ✓  Media-Type es correcto
-  ✓  Response tiene las propiedades requeridas
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  unit es una URL válida
-  ✓  links.self es una URL válida
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  El monto de amount es acorde a la fecha 2033-02-19
-  ✓  La unidad unit es una URL válida
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/7257170f-999c-4c01-9d46-73b56e8d706d/deactivate [204 No Content, 501B, 165ms]
 
 ❏ Pepper-GS64 / Cashflow / accrued-interest
 ↳ Get Accrued-interest  - on expiration cupon date
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 5.99kB, 2.1s]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/9ef459bf-e52b-4176-9e3b-5055156d96a1/accrued-interest?date=2031-02-18 [200 OK, 966B, 126ms]
-  ✓  Status code es 200
-  ✓  Media-Type es correcto
-  ✓  Response tiene las propiedades requeridas
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  unit es una URL válida
-  ✓  links.self es una URL válida
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  El monto de amount es acorde a la fecha 2031-02-18
-  ✓  La unidad unit es una URL válida
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/9ef459bf-e52b-4176-9e3b-5055156d96a1/deactivate [204 No Content, 505B, 170ms]
 
 ↳ Get Accrued-interest  - after the first amortization
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 5.99kB, 3.4s]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/4d5b58d7-1532-47c5-ad79-e3374aeb8443/accrued-interest?date=2031-03-18 [200 OK, 965B, 126ms]
-  ✓  Status code es 200
-  ✓  Media-Type es correcto
-  ✓  Response tiene las propiedades requeridas
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  unit es una URL válida
-  ✓  links.self es una URL válida
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  El monto de amount es acorde a la fecha 2031-03-18
-  ✓  La unidad unit es una URL válida
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/4d5b58d7-1532-47c5-ad79-e3374aeb8443/deactivate [204 No Content, 497B, 177ms]
 
 ↳ Get Accrued-interest - before the first amortization
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 5.99kB, 2.5s]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/2323e007-ea14-4ceb-b6b7-fbfb3fd087a1/accrued-interest?date=2030-09-18 [200 OK, 969B, 133ms]
-  ✓  Status code es 200
-  ✓  Media-Type es correcto
-  ✓  Response tiene las propiedades requeridas
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  unit es una URL válida
-  ✓  links.self es una URL válida
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  El monto de amount es acorde a la fecha 2030-09-18
-  ✓  La unidad unit es una URL válida
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/2323e007-ea14-4ceb-b6b7-fbfb3fd087a1/deactivate [204 No Content, 501B, 149ms]
 
 ↳ Get accrued-interest - after the first amortization - query quantity
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 5.99kB, 2.1s]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/ec3e415d-0839-4a8b-be85-18c0463ee872/accrued-interest?date=2031-03-18&quantity=100 [200 OK, 975B, 127ms]
-  ✓  Status code es 200
-  ✓  Media-Type es correcto
-  ✓  Response tiene las propiedades requeridas
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  unit es una URL válida
-  ✓  links.self es una URL válida
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  El monto de amount es acorde a la fecha 2031-03-18
-  ✓  La unidad unit es una URL válida
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/ec3e415d-0839-4a8b-be85-18c0463ee872/deactivate [204 No Content, 509B, 131ms]
 
 ↳ Get accrued-interest -  after the bond date range
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 5.99kB, 2s]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/6c63ea95-fb5d-4867-882a-9dec66e45b21/accrued-interest?date=2033-02-19 [200 OK, 962B, 119ms]
-  ✓  Status code es 200
-  ✓  Media-Type es correcto
-  ✓  Response tiene las propiedades requeridas
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  unit es una URL válida
-  ✓  links.self es una URL válida
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  El monto de amount es acorde a la fecha 2033-02-19
-  ✓  La unidad unit es una URL válida
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/6c63ea95-fb5d-4867-882a-9dec66e45b21/deactivate [204 No Content, 503B, 117ms]
 
 ↳ Get accrued-interest -  before the bond date range
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 6kB, 2.1s]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/3974ad42-675b-4908-a889-09e0a18643ee/accrued-interest?date=2025-02-17 [200 OK, 974B, 127ms]
-  ✓  Status code es 200
-  ✓  Media-Type es correcto
-  ✓  Response tiene las propiedades requeridas
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  unit es una URL válida
-  ✓  links.self es una URL válida
-  ✓  amount es un número válido redondeado a 8 decimales
-  ✓  El monto de amount es acorde a la fecha 2025-02-17
-  ✓  La unidad unit es una URL válida
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/3974ad42-675b-4908-a889-09e0a18643ee/deactivate [204 No Content, 503B, 151ms]
 
 ❏ Pepper-GS64 / Cashflow / residual-value
 ↳ Get residual-value - on expiration cupon date
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 5.99kB, 2s]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/c1fa0ce5-4e1c-4b28-bcdf-7ba449df740d/residual-value?date=2030-08-18 [200 OK, 877B, 135ms]
-  ✓  Status code es 200
-  ✓  Media-Type es correcto
-  ✓  Response tiene las propiedades requeridas
-  ✓  percentage es un número válido
-  ✓  links.self es una URL válida
-  ✓  El monto de percentage es acorde a la fecha 2030-08-18
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/c1fa0ce5-4e1c-4b28-bcdf-7ba449df740d/deactivate [204 No Content, 505B, 154ms]
 
 ↳ Get residual-value - after the first amortization
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 5.99kB, 2s]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/b295d327-a535-492f-8d85-ab2563f076b2/residual-value?date=2031-03-18 [200 OK, 890B, 126ms]
-  ✓  Status code es 200
-  ✓  Media-Type es correcto
-  ✓  Response tiene las propiedades requeridas
-  ✓  amount es un número válido 
-  ✓  links.self es una URL válida
-  ✓  El monto de amount es acorde a la fecha 2031-03-18
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/b295d327-a535-492f-8d85-ab2563f076b2/deactivate [204 No Content, 511B, 124ms]
 
 ↳ Get residual-value -  before the bond date range
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 6kB, 2.1s]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/e1d29e6f-fe54-42b0-9cd4-82d606313774/residual-value?date=2025-02-17 [200 OK, 877B, 130ms]
-  ✓  Status code es 200
-  ✓  Media-Type es correcto
-  ✓  Response tiene las propiedades requeridas
-  ✓  percentage es un número válido 
-  ✓  links.self es una URL válida
-  ✓  El monto de percentage es acorde a la fecha 2025-02-17
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/e1d29e6f-fe54-42b0-9cd4-82d606313774/deactivate [204 No Content, 511B, 124ms]
 
 ↳ Get residual-value -  after the bond date range
-  POST https://api.brasil.mercap.com.ar/brasil/bonds [201 Created, 5.99kB, 2s]
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/36837d3e-01b7-4c0f-a598-bf235f540159/residual-value?date=2033-02-19 [200 OK, 881B, 137ms]
-  ✓  Status code es 200
-  ✓  Media-Type es correcto
-  ✓  Response tiene las propiedades requeridas
-  ✓  percentage es un número válido 
-  ✓  links.self es una URL válida
-  ✓  El monto de percentage es acorde a la fecha 2033-02-19
-  POST https://api.brasil.mercap.com.ar/brasil/bonds/36837d3e-01b7-4c0f-a598-bf235f540159/deactivate [204 No Content, 505B, 123ms]
 
 ❏ Pepper-GS64 / Cashflow / Negative Case Cashflow
 ↳ Get Cashflow - parametro invalido
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/36837d3e-01b7-4c0f-a598-bf235f540159/cashflow?fromDate=hoy [400 Bad Request, 623B, 121ms]
-  ✓  Status code es 400 con fecha inválida
-  ✓  Response indica error de parámetro inválido
 
 ↳ Get Cashflow - not found bonds
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/98d326da/cashflow [404 Not Found, 602B, 146ms]
-  ✓  Status code es 404 con uuid inexistente
-  ✓  Response indica recurso no encontrado
 
 ↳ Get Cashflow - accept invalido
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/36837d3e-01b7-4c0f-a598-bf235f540159/cashflow [406 Not Acceptable, 785B, 126ms]
-  ✓  Status code es 406 con Accept header inválido
-  ✓  Response indica parametro no aceptacle
 
 ↳ Get technical-value - empty date
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/36837d3e-01b7-4c0f-a598-bf235f540159/technical-value?date= [400 Bad Request, 627B, 122ms]
-  ✓  Status code es 400 cuando falta el parámetro date
-  ✓  Mensaje de error indica parámetro date faltante
 
 ↳ Get technical-value - invalid format date
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/36837d3e-01b7-4c0f-a598-bf235f540159/technical-value?date=hola [400 Bad Request, 616B, 137ms]
-  ✓  Status code es 400 con formato de fecha inválido
-  ✓  Mensaje de error indica formato de fecha inválido
 
 ↳ Get technical-value - invalid format Quantity
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/36837d3e-01b7-4c0f-a598-bf235f540159/technical-value?quantity=a [400 Bad Request, 635B, 123ms]
-  ✓  Status code es 400 con formato de quantity inválido
-  ✓  Mensaje de error indica que quantity debe ser un número
 
 ↳ Get technical-value - not found bond
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/test/technical-value?quantity= [404 Not Found, 609B, 138ms]
-  ✓  Status code es 404 con bondId inexistente
-  ✓  Mensaje de error indica que el bono no existe
 
 ↳ Get technical-value - invalid accept
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/36837d3e-01b7-4c0f-a598-bf235f540159/technical-value?date=2026-08-18 [406 Not Acceptable, 771B, 128ms]
-  ✓  Status code es 406 con Accept header no soportado
-  ✓  Mensaje de error indica media type no soportado
 
 ↳ Get technical-value - quantity 0
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/36837d3e-01b7-4c0f-a598-bf235f540159/technical-value?date=2026-08-18&quantity=0 [422 Unprocessable Entity, 651B, 123ms]
-  ✓  Status code es 422 con quantity negativa o cero
-  ✓  Mensaje de error indica que quantity debe ser positiva
 
 ↳ Get technical-value - invalid accept
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/36837d3e-01b7-4c0f-a598-bf235f540159/technical-value?date=2026-08-18 [406 Not Acceptable, 777B, 163ms]
-  ✓  Status code es 406 con Accept header no soportado
-  ✓  Mensaje de error indica media type no soportado
 
 ↳ Get accrued-interest - not found bond
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/test/accrued-interest?quantity= [404 Not Found, 644B, 144ms]
-  ✓  Status code es 404 con bondId inexistente
-  ✓  Mensaje de error indica que el bono no existe
 
 ↳ Get accrued-interest - quantity 0
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/36837d3e-01b7-4c0f-a598-bf235f540159/accrued-interest?date=2026-08-18&quantity=0 [422 Unprocessable Entity, 663B, 138ms]
-  ✓  Status code es 422 con quantity negativa o cero
-  ✓  Mensaje de error indica que quantity debe ser positiva
 
 ↳ Get accrued-interest - invalid format Quantity
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/36837d3e-01b7-4c0f-a598-bf235f540159/accrued-interest?quantity=a [400 Bad Request, 629B, 201ms]
-  ✓  Status code es 400 con formato de quantity inválido
-  ✓  Mensaje de error indica que quantity debe ser un número
 
 ↳ Get accrued-interest - invalid format date
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/36837d3e-01b7-4c0f-a598-bf235f540159/accrued-interest?date=hola [400 Bad Request, 616B, 171ms]
-  ✓  Status code es 400 con formato de fecha inválido
-  ✓  Mensaje de error indica formato de fecha inválido
 
 ↳ Get accrued-interest - empty date
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/36837d3e-01b7-4c0f-a598-bf235f540159/accrued-interest?date= [400 Bad Request, 625B, 121ms]
-  ✓  Status code es 400 cuando falta el parámetro date
-  ✓  Mensaje de error indica parámetro date faltante
 
 ❏ Pepper-GS64 / Currencies64
 ↳ All Currencies64
-  GET https://api.brasil.mercap.com.ar/currencies [200 OK, 1.34kB, 274ms]
+  GET https://api.brasil.mercap.com.ar/currencies [200 OK, 1.35kB, 153ms]
   ✓  Status code is 200
   ✓  Not empty
 
@@ -968,13 +679,13 @@ Marvel APIs
 
 ❏ Pepper-GS64 / Calendars / Querying
 ↳ Get calendars
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.77kB, 176ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 145ms]
   ✓  El código de respuesta debe ser 200
   ✓  La respuesta debe tener items
   ✓  Cada calendario debe tener la estructura correcta
 
 ↳ Get calendars summary
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 2.07kB, 177ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 2.07kB, 156ms]
   ✓  El header Accept es correcto
   ✓  El código de respuesta debe ser 200
   ✓  La respuesta debe tener 'items' y 'links.self'
@@ -1053,17 +764,17 @@ Marvel APIs
 
 ❏ Pepper-GS64 / Calendars / Day-count / Happy path
 ↳ QUERY /day-count - calculation of working days
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.77kB, 256ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 697B, 202ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 269ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 697B, 208ms]
   ✓  Status code es 200
   ✓  Response tiene propiedad 'dayCount'
   ✓  Response Content-Type correcto
   ✓  'dayCount' es un número entero no negativo
-  ✓  Caso base: from=2026-04-18 , to=2026-10-28 → dayCount=134
+  ✓  Caso base: from=2026-04-19 , to=2026-10-29 → dayCount=135
 
 ↳ QUERY /day-count - calculation of working days and holiday
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 161ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 697B, 147ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.75kB, 136ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 691B, 119ms]
   ✓  Status code es 200
   ✓  Response tiene propiedad 'dayCount'
   ✓  Response Content-Type correcto
@@ -1071,8 +782,8 @@ Marvel APIs
   ✓  Caso base: from=2026-12-20 , to=2026-12-26 → dayCount=4
 
 ↳ QUERY /day-count - calculation of weekend and holiday
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 164ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 691B, 121ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 132ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 693B, 128ms]
   ✓  Status code es 200
   ✓  Response tiene propiedad 'dayCount'
   ✓  Response Content-Type correcto
@@ -1080,72 +791,72 @@ Marvel APIs
   ✓  Caso base: from=2026-05-01 , to=2026-05-03 → dayCount=0
 
 ↳ QUERY /day-count - calculation of one working days
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.77kB, 132ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 697B, 158ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.77kB, 134ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 697B, 93ms]
   ✓  Status code es 200
   ✓  Response tiene propiedad 'dayCount'
   ✓  Response Content-Type correcto
   ✓  'dayCount' es un número entero no negativo
-  ✓  Caso base: from=2026-08-18 , to=2026-08-18 → dayCount=1
+  ✓  Caso base: from=2026-08-19 , to=2026-08-19 → dayCount=1
 
 ↳ QUERY /day-count - calculation of working days of a year
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 171ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 689B, 178ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 170ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 711B, 120ms]
   ✓  Status code es 200
   ✓  Response tiene propiedad 'dayCount'
   ✓  Response Content-Type correcto
   ✓  'dayCount' es un número entero no negativo
-  ✓  Caso base: from=2027-08-18 , to=2027-08-18 → dayCount=1
+  ✓  Caso base: from=2027-08-19 , to=2027-08-19 → dayCount=1
 
 ❏ Pepper-GS64 / Calendars / Day-count / Negative case
 ↳ QUERY /day-count - from > to
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 157ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [500 Internal Server Error, 620B, 224ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 109ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [500 Internal Server Error, 626B, 182ms]
   ✓  Status code es 500
   ✓  Response tiene mensaje de error esperado
 
 ↳ QUERY /day-count - invalid date format
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 158ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 626B, 147ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.77kB, 150ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 620B, 102ms]
   ✓  Status code es 400
   ✓  Response tiene mensaje de error esperado
 
 ↳ QUERY /day-count - without date from
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 156ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 619B, 147ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.77kB, 82ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 629B, 96ms]
   ✓  Status code es 400
   ✓  Response tiene mensaje de error esperado
 
 ↳ QUERY /day-count - without date to
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 142ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 617B, 146ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.77kB, 128ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 617B, 121ms]
   ✓  Status code es 400
   ✓  Response tiene mensaje de error esperado
 
 ❏ Pepper-GS64 / Debt Types
 ↳ All Debt Types
-  GET https://api.brasil.mercap.com.ar/debt-types [200 OK, 2.17kB, 126ms]
+  GET https://api.brasil.mercap.com.ar/debt-types [200 OK, 2.17kB, 128ms]
   ✓  Status code is 200
   ✓  Not empty
 
 ↳ By UUID Debt Types
 
-┌─────────────────────────┬────────────────────┬────────────────────┐
-│                         │           executed │             failed │
-├─────────────────────────┼────────────────────┼────────────────────┤
-│              iterations │                  1 │                  0 │
-├─────────────────────────┼────────────────────┼────────────────────┤
-│                requests │                106 │                  0 │
-├─────────────────────────┼────────────────────┼────────────────────┤
-│            test-scripts │                123 │                  0 │
-├─────────────────────────┼────────────────────┼────────────────────┤
-│      prerequest-scripts │               1075 │                  0 │
-├─────────────────────────┼────────────────────┼────────────────────┤
-│              assertions │                292 │                  0 │
-├─────────────────────────┴────────────────────┴────────────────────┤
-│ total run duration: 6m 32.4s                                      │
-├───────────────────────────────────────────────────────────────────┤
-│ total data received: 1.24MB (approx)                              │
-├───────────────────────────────────────────────────────────────────┤
-│ average response time: 541ms [min: 117ms, max: 3.4s, s.d.: 795ms] │
-└───────────────────────────────────────────────────────────────────┘
+┌─────────────────────────┬────────────────────┬───────────────────┐
+│                         │           executed │            failed │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              iterations │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│                requests │                 28 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│            test-scripts │                 51 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│      prerequest-scripts │               1039 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              assertions │                 81 │                 0 │
+├─────────────────────────┴────────────────────┴───────────────────┤
+│ total run duration: 5m 40.3s                                     │
+├──────────────────────────────────────────────────────────────────┤
+│ total data received: 1.13MB (approx)                             │
+├──────────────────────────────────────────────────────────────────┤
+│ average response time: 272ms [min: 82ms, max: 2.6s, s.d.: 477ms] │
+└──────────────────────────────────────────────────────────────────┘
