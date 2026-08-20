@@ -1,0 +1,59 @@
+{
+  "escalar_prioritario": {
+    "titulo": "Flujos de caja de bono desde fecha — 32 reincidencias como outlier",
+    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 32 registros históricos como outlier, indicando un problema persistente que trasciende la degradación puntual de esta corrida. Actualmente registra un P95 de 7.088ms, lo que representa una desviación del 89.68% respecto a su baseline global."
+  },
+  "investigar": {
+    "titulo": "3 endpoints en amarillo simultáneos — posible causa de infraestructura",
+    "detalle": "La degradación simultánea en los servicios de Bond Payment Forecasts v2, Exchange Schemes y Markets sugiere una contención en recursos compartidos de infraestructura. La simultaneidad de alertas en módulos funcionalmente distintos apunta a latencia en la capa de datos o saturación en la red interna."
+  },
+  "optimizar": {
+    "titulo": "Optimizar Flujos de caja de bono desde fecha — alto impacto acumulado",
+    "detalle": "Con un impact_score de 497.000 y 133 ejecuciones, este endpoint es el principal generador de latencia sistémica. Una reducción del 20% en su P95 representaría 99.400 ms de latencia acumulada evitada por ciclo de vida del servicio."
+  },
+  "bottleneck_narrative": "Se observa una tendencia sostenida al alza del 18.6%, con el promedio P95 subiendo de 547ms a 649ms de forma gradual en las últimas 10 corridas. Cuando la latencia sube poco a poco, el baseline histórico sube con ella, provocando que los valores degradados se conviertan en el nuevo normal y el sistema de alertas deje de detectarlos.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Saturación de infraestructura compartida o capa de datos",
+      "evidence": "3 alertas amarillas simultáneas en servicios de Bond Payment, Exchange Schemes y Markets.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Inestabilidad estructural recurrente en cálculo de flujos",
+      "evidence": "32 ocurrencias como outlier para el endpoint Flujos de caja de bono desde fecha.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Cuello de botella por volumen de datos en la respuesta",
+      "evidence": "Correlación positiva entre payload y latencia; el endpoint de cupones de bono pesa 7.89 KB con P95 de 2.152ms.",
+      "priority": "media"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P1",
+      "accion": "Analizar inestabilidad en Flujos de caja de bono desde fecha — 32 reincidencias",
+      "endpoint_target": "Get one bond cashflow - only dateInterval from",
+      "evidencia": "7088 ms"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Investigar contención de recursos en infraestructura compartida",
+      "endpoint_target": "—",
+      "evidencia": "3 alertas amarillas"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Revisar serialización en endpoints con payload pesado",
+      "endpoint_target": "—",
+      "evidencia": "payload_correlated: true"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Optimizar Flujos de caja de bono desde fecha — alto impacto acumulado",
+      "endpoint_target": "Get one bond cashflow - only dateInterval from",
+      "evidencia": "impact score: 497.000"
+    }
+  ],
+  "version_narrative": "La versión V10.3.75 muestra una degradación global del 16.5% en el P95 promedio respecto a la V10.3.72 (649ms vs 557ms). Se destaca una mejora crítica en Métricas de valor negociable (-95%), mientras que las degradaciones más severas se concentran en Flujos de caja de bono desde fecha (+1966.5%) y Valores negociables — Filtros obligatorios (+891.4%). El alza en el servicio de flujos de caja coincide con la alerta amarilla activa, validando una regresión funcional significativa."
+}
