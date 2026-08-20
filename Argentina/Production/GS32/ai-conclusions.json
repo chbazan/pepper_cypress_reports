@@ -1,0 +1,59 @@
+{
+  "escalar_prioritario": {
+    "titulo": "Curvas de rendimiento — Listar todas (resumen) — 18 reincidencias como outlier",
+    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 18 registros históricos como outlier, indicando un problema persistente que trasciende la corrida actual. Aunque no posee alerta roja hoy, su reincidencia histórica es una señal de degradación estructural más grave que las alertas puntuales detectadas en otros módulos."
+  },
+  "investigar": {
+    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 32.32 KB",
+    "detalle": "Se detectó una correlación directa entre el tamaño de respuesta y la latencia en los endpoints más lentos, destacando Paridades de bono (171.72 KB) y Tasas Internas de Retorno (64.44 KB). Es necesario investigar si el tiempo de respuesta está penalizado por la serialización o el volumen de datos transmitido hacia el cliente."
+  },
+  "optimizar": {
+    "titulo": "Optimizar Bond Screener — Filtro múltiple de bonos — impact score: 367.342",
+    "detalle": "Este endpoint posee el mayor impacto sistémico con un impact_score de 367.342 basado en 115 ejecuciones y un P95 típico de 3194.28 ms. Una reducción del 20% en su latencia evitaría la acumulación de 73.468 ms de tiempo de espera en el ciclo de vida del servicio."
+  },
+  "bottleneck_narrative": "La corrida actual presenta 2 alertas amarillas en el módulo de Investments, lo cual es compatible con una regresión puntual en dicho servicio. La tendencia del -8.2% no representa una mejora real del sistema, sino que está influenciada por picos de latencia en corridas previas de la ventana que elevaron artificialmente el punto de comparación inicial.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Inestabilidad estructural en Curvas de rendimiento",
+      "evidence": "El endpoint registra 18 ocurrencias como outlier en el historial acumulado de ejecuciones.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Cuello de botella por tamaño de respuesta y serialización",
+      "evidence": "payload_correlated es true con Paridades de bono entregando 171.72 KB a 1410 ms.",
+      "priority": "media"
+    },
+    {
+      "hypothesis": "Regresión puntual en el módulo de Investments",
+      "evidence": "Sensibilidad de precio de inversión por ID muestra una regresión del 99.67% vs la corrida anterior.",
+      "priority": "media"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P1",
+      "accion": "Estabilizar Curvas de rendimiento — Listar todas (resumen) por outliers recurrentes",
+      "endpoint_target": "Get all yield curves - validate each self link",
+      "evidencia": "18 reincidencias"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Analizar regresión en Sensibilidad de precio de inversión por ID — +148.34% vs baseline",
+      "endpoint_target": "Get investment price sensitivity by ID",
+      "evidencia": "99.67% regression"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Revisar degradación en Métricas de inversión por ID — 1914 ms P95",
+      "endpoint_target": "Get investment metrics by ID",
+      "evidencia": "91.16% vs baseline global"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Optimizar Bond Screener — Filtro múltiple de bonos — alto impacto acumulado",
+      "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "evidencia": "impact score: 367.342"
+    }
+  ],
+  "version_narrative": "La versión V10.2.97 presenta una mejora global del 4.06% en el avg P95 (449 ms vs 468 ms de la versión previa). Se destacan optimizaciones en Grupos de bonos y Curvas de rendimiento con reducciones de latencia superiores al 75%, aunque estas mejoras se ven parcialmente opacadas por la degradación en el módulo de Investments, donde las APIs de Sensibilidad y Métricas coinciden con las alertas activas."
+}
