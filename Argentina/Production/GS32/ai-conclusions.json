@@ -1,0 +1,59 @@
+{
+  "escalar_prioritario": {
+    "titulo": "Paridades de bono — +434% vs baseline global",
+    "detalle": "El endpoint registra un P95 de 9.393ms frente a un baseline de 1.758ms, con una desviación del 419.78% respecto a la versión actual. Se identifica como un outlier crítico en esta corrida con una regresión del 391.52% respecto al ciclo inmediatamente anterior."
+  },
+  "investigar": {
+    "titulo": "5 endpoints en amarillo simultáneos — posible causa de infra",
+    "detalle": "La degradación concurrente en módulos de Bonds, Yield Curves, Bond Groups y Tradable Securities sugiere una saturación en recursos compartidos de infraestructura. Esta simultaneidad en servicios funcionalmente diversos apunta a un cuello de botella sistémico más que a lógica de aplicación."
+  },
+  "optimizar": {
+    "titulo": "Bond Screener — Filtro múltiple de bonos — impact score: 372.137",
+    "detalle": "Este endpoint genera la mayor latencia acumulada del sistema con 118 ejecuciones y un P95 típico de 3.153ms. Una reducción del 20% en su P95 representaría 74.427ms de latencia acumulada evitada por ciclo de vida del endpoint."
+  },
+  "bottleneck_narrative": "La corrida actual presenta 1 alerta roja y 5 amarillas, lo cual, sumado a una tendencia de incremento del 14.6%, es compatible con una regresión puntual en proceso de estabilización. No se registran picos históricos anómalos en la ventana reciente que distorsionen la clasificación actual del sistema.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Causa de infraestructura compartida",
+      "evidence": "6 alertas activas simultáneas en módulos Bonds, Yield Curves, Bond Groups y Tradable Securities.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Inestabilidad estructural en Curvas de rendimiento",
+      "evidence": "Endpoint con 19 reincidencias registradas como outlier en el historial de corridas.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Cuello de botella por tamaño de respuesta",
+      "evidence": "Get parities con 171.72 KB y correlación positiva entre payload y latencia (payload_correlated: true).",
+      "priority": "media"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P1",
+      "accion": "Analizar regresión en Paridades de bono — +434% vs baseline global",
+      "endpoint_target": "Get parities",
+      "evidencia": "9393 ms"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Corregir inestabilidad estructural en Curvas de rendimiento — 19 reincidencias",
+      "endpoint_target": "Get all yield curves - validate each self link",
+      "evidencia": "19 occurrences"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Revisar filtrado por nombre corto — +3602% de desviación",
+      "endpoint_target": "Only shortName parameter",
+      "evidencia": "5978 ms"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Optimizar Bond Screener — alto impacto acumulado",
+      "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "evidencia": "372137 impact_score"
+    }
+  ],
+  "version_narrative": "La versión V10.2.97 muestra una degradación global del 65.6% en el P95 promedio, subiendo de 468ms a 775ms. Se observan mejoras significativas en el módulo de Tradable Securities, especialmente en los filtros por tipo y obligatorios con reducciones de latencia superiores al 89%. Sin embargo, estas mejoras son opacadas por regresiones críticas en los servicios de Bonds y Bond Payment Forecasts v2, que coinciden con las alertas activas en esta corrida."
+}
