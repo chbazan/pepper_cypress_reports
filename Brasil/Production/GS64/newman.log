@@ -11,7 +11,7 @@ Marvel APIs
 ↳ Create duplicate LTN105
 
 ↳ Get all bonds
-  GET https://api.brasil.mercap.com.ar/brasil/bonds [200 OK, 299.06kB, 704ms]
+  GET https://api.brasil.mercap.com.ar/brasil/bonds [200 OK, 299.07kB, 1264ms]
   ✓  Los headers requeridos están presentes y son correctos
   ✓  El código de respuesta debe ser 200
   ✓  Todos los atributos requeridos deben estar presentes
@@ -21,7 +21,7 @@ Marvel APIs
   ✓  Debe existir objeto links con atributos self y deactivate
 
 ↳ Get all bonds - start & limit parameters
-  GET https://api.brasil.mercap.com.ar/brasil/bonds?limit=14&start=1 [200 OK, 206.45kB, 264ms]
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?limit=14&start=1 [200 OK, 206.43kB, 717ms]
   ✓  Los headers requeridos están presentes y son correctos
   ✓  El código de respuesta debe ser 200
   ✓  Todos los atributos requeridos deben estar presentes
@@ -53,7 +53,7 @@ Marvel APIs
 ↳ Create duplicate LB5S0A
 
 ↳ Get all bonds with includeNonAlive true
-  GET https://api.brasil.mercap.com.ar/brasil/bonds?includeNonAlive=true [200 OK, 131.22kB, 202ms]
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?includeNonAlive=true [200 OK, 131.22kB, 467ms]
   ✓  Los headers requeridos están presentes y son correctos
   ✓  El código de respuesta debe ser 200
   ✓  Todos los atributos requeridos deben estar presentes
@@ -62,7 +62,7 @@ Marvel APIs
   ✓  Debe existir objeto links con atributos self y deactivate
 
 ↳ Get all bonds - start & limit parameters with includeNonAlive true
-  GET https://api.brasil.mercap.com.ar/brasil/bonds?limit=14&start=1&includeNonAlive=true [200 OK, 86.08kB, 139ms]
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?limit=14&start=1&includeNonAlive=true [200 OK, 86.07kB, 368ms]
   ✓  Los headers requeridos están presentes y son correctos
   ✓  El código de respuesta debe ser 200
   ✓  Todos los atributos requeridos deben estar presentes
@@ -93,7 +93,7 @@ Marvel APIs
 ↳ Create duplicate YMCOO
 
 ↳ Get all bonds with includeNonAlive false
-  GET https://api.brasil.mercap.com.ar/brasil/bonds?includeNonAlive=false [200 OK, 299.18kB, 293ms]
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?includeNonAlive=false [200 OK, 299.17kB, 638ms]
   ✓  Los headers requeridos están presentes y son correctos
   ✓  El código de respuesta debe ser 200
   ✓  Todos los atributos requeridos deben estar presentes
@@ -569,7 +569,7 @@ Marvel APIs
 
 ❏ Pepper-GS64 / Bond Laws
 ↳ All Bond Laws
-  GET https://api.brasil.mercap.com.ar/bond-laws [200 OK, 1.21kB, 203ms]
+  GET https://api.brasil.mercap.com.ar/bond-laws [200 OK, 1.21kB, 406ms]
   ✓  Status code is 200
   ✓  Not empty
 
@@ -654,7 +654,7 @@ Marvel APIs
 
 ❏ Pepper-GS64 / Currencies64
 ↳ All Currencies64
-  GET https://api.brasil.mercap.com.ar/currencies [200 OK, 1.35kB, 73ms]
+  GET https://api.brasil.mercap.com.ar/currencies [200 OK, 1.34kB, 276ms]
   ✓  Status code is 200
   ✓  Not empty
 
@@ -679,13 +679,13 @@ Marvel APIs
 
 ❏ Pepper-GS64 / Calendars / Querying
 ↳ Get calendars
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 58ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 142ms]
   ✓  El código de respuesta debe ser 200
   ✓  La respuesta debe tener items
   ✓  Cada calendario debe tener la estructura correcta
 
 ↳ Get calendars summary
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 2.07kB, 64ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 2.07kB, 143ms]
   ✓  El header Accept es correcto
   ✓  El código de respuesta debe ser 200
   ✓  La respuesta debe tener 'items' y 'links.self'
@@ -764,17 +764,17 @@ Marvel APIs
 
 ❏ Pepper-GS64 / Calendars / Day-count / Happy path
 ↳ QUERY /day-count - calculation of working days
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 205ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 697B, 80ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 251ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 697B, 164ms]
   ✓  Status code es 200
   ✓  Response tiene propiedad 'dayCount'
   ✓  Response Content-Type correcto
   ✓  'dayCount' es un número entero no negativo
-  ✓  Caso base: from=2026-04-20 , to=2026-10-30 → dayCount=136
+  ✓  Caso base: from=2026-04-21 , to=2026-10-31 → dayCount=135
 
 ↳ QUERY /day-count - calculation of working days and holiday
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 54ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 695B, 42ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 152ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 695B, 129ms]
   ✓  Status code es 200
   ✓  Response tiene propiedad 'dayCount'
   ✓  Response Content-Type correcto
@@ -782,8 +782,8 @@ Marvel APIs
   ✓  Caso base: from=2026-12-20 , to=2026-12-26 → dayCount=4
 
 ↳ QUERY /day-count - calculation of weekend and holiday
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.77kB, 66ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 693B, 38ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.77kB, 140ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 703B, 129ms]
   ✓  Status code es 200
   ✓  Response tiene propiedad 'dayCount'
   ✓  Response Content-Type correcto
@@ -791,72 +791,72 @@ Marvel APIs
   ✓  Caso base: from=2026-05-01 , to=2026-05-03 → dayCount=0
 
 ↳ QUERY /day-count - calculation of one working days
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 68ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 699B, 52ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 144ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 695B, 127ms]
   ✓  Status code es 200
   ✓  Response tiene propiedad 'dayCount'
   ✓  Response Content-Type correcto
   ✓  'dayCount' es un número entero no negativo
-  ✓  Caso base: from=2026-08-20 , to=2026-08-20 → dayCount=1
+  ✓  Caso base: from=2026-08-21 , to=2026-08-21 → dayCount=1
 
 ↳ QUERY /day-count - calculation of working days of a year
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 58ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 693B, 43ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 144ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 697B, 127ms]
   ✓  Status code es 200
   ✓  Response tiene propiedad 'dayCount'
   ✓  Response Content-Type correcto
   ✓  'dayCount' es un número entero no negativo
-  ✓  Caso base: from=2027-08-20 , to=2027-08-20 → dayCount=1
+  ✓  Caso base: from=2027-08-21 , to=2027-08-21 → dayCount=0
 
 ❏ Pepper-GS64 / Calendars / Day-count / Negative case
 ↳ QUERY /day-count - from > to
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 91ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [500 Internal Server Error, 620B, 141ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 146ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [500 Internal Server Error, 626B, 218ms]
   ✓  Status code es 500
   ✓  Response tiene mensaje de error esperado
 
 ↳ QUERY /day-count - invalid date format
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 64ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 616B, 41ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 152ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 622B, 131ms]
   ✓  Status code es 400
   ✓  Response tiene mensaje de error esperado
 
 ↳ QUERY /day-count - without date from
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 60ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 621B, 44ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 140ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 623B, 131ms]
   ✓  Status code es 400
   ✓  Response tiene mensaje de error esperado
 
 ↳ QUERY /day-count - without date to
-  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 56ms]
-  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 615B, 36ms]
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.77kB, 139ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 623B, 127ms]
   ✓  Status code es 400
   ✓  Response tiene mensaje de error esperado
 
 ❏ Pepper-GS64 / Debt Types
 ↳ All Debt Types
-  GET https://api.brasil.mercap.com.ar/debt-types [200 OK, 2.18kB, 55ms]
+  GET https://api.brasil.mercap.com.ar/debt-types [200 OK, 2.17kB, 134ms]
   ✓  Status code is 200
   ✓  Not empty
 
 ↳ By UUID Debt Types
 
-┌─────────────────────────┬────────────────────┬────────────────────┐
-│                         │           executed │             failed │
-├─────────────────────────┼────────────────────┼────────────────────┤
-│              iterations │                  1 │                  0 │
-├─────────────────────────┼────────────────────┼────────────────────┤
-│                requests │                 28 │                  0 │
-├─────────────────────────┼────────────────────┼────────────────────┤
-│            test-scripts │                 51 │                  0 │
-├─────────────────────────┼────────────────────┼────────────────────┤
-│      prerequest-scripts │               1039 │                  0 │
-├─────────────────────────┼────────────────────┼────────────────────┤
-│              assertions │                 81 │                  0 │
-├─────────────────────────┴────────────────────┴────────────────────┤
-│ total run duration: 5m 36.6s                                      │
-├───────────────────────────────────────────────────────────────────┤
-│ total data received: 1.13MB (approx)                              │
-├───────────────────────────────────────────────────────────────────┤
-│ average response time: 117ms [min: 36ms, max: 704ms, s.d.: 133ms] │
-└───────────────────────────────────────────────────────────────────┘
+┌─────────────────────────┬─────────────────────┬─────────────────────┐
+│                         │            executed │              failed │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│              iterations │                   1 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│                requests │                  28 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│            test-scripts │                  51 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│      prerequest-scripts │                1039 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│              assertions │                  81 │                   0 │
+├─────────────────────────┴─────────────────────┴─────────────────────┤
+│ total run duration: 5m 39s                                          │
+├─────────────────────────────────────────────────────────────────────┤
+│ total data received: 1.13MB (approx)                                │
+├─────────────────────────────────────────────────────────────────────┤
+│ average response time: 258ms [min: 127ms, max: 1264ms, s.d.: 247ms] │
+└─────────────────────────────────────────────────────────────────────┘
