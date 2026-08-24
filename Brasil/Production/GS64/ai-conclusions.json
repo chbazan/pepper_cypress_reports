@@ -1,53 +1,59 @@
 {
   "escalar_prioritario": {
-    "titulo": "Sin alertas críticas — avg P95: 349ms",
-    "detalle": "La corrida actual registra un avg_p95 de 349ms frente a un baseline de 314ms, sin endpoints en estado crítico de nivel rojo. No se detectan reincidencias estructurales de outliers con más de 3 ocurrencias que ameriten un escalado urgente."
+    "titulo": "Sin alertas críticas — avg P95: 301ms",
+    "detalle": "La corrida actual registra un avg P95 de 301ms frente a un baseline de 314ms, manteniéndose dentro de los parámetros globales de operación."
   },
   "investigar": {
-    "titulo": "7 endpoints en amarillo simultáneos — posible causa de infra",
-    "detalle": "La degradación simultánea en módulos de Bonds, Bond Laws y Currencies64 sugiere una posible saturación en recursos compartidos de infraestructura. Esta simultaneidad en servicios funcionalmente distintos suele indicar cuellos de botella en CPU, red o base de datos."
+    "titulo": "5 endpoints en amarillo simultáneos — posible causa de infra",
+    "detalle": "La degradación simultánea de 5 endpoints en los módulos de Bonds y Currencies64 sugiere una posible saturación en recursos compartidos de infraestructura más que un error de lógica específico."
   },
   "optimizar": {
-    "titulo": "Bonds / Zero Coupon / Cero Cupón / Get all bonds — alto impacto acumulado",
-    "detalle": "Este endpoint posee un impact_score de 6.932 y un P95 histórico de 1.733ms en 4 ejecuciones. Una reducción del 20% en su P95 representaría 1.386,4ms de latencia acumulada evitada por ciclo de vida del endpoint."
+    "titulo": "Optimizar Bonds / Zero Coupon / Cero Cupón / Get all bonds — impact score: 6.932",
+    "detalle": "Con un impact_p95_used de 1.733ms y 4 ejecuciones, una reducción del 20% en su latencia evitaría 1.386 ms de tiempo de procesamiento acumulado."
   },
-  "bottleneck_narrative": "La corrida actual presenta 7 alertas amarillas, lo cual es compatible con una regresión puntual dado que no se observa una tendencia de degradación sostenida en el tiempo. Aunque la tendencia de la ventana muestra un -13%, esto se debe a la volatilidad de las corridas previas y no a una mejora estructural, manteniendo el foco en las alertas activas de hoy.",
+  "bottleneck_narrative": "La corrida actual presenta 5 alertas amarillas y 0 rojas, lo cual es compatible con una regresión puntual dado que no se observa una tendencia sostenida de degradación de tiempos. La tendencia de -24.9% aparece negativa porque el punto de comparación de la ventana incluye valores superiores de corridas previas que inflaron el inicio, por lo que los niveles actuales son normales y no una mejora estructural.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Saturación de infraestructura compartida",
-      "evidence": "7 endpoints degradados simultáneamente en los servicios de Bonds, Bond Laws y Currencies64",
+      "hypothesis": "Causa de infraestructura compartida",
+      "evidence": "5 endpoints afectados simultáneamente en los módulos Bonds y Currencies64.",
       "priority": "alta"
     },
     {
       "hypothesis": "Cuello de botella por tamaño de respuesta",
-      "evidence": "payload_correlated es true con un avg_payload_kb de 100.71 en los endpoints más lentos",
+      "evidence": "El endpoint con 291.31 KB de payload presenta una latencia de 624ms, confirmando la correlación entre volumen de datos y tiempo de procesamiento.",
       "priority": "media"
     },
     {
-      "hypothesis": "Variabilidad de performance dentro de parámetros normales",
-      "evidence": "avg_p95 actual de 349ms vs baseline de 314ms en el último recent_run",
+      "hypothesis": "Variabilidad de performance dentro de parámetros",
+      "evidence": "El avg P95 de 301ms se mantiene por debajo del baseline de 314ms.",
       "priority": "baja"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P2",
-      "accion": "Analizar regresión en Currencies64 / All Currencies64 — +219% vs baseline global",
+      "accion": "Analizar regresión en Currencies64 / All Currencies64 — +264.38% vs corrida anterior",
       "endpoint_target": "Currencies64 / All Currencies64",
-      "evidencia": "276ms vs 86ms de baseline global"
+      "evidencia": "264.38%"
     },
     {
       "prioridad": "P2",
-      "accion": "Monitorear recursos de infraestructura compartida ante degradación múltiple",
+      "accion": "Monitorear saturación de recursos en módulos Bonds y Currencies64",
       "endpoint_target": "—",
-      "evidencia": "7 alertas amarillas simultáneas en módulos distintos"
+      "evidencia": "5 alertas amarillas"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Optimizar serialización en Bonds / Zero Coupon / Cero Cupón - Dollar linked",
+      "endpoint_target": "Bonds / Zero Coupon / Cero Cupón - Dollar linked / Get all bonds with includeNonAlive false",
+      "evidencia": "291.31 KB"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Bonds / Zero Coupon / Cero Cupón / Get all bonds — alto impacto",
+      "accion": "Optimizar Bonds / Zero Coupon / Cero Cupón / Get all bonds — alto impacto acumulado",
       "endpoint_target": "Bonds / Zero Coupon / Cero Cupón / Get all bonds",
       "evidencia": "impact score: 6.932"
     }
   ],
-  "version_narrative": "La versión V1.11.1 muestra una mejora global del 12.9% en la latencia promedio, bajando de 401ms a 349ms respecto a la V10.3.75. Se observan optimizaciones significativas en los servicios de Calendars y Bond Laws, con reducciones de P95 superiores al 50% en múltiples endpoints. Sin embargo, el endpoint Currencies64 / All Currencies64 presenta una degradación del 736.4%, coincidiendo con la alerta de outlier detectada en esta corrida."
+  "version_narrative": "La versión V1.11.1 presenta una mejora del 24.9% en la latencia promedio respecto a la V10.3.75, bajando de 401ms a 301ms. Se identifican mejoras significativas concentradas en el módulo de Calendars y en Bond Laws, con reducciones de latencia que superan el 50%. No obstante, el endpoint Currencies64 / All Currencies64 muestra una degradación del 706.1%, lo cual coincide con la alerta de outlier y el estado de semáforo amarillo en la corrida actual."
 }
