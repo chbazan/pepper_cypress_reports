@@ -1,31 +1,31 @@
 {
   "escalar_prioritario": {
     "titulo": "Curvas de rendimiento — Listar todas (resumen) — 19 reincidencias como outlier",
-    "detalle": "Este endpoint registra 19 corridas como outlier, lo que evidencia una inestabilidad estructural persistente que requiere atención prioritaria sobre degradaciones puntuales. Aunque la corrida actual presenta alertas amarillas en otros servicios, la reincidencia histórica de este componente es el riesgo técnico más grave."
+    "detalle": "Este endpoint registra 19 apariciones como outlier en el historial, lo que indica una inestabilidad estructural persistente. Aunque no presenta alerta roja en esta corrida, su reincidencia histórica es crítica y prioritaria frente a las 3 alertas amarillas activas hoy."
   },
   "investigar": {
-    "titulo": "7 endpoints en amarillo simultáneos — posible causa de infra",
-    "detalle": "La degradación simultánea en los servicios Appraiser, Investments y Tradable Securities sugiere un problema en la infraestructura compartida. Esta coincidencia en módulos funcionalmente distintos apunta a saturación de recursos como CPU o base de datos."
+    "titulo": "3 endpoints en amarillo simultáneos — posible causa de infra",
+    "detalle": "La degradación simultánea en los servicios de Bonds, Bond Payment Forecasts v2 y Currencies sugiere un cuello de botella en infraestructura compartida. Se debe analizar posible saturación de CPU o contención en la base de datos que afecte a múltiples módulos."
   },
   "optimizar": {
-    "titulo": "Optimizar Bond Screener — Filtro múltiple de bonos — impact score: 376.704",
-    "detalle": "Con un impact score de 376.704 y 119 ejecuciones, este endpoint es el principal generador de latencia acumulada en el sistema. Una mejora del 20% en su P95 representaría 75.340,8 ms de latencia acumulada evitada por ciclo de vida del endpoint."
+    "titulo": "Optimizar Bond Screener — Filtro múltiple de bonos — impact score: 380.558",
+    "detalle": "Con un impact score de 380.558 y un P95 limpio de 3.171ms, este endpoint es el de mayor peso sistémico. Una reducción del 20% en su latencia representaría 76.111ms de tiempo de procesamiento acumulado evitado."
   },
-  "bottleneck_narrative": "La corrida actual presenta 7 alertas amarillas, lo cual es compatible con el inicio de una regresión puntual en múltiples servicios. La tendencia aparece negativa (-7.6%) porque el punto de comparación incluye los picos del 21-08 (683ms y 775ms) con Métricas de inversión por ID y Paridades de bono, que inflaron artificialmente el inicio de la ventana.",
+  "bottleneck_narrative": "La corrida actual presenta 0 alertas rojas y 3 amarillas, lo cual, ante la ausencia de una tendencia sostenida (trend_delta_pct: 1%), es compatible con una regresión puntual. El promedio general de 506ms se mantiene por debajo del baseline de 533ms, indicando que la degradación está acotada a endpoints específicos.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Causa de infraestructura compartida (DB o saturación de CPU)",
-      "evidence": "7 endpoints afectados simultáneamente en los servicios Appraiser, Investments y Tradable Securities.",
+      "hypothesis": "Causa de infraestructura compartida",
+      "evidence": "3 endpoints degradados simultáneamente en los servicios Bonds, Bond Payment Forecasts v2 y Currencies.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Inestabilidad estructural recurrente en Yield Curves",
-      "evidence": "Endpoint Curvas de rendimiento — Listar todas (resumen) con 19 reincidencias como outlier.",
+      "hypothesis": "Inestabilidad estructural recurrente",
+      "evidence": "Curvas de rendimiento — Listar todas (resumen) registrado como outlier en 19 corridas distintas.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Cuello de botella por tamaño de respuesta y serialización",
-      "evidence": "Paridades de bono con 171.72 KB y P95 de 1444ms correlacionado con latencia.",
+      "hypothesis": "Cuello de botella por tamaño de respuesta",
+      "evidence": "Paridades de bono con payload de 172.06 KB y correlación positiva entre tamaño y latencia.",
       "priority": "media"
     }
   ],
@@ -34,26 +34,26 @@
       "prioridad": "P1",
       "accion": "Estabilizar Curvas de rendimiento — Listar todas (resumen) — 19 reincidencias",
       "endpoint_target": "Get all yield curves - validate each self link",
-      "evidencia": "19 reincidencias"
-    },
-    {
-      "prioridad": "P1",
-      "accion": "Analizar reincidencia en Obtener todos los bonos — parámetros por defecto",
-      "endpoint_target": "All bonds - deault parameters",
-      "evidencia": "8 reincidencias"
+      "evidencia": "19 occurrences"
     },
     {
       "prioridad": "P2",
-      "accion": "Investigar causa de infraestructura por 7 alertas amarillas simultáneas",
+      "accion": "Analizar regresión en Monedas — Listar todas — +520% vs versión anterior",
+      "endpoint_target": "Get all curencies - validate each self link",
+      "evidencia": "639ms"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Investigar contención de recursos en infraestructura compartida",
       "endpoint_target": "—",
-      "evidencia": "7 alertas amarillas"
+      "evidencia": "3 alertas amarillas"
     },
     {
       "prioridad": "P3",
       "accion": "Optimizar Bond Screener — Filtro múltiple de bonos — alto impacto acumulado",
       "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
-      "evidencia": "impact score: 376.704"
+      "evidencia": "impact score 380.558"
     }
   ],
-  "version_narrative": "La versión V10.2.97 muestra un incremento del 4% en el P95 promedio respecto a la V10.2.96 (487ms vs 468ms). Se destacan mejoras significativas en Grupos de bonos — Obtener todos (-84.9%) y Curvas de rendimiento — Listar todas (resumen) (-66.6%). Sin embargo, Sensibilidad de precio de inversión por ID (+151.7%) y Valoración de instrumento financiero (+136.6%) presentan degradaciones que coinciden con las alertas amarillas activas."
+  "version_narrative": "El avg P95 global aumentó de 468ms en V10.2.96 a 506ms en V10.2.97, lo que representa una degradación del 8.1%. Se observan mejoras significativas en Grupos de bonos — Obtener todos (-84.5%) y Curvas de rendimiento (-75.3%), pero estas son opacadas por la fuerte degradación en Monedas — Listar todas (+520.4%) e Identificadores de bono (+292.1%), que coinciden con las alertas amarillas actuales."
 }
