@@ -1,59 +1,48 @@
 {
   "escalar_prioritario": {
-    "titulo": "Sin alertas críticas — avg P95: 301ms",
-    "detalle": "La corrida actual registra un avg P95 de 301ms frente a un baseline de 314ms, manteniéndose dentro de los parámetros globales de operación."
+    "titulo": "Sin alertas críticas — avg P95: 297ms",
+    "detalle": "La corrida actual se mantiene estable con un avg P95 de 297ms frente a un baseline de 311ms, sin registrarse alertas de semáforo ni outliers en los endpoints evaluados."
   },
   "investigar": {
-    "titulo": "5 endpoints en amarillo simultáneos — posible causa de infra",
-    "detalle": "La degradación simultánea de 5 endpoints en los módulos de Bonds y Currencies64 sugiere una posible saturación en recursos compartidos de infraestructura más que un error de lógica específico."
+    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 103.89 KB",
+    "detalle": "Se observa una correlación directa entre el tamaño de respuesta y la latencia en los endpoints de Bonds / Zero Coupon, donde payloads cercanos a 300 KB resultan en P95 superiores a 700ms. Los tres endpoints con mayor volumen de datos presentan tiempos de respuesta significativamente más altos que el resto de la suite."
   },
   "optimizar": {
-    "titulo": "Optimizar Bonds / Zero Coupon / Cero Cupón / Get all bonds — impact score: 6.932",
-    "detalle": "Con un impact_p95_used de 1.733ms y 4 ejecuciones, una reducción del 20% en su latencia evitaría 1.386 ms de tiempo de procesamiento acumulado."
+    "titulo": "Optimizar Bonds / Zero Coupon / Cero Cupón / Get all bonds — impact score: 7.933",
+    "detalle": "Este endpoint presenta el mayor impacto sistémico con un impact_p95_used de 1586.5ms y 5 ejecuciones históricas acumuladas. Una reducción del 20% en su P95 representaría 1.586,6 ms de latencia acumulada evitada por ciclo de vida del endpoint."
   },
-  "bottleneck_narrative": "La corrida actual presenta 5 alertas amarillas y 0 rojas, lo cual es compatible con una regresión puntual dado que no se observa una tendencia sostenida de degradación de tiempos. La tendencia de -24.9% aparece negativa porque el punto de comparación de la ventana incluye valores superiores de corridas previas que inflaron el inicio, por lo que los niveles actuales son normales y no una mejora estructural.",
+  "bottleneck_narrative": "El sistema presenta un estado saludable con un avg_p95 de 297ms, situándose por debajo del baseline de 311ms de las últimas corridas. No se detectaron tendencias de degradación sostenida ni picos aislados de latencia en la corrida actual.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Causa de infraestructura compartida",
-      "evidence": "5 endpoints afectados simultáneamente en los módulos Bonds y Currencies64.",
-      "priority": "alta"
-    },
-    {
-      "hypothesis": "Cuello de botella por tamaño de respuesta",
-      "evidence": "El endpoint con 291.31 KB de payload presenta una latencia de 624ms, confirmando la correlación entre volumen de datos y tiempo de procesamiento.",
+      "hypothesis": "Cuello de botella por tamaño de respuesta en listados de bonos",
+      "evidence": "El endpoint Dollar linked con 293.74 KB registra 767ms, confirmando la correlación positiva entre volumen de datos y latencia.",
       "priority": "media"
     },
     {
-      "hypothesis": "Variabilidad de performance dentro de parámetros",
-      "evidence": "El avg P95 de 301ms se mantiene por debajo del baseline de 314ms.",
+      "hypothesis": "Variabilidad de performance dentro de parámetros normales",
+      "evidence": "avg_p95 actual de 297ms vs baseline de 311ms en el historial reciente.",
       "priority": "baja"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P2",
-      "accion": "Analizar regresión en Currencies64 / All Currencies64 — +264.38% vs corrida anterior",
-      "endpoint_target": "Currencies64 / All Currencies64",
-      "evidencia": "264.38%"
-    },
-    {
-      "prioridad": "P2",
-      "accion": "Monitorear saturación de recursos en módulos Bonds y Currencies64",
-      "endpoint_target": "—",
-      "evidencia": "5 alertas amarillas"
-    },
-    {
-      "prioridad": "P2",
-      "accion": "Optimizar serialización en Bonds / Zero Coupon / Cero Cupón - Dollar linked",
+      "accion": "Evaluar paginación o reducción de campos en Bonds / Zero Coupon",
       "endpoint_target": "Bonds / Zero Coupon / Cero Cupón - Dollar linked / Get all bonds with includeNonAlive false",
-      "evidencia": "291.31 KB"
+      "evidence": "293.74 KB / 767ms"
     },
     {
       "prioridad": "P3",
       "accion": "Optimizar Bonds / Zero Coupon / Cero Cupón / Get all bonds — alto impacto acumulado",
       "endpoint_target": "Bonds / Zero Coupon / Cero Cupón / Get all bonds",
-      "evidencia": "impact score: 6.932"
+      "evidence": "impact score: 7.933"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Monitorear estabilidad de Currencies64 / All Currencies64",
+      "endpoint_target": "Currencies64 / All Currencies64",
+      "evidence": "2 reincidencias como outlier"
     }
   ],
-  "version_narrative": "La versión V1.11.1 presenta una mejora del 24.9% en la latencia promedio respecto a la V10.3.75, bajando de 401ms a 301ms. Se identifican mejoras significativas concentradas en el módulo de Calendars y en Bond Laws, con reducciones de latencia que superan el 50%. No obstante, el endpoint Currencies64 / All Currencies64 muestra una degradación del 706.1%, lo cual coincide con la alerta de outlier y el estado de semáforo amarillo en la corrida actual."
+  "version_narrative": "La versión V1.12.3 muestra una mejora marginal del 1.3% en la latencia global respecto a la V1.11.1, bajando de 301ms a 297ms. Se destacan optimizaciones significativas en Currencies64 / All Currencies64 (-51.5%) y en diversos endpoints del módulo de Calendars. No obstante, se observa una degradación del 33.7% en Bonds / Zero Coupon / Cero Cupón / Get all bonds que, aunque no dispara alertas, marca una tendencia opuesta a la mejora general."
 }
