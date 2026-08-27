@@ -1,53 +1,42 @@
 {
   "escalar_prioritario": {
-    "titulo": "Sin alertas críticas — avg P95: 258ms",
-    "detalle": "El promedio P95 de la corrida actual (258ms) se mantiene por debajo del baseline de 283ms. No se detectan degradaciones críticas de nivel rojo, aunque existen alertas amarillas puntuales bajo observación."
+    "titulo": "Sin alertas críticas — avg P95: 147ms",
+    "detalle": "La corrida actual presenta una performance estable con un promedio de 147ms, situándose significativamente por debajo del baseline de 279ms. No se detectaron endpoints en estado crítico ni reincidencias estructurales de outliers que requieran escalado inmediato."
   },
   "investigar": {
-    "titulo": "Outlier detectado en Bond Laws — ratio 4.99x",
-    "detalle": "El endpoint Bond Laws / All Bond Laws registró un P95 de 1794ms, superando casi 5 veces su baseline global de 359ms. Esta desviación representa una regresión del 1128% respecto a la corrida anterior."
+    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 104.5 KB",
+    "detalle": "Se observa una correlación directa entre el tamaño de la respuesta y la latencia en los endpoints más lentos, donde respuestas de ~293 KB resultan en los P95 más altos. Los candidatos a revisión preventiva son 'Bonds / Zero Coupon / Cero Cupón - Dollar linked / Get all bonds with includeNonAlive false' y 'Bonds / Zero Coupon / Cero Cupón / Get all bonds'."
   },
   "optimizar": {
-    "titulo": "Optimizar Bonds / Zero Coupon / Cero Cupón / Get all bonds — impact score: 9.885",
-    "detalle": "Este endpoint posee el mayor peso acumulado en la performance global con un impact score de 9.885. Una reducción del 20% en su P95 evitaría 1.977ms de latencia acumulada por ciclo de vida."
+    "titulo": "Optimizar Bonds / Zero Coupon / Cero Cupón / Get all bonds — impact score: 10.763",
+    "detalle": "Este endpoint posee el mayor impacto sistémico con un P95 limpio de 1.345ms sobre 8 ejecuciones históricas. Una reducción del 20% en su latencia evitaría 2.152ms de tiempo de procesamiento acumulado por ciclo de vida."
   },
-  "bottleneck_narrative": "La corrida actual presenta 2 alertas amarillas y 1 outlier, lo cual es compatible con una regresión puntual dado que no se observa una tendencia de degradación sostenida. El promedio global de 258ms se mantiene estable frente al baseline, sugiriendo que las anomalías están focalizadas en endpoints específicos y no en el sistema completo.",
+  "bottleneck_narrative": "La performance del sistema se clasifica como saludable, manteniendo una estabilidad operativa óptima. El promedio de latencia actual de 147ms se encuentra alineado con la tendencia de mejora respecto al baseline de 279ms, sin registrarse alertas de semáforo ni picos anómalos en esta corrida.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Regresión puntual en el módulo de Bond Laws",
-      "evidence": "Regression_pct de 1128.77% y desviación del 399.49% vs baseline global en el endpoint Bond Laws / All Bond Laws.",
-      "priority": "media"
-    },
-    {
-      "hypothesis": "Causa de infraestructura compartida",
-      "evidence": "Degradación simultánea en 2 módulos distintos (Bonds y Bond Laws) con alertas de nivel amarillo.",
+      "hypothesis": "Cuello de botella por tamaño de respuesta y serialización",
+      "evidence": "payload_correlated es true con un payload promedio de 104.5 KB en los endpoints más lentos.",
       "priority": "media"
     },
     {
       "hypothesis": "Variabilidad de performance dentro de parámetros normales",
-      "evidence": "avg_p95 actual de 258ms vs baseline de 283ms en la última corrida.",
+      "evidence": "avg_p95 actual de 147ms frente a un baseline de 279ms en la última corrida.",
       "priority": "baja"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P2",
-      "accion": "Analizar regresión en Bond Laws / All Bond Laws — +1128% vs corrida anterior",
-      "endpoint_target": "Bond Laws / All Bond Laws",
-      "evidencia": "1794ms (P95)"
-    },
-    {
-      "prioridad": "P2",
-      "accion": "Investigar degradación en Bonds / Zero Coupon / Cero Cupón / Get all bonds",
-      "endpoint_target": "Bonds / Zero Coupon / Cero Cupón / Get all bonds",
-      "evidencia": "945ms (P95)"
+      "accion": "Evaluar estrategias de paginación o reducción de campos en respuestas pesadas",
+      "endpoint_target": "—",
+      "evidencia": "payload_correlated: true"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Bonds / Zero Coupon / Cero Cupón / Get all bonds — alto impacto acumulado",
+      "accion": "Optimizar Bonds / Zero Coupon / Cero Cupón / Get all bonds",
       "endpoint_target": "Bonds / Zero Coupon / Cero Cupón / Get all bonds",
-      "evidencia": "9.885 (impact score)"
+      "evidence": "impact_score: 10.763"
     }
   ],
-  "version_narrative": "La versión V1.12.3 muestra una mejora global del 14.3% en la latencia promedio respecto a la V1.11.1, bajando de 301ms a 258ms. Se destacan optimizaciones significativas en los servicios de Currencies64 y Debt Types, con reducciones de latencia superiores al 65%. Sin embargo, se identifica una degradación crítica en Bond Laws / All Bond Laws que coincide con la alerta activa en la corrida actual."
+  "version_narrative": "La transición de la versión V1.11.1 a la V1.12.3 muestra una mejora sustancial en la performance global, reduciendo el avg P95 de 301ms a 147ms (una mejora del 51.1%). Las optimizaciones más notables se reflejan en 'Currencies64 / All Currencies64' con una reducción del 88.7% y en 'Bond Laws / All Bond Laws' con un 50.3%. No se registraron degradaciones de latencia superiores al 15% en esta nueva versión."
 }
