@@ -1,31 +1,31 @@
 {
   "escalar_prioritario": {
     "titulo": "Curvas de rendimiento — Listar todas (resumen) — 19 reincidencias como outlier",
-    "detalle": "Este endpoint presenta una inestabilidad estructural crítica al haber sido registrado como outlier en 19 corridas distintas. Aunque en la corrida actual se encuentra en nivel amarillo con 784ms, su reincidencia histórica indica un problema persistente que requiere atención prioritaria sobre las degradaciones puntuales."
+    "detalle": "Este endpoint registra 19 corridas como outlier, lo que evidencia una inestabilidad estructural persistente a pesar de no presentar alerta roja en la corrida actual. Aunque existen 6 alertas amarillas activas hoy, la reincidencia histórica de este componente indica un problema de fondo que requiere escalado inmediato."
   },
   "investigar": {
-    "titulo": "8 endpoints en amarillo simultáneos — posible causa de infra",
-    "detalle": "La degradación simultánea de 8 endpoints en módulos diversos como Appraiser, Bonds, Bond Screener y Yield Curves sugiere una causa de infraestructura compartida. Esta afectación multiservicio apunta a una saturación de recursos comunes como CPU, red o base de datos, más que a errores de lógica en un módulo específico."
+    "titulo": "6 endpoints en amarillo simultáneos — posible causa de infraestructura",
+    "detalle": "La degradación simultánea en módulos de Bonds, Mutual Fund Shares, Instrument Issuers y Bond Payment Forecasts v2 sugiere un cuello de botella en recursos compartidos. Esta dispersión entre servicios apunta a una saturación en la base de datos o la red interna más que a un error de lógica en la aplicación."
   },
   "optimizar": {
-    "titulo": "Optimizar Bond Screener — Filtro múltiple de bonos — impact score: 383.984",
-    "detalle": "Este endpoint posee el mayor impacto sistémico con un impact_p95_used de 3.173ms y 121 ejecuciones acumuladas. Una reducción del 20% en su latencia P95 representaría 76.796ms de tiempo de procesamiento ahorrado en el ciclo de vida del sistema."
+    "titulo": "Optimizar Bond Screener — Filtro múltiple de bonos — impact score: 391.947",
+    "detalle": "Este endpoint presenta el mayor impacto sistémico con un P95 limpio de 3.212ms sobre 122 ejecuciones históricas. Una reducción del 20% en su latencia representaría 78.389ms de tiempo de procesamiento ahorrado por ciclo de vida del sistema."
   },
-  "bottleneck_narrative": "La corrida actual presenta 8 alertas amarillas y 2 outliers, lo cual es compatible con una regresión puntual dado que no se identifica una tendencia de degradación sostenida. La clasificación se basa en el volumen de alertas activas en esta ejecución, destacando la inestabilidad en los módulos de Bonds y Yield Curves frente al comportamiento histórico.",
+  "bottleneck_narrative": "La corrida actual presenta 0 alertas rojas y 6 amarillas, un patrón compatible con una regresión puntual dado que no se identifica una tendencia de degradación sostenida en la ventana de tiempo analizada. El incremento del 83.8% en el avg P95 respecto al inicio de la ventana se debe principalmente a picos aislados en la corrida de hoy y no a un deterioro gradual del sistema.",
   "root_cause_hypotheses": [
     {
       "hypothesis": "Saturación de infraestructura compartida",
-      "evidence": "8 endpoints degradados simultáneamente en módulos diversos como Appraiser, Bonds y Yield Curves.",
+      "evidence": "6 endpoints en amarillo pertenecientes a 4 servicios distintos (Bonds, Mutual Fund Shares, Issuers, Forecasts).",
       "priority": "alta"
     },
     {
-      "hypothesis": "Inestabilidad estructural recurrente en Yield Curves",
-      "evidence": "El endpoint Curvas de rendimiento — Listar todas (resumen) registra 19 apariciones como outlier.",
+      "hypothesis": "Inestabilidad estructural en Curvas de Rendimiento",
+      "evidence": "Endpoint 'Get all yield curves' registrado como outlier en 19 corridas distintas.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Cuello de botella por tamaño de respuesta",
-      "evidence": "Correlación positiva entre latencia y payload, con Paridades de bono alcanzando 172.06 KB.",
+      "hypothesis": "Regresión puntual en módulo de Fondos Comunes",
+      "evidence": "Endpoint 'Get all mutual fund shares' con regression_pct de 6065.81% y baseline_global_delta_pct de 5144.18%.",
       "priority": "media"
     }
   ],
@@ -38,28 +38,28 @@
     },
     {
       "prioridad": "P1",
-      "accion": "Analizar regresión en Obtener todos los bonos — parámetros por defecto",
-      "endpoint_target": "All bonds - deault parameters",
-      "evidencia": "921.38% vs baseline"
+      "accion": "Analizar regresión en Fondos Comunes de Inversión (FCI) — Obtener todos",
+      "endpoint_target": "Get all mutual fund shares",
+      "evidencia": "9557ms (+5144% vs baseline)"
     },
     {
       "prioridad": "P2",
-      "accion": "Auditar recursos de infraestructura por degradación multiservicio",
+      "accion": "Investigar saturación en infraestructura — 4 servicios afectados",
       "endpoint_target": "—",
-      "evidencia": "8 alertas amarillas"
+      "evidencia": "6 alertas amarillas simultáneas"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Revisar paginación en Obtener todos los bonos — con paginación",
+      "endpoint_target": "All bonds - start & limit parameters",
+      "evidencia": "2544ms (+1561% vs baseline)"
     },
     {
       "prioridad": "P3",
       "accion": "Optimizar Bond Screener — alto impacto acumulado en performance",
       "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
-      "evidencia": "impact score: 383.984"
-    },
-    {
-      "prioridad": "P3",
-      "accion": "Revisar serialización en Paridades de bono por volumen de datos",
-      "endpoint_target": "Get parities",
-      "evidencia": "172.06 KB"
+      "evidencia": "impact score: 391.947"
     }
   ],
-  "version_narrative": "El avg_p95 global aumentó de 468ms en V10.2.96 a 584ms en V10.2.97, lo que representa una degradación del 24.7%. Se identifican mejoras notables en el módulo Bonds, específicamente en Grupos de bonos — Obtener todos (-84.3%) y Resumen de pagos de bono por UUID (-61.2%). No obstante, la versión introduce regresiones críticas en Obtener todos los bonos — con paginación (+1379.1%) y Obtener todos los bonos — parámetros por defecto (+1016.1%), los cuales coinciden con las alertas activas en la corrida."
+  "version_narrative": "La versión V10.2.97 presenta una degradación global del 77.1%, con el avg P95 subiendo de 468ms a 829ms respecto a la V10.2.96. Se observan mejoras notables en Grupos de bonos — Obtener todos (-83%) y Métricas de inversión por ID (-62.4%), pero estas son opacadas por regresiones críticas en Fondos Comunes de Inversión (FCI) — Obtener todos (+3107%) y Obtener todos los bonos — con paginación (+2695%), que explican las alertas actuales."
 }
