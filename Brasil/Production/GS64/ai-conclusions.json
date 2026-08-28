@@ -1,42 +1,48 @@
 {
   "escalar_prioritario": {
-    "titulo": "Sin alertas críticas — avg P95: 147ms",
-    "detalle": "La corrida actual presenta una performance estable con un promedio de 147ms, situándose significativamente por debajo del baseline de 279ms. No se detectaron endpoints en estado crítico ni reincidencias estructurales de outliers que requieran escalado inmediato."
+    "titulo": "Sin alertas críticas — avg P95: 146ms",
+    "detalle": "La performance se mantiene estable con un avg P95 de 146ms en la corrida actual, situándose significativamente por debajo del baseline de 263ms. No se detectaron endpoints en estado crítico ni reincidencias estructurales de outliers que requieran escalado inmediato."
   },
   "investigar": {
     "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 104.5 KB",
-    "detalle": "Se observa una correlación directa entre el tamaño de la respuesta y la latencia en los endpoints más lentos, donde respuestas de ~293 KB resultan en los P95 más altos. Los candidatos a revisión preventiva son 'Bonds / Zero Coupon / Cero Cupón - Dollar linked / Get all bonds with includeNonAlive false' y 'Bonds / Zero Coupon / Cero Cupón / Get all bonds'."
+    "detalle": "Se observa una correlación directa entre el tamaño de respuesta y la latencia en los servicios de Bonds, donde los 3 endpoints más pesados superan los 220 KB. El tiempo de respuesta actual está influenciado por el volumen de datos transferidos más que por la complejidad del procesamiento."
   },
   "optimizar": {
-    "titulo": "Optimizar Bonds / Zero Coupon / Cero Cupón / Get all bonds — impact score: 10.763",
-    "detalle": "Este endpoint posee el mayor impacto sistémico con un P95 limpio de 1.345ms sobre 8 ejecuciones históricas. Una reducción del 20% en su latencia evitaría 2.152ms de tiempo de procesamiento acumulado por ciclo de vida."
+    "titulo": "Optimizar Bonds / Zero Coupon / Cero Cupón / Get all bonds — impact score: 11.412",
+    "detalle": "Una reducción del 20% en el P95 de este endpoint evitaría 2.282 ms de latencia acumulada por ciclo, considerando su impact_p95_used de 1.268 ms y su historial de 9 ejecuciones. Es el candidato principal para optimización preventiva dado su alto peso sistémico."
   },
-  "bottleneck_narrative": "La performance del sistema se clasifica como saludable, manteniendo una estabilidad operativa óptima. El promedio de latencia actual de 147ms se encuentra alineado con la tendencia de mejora respecto al baseline de 279ms, sin registrarse alertas de semáforo ni picos anómalos en esta corrida.",
+  "bottleneck_narrative": "El sistema presenta un estado saludable con una performance estable, registrando un avg P95 de 146ms frente a un baseline de 263ms. No se detectaron alertas de semáforo ni comportamientos anómalos en la corrida actual, confirmando la consistencia de la versión V1.12.3.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Cuello de botella por tamaño de respuesta y serialización",
-      "evidence": "payload_correlated es true con un payload promedio de 104.5 KB en los endpoints más lentos.",
+      "hypothesis": "Cuello de botella por tamaño de respuesta",
+      "evidence": "El endpoint de Dollar linked tiene un payload de 293.74 KB y un P95 de 363ms, validando la correlación positiva.",
       "priority": "media"
     },
     {
       "hypothesis": "Variabilidad de performance dentro de parámetros normales",
-      "evidence": "avg_p95 actual de 147ms frente a un baseline de 279ms en la última corrida.",
+      "evidence": "avg_p95 actual de 146ms vs baseline de 263ms sin alertas activas.",
       "priority": "baja"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P2",
-      "accion": "Evaluar estrategias de paginación o reducción de campos en respuestas pesadas",
+      "accion": "Evaluar estrategias de paginación en servicios de Bonds para reducir payload",
       "endpoint_target": "—",
-      "evidencia": "payload_correlated: true"
+      "evidencia": "avg payload 104.5 KB"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Bonds / Zero Coupon / Cero Cupón / Get all bonds",
+      "accion": "Optimizar Bonds / Zero Coupon / Cero Cupón / Get all bonds — alto impacto acumulado",
       "endpoint_target": "Bonds / Zero Coupon / Cero Cupón / Get all bonds",
-      "evidence": "impact_score: 10.763"
+      "evidence": "impact score 11.412"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Monitorear preventivamente los 3 endpoints más lentos de la corrida",
+      "endpoint_target": "—",
+      "evidencia": "P95 entre 279ms y 800ms"
     }
   ],
-  "version_narrative": "La transición de la versión V1.11.1 a la V1.12.3 muestra una mejora sustancial en la performance global, reduciendo el avg P95 de 301ms a 147ms (una mejora del 51.1%). Las optimizaciones más notables se reflejan en 'Currencies64 / All Currencies64' con una reducción del 88.7% y en 'Bond Laws / All Bond Laws' con un 50.3%. No se registraron degradaciones de latencia superiores al 15% en esta nueva versión."
+  "version_narrative": "La versión V1.12.3 muestra una mejora significativa del 51.5% en la latencia global respecto a la V1.11.1, bajando de 301ms a 146ms. Las optimizaciones más notables se concentran en los servicios de Currencies64, Debt Types y Calendars, con reducciones de P95 superiores al 60%. No se registraron degradaciones en los endpoints comparados durante esta transición."
 }
