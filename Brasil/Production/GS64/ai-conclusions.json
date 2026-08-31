@@ -1,48 +1,59 @@
 {
   "escalar_prioritario": {
-    "titulo": "Sin alertas críticas — avg P95: 150ms",
-    "detalle": "La corrida actual muestra un avg_p95 de 150ms, situándose significativamente por debajo del baseline de 255ms. No se detectaron degradaciones críticas ni endpoints en estado rojo o amarillo en esta ejecución."
+    "titulo": "Sin alertas críticas — avg P95: 342ms",
+    "detalle": "La corrida actual registra un avg P95 de 342ms frente a un baseline de 244ms. Aunque no hay alertas rojas, se detectan 15 endpoints en nivel amarillo con degradaciones significativas respecto a sus baselines de versión."
   },
   "investigar": {
-    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 103.75 KB",
-    "detalle": "Se observa una correlación directa entre el tamaño de respuesta y la latencia, destacando el endpoint de bonos con 293.67 KB. Estos servicios son candidatos preventivos a monitorear dado que el tiempo de transferencia impacta en el P95 reportado."
+    "titulo": "15 endpoints en amarillo simultáneos — posible causa de infra",
+    "detalle": "La degradación simultánea en módulos de Bonds, Cashflow, Calendars y Currencies sugiere un cuello de botella en la infraestructura compartida. Esta dispersión funcional indica que el problema no está limitado a un cambio de código específico en un solo servicio."
   },
   "optimizar": {
-    "titulo": "Optimizar Bonds / Zero Coupon / Cero Cupón / Get all bonds — Impact Score: 12.150",
-    "detalle": "Este endpoint posee el mayor impacto sistémico con un impact_score de 12.150 y un P95 limpio de 1.215ms. Una reducción del 20% en su latencia representaría 2.430 ms de latencia acumulada evitada por ciclo de vida."
+    "titulo": "Optimizar Get all bonds — alto impacto acumulado (impact score: 12.887)",
+    "detalle": "Este endpoint posee un impact_score de 12.887 y un P95 limpio de 1.171ms en 11 ejecuciones. Una reducción del 20% en su latencia evitaría 2.577ms de tiempo de procesamiento acumulado por ciclo."
   },
-  "bottleneck_narrative": "El sistema se encuentra en un estado saludable, con un avg_p95 de 150ms frente a un baseline de 255ms en la última corrida. No se han detectado tendencias de degradación ni picos aislados que comprometan la performance global en la versión actual.",
+  "bottleneck_narrative": "La corrida actual presenta 15 alertas amarillas y un outlier, lo cual es compatible con una regresión puntual dado que no se observa una tendencia de degradación sostenida. La tendencia aparece negativa (-11.9%) porque el punto de comparación de la ventana incluye picos de corridas anteriores que inflaron el valor de inicio, mientras que los niveles actuales son superiores al baseline global.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Cuello de botella por tamaño de respuesta en bonos",
-      "evidence": "El endpoint de Dollar linked tiene un payload de 293.74 KB y un P95 de 390ms, validando la correlación positiva de payload_stats.",
+      "hypothesis": "Saturación de infraestructura compartida",
+      "evidence": "15 endpoints de módulos diversos (Bonds, Calendars, Cashflow) degradados simultáneamente",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Regresión puntual en módulo Cashflow",
+      "evidence": "Endpoint Get cashflow - few bonds con regression_pct de 238.3% y ratio de outlier 3.2",
       "priority": "media"
     },
     {
-      "hypothesis": "Variabilidad de performance dentro de parámetros normales",
-      "evidence": "avg_p95 actual de 150ms vs baseline de 255ms en recent_runs.",
-      "priority": "baja"
+      "hypothesis": "Cuello de botella por tamaño de respuesta",
+      "evidence": "Correlación positiva entre payload y latencia con avg payload de 103.89 KB",
+      "priority": "media"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P2",
-      "accion": "Evaluar estrategias de paginación para reducir payloads superiores a 200KB",
+      "accion": "Investigar saturación de infraestructura — 15 alertas amarillas simultáneas",
+      "endpoint_target": "—",
+      "evidencia": "15 endpoints"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Evaluar serialización en Get all bonds — correlación de payload detectada",
       "endpoint_target": "Bonds / Zero Coupon / Cero Cupón / Get all bonds",
       "evidencia": "293.67 KB"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Bonds / Zero Coupon / Cero Cupón / Get all bonds — alto impacto acumulado",
+      "accion": "Optimizar Get all bonds — alto impacto acumulado en performance",
       "endpoint_target": "Bonds / Zero Coupon / Cero Cupón / Get all bonds",
-      "evidencia": "impact score: 12.150"
+      "evidencia": "12.887 impact score"
     },
     {
       "prioridad": "P3",
-      "accion": "Monitorear preventivamente Currencies64 por reincidencia histórica",
-      "endpoint_target": "Currencies64 / All Currencies64",
-      "evidencia": "2 ocurrencias como outlier"
+      "accion": "Estabilizar Get cashflow - few bonds — outlier detectado (ratio 3.2)",
+      "endpoint_target": "Cashflow / Cashflow metric / Get cashflow - few bonds - GS64",
+      "evidencia": "159ms"
     }
   ],
-  "version_narrative": "La versión V1.12.3 presenta una mejora global significativa, reduciendo el avg_p95 de 301ms a 150ms (-50.1%) respecto a la V1.11.1. Se destacan optimizaciones superiores al 50% en los servicios de Currencies64, Debt Types y diversos endpoints de Calendars. No se registraron degradaciones en los 15 endpoints comparados, consolidando un despliegue con impacto positivo en la performance."
+  "version_narrative": "La versión V1.12.3 muestra una degradación global del 13.6% en el avg P95 respecto a la V1.11.1 (342ms vs 301ms). No se registraron mejoras de performance superiores al 15% en esta transición de versión. Se identificaron 11 endpoints degradados, destacando Calendars / Querying / Get calendars (+48.6%) y Get all bonds - start & limit parameters (+46.8%), los cuales coinciden con las alertas amarillas activas."
 }
