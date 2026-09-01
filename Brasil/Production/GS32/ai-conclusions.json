@@ -1,65 +1,59 @@
 {
   "escalar_prioritario": {
     "titulo": "Flujos de caja de bono desde fecha — 32 reincidencias como outlier",
-    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 32 registros como outlier en el historial. Aunque la corrida actual tiene alertas en otros servicios, la persistencia histórica indica un problema arquitectónico que requiere prioridad sobre degradaciones puntuales."
+    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 32 registros históricos como outlier, indicando un problema persistente más allá de la estabilidad de la corrida actual. Aunque hoy no presenta alertas activas, la reincidencia histórica es una señal de degradación estructural que requiere atención prioritaria."
   },
   "investigar": {
-    "titulo": "4 endpoints en amarillo simultáneos — posible causa de infraestructura",
-    "detalle": "La degradación simultánea en los servicios de Bonds, Bond Payment Forecasts v2, Instrument Issuers y Tradable Securities sugiere un cuello de botella en recursos compartidos. Se debe analizar la saturación de CPU o latencia de base de datos que afecta a múltiples módulos en esta corrida."
+    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 71.57 KB",
+    "detalle": "Se observa una correlación directa entre el tamaño de respuesta y la latencia, destacando Get all bonds GS32 con 599.02 KB y 1902 ms. Se recomienda revisar la serialización y el volumen de datos retornado en los endpoints más pesados para reducir los tiempos de transferencia."
   },
   "optimizar": {
-    "titulo": "Optimizar Flujos de caja de bono desde fecha — alto impacto sistémico",
-    "detalle": "Este endpoint posee el mayor peso acumulado con un impact_score de 619,779 y un P95 típico de 4,334ms. Una reducción del 20% en su latencia evitaría 123,955ms de tiempo de espera total acumulado por ciclo de vida."
+    "titulo": "Optimizar Get all bonds GS32 — alto impacto acumulado (impact score: 1.902)",
+    "detalle": "Este endpoint lidera el ranking de impacto sistémico con un impact_score de 1.902 y un P95 de 1.902 ms. Una reducción del 20% en su latencia representaría 380.4 ms de latencia acumulada evitada por ciclo de vida del endpoint."
   },
-  "bottleneck_narrative": "Se observa una tendencia sostenida al alza del 37.4%, con el promedio P95 subiendo de 438ms a 602ms en las últimas corridas. Este patrón incrementa el riesgo de que los valores degradados se conviertan en el nuevo normal, provocando que el sistema de alertas deje de detectar anomalías al comparar contra un promedio ya contaminado.",
+  "bottleneck_narrative": "La performance del sistema se mantiene estable y dentro de los parámetros esperados, con un avg P95 de 422ms frente a un baseline de 639ms. No se detectaron alertas de semáforo ni outliers en la corrida actual, confirmando un estado saludable de la API en esta ejecución.",
   "root_cause_hypotheses": [
     {
-      "hypothesis": "Saturación de recursos compartidos en infraestructura",
-      "evidence": "4 endpoints degradados simultáneamente en los servicios Bonds, Bond Payment Forecasts v2, Instrument Issuers y Tradable Securities",
+      "hypothesis": "Inestabilidad estructural recurrente en flujos de caja",
+      "evidence": "Flujos de caja de bono desde fecha registra 32 apariciones históricas como outlier.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Inestabilidad estructural recurrente en proyección de flujos",
-      "evidence": "El endpoint Get one bond cashflow registra 32 ocurrencias como outlier en el historial",
-      "priority": "alta"
-    },
-    {
-      "hypothesis": "Degradación estructural acumulada por crecimiento de datos",
-      "evidence": "Tendencia de latencia ascendente del 37.4% a lo largo de las últimas 10 corridas",
+      "hypothesis": "Cuello de botella por tamaño de respuesta y serialización",
+      "evidence": "Get all bonds GS32 presenta un payload de 599.02 KB y la mayor latencia de la corrida (1902 ms).",
       "priority": "media"
+    },
+    {
+      "hypothesis": "Variabilidad de performance dentro de parámetros normales",
+      "evidence": "avg_p95 actual de 422ms se encuentra por debajo del baseline de 639ms.",
+      "priority": "baja"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Estabilizar Flujos de caja de bono desde fecha — 32 reincidencias como outlier",
+      "accion": "Estabilizar Flujos de caja de bono desde fecha — reincidencia estructural",
       "endpoint_target": "Get one bond cashflow - only dateInterval from",
       "evidencia": "32 occurrences"
     },
     {
       "prioridad": "P1",
-      "accion": "Analizar regresión en Métricas de valor negociable — +540% vs baseline global",
+      "accion": "Investigar reincidencia en Métricas de valor negociable",
       "endpoint_target": "Get tradable security metrics",
-      "evidencia": "2887ms"
+      "evidencia": "23 occurrences"
     },
     {
       "prioridad": "P2",
-      "accion": "Investigar causa sistémica por degradación en 4 módulos simultáneos",
-      "endpoint_target": "—",
-      "evidencia": "4 yellows"
-    },
-    {
-      "prioridad": "P2",
-      "accion": "Revisar regresión en Emisor de instrumento por UUID — +119% vs baseline",
-      "endpoint_target": "Get instrument issuers by UUID",
-      "evidencia": "302ms"
+      "accion": "Evaluar paginación o reducción de payload en Get all bonds GS32",
+      "endpoint_target": "Get all bonds GS32",
+      "evidencia": "599.02 KB"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Flujos de caja de bono desde fecha — alto impacto acumulado",
-      "endpoint_target": "Get one bond cashflow - only dateInterval from",
-      "evidencia": "619,779 impact score"
+      "accion": "Optimizar Get all bonds GS32 — alto impacto acumulado en latencia",
+      "endpoint_target": "Get all bonds GS32",
+      "evidencia": "1.902 impact score"
     }
   ],
-  "version_narrative": "La versión V10.3.75 muestra una degradación global del 8% en el P95 promedio respecto a la V10.3.72 (602ms vs 557ms). Se destacan mejoras significativas en Cupones de bono por UUID (-89.4%) y Sensibilidad de TIR de inversión por ID (-80.3%), concentradas en los módulos de Bonds e Investments. Sin embargo, se detectaron regresiones críticas en Valores negociables — Filtros obligatorios (+1236%) y Flujos de caja de bono desde fecha (+460%), coincidiendo esta última con la recurrencia histórica de outliers."
+  "version_narrative": "La versión V10.3.75 muestra una mejora global del 24.2% en la latencia promedio, reduciéndose de 557ms en la V10.3.72 a 422ms en la corrida actual. Aunque no se listan endpoints con mejoras individuales superiores al 15%, la tendencia general de la versión es de optimización y estabilidad. No se detectaron degradaciones significativas ni nuevas alertas críticas introducidas en este pasaje de versión."
 }
