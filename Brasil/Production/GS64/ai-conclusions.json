@@ -1,48 +1,48 @@
 {
   "escalar_prioritario": {
-    "titulo": "Sin alertas críticas — avg P95: 307ms",
-    "detalle": "La corrida actual presenta un avg P95 de 307ms frente a un baseline de 250ms, manteniéndose dentro de los parámetros de estabilidad sin alertas activas."
+    "titulo": "Sin alertas críticas — avg P95: 171ms",
+    "detalle": "La performance se mantiene estable con un avg P95 de 171ms frente a un baseline de 250ms. No se detectaron degradaciones críticas ni reincidencias estructurales de outliers en la corrida actual."
   },
   "investigar": {
-    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 83.18 KB",
-    "detalle": "La latencia está correlacionada con el tamaño de respuesta, sugiriendo que el tiempo de transferencia impacta el P95. Se recomienda revisar 'Get all bonds GS64', 'Bond by UUID GS64' y 'Get cashflow - many cupons - GS64' por su volumen de datos."
+    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 83.26 KB",
+    "detalle": "Se observa una correlación entre el tamaño de respuesta y la latencia en el top de endpoints lentos. Los candidatos a revisión preventiva son Get all bonds GS64, Bond by UUID GS64 y Get cashflow - many cupons - GS64."
   },
   "optimizar": {
-    "titulo": "Optimizar Get all bonds GS64 — impact score: 1.760",
-    "detalle": "Este endpoint registra un impact score de 1.760 basado en un P95 de 1.760ms y 1 ejecución. Una reducción del 20% en su latencia representaría 352 ms de latencia acumulada evitada por ciclo de vida."
+    "titulo": "Optimizar Get all bonds GS64 — impact score: 869",
+    "detalle": "Este endpoint representa el mayor impacto acumulado con un P95 de 869ms y 1 ejecuciones totales. Una reducción del 20% en su P95 representaría 173.8 ms de latencia acumulada evitada por ciclo de vida del endpoint."
   },
-  "bottleneck_narrative": "El sistema se clasifica como saludable al no registrarse alertas de semáforo ni outliers en la corrida actual. El promedio general de latencia (avg P95: 307ms) se mantiene cercano a su baseline de 250ms, sin tendencias de degradación estructural.",
+  "bottleneck_narrative": "El sistema presenta un estado saludable con un avg P95 de 171ms, situándose por debajo del baseline de 250ms. No se observan alertas de semáforo ni patrones de outliers que sugieran una degradación en la corrida actual.",
   "root_cause_hypotheses": [
     {
       "hypothesis": "Cuello de botella por tamaño de respuesta",
-      "evidence": "Get all bonds GS64 con 805.04 KB y P95 de 1760ms",
+      "evidence": "Get all bonds GS64 con 805.04 KB y P95 de 869ms",
       "priority": "media"
     },
     {
       "hypothesis": "Variabilidad de performance dentro de parámetros normales",
-      "evidence": "avg_p95 de 307ms vs baseline de 250ms en la corrida actual",
+      "evidence": "avg_p95 actual de 171ms vs baseline de 250ms",
       "priority": "baja"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P2",
-      "accion": "Evaluar paginación o reducción de campos en Get all bonds GS64",
+      "accion": "Evaluar reducción de payload en Get all bonds GS64",
       "endpoint_target": "Comparativa GS32 - GS64 / GS64 / Get all bonds GS64",
       "evidencia": "805.04 KB"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Get cashflow - few cupons - GS64 — alto impacto acumulado",
+      "accion": "Optimizar Get cashflow - few cupons - GS64 — alto peso acumulado en performance",
       "endpoint_target": "Comparativa GS32 - GS64 / GS64 / Get cashflow - few cupons - GS64",
-      "evidencia": "390 ms"
+      "evidencia": "impact score: 484"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Get currency UUID GS64 — alto impacto acumulado",
-      "endpoint_target": "Comparativa GS32 - GS64 / GS64 / Get currency UUID GS64",
-      "evidencia": "277 ms"
+      "accion": "Monitorear preventivamente Currencies64 / All Currencies64",
+      "endpoint_target": "Currencies64 / All Currencies64",
+      "evidencia": "2 ocurrencias"
     }
   ],
-  "version_narrative": "La versión V1.12.3 muestra una latencia promedio de 307ms, lo que representa un incremento de 6ms (1.99%) respecto a los 301ms de la versión V1.11.1. No se registran mejoras significativas (≥15%) en endpoints específicos durante esta transición. A pesar del leve aumento global, no se detectaron degradaciones críticas ni nuevas alertas de semáforo vinculadas al cambio de versión."
+  "version_narrative": "La versión V1.12.3 presenta una mejora del 43.19% en la latencia promedio respecto a la V1.11.1, bajando de 301ms a 171ms. No se identificaron endpoints específicos con cambios superiores al 15% en esta comparativa. El desempeño general de la nueva versión se clasifica como excelente."
 }
