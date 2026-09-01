@@ -1,0 +1,65 @@
+{
+  "escalar_prioritario": {
+    "titulo": "Curvas de rendimiento — Listar todas (resumen) — 19 reincidencias como outlier",
+    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 19 registros históricos como outlier, indicando un problema persistente que trasciende la corrida actual. Aunque no posee alerta roja hoy, su reincidencia histórica es una señal de degradación estructural más grave que las alertas puntuales de otros servicios."
+  },
+  "investigar": {
+    "titulo": "7 endpoints en amarillo simultáneos — posible causa de infraestructura",
+    "detalle": "La degradación simultánea en módulos diversos como Bonds, Mutual Fund Shares y Valuation Schemes sugiere una saturación en recursos compartidos de infraestructura. La evidencia es la coincidencia temporal de alertas en servicios funcionalmente independientes en la misma corrida."
+  },
+  "optimizar": {
+    "titulo": "Optimizar Bond Screener — Filtro múltiple de bonos — impact score: 409.170",
+    "detalle": "Con un impact_score de 409.170 y 125 ejecuciones, este endpoint es el principal generador de latencia acumulada del sistema. Una reducción del 20% en su P95 representaría 81.834 ms de latencia acumulada evitada por ciclo de vida."
+  },
+  "bottleneck_narrative": "La corrida actual presenta 7 alertas amarillas, lo cual es compatible con una regresión puntual dado que la tendencia de tiempos no muestra una degradación sostenida. El valor de tendencia aparece ligeramente negativo (-7.8%) debido a la variabilidad en la ventana de comparación, pero la presencia de múltiples alertas activas confirma una inestabilidad en la versión V10.2.98.",
+  "root_cause_hypotheses": [
+    {
+      "hypothesis": "Saturación de recursos en infraestructura compartida",
+      "evidence": "7 endpoints afectados simultáneamente en módulos de Bonds, Mutual Funds, Issuers y Valuation Schemes.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Inestabilidad estructural recurrente en Curvas de rendimiento",
+      "evidence": "El endpoint registra 19 corridas como outlier en el historial acumulado de ejecuciones.",
+      "priority": "alta"
+    },
+    {
+      "hypothesis": "Cuello de botella por tamaño de respuesta en serialización",
+      "evidence": "El endpoint Get parities (172.53 KB) muestra correlación directa entre volumen de datos y latencia (p95: 2167ms).",
+      "priority": "media"
+    }
+  ],
+  "recommendations": [
+    {
+      "prioridad": "P1",
+      "accion": "Estabilizar Curvas de rendimiento — 19 reincidencias históricas como outlier",
+      "endpoint_target": "Get all yield curves - validate each self link",
+      "evidencia": "19 occurrences"
+    },
+    {
+      "prioridad": "P1",
+      "accion": "Analizar regresión en Obtener todos los bonos — +3681% vs corrida anterior",
+      "endpoint_target": "All bonds - deault parameters",
+      "evidencia": "7942 ms"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Monitorear métricas de CPU y DB ante degradación simultánea de 7 servicios",
+      "endpoint_target": "—",
+      "evidencia": "7 yellows"
+    },
+    {
+      "prioridad": "P2",
+      "accion": "Analizar impacto de payload en Paridades de bono — respuesta de 172 KB",
+      "endpoint_target": "Get parities",
+      "evidencia": "172.53 KB"
+    },
+    {
+      "prioridad": "P3",
+      "accion": "Optimizar Bond Screener — alto impacto acumulado en performance",
+      "endpoint_target": "Filter by debt-type, issueCurrency, paymentCurrency, issuer & law",
+      "evidencia": "impact score: 409.170"
+    }
+  ],
+  "version_narrative": "La versión V10.2.98 muestra una mejora global del 4.5% en el avg P95 (630ms vs 660ms). Se destacan optimizaciones significativas en los servicios de Métricas de inversión por ID y Esquema de canje por UUID, aunque se observa una degradación crítica en el módulo de Bonds que coincide con las alertas activas de esta corrida."
+}
