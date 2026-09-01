@@ -2,107 +2,71 @@ newman
 
 Marvel APIs
 
-❏ Pepper-GS64 / Bonds / Zero Coupon / Cero Cupón
-↳ Create LTN105
-  ┌
-  │ '🔐 AUTH_BASIC_HEADER generado en environment'
-  └
+❏ Comparativa GS32 - GS64 / GS64
+↳ Get cashflow - few cupons - GS64
+  GET https://api.brasil.mercap.com.ar/brasil/bonds/b7aa0508-4017-46fc-9534-4f06aec5bda5/cashflow [200 OK, 2.21kB, 390ms]
+  ✓  Status code is 200
 
-↳ Create duplicate LTN105
+↳ Get cashflow - many cupons - GS64
+  GET https://api.brasil.mercap.com.ar/brasil/bonds/e02ef7a3-370c-4ff3-85e9-ef3d93743762/cashflow [200 OK, 7.57kB, 120ms]
+  ✓  Status code is 200
 
-↳ Get all bonds
-  GET https://api.brasil.mercap.com.ar/brasil/bonds [200 OK, 301.55kB, 1253ms]
-  ✓  Los headers requeridos están presentes y son correctos
-  ✓  El código de respuesta debe ser 200
-  ✓  Todos los atributos requeridos deben estar presentes
-  ✓  No debe haber atributos con valores vacíos (excepto embeddedOptions)
-  ✓  El atributo embeddedOptions debe estar vacío
-  ✓  Cada atributo debe tener el formato correcto
-  ✓  Debe existir objeto links con atributos self y deactivate
-  ✓  cashflowUnits: estructura válida por variante
+↳ Get all bonds GS64
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?limit=50&start=1 [200 OK, 825.21kB, 1760ms]
+  ✓  Status code is 200
 
-↳ Get all bonds - start & limit parameters
-  GET https://api.brasil.mercap.com.ar/brasil/bonds?limit=14&start=1 [200 OK, 233.9kB, 667ms]
-  ✓  Los headers requeridos están presentes y son correctos
-  ✓  El código de respuesta debe ser 200
-  ✓  Todos los atributos requeridos deben estar presentes
-  ✓  No debe haber atributos con valores vacíos (excepto embeddedOptions)
-  ✓  El atributo embeddedOptions debe estar vacío
-  ✓  Cada atributo debe tener el formato correcto
-  ✓  Debe existir objeto links con atributos self y deactivate
-  ✓  La cantidad de bonos debe coincidir con la esperada
-  ✓  Paginación: respeta limit y start
-  ✓  cashflowUnits: estructura válida por variante
+↳ Bond by UUID GS64
+  GET https://api.brasil.mercap.com.ar/brasil/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30 [200 OK, 12.32kB, 131ms]
+  ✓  Status code is 200
 
-↳ Find LTN105 by shortName
+↳ Get all bond laws GS64
+  GET https://api.brasil.mercap.com.ar/bond-laws [200 OK, 1.21kB, 118ms]
+  ✓  Status code is 200
 
-↳ Find LTN105 by name
+↳ Get Bond law UUID GS64
+  GET https://api.brasil.mercap.com.ar/bond-laws/f5c5b146-8f26-4e82-a4e0-ff3cbc386c67 [200 OK, 957B, 137ms]
+  ✓  Status code is 200
 
-↳ Find LTN105 by identifier
+↳ Get all debt types GS64
+  GET https://api.brasil.mercap.com.ar/debt-types [200 OK, 2.18kB, 117ms]
+  ✓  Status code is 200
 
-↳ Edit Bond
+↳ Get debt Type UUID GS64
+  GET https://api.brasil.mercap.com.ar/debt-types/178fe3f0-97b3-4b90-b9f1-c97a642bf6f6 [200 OK, 952B, 126ms]
+  ✓  Status code is 200
 
-↳ Find LTN105 by shortName & includeNonAlive true
+↳ Get all curencies GS64
+  GET https://api.brasil.mercap.com.ar/currencies [200 OK, 1.33kB, 258ms]
+  ✓  Status code is 200
 
-↳ Deactivate LTN105
+↳ Get currency UUID GS64
+  GET https://api.brasil.mercap.com.ar/currencies/5e28e713-4c64-48b6-863e-a3227a6869da [200 OK, 1.01kB, 277ms]
+  ✓  Status code is 200
 
-↳ Find LTN105 by shortName & includeNonAlive false
+↳ Get Finantial unit issuer GS64
+  GET https://api.brasil.mercap.com.ar/instrument-issuers [200 OK, 6.44kB, 136ms]
+  ✓  Status code is 200
 
-↳ Activate LTN105
+↳ Get Finantial indexed units of account GS64
+  GET https://api.brasil.mercap.com.ar/indexed-units-of-account [200 OK, 1.15kB, 118ms]
+  ✓  Status code is 200
 
-❏ Pepper-GS64 / Bonds / Zero Coupon / Cero Cupón - Call - American - Fixed
-↳ Create LB5S0A
-
-↳ Create duplicate LB5S0A
-
-↳ Get all bonds with includeNonAlive true
-  GET https://api.brasil.mercap.com.ar/brasil/bonds?includeNonAlive=true [200 OK, 131.22kB, 480ms]
-  ✓  Los headers requeridos están presentes y son correctos
-  ✓  El código de respuesta debe ser 200
-  ✓  Todos los atributos requeridos deben estar presentes
-  ✓  No debe haber atributos con valores vacíos (excepto embeddedOptions)
-  ✓  Cada atributo debe tener el formato correcto
-  ✓  Debe existir objeto links con atributos self y deactivate
-
-↳ Get all bonds - start & limit parameters with includeNonAlive true
-  GET https://api.brasil.mercap.com.ar/brasil/bonds?limit=14&start=1&includeNonAlive=true [200 OK, 86.07kB, 335ms]
-  ✓  Los headers requeridos están presentes y son correctos
-  ✓  El código de respuesta debe ser 200
-  ✓  Todos los atributos requeridos deben estar presentes
-  ✓  No debe haber atributos con valores vacíos (excepto embeddedOptions)
-  ✓  Cada atributo debe tener el formato correcto
-  ✓  Debe existir objeto links con atributos self y deactivate
-  ✓  La cantidad de bonos debe coincidir con la esperada
-
-↳ Find LB5S0A by shortName
-
-↳ Find LB5S0A by name
-
-↳ Find LB5S0A by identifier
-
-↳ Edit LB5S0A
-
-↳ Find LB5S0AX by shortName & includeNonAlive true
-
-↳ Deactivate LB5S0
-
-↳ Find LB5S0AX by shortName & includeNonAlive false
-
-↳ Activate LB5S0
-
-❏ Pepper-GS64 / Bonds / Zero Coupon / Cero Cupón - Dollar linked
-↳ Create YMCOO
-
-↳ Create duplicate YMCOO
-
-↳ Get all bonds with includeNonAlive false
-  GET https://api.brasil.mercap.com.ar/brasil/bonds?includeNonAlive=false [200 OK, 301.67kB, 648ms]
-  ✓  Los headers requeridos están presentes y son correctos
-  ✓  El código de respuesta debe ser 200
-  ✓  Todos los atributos requeridos deben estar presentes
-  ✓  No debe haber atributos con valores vacíos (excepto embeddedOptions)
-  ✓  El atributo embeddedOptions debe estar vacío
-  ✓  Cada atributo debe tener el formato correcto
-  ✓  Debe existir objeto links con atributos self y deactivate
-
-↳ Find YMCOO by shortName
+┌─────────────────────────┬─────────────────────┬─────────────────────┐
+│                         │            executed │              failed │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│              iterations │                   1 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│                requests │                  12 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│            test-scripts │                  24 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│      prerequest-scripts │                  14 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│              assertions │                  12 │                   0 │
+├─────────────────────────┴─────────────────────┴─────────────────────┤
+│ total run duration: 16.2s                                           │
+├─────────────────────────────────────────────────────────────────────┤
+│ total data received: 853.68kB (approx)                              │
+├─────────────────────────────────────────────────────────────────────┤
+│ average response time: 307ms [min: 117ms, max: 1760ms, s.d.: 445ms] │
+└─────────────────────────────────────────────────────────────────────┘
