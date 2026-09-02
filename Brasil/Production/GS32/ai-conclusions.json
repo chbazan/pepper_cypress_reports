@@ -1,59 +1,53 @@
 {
   "escalar_prioritario": {
     "titulo": "Flujos de caja de bono desde fecha — 32 reincidencias como outlier",
-    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 32 registros históricos como outlier, indicando un problema persistente más allá de la estabilidad de la corrida actual. Aunque hoy no presenta alertas activas, la reincidencia histórica es una señal de degradación estructural que requiere atención prioritaria."
+    "detalle": "Este endpoint presenta una inestabilidad estructural crítica con 32 registros históricos como outlier, indicando un problema persistente más allá de la corrida actual. Aunque hoy no presenta alerta roja, la reincidencia histórica es una señal de degradación estructural más grave que requiere atención inmediata."
   },
   "investigar": {
-    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 71.57 KB",
-    "detalle": "Se observa una correlación directa entre el tamaño de respuesta y la latencia, destacando Get all bonds GS32 con 599.02 KB y 1902 ms. Se recomienda revisar la serialización y el volumen de datos retornado en los endpoints más pesados para reducir los tiempos de transferencia."
+    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 70.54 KB",
+    "detalle": "Se observa una correlación directa entre el tamaño de respuesta y la latencia, destacando Get all bonds GS32 con un payload de 599.02 KB. El tiempo de transferencia impacta significativamente en el P95 de los servicios con mayor volumen de datos retornados."
   },
   "optimizar": {
-    "titulo": "Optimizar Get all bonds GS32 — alto impacto acumulado (impact score: 1.902)",
-    "detalle": "Este endpoint lidera el ranking de impacto sistémico con un impact_score de 1.902 y un P95 de 1.902 ms. Una reducción del 20% en su latencia representaría 380.4 ms de latencia acumulada evitada por ciclo de vida del endpoint."
+    "titulo": "Optimizar Get all bonds GS32 — impact score: 3.804",
+    "detalle": "Este endpoint posee el mayor peso acumulado en la performance global con un P95 limpio de 1.902 ms en 2 ejecuciones. Una reducción del 20% en su latencia representaría 760.8 ms de latencia acumulada evitada por ciclo de vida."
   },
-  "bottleneck_narrative": "La performance del sistema se mantiene estable y dentro de los parámetros esperados, con un avg P95 de 422ms frente a un baseline de 639ms. No se detectaron alertas de semáforo ni outliers en la corrida actual, confirmando un estado saludable de la API en esta ejecución.",
+  "bottleneck_narrative": "La corrida actual presenta 1 alerta amarilla, lo cual es compatible con una regresión puntual dado que no se observa una tendencia sostenida de degradación de tiempos. La tendencia de -33.3% refleja que los niveles actuales son normales tras picos aislados en corridas anteriores que inflaron el inicio de la ventana de análisis.",
   "root_cause_hypotheses": [
     {
       "hypothesis": "Inestabilidad estructural recurrente en flujos de caja",
-      "evidence": "Flujos de caja de bono desde fecha registra 32 apariciones históricas como outlier.",
+      "evidence": "Endpoint Get one bond cashflow - only dateInterval from registrado como outlier en 32 corridas distintas.",
       "priority": "alta"
     },
     {
-      "hypothesis": "Cuello de botella por tamaño de respuesta y serialización",
-      "evidence": "Get all bonds GS32 presenta un payload de 599.02 KB y la mayor latencia de la corrida (1902 ms).",
+      "hypothesis": "Cuello de botella por tamaño de respuesta",
+      "evidence": "Get all bonds GS32 con 599.02 KB y P95 de 1929 ms correlacionado con alto payload.",
       "priority": "media"
     },
     {
       "hypothesis": "Variabilidad de performance dentro de parámetros normales",
-      "evidence": "avg_p95 actual de 422ms se encuentra por debajo del baseline de 639ms.",
+      "evidence": "avg_p95 actual de 494 ms vs baseline de 639 ms en la corrida más reciente.",
       "priority": "baja"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P1",
-      "accion": "Estabilizar Flujos de caja de bono desde fecha — reincidencia estructural",
+      "accion": "Estabilizar Flujos de caja de bono desde fecha — 32 reincidencias históricas",
       "endpoint_target": "Get one bond cashflow - only dateInterval from",
       "evidencia": "32 occurrences"
     },
     {
-      "prioridad": "P1",
-      "accion": "Investigar reincidencia en Métricas de valor negociable",
-      "endpoint_target": "Get tradable security metrics",
-      "evidencia": "23 occurrences"
-    },
-    {
       "prioridad": "P2",
-      "accion": "Evaluar paginación o reducción de payload en Get all bonds GS32",
-      "endpoint_target": "Get all bonds GS32",
-      "evidencia": "599.02 KB"
+      "accion": "Analizar regresión en Get cashflow - many cupons - GS32 — +160% vs baseline",
+      "endpoint_target": "Get cashflow - many cupons - GS32",
+      "evidencia": "2720 ms"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Get all bonds GS32 — alto impacto acumulado en latencia",
+      "accion": "Optimizar Get all bonds GS32 — alto peso acumulado en performance",
       "endpoint_target": "Get all bonds GS32",
-      "evidencia": "1.902 impact score"
+      "evidencia": "impact score: 3.804"
     }
   ],
-  "version_narrative": "La versión V10.3.75 muestra una mejora global del 24.2% en la latencia promedio, reduciéndose de 557ms en la V10.3.72 a 422ms en la corrida actual. Aunque no se listan endpoints con mejoras individuales superiores al 15%, la tendencia general de la versión es de optimización y estabilidad. No se detectaron degradaciones significativas ni nuevas alertas críticas introducidas en este pasaje de versión."
+  "version_narrative": "La versión V10.3.75 muestra una mejora global del 11.3% en el avg P95 respecto a la V10.3.72 (494 ms vs 557 ms). Se destacan mejoras significativas en Bond by UUID GS32 (-83%) y Monedas — Listar todas (-51.7%). No se registran degradaciones superiores al 15% en la comparativa directa entre estas versiones."
 }

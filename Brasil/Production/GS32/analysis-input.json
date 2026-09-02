@@ -4,17 +4,10 @@
     "country": "Brasil",
     "suite": "GS32",
     "version": "V10.3.75",
-    "run_id": "202609012118",
-    "run_time": "2026-09-01T21:18:08.167Z"
+    "run_id": "202609021224",
+    "run_time": "2026-09-02T12:24:23.953Z"
   },
   "recent_runs": [
-    {
-      "date": "2026-08-24",
-      "avg_p95": 1041,
-      "baseline": 579,
-      "slowest": "Get irrs - one bond",
-      "version": "V10.3.75"
-    },
     {
       "date": "2026-08-25",
       "avg_p95": 741,
@@ -77,102 +70,120 @@
       "baseline": 639,
       "slowest": "Get all bonds GS32",
       "version": "V10.3.75"
+    },
+    {
+      "date": "2026-09-02",
+      "avg_p95": 494,
+      "baseline": 639,
+      "slowest": "Get cashflow - many cupons - GS32",
+      "version": "V10.3.75"
     }
   ],
-  "traffic_lights": [],
+  "traffic_lights": [
+    {
+      "endpoint": "Get cashflow - many cupons - GS32",
+      "status_level": 1,
+      "p95": 2720,
+      "baseline_global": 1044,
+      "baseline_global_delta_pct": 160.54,
+      "baseline_version_delta_pct": 160.54,
+      "regression_pct": 160.54,
+      "total_executions": 2
+    }
+  ],
   "outliers": [],
   "slowest_this_run": [
     {
-      "endpoint": "Get all bonds GS32",
-      "p95": 1902,
-      "payload_kb": 599.02
-    },
-    {
       "endpoint": "Get cashflow - many cupons - GS32",
-      "p95": 1044,
+      "p95": 2720,
       "payload_kb": 32.96
     },
     {
+      "endpoint": "Get all bonds GS32",
+      "p95": 1929,
+      "payload_kb": 599.02
+    },
+    {
       "endpoint": "Get Finantial unit issuer GS32",
-      "p95": 365,
+      "p95": 261,
       "payload_kb": 66.6
     },
     {
-      "endpoint": "Bond by UUID GS32",
-      "p95": 324,
-      "payload_kb": 11.13
-    },
-    {
       "endpoint": "Get cashflow - few cupons - GS32",
-      "p95": 230,
+      "p95": 135,
       "payload_kb": 4.95
     },
     {
+      "endpoint": "Get all debt types GS32",
+      "p95": 131,
+      "payload_kb": 0.84
+    },
+    {
       "endpoint": "Get all curencies GS32",
-      "p95": 209,
+      "p95": 121,
       "payload_kb": 0.38
     },
     {
-      "endpoint": "Get currency UUID GS32",
-      "p95": 205,
-      "payload_kb": 0.15
-    },
-    {
-      "endpoint": "Get Bond law UUID GS32",
-      "p95": 202,
-      "payload_kb": 0.12
+      "endpoint": "Get Finantial indexed units of account GS32",
+      "p95": 121,
+      "payload_kb": 0.09
     },
     {
       "endpoint": "Get all bond laws GS32",
-      "p95": 197,
+      "p95": 119,
       "payload_kb": 0.31
     },
     {
-      "endpoint": "Get Finantial indexed units of account GS32",
-      "p95": 135,
-      "payload_kb": 0.09
+      "endpoint": "Get debt Type UUID GS32",
+      "p95": 119,
+      "payload_kb": 0.12
+    },
+    {
+      "endpoint": "Get Bond law UUID GS32",
+      "p95": 112,
+      "payload_kb": 0.12
     }
   ],
   "top_impact": [
     {
       "endpoint": "Get all bonds GS32",
-      "impact_score": 1902,
-      "p95": 1902,
+      "impact_score": 3804,
+      "p95": 1929,
       "impact_p95_used": 1902,
-      "total_executions": 1,
-      "baseline_global": null
+      "total_executions": 2,
+      "baseline_global": 1902
     },
     {
       "endpoint": "Get cashflow - many cupons - GS32",
-      "impact_score": 1044,
-      "p95": 1044,
+      "impact_score": 2088,
+      "p95": 2720,
       "impact_p95_used": 1044,
-      "total_executions": 1,
-      "baseline_global": null
+      "total_executions": 2,
+      "baseline_global": 1044
     },
     {
       "endpoint": "Get Finantial unit issuer GS32",
-      "impact_score": 365,
-      "p95": 365,
+      "impact_score": 730,
+      "p95": 261,
       "impact_p95_used": 365,
-      "total_executions": 1,
-      "baseline_global": null
+      "total_executions": 2,
+      "baseline_global": 365
     },
     {
       "endpoint": "Bond by UUID GS32",
-      "impact_score": 324,
-      "p95": 324,
+      "impact_score": 648,
+      "p95": 55,
       "impact_p95_used": 324,
-      "total_executions": 1,
-      "baseline_global": null
+      "total_executions": 2,
+      "baseline_global": 324
     },
     {
       "endpoint": "Get cashflow - few cupons - GS32",
-      "impact_score": 230,
-      "p95": 230,
+      "impact_score": 460,
+      "p95": 135,
       "impact_p95_used": 230,
-      "total_executions": 1,
-      "baseline_global": null
+      "total_executions": 2,
+      "baseline_global": 230
     }
   ],
   "outlier_recurrence": [
@@ -442,30 +453,30 @@
     }
   ],
   "bottleneck_class": {
-    "class": "HEALTHY",
+    "class": "REGRESSION-SPIKE",
     "reds_count": 0,
-    "yellows_count": 0,
+    "yellows_count": 1,
     "outliers_count": 0,
-    "trend_delta_pct": -59.5,
-    "reasoning": "Sin alertas ni outliers en esta corrida."
+    "trend_delta_pct": -33.3,
+    "reasoning": "1 alerta(s) activas sin tendencia sostenida en las últimas 10 corridas."
   },
   "payload_stats": {
-    "avg_payload_kb": 71.57,
+    "avg_payload_kb": 70.54,
     "heaviest_endpoints": [
       {
         "endpoint": "Get all bonds GS32",
         "payload_kb": 599.02,
-        "p95": 1902
+        "p95": 1929
       },
       {
         "endpoint": "Get Finantial unit issuer GS32",
         "payload_kb": 66.6,
-        "p95": 365
+        "p95": 261
       },
       {
         "endpoint": "Get cashflow - many cupons - GS32",
         "payload_kb": 32.96,
-        "p95": 1044
+        "p95": 2720
       }
     ],
     "payload_correlated": true
@@ -474,7 +485,7 @@
     "previous_version": "V10.3.72",
     "current_version": "V10.3.75",
     "avg_p95_previous": 557,
-    "avg_p95_current": 422,
+    "avg_p95_current": 494,
     "improved": [],
     "improved_total": 0,
     "degraded": [],
@@ -482,11 +493,11 @@
     "endpoints_compared": 0,
     "resolved_problems": [],
     "new_problems": [],
-    "verdict": "EXCELENTE"
+    "verdict": "POSITIVA"
   },
   "intra_version_trend": {
     "version": "V10.3.75",
-    "run_count": 47,
+    "run_count": 48,
     "cold_cache_detected": false,
     "trend": "improving",
     "runs": [
@@ -771,6 +782,12 @@
         "run_id": "202609012118",
         "avg_p95": 422,
         "baseline": 639
+      },
+      {
+        "date": "2026-09-02 12:24",
+        "run_id": "202609021224",
+        "avg_p95": 494,
+        "baseline": 639
       }
     ]
   },
@@ -805,12 +822,25 @@
     },
     {
       "version": "V10.3.75",
-      "avg_p95": 646,
-      "run_count": 47,
+      "avg_p95": 643,
+      "run_count": 48,
       "first_date": "2026-07-03",
       "is_current": true
     }
   ],
-  "improvements_this_run": [],
+  "improvements_this_run": [
+    {
+      "endpoint": "Bond by UUID GS32",
+      "p95_current": 55,
+      "p95_previous": 324,
+      "delta_pct": -83
+    },
+    {
+      "endpoint": "Get currency UUID GS32",
+      "p95_current": 99,
+      "p95_previous": 205,
+      "delta_pct": -51.7
+    }
+  ],
   "endpoint_profiles": null
 }
