@@ -1,48 +1,48 @@
 {
   "escalar_prioritario": {
-    "titulo": "Sin alertas críticas — avg P95: 210ms",
-    "detalle": "La corrida actual presenta un avg P95 de 210ms, situándose por debajo del baseline de 245ms. No se detectan degradaciones de nivel rojo ni reincidencias estructurales críticas en el historial reciente."
+    "titulo": "Sin alertas críticas — avg P95: 157ms",
+    "detalle": "La performance se mantiene estable con un avg P95 de 157ms, situándose significativamente por debajo del baseline de 242ms. No se detectaron alertas de semáforo ni outliers en la corrida actual."
   },
   "investigar": {
-    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 83.28 KB",
-    "detalle": "Se observa una correlación directa entre el tamaño de respuesta y la latencia, destacando Get all bonds GS64 (805.04 KB). Los endpoints Get all bonds GS64, Bond by UUID GS64 y Get cashflow - many cupons - GS64 son candidatos a revisión por volumen de datos."
+    "titulo": "Endpoints lentos correlacionados con payload pesado — avg payload: 103.89 KB",
+    "detalle": "Se observa una correlación directa entre el tamaño de respuesta y la latencia en los endpoints más lentos. Los servicios de Bonds (Zero Coupon y Dollar linked) concentran los mayores payloads y tiempos de respuesta del sistema."
   },
   "optimizar": {
-    "titulo": "Optimizar Get all bonds GS64 — impact score: 1.898",
-    "detalle": "El endpoint Get all bonds GS64 presenta el mayor peso acumulado con un impact_p95_used de 949ms y 2 ejecuciones. Una reducción del 20% en su P95 representaría 379.6 ms de latencia acumulada evitada por ciclo."
+    "titulo": "Optimizar Bonds / Zero Coupon / Cero Cupón / Get all bonds — impact score: 15.234",
+    "detalle": "Este endpoint posee el mayor peso acumulado en la performance global con un P95 limpio de 1.171,83ms en 13 ejecuciones. Una reducción del 20% en su latencia evitaría 3.046,8ms de tiempo de procesamiento acumulado por ciclo."
   },
-  "bottleneck_narrative": "La corrida actual registra 1 alerta amarilla, lo cual es compatible con una regresión puntual dado que no existe una tendencia sostenida de degradación. La tendencia de la ventana aparece negativa (-29.3%) debido a la variabilidad en corridas previas, situando los niveles actuales dentro de parámetros operativos normales.",
+  "bottleneck_narrative": "La performance del sistema se clasifica como saludable, manteniendo estabilidad operativa sin alertas activas. El avg P95 actual de 157ms se encuentra alineado con la tendencia de las últimas corridas y por debajo del baseline global de 242ms.",
   "root_cause_hypotheses": [
     {
       "hypothesis": "Cuello de botella por tamaño de respuesta",
-      "evidence": "Get all bonds GS64 con 805.04 KB y P95 de 1450ms frente a endpoints livianos de <70ms",
+      "evidence": "El endpoint Dollar linked retorna 293.74 KB con un P95 de 318ms, validando la correlación payload-latencia.",
       "priority": "media"
     },
     {
       "hypothesis": "Variabilidad de performance dentro de parámetros normales",
-      "evidence": "avg_p95 actual de 210ms vs baseline de 245ms",
+      "evidence": "Avg P95 de 157ms frente a un baseline de 242ms en la corrida actual.",
       "priority": "baja"
     }
   ],
   "recommendations": [
     {
       "prioridad": "P2",
-      "accion": "Analizar optimización de payload en Get all bonds GS64 — +52.79% vs baseline",
-      "endpoint_target": "Comparativa GS32 - GS64 / GS64 / Get all bonds GS64",
-      "evidencia": "1450ms"
+      "accion": "Evaluar estrategias de paginación o compresión en endpoints de alto payload",
+      "endpoint_target": "—",
+      "evidencia": "avg payload: 103.89 KB"
     },
     {
       "prioridad": "P3",
-      "accion": "Optimizar Get all bonds GS64 — alto impacto acumulado",
-      "endpoint_target": "Comparativa GS32 - GS64 / GS64 / Get all bonds GS64",
-      "evidencia": "1.898 impact score"
+      "accion": "Optimizar Bonds / Zero Coupon / Cero Cupón / Get all bonds — alto peso acumulado",
+      "endpoint_target": "Bonds / Zero Coupon / Cero Cupón / Get all bonds",
+      "evidencia": "impact score: 15.234"
     },
     {
       "prioridad": "P3",
       "accion": "Monitorear Currencies64 / All Currencies64 por reincidencia como outlier",
       "endpoint_target": "Currencies64 / All Currencies64",
-      "evidencia": "2 ocurrencias"
+      "evidencia": "2 ocurrencias históricas"
     }
   ],
-  "version_narrative": "Se observa una mejora global del 30.2% en la latencia promedio al pasar de la versión V1.11.1 (301ms) a la V1.12.3 (210ms). No se registran endpoints con cambios individuales significativos superiores al 15% en el desglose de esta versión. El estado general de la actualización es positivo, manteniendo la performance por debajo del baseline histórico."
+  "version_narrative": "La versión V1.12.3 presenta una mejora global del 47.8% en la latencia promedio respecto a la V1.11.1, bajando de 301ms a 157ms. Las optimizaciones más notables se concentran en Currencies64 (-66.5%) y en los filtros de bonos Zero Coupon (-58.2%). No se registraron degradaciones de performance en los 15 endpoints comparados entre versiones."
 }

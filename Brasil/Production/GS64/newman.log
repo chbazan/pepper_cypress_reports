@@ -2,71 +2,873 @@ newman
 
 Marvel APIs
 
-❏ Comparativa GS32 - GS64 / GS64
-↳ Get cashflow - few cupons - GS64
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/b7aa0508-4017-46fc-9534-4f06aec5bda5/cashflow [200 OK, 2.21kB, 486ms]
+❏ Pepper-GS64 / Bonds / Zero Coupon / Cero Cupón
+↳ Create LTN105
+  ┌
+  │ '🔐 AUTH_BASIC_HEADER generado en environment'
+  └
+
+↳ Create duplicate LTN105
+
+↳ Get all bonds
+  GET https://api.brasil.mercap.com.ar/brasil/bonds [200 OK, 301.56kB, 786ms]
+  ✓  Los headers requeridos están presentes y son correctos
+  ✓  El código de respuesta debe ser 200
+  ✓  Todos los atributos requeridos deben estar presentes
+  ✓  No debe haber atributos con valores vacíos (excepto embeddedOptions)
+  ✓  El atributo embeddedOptions debe estar vacío
+  ✓  Cada atributo debe tener el formato correcto
+  ✓  Debe existir objeto links con atributos self y deactivate
+  ✓  cashflowUnits: estructura válida por variante
+
+↳ Get all bonds - start & limit parameters
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?limit=14&start=1 [200 OK, 233.89kB, 304ms]
+  ✓  Los headers requeridos están presentes y son correctos
+  ✓  El código de respuesta debe ser 200
+  ✓  Todos los atributos requeridos deben estar presentes
+  ✓  No debe haber atributos con valores vacíos (excepto embeddedOptions)
+  ✓  El atributo embeddedOptions debe estar vacío
+  ✓  Cada atributo debe tener el formato correcto
+  ✓  Debe existir objeto links con atributos self y deactivate
+  ✓  La cantidad de bonos debe coincidir con la esperada
+  ✓  Paginación: respeta limit y start
+  ✓  cashflowUnits: estructura válida por variante
+
+↳ Find LTN105 by shortName
+
+↳ Find LTN105 by name
+
+↳ Find LTN105 by identifier
+
+↳ Edit Bond
+
+↳ Find LTN105 by shortName & includeNonAlive true
+
+↳ Deactivate LTN105
+
+↳ Find LTN105 by shortName & includeNonAlive false
+
+↳ Activate LTN105
+
+❏ Pepper-GS64 / Bonds / Zero Coupon / Cero Cupón - Call - American - Fixed
+↳ Create LB5S0A
+
+↳ Create duplicate LB5S0A
+
+↳ Get all bonds with includeNonAlive true
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?includeNonAlive=true [200 OK, 131.22kB, 189ms]
+  ✓  Los headers requeridos están presentes y son correctos
+  ✓  El código de respuesta debe ser 200
+  ✓  Todos los atributos requeridos deben estar presentes
+  ✓  No debe haber atributos con valores vacíos (excepto embeddedOptions)
+  ✓  Cada atributo debe tener el formato correcto
+  ✓  Debe existir objeto links con atributos self y deactivate
+
+↳ Get all bonds - start & limit parameters with includeNonAlive true
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?limit=14&start=1&includeNonAlive=true [200 OK, 86.07kB, 149ms]
+  ✓  Los headers requeridos están presentes y son correctos
+  ✓  El código de respuesta debe ser 200
+  ✓  Todos los atributos requeridos deben estar presentes
+  ✓  No debe haber atributos con valores vacíos (excepto embeddedOptions)
+  ✓  Cada atributo debe tener el formato correcto
+  ✓  Debe existir objeto links con atributos self y deactivate
+  ✓  La cantidad de bonos debe coincidir con la esperada
+
+↳ Find LB5S0A by shortName
+
+↳ Find LB5S0A by name
+
+↳ Find LB5S0A by identifier
+
+↳ Edit LB5S0A
+
+↳ Find LB5S0AX by shortName & includeNonAlive true
+
+↳ Deactivate LB5S0
+
+↳ Find LB5S0AX by shortName & includeNonAlive false
+
+↳ Activate LB5S0
+
+❏ Pepper-GS64 / Bonds / Zero Coupon / Cero Cupón - Dollar linked
+↳ Create YMCOO
+
+↳ Create duplicate YMCOO
+
+↳ Get all bonds with includeNonAlive false
+  GET https://api.brasil.mercap.com.ar/brasil/bonds?includeNonAlive=false [200 OK, 301.67kB, 318ms]
+  ✓  Los headers requeridos están presentes y son correctos
+  ✓  El código de respuesta debe ser 200
+  ✓  Todos los atributos requeridos deben estar presentes
+  ✓  No debe haber atributos con valores vacíos (excepto embeddedOptions)
+  ✓  El atributo embeddedOptions debe estar vacío
+  ✓  Cada atributo debe tener el formato correcto
+  ✓  Debe existir objeto links con atributos self y deactivate
+
+↳ Find YMCOO by shortName
+
+↳ Find YMCOO by name
+
+↳ Find YMCOO by identifier
+
+↳ Edit YMCOO
+
+↳ Find YMCOO by shortName & includeNonAlive true
+
+↳ Deactivate YMCOO
+
+↳ Find YMCOO by shortName & includeNonAlive false
+
+↳ Activate YMCOO
+
+❏ Pepper-GS64 / Bonds / Without Coupons / Bullet - Fixed Interest - Paid in issue currency
+↳ Create 0AJWR6
+
+↳ Create duplicate 0AJWR6
+
+↳ Find 0AJWR6 by shortName
+
+↳ Find 0AJWR6 by name
+
+↳ Find 0AJWR6 by identifier
+
+↳ Edit 0AJWR6
+
+↳ Find 0AJWR6 by shortName & includeNonAlive true
+
+↳ Deactivate 0AJWR6
+
+↳ Find 0AJWR6 by shortName & includeNonAlive false
+
+↳ Activate 0AJWR6
+
+❏ Pepper-GS64 / Bonds / Without Coupons / Bullet - Fixed Interest - Issued in indexed unit
+↳ Create TLC8O
+
+↳ Create duplicate TLC8O
+
+↳ Find TLC8O by shortName
+
+↳ Find TLC8O by name
+
+↳ Find TLC8O by identifier
+
+↳ Edit TLC80
+
+↳ Find TLC8O by shortName & includeNonAlive true
+
+↳ Deactivate TLC8O
+
+↳ Find TLC8O by shortName & includeNonAlive false
+
+↳ Activate TLC8O
+
+❏ Pepper-GS64 / Bonds / Without Coupons / Bullet - Fixed Interest - Call American - Technical value percentage
+↳ Create ARCO28
+
+↳ Create duplicate ARCO28
+
+↳ Find ARCO28 by shortName
+
+↳ Find ARCO28 by name
+
+↳ Find ARCO28 by identifier
+
+↳ Edit ARCO28
+
+↳ Find ARCO28 by shortName & includeNonAlive true
+
+↳ Deactivate ARCO28
+
+↳ Find ARCO28 by shortName & includeNonAlive false
+
+↳ Activate ARCO28
+
+❏ Pepper-GS64 / Bonds / Without Coupons / Floating Interest - Call American - StrikePrice fixed - Amortization homogeneous
+↳ Create BCIUL
+
+↳ Create duplicate BCIUL
+
+↳ Find BCIUL by shortName
+
+↳ Find BCIUL by name
+
+↳ Find BCIUL by identifier
+
+↳ Edit BCIUL
+
+↳ Find BCIUL by shortName & includeNonAlive true
+
+↳ Deactivate BCIUL
+
+↳ Find BCIUL by shortName & includeNonAlive false
+
+↳ Activate BCIUL
+
+❏ Pepper-GS64 / Bonds / Without Coupons / Fake Bullet - Floating Interest - FF
+↳ Create C190A
+
+↳ Create duplicate C190A
+
+↳ Find C190A by shortName
+
+↳ Find C190A by name
+
+↳ Find C190A by identifier
+
+↳ Edit C190A
+
+↳ Find C190A by shortName & includeNonAlive true
+
+↳ Deactivate C190A
+
+↳ Find C190A by shortName & includeNonAlive false
+
+↳ Activate C190A
+
+❏ Pepper-GS64 / Bonds / With Coupons / Coupons fixed Interest - Principal adjustment Index based
+↳ Create TX28
+
+↳ Create TX28 missing parameter
+
+↳ Find TX28 by shortName
+
+↳ Find TX28 by name
+
+↳ Find TX28 by identifier
+
+↳ Edit TX28
+
+↳ Find TX28 by shortName & includeNonAlive true
+
+↳ Deactivate TX28
+
+↳ Find C190A by shortName & includeNonAlive false
+
+↳ Activate TX28
+
+❏ Pepper-GS64 / Bonds / With Coupons / Coupons fixed Interest - Principal adjustment Not adjusted
+↳ Create DICA
+
+↳ Create DICA missing parameter
+
+↳ Find DICA by shortName
+
+↳ Find DICA by name
+
+↳ Find DICA by identifier
+
+↳ Edit DICA
+
+↳ Find DICA by shortName & includeNonAlive true
+
+↳ Deactivate DICA
+
+↳ Find DICA by shortName & includeNonAlive false
+
+↳ Activate DICA
+
+❏ Pepper-GS64 / Bonds / With Coupons / Coupons floating Interest - Principal adjustment Not adjusted - Formula arithmetic mean
+↳ Create MRCZO
+
+↳ Create MRCZO missing parameter
+
+↳ Find MRCZO by shortName
+
+↳ Find MRCZO by name
+
+↳ Find MRCZO by identifier
+
+↳ Edit MRCZO
+
+↳ Find MRCZO by shortName & includeNonAlive true
+
+↳ Deactivate MRCZO
+
+↳ Find MRCZO by shortName & includeNonAlive false
+
+↳ Activate MRCZO
+
+❏ Pepper-GS64 / Bonds / Negative Cases / shortName
+↳ Create empty shortName bond
+
+↳ Create invalid shortName bond
+
+↳ Create missing shortName bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / name
+↳ Create empty name bond
+
+↳ Create invalid name bond
+
+↳ Create missing name bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / issue & maturityDate
+↳ Create empty issueDate bond
+
+↳ Create invalid issueDate bond
+
+↳ Create invalid format issueDate bond
+
+↳ Create empty maturityDate bond
+
+↳ Create invalid maturityDate bond
+
+↳ Create invalid format maturityDate bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / debtType
+↳ Create empty debtType bond
+
+↳ Create invalid debtType bond
+
+↳ Create missing debtType bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / issueCountry
+↳ Create empty issueCountry bond
+
+↳ Create invalid issueCountry bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / issuer
+↳ Create empty issuer bond
+
+↳ Create invalid issuer bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / law
+↳ Create empty law bond
+
+↳ Create invalid law bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / faceValueAmount
+↳ Create zero faceValueAmount bond
+
+↳ Create invalid faceValueAmount bond
+
+↳ Create negative faceValueAmount bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / smallestDenomination / increment
+↳ Create invalid increment bond
+
+↳ Create zero increment bond
+
+↳ Create negative increment bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / smallestDenomination / base
+↳ Create invalid base bond
+
+↳ Create zero base bond
+
+↳ Create negative base bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / dayCountBasis / type
+↳ Create empty dayCountBasis type bond
+
+↳ Create invalid dayCountBasis type bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / dayCountBasis / calendar
+↳ Create empty dayCountBasis calendar bond
+
+↳ Create invalid dayCountBasis calendar bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / cashflowUnits / type
+↳ Create empty cashflowUnits type bond
+
+↳ Create invalid cashflowUnits type bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / cashflowUnits / issueCurrency
+↳ Create empty cashflowUnits issueCurrency bond
+
+↳ Create invalid cashflowUnits issueCurrency bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / cashflowUnits / paymentCurrency
+↳ Create empty cashflowUnits paymentCurrency bond
+
+↳ Create invalid cashflowUnits paymentCurrency bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / cashflowUnits / exchangeMarket
+↳ Create empty cashflowUnits exchangeMarket bond
+
+↳ Create invalid cashflowUnits exchangeMarket bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / cashflowUnits / exchangeSource
+↳ Create empty cashflowUnits exchangeSource bond
+
+↳ Create invalid cashflowUnits exchangeSource bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / cashflowUnits / exchangeDateOffsetDays
+↳ Create invalid cashflowUnits exchangeDateOffsetDays bond
+
+↳ Create missing cashflowUnits exchangeDateOffsetDays bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / issue / cashflowUnits / exchangeCalendar
+↳ Create empty cashflowUnits exchangeCalendar bond
+
+↳ Create invalid cashflowUnits exchangeCalendar bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / embeddedOptions / type
+↳ Create empty embeddedOptions type bond
+
+↳ Create invalid embeddedOptions type bond
+
+↳ Create wrong embeddedOptions type bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / embeddedOptions / exerciseStyle
+↳ Create empty embeddedOptions exerciseStyle bond
+
+↳ Create invalid embeddedOptions exerciseStyle bond
+
+↳ Create wrong embeddedOptions exerciseStyle bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / embeddedOptions / dateFrom & dateTo
+↳ Create empty embeddedOptions dateFrom bond
+
+↳ Create invalid embeddedOptions dateFrom bond
+
+↳ Create invalid format embeddedOptions dateFrom bond
+
+↳ Create empty embeddedOptions dateTo bond
+
+↳ Create invalid embeddedOptions dateTo bond
+
+↳ Create invalid format embeddedOptions dateTo bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / embeddedOptions / strikePrice / type
+↳ Create empty strikePrice type bond
+
+↳ Create invalid strikePrice type bond
+
+↳ Create wrong strikePrice type bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / embeddedOptions / strikePrice / amount
+↳ Create zero strikePrice amount bond
+
+↳ Create invalid strikePrice amount bond
+
+↳ Create negative strikePrice amount bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / embeddedOptions / strikePrice / unit
+↳ Create empty embeddedOptions unit bond
+
+↳ Create invalid embeddedOptions unit bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / couponPayment / offsetDays
+↳ Create invalid couponPayment offsetDays bond
+
+↳ Create missing couponPayment offsetDays bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / couponPayment / movementPolicy
+↳ Create empty couponPayment movementPolicy bond
+
+↳ Create invalid couponPayment movementPolicy bond
+
+↳ Create wrong couponPayment movementPolicy bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / couponPayment / calendar
+↳ Create empty couponPayment calendar bond
+
+↳ Create invalid couponPayment calendar bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / couponPayment / keepInMonth
+↳ Create empty couponPayment keepInMonth bond
+
+↳ Create invalid couponPayment keepInMonth bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / calculation
+↳ Create empty interest calculation bond
+
+↳ Create invalid interest calculation bond
+
+↳ Create missing interest calculation bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / accruementStartDate
+↳ Create empty interest accruementStartDate bond
+
+↳ Create invalid interest accruementStartDate bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / firstDueDate
+↳ Create empty interest firstDueDate bond
+
+↳ Create invalid interest firstDueDate bond
+
+↳ Create outside the bond term
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / accrueUntilPaymentDate
+↳ Create missing interest accrueUntilPaymentDate bond
+
+↳ Create invalid interest accrueUntilPaymentDate bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / periodicity
+↳ Create empty interest periodicity bond
+
+↳ Create invalid interest periodicity bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / type
+↳ Create empty interest type bond
+
+↳ Create invalid interest type bond
+
+↳ Create wrong interest type bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / rateTerm
+↳ Create empty interest rateTerm bond
+
+↳ Create invalid interest rateTerm bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / spreadPercentage
+↳ Create invalid interest spreadPercentage bond
+
+↳ Create missing interest spreadPercentage bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / formula
+↳ Create empty interest formula bond
+
+↳ Create invalid interest formula bond
+
+↳ Create wrong interest formula bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / yearlyRatePercentage
+↳ Create missing interest yearlyRatePercentage bond
+
+↳ Create invalid interest yearlyRatePercentage bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / interest / dateOffsetDays
+↳ Create invalid interest dateOffsetDays bond
+
+↳ Create mising interest dateOffsetDays bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / amortization / type
+↳ Create empty amortization type bond
+
+↳ Create invalid amortization type bond
+
+↳ Create wrong amortization type bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / amortization / gracePeriodCoupons
+↳ Create invalid amortization gracePeriodCoupons bond
+
+↳ Create negative amortization gracePeriodCoupons bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / amortization / percentage
+↳ Create invalid amortization percentage bond
+
+↳ Create negative amortization percentage bond
+
+↳ Create long amortization percentage bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / amortization / applyEveryCoupons
+↳ Create invalid amortization applyEveryCoupons bond
+
+↳ Create negative amortization applyEveryCoupons bond
+
+❏ Pepper-GS64 / Bonds / Negative Cases / invalid headers
+↳ Create LTN105 with invalid content type value
+
+↳ Create LTN105 with invalid content type
+
+❏ Pepper-GS64 / Bonds / Negative Cases / invalid auth
+↳ Create LTN105 without auth
+
+❏ Pepper-GS64 / Bonds / Negative Cases / invalid url
+↳ Create LTN105 with invalid path
+
+❏ Pepper-GS64 / Bond Laws
+↳ All Bond Laws
+  GET https://api.brasil.mercap.com.ar/bond-laws [200 OK, 1.21kB, 216ms]
+  ✓  Status code is 200
+  ✓  Not empty
+
+↳ By UUID Bond Laws
+
+❏ Pepper-GS64 / Cashflow / Cashflow metric
+↳ Get cashflow - few bonds - GS64
+  GET https://api.brasil.mercap.com.ar/brasil/bonds/b7aa0508-4017-46fc-9534-4f06aec5bda5/cashflow [200 OK, 2.21kB, 48ms]
   ✓  Status code is 200
 
-↳ Get cashflow - many cupons - GS64
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/e02ef7a3-370c-4ff3-85e9-ef3d93743762/cashflow [200 OK, 7.57kB, 113ms]
+↳ Get cashflow - many bonuses - GS64
+  GET https://api.brasil.mercap.com.ar/brasil/bonds/e02ef7a3-370c-4ff3-85e9-ef3d93743762/cashflow [200 OK, 7.57kB, 61ms]
   ✓  Status code is 200
 
-↳ Get all bonds GS64
-  GET https://api.brasil.mercap.com.ar/brasil/bonds?limit=50&start=1 [200 OK, 825.19kB, 1450ms]
-  ✓  Status code is 200
+❏ Pepper-GS64 / Cashflow / Cashflow
+↳ Get Cashflow - fixed rate without amortization
 
-↳ Bond by UUID GS64
-  GET https://api.brasil.mercap.com.ar/brasil/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30 [200 OK, 12.32kB, 59ms]
-  ✓  Status code is 200
+↳ Get Cashflow - fixed rate without amortization - query quantity
 
-↳ Get all bond laws GS64
-  GET https://api.brasil.mercap.com.ar/bond-laws [200 OK, 1.2kB, 63ms]
-  ✓  Status code is 200
+↳ Get Cashflow - Fixed rate with amortization
 
-↳ Get Bond law UUID GS64
-  GET https://api.brasil.mercap.com.ar/bond-laws/f5c5b146-8f26-4e82-a4e0-ff3cbc386c67 [200 OK, 959B, 57ms]
-  ✓  Status code is 200
+↳ Get Cashflow - Fixed rate with amortization - fromDate - toDate
 
-↳ Get all debt types GS64
-  GET https://api.brasil.mercap.com.ar/debt-types [200 OK, 2.17kB, 54ms]
-  ✓  Status code is 200
+↳ Get Cashflow -  Zero coupon fixed rate
 
-↳ Get debt Type UUID GS64
-  GET https://api.brasil.mercap.com.ar/debt-types/178fe3f0-97b3-4b90-b9f1-c97a642bf6f6 [200 OK, 952B, 54ms]
-  ✓  Status code is 200
+❏ Pepper-GS64 / Cashflow / technical-value
+↳ Get technical-value - on expiration cupon date
 
-↳ Get all curencies GS64
-  GET https://api.brasil.mercap.com.ar/currencies [200 OK, 1.35kB, 27ms]
-  ✓  Status code is 200
+↳ Get technical-value - before the first amortization
 
-↳ Get currency UUID GS64
-  GET https://api.brasil.mercap.com.ar/currencies/5e28e713-4c64-48b6-863e-a3227a6869da [200 OK, 1.01kB, 31ms]
-  ✓  Status code is 200
+↳ Get technical-value - after the first amortization
 
-↳ Get Finantial unit issuer GS64
-  GET https://api.brasil.mercap.com.ar/instrument-issuers [200 OK, 6.45kB, 74ms]
-  ✓  Status code is 200
+↳ Get technical-value -  before the bond date range
 
-↳ Get Finantial indexed units of account GS64
-  GET https://api.brasil.mercap.com.ar/indexed-units-of-account [200 OK, 1.15kB, 54ms]
-  ✓  Status code is 200
+↳ Get technical-value - after the first amortization - query quantity
 
-┌─────────────────────────┬─────────────────────┬────────────────────┐
-│                         │            executed │             failed │
-├─────────────────────────┼─────────────────────┼────────────────────┤
-│              iterations │                   1 │                  0 │
-├─────────────────────────┼─────────────────────┼────────────────────┤
-│                requests │                  12 │                  0 │
-├─────────────────────────┼─────────────────────┼────────────────────┤
-│            test-scripts │                  24 │                  0 │
-├─────────────────────────┼─────────────────────┼────────────────────┤
-│      prerequest-scripts │                  14 │                  0 │
-├─────────────────────────┼─────────────────────┼────────────────────┤
-│              assertions │                  12 │                  0 │
-├─────────────────────────┴─────────────────────┴────────────────────┤
-│ total run duration: 15.1s                                          │
-├────────────────────────────────────────────────────────────────────┤
-│ total data received: 853.68kB (approx)                             │
-├────────────────────────────────────────────────────────────────────┤
-│ average response time: 210ms [min: 27ms, max: 1450ms, s.d.: 392ms] │
-└────────────────────────────────────────────────────────────────────┘
+↳ Get technical-value -  after the bond date range
+
+❏ Pepper-GS64 / Cashflow / accrued-interest
+↳ Get Accrued-interest  - on expiration cupon date
+
+↳ Get Accrued-interest  - after the first amortization
+
+↳ Get Accrued-interest - before the first amortization
+
+↳ Get accrued-interest - after the first amortization - query quantity
+
+↳ Get accrued-interest -  after the bond date range
+
+↳ Get accrued-interest -  before the bond date range
+
+❏ Pepper-GS64 / Cashflow / residual-value
+↳ Get residual-value - on expiration cupon date
+
+↳ Get residual-value - after the first amortization
+
+↳ Get residual-value -  before the bond date range
+
+↳ Get residual-value -  after the bond date range
+
+❏ Pepper-GS64 / Cashflow / Negative Case Cashflow
+↳ Get Cashflow - parametro invalido
+
+↳ Get Cashflow - not found bonds
+
+↳ Get Cashflow - accept invalido
+
+↳ Get technical-value - empty date
+
+↳ Get technical-value - invalid format date
+
+↳ Get technical-value - invalid format Quantity
+
+↳ Get technical-value - not found bond
+
+↳ Get technical-value - invalid accept
+
+↳ Get technical-value - quantity 0
+
+↳ Get technical-value - invalid accept
+
+↳ Get accrued-interest - not found bond
+
+↳ Get accrued-interest - quantity 0
+
+↳ Get accrued-interest - invalid format Quantity
+
+↳ Get accrued-interest - invalid format date
+
+↳ Get accrued-interest - empty date
+
+❏ Pepper-GS64 / Currencies64
+↳ All Currencies64
+  GET https://api.brasil.mercap.com.ar/currencies [200 OK, 1.33kB, 89ms]
+  ✓  Status code is 200
+  ✓  Not empty
+
+↳ By UUID Currencies64
+
+❏ Pepper-GS64 / Calendars / Creating
+↳ Create Calendar with Only Name
+
+↳ Create Calendar with All Rules
+
+↳ Crate Date Rule for a Specific Calendar
+
+↳ Create Day Of Month Rule for a Specific Calendar
+
+↳ Create Day Of Week Rule for a Specific Calendar
+
+↳ Create Rule with validityFrom & to
+
+↳ Create Rule with validityFrom
+
+↳ Create Rule with validityTo
+
+❏ Pepper-GS64 / Calendars / Querying
+↳ Get calendars
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 74ms]
+  ✓  El código de respuesta debe ser 200
+  ✓  La respuesta debe tener items
+  ✓  Cada calendario debe tener la estructura correcta
+
+↳ Get calendars summary
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 2.07kB, 47ms]
+  ✓  El header Accept es correcto
+  ✓  El código de respuesta debe ser 200
+  ✓  La respuesta debe tener 'items' y 'links.self'
+  ✓  Cada calendario debe tener estructura correcta y no debe tener holidayRules como objeto
+
+↳ Get calendar by UUID
+
+↳ Get holiday rules
+
+↳ Get holiday rules without header
+
+↳ Get day of week rule
+
+↳ Get date rule
+
+↳ Get day of month rule
+
+↳ Get rule with validityFrom & to
+
+↳ Get rule with validityFrom
+
+↳ Get rule with validityTo
+
+❏ Pepper-GS64 / Calendars / Date movement
+↳ Move Forward with Days
+
+↳ Move Backward with Days
+
+↳ Move Forward with Hours
+
+↳ Move Backward with Hours
+
+↳ Validate Date Rule using Move Forward
+
+↳ Validate Date Rule using Move Backward
+
+↳ Validate Day of Month Rule using Move Forward
+
+↳ Validate Day of Month Rule using Move Backward
+
+↳ Validate Day of Week Rule using Move Forward
+
+↳ Validate Day of Week Rule using Move Backward
+
+↳ Validate Rule with validityFrom & to using Move Forward
+
+↳ Validate Rule with validityFrom & to using Move Backward
+
+↳ Validate Rule with validityFrom using Move Forward
+
+↳ Validate Rule with validityFrom using Move Backward
+
+↳ Validate Rule with validityTo using Move Forward
+
+↳ Validate Rule with validityTo using Move Backward
+
+❏ Pepper-GS64 / Calendars / Updating
+↳ Patch Day of Week Holiday Rule
+
+↳ Patch Day of Month Holiday Rule
+
+↳ Patch Date Rule
+
+↳ Patch validityFrom & validityTo Rule
+
+↳ Patch validityFrom Rule
+
+↳ Patch validityTo Rule
+
+↳ Patch Only Name Calendar
+
+❏ Pepper-GS64 / Calendars / Activation
+↳ Desactive calendar by UUID
+
+↳ Activate calendar by UUID
+
+❏ Pepper-GS64 / Calendars / Day-count / Happy path
+↳ QUERY /day-count - calculation of working days
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 64ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 697B, 106ms]
+  ✓  Status code es 200
+  ✓  Response tiene propiedad 'dayCount'
+  ✓  Response Content-Type correcto
+  ✓  'dayCount' es un número entero no negativo
+  ✓  Caso base: from=2026-05-02 , to=2026-11-12 → dayCount=136
+
+↳ QUERY /day-count - calculation of working days and holiday
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 58ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 703B, 41ms]
+  ✓  Status code es 200
+  ✓  Response tiene propiedad 'dayCount'
+  ✓  Response Content-Type correcto
+  ✓  'dayCount' es un número entero no negativo
+  ✓  Caso base: from=2026-12-20 , to=2026-12-26 → dayCount=4
+
+↳ QUERY /day-count - calculation of weekend and holiday
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 79ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 701B, 62ms]
+  ✓  Status code es 200
+  ✓  Response tiene propiedad 'dayCount'
+  ✓  Response Content-Type correcto
+  ✓  'dayCount' es un número entero no negativo
+  ✓  Caso base: from=2026-05-01 , to=2026-05-03 → dayCount=0
+
+↳ QUERY /day-count - calculation of one working days
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 71ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 693B, 63ms]
+  ✓  Status code es 200
+  ✓  Response tiene propiedad 'dayCount'
+  ✓  Response Content-Type correcto
+  ✓  'dayCount' es un número entero no negativo
+  ✓  Caso base: from=2026-09-02 , to=2026-09-02 → dayCount=1
+
+↳ QUERY /day-count - calculation of working days of a year
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 61ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [200 OK, 695B, 43ms]
+  ✓  Status code es 200
+  ✓  Response tiene propiedad 'dayCount'
+  ✓  Response Content-Type correcto
+  ✓  'dayCount' es un número entero no negativo
+  ✓  Caso base: from=2027-09-02 , to=2027-09-02 → dayCount=1
+
+❏ Pepper-GS64 / Calendars / Day-count / Negative case
+↳ QUERY /day-count - from > to
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 65ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [500 Internal Server Error, 628B, 119ms]
+  ✓  Status code es 500
+  ✓  Response tiene mensaje de error esperado
+
+↳ QUERY /day-count - invalid date format
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 58ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 626B, 44ms]
+  ✓  Status code es 400
+  ✓  Response tiene mensaje de error esperado
+
+↳ QUERY /day-count - without date from
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.77kB, 63ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 627B, 61ms]
+  ✓  Status code es 400
+  ✓  Response tiene mensaje de error esperado
+
+↳ QUERY /day-count - without date to
+  GET https://api.brasil.mercap.com.ar/calendars [200 OK, 11.76kB, 64ms]
+  QUERY https://api.brasil.mercap.com.ar/calendars/e1ddb11e-3caa-4359-b14c-1b05d67b9350/day-count [400 Bad Request, 617B, 65ms]
+  ✓  Status code es 400
+  ✓  Response tiene mensaje de error esperado
+
+❏ Pepper-GS64 / Debt Types
+↳ All Debt Types
+  GET https://api.brasil.mercap.com.ar/debt-types [200 OK, 2.17kB, 67ms]
+  ✓  Status code is 200
+  ✓  Not empty
+
+↳ By UUID Debt Types
+
+┌─────────────────────────┬────────────────────┬────────────────────┐
+│                         │           executed │             failed │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│              iterations │                  1 │                  0 │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│                requests │                 30 │                  0 │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│            test-scripts │                 55 │                  0 │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│      prerequest-scripts │               1044 │                  0 │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│              assertions │                 86 │                  0 │
+├─────────────────────────┴────────────────────┴────────────────────┤
+│ total run duration: 5m 39s                                        │
+├───────────────────────────────────────────────────────────────────┤
+│ total data received: 1.17MB (approx)                              │
+├───────────────────────────────────────────────────────────────────┤
+│ average response time: 117ms [min: 41ms, max: 786ms, s.d.: 142ms] │
+└───────────────────────────────────────────────────────────────────┘
