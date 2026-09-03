@@ -12,19 +12,19 @@ Marvel APIs
   │ ty, assertTradableSecurityList'
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 509ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.6kB, 589ms]
   ┌
   │ '📌 BOND_INSTRUMENT_URL seteado'
   └
-  GET https://api.mercapabbaco.com/exchange-schemes [200 OK, 4.29kB, 136ms]
+  GET https://api.mercapabbaco.com/exchange-schemes [200 OK, 4.29kB, 164ms]
   ┌
   │ '💱 EXCHANGE_SCHEME_URL seteado'
   └
-  GET https://api.mercapabbaco.com/valuation-schemes [200 OK, 5.15kB, 64ms]
+  GET https://api.mercapabbaco.com/valuation-schemes [200 OK, 5.14kB, 195ms]
   ┌
   │ '📊 VALUATION_SCHEME_URL seteado'
   └
-  POST https://api.mercapabbaco.com/appraiser [200 OK, 1.22kB, 656ms]
+  POST https://api.mercapabbaco.com/appraiser [200 OK, 1.23kB, 791ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -71,11 +71,11 @@ Marvel APIs
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 92ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 90ms]
   ┌
   │ '🔎 SHORT_NAME: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds [200 OK, 7.14kB, 111ms]
+  GET https://api.mercapabbaco.com/bonds [200 OK, 7.15kB, 155ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -478,11 +478,11 @@ Marvel APIs
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 62ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.6kB, 73ms]
   ┌
   │ '🔎 SHORT_NAME: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds [200 OK, 36.17kB, 866ms]
+  GET https://api.mercapabbaco.com/bonds [200 OK, 36.17kB, 888ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -656,12 +656,19 @@ Marvel APIs
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 73ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 78ms]
   ┌
   │ '🔎 SHORT_NAME: AL30'
   └
-  GET https://api.mercapabbaco.com/instrument-issuers [502 Bad Gateway, 8.19kB, 633ms]
-  GET https://api.mercapabbaco.com/bonds?issuer={{issuer}} [200 OK, 880B, 22.2s]
+  GET https://api.mercapabbaco.com/instrument-issuers [errored]
+     ESOCKETTIMEDOUT
+  ┌
+  │ {
+  │   code: 'ESOCKETTIMEDOUT',
+  │   connect: false
+  │ }
+  └
+  GET https://api.mercapabbaco.com/bonds?issuer={{issuer}} [200 OK, 877B, 415ms]
   ┌
   │ 'Status code is 200.'
   └
@@ -701,9 +708,9 @@ Marvel APIs
   │ //api.mercapabbaco.com/bonds?issuer=%7B%7Bissuer%7D%7D
   │ "}}'
   └
-  1. Response contains 'items' array with elements
-  2. Each bond has required properties
-  3. Each bond property has the correct format
+  2. Response contains 'items' array with elements
+  3. Each bond has required properties
+  4. Each bond property has the correct format
   ┌
   │ 'Error validating links:', {
   │   name: 'AssertionError',
@@ -735,7 +742,7 @@ Marvel APIs
   │ //api.mercapabbaco.com/bonds?issuer=%7B%7Bissuer%7D%7D
   │ "}}'
   └
-  4. Links are valid URLs
+  5. Links are valid URLs
   GET {{issuer}} [errored]
      getaddrinfo ENOTFOUND {{issuer}}
   ┌
@@ -746,36 +753,36 @@ Marvel APIs
   │   hostname: '{{issuer}}'
   │ }
   └
-  6. validar que solo devuelva items asociados al issuer enviado por parametro
+  7. validar que solo devuelva items asociados al issuer enviado por parametro
 
 ↳ All bonds - for issuer - bond+json
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 81ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 3.87kB, 119ms]
   ┌
   │ '🔎 SHORT_NAME: AL30'
   └
-  GET https://api.mercapabbaco.com/instrument-issuers [502 Bad Gateway, 8.19kB, 882ms]
-  GET https://api.mercapabbaco.com/bonds?issuer={{issuer}} [200 OK, 808B, 4.4s]
+  GET https://api.mercapabbaco.com/instrument-issuers [502 Bad Gateway, 8.19kB, 1769ms]
+  GET https://api.mercapabbaco.com/bonds?issuer={{issuer}} [200 OK, 2.06kB, 6.1s]
   ✓  Status code is 200
   ✓  Media-Type is correct
-  7. Response contains 'items' array with elements
-  8. Each bond has required properties
-  9. Each bond property has the correct format
- 10. Links are valid URLs
- 11. validar que solo devuelva items asociados al issuer enviado por parametro
+  8. Response contains 'items' array with elements
+  9. Each bond has required properties
+ 10. Each bond property has the correct format
+ 11. Links are valid URLs
+ 12. validar que solo devuelva items asociados al issuer enviado por parametro
   ✓  cashflowUnits: estructura válida por variante
 
 ↳ All bonds - start & limit parameters
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 65ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 115ms]
   ┌
   │ '🔎 SHORT_NAME: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds?limit=5&start=2 [200 OK, 4.26kB, 177ms]
+  GET https://api.mercapabbaco.com/bonds?limit=5&start=2 [200 OK, 4.27kB, 159ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1010,11 +1017,11 @@ Marvel APIs
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 117ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 112ms]
   ┌
   │ '🔎 SHORT_NAME: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds?limit=5&start=2 [200 OK, 19.54kB, 848ms]
+  GET https://api.mercapabbaco.com/bonds?limit=5&start=2 [200 OK, 19.54kB, 732ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1150,11 +1157,11 @@ Marvel APIs
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 50ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 105ms]
   ┌
   │ '🔎 SHORT_NAME: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds?shortName=AL30 [200 OK, 1.49kB, 95ms]
+  GET https://api.mercapabbaco.com/bonds?shortName=AL30 [200 OK, 1.49kB, 162ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1203,11 +1210,11 @@ Marvel APIs
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 53ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 80ms]
   ┌
   │ '🔎 SHORT_NAME: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds?shortName=AL30 [200 OK, 5.86kB, 626ms]
+  GET https://api.mercapabbaco.com/bonds?shortName=AL30 [200 OK, 5.86kB, 658ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1253,11 +1260,11 @@ Marvel APIs
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 60ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 77ms]
   ┌
   │ '🔎 SHORT_NAME: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a [200 OK, 1.41kB, 60ms]
+  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a [200 OK, 1.41kB, 117ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1295,11 +1302,11 @@ Marvel APIs
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 54ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 90ms]
   ┌
   │ '🔎 SHORT_NAME: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a [200 OK, 5.84kB, 595ms]
+  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a [200 OK, 5.83kB, 704ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1343,11 +1350,11 @@ Marvel APIs
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 51ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 115ms]
   ┌
   │ '🔎 SHORT_NAME: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/payment-summary [200 OK, 1.19kB, 152ms]
+  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/payment-summary [200 OK, 2.45kB, 160ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1370,11 +1377,11 @@ Marvel APIs
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 52ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 91ms]
   ┌
   │ '🔎 SHORT_NAME: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/payment-summary [200 OK, 1.2kB, 82ms]
+  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/payment-summary [200 OK, 2.45kB, 1125ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1398,11 +1405,11 @@ Marvel APIs
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 53ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 119ms]
   ┌
   │ '🔎 SHORT_NAME: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/coupons [200 OK, 7.07kB, 77ms]
+  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/coupons [200 OK, 7.06kB, 173ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1456,11 +1463,11 @@ Marvel APIs
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 51ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.62kB, 67ms]
   ┌
   │ '🔎 SHORT_NAME: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/issue-conditions [200 OK, 1.42kB, 83ms]
+  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/issue-conditions [200 OK, 1.42kB, 111ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1485,11 +1492,11 @@ Marvel APIs
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 60ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.6kB, 88ms]
   ┌
   │ '🔎 SHORT_NAME: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/issue-conditions [200 OK, 1.4kB, 141ms]
+  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/issue-conditions [200 OK, 1.39kB, 125ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1514,11 +1521,11 @@ Marvel APIs
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 56ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.6kB, 80ms]
   ┌
   │ '🔎 SHORT_NAME: AL30'
   └
-  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/identifiers [200 OK, 792B, 172ms]
+  GET https://api.mercapabbaco.com/bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a/identifiers [200 OK, 802B, 126ms]
   ✓  Status code is 200
   ✓  Response is an array
   ┌
@@ -1533,7 +1540,7 @@ Marvel APIs
 
 ❏ Pepper-GS32 / Regression-Test / Bond IRRS
 ↳ Get irrs - one bond
-  GET https://historical-data.mercapabbaco.com/irrs?short-names=AL30 [200 OK, 67.27kB, 1966ms]
+  GET https://historical-data.mercapabbaco.com/irrs?short-names=AL30 [200 OK, 67.27kB, 290ms]
   ✓  Response is received
   ✓  Status code is 200
   ✓  Media-Type is correct
@@ -1542,7 +1549,7 @@ Marvel APIs
 
 ❏ Pepper-GS32 / Regression-Test / Bond Parities
 ↳ Get parities
-  GET https://historical-data.mercapabbaco.com/parities?short-names=AL30 [200 OK, 177.87kB, 2.2s]
+  GET https://historical-data.mercapabbaco.com/parities?short-names=AL30 [200 OK, 177.88kB, 2.3s]
   ┌
   │ 'Response received successfully.'
   └
@@ -1592,12 +1599,12 @@ Marvel APIs
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 55ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.6kB, 89ms]
   ┌
   │ '📌 BOND_INSTRUMENT_URL: https://api.mercapabbaco.com/
   │ bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a'
   └
-  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 5.22kB, 742ms]
+  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 5.22kB, 842ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1636,12 +1643,12 @@ Marvel APIs
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 70ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 86ms]
   ┌
   │ '📌 BOND_INSTRUMENT_URL: https://api.mercapabbaco.com/
   │ bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a'
   └
-  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 3.5kB, 9.5s]
+  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 3.5kB, 621ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1680,12 +1687,12 @@ Marvel APIs
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 48ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.6kB, 139ms]
   ┌
   │ '📌 BOND_INSTRUMENT_URL: https://api.mercapabbaco.com/
   │ bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a'
   └
-  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 1.22kB, 247ms]
+  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 1.22kB, 321ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1729,17 +1736,17 @@ Marvel APIs
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.6kB, 42ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 68ms]
   ┌
   │ '📌 BOND_INSTRUMENT_URL: https://api.mercapabbaco.com/
   │ bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=US105756CN87&tradeDate=2026-09-03 [200 OK, 2.06kB, 53ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=US105756CN87&tradeDate=2026-09-03 [200 OK, 2.06kB, 124ms]
   ┌
   │ '📌 BOND_SECURITY_SELF: https://api.mercapabbaco.com/b
   │ onds/54fcd3a7-01b2-4136-81f8-b5924d9b14c4'
   └
-  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 33.54kB, 4s]
+  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 32.28kB, 4.1s]
   ┌
   │ 'Response received successfully.'
   └
@@ -1778,17 +1785,17 @@ Marvel APIs
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 43ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 89ms]
   ┌
   │ '📌 BOND_INSTRUMENT_URL: https://api.mercapabbaco.com/
   │ bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=US105756CN87&tradeDate=2026-09-03 [200 OK, 2.08kB, 41ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=US105756CN87&tradeDate=2026-09-03 [200 OK, 2.07kB, 88ms]
   ┌
   │ '📌 BOND_SECURITY_SELF: https://api.mercapabbaco.com/b
   │ onds/54fcd3a7-01b2-4136-81f8-b5924d9b14c4'
   └
-  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 1.82kB, 263ms]
+  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 3.06kB, 374ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1827,17 +1834,17 @@ Marvel APIs
   ┌
   │ '▶ [undefined] Ejecutando con ticker: AL30'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.61kB, 57ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=AL30&tradeDate=2026-09-03 [200 OK, 2.6kB, 76ms]
   ┌
   │ '📌 BOND_INSTRUMENT_URL: https://api.mercapabbaco.com/
   │ bonds/ecfe885d-8163-4222-acb1-f7020cf05a4a'
   └
-  GET https://api.mercapabbaco.com/tradable-securities?query=US105756CN87&tradeDate=2026-09-03 [200 OK, 2.08kB, 83ms]
+  GET https://api.mercapabbaco.com/tradable-securities?query=US105756CN87&tradeDate=2026-09-03 [200 OK, 3.34kB, 90ms]
   ┌
   │ '📌 BOND_SECURITY_SELF: https://api.mercapabbaco.com/b
   │ onds/54fcd3a7-01b2-4136-81f8-b5924d9b14c4'
   └
-  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 1.18kB, 227ms]
+  POST https://api.mercapabbaco.com/bond-payment-forecast [200 OK, 2.44kB, 590ms]
   ┌
   │ 'Response received successfully.'
   └
@@ -1879,7 +1886,7 @@ Marvel APIs
 
 ❏ Pepper-GS32 / Regression-Test / Bond laws
 ↳ Get all bond laws - validate each self link
-  GET https://api.mercapabbaco.com/bond-laws [200 OK, 1.86kB, 117ms]
+  GET https://api.mercapabbaco.com/bond-laws [200 OK, 1.86kB, 213ms]
   ✓  Response is received
   ✓  Status code is 200
   ✓  Response contains 'items' array with at least one element
@@ -1891,7 +1898,7 @@ Marvel APIs
   ✓  Item 1 (Ley Argentina) contains expected properties
   ✓  Item 1 (Ley Argentina) 'name' is a non-empty string
   ✓  Item 1 (Ley Argentina) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/18bb25d4-8ab8-4837-b574-1754811dd222 [200 OK, 896B, 129ms]
+  GET https://api.mercapabbaco.com/bond-laws/18bb25d4-8ab8-4837-b574-1754811dd222 [200 OK, 890B, 165ms]
   ✓  Item 1 (Ley Argentina) self link returns status 200
   ┌
   │ '🔎 Testing Item 2 (Ley N.Y.)'
@@ -1899,7 +1906,7 @@ Marvel APIs
   ✓  Item 2 (Ley N.Y.) contains expected properties
   ✓  Item 2 (Ley N.Y.) 'name' is a non-empty string
   ✓  Item 2 (Ley N.Y.) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/828bc536-1bff-4d3d-bff2-8c98ec12c57b [200 OK, 891B, 158ms]
+  GET https://api.mercapabbaco.com/bond-laws/828bc536-1bff-4d3d-bff2-8c98ec12c57b [200 OK, 887B, 257ms]
   ✓  Item 2 (Ley N.Y.) self link returns status 200
   ┌
   │ '🔎 Testing Item 3 (Ley Inglesa)'
@@ -1907,7 +1914,7 @@ Marvel APIs
   ✓  Item 3 (Ley Inglesa) contains expected properties
   ✓  Item 3 (Ley Inglesa) 'name' is a non-empty string
   ✓  Item 3 (Ley Inglesa) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/f7f0b5a4-b1a8-4095-a1c6-dcccd2a42410 [200 OK, 884B, 87ms]
+  GET https://api.mercapabbaco.com/bond-laws/f7f0b5a4-b1a8-4095-a1c6-dcccd2a42410 [200 OK, 886B, 233ms]
   ✓  Item 3 (Ley Inglesa) self link returns status 200
   ┌
   │ '🔎 Testing Item 4 (Ley Chilena)'
@@ -1915,7 +1922,7 @@ Marvel APIs
   ✓  Item 4 (Ley Chilena) contains expected properties
   ✓  Item 4 (Ley Chilena) 'name' is a non-empty string
   ✓  Item 4 (Ley Chilena) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/b7a5d364-9a04-42a3-9605-921eb5b704a8 [200 OK, 882B, 90ms]
+  GET https://api.mercapabbaco.com/bond-laws/b7a5d364-9a04-42a3-9605-921eb5b704a8 [200 OK, 890B, 216ms]
   ✓  Item 4 (Ley Chilena) self link returns status 200
   ┌
   │ '🔎 Testing Item 5 (Ley Paraguaya)'
@@ -1923,7 +1930,7 @@ Marvel APIs
   ✓  Item 5 (Ley Paraguaya) contains expected properties
   ✓  Item 5 (Ley Paraguaya) 'name' is a non-empty string
   ✓  Item 5 (Ley Paraguaya) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/8c970aa1-9fa0-46a1-b355-4a8a79adbee6 [200 OK, 890B, 151ms]
+  GET https://api.mercapabbaco.com/bond-laws/8c970aa1-9fa0-46a1-b355-4a8a79adbee6 [200 OK, 888B, 192ms]
   ✓  Item 5 (Ley Paraguaya) self link returns status 200
   ┌
   │ '🔎 Testing Item 6 (Ley Europea)'
@@ -1931,7 +1938,7 @@ Marvel APIs
   ✓  Item 6 (Ley Europea) contains expected properties
   ✓  Item 6 (Ley Europea) 'name' is a non-empty string
   ✓  Item 6 (Ley Europea) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/2a2af6f8-8264-41c9-86e9-a9eb810c4deb [200 OK, 892B, 57ms]
+  GET https://api.mercapabbaco.com/bond-laws/2a2af6f8-8264-41c9-86e9-a9eb810c4deb [200 OK, 886B, 187ms]
   ✓  Item 6 (Ley Europea) self link returns status 200
   ┌
   │ '🔎 Testing Item 7 (Ley Brasilera)'
@@ -1939,7 +1946,7 @@ Marvel APIs
   ✓  Item 7 (Ley Brasilera) contains expected properties
   ✓  Item 7 (Ley Brasilera) 'name' is a non-empty string
   ✓  Item 7 (Ley Brasilera) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/5ef6489e-1b5c-4864-8fd2-c57c11038319 [200 OK, 884B, 91ms]
+  GET https://api.mercapabbaco.com/bond-laws/5ef6489e-1b5c-4864-8fd2-c57c11038319 [200 OK, 886B, 192ms]
   ✓  Item 7 (Ley Brasilera) self link returns status 200
   ┌
   │ '🔎 Testing Item 8 (Ley Mexicana)'
@@ -1947,7 +1954,7 @@ Marvel APIs
   ✓  Item 8 (Ley Mexicana) contains expected properties
   ✓  Item 8 (Ley Mexicana) 'name' is a non-empty string
   ✓  Item 8 (Ley Mexicana) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/faaf8f43-b147-4c68-aaf9-ffbaf7d27695 [200 OK, 891B, 90ms]
+  GET https://api.mercapabbaco.com/bond-laws/faaf8f43-b147-4c68-aaf9-ffbaf7d27695 [200 OK, 887B, 219ms]
   ✓  Item 8 (Ley Mexicana) self link returns status 200
   ┌
   │ '🔎 Testing Item 9 (Ley Federal (EEUU))'
@@ -1955,7 +1962,7 @@ Marvel APIs
   ✓  Item 9 (Ley Federal (EEUU)) contains expected properties
   ✓  Item 9 (Ley Federal (EEUU)) 'name' is a non-empty string
   ✓  Item 9 (Ley Federal (EEUU)) self link is a valid URL
-  GET https://api.mercapabbaco.com/bond-laws/88948c32-92b6-4394-8505-00acd0124a7f [200 OK, 889B, 151ms]
+  GET https://api.mercapabbaco.com/bond-laws/88948c32-92b6-4394-8505-00acd0124a7f [200 OK, 903B, 174ms]
   ✓  Item 9 (Ley Federal (EEUU)) self link returns status 200
 
 ❏ Pepper-GS32 / Regression-Test / Bond Screener
@@ -1964,32 +1971,32 @@ Marvel APIs
   │ '🚀 Iniciando resolución con protección de variables y
   │  fallback...'
   └
-  GET https://api.mercapabbaco.com/debt-types   GET https://api.mercapabbaco.com/currencies   GET https://api.mercapabbaco.com/instrument-issuers   GET https://api.mercapabbaco.com/bond-laws [200 OK, 1.19kB, 142ms]
+  GET https://api.mercapabbaco.com/debt-types   GET https://api.mercapabbaco.com/currencies   GET https://api.mercapabbaco.com/instrument-issuers   GET https://api.mercapabbaco.com/bond-laws [200 OK, 1.19kB, 195ms]
   ┌
   │ '✅ [SCREENER_DEBT_TYPE] Resuelto: OBLIGACIÓN NEGOCIABL
   │ E -> https://api.mercapabbaco.com/debt-types/a6af5129-
   │ 7f88-46ce-879b-bfb0a4ee8a7b'
   └
-[200 OK, 1.86kB, 219ms]
-  ┌
-  │ '✅ [SCREENER_BOND_LAW] Resuelto: LEY ARGENTINA -> http
-  │ s://api.mercapabbaco.com/bond-laws/18bb25d4-8ab8-4837-
-  │ b574-1754811dd222'
-  └
-[200 OK, 1.86kB, 247ms]
+[200 OK, 1.85kB, 197ms]
   ┌
   │ '✅ [SCREENER_CURRENCY] Resuelto: USD -> https://api.me
   │ rcapabbaco.com/currencies/e852e30f-42ad-4343-a7f6-3bc4
   │ ec840ed1'
   └
-[502 Bad Gateway, 8.19kB, 515ms]
+[200 OK, 1.86kB, 223ms]
+  ┌
+  │ '✅ [SCREENER_BOND_LAW] Resuelto: LEY ARGENTINA -> http
+  │ s://api.mercapabbaco.com/bond-laws/18bb25d4-8ab8-4837-
+  │ b574-1754811dd222'
+  └
+[502 Bad Gateway, 9.45kB, 909ms]
   ┌
   │ '⚠️ Intento fallido para SCREENER_ISSUER (YPF S.A.). R
   │ eintentando...'
   └
-  GET https://api.mercapabbaco.com/instrument-issuers [502 Bad Gateway, 8.2kB, 352ms]
+  GET https://api.mercapabbaco.com/instrument-issuers [502 Bad Gateway, 8.19kB, 1424ms]
   ┌
   │ '⚠️ Intento fallido para SCREENER_ISSUER (YPF S.A.). R
   │ eintentando...'
   └
-  GET https://api.mercapabbaco.com/instrument-issuers [500 Internal Server Error, 732B, 3.4s]
+  GET https://api.mercapabbaco.com/instrument-issuers [502 Bad Gateway, 8.2kB, 262ms]
