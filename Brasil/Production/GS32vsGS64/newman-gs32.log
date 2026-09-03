@@ -2,803 +2,99 @@ newman
 
 Marvel APIs
 
-Iteration 1/10
-
 ❏ Comparativa GS32 - GS64 / GS32
 ↳ Get cashflow - many cupons - GS32
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 34.33kB, 760ms]
+  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 34.32kB, 661ms]
   ✓  Status code is 200
   ✓  Body: sin 'error' JSON-RPC
   ✓  Body: 'result' es un array no vacio
   1. Body: cada fila de cashflow tiene dueDate y coupon
 
 ↳ Get cashflow - few cupons - GS32
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 5.65kB, 257ms]
+  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 5.65kB, 115ms]
   ✓  Status code is 200
   ✓  Body: sin 'error' JSON-RPC
   ✓  Body: 'result' es un array no vacio
   2. Body: cada fila de cashflow tiene dueDate y coupon
 
 ↳ Get all bonds GS32
-  GET https://api.brasil.mercap.com.ar/bonds?limit=50&start=1 [200 OK, 614.22kB, 1375ms]
+  GET https://api.brasil.mercap.com.ar/bonds?limit=50&start=1 [200 OK, 614.21kB, 2.2s]
   ✓  Status code is 200
   ✓  Body: 'items' es un array no vacio
   ✓  Body: cada item tiene nombre y self link
   ✓  Body: 'links.self' del response es un string
 
 ↳ Bond by UUID GS32
-  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30 [200 OK, 12.12kB, 198ms]
+  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30 [200 OK, 12.12kB, 148ms]
   ✓  Status code is 200
   ✓  Body: 'links.self' presente
 
 ↳ Get all bond laws GS32
-  GET https://api.brasil.mercap.com.ar/32/bond-laws [200 OK, 996B, 146ms]
+  GET https://api.brasil.mercap.com.ar/32/bond-laws [200 OK, 996B, 108ms]
   ✓  Status code is 200
   ✓  Body: 'items' es un array no vacio
   ✓  Body: cada item tiene nombre y self link
   ✓  Body: 'links.self' del response es un string
 
 ↳ Get Bond law UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/bond-laws/266ee9fb-5a72-4273-abdf-b41d012ec367 [200 OK, 851B, 85ms]
+  GET https://api.brasil.mercap.com.ar/32/bond-laws/266ee9fb-5a72-4273-abdf-b41d012ec367 [200 OK, 845B, 126ms]
   ✓  Status code is 200
   ✓  Body: 'links.self' presente
 
 ↳ Get all debt types GS32
-  GET https://api.brasil.mercap.com.ar/32/debt-types [200 OK, 1.53kB, 155ms]
+  GET https://api.brasil.mercap.com.ar/32/debt-types [200 OK, 1.53kB, 114ms]
   ✓  Status code is 200
   ✓  Body: 'items' es un array no vacio
   ✓  Body: cada item tiene nombre y self link
   ✓  Body: 'links.self' del response es un string
 
 ↳ Get debt Type UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/debt-types/9e01f1e4-5731-418d-8eab-97d6e873c969 [200 OK, 847B, 96ms]
+  GET https://api.brasil.mercap.com.ar/32/debt-types/9e01f1e4-5731-418d-8eab-97d6e873c969 [200 OK, 857B, 110ms]
   ✓  Status code is 200
   ✓  Body: 'links.self' presente
 
 ↳ Get all curencies GS32
-  GET https://api.brasil.mercap.com.ar/32/currencies [200 OK, 1.06kB, 151ms]
+  GET https://api.brasil.mercap.com.ar/32/currencies [200 OK, 1.06kB, 119ms]
   ✓  Status code is 200
   ✓  Body: 'items' es un array no vacio
   ✓  Body: cada item tiene nombre y self link
   ✓  Body: 'links.self' del response es un string
 
 ↳ Get currency UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/currencies/5e28e713-4c64-48b6-863e-a3227a6869da [200 OK, 884B, 179ms]
+  GET https://api.brasil.mercap.com.ar/32/currencies/5e28e713-4c64-48b6-863e-a3227a6869da [200 OK, 878B, 112ms]
   ✓  Status code is 200
   ✓  Body: 'links.self' presente
 
 ↳ Get Finantial unit issuer GS32
-  GET https://api.brasil.mercap.com.ar/32/instrument-issuers [200 OK, 68.89kB, 349ms]
+  GET https://api.brasil.mercap.com.ar/32/instrument-issuers [200 OK, 68.89kB, 782ms]
   ✓  Status code is 200
   ✓  Body: 'items' es un array no vacio
   ✓  Body: cada item tiene nombre y self link
   ✓  Body: 'links.self' del response es un string
 
 ↳ Get Finantial indexed units of account GS32
-  GET https://api.brasil.mercap.com.ar/32/indexed-units-of-account [200 OK, 777B, 153ms]
+  GET https://api.brasil.mercap.com.ar/32/indexed-units-of-account [200 OK, 775B, 99ms]
   ✓  Status code is 200
   3. Body: 'items' es un array no vacio
   ✓  Body: cada item tiene nombre y self link
   ✓  Body: 'links.self' del response es un string
 
-Iteration 2/10
-
-↳ Get cashflow - many cupons - GS32
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 34.34kB, 275ms]
-  ✓  Status code is 200
-  ✓  Body: sin 'error' JSON-RPC
-  ✓  Body: 'result' es un array no vacio
-  4. Body: cada fila de cashflow tiene dueDate y coupon
-
-↳ Get cashflow - few cupons - GS32
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 5.64kB, 180ms]
-  ✓  Status code is 200
-  ✓  Body: sin 'error' JSON-RPC
-  ✓  Body: 'result' es un array no vacio
-  5. Body: cada fila de cashflow tiene dueDate y coupon
-
-↳ Get all bonds GS32
-  GET https://api.brasil.mercap.com.ar/bonds?limit=50&start=1 [200 OK, 614.22kB, 2.7s]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Bond by UUID GS32
-  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30 [200 OK, 12.12kB, 181ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all bond laws GS32
-  GET https://api.brasil.mercap.com.ar/32/bond-laws [200 OK, 994B, 135ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get Bond law UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/bond-laws/266ee9fb-5a72-4273-abdf-b41d012ec367 [200 OK, 853B, 130ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all debt types GS32
-  GET https://api.brasil.mercap.com.ar/32/debt-types [200 OK, 1.53kB, 135ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get debt Type UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/debt-types/9e01f1e4-5731-418d-8eab-97d6e873c969 [200 OK, 849B, 116ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all curencies GS32
-  GET https://api.brasil.mercap.com.ar/32/currencies [200 OK, 1.06kB, 142ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get currency UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/currencies/5e28e713-4c64-48b6-863e-a3227a6869da [200 OK, 880B, 124ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get Finantial unit issuer GS32
-  GET https://api.brasil.mercap.com.ar/32/instrument-issuers [200 OK, 68.88kB, 309ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get Finantial indexed units of account GS32
-  GET https://api.brasil.mercap.com.ar/32/indexed-units-of-account [200 OK, 779B, 98ms]
-  ✓  Status code is 200
-  6. Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-Iteration 3/10
-
-↳ Get cashflow - many cupons - GS32
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 34.33kB, 225ms]
-  ✓  Status code is 200
-  ✓  Body: sin 'error' JSON-RPC
-  ✓  Body: 'result' es un array no vacio
-  7. Body: cada fila de cashflow tiene dueDate y coupon
-
-↳ Get cashflow - few cupons - GS32
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 5.65kB, 141ms]
-  ✓  Status code is 200
-  ✓  Body: sin 'error' JSON-RPC
-  ✓  Body: 'result' es un array no vacio
-  8. Body: cada fila de cashflow tiene dueDate y coupon
-
-↳ Get all bonds GS32
-  GET https://api.brasil.mercap.com.ar/bonds?limit=50&start=1 [200 OK, 614.21kB, 5.2s]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Bond by UUID GS32
-  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30 [200 OK, 12.11kB, 95ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all bond laws GS32
-  GET https://api.brasil.mercap.com.ar/32/bond-laws [200 OK, 990B, 129ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get Bond law UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/bond-laws/266ee9fb-5a72-4273-abdf-b41d012ec367 [200 OK, 845B, 125ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all debt types GS32
-  GET https://api.brasil.mercap.com.ar/32/debt-types [200 OK, 1.53kB, 138ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get debt Type UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/debt-types/9e01f1e4-5731-418d-8eab-97d6e873c969 [200 OK, 847B, 126ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all curencies GS32
-  GET https://api.brasil.mercap.com.ar/32/currencies [200 OK, 1.06kB, 137ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get currency UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/currencies/5e28e713-4c64-48b6-863e-a3227a6869da [200 OK, 880B, 138ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get Finantial unit issuer GS32
-  GET https://api.brasil.mercap.com.ar/32/instrument-issuers [200 OK, 68.89kB, 764ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get Finantial indexed units of account GS32
-  GET https://api.brasil.mercap.com.ar/32/indexed-units-of-account [200 OK, 777B, 137ms]
-  ✓  Status code is 200
-  9. Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-Iteration 4/10
-
-↳ Get cashflow - many cupons - GS32
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 34.34kB, 239ms]
-  ✓  Status code is 200
-  ✓  Body: sin 'error' JSON-RPC
-  ✓  Body: 'result' es un array no vacio
- 10. Body: cada fila de cashflow tiene dueDate y coupon
-
-↳ Get cashflow - few cupons - GS32
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 5.64kB, 134ms]
-  ✓  Status code is 200
-  ✓  Body: sin 'error' JSON-RPC
-  ✓  Body: 'result' es un array no vacio
- 11. Body: cada fila de cashflow tiene dueDate y coupon
-
-↳ Get all bonds GS32
-  GET https://api.brasil.mercap.com.ar/bonds?limit=50&start=1 [200 OK, 614.22kB, 1100ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Bond by UUID GS32
-  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30 [200 OK, 12.12kB, 107ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all bond laws GS32
-  GET https://api.brasil.mercap.com.ar/32/bond-laws [200 OK, 988B, 152ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get Bond law UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/bond-laws/266ee9fb-5a72-4273-abdf-b41d012ec367 [200 OK, 849B, 101ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all debt types GS32
-  GET https://api.brasil.mercap.com.ar/32/debt-types [200 OK, 1.53kB, 180ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get debt Type UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/debt-types/9e01f1e4-5731-418d-8eab-97d6e873c969 [200 OK, 849B, 84ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all curencies GS32
-  GET https://api.brasil.mercap.com.ar/32/currencies [200 OK, 1.05kB, 157ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get currency UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/currencies/5e28e713-4c64-48b6-863e-a3227a6869da [200 OK, 876B, 114ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get Finantial unit issuer GS32
-  GET https://api.brasil.mercap.com.ar/32/instrument-issuers [200 OK, 68.88kB, 286ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get Finantial indexed units of account GS32
-  GET https://api.brasil.mercap.com.ar/32/indexed-units-of-account [200 OK, 777B, 121ms]
-  ✓  Status code is 200
- 12. Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-Iteration 5/10
-
-↳ Get cashflow - many cupons - GS32
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 34.33kB, 163ms]
-  ✓  Status code is 200
-  ✓  Body: sin 'error' JSON-RPC
-  ✓  Body: 'result' es un array no vacio
- 13. Body: cada fila de cashflow tiene dueDate y coupon
-
-↳ Get cashflow - few cupons - GS32
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 5.65kB, 121ms]
-  ✓  Status code is 200
-  ✓  Body: sin 'error' JSON-RPC
-  ✓  Body: 'result' es un array no vacio
- 14. Body: cada fila de cashflow tiene dueDate y coupon
-
-↳ Get all bonds GS32
-  GET https://api.brasil.mercap.com.ar/bonds?limit=50&start=1 [200 OK, 614.22kB, 6s]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Bond by UUID GS32
-  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30 [200 OK, 12.12kB, 207ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all bond laws GS32
-  GET https://api.brasil.mercap.com.ar/32/bond-laws [200 OK, 988B, 122ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get Bond law UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/bond-laws/266ee9fb-5a72-4273-abdf-b41d012ec367 [200 OK, 843B, 118ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all debt types GS32
-  GET https://api.brasil.mercap.com.ar/32/debt-types [200 OK, 1.53kB, 148ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get debt Type UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/debt-types/9e01f1e4-5731-418d-8eab-97d6e873c969 [200 OK, 855B, 120ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all curencies GS32
-  GET https://api.brasil.mercap.com.ar/32/currencies [200 OK, 1.05kB, 147ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get currency UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/currencies/5e28e713-4c64-48b6-863e-a3227a6869da [200 OK, 876B, 118ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get Finantial unit issuer GS32
-  GET https://api.brasil.mercap.com.ar/32/instrument-issuers [200 OK, 68.89kB, 340ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get Finantial indexed units of account GS32
-  GET https://api.brasil.mercap.com.ar/32/indexed-units-of-account [200 OK, 779B, 174ms]
-  ✓  Status code is 200
- 15. Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-Iteration 6/10
-
-↳ Get cashflow - many cupons - GS32
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 34.33kB, 140ms]
-  ✓  Status code is 200
-  ✓  Body: sin 'error' JSON-RPC
-  ✓  Body: 'result' es un array no vacio
- 16. Body: cada fila de cashflow tiene dueDate y coupon
-
-↳ Get cashflow - few cupons - GS32
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 5.65kB, 133ms]
-  ✓  Status code is 200
-  ✓  Body: sin 'error' JSON-RPC
-  ✓  Body: 'result' es un array no vacio
- 17. Body: cada fila de cashflow tiene dueDate y coupon
-
-↳ Get all bonds GS32
-  GET https://api.brasil.mercap.com.ar/bonds?limit=50&start=1 [200 OK, 614.21kB, 5.7s]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Bond by UUID GS32
-  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30 [200 OK, 12.12kB, 172ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all bond laws GS32
-  GET https://api.brasil.mercap.com.ar/32/bond-laws [200 OK, 990B, 146ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get Bond law UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/bond-laws/266ee9fb-5a72-4273-abdf-b41d012ec367 [200 OK, 855B, 120ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all debt types GS32
-  GET https://api.brasil.mercap.com.ar/32/debt-types [200 OK, 1.53kB, 155ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get debt Type UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/debt-types/9e01f1e4-5731-418d-8eab-97d6e873c969 [200 OK, 847B, 117ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all curencies GS32
-  GET https://api.brasil.mercap.com.ar/32/currencies [200 OK, 1.06kB, 146ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get currency UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/currencies/5e28e713-4c64-48b6-863e-a3227a6869da [200 OK, 876B, 107ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get Finantial unit issuer GS32
-  GET https://api.brasil.mercap.com.ar/32/instrument-issuers [200 OK, 68.89kB, 789ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get Finantial indexed units of account GS32
-  GET https://api.brasil.mercap.com.ar/32/indexed-units-of-account [200 OK, 775B, 131ms]
-  ✓  Status code is 200
- 18. Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-Iteration 7/10
-
-↳ Get cashflow - many cupons - GS32
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 34.33kB, 206ms]
-  ✓  Status code is 200
-  ✓  Body: sin 'error' JSON-RPC
-  ✓  Body: 'result' es un array no vacio
- 19. Body: cada fila de cashflow tiene dueDate y coupon
-
-↳ Get cashflow - few cupons - GS32
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 5.65kB, 137ms]
-  ✓  Status code is 200
-  ✓  Body: sin 'error' JSON-RPC
-  ✓  Body: 'result' es un array no vacio
- 20. Body: cada fila de cashflow tiene dueDate y coupon
-
-↳ Get all bonds GS32
-  GET https://api.brasil.mercap.com.ar/bonds?limit=50&start=1 [200 OK, 614.21kB, 925ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Bond by UUID GS32
-  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30 [200 OK, 12.12kB, 106ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all bond laws GS32
-  GET https://api.brasil.mercap.com.ar/32/bond-laws [200 OK, 990B, 151ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get Bond law UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/bond-laws/266ee9fb-5a72-4273-abdf-b41d012ec367 [200 OK, 843B, 112ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all debt types GS32
-  GET https://api.brasil.mercap.com.ar/32/debt-types [200 OK, 1.53kB, 157ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get debt Type UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/debt-types/9e01f1e4-5731-418d-8eab-97d6e873c969 [200 OK, 845B, 113ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all curencies GS32
-  GET https://api.brasil.mercap.com.ar/32/currencies [200 OK, 1.06kB, 151ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get currency UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/currencies/5e28e713-4c64-48b6-863e-a3227a6869da [200 OK, 880B, 110ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get Finantial unit issuer GS32
-  GET https://api.brasil.mercap.com.ar/32/instrument-issuers [200 OK, 68.89kB, 256ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get Finantial indexed units of account GS32
-  GET https://api.brasil.mercap.com.ar/32/indexed-units-of-account [200 OK, 777B, 155ms]
-  ✓  Status code is 200
- 21. Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-Iteration 8/10
-
-↳ Get cashflow - many cupons - GS32
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 34.33kB, 237ms]
-  ✓  Status code is 200
-  ✓  Body: sin 'error' JSON-RPC
-  ✓  Body: 'result' es un array no vacio
- 22. Body: cada fila de cashflow tiene dueDate y coupon
-
-↳ Get cashflow - few cupons - GS32
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 5.64kB, 144ms]
-  ✓  Status code is 200
-  ✓  Body: sin 'error' JSON-RPC
-  ✓  Body: 'result' es un array no vacio
- 23. Body: cada fila de cashflow tiene dueDate y coupon
-
-↳ Get all bonds GS32
-  GET https://api.brasil.mercap.com.ar/bonds?limit=50&start=1 [200 OK, 614.22kB, 6s]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Bond by UUID GS32
-  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30 [200 OK, 12.12kB, 113ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all bond laws GS32
-  GET https://api.brasil.mercap.com.ar/32/bond-laws [200 OK, 982B, 111ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get Bond law UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/bond-laws/266ee9fb-5a72-4273-abdf-b41d012ec367 [200 OK, 843B, 145ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all debt types GS32
-  GET https://api.brasil.mercap.com.ar/32/debt-types [200 OK, 1.53kB, 116ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get debt Type UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/debt-types/9e01f1e4-5731-418d-8eab-97d6e873c969 [200 OK, 857B, 160ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all curencies GS32
-  GET https://api.brasil.mercap.com.ar/32/currencies [200 OK, 1.06kB, 125ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get currency UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/currencies/5e28e713-4c64-48b6-863e-a3227a6869da [200 OK, 886B, 123ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get Finantial unit issuer GS32
-  GET https://api.brasil.mercap.com.ar/32/instrument-issuers [200 OK, 68.88kB, 870ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get Finantial indexed units of account GS32
-  GET https://api.brasil.mercap.com.ar/32/indexed-units-of-account [200 OK, 771B, 168ms]
-  ✓  Status code is 200
- 24. Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-Iteration 9/10
-
-↳ Get cashflow - many cupons - GS32
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 34.33kB, 188ms]
-  ✓  Status code is 200
-  ✓  Body: sin 'error' JSON-RPC
-  ✓  Body: 'result' es un array no vacio
- 25. Body: cada fila de cashflow tiene dueDate y coupon
-
-↳ Get cashflow - few cupons - GS32
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 5.65kB, 138ms]
-  ✓  Status code is 200
-  ✓  Body: sin 'error' JSON-RPC
-  ✓  Body: 'result' es un array no vacio
- 26. Body: cada fila de cashflow tiene dueDate y coupon
-
-↳ Get all bonds GS32
-  GET https://api.brasil.mercap.com.ar/bonds?limit=50&start=1 [200 OK, 614.21kB, 1321ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Bond by UUID GS32
-  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30 [200 OK, 12.12kB, 128ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all bond laws GS32
-  GET https://api.brasil.mercap.com.ar/32/bond-laws [200 OK, 988B, 91ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get Bond law UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/bond-laws/266ee9fb-5a72-4273-abdf-b41d012ec367 [200 OK, 851B, 170ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all debt types GS32
-  GET https://api.brasil.mercap.com.ar/32/debt-types [200 OK, 1.53kB, 100ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get debt Type UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/debt-types/9e01f1e4-5731-418d-8eab-97d6e873c969 [200 OK, 847B, 169ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all curencies GS32
-  GET https://api.brasil.mercap.com.ar/32/currencies [200 OK, 1.06kB, 93ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get currency UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/currencies/5e28e713-4c64-48b6-863e-a3227a6869da [200 OK, 880B, 190ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get Finantial unit issuer GS32
-  GET https://api.brasil.mercap.com.ar/32/instrument-issuers [200 OK, 68.89kB, 313ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get Finantial indexed units of account GS32
-  GET https://api.brasil.mercap.com.ar/32/indexed-units-of-account [200 OK, 779B, 81ms]
-  ✓  Status code is 200
- 27. Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-Iteration 10/10
-
-↳ Get cashflow - many cupons - GS32
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 34.33kB, 197ms]
-  ✓  Status code is 200
-  ✓  Body: sin 'error' JSON-RPC
-  ✓  Body: 'result' es un array no vacio
- 28. Body: cada fila de cashflow tiene dueDate y coupon
-
-↳ Get cashflow - few cupons - GS32
-  POST https://api.brasil.mercap.com.ar/bond-payment-forecast [200 OK, 5.65kB, 129ms]
-  ✓  Status code is 200
-  ✓  Body: sin 'error' JSON-RPC
-  ✓  Body: 'result' es un array no vacio
- 29. Body: cada fila de cashflow tiene dueDate y coupon
-
-↳ Get all bonds GS32
-  GET https://api.brasil.mercap.com.ar/bonds?limit=50&start=1 [200 OK, 614.21kB, 3.2s]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Bond by UUID GS32
-  GET https://api.brasil.mercap.com.ar/bonds/f0f3dad8-8d2c-4184-999e-2377996b8c30 [200 OK, 12.13kB, 117ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all bond laws GS32
-  GET https://api.brasil.mercap.com.ar/32/bond-laws [200 OK, 994B, 97ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get Bond law UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/bond-laws/266ee9fb-5a72-4273-abdf-b41d012ec367 [200 OK, 847B, 161ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all debt types GS32
-  GET https://api.brasil.mercap.com.ar/32/debt-types [200 OK, 1.53kB, 108ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get debt Type UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/debt-types/9e01f1e4-5731-418d-8eab-97d6e873c969 [200 OK, 849B, 166ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get all curencies GS32
-  GET https://api.brasil.mercap.com.ar/32/currencies [200 OK, 1.06kB, 102ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get currency UUID GS32
-  GET https://api.brasil.mercap.com.ar/32/currencies/5e28e713-4c64-48b6-863e-a3227a6869da [200 OK, 886B, 162ms]
-  ✓  Status code is 200
-  ✓  Body: 'links.self' presente
-
-↳ Get Finantial unit issuer GS32
-  GET https://api.brasil.mercap.com.ar/32/instrument-issuers [200 OK, 68.88kB, 228ms]
-  ✓  Status code is 200
-  ✓  Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-↳ Get Finantial indexed units of account GS32
-  GET https://api.brasil.mercap.com.ar/32/indexed-units-of-account [200 OK, 777B, 87ms]
-  ✓  Status code is 200
- 30. Body: 'items' es un array no vacio
-  ✓  Body: cada item tiene nombre y self link
-  ✓  Body: 'links.self' del response es un string
-
-┌─────────────────────────┬───────────────────┬───────────────────┐
-│                         │          executed │            failed │
-├─────────────────────────┼───────────────────┼───────────────────┤
-│              iterations │                10 │                 0 │
-├─────────────────────────┼───────────────────┼───────────────────┤
-│                requests │               120 │                 0 │
-├─────────────────────────┼───────────────────┼───────────────────┤
-│            test-scripts │               240 │                 0 │
-├─────────────────────────┼───────────────────┼───────────────────┤
-│      prerequest-scripts │               260 │                 0 │
-├─────────────────────────┼───────────────────┼───────────────────┤
-│              assertions │               400 │                30 │
-├─────────────────────────┴───────────────────┴───────────────────┤
-│ total run duration: 56.5s                                       │
-├─────────────────────────────────────────────────────────────────┤
-│ total data received: 7.34MB (approx)                            │
-├─────────────────────────────────────────────────────────────────┤
-│ average response time: 442ms [min: 81ms, max: 6s, s.d.: 1076ms] │
-└─────────────────────────────────────────────────────────────────┘
+┌─────────────────────────┬────────────────────┬───────────────────┐
+│                         │           executed │            failed │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              iterations │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│                requests │                 12 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│            test-scripts │                 24 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│      prerequest-scripts │                 26 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              assertions │                 40 │                 3 │
+├─────────────────────────┴────────────────────┴───────────────────┤
+│ total run duration: 5.4s                                         │
+├──────────────────────────────────────────────────────────────────┤
+│ total data received: 733.87kB (approx)                           │
+├──────────────────────────────────────────────────────────────────┤
+│ average response time: 398ms [min: 99ms, max: 2.2s, s.d.: 613ms] │
+└──────────────────────────────────────────────────────────────────┘
